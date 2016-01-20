@@ -216,6 +216,94 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Rebar" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/03/Rebar/" class="article-date">
+      <time datetime="2016-01-03T12:52:05.000Z" itemprop="datePublished">2016-01-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/03/Rebar/">使用 Rebar 管理 erlang 项目</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="u4F7F_u7528_Rebar__u7BA1_u7406_erlang__u9879_u76EE"><a href="#u4F7F_u7528_Rebar__u7BA1_u7406_erlang__u9879_u76EE" class="headerlink" title="使用 Rebar 管理 erlang 项目"></a>使用 Rebar 管理 erlang 项目</h3><p><a href="https://github.com/rebar/rebar" target="_blank" rel="external">GitHub - </a></p>
+<h4 id="u4F7F_u7528_Intellij_idea15__u5229_u7528_rebar__u5F00_u53D1_u8C03_u8BD5_ejabberd"><a href="#u4F7F_u7528_Intellij_idea15__u5229_u7528_rebar__u5F00_u53D1_u8C03_u8BD5_ejabberd" class="headerlink" title="使用 Intellij idea15 利用 rebar 开发调试 ejabberd"></a>使用 Intellij idea15 利用 rebar 开发调试 ejabberd</h4><blockquote>
+<p>默认 Erlang 的 ejabberd 根项目下已经有 rebar 文件了</p>
+</blockquote>
+<p>1.Win下安装 <a href="http://www.erlang.org/download/otp_win64_18.2.1.exe" target="_blank" rel="external">otp.18</a> 到 G:\Program Files\erl7.2.1 下<br>2.将 G:\Program Files\erl7.2.1 添加系统环境变量 PATH<br>3.Intellij idea 项目 ejabberd 中 SDK 添加 OTP18.**<br>4.win下使用 Cygwin 安装 rebar</p>
+<pre><code>$ git clone git://github.com/rebar/rebar.git
+$ cd rebar
+$ ./bootstrap
+Recompile: src/getopt
+...
+Recompile: src/rebar_utils
+==&gt; rebar (compile)
+Congratulations! You now have a self-contained script called &quot;rebar&quot; in
+your current working directory. Place this script anywhere in your path
+and you can use rebar to build OTP-compliant apps.
+</code></pre><p>它将自动将 rebar 安装到 C:\Users\yafei\rebar 下</p>
+<ol>
+<li><p>File-&gt;Other Setting-&gt;Default Setting-&gt;Erlang Extenal Tools 配置 PATH 为 C:\Users\yafei\rebar\rebar.cmd</p>
+</li>
+<li><p>File-&gt;Setting-&gt;Setting-&gt;In “Build, Execution, Deployment/Erlan Compiler”, 勾选 “Compile project with rebar”.</p>
+</li>
+</ol>
+<p>6.Menu -&gt; Run -&gt; Edit Configurations -&gt; 添加按钮 -&gt; Erlang Rebar ,具体配置为 在 Command 一栏添加 任务 delete-deps clean get-deps compile 并任意填写一个任务名称 coamerlangtask</p>
+<p>7.在 Intellij idea 右上角可以点击运行开始打包</p>
+<hr>
+<h3 id="u9519_u8BEF_u5206_u6790"><a href="#u9519_u8BEF_u5206_u6790" class="headerlink" title="错误分析"></a>错误分析</h3><blockquote>
+<p>rebar unable to get dependency from github</p>
+<p>使用简单的 clean compile 命令会出现很多未找到依赖包 * ,因为编译 compile 前先要 get-deps 所以将 rebar 编译命令改为 delete-deps clean get-deps compile</p>
+</blockquote>
+<p>参考 <a href="http://stackoverflow.com/questions/10059579/rebar-unable-to-get-dependency-from-github" target="_blank" rel="external">rebar unable to get dependency from github</a></p>
+<hr>
+<p>参考列表<br><a href="https://github.com/rebar/rebar/wiki/Rebar-commands" target="_blank" rel="external">Rebar commands</a><br><a href="http://zewaren.net/site/?q=node/144" target="_blank" rel="external">Using Intellij IDEA to write and debug Erlang code</a><br><a href="https://www.jetbrains.com/idea/help/getting-started-with-erlang.html#d207953e377" target="_blank" rel="external">Intellij Idea 官网说明</a><br><a href="http://blog.csdn.net/shake1050/article/details/43670281" target="_blank" rel="external">windows下使用IntelliJ IDEA的erlang编译环境搭建(含rebar工具)</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-hello-two" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">

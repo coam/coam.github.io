@@ -216,11 +216,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-MarkDownNote" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-AndroidPushMQTT" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/08/MarkDownNote/" class="article-date">
-      <time datetime="2016-01-08T02:51:31.000Z" itemprop="datePublished">2016-01-08</time>
+      <a href="/2016/01/20/AndroidPushMQTT/" class="article-date">
+      <time datetime="2016-01-20T08:26:40.255Z" itemprop="datePublished">2016-01-20</time>
 </a>
     </div>
   
@@ -229,540 +229,45 @@
       <input type="hidden" class="isFancy" />
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/08/MarkDownNote/">MarkDown 相关</a>
-    </h1>
-  
-
-      </header>
-      
-    
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h1 id="Markdown__u76F8_u5173_u7B14_u8BB0_u6458_u8981"><a href="#Markdown__u76F8_u5173_u7B14_u8BB0_u6458_u8981" class="headerlink" title="Markdown 相关笔记摘要"></a>Markdown 相关笔记摘要</h1><p><a href="http://www.debug4.me/%E5%B7%A5%E5%85%B7/markdown-learning/">Markdown标准语法与GitHub Flavored Markdown语法大全</a></p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/markdown/">markdown</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown-gfw-hexo-jekyll/">markdown gfw hexo jekyll</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/01/08/MarkDownNote/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-my-blogs" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/07/my-blogs/" class="article-date">
-      <time datetime="2016-01-07T12:56:16.000Z" itemprop="datePublished">2016-01-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/07/my-blogs/">my blogs</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <blockquote><p>content</p>
-</blockquote>
-<figure class="highlight"><figcaption><span>[title] [] [url] [link text]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code snippet</span><br></pre></td></tr></table></figure>
-<figure class="highlight php"><figcaption><span>mycode</span><a href="https://www.coam.co" target="_blank" rel="external">coam.com</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Build DOMDocument with standard xmpp body child node.</span><br><span class="line"> *</span><br><span class="line"> * <span class="doctag">@return</span> DOMDocument</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">buildBody</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="variable">$xml</span> = <span class="keyword">new</span> DOMDocument(<span class="string">'1.0'</span>, <span class="string">'UTF-8'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="variable">$body</span> = <span class="variable">$xml</span>-&gt;createElement(<span class="string">'body'</span>);</span><br><span class="line">    <span class="variable">$xml</span>-&gt;appendChild(<span class="variable">$body</span>);</span><br><span class="line"></span><br><span class="line">    <span class="variable">$body</span>-&gt;appendChild(<span class="keyword">self</span>::getNewTextAttribute(<span class="variable">$xml</span>, <span class="string">'xmlns'</span>, <span class="keyword">self</span>::XMLNS_BODY));</span><br><span class="line">    <span class="variable">$body</span>-&gt;appendChild(<span class="keyword">self</span>::getNewTextAttribute(<span class="variable">$xml</span>, <span class="string">'content'</span>, <span class="keyword">self</span>::CONTENT_TYPE));</span><br><span class="line">    <span class="variable">$body</span>-&gt;appendChild(<span class="keyword">self</span>::getNewTextAttribute(<span class="variable">$xml</span>, <span class="string">'rid'</span>, <span class="variable">$this</span>-&gt;getAndIncrementRid()));</span><br><span class="line">    <span class="variable">$body</span>-&gt;appendChild(<span class="keyword">self</span>::getNewTextAttribute(<span class="variable">$xml</span>, <span class="string">'xml:lang'</span>, <span class="keyword">self</span>::XML_LANG));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$this</span>-&gt;sid != <span class="string">''</span>) &#123;</span><br><span class="line">        <span class="variable">$body</span>-&gt;appendChild(<span class="keyword">self</span>::getNewTextAttribute(<span class="variable">$xml</span>, <span class="string">'sid'</span>, <span class="variable">$this</span>-&gt;sid));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$xml</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><figcaption><span>title</span><a href="https://app.coopens.com" target="_blank" rel="external">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onMessage</span>(<span class="params">msg</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> to = msg.getAttribute(<span class="string">'to'</span>);</span><br><span class="line">    <span class="keyword">var</span> from = msg.getAttribute(<span class="string">'from'</span>);</span><br><span class="line">    <span class="keyword">var</span> type = msg.getAttribute(<span class="string">'type'</span>);</span><br><span class="line">    <span class="keyword">var</span> elems = msg.getElementsByTagName(<span class="string">'body'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (type == <span class="string">"chat"</span> &amp;&amp; elems.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> body = elems[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">        log(<span class="string">'ECHOBOT: I got a message from '</span> + from + <span class="string">': '</span> +</span><br><span class="line">            Strophe.getText(body));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> reply = $msg(&#123;to: from, from: to, type: <span class="string">'chat'</span>&#125;)</span><br><span class="line">            .cnode(Strophe.copyElement(body));</span><br><span class="line">        connection.send(reply.tree());</span><br><span class="line"></span><br><span class="line">        log(<span class="string">'ECHOBOT: I sent '</span> + from + <span class="string">': '</span> + Strophe.getText(body));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// we must return true to keep the handler alive.  </span></span><br><span class="line">    <span class="comment">// returning false would remove it after it finishes.</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><figcaption><span>Android SDK 代码</span><a href="http://www.badu.com" target="_blank" rel="external">[link text ..]</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.preference.Preference;</span><br><span class="line"><span class="keyword">import</span> android.util.AttributeSet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> eu.siacs.conversations.utils.PhoneHelper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AboutPreference</span> <span class="keyword">extends</span> <span class="title">Preference</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">AboutPreference</span><span class="params">(<span class="keyword">final</span> Context context, <span class="keyword">final</span> AttributeSet attrs, <span class="keyword">final</span> <span class="keyword">int</span> defStyle)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(context, attrs, defStyle);</span><br><span class="line">		setSummary();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">AboutPreference</span><span class="params">(<span class="keyword">final</span> Context context, <span class="keyword">final</span> AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(context, attrs);</span><br><span class="line">		setSummary();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onClick();</span><br><span class="line">        <span class="keyword">final</span> Intent intent = <span class="keyword">new</span> Intent(getContext(), AboutActivity.class);</span><br><span class="line">        getContext().startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setSummary</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		setSummary(<span class="string">"Conversations "</span> + PhoneHelper.getVersionName(getContext()));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">happy</span><br></pre></td></tr></table></figure>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">colon</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><figcaption><span>title</span><a href="http://www.coopens.com" target="_blank" rel="external">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setSummary</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    setSummary(<span class="string">"Conversations "</span> + PhoneHelper.getVersionName(getContext()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-XMPP" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/03/XMPP/" class="article-date">
-      <time datetime="2016-01-03T12:52:05.000Z" itemprop="datePublished">2016-01-03</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/03/XMPP/">关于 XMPP 协议</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h3 id="u5173_u4E8E_XMPP__u534F_u8BAE"><a href="#u5173_u4E8E_XMPP__u534F_u8BAE" class="headerlink" title="关于 XMPP 协议"></a>关于 XMPP 协议</h3><p><a href="http://xmpp.org/xmpp-protocols/xmpp-extensions/">XMPP 扩展协议标准</a><br><a href="http://wiki.jabbercn.org/XEP-0045">Ejabberd 中文翻译文档上面的 关于 Ejabberd 使用的协议介绍</a></p>
+        <h3 id="Android__u63A8_u9001_u4E4B_MQTT"><a href="#Android__u63A8_u9001_u4E4B_MQTT" class="headerlink" title="Android 推送之 MQTT"></a>Android 推送之 MQTT</h3><h3 id="Android__u5F00_u53D1_u63A8_u9001_u65B9_u6848"><a href="#Android__u5F00_u53D1_u63A8_u9001_u65B9_u6848" class="headerlink" title="Android 开发推送方案"></a>Android 开发推送方案</h3><h4 id="MQTT__u670D_u52A1_u5668"><a href="#MQTT__u670D_u52A1_u5668" class="headerlink" title="MQTT 服务器"></a>MQTT 服务器</h4><p>使用 emqttd broken<br><a href="https://github.com/emqtt/emqttd" target="_blank" rel="external">GitHub - emqtt/emqttd</a><br><a href="http://emqtt.io/" target="_blank" rel="external">官网</a></p>
+<p><a href="https://github.com/emqtt/emqttd/wiki/Configuration" target="_blank" rel="external">emqttd 主要配置参数</a></p>
+<p>emqttd 使用以下命令调试输出</p>
+<pre><code>./bin/emqttd console
+</code></pre><p>如果没有打印输出日志信息,可以参考取消 rel/files/emqttd.config.production 或 ./etc/emqttd.config 中对 %%{lager_console_backend, info} 的注释<br><a href="https://github.com/emqtt/emqttd/issues/407" target="_blank" rel="external">关于提问</a></p>
 <hr>
-<p><a href="https://xmpp.net/directory.php">XMPP 免费服务器列表</a></p>
-<p>比较好的公共服务器</p>
-<p><a href="https://www.xmpp.jp/signup">xmpp.jp</a></p>
-<p>XMPP 客户端</p>
+<h4 id="MQTT_Android__u5BA2_u6237_u7AEF"><a href="#MQTT_Android__u5BA2_u6237_u7AEF" class="headerlink" title="MQTT Android 客户端"></a>MQTT Android 客户端</h4><blockquote>
+<p>之前使用 IBM 提供的 wmqtt.jar 和 tokudu 项目示例</p>
+</blockquote>
+<p><a href="ftp://public.dhe.ibm.com/software/integration/support/supportpacs/individual/ia92.zip" target="_blank" rel="external">wmqtt.jar</a><br><a href="https://github.com/tokudu/AndroidPushNotificationsDemo" target="_blank" rel="external">tokudu/AndroidPushNotificationsDemo</a></p>
 <blockquote>
-<p>PC端肯定要推荐一些比较经典的啦,诸如Pidgin、Empathy、Kopete、Miranda IM(只支持Windows)或Adium(只支持Mac OS X)这样的都可以很好的兼容XMPP/Jabber协议,<br>不过呢还有一些专门的客户端软件,比如 Gajim和Psi+(这是Psi的升级版,增加了更多功能)这样的XMPP专业工具.<br>类似Pidgin这样大而全的软件可以很好的支持XMPP几乎所有的功能(通过各种插件).<br>而专有的软件则可以更加专注于协议的实现,更加完善,也更加富有使用的优势,特别是需要加密聊天比如OTR和PGP这样的时候,专攻XMPP协议的这些客户端就更方便可靠了.<br>当然还有命令行下的软件,mcabber是专门设计给XMPP/Jabber使用的,可以非常方便的提供OTR和PGP加密聊天.</p>
+<p>由于 wmqttd 几乎没有更新,于是采用新的Android客户端 <a href="http://www.eclipse.org/paho/" target="_blank" rel="external">Paho</a> 方案</p>
 </blockquote>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/01/03/XMPP/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-MQTT" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/03/MQTT/" class="article-date">
-      <time datetime="2016-01-03T12:52:05.000Z" itemprop="datePublished">2016-01-03</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/03/MQTT/">关于 MQTT 协议</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="u5173_u4E8E_MQTT__u534F_u8BAE"><a href="#u5173_u4E8E_MQTT__u534F_u8BAE" class="headerlink" title="关于 MQTT 协议"></a>关于 MQTT 协议</h3><p><a href="https://github.com/liangjingyang/MQTT-CN/blob/master/mqtt-v3.1.1-os.md" target="_blank" rel="external">MQTT 中文文档 Version 3.1.1</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-EjabberdNote" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/03/EjabberdNote/" class="article-date">
-      <time datetime="2016-01-03T12:52:05.000Z" itemprop="datePublished">2016-01-03</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/03/EjabberdNote/">Ejabberd Note</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h4 id="Ejabberd_Note"><a href="#Ejabberd_Note" class="headerlink" title="Ejabberd Note"></a>Ejabberd Note</h4><p>XMPP协议的命名空间:</p>
-<pre><code>jabber:iq:private   -- 私有数据存储,用于本地用户私人设置信息,比如用户备注等.
-jabber:iq:conference  -- 一般会议,用于多个用户之间的信息共享
-jabber:x:encrypted -- 加密的消息,用于发送加密消息
-jabber:x:expire  -- 消息终止
-jabber:iq:time  -- 客户端时间
-jabber:iq:auth  -- 简单用户认证,一般用于服务器之间或者服务器和客户端之间的认证
-jabber:x:roster  -- 内部花名册
-jabber:x:signed  -- 标记的在线状态
-jabber:iq:search -- 用户数据库查询,用于向服务器发送查询请求
-jabber:iq:register -- 注册请求,用于用户注册相关信息
-jabber:x:iq:roster -- 花名册管理
-jabber:x:conference -- 会议邀请,用于向参加会议用户发送开会通知
-jabber:x:event  -- 消息事件
-vcard-temp  -- 临时的vCard,用于设置用户的头像以及昵称等
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-blog-myNewBlog" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/03/blog-myNewBlog/" class="article-date">
-      <time datetime="2016-01-03T12:52:05.000Z" itemprop="datePublished">2016-01-03</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/03/blog-myNewBlog/">blog/myNewBloger</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="HEXO__u535A_u5BA2_u642D_u5EFA"><a href="#HEXO__u535A_u5BA2_u642D_u5EFA" class="headerlink" title="HEXO 博客搭建"></a>HEXO 博客搭建</h3><h4 id="Window__u4E0B_u73AF_u5883_u642D_u5EFA"><a href="#Window__u4E0B_u73AF_u5883_u642D_u5EFA" class="headerlink" title="Window 下环境搭建"></a>Window 下环境搭建</h4><pre><code>npm install hexo-cli -g
-npm install hexo --save
-</code></pre><p>#如果命令无法运行，可以尝试更换taobao的npm源</p>
-<pre><code>npm install -g cnpm --registry=https://registry.npm.taobao.org
-</code></pre><h4 id="Hexo__u521D_u59CB_u5316"><a href="#Hexo__u521D_u59CB_u5316" class="headerlink" title="Hexo 初始化"></a>Hexo 初始化</h4><p>#安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。</p>
-<pre><code>$ hexo init &lt;folder&gt;
-$ cd &lt;folder&gt;
-$ npm install
-</code></pre><h1 id="u65B0_u5EFA_u5B8C_u6210_u540E_uFF0C_u6307_u5B9A_u6587_u4EF6_u5939_u7684_u76EE_u5F55_u5982_u4E0B"><a href="#u65B0_u5EFA_u5B8C_u6210_u540E_uFF0C_u6307_u5B9A_u6587_u4EF6_u5939_u7684_u76EE_u5F55_u5982_u4E0B" class="headerlink" title="新建完成后，指定文件夹的目录如下"></a>新建完成后，指定文件夹的目录如下</h1><pre><code>.
-├── _config.yml
-├── package.json
-├── scaffolds
-├── scripts
-├── source
-|      ├── _drafts
-|      └── _posts
-└── themes
-</code></pre><p>安装Hexo插件</p>
-<pre><code>npm install hexo-generator-index --save
-npm install hexo-generator-archive --save
-npm install hexo-generator-category --save
-npm install hexo-generator-tag --save
-npm install hexo-server --save
-npm install hexo-deployer-git --save
-npm install hexo-deployer-heroku --save
-npm install hexo-deployer-rsync --save
-npm install hexo-deployer-openshift --save
-npm install hexo-renderer-marked@0.2 --save
-npm install hexo-renderer-stylus@0.2 --save
-npm install hexo-generator-feed@1 --save
-npm install hexo-generator-sitemap@1 --save
-</code></pre><h4 id="u672C_u5730_u67E5_u770B_u6548_u679C"><a href="#u672C_u5730_u67E5_u770B_u6548_u679C" class="headerlink" title="本地查看效果"></a>本地查看效果</h4><p>继续执行以下命令，成功后可登录localhost:4000查看效果</p>
-<p>hexo server</p>
-<p>Hexo简写命令</p>
-<p>hexo n #生成文章，或者source_posts手动编辑<br>hexo s #本地发布预览效果<br>hexo g #生成public静态文件</p>
-<p>最后我选择手动同步更新至GitHub</p>
-<h4 id="u90E8_u7F72_u9759_u6001_u7F51_u9875_u5230GitHub"><a href="#u90E8_u7F72_u9759_u6001_u7F51_u9875_u5230GitHub" class="headerlink" title="部署静态网页到GitHub"></a>部署静态网页到GitHub</h4><p>在 GitHub 下创建项目 coam.github.com</p>
-<p>修改 _config.yml 的以下部分为</p>
-<pre><code>deploy:
-  type: git
-  repository: git@github.com:coam/coam.github.io.git
-  branch: master
-</code></pre><p>执行命令以下命令发布博客</p>
-<pre><code>hexo g //生成博客文章
-hexo d //上传至 github
-hexo new myNewBlog
-</code></pre><h3 id="Hexo__u4E3B_u9898_Jacman"><a href="#Hexo__u4E3B_u9898_Jacman" class="headerlink" title="Hexo 主题 Jacman"></a>Hexo 主题 Jacman</h3><blockquote>
-<p>hexo 默认 theme 主题是 landscape ，修改为 jacman</p>
-</blockquote>
-<pre><code>git clone https://github.com/wuchong/jacman.git themes/jacman
-</code></pre><p>参考列表</p>
-<p><a href="http://wsgzao.github.io/post/hexo-guide/" target="_blank" rel="external">使用GitHub和Hexo搭建免费静态Blog</a><br><a href="http://wsgzao.github.io/post/hexo-jacman/" target="_blank" rel="external">Jacman基于Pacman修改的Hexo主题</a><br><a href="https://github.com/wuchong/jacman/blob/master/README_zh.md" target="_blank" rel="external">wuchong/jacman</a><br><a href="http://wuchong.me/blog/2014/11/20/how-to-use-jacman/" target="_blank" rel="external">如何使用 Jacman 主题</a></p>
-<p><a href="https://hexo.io/zh-cn/docs/migration.html" target="_blank" rel="external">Wordpress 迁移到 Hexo</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Lua" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/03/Lua/" class="article-date">
-      <time datetime="2016-01-03T12:52:05.000Z" itemprop="datePublished">2016-01-03</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/03/Lua/">Lua 学习摘要</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="Lua__u5B66_u4E60_u6458_u8981"><a href="#Lua__u5B66_u4E60_u6458_u8981" class="headerlink" title="Lua 学习摘要"></a>Lua 学习摘要</h3><p><a href="http://dhq.me/lua-learning-notes-package-and-module" target="_blank" rel="external">Lua 学习笔记(4) – 模块与包</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Rebar" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/03/Rebar/" class="article-date">
-      <time datetime="2016-01-03T12:52:05.000Z" itemprop="datePublished">2016-01-03</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/03/Rebar/">使用 Rebar 管理 erlang 项目</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="u4F7F_u7528_Rebar__u7BA1_u7406_erlang__u9879_u76EE"><a href="#u4F7F_u7528_Rebar__u7BA1_u7406_erlang__u9879_u76EE" class="headerlink" title="使用 Rebar 管理 erlang 项目"></a>使用 Rebar 管理 erlang 项目</h3><p><a href="https://github.com/rebar/rebar" target="_blank" rel="external">GitHub - </a></p>
-<h4 id="u4F7F_u7528_Intellij_idea15__u5229_u7528_rebar__u5F00_u53D1_u8C03_u8BD5_ejabberd"><a href="#u4F7F_u7528_Intellij_idea15__u5229_u7528_rebar__u5F00_u53D1_u8C03_u8BD5_ejabberd" class="headerlink" title="使用 Intellij idea15 利用 rebar 开发调试 ejabberd"></a>使用 Intellij idea15 利用 rebar 开发调试 ejabberd</h4><blockquote>
-<p>默认 Erlang 的 ejabberd 根项目下已经有 rebar 文件了</p>
-</blockquote>
-<p>1.Win下安装 <a href="http://www.erlang.org/download/otp_win64_18.2.1.exe" target="_blank" rel="external">otp.18</a> 到 G:\Program Files\erl7.2.1 下<br>2.将 G:\Program Files\erl7.2.1 添加系统环境变量 PATH<br>3.Intellij idea 项目 ejabberd 中 SDK 添加 OTP18.**<br>4.win下使用 Cygwin 安装 rebar</p>
-<pre><code>$ git clone git://github.com/rebar/rebar.git
-$ cd rebar
-$ ./bootstrap
-Recompile: src/getopt
-...
-Recompile: src/rebar_utils
-==&gt; rebar (compile)
-Congratulations! You now have a self-contained script called &quot;rebar&quot; in
-your current working directory. Place this script anywhere in your path
-and you can use rebar to build OTP-compliant apps.
-</code></pre><p>它将自动将 rebar 安装到 C:\Users\yafei\rebar 下</p>
-<ol>
-<li><p>File-&gt;Other Setting-&gt;Default Setting-&gt;Erlang Extenal Tools 配置 PATH 为 C:\Users\yafei\rebar\rebar.cmd</p>
-</li>
-<li><p>File-&gt;Setting-&gt;Setting-&gt;In “Build, Execution, Deployment/Erlan Compiler”, 勾选 “Compile project with rebar”.</p>
-</li>
-</ol>
-<p>6.Menu -&gt; Run -&gt; Edit Configurations -&gt; 添加按钮 -&gt; Erlang Rebar ,具体配置为 在 Command 一栏添加 任务 delete-deps clean get-deps compile 并任意填写一个任务名称 coamerlangtask</p>
-<p>7.在 Intellij idea 右上角可以点击运行开始打包</p>
+<p>需要添加如下两个依赖 <a href="/">org.eclipse.paho:org.eclipse.paho.client.mqttv3</a> 和 <a href="https://repo.eclipse.org/index.html#nexus-search;quick~paho.android" target="_blank" rel="external">org.eclipse.paho:org.eclipse.paho.android.service</a></p>
+<pre><code>dependencies {
+    // http://www.eclipse.org/paho/clients/android/
+    compile(&apos;org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.0.2&apos;)
+    compile(&apos;org.eclipse.paho:org.eclipse.paho.android.service:1.0.2&apos;) {
+        exclude module: &quot;org.eclipse.paho.client.mqttv3&quot;, group: &quot;org.eclipse.paho&quot;
+        exclude module: &quot;support-v4&quot;, group: &quot;com.google.android&quot;
+    }
+}
+</code></pre><p>比较好的参考演示项目:<br><a href="https://github.com/jeffprestes/AndroidMQTTDemo" target="_blank" rel="external">jeffprestes/AndroidMQTTDemo</a><br><a href="http://www.eclipse.org/paho/clients/android/sample/" target="_blank" rel="external">样例使用示例</a></p>
+<p>其它<br><a href="http://xiaoxinzhou.blog.163.com/blog/static/20704538620145411306821/" target="_blank" rel="external">MQTT协议实现Eclipse Paho学习总结一</a><br><a href="http://www.longdw.com/mqtt-server-client-android/" target="_blank" rel="external">编写和MQTT服务器通信的Android客户端程序(二)</a><br><a href="http://blog.csdn.net/zhu_tianwei/article/details/42983689" target="_blank" rel="external"> MQTT协议之订阅及发布(使用paho-mqtt-client或mqttv3实现)</a></p>
 <hr>
-<h3 id="u9519_u8BEF_u5206_u6790"><a href="#u9519_u8BEF_u5206_u6790" class="headerlink" title="错误分析"></a>错误分析</h3><blockquote>
-<p>rebar unable to get dependency from github</p>
-<p>使用简单的 clean compile 命令会出现很多未找到依赖包 * ,因为编译 compile 前先要 get-deps 所以将 rebar 编译命令改为 delete-deps clean get-deps compile</p>
+<h4 id="u670D_u52A1_u5668_PHP__u5BA2_u6237_u7AEF_SAM"><a href="#u670D_u52A1_u5668_PHP__u5BA2_u6237_u7AEF_SAM" class="headerlink" title="服务器 PHP 客户端 SAM"></a>服务器 PHP 客户端 SAM</h4><blockquote>
+<p>SAM 针对MQTT写的PHP库 (下载链接为Tokudu PHPMQTT通信项目),其中send_mqtt.php是一个通过POST接收消息并且通过SAM将消息发送给RSMB的PHP脚本.<br><a href="http://pecl.php.net/package/sam" target="_blank" rel="external">SAM</a></p>
+<p>参考 tokudu 项目<br><a href="https://github.com/tokudu/PhpMQTTClient" target="_blank" rel="external">tokudu/PhpMQTTClient</a><br><a href="https://github.com/bluerhinos/phpMQTT" target="_blank" rel="external">bluerhinos/phpMQTT</a></p>
 </blockquote>
-<p>参考 <a href="http://stackoverflow.com/questions/10059579/rebar-unable-to-get-dependency-from-github" target="_blank" rel="external">rebar unable to get dependency from github</a></p>
 <hr>
-<p>参考列表<br><a href="https://github.com/rebar/rebar/wiki/Rebar-commands" target="_blank" rel="external">Rebar commands</a><br><a href="http://zewaren.net/site/?q=node/144" target="_blank" rel="external">Using Intellij IDEA to write and debug Erlang code</a><br><a href="https://www.jetbrains.com/idea/help/getting-started-with-erlang.html#d207953e377" target="_blank" rel="external">Intellij Idea 官网说明</a><br><a href="http://blog.csdn.net/shake1050/article/details/43670281" target="_blank" rel="external">windows下使用IntelliJ IDEA的erlang编译环境搭建(含rebar工具)</a></p>
+<h4 id="MQTT_u534F_u8BAE_u7B14_u8BB0_u4E4B_u8FDE_u63A5_u548C_u5FC3_u8DF3"><a href="#MQTT_u534F_u8BAE_u7B14_u8BB0_u4E4B_u8FDE_u63A5_u548C_u5FC3_u8DF3" class="headerlink" title="MQTT协议笔记之连接和心跳"></a>MQTT协议笔记之连接和心跳</h4><blockquote>
+<p>几种 MQTT 协议 包 格式有: 连接(CONNECT)、心跳(PINGREQ/PINGRESP)、确认(CONNACK)、断开连接(DISCONNECT)、订阅(SUBSCRIBE)、取消订阅(SUBACK)</p>
+</blockquote>
+<hr>
+<h5 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h5><p><a href="http://www.cnblogs.com/linsongbin/p/4736227.html" target="_blank" rel="external">mqtt 协议之 PINGREQ, PINGRESP</a><br><a href="http://www.blogjava.net/yongboy/archive/2014/02/09/409630.html" target="_blank" rel="external">MQTT协议笔记之连接和心跳</a></p>
+<p><a href="http://bbs.hiapk.com/thread-4652657-1-1.html" target="_blank" rel="external">Android消息推送完美方案 </a></p>
 
       
     </div>
@@ -772,10 +277,88 @@ and you can use rebar to build OTP-compliant apps.
       
 
       
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+      
+      <div class="clearfix"></div>
     </div>
+    
+  </div>
+  
+</article>
 
+
+
+
+
+
+
+
+  
+    <article id="post-Erlang" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Erlang/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Erlang/">ErlangNote</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="Erlang__u7814_u7A76_u76F8_u5173"><a href="#Erlang__u7814_u7A76_u76F8_u5173" class="headerlink" title="Erlang 研究相关"></a>Erlang 研究相关</h3><blockquote>
+<p>比较好的 Erlang 开发者博客及文档</p>
+</blockquote>
+<p><a href="http://allran.github.io/2015/05/13/erlang-use/" target="_blank" rel="external">木头人 - erlang use</a><br><a href="http://www.erlang-cn.com/118.html" target="_blank" rel="external">Erlang 中文教程Erlang中文教程,欢迎广大Erlang爱好者加入</a><br><a href="http://www.cnblogs.com/liangjingyang/archive/2012/07/15/2592691.html" target="_blank" rel="external">Simple - liangjingyang 博客</a><br><a href="http://wiki.jikexueyuan.com/project/erlang/#6f142dcd2b9ce7c7dd576f3a36fe2e9e" target="_blank" rel="external">Erlang 教程中文版</a><br><a href="http://svn.liancheng.info/cpie-cn/trunk/.build/html/part-i/index.html" target="_blank" rel="external">Erlang并发编程</a><br><a href="http://cpie-cn.readthedocs.org/en/latest/index.html" target="_blank" rel="external">Erlang并发编程-新版</a><br><a href="http://youthyblog.com/2015/07/22/erl%E5%91%BD%E4%BB%A4%E5%92%8C%E5%8F%82%E6%95%B0/" target="_blank" rel="external">erl命令和参数</a><br><a href="http://developerworks.github.io/" target="_blank" rel="external">元气糯米团子的Coding Blog</a><br><a href="http://wudaijun.com/categories/erlang/" target="_blank" rel="external">wudaijun’s blog</a></p>
+<p><a href="http://www.dlive.me/category/distributed/" target="_blank" rel="external">Erlang 相关</a></p>
+<hr>
+<h5 id="u7CFB_u7EDF_u9884_u5B9A_u4E49_u7684_u5B8F_3A"><a href="#u7CFB_u7EDF_u9884_u5B9A_u4E49_u7684_u5B8F_3A" class="headerlink" title="系统预定义的宏:"></a>系统预定义的宏:</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">?MODULE 表示当前模块名</span><br><span class="line">?MODULE_STRING 同上,但是以字符串形式</span><br><span class="line">?FILE 当前模块的文件名</span><br><span class="line">?LINE 调用的当前代码行数</span><br><span class="line">?MACHINE 机器名</span><br></pre></td></tr></table></figure>
+<p><a href="https://bitbucket.org/gamexg/erlang/wiki/Home" target="_blank" rel="external">Erlang 语言学习笔记 / Home</a></p>
+<h5 id="u8981_u77E5_u9053_u4E00_u4E2A_u8282_u70B9ping_u901A_u4E48_3A"><a href="#u8981_u77E5_u9053_u4E00_u4E2A_u8282_u70B9ping_u901A_u4E48_3A" class="headerlink" title="要知道一个节点ping通么:"></a>要知道一个节点ping通么:</h5><pre><code>net_adm:ping(Nodes).-&gt; pong |pang
+node() 返回本节点名
+nodes() 返回所有其它节点名.
+</code></pre><p>[pong:成功 |pang: 失败]</p>
+<hr>
+<p>收藏<br><a href="http://dhq.me/the-interaction-experiment-between-erlang-and-websocket" target="_blank" rel="external">Erlang 与 WebSocket 之间的通讯交互</a><br><a href="http://dhq.me/parse-xml-in-erlang" target="_blank" rel="external">erlang 解析 xml 格式数据</a><br><a href="http://dhq.me/erlang-dict-intro" target="_blank" rel="external">Erlang 的 dict 模块函数方法介绍</a><br><a href="http://dhq.me/build-compile-eunit-release-erlang-application-with-rebar" target="_blank" rel="external">用 rebar 来构建、编译、测试、发布 Erlang 应用程序</a></p>
+<p><a href="http://no001.blog.51cto.com/1142339/1320855" target="_blank" rel="external">Erlang不能错过的盛宴</a></p>
+<p><a href="http://pzjay.blogspot.com/2012/11/test.html" target="_blank" rel="external">40+行erlang代码实现一个简易分布式计算框架</a></p>
+<h4 id="u9519_u8BEF_u5206_u6790"><a href="#u9519_u8BEF_u5206_u6790" class="headerlink" title="错误分析"></a>错误分析</h4><blockquote>
+<p>运行 rebar 出现如下错误</p>
+</blockquote>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">Sun Dec </span><span class="number">20</span> <span class="number">21</span><span class="symbol">:</span><span class="number">15</span><span class="symbol">:</span><span class="number">31</span> yzhang<span class="variable">@coam</span><span class="symbol">:~/RunProject/ejabberd</span><span class="variable">$ </span>sudo ./rebar get-deps</span><br><span class="line">/usr/bin/<span class="symbol">env:</span> <span class="symbol">escript:</span> <span class="constant">No </span>such file <span class="keyword">or</span> directory</span><br><span class="line"></span><br><span class="line"><span class="constant">Sun Dec </span><span class="number">20</span> <span class="number">21</span><span class="symbol">:</span><span class="number">22</span><span class="symbol">:</span><span class="number">50</span> yzhang<span class="variable">@coam</span><span class="symbol">:~/RunProject</span><span class="variable">$ </span>whereis escript</span><br><span class="line"><span class="symbol">escript:</span> /opt/otp/bin/escript</span><br></pre></td></tr></table></figure>
+<p>原因是我安装 otp 时 使用命令 ./configure –prefix=/opt/otp/ 指定安装 otp 到 /opt/otp/ 下</p>
+<p>于是重新安装 otp ,并取消 ~/.bashrc 中配置的 erlang 环境变量</p>
+<h1 id="Erlang"><a href="#Erlang" class="headerlink" title="Erlang"></a>Erlang</h1><p>#export PATH=/opt/otp/bin:$PATH</p>
+<p>重启 ubuntu 后敲 erl 命令提示未找到,注释成功,重新使用默认参数安装otp</p>
+<blockquote>
+<p>ejabberd 源码编译安装,执行命令 ejabberd ./configure 后出现如下错误</p>
+</blockquote>
+<figure class="highlight java"><figcaption><span>错误分析</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Sun Dec <span class="number">20</span> <span class="number">21</span>:<span class="number">21</span>:<span class="number">26</span> yzhang<span class="annotation">@coam</span>:~/RunProject/ejabberd$ sudo ./configure</span><br><span class="line">checking whether make sets $(MAKE)... yes</span><br><span class="line">checking <span class="keyword">for</span> a BSD-compatible install... /usr/bin/install -c</span><br><span class="line">checking <span class="keyword">for</span> a sed that does not truncate output... /bin/sed</span><br><span class="line">checking <span class="keyword">for</span> erl... no</span><br><span class="line">checking <span class="keyword">for</span> erlc... no</span><br><span class="line">checking <span class="keyword">for</span> erl... no</span><br><span class="line">configure: error: Erlang/<span class="function">OTP <span class="title">interpreter</span> <span class="params">(erl)</span> not found but required</span></span><br></pre></td></tr></table></figure>
+<p>解决方案,重新安装 otp到系统默认路径</p>
+<p>参考 <a href="http://stackoverflow.com/questions/12327809/why-cannot-escript-run" target="_blank" rel="external">http://stackoverflow.com/questions/12327809/why-cannot-escript-run</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
       
       <div class="clearfix"></div>
     </div>
@@ -795,8 +378,8 @@ and you can use rebar to build OTP-compliant apps.
     <article id="post-Mnesia" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/03/Mnesia/" class="article-date">
-      <time datetime="2016-01-03T12:52:05.000Z" itemprop="datePublished">2016-01-03</time>
+      <a href="/2016/01/10/Mnesia/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
 </a>
     </div>
   
@@ -809,7 +392,7 @@ and you can use rebar to build OTP-compliant apps.
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/03/Mnesia/">Erlang Mnesia Database</a>
+      <a class="article-title" href="/2016/01/10/Mnesia/">MnesiaNote</a>
     </h1>
   
 
@@ -935,6 +518,236 @@ rpc:call(EjabberdNode, mnesia, system_info, [tables]).
       
 
       
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-MarkDownNote" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/08/MarkDownNote/" class="article-date">
+      <time datetime="2016-01-08T02:51:31.000Z" itemprop="datePublished">2016-01-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/08/MarkDownNote/">MarkDown 相关</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h1 id="Markdown__u76F8_u5173_u7B14_u8BB0_u6458_u8981"><a href="#Markdown__u76F8_u5173_u7B14_u8BB0_u6458_u8981" class="headerlink" title="Markdown 相关笔记摘要"></a>Markdown 相关笔记摘要</h1><p><a href="http://www.debug4.me/%E5%B7%A5%E5%85%B7/markdown-learning/">Markdown标准语法与GitHub Flavored Markdown语法大全</a></p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/markdown/">markdown</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown-gfw-hexo-jekyll/">markdown gfw hexo jekyll</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/01/08/MarkDownNote/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-my-blogs" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/07/my-blogs/" class="article-date">
+      <time datetime="2016-01-07T12:56:16.000Z" itemprop="datePublished">2016-01-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/07/my-blogs/">my blogs</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote><p>content</p>
+</blockquote>
+<figure class="highlight"><figcaption><span>[title] [] [url] [link text]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code snippet</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><figcaption><span>mycode</span><a href="https://www.coam.co" target="_blank" rel="external">coam.com</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Build DOMDocument with standard xmpp body child node.</span><br><span class="line"> *</span><br><span class="line"> * <span class="doctag">@return</span> DOMDocument</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">buildBody</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="variable">$xml</span> = <span class="keyword">new</span> DOMDocument(<span class="string">'1.0'</span>, <span class="string">'UTF-8'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="variable">$body</span> = <span class="variable">$xml</span>-&gt;createElement(<span class="string">'body'</span>);</span><br><span class="line">    <span class="variable">$xml</span>-&gt;appendChild(<span class="variable">$body</span>);</span><br><span class="line"></span><br><span class="line">    <span class="variable">$body</span>-&gt;appendChild(<span class="keyword">self</span>::getNewTextAttribute(<span class="variable">$xml</span>, <span class="string">'xmlns'</span>, <span class="keyword">self</span>::XMLNS_BODY));</span><br><span class="line">    <span class="variable">$body</span>-&gt;appendChild(<span class="keyword">self</span>::getNewTextAttribute(<span class="variable">$xml</span>, <span class="string">'content'</span>, <span class="keyword">self</span>::CONTENT_TYPE));</span><br><span class="line">    <span class="variable">$body</span>-&gt;appendChild(<span class="keyword">self</span>::getNewTextAttribute(<span class="variable">$xml</span>, <span class="string">'rid'</span>, <span class="variable">$this</span>-&gt;getAndIncrementRid()));</span><br><span class="line">    <span class="variable">$body</span>-&gt;appendChild(<span class="keyword">self</span>::getNewTextAttribute(<span class="variable">$xml</span>, <span class="string">'xml:lang'</span>, <span class="keyword">self</span>::XML_LANG));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$this</span>-&gt;sid != <span class="string">''</span>) &#123;</span><br><span class="line">        <span class="variable">$body</span>-&gt;appendChild(<span class="keyword">self</span>::getNewTextAttribute(<span class="variable">$xml</span>, <span class="string">'sid'</span>, <span class="variable">$this</span>-&gt;sid));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$xml</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><figcaption><span>title</span><a href="https://app.coopens.com" target="_blank" rel="external">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onMessage</span>(<span class="params">msg</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> to = msg.getAttribute(<span class="string">'to'</span>);</span><br><span class="line">    <span class="keyword">var</span> from = msg.getAttribute(<span class="string">'from'</span>);</span><br><span class="line">    <span class="keyword">var</span> type = msg.getAttribute(<span class="string">'type'</span>);</span><br><span class="line">    <span class="keyword">var</span> elems = msg.getElementsByTagName(<span class="string">'body'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (type == <span class="string">"chat"</span> &amp;&amp; elems.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> body = elems[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">        log(<span class="string">'ECHOBOT: I got a message from '</span> + from + <span class="string">': '</span> +</span><br><span class="line">            Strophe.getText(body));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> reply = $msg(&#123;to: from, from: to, type: <span class="string">'chat'</span>&#125;)</span><br><span class="line">            .cnode(Strophe.copyElement(body));</span><br><span class="line">        connection.send(reply.tree());</span><br><span class="line"></span><br><span class="line">        log(<span class="string">'ECHOBOT: I sent '</span> + from + <span class="string">': '</span> + Strophe.getText(body));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// we must return true to keep the handler alive.  </span></span><br><span class="line">    <span class="comment">// returning false would remove it after it finishes.</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><figcaption><span>Android SDK 代码</span><a href="http://www.badu.com" target="_blank" rel="external">[link text ..]</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.preference.Preference;</span><br><span class="line"><span class="keyword">import</span> android.util.AttributeSet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> eu.siacs.conversations.utils.PhoneHelper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AboutPreference</span> <span class="keyword">extends</span> <span class="title">Preference</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">AboutPreference</span><span class="params">(<span class="keyword">final</span> Context context, <span class="keyword">final</span> AttributeSet attrs, <span class="keyword">final</span> <span class="keyword">int</span> defStyle)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(context, attrs, defStyle);</span><br><span class="line">		setSummary();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">AboutPreference</span><span class="params">(<span class="keyword">final</span> Context context, <span class="keyword">final</span> AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(context, attrs);</span><br><span class="line">		setSummary();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onClick();</span><br><span class="line">        <span class="keyword">final</span> Intent intent = <span class="keyword">new</span> Intent(getContext(), AboutActivity.class);</span><br><span class="line">        getContext().startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setSummary</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		setSummary(<span class="string">"Conversations "</span> + PhoneHelper.getVersionName(getContext()));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">happy</span><br></pre></td></tr></table></figure>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">colon</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><figcaption><span>title</span><a href="http://www.coopens.com" target="_blank" rel="external">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setSummary</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    setSummary(<span class="string">"Conversations "</span> + PhoneHelper.getVersionName(getContext()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-blog-myNewBlog" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/03/blog-myNewBlog/" class="article-date">
+      <time datetime="2016-01-03T12:52:05.000Z" itemprop="datePublished">2016-01-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/03/blog-myNewBlog/">blog/myNewBloger</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="HEXO__u535A_u5BA2_u642D_u5EFA"><a href="#HEXO__u535A_u5BA2_u642D_u5EFA" class="headerlink" title="HEXO 博客搭建"></a>HEXO 博客搭建</h3><h4 id="Window__u4E0B_u73AF_u5883_u642D_u5EFA"><a href="#Window__u4E0B_u73AF_u5883_u642D_u5EFA" class="headerlink" title="Window 下环境搭建"></a>Window 下环境搭建</h4><pre><code>npm install hexo-cli -g
+npm install hexo --save
+</code></pre><p>#如果命令无法运行，可以尝试更换taobao的npm源</p>
+<pre><code>npm install -g cnpm --registry=https://registry.npm.taobao.org
+</code></pre><h4 id="Hexo__u521D_u59CB_u5316"><a href="#Hexo__u521D_u59CB_u5316" class="headerlink" title="Hexo 初始化"></a>Hexo 初始化</h4><p>#安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。</p>
+<pre><code>$ hexo init &lt;folder&gt;
+$ cd &lt;folder&gt;
+$ npm install
+</code></pre><h1 id="u65B0_u5EFA_u5B8C_u6210_u540E_uFF0C_u6307_u5B9A_u6587_u4EF6_u5939_u7684_u76EE_u5F55_u5982_u4E0B"><a href="#u65B0_u5EFA_u5B8C_u6210_u540E_uFF0C_u6307_u5B9A_u6587_u4EF6_u5939_u7684_u76EE_u5F55_u5982_u4E0B" class="headerlink" title="新建完成后，指定文件夹的目录如下"></a>新建完成后，指定文件夹的目录如下</h1><pre><code>.
+├── _config.yml
+├── package.json
+├── scaffolds
+├── scripts
+├── source
+|      ├── _drafts
+|      └── _posts
+└── themes
+</code></pre><p>安装Hexo插件</p>
+<pre><code>npm install hexo-generator-index --save
+npm install hexo-generator-archive --save
+npm install hexo-generator-category --save
+npm install hexo-generator-tag --save
+npm install hexo-server --save
+npm install hexo-deployer-git --save
+npm install hexo-deployer-heroku --save
+npm install hexo-deployer-rsync --save
+npm install hexo-deployer-openshift --save
+npm install hexo-renderer-marked@0.2 --save
+npm install hexo-renderer-stylus@0.2 --save
+npm install hexo-generator-feed@1 --save
+npm install hexo-generator-sitemap@1 --save
+</code></pre><h4 id="u672C_u5730_u67E5_u770B_u6548_u679C"><a href="#u672C_u5730_u67E5_u770B_u6548_u679C" class="headerlink" title="本地查看效果"></a>本地查看效果</h4><p>继续执行以下命令，成功后可登录localhost:4000查看效果</p>
+<p>hexo server</p>
+<p>Hexo简写命令</p>
+<p>hexo n #生成文章，或者source_posts手动编辑<br>hexo s #本地发布预览效果<br>hexo g #生成public静态文件</p>
+<p>最后我选择手动同步更新至GitHub</p>
+<h4 id="u90E8_u7F72_u9759_u6001_u7F51_u9875_u5230GitHub"><a href="#u90E8_u7F72_u9759_u6001_u7F51_u9875_u5230GitHub" class="headerlink" title="部署静态网页到GitHub"></a>部署静态网页到GitHub</h4><p>在 GitHub 下创建项目 coam.github.com</p>
+<p>修改 _config.yml 的以下部分为</p>
+<pre><code>deploy:
+  type: git
+  repository: git@github.com:coam/coam.github.io.git
+  branch: master
+</code></pre><p>执行命令以下命令发布博客</p>
+<pre><code>hexo g //生成博客文章
+hexo d //上传至 github
+hexo new myNewBlog
+</code></pre><h3 id="Hexo__u4E3B_u9898_Jacman"><a href="#Hexo__u4E3B_u9898_Jacman" class="headerlink" title="Hexo 主题 Jacman"></a>Hexo 主题 Jacman</h3><blockquote>
+<p>hexo 默认 theme 主题是 landscape ，修改为 jacman</p>
+</blockquote>
+<pre><code>git clone https://github.com/wuchong/jacman.git themes/jacman
+</code></pre><p>参考列表</p>
+<p><a href="http://wsgzao.github.io/post/hexo-guide/" target="_blank" rel="external">使用GitHub和Hexo搭建免费静态Blog</a><br><a href="http://wsgzao.github.io/post/hexo-jacman/" target="_blank" rel="external">Jacman基于Pacman修改的Hexo主题</a><br><a href="https://github.com/wuchong/jacman/blob/master/README_zh.md" target="_blank" rel="external">wuchong/jacman</a><br><a href="http://wuchong.me/blog/2014/11/20/how-to-use-jacman/" target="_blank" rel="external">如何使用 Jacman 主题</a></p>
+<p><a href="https://hexo.io/zh-cn/docs/migration.html" target="_blank" rel="external">Wordpress 迁移到 Hexo</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
     </div>
@@ -955,10 +768,10 @@ rpc:call(EjabberdNode, mnesia, system_info, [tables]).
 
 
   
-    <article id="post-Erlang" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-XMPP" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/03/Erlang/" class="article-date">
+      <a href="/2016/01/03/XMPP/" class="article-date">
       <time datetime="2016-01-03T12:52:05.000Z" itemprop="datePublished">2016-01-03</time>
 </a>
     </div>
@@ -972,7 +785,7 @@ rpc:call(EjabberdNode, mnesia, system_info, [tables]).
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/03/Erlang/">Erlang 研究相关</a>
+      <a class="article-title" href="/2016/01/03/XMPP/">关于 XMPP 协议</a>
     </h1>
   
 
@@ -982,51 +795,204 @@ rpc:call(EjabberdNode, mnesia, system_info, [tables]).
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="Erlang__u7814_u7A76_u76F8_u5173"><a href="#Erlang__u7814_u7A76_u76F8_u5173" class="headerlink" title="Erlang 研究相关"></a>Erlang 研究相关</h3><blockquote>
-<p>比较好的 Erlang 开发者博客及文档</p>
-</blockquote>
-<p><a href="http://allran.github.io/2015/05/13/erlang-use/" target="_blank" rel="external">木头人 - erlang use</a><br><a href="http://www.erlang-cn.com/118.html" target="_blank" rel="external">Erlang 中文教程Erlang中文教程,欢迎广大Erlang爱好者加入</a><br><a href="http://www.cnblogs.com/liangjingyang/archive/2012/07/15/2592691.html" target="_blank" rel="external">Simple - liangjingyang 博客</a><br><a href="http://wiki.jikexueyuan.com/project/erlang/#6f142dcd2b9ce7c7dd576f3a36fe2e9e" target="_blank" rel="external">Erlang 教程中文版</a><br><a href="http://svn.liancheng.info/cpie-cn/trunk/.build/html/part-i/index.html" target="_blank" rel="external">Erlang并发编程</a><br><a href="http://youthyblog.com/2015/07/22/erl%E5%91%BD%E4%BB%A4%E5%92%8C%E5%8F%82%E6%95%B0/" target="_blank" rel="external">erl命令和参数</a><br><a href="http://developerworks.github.io/" target="_blank" rel="external">元气糯米团子的Coding Blog</a><br><a href="http://wudaijun.com/categories/erlang/" target="_blank" rel="external">wudaijun’s blog</a></p>
-<p><a href="http://www.dlive.me/category/distributed/" target="_blank" rel="external">Erlang 相关</a></p>
+              <h3 id="u5173_u4E8E_XMPP__u534F_u8BAE"><a href="#u5173_u4E8E_XMPP__u534F_u8BAE" class="headerlink" title="关于 XMPP 协议"></a>关于 XMPP 协议</h3><p><a href="http://xmpp.org/xmpp-protocols/xmpp-extensions/">XMPP 扩展协议标准</a><br><a href="http://wiki.jabbercn.org/XEP-0045">Ejabberd 中文翻译文档上面的 关于 Ejabberd 使用的协议介绍</a></p>
 <hr>
-<h5 id="u7CFB_u7EDF_u9884_u5B9A_u4E49_u7684_u5B8F_3A"><a href="#u7CFB_u7EDF_u9884_u5B9A_u4E49_u7684_u5B8F_3A" class="headerlink" title="系统预定义的宏:"></a>系统预定义的宏:</h5><pre><code>?MODULE 表示当前模块名
-?MODULE_STRING 同上,但是以字符串形式
-?FILE 当前模块的文件名
-?LINE 调用的当前代码行数
-?MACHINE 机器名
-</code></pre><p><a href="https://bitbucket.org/gamexg/erlang/wiki/Home" target="_blank" rel="external">Erlang 语言学习笔记 / Home</a></p>
-<h5 id="u8981_u77E5_u9053_u4E00_u4E2A_u8282_u70B9ping_u901A_u4E48_3A"><a href="#u8981_u77E5_u9053_u4E00_u4E2A_u8282_u70B9ping_u901A_u4E48_3A" class="headerlink" title="要知道一个节点ping通么:"></a>要知道一个节点ping通么:</h5><pre><code>net_adm:ping(Nodes).-&gt; pong |pang
-node() 返回本节点名
-nodes() 返回所有其它节点名.
-</code></pre><p>[pong:成功 |pang: 失败]</p>
-<hr>
-<p>收藏<br><a href="http://dhq.me/the-interaction-experiment-between-erlang-and-websocket" target="_blank" rel="external">Erlang 与 WebSocket 之间的通讯交互</a><br><a href="http://dhq.me/parse-xml-in-erlang" target="_blank" rel="external">erlang 解析 xml 格式数据</a><br><a href="http://dhq.me/erlang-dict-intro" target="_blank" rel="external">Erlang 的 dict 模块函数方法介绍</a><br><a href="http://dhq.me/build-compile-eunit-release-erlang-application-with-rebar" target="_blank" rel="external">用 rebar 来构建、编译、测试、发布 Erlang 应用程序</a></p>
-<p><a href="http://no001.blog.51cto.com/1142339/1320855" target="_blank" rel="external">Erlang不能错过的盛宴</a></p>
-<p><a href="http://pzjay.blogspot.com/2012/11/test.html" target="_blank" rel="external">40+行erlang代码实现一个简易分布式计算框架</a></p>
-<h4 id="u9519_u8BEF_u5206_u6790"><a href="#u9519_u8BEF_u5206_u6790" class="headerlink" title="错误分析"></a>错误分析</h4><blockquote>
-<p>运行 rebar 出现如下错误</p>
-</blockquote>
-<pre><code>Sun Dec 20 21:15:31 yzhang@coam:~/RunProject/ejabberd$ sudo ./rebar get-deps
-/usr/bin/env: escript: No such file or directory
-
-Sun Dec 20 21:22:50 yzhang@coam:~/RunProject$ whereis escript
-escript: /opt/otp/bin/escript
-</code></pre><p>原因是我安装 otp 时 使用命令 ./configure –prefix=/opt/otp/ 指定安装 otp 到 /opt/otp/ 下</p>
-<p>于是重新安装 otp ,并取消 ~/.bashrc 中配置的 erlang 环境变量</p>
-<h1 id="Erlang"><a href="#Erlang" class="headerlink" title="Erlang"></a>Erlang</h1><p>#export PATH=/opt/otp/bin:$PATH</p>
-<p>重启 ubuntu 后敲 erl 命令提示未找到,注释成功,重新使用默认参数安装otp</p>
+<p><a href="https://xmpp.net/directory.php">XMPP 免费服务器列表</a></p>
+<p>比较好的公共服务器</p>
+<p><a href="https://www.xmpp.jp/signup">xmpp.jp</a></p>
+<p>XMPP 客户端</p>
 <blockquote>
-<p>ejabberd 源码编译安装,执行命令 ejabberd ./configure 后出现如下错误</p>
+<p>PC端肯定要推荐一些比较经典的啦,诸如Pidgin、Empathy、Kopete、Miranda IM(只支持Windows)或Adium(只支持Mac OS X)这样的都可以很好的兼容XMPP/Jabber协议,<br>不过呢还有一些专门的客户端软件,比如 Gajim和Psi+(这是Psi的升级版,增加了更多功能)这样的XMPP专业工具.<br>类似Pidgin这样大而全的软件可以很好的支持XMPP几乎所有的功能(通过各种插件).<br>而专有的软件则可以更加专注于协议的实现,更加完善,也更加富有使用的优势,特别是需要加密聊天比如OTR和PGP这样的时候,专攻XMPP协议的这些客户端就更方便可靠了.<br>当然还有命令行下的软件,mcabber是专门设计给XMPP/Jabber使用的,可以非常方便的提供OTR和PGP加密聊天.</p>
 </blockquote>
-<pre><code>Sun Dec 20 21:21:26 yzhang@coam:~/RunProject/ejabberd$ sudo ./configure
-checking whether make sets $(MAKE)... yes
-checking for a BSD-compatible install... /usr/bin/install -c
-checking for a sed that does not truncate output... /bin/sed
-checking for erl... no
-checking for erlc... no
-checking for erl... no
-configure: error: Erlang/OTP interpreter (erl) not found but required
-</code></pre><p>解决方案,重新安装 otp到系统默认路径</p>
-<p>参考 <a href="http://stackoverflow.com/questions/12327809/why-cannot-escript-run" target="_blank" rel="external">http://stackoverflow.com/questions/12327809/why-cannot-escript-run</a></p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/01/03/XMPP/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-EjabberdNote" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/03/EjabberdNote/" class="article-date">
+      <time datetime="2016-01-03T12:52:05.000Z" itemprop="datePublished">2016-01-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/03/EjabberdNote/">Ejabberd Note</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="Ejabberd_Note"><a href="#Ejabberd_Note" class="headerlink" title="Ejabberd Note"></a>Ejabberd Note</h4><p>XMPP协议的命名空间:</p>
+<pre><code>jabber:iq:private   -- 私有数据存储,用于本地用户私人设置信息,比如用户备注等.
+jabber:iq:conference  -- 一般会议,用于多个用户之间的信息共享
+jabber:x:encrypted -- 加密的消息,用于发送加密消息
+jabber:x:expire  -- 消息终止
+jabber:iq:time  -- 客户端时间
+jabber:iq:auth  -- 简单用户认证,一般用于服务器之间或者服务器和客户端之间的认证
+jabber:x:roster  -- 内部花名册
+jabber:x:signed  -- 标记的在线状态
+jabber:iq:search -- 用户数据库查询,用于向服务器发送查询请求
+jabber:iq:register -- 注册请求,用于用户注册相关信息
+jabber:x:iq:roster -- 花名册管理
+jabber:x:conference -- 会议邀请,用于向参加会议用户发送开会通知
+jabber:x:event  -- 消息事件
+vcard-temp  -- 临时的vCard,用于设置用户的头像以及昵称等
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Lua" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/03/Lua/" class="article-date">
+      <time datetime="2016-01-03T12:52:05.000Z" itemprop="datePublished">2016-01-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/03/Lua/">Lua 学习摘要</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="Lua__u5B66_u4E60_u6458_u8981"><a href="#Lua__u5B66_u4E60_u6458_u8981" class="headerlink" title="Lua 学习摘要"></a>Lua 学习摘要</h3><p><a href="http://dhq.me/lua-learning-notes-package-and-module" target="_blank" rel="external">Lua 学习笔记(4) – 模块与包</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-MQTT" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/03/MQTT/" class="article-date">
+      <time datetime="2016-01-03T12:52:05.000Z" itemprop="datePublished">2016-01-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/03/MQTT/">关于 MQTT 协议</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="u5173_u4E8E_MQTT__u534F_u8BAE"><a href="#u5173_u4E8E_MQTT__u534F_u8BAE" class="headerlink" title="关于 MQTT 协议"></a>关于 MQTT 协议</h3><p><a href="https://github.com/liangjingyang/MQTT-CN/blob/master/mqtt-v3.1.1-os.md" target="_blank" rel="external">MQTT 中文文档 Version 3.1.1</a></p>
 
       
     </div>

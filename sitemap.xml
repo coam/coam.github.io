@@ -2,6 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/01/10/Erlang/</loc>
+    <lastmod>2016-01-17T11:38:43.421Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/01/10/Mnesia/</loc>
+    <lastmod>2016-01-10T12:57:21.021Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/01/08/MarkDownNote/</loc>
     <lastmod>2016-01-08T03:16:39.208Z</lastmod>
   </url>
@@ -27,23 +37,18 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/01/03/Mnesia/</loc>
-    <lastmod>2016-01-07T12:31:15.428Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2016/01/03/Lua/</loc>
     <lastmod>2016-01-07T12:31:05.476Z</lastmod>
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/01/03/Erlang/</loc>
-    <lastmod>2016-01-07T12:30:57.770Z</lastmod>
+    <loc>http://yoursite.com/2016/01/03/EjabberdNote/</loc>
+    <lastmod>2016-01-07T12:30:50.235Z</lastmod>
   </url>
   
   <url>
-    <loc>http://yoursite.com/2016/01/03/EjabberdNote/</loc>
-    <lastmod>2016-01-07T12:30:50.235Z</lastmod>
+    <loc>http://yoursite.com/2016/01/20/AndroidPushMQTT/</loc>
+    <lastmod>2016-01-07T09:58:58.663Z</lastmod>
   </url>
   
   <url>

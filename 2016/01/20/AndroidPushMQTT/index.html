@@ -3,21 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello One | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+  <meta name="description" content="Android 推送之 MQTTAndroid 开发推送方案MQTT 服务器使用 emqttd brokenGitHub - emqtt/emqttd官网
+emqttd 主要配置参数
+emqttd 使用以下命令调试输出
+./bin/emqttd console
+如果没有打印输出日志信息,可以参考取消 rel/files/emqttd.config.production 或 ./etc/emqttd">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello One">
-<meta property="og:url" content="http://yoursite.com/2016/01/03/hello-one/index.html">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2016/01/20/AndroidPushMQTT/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-01-03T11:39:51.879Z">
+<meta property="og:description" content="Android 推送之 MQTTAndroid 开发推送方案MQTT 服务器使用 emqttd brokenGitHub - emqtt/emqttd官网
+emqttd 主要配置参数
+emqttd 使用以下命令调试输出
+./bin/emqttd console
+如果没有打印输出日志信息,可以参考取消 rel/files/emqttd.config.production 或 ./etc/emqttd">
+<meta property="og:updated_time" content="2016-01-07T09:58:58.663Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello One">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="Android 推送之 MQTTAndroid 开发推送方案MQTT 服务器使用 emqttd brokenGitHub - emqtt/emqttd官网
+emqttd 主要配置参数
+emqttd 使用以下命令调试输出
+./bin/emqttd console
+如果没有打印输出日志信息,可以参考取消 rel/files/emqttd.config.production 或 ./etc/emqttd">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -215,11 +224,11 @@ Quick">
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-hello-one" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-AndroidPushMQTT" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/03/hello-one/" class="article-date">
-      <time datetime="2016-01-03T11:39:51.880Z" itemprop="datePublished">2016-01-03</time>
+      <a href="/2016/01/20/AndroidPushMQTT/" class="article-date">
+      <time datetime="2016-01-20T08:26:40.255Z" itemprop="datePublished">2016-01-20</time>
 </a>
     </div>
   
@@ -228,36 +237,45 @@ Quick">
       <input type="hidden" class="isFancy" />
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Hello One
-    </h1>
-  
-
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-
-        
-        <div class="clearfix"></div>
-      </div>
-      
-    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h3 id="Android__u63A8_u9001_u4E4B_MQTT"><a href="#Android__u63A8_u9001_u4E4B_MQTT" class="headerlink" title="Android 推送之 MQTT"></a>Android 推送之 MQTT</h3><h3 id="Android__u5F00_u53D1_u63A8_u9001_u65B9_u6848"><a href="#Android__u5F00_u53D1_u63A8_u9001_u65B9_u6848" class="headerlink" title="Android 开发推送方案"></a>Android 开发推送方案</h3><h4 id="MQTT__u670D_u52A1_u5668"><a href="#MQTT__u670D_u52A1_u5668" class="headerlink" title="MQTT 服务器"></a>MQTT 服务器</h4><p>使用 emqttd broken<br><a href="https://github.com/emqtt/emqttd" target="_blank" rel="external">GitHub - emqtt/emqttd</a><br><a href="http://emqtt.io/" target="_blank" rel="external">官网</a></p>
+<p><a href="https://github.com/emqtt/emqttd/wiki/Configuration" target="_blank" rel="external">emqttd 主要配置参数</a></p>
+<p>emqttd 使用以下命令调试输出</p>
+<pre><code>./bin/emqttd console
+</code></pre><p>如果没有打印输出日志信息,可以参考取消 rel/files/emqttd.config.production 或 ./etc/emqttd.config 中对 %%{lager_console_backend, info} 的注释<br><a href="https://github.com/emqtt/emqttd/issues/407" target="_blank" rel="external">关于提问</a></p>
+<hr>
+<h4 id="MQTT_Android__u5BA2_u6237_u7AEF"><a href="#MQTT_Android__u5BA2_u6237_u7AEF" class="headerlink" title="MQTT Android 客户端"></a>MQTT Android 客户端</h4><blockquote>
+<p>之前使用 IBM 提供的 wmqtt.jar 和 tokudu 项目示例</p>
+</blockquote>
+<p><a href="ftp://public.dhe.ibm.com/software/integration/support/supportpacs/individual/ia92.zip" target="_blank" rel="external">wmqtt.jar</a><br><a href="https://github.com/tokudu/AndroidPushNotificationsDemo" target="_blank" rel="external">tokudu/AndroidPushNotificationsDemo</a></p>
+<blockquote>
+<p>由于 wmqttd 几乎没有更新,于是采用新的Android客户端 <a href="http://www.eclipse.org/paho/" target="_blank" rel="external">Paho</a> 方案</p>
+</blockquote>
+<p>需要添加如下两个依赖 <a href="/">org.eclipse.paho:org.eclipse.paho.client.mqttv3</a> 和 <a href="https://repo.eclipse.org/index.html#nexus-search;quick~paho.android" target="_blank" rel="external">org.eclipse.paho:org.eclipse.paho.android.service</a></p>
+<pre><code>dependencies {
+    // http://www.eclipse.org/paho/clients/android/
+    compile(&apos;org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.0.2&apos;)
+    compile(&apos;org.eclipse.paho:org.eclipse.paho.android.service:1.0.2&apos;) {
+        exclude module: &quot;org.eclipse.paho.client.mqttv3&quot;, group: &quot;org.eclipse.paho&quot;
+        exclude module: &quot;support-v4&quot;, group: &quot;com.google.android&quot;
+    }
+}
+</code></pre><p>比较好的参考演示项目:<br><a href="https://github.com/jeffprestes/AndroidMQTTDemo" target="_blank" rel="external">jeffprestes/AndroidMQTTDemo</a><br><a href="http://www.eclipse.org/paho/clients/android/sample/" target="_blank" rel="external">样例使用示例</a></p>
+<p>其它<br><a href="http://xiaoxinzhou.blog.163.com/blog/static/20704538620145411306821/" target="_blank" rel="external">MQTT协议实现Eclipse Paho学习总结一</a><br><a href="http://www.longdw.com/mqtt-server-client-android/" target="_blank" rel="external">编写和MQTT服务器通信的Android客户端程序(二)</a><br><a href="http://blog.csdn.net/zhu_tianwei/article/details/42983689" target="_blank" rel="external"> MQTT协议之订阅及发布(使用paho-mqtt-client或mqttv3实现)</a></p>
+<hr>
+<h4 id="u670D_u52A1_u5668_PHP__u5BA2_u6237_u7AEF_SAM"><a href="#u670D_u52A1_u5668_PHP__u5BA2_u6237_u7AEF_SAM" class="headerlink" title="服务器 PHP 客户端 SAM"></a>服务器 PHP 客户端 SAM</h4><blockquote>
+<p>SAM 针对MQTT写的PHP库 (下载链接为Tokudu PHPMQTT通信项目),其中send_mqtt.php是一个通过POST接收消息并且通过SAM将消息发送给RSMB的PHP脚本.<br><a href="http://pecl.php.net/package/sam" target="_blank" rel="external">SAM</a></p>
+<p>参考 tokudu 项目<br><a href="https://github.com/tokudu/PhpMQTTClient" target="_blank" rel="external">tokudu/PhpMQTTClient</a><br><a href="https://github.com/bluerhinos/phpMQTT" target="_blank" rel="external">bluerhinos/phpMQTT</a></p>
+</blockquote>
+<hr>
+<h4 id="MQTT_u534F_u8BAE_u7B14_u8BB0_u4E4B_u8FDE_u63A5_u548C_u5FC3_u8DF3"><a href="#MQTT_u534F_u8BAE_u7B14_u8BB0_u4E4B_u8FDE_u63A5_u548C_u5FC3_u8DF3" class="headerlink" title="MQTT协议笔记之连接和心跳"></a>MQTT协议笔记之连接和心跳</h4><blockquote>
+<p>几种 MQTT 协议 包 格式有: 连接(CONNECT)、心跳(PINGREQ/PINGRESP)、确认(CONNACK)、断开连接(DISCONNECT)、订阅(SUBSCRIBE)、取消订阅(SUBACK)</p>
+</blockquote>
+<hr>
+<h5 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h5><p><a href="http://www.cnblogs.com/linsongbin/p/4736227.html" target="_blank" rel="external">mqtt 协议之 PINGREQ, PINGRESP</a><br><a href="http://www.blogjava.net/yongboy/archive/2014/02/09/409630.html" target="_blank" rel="external">MQTT协议笔记之连接和心跳</a></p>
+<p><a href="http://bbs.hiapk.com/thread-4652657-1-1.html" target="_blank" rel="external">Android消息推送完美方案 </a></p>
 
       
     </div>
@@ -266,13 +284,13 @@ Quick">
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/01/03/hello-one/">Hello One</a></p>
+        <p><span>本文标题:</span><a href="/2016/01/20/AndroidPushMQTT/"></a></p>
         <p><span>文章作者:</span><a href="/" title="访问 John Doe 的个人博客">John Doe</a></p>
-        <p><span>发布时间:</span>2016年01月03日 - 19时39分</p>
-        <p><span>最后更新:</span>2016年01月03日 - 19时39分</p>
+        <p><span>发布时间:</span>2016年01月20日 - 16时26分</p>
+        <p><span>最后更新:</span>2016年01月07日 - 17时58分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/01/03/hello-one/" title="Hello One">http://yoursite.com/2016/01/03/hello-one/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/01/03/hello-one/　　作者: John Doe" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/01/20/AndroidPushMQTT/" title="">http://yoursite.com/2016/01/20/AndroidPushMQTT/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/01/20/AndroidPushMQTT/　　作者: John Doe" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -285,12 +303,12 @@ Quick">
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/01/03/hello-world/">
-                    Hello World
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/01/10/Erlang/">
+                    ErlangNote
                 </a>
             </div>
-        
         
     </nav>
 
@@ -299,7 +317,7 @@ Quick">
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick_Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create_a_new_post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run_server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate_static_files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy_to_remote_sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android__u63A8_u9001_u4E4B_MQTT"><span class="toc-number">1.</span> <span class="toc-text">Android 推送之 MQTT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android__u5F00_u53D1_u63A8_u9001_u65B9_u6848"><span class="toc-number">2.</span> <span class="toc-text">Android 开发推送方案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MQTT__u670D_u52A1_u5668"><span class="toc-number">2.1.</span> <span class="toc-text">MQTT 服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MQTT_Android__u5BA2_u6237_u7AEF"><span class="toc-number">2.2.</span> <span class="toc-text">MQTT Android 客户端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u670D_u52A1_u5668_PHP__u5BA2_u6237_u7AEF_SAM"><span class="toc-number">2.3.</span> <span class="toc-text">服务器 PHP 客户端 SAM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MQTT_u534F_u8BAE_u7B14_u8BB0_u4E4B_u8FDE_u63A5_u548C_u5FC3_u8DF3"><span class="toc-number">2.4.</span> <span class="toc-text">MQTT协议笔记之连接和心跳</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#u53C2_u8003"><span class="toc-number">2.4.1.</span> <span class="toc-text">参考</span></a></li></ol></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -367,15 +385,15 @@ Quick">
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/01/03/hello-world/" title="上一篇: Hello World">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2016/01/10/Erlang/" title="下一篇: ErlangNote">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
 
