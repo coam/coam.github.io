@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title><![CDATA[Hexo]]></title>
+  <title><![CDATA[商运物流]]></title>
   
   <link href="/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
+  <link href="https://coam.co/"/>
   <updated>2016-01-07T09:58:58.663Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://coam.co/</id>
   
   <author>
-    <name><![CDATA[John Doe]]></name>
+    <name><![CDATA[张亚飞]]></name>
     
   </author>
   
@@ -16,8 +16,8 @@
   
   <entry>
     <title></title>
-    <link href="http://yoursite.com/2016/01/20/AndroidPushMQTT/"/>
-    <id>http://yoursite.com/2016/01/20/AndroidPushMQTT/</id>
+    <link href="https://coam.co/2016/01/20/AndroidPushMQTT/"/>
+    <id>https://coam.co/2016/01/20/AndroidPushMQTT/</id>
     <published>2016-01-20T08:26:40.255Z</published>
     <updated>2016-01-07T09:58:58.663Z</updated>
     <content type="html"><![CDATA[<h3 id="Android__u63A8_u9001_u4E4B_MQTT"><a href="#Android__u63A8_u9001_u4E4B_MQTT" class="headerlink" title="Android 推送之 MQTT"></a>Android 推送之 MQTT</h3><h3 id="Android__u5F00_u53D1_u63A8_u9001_u65B9_u6848"><a href="#Android__u5F00_u53D1_u63A8_u9001_u65B9_u6848" class="headerlink" title="Android 开发推送方案"></a>Android 开发推送方案</h3><h4 id="MQTT__u670D_u52A1_u5668"><a href="#MQTT__u670D_u52A1_u5668" class="headerlink" title="MQTT 服务器"></a>MQTT 服务器</h4><p>使用 emqttd broken<br><a href="https://github.com/emqtt/emqttd" target="_blank" rel="external">GitHub - emqtt/emqttd</a><br><a href="http://emqtt.io/" target="_blank" rel="external">官网</a></p>
@@ -65,8 +65,8 @@
   
   <entry>
     <title><![CDATA[ErlangNote]]></title>
-    <link href="http://yoursite.com/2016/01/10/Erlang/"/>
-    <id>http://yoursite.com/2016/01/10/Erlang/</id>
+    <link href="https://coam.co/2016/01/10/Erlang/"/>
+    <id>https://coam.co/2016/01/10/Erlang/</id>
     <published>2016-01-10T11:41:31.000Z</published>
     <updated>2016-01-17T11:38:43.421Z</updated>
     <content type="html"><![CDATA[<h3 id="Erlang__u7814_u7A76_u76F8_u5173"><a href="#Erlang__u7814_u7A76_u76F8_u5173" class="headerlink" title="Erlang 研究相关"></a>Erlang 研究相关</h3><blockquote>
@@ -108,8 +108,8 @@ nodes() 返回所有其它节点名.
   
   <entry>
     <title><![CDATA[MnesiaNote]]></title>
-    <link href="http://yoursite.com/2016/01/10/Mnesia/"/>
-    <id>http://yoursite.com/2016/01/10/Mnesia/</id>
+    <link href="https://coam.co/2016/01/10/Mnesia/"/>
+    <id>https://coam.co/2016/01/10/Mnesia/</id>
     <published>2016-01-10T11:41:31.000Z</published>
     <updated>2016-01-10T12:57:21.021Z</updated>
     <content type="html"><![CDATA[<h3 id="Erlang_Mnesia_Database"><a href="#Erlang_Mnesia_Database" class="headerlink" title="Erlang Mnesia Database"></a>Erlang Mnesia Database</h3><p><a href="http://www.erlang.org/doc/man/mnesia.html" target="_blank" rel="external">Erlang Mnesia Doc</a></p>
@@ -228,8 +228,8 @@ rpc:call(EjabberdNode, mnesia, system_info, [tables]).
   
   <entry>
     <title><![CDATA[MarkDown 相关]]></title>
-    <link href="http://yoursite.com/2016/01/08/MarkDownNote/"/>
-    <id>http://yoursite.com/2016/01/08/MarkDownNote/</id>
+    <link href="https://coam.co/2016/01/08/MarkDownNote/"/>
+    <id>https://coam.co/2016/01/08/MarkDownNote/</id>
     <published>2016-01-08T02:51:31.000Z</published>
     <updated>2016-01-08T03:16:39.208Z</updated>
     <content type="html"><![CDATA[<h1 id="Markdown__u76F8_u5173_u7B14_u8BB0_u6458_u8981"><a href="#Markdown__u76F8_u5173_u7B14_u8BB0_u6458_u8981" class="headerlink" title="Markdown 相关笔记摘要"></a>Markdown 相关笔记摘要</h1><p><a href="http://www.debug4.me/%E5%B7%A5%E5%85%B7/markdown-learning/" target="_blank" rel="external">Markdown标准语法与GitHub Flavored Markdown语法大全</a></p>
@@ -307,16 +307,16 @@ hexo new myNewBlog
     
     </summary>
     
-      <category term="markdown gfw hexo jekyll" scheme="http://yoursite.com/tags/markdown-gfw-hexo-jekyll/"/>
+      <category term="markdown gfw hexo jekyll" scheme="https://coam.co/tags/markdown-gfw-hexo-jekyll/"/>
     
-      <category term="markdown" scheme="http://yoursite.com/categories/markdown/"/>
+      <category term="markdown" scheme="https://coam.co/categories/markdown/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[my blogs]]></title>
-    <link href="http://yoursite.com/2016/01/07/my-blogs/"/>
-    <id>http://yoursite.com/2016/01/07/my-blogs/</id>
+    <link href="https://coam.co/2016/01/07/my-blogs/"/>
+    <id>https://coam.co/2016/01/07/my-blogs/</id>
     <published>2016-01-07T12:56:16.000Z</published>
     <updated>2016-01-07T14:23:11.261Z</updated>
     <content type="html"><![CDATA[<blockquote><p>content</p>
@@ -338,8 +338,8 @@ hexo new myNewBlog
   
   <entry>
     <title><![CDATA[blog/myNewBloger]]></title>
-    <link href="http://yoursite.com/2016/01/03/blog-myNewBlog/"/>
-    <id>http://yoursite.com/2016/01/03/blog-myNewBlog/</id>
+    <link href="https://coam.co/2016/01/03/blog-myNewBlog/"/>
+    <id>https://coam.co/2016/01/03/blog-myNewBlog/</id>
     <published>2016-01-03T12:52:05.000Z</published>
     <updated>2016-01-03T13:01:11.555Z</updated>
     <content type="html"><![CDATA[<h3 id="HEXO__u535A_u5BA2_u642D_u5EFA"><a href="#HEXO__u535A_u5BA2_u642D_u5EFA" class="headerlink" title="HEXO 博客搭建"></a>HEXO 博客搭建</h3><h4 id="Window__u4E0B_u73AF_u5883_u642D_u5EFA"><a href="#Window__u4E0B_u73AF_u5883_u642D_u5EFA" class="headerlink" title="Window 下环境搭建"></a>Window 下环境搭建</h4><pre><code>npm install hexo-cli -g
@@ -400,14 +400,14 @@ hexo new myNewBlog
     <![CDATA[<h3 id="HEXO__u535A_u5BA2_u642D_u5EFA"><a href="#HEXO__u535A_u5BA2_u642D_u5EFA" class="headerlink" title="HEXO 博客搭建"></a>HEXO 博客搭建</h3><h4 i]]>
     </summary>
     
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+      <category term="hexo" scheme="https://coam.co/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[关于 XMPP 协议]]></title>
-    <link href="http://yoursite.com/2016/01/03/XMPP/"/>
-    <id>http://yoursite.com/2016/01/03/XMPP/</id>
+    <link href="https://coam.co/2016/01/03/XMPP/"/>
+    <id>https://coam.co/2016/01/03/XMPP/</id>
     <published>2016-01-03T12:52:05.000Z</published>
     <updated>2016-01-07T12:38:18.640Z</updated>
     <content type="html"><![CDATA[<h3 id="u5173_u4E8E_XMPP__u534F_u8BAE"><a href="#u5173_u4E8E_XMPP__u534F_u8BAE" class="headerlink" title="关于 XMPP 协议"></a>关于 XMPP 协议</h3><p><a href="http://xmpp.org/xmpp-protocols/xmpp-extensions/" target="_blank" rel="external">XMPP 扩展协议标准</a><br><a href="http://wiki.jabbercn.org/XEP-0045" target="_blank" rel="external">Ejabberd 中文翻译文档上面的 关于 Ejabberd 使用的协议介绍</a></p>
@@ -495,14 +495,14 @@ client1 和 client2 进行交互.
     
     </summary>
     
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+      <category term="hexo" scheme="https://coam.co/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Ejabberd Note]]></title>
-    <link href="http://yoursite.com/2016/01/03/EjabberdNote/"/>
-    <id>http://yoursite.com/2016/01/03/EjabberdNote/</id>
+    <link href="https://coam.co/2016/01/03/EjabberdNote/"/>
+    <id>https://coam.co/2016/01/03/EjabberdNote/</id>
     <published>2016-01-03T12:52:05.000Z</published>
     <updated>2016-01-07T12:30:50.235Z</updated>
     <content type="html"><![CDATA[<h4 id="Ejabberd_Note"><a href="#Ejabberd_Note" class="headerlink" title="Ejabberd Note"></a>Ejabberd Note</h4><p>XMPP协议的命名空间:</p>
@@ -526,14 +526,14 @@ vcard-temp  -- 临时的vCard,用于设置用户的头像以及昵称等
 <pre><cod]]>
     </summary>
     
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+      <category term="hexo" scheme="https://coam.co/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Lua 学习摘要]]></title>
-    <link href="http://yoursite.com/2016/01/03/Lua/"/>
-    <id>http://yoursite.com/2016/01/03/Lua/</id>
+    <link href="https://coam.co/2016/01/03/Lua/"/>
+    <id>https://coam.co/2016/01/03/Lua/</id>
     <published>2016-01-03T12:52:05.000Z</published>
     <updated>2016-01-07T12:31:05.476Z</updated>
     <content type="html"><![CDATA[<h3 id="Lua__u5B66_u4E60_u6458_u8981"><a href="#Lua__u5B66_u4E60_u6458_u8981" class="headerlink" title="Lua 学习摘要"></a>Lua 学习摘要</h3><p><a href="http://dhq.me/lua-learning-notes-package-and-module" target="_blank" rel="external">Lua 学习笔记(4) – 模块与包</a></p>
@@ -542,14 +542,14 @@ vcard-temp  -- 临时的vCard,用于设置用户的头像以及昵称等
     <![CDATA[<h3 id="Lua__u5B66_u4E60_u6458_u8981"><a href="#Lua__u5B66_u4E60_u6458_u8981" class="headerlink" title="Lua 学习摘要"></a>Lua 学习摘要</h3><p><a hre]]>
     </summary>
     
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+      <category term="hexo" scheme="https://coam.co/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[关于 MQTT 协议]]></title>
-    <link href="http://yoursite.com/2016/01/03/MQTT/"/>
-    <id>http://yoursite.com/2016/01/03/MQTT/</id>
+    <link href="https://coam.co/2016/01/03/MQTT/"/>
+    <id>https://coam.co/2016/01/03/MQTT/</id>
     <published>2016-01-03T12:52:05.000Z</published>
     <updated>2016-01-07T12:31:20.830Z</updated>
     <content type="html"><![CDATA[<h3 id="u5173_u4E8E_MQTT__u534F_u8BAE"><a href="#u5173_u4E8E_MQTT__u534F_u8BAE" class="headerlink" title="关于 MQTT 协议"></a>关于 MQTT 协议</h3><p><a href="https://github.com/liangjingyang/MQTT-CN/blob/master/mqtt-v3.1.1-os.md" target="_blank" rel="external">MQTT 中文文档 Version 3.1.1</a></p>
@@ -558,14 +558,14 @@ vcard-temp  -- 临时的vCard,用于设置用户的头像以及昵称等
     <![CDATA[<h3 id="u5173_u4E8E_MQTT__u534F_u8BAE"><a href="#u5173_u4E8E_MQTT__u534F_u8BAE" class="headerlink" title="关于 MQTT 协议"></a>关于 MQTT 协议</h3><p>]]>
     </summary>
     
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+      <category term="hexo" scheme="https://coam.co/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[使用 Rebar 管理 erlang 项目]]></title>
-    <link href="http://yoursite.com/2016/01/03/Rebar/"/>
-    <id>http://yoursite.com/2016/01/03/Rebar/</id>
+    <link href="https://coam.co/2016/01/03/Rebar/"/>
+    <id>https://coam.co/2016/01/03/Rebar/</id>
     <published>2016-01-03T12:52:05.000Z</published>
     <updated>2016-01-07T12:31:27.475Z</updated>
     <content type="html"><![CDATA[<h3 id="u4F7F_u7528_Rebar__u7BA1_u7406_erlang__u9879_u76EE"><a href="#u4F7F_u7528_Rebar__u7BA1_u7406_erlang__u9879_u76EE" class="headerlink" title="使用 Rebar 管理 erlang 项目"></a>使用 Rebar 管理 erlang 项目</h3><p><a href="https://github.com/rebar/rebar" target="_blank" rel="external">GitHub - </a></p>
@@ -605,14 +605,14 @@ and you can use rebar to build OTP-compliant apps.
     <![CDATA[<h3 id="u4F7F_u7528_Rebar__u7BA1_u7406_erlang__u9879_u76EE"><a href="#u4F7F_u7528_Rebar__u7BA1_u7406_erlang__u9879_u76EE" class="headerlink"]]>
     </summary>
     
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+      <category term="hexo" scheme="https://coam.co/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Hello tow]]></title>
-    <link href="http://yoursite.com/2016/01/03/hello-two/"/>
-    <id>http://yoursite.com/2016/01/03/hello-two/</id>
+    <link href="https://coam.co/2016/01/03/hello-two/"/>
+    <id>https://coam.co/2016/01/03/hello-two/</id>
     <published>2016-01-03T12:49:04.726Z</published>
     <updated>2016-01-03T12:49:04.725Z</updated>
     <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
@@ -633,8 +633,8 @@ and you can use rebar to build OTP-compliant apps.
   
   <entry>
     <title><![CDATA[Hello World]]></title>
-    <link href="http://yoursite.com/2016/01/03/hello-world/"/>
-    <id>http://yoursite.com/2016/01/03/hello-world/</id>
+    <link href="https://coam.co/2016/01/03/hello-world/"/>
+    <id>https://coam.co/2016/01/03/hello-world/</id>
     <published>2016-01-03T11:40:19.831Z</published>
     <updated>2016-01-03T11:40:19.830Z</updated>
     <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
@@ -655,8 +655,8 @@ and you can use rebar to build OTP-compliant apps.
   
   <entry>
     <title><![CDATA[Hello One]]></title>
-    <link href="http://yoursite.com/2016/01/03/hello-one/"/>
-    <id>http://yoursite.com/2016/01/03/hello-one/</id>
+    <link href="https://coam.co/2016/01/03/hello-one/"/>
+    <id>https://coam.co/2016/01/03/hello-one/</id>
     <published>2016-01-03T11:39:51.880Z</published>
     <updated>2016-01-03T11:39:51.879Z</updated>
     <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
