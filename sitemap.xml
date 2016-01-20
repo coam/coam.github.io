@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://coam.co/2016/01/10/AndroidPushMQTT/</loc>
+    <lastmod>2016-01-20T08:45:45.481Z</lastmod>
+  </url>
+  
+  <url>
     <loc>https://coam.co/2016/01/10/Erlang/</loc>
     <lastmod>2016-01-17T11:38:43.421Z</lastmod>
   </url>
@@ -44,11 +49,6 @@
   <url>
     <loc>https://coam.co/2016/01/03/EjabberdNote/</loc>
     <lastmod>2016-01-07T12:30:50.235Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://coam.co/2016/01/20/AndroidPushMQTT/</loc>
-    <lastmod>2016-01-07T09:58:58.663Z</lastmod>
   </url>
   
   <url>
