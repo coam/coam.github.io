@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[Hexo]]></title>
+  
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://yoursite.com/"/>
+  <updated>2016-01-08T03:16:39.208Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name><![CDATA[John Doe]]></name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[MarkDown 相关]]></title>
+    <link href="http://yoursite.com/2016/01/08/MarkDownNote/"/>
+    <id>http://yoursite.com/2016/01/08/MarkDownNote/</id>
+    <published>2016-01-08T02:51:31.000Z</published>
+    <updated>2016-01-08T03:16:39.208Z</updated>
+    <content type="html"><![CDATA[<h1 id="Markdown__u76F8_u5173_u7B14_u8BB0_u6458_u8981"><a href="#Markdown__u76F8_u5173_u7B14_u8BB0_u6458_u8981" class="headerlink" title="Markdown 相关笔记摘要"></a>Markdown 相关笔记摘要</h1><p><a href="http://www.debug4.me/%E5%B7%A5%E5%85%B7/markdown-learning/" target="_blank" rel="external">Markdown标准语法与GitHub Flavored Markdown语法大全</a></p>
+<a id="more"></a>
+<h3 id="markdown__u652F_u6301_u7684_u7F16_u7A0B_u8BED_u8A00_uFF1A"><a href="#markdown__u652F_u6301_u7684_u7F16_u7A0B_u8BED_u8A00_uFF1A" class="headerlink" title="markdown 支持的编程语言："></a>markdown 支持的编程语言：</h3><blockquote>
+<p>actionscript, apache, bash, clojure, cmake, coffeescript, cpp, cs, css, d, delphi, django, erlang, go, haskell, html,<br> http, ini, java, javascript, json, lisp, lua, markdown, matlab, nginx, objectivec, perl, php, python, r, ruby, scala, smalltalk, sql, tex, vbscript, xml</p>
+</blockquote>
+<p><a href="https://www.zybuluo.com" target="_blank" rel="external">国内不错但收费的markdown在线编辑器</a></p>
+<h2 id="u53C2_u8003_u5217_u8868"><a href="#u53C2_u8003_u5217_u8868" class="headerlink" title="参考列表"></a>参考列表</h2><hr>
+<h2 id="Hexo__u76F8_u5173"><a href="#Hexo__u76F8_u5173" class="headerlink" title="Hexo 相关"></a>Hexo 相关</h2><p><a href="http://www.blackshow.me/2015/11/30/hexo-cheats/" target="_blank" rel="external">HEXO使用心得(持续更新)</a><br><a href="https://hexo.io/zh-cn/docs/tag-plugins.html" target="_blank" rel="external">标签插件（Tag Plugins）</a></p>
+<h3 id="HEXO__u535A_u5BA2_u642D_u5EFA"><a href="#HEXO__u535A_u5BA2_u642D_u5EFA" class="headerlink" title="HEXO 博客搭建"></a>HEXO 博客搭建</h3><h4 id="Window__u4E0B_u73AF_u5883_u642D_u5EFA"><a href="#Window__u4E0B_u73AF_u5883_u642D_u5EFA" class="headerlink" title="Window 下环境搭建"></a>Window 下环境搭建</h4><pre><code>npm install hexo-cli -g
+npm install hexo --save
+</code></pre><blockquote>
+<p>如果命令无法运行,可以尝试更换taobao的npm源</p>
+</blockquote>
+<pre><code>npm install -g cnpm --registry=https://registry.npm.taobao.org
+</code></pre><h4 id="Hexo__u521D_u59CB_u5316"><a href="#Hexo__u521D_u59CB_u5316" class="headerlink" title="Hexo 初始化"></a>Hexo 初始化</h4><ol>
+<li>安装 Hexo 完成后,请执行下列命令,Hexo 将会在指定文件夹中新建所需要的文件.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+<ol>
+<li>新建完成后,指定文件夹的目录如下</li>
+</ol>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── scripts</span><br><span class="line">├── source</span><br><span class="line"><span class="string">|      ├── _drafts</span></span><br><span class="line"><span class="string">|      └── _posts</span></span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure>
+<ul>
+<li>scaffolds 工具模板</li>
+<li>scripts hexo的功能js</li>
+<li>source 博客资源文件夹</li>
+<li>source/_drafts 草稿文件夹</li>
+<li>source/_posts 文章文件夹</li>
+<li>themes 存放皮肤的文件夹</li>
+<li>themes/landscape 默认皮肤文件夹</li>
+<li>_config.yml 全局配置文件</li>
+<li>db.json json格式的静态常量数据库</li>
+<li>_posts目录：Hexo存放博客文章的文件夹</li>
+<li>themes目录：存放皮肤的文件夹，默认使用官方的主题 你也可以从hexo主题页面下载你喜欢的主题</li>
+</ul>
+<ol>
+<li>安装Hexo插件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-index --save</span><br><span class="line">npm install hexo-generator-archive --save</span><br><span class="line">npm install hexo-generator-category --save</span><br><span class="line">npm install hexo-generator-tag --save</span><br><span class="line">npm install hexo-server --save</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">npm install hexo-deployer-heroku --save</span><br><span class="line">npm install hexo-deployer-rsync --save</span><br><span class="line">npm install hexo-deployer-openshift --save</span><br><span class="line">npm install hexo-renderer-marked@<span class="number">0.2</span> --save</span><br><span class="line">npm install hexo-renderer-stylus@<span class="number">0.2</span> --save</span><br><span class="line">npm install hexo-generator-feed@<span class="number">1</span> --save</span><br><span class="line">npm install hexo-generator-sitemap@<span class="number">1</span> --save</span><br></pre></td></tr></table></figure>
+<h4 id="u672C_u5730_u67E5_u770B_u6548_u679C"><a href="#u672C_u5730_u67E5_u770B_u6548_u679C" class="headerlink" title="本地查看效果"></a>本地查看效果</h4><p>继续执行以下命令,成功后可登录localhost:4000查看效果</p>
+<pre><code>hexo server
+</code></pre><p>Hexo简写命令</p>
+<pre><code>hexo n #生成文章,或者source\_posts手动编辑
+hexo s #本地发布预览效果
+hexo g #生成public静态文件
+</code></pre><p>最后我选择手动同步更新至GitHub</p>
+<h4 id="u90E8_u7F72_u9759_u6001_u7F51_u9875_u5230GitHub"><a href="#u90E8_u7F72_u9759_u6001_u7F51_u9875_u5230GitHub" class="headerlink" title="部署静态网页到GitHub"></a>部署静态网页到GitHub</h4><p>在 GitHub 下创建项目 coam.github.com</p>
+<p>修改 _config.yml 的以下部分为</p>
+<pre><code>deploy:
+  type: git
+  repository: git@github.com:coam/coam.github.io.git
+  branch: master
+</code></pre><p>执行命令以下命令发布博客</p>
+<pre><code>hexo g //生成博客文章
+hexo d //上传至 github
+hexo new myNewBlog
+</code></pre><h3 id="Hexo__u4E3B_u9898_Jacman"><a href="#Hexo__u4E3B_u9898_Jacman" class="headerlink" title="Hexo 主题 Jacman"></a>Hexo 主题 Jacman</h3><blockquote>
+<p>hexo 默认 theme 主题是 landscape ,修改为 jacman</p>
+</blockquote>
+<pre><code>git clone https://github.com/wuchong/jacman.git themes/jacman
+</code></pre><p>参考</p>
+<p><a href="http://wsgzao.github.io/post/hexo-guide/" target="_blank" rel="external">使用GitHub和Hexo搭建免费静态Blog</a><br><a href="http://wsgzao.github.io/post/hexo-jacman/" target="_blank" rel="external">Jacman基于Pacman修改的Hexo主题</a><br><a href="https://github.com/wuchong/jacman/blob/master/README_zh.md" target="_blank" rel="external">wuchong/jacman</a><br><a href="http://wuchong.me/blog/2014/11/20/how-to-use-jacman/" target="_blank" rel="external">如何使用 Jacman 主题</a></p>
+<p><a href="https://hexo.io/zh-cn/docs/migration.html" target="_blank" rel="external">Wordpress 迁移到 Hexo</a><br><a href="http://www.jianshu.com/p/73779eacb494" target="_blank" rel="external">配置参考 - Hexo 静态博客使用指南</a></p>
+<hr>
+<h2 id="jekyll_blog__u76F8_u5173"><a href="#jekyll_blog__u76F8_u5173" class="headerlink" title="jekyll blog 相关"></a>jekyll blog 相关</h2><p><a href="http://jekyllcn.com/docs/usage/" target="_blank" rel="external">jekyll 基本用法</a></p>
+<p><a href="https://github.com/gdg-managua/jekyll-mdl" target="_blank" rel="external">Markdown Material theme-gdg-managua/jekyll-mdl</a><br><a href="https://github.com/CloudCannon/Read-Only-Jekyll-Theme" target="_blank" rel="external">Markdown Material theme-CloudCannon/Read-Only-Jekyll-Theme</a></p>
+<p><a href="https://github.com/cenalulu/cenalulu.github.io" target="_blank" rel="external">Jekyll 参照 博客 cenalulu/cenalulu.github.io</a></p>
+<p><a href="http://dillinger.io/" target="_blank" rel="external">Markdown 在线编辑器</a></p>
+<p>参考<br><a href="http://huangziwei.com/tech/blogging-with-git-github-and-jekyll/" target="_blank" rel="external">Git 笔记:用 Github + Jekyll 写博客</a><br><a href="https://segmentfault.com/a/1190000000406011" target="_blank" rel="external">使用Jekyll在Github上搭建个人博客(环境搭建)</a><br><a href="http://huangziwei.com/tech/blogging-with-git-github-and-jekyll/" target="_blank" rel="external">Git 笔记:用 Github + Jekyll 写博客</a><br><a href="http://jekyll-windows.juthilo.com/3-syntax-highlighting/" target="_blank" rel="external">Install a Syntax Highlighter</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h1 id="Markdown__u76F8_u5173_u7B14_u8BB0_u6458_u8981"><a href="#Markdown__u76F8_u5173_u7B14_u8BB0_u6458_u8981" class="headerlink" title="Markdown 相关笔记摘要"></a>Markdown 相关笔记摘要</h1><p><a href="http://www.debug4.me/%E5%B7%A5%E5%85%B7/markdown-learning/">Markdown标准语法与GitHub Flavored Markdown语法大全</a></p>]]>
+    
+    </summary>
+    
+      <category term="markdown gfw hexo jekyll" scheme="http://yoursite.com/tags/markdown-gfw-hexo-jekyll/"/>
+    
+      <category term="markdown" scheme="http://yoursite.com/categories/markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[my blogs]]></title>
+    <link href="http://yoursite.com/2016/01/07/my-blogs/"/>
+    <id>http://yoursite.com/2016/01/07/my-blogs/</id>
+    <published>2016-01-07T12:56:16.000Z</published>
+    <updated>2016-01-07T14:23:11.261Z</updated>
+    <content type="html"><![CDATA[<blockquote><p>content</p>
+</blockquote>
+<figure class="highlight"><figcaption><span>[title] [] [url] [link text]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code snippet</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><figcaption><span>mycode</span><a href="https://www.coam.co" target="_blank" rel="external">coam.com</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Build DOMDocument with standard xmpp body child node.</span><br><span class="line"> *</span><br><span class="line"> * <span class="doctag">@return</span> DOMDocument</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">buildBody</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="variable">$xml</span> = <span class="keyword">new</span> DOMDocument(<span class="string">'1.0'</span>, <span class="string">'UTF-8'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="variable">$body</span> = <span class="variable">$xml</span>-&gt;createElement(<span class="string">'body'</span>);</span><br><span class="line">    <span class="variable">$xml</span>-&gt;appendChild(<span class="variable">$body</span>);</span><br><span class="line"></span><br><span class="line">    <span class="variable">$body</span>-&gt;appendChild(<span class="keyword">self</span>::getNewTextAttribute(<span class="variable">$xml</span>, <span class="string">'xmlns'</span>, <span class="keyword">self</span>::XMLNS_BODY));</span><br><span class="line">    <span class="variable">$body</span>-&gt;appendChild(<span class="keyword">self</span>::getNewTextAttribute(<span class="variable">$xml</span>, <span class="string">'content'</span>, <span class="keyword">self</span>::CONTENT_TYPE));</span><br><span class="line">    <span class="variable">$body</span>-&gt;appendChild(<span class="keyword">self</span>::getNewTextAttribute(<span class="variable">$xml</span>, <span class="string">'rid'</span>, <span class="variable">$this</span>-&gt;getAndIncrementRid()));</span><br><span class="line">    <span class="variable">$body</span>-&gt;appendChild(<span class="keyword">self</span>::getNewTextAttribute(<span class="variable">$xml</span>, <span class="string">'xml:lang'</span>, <span class="keyword">self</span>::XML_LANG));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$this</span>-&gt;sid != <span class="string">''</span>) &#123;</span><br><span class="line">        <span class="variable">$body</span>-&gt;appendChild(<span class="keyword">self</span>::getNewTextAttribute(<span class="variable">$xml</span>, <span class="string">'sid'</span>, <span class="variable">$this</span>-&gt;sid));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$xml</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><figcaption><span>title</span><a href="https://app.coopens.com" target="_blank" rel="external">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onMessage</span>(<span class="params">msg</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> to = msg.getAttribute(<span class="string">'to'</span>);</span><br><span class="line">    <span class="keyword">var</span> from = msg.getAttribute(<span class="string">'from'</span>);</span><br><span class="line">    <span class="keyword">var</span> type = msg.getAttribute(<span class="string">'type'</span>);</span><br><span class="line">    <span class="keyword">var</span> elems = msg.getElementsByTagName(<span class="string">'body'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (type == <span class="string">"chat"</span> &amp;&amp; elems.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> body = elems[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">        log(<span class="string">'ECHOBOT: I got a message from '</span> + from + <span class="string">': '</span> +</span><br><span class="line">            Strophe.getText(body));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> reply = $msg(&#123;to: from, from: to, type: <span class="string">'chat'</span>&#125;)</span><br><span class="line">            .cnode(Strophe.copyElement(body));</span><br><span class="line">        connection.send(reply.tree());</span><br><span class="line"></span><br><span class="line">        log(<span class="string">'ECHOBOT: I sent '</span> + from + <span class="string">': '</span> + Strophe.getText(body));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// we must return true to keep the handler alive.  </span></span><br><span class="line">    <span class="comment">// returning false would remove it after it finishes.</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><figcaption><span>Android SDK 代码</span><a href="http://www.badu.com" target="_blank" rel="external">[link text ..]</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.preference.Preference;</span><br><span class="line"><span class="keyword">import</span> android.util.AttributeSet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> eu.siacs.conversations.utils.PhoneHelper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AboutPreference</span> <span class="keyword">extends</span> <span class="title">Preference</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">AboutPreference</span><span class="params">(<span class="keyword">final</span> Context context, <span class="keyword">final</span> AttributeSet attrs, <span class="keyword">final</span> <span class="keyword">int</span> defStyle)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(context, attrs, defStyle);</span><br><span class="line">		setSummary();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">AboutPreference</span><span class="params">(<span class="keyword">final</span> Context context, <span class="keyword">final</span> AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(context, attrs);</span><br><span class="line">		setSummary();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onClick();</span><br><span class="line">        <span class="keyword">final</span> Intent intent = <span class="keyword">new</span> Intent(getContext(), AboutActivity.class);</span><br><span class="line">        getContext().startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setSummary</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		setSummary(<span class="string">"Conversations "</span> + PhoneHelper.getVersionName(getContext()));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">happy</span><br></pre></td></tr></table></figure>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">colon</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><figcaption><span>title</span><a href="http://www.coopens.com" target="_blank" rel="external">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setSummary</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    setSummary(<span class="string">"Conversations "</span> + PhoneHelper.getVersionName(getContext()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <summary type="html">
+    <![CDATA[<blockquote><p>content</p>
+</blockquote>
+<figure class="highlight"><figcaption><span>[title] [] [url] [link text]</span></figcaption><table>]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[关于 XMPP 协议]]></title>
+    <link href="http://yoursite.com/2016/01/03/XMPP/"/>
+    <id>http://yoursite.com/2016/01/03/XMPP/</id>
+    <published>2016-01-03T12:52:05.000Z</published>
+    <updated>2016-01-07T12:38:18.640Z</updated>
+    <content type="html"><![CDATA[<h3 id="u5173_u4E8E_XMPP__u534F_u8BAE"><a href="#u5173_u4E8E_XMPP__u534F_u8BAE" class="headerlink" title="关于 XMPP 协议"></a>关于 XMPP 协议</h3><p><a href="http://xmpp.org/xmpp-protocols/xmpp-extensions/" target="_blank" rel="external">XMPP 扩展协议标准</a><br><a href="http://wiki.jabbercn.org/XEP-0045" target="_blank" rel="external">Ejabberd 中文翻译文档上面的 关于 Ejabberd 使用的协议介绍</a></p>
+<hr>
+<p><a href="https://xmpp.net/directory.php" target="_blank" rel="external">XMPP 免费服务器列表</a></p>
+<p>比较好的公共服务器</p>
+<p><a href="https://www.xmpp.jp/signup" target="_blank" rel="external">xmpp.jp</a></p>
+<p>XMPP 客户端</p>
+<blockquote>
+<p>PC端肯定要推荐一些比较经典的啦,诸如Pidgin、Empathy、Kopete、Miranda IM(只支持Windows)或Adium(只支持Mac OS X)这样的都可以很好的兼容XMPP/Jabber协议,<br>不过呢还有一些专门的客户端软件,比如 Gajim和Psi+(这是Psi的升级版,增加了更多功能)这样的XMPP专业工具.<br>类似Pidgin这样大而全的软件可以很好的支持XMPP几乎所有的功能(通过各种插件).<br>而专有的软件则可以更加专注于协议的实现,更加完善,也更加富有使用的优势,特别是需要加密聊天比如OTR和PGP这样的时候,专攻XMPP协议的这些客户端就更方便可靠了.<br>当然还有命令行下的软件,mcabber是专门设计给XMPP/Jabber使用的,可以非常方便的提供OTR和PGP加密聊天.</p>
+</blockquote>
+<a id="more"></a>
+<h4 id="Android__u5F00_u6E90_u5BA2_u6237_u7AEF"><a href="#Android__u5F00_u6E90_u5BA2_u6237_u7AEF" class="headerlink" title="Android 开源客户端"></a>Android 开源客户端</h4><p><a href="https://github.com/siacs/Conversations" target="_blank" rel="external">Conversations</a><br><a href="https://github.com/guardianproject/ChatSecureAndroid" target="_blank" rel="external">ChatSecureAndroid</a><br><a href="https://github.com/pfleidi/yaxim" target="_blank" rel="external">yaxim</a></p>
+<hr>
+<h4 id="1_2CXMPP__u7684_u4E09_u79CD_u57FA_u672C_u89D2_u8272_3A_u5BA2_u6237_u7AEF_u3001_u670D_u52A1_u5668_u548C_u7F51_u5173"><a href="#1_2CXMPP__u7684_u4E09_u79CD_u57FA_u672C_u89D2_u8272_3A_u5BA2_u6237_u7AEF_u3001_u670D_u52A1_u5668_u548C_u7F51_u5173" class="headerlink" title="1,XMPP 的三种基本角色:客户端、服务器和网关"></a>1,XMPP 的三种基本角色:客户端、服务器和网关</h4><blockquote>
+<p>通信能够在这三者的任意两个之间双向发生.服务器端同时承担了客户端信息记录、连接管理和信息路由的功能.网关则承担着与异构系统的互联互通功能.在 RFC 3920 XMPP Core 中对 XMPP 网络结构有一个描述:</p>
+</blockquote>
+<pre><code>C1----S1---S2—C3
+     |
+C2----+--G1===FN1===FC1
+</code></pre><p>这里 C1,C2,C3 表示 XMPP 客户端;S1,S2 表示 XMPP 服务器;G1 表示网关,用来负责 XMPP 协议和外部聊天协议的转换;FN1 表示外部消息网络的服务器,FC1 表示外部网络客户端.</p>
+<h5 id="u670D_u52A1_u5668__u5145_u5F53xmpp_u901A_u4FE1_u7684_u4E00_u4E2A_u667A_u80FD_u62BD_u8C61_u5C42_uFF0C_u8D1F_u8D23"><a href="#u670D_u52A1_u5668__u5145_u5F53xmpp_u901A_u4FE1_u7684_u4E00_u4E2A_u667A_u80FD_u62BD_u8C61_u5C42_uFF0C_u8D1F_u8D23" class="headerlink" title="服务器 充当xmpp通信的一个智能抽象层，负责"></a>服务器 充当xmpp通信的一个智能抽象层，负责</h5><blockquote>
+<p>对受验证的客户端，服务器以及其他实体之间以xml流的形式的连接和会话进行管理。在这些实体间使用xml流对合理编址的xml节进行路由存储和处理客户端使用的数据</p>
+</blockquote>
+<h5 id="u5BA2_u6237_u7AEF"><a href="#u5BA2_u6237_u7AEF" class="headerlink" title="客户端"></a>客户端</h5><blockquote>
+<p>通过TCP连接直接连接到服务器，并通过xmpp获得由服务器以及联合服务器所提供的全部功能。多个不同的客户端可以同时登陆并且并发的连接到一个服务器，每个不同资源的客户端通过xmpp地址的资源标识符来区分。建议的客户端和服务器连接的端口时5222</p>
+</blockquote>
+<h5 id="u7F51_u5173"><a href="#u7F51_u5173" class="headerlink" title="网关"></a>网关</h5><blockquote>
+<p>网关是一个特殊用途的服务器端的服务，主要功能是把xmpp翻译成外部消息系统，并把返回的消息翻译成xmpp.</p>
+</blockquote>
+<p>大家可能会奇怪,这里为什么需要一个网关呢.这要从 XMPP 的来源说起.1996 年 Mirabilis 公司推出了世界上第一个即时通信系统 ICQ,不到 10 年,IM 就成了最流行的应用之一,MSN、Gtalk、雅虎即时通、AIM、Adium、Pidgin 等各种软件如雨后春笋般涌现,<br>但是这些服务之间没有统一的标准,不能互联互通,XMPP 的设计目的就是为了实现整个及时通信服务协议的互通,让 IM 成为继 WEB 和 Email 之后的互联网第三大服务.</p>
+<h4 id="2_2CXMPP__u7684_u6D88_u606F_u683C_u5F0F"><a href="#2_2CXMPP__u7684_u6D88_u606F_u683C_u5F0F" class="headerlink" title="2,XMPP 的消息格式."></a>2,XMPP 的消息格式.</h4><blockquote>
+<p>XMPP 协议的所有消息都是 XML 格式的,这是 XMPP 协议的另一个充满历史意味的选择,想当年 SOA / SOAP 一时间爆发起来,很多消息交换协议都采用了 XML 格式,但是不想 XML 很快就成了「大数据」的代名词.<br> 在 RFC 3920 XMPP Core 中定义了两个基础概念,XML Stream 和 XML Stanza,XML Stream 是两个节点之间进行数据交换的容器,它定义了顶层的XML节点 ;XML Stanza 则定义了实体消息的具体语义单元,在 XMPP 中定义了 3 个顶层消息:</p>
+</blockquote>
+<h5 id="2-1_Presence__u8054_u673A_u72B6_u6001"><a href="#2-1_Presence__u8054_u673A_u72B6_u6001" class="headerlink" title="2.1 Presence 联机状态"></a>2.1 Presence 联机状态</h5><blockquote>
+<p>联机状态,它允许用户广播其在线状态和可用性；元素用来传递一个用户的存在状态的感知信息.用户可以是”available”,要么是”unavailable”,”Hide”等.当用户连接到即时消息服务器后,好友发给他的消息就立即被传递.<br>如果用户没有连接到服务器,好友发给他的消息将被服务器存储起来直到用户连接到服务器.<br> 用户通过即时消息客户端自己控制可用性.但是,如果用户断开了同服务器的连接,服务器将发送给订阅了这个用户的存在信息的用户通知他们用户已经不可用.还包含了两个子元素:和.包含了一个对的文本描述.<br>用于确定用户的状态.消息结构举例如下(每个 XML 的 node 还会有很多其他 attribute,为了简单起见这里省略,下同):</p>
+</blockquote>
+<pre><code>&lt;presence from=&quot;abc@jabber.org/contact&quot; to=&quot;def@jabber.org/contact&quot;&gt;
+    &lt;status&gt;online&lt;/status&gt;
+&lt;/presence&gt;
+</code></pre><h5 id="2-2_Message__u6D88_u606F_u4F20_u9012"><a href="#2-2_Message__u6D88_u606F_u4F20_u9012" class="headerlink" title="2.2 Message 消息传递"></a>2.2 Message 消息传递</h5><blockquote>
+<p>消息传递,其中数据在有关各方之间传输；一个即时消息系统最基本的功能就是能够在两个用户之间实时交换消息,元素就提供了这个功能.每条消息都有一个或多个属性和子元素.属性”from”和”to”分别表示了消息发送者和接收者的地址.<br> 也可以包含一个”type”属性,这给接收者一个提示,这个消息是什么样的消息.表3-1给出了”type”属性的可能取值.中也可以包含”id”属性,用来唯一的标识一个输出消息的响应.<br>用于在两个用户之间发送消息.消息结构举例如下:</p>
+</blockquote>
+<pre><code>&lt;message from=&quot;abc@jabber.org/contact&quot; to=&quot;def@jabber.org/contact&quot; type=&quot;chat&quot;&gt;
+    &lt;body&gt;hello&lt;/body&gt;
+&lt;/message&gt;
+</code></pre><h5 id="2-3_IQ__u4FE1_u606F/_u67E5_u8BE2_u8BF7_u6C42"><a href="#2-3_IQ__u4FE1_u606F/_u67E5_u8BE2_u8BF7_u6C42" class="headerlink" title="2.3 IQ 信息/查询请求"></a>2.3 IQ 信息/查询请求</h5><blockquote>
+<p>信息/查询请求,它允许 XMPP 实体发起请求并从另一个实体接收响应.IQ元素是Jabber/XMPP消息协议的第三个顶层元素.IQ代表”Info/Query”,用来发送和获取实体之间的信息.IQ消息是通过”请求/响应”机制在实体间进行交换的.<br> IQ元素用于不同的目的,它们之间通过不同的命名空间来加以区分.在Jabber/XMPP消息协议里有许多的命名空间,但最常用的命名空间是:”jabber:iq:register”,”jabber:iq:auth”,”jabber:iq:roster”<br>信息/请求,是一个请求－响应机制,管理XMPP服务器上两个用户的转换,允许他们通过相应的XML格式进行查询和响应.</p>
+</blockquote>
+<pre><code>&lt;iq from=&quot;abc@jabber.org/contact&quot; id=&quot;id11&quot; type=&quot;result&quot;&gt;
+&lt;/iq&gt;
+</code></pre><h4 id="3_2CXMPP__u7684_u4EA4_u4E92_u6D41_u7A0B"><a href="#3_2CXMPP__u7684_u4EA4_u4E92_u6D41_u7A0B" class="headerlink" title="3,XMPP 的交互流程."></a>3,XMPP 的交互流程.</h4><blockquote>
+<p>XMPP 通过 TCP 传输了什么内容？在 QQ 里面,消息是使用二进制形式发送的,在 MSN 里面是采用纯文本指令加参数加换行符的形式发送的,<br>而 XMPP 传输的即时通讯指令与他们相仿,只是协议的形式变成了 XML 格式的纯文本,这让解析更容易,方便了开发和查错,但是也带来了数据负载过重的缺点,而被人广为诟病.</p>
+</blockquote>
+<p>XMPP 聊天的过程如下:</p>
+<p>所有从一个 client 到另一个 client 的消息和数据都要经过 XMPP Server;</p>
+<pre><code>client1 连接到Server;
+server 利用本地目录系统的证书对其认证;
+client1 指定 client2 目标地址,让 server 告知 client2 目标状态;
+server 查找,连接并进行互相认证;
+client1 和 client2 进行交互.
+</code></pre><p>参考<br><a href="http://segmentfault.com/a/1190000000656509" target="_blank" rel="external">XMPP 协议适合用来做移动 IM 么</a><br><a href="http://blog.csdn.net/jessonlv/article/details/44833273" target="_blank" rel="external">XMPP——xmpp客户端、服务器、网关以及地址和消息格式详解</a><br><a href="http://blog.csdn.net/jessonlv/article/details/44811253" target="_blank" rel="external">XMPP——xmpp协议详解、优点、缺点及优化思路</a><br><a href="http://www.jianshu.com/p/af87ff15bfe3" target="_blank" rel="external">简书-xmpp协议初识</a></p>
+<hr>
+<h3 id="XMPP__u4F7F_u7528_BOSH__u8D8A_u8FC7_HTTP"><a href="#XMPP__u4F7F_u7528_BOSH__u8D8A_u8FC7_HTTP" class="headerlink" title="XMPP 使用 BOSH 越过 HTTP"></a>XMPP 使用 BOSH 越过 HTTP</h3><blockquote>
+<p>要通过使用 JavaScript 的 XMPP 进行通信的 web 应用程序必须符合一些特殊要求.出于安全考虑,不允许 JavaScript 从 web 页面的域与不同域上的多个服务器通信.<br>如果您的 web 应用程序界面被托管在 application.mydomain.com,所有 XMPP 通信也必须发生在 application.mydomain.com.</p>
+<p>防火墙是另一个问题所在.理想情况下,如果您将 XMPP 用作您的 web 界面的实时元素的基础,那么您希望它对防火墙后面的用户有效.<br>但是,公司防火墙通常只对少数几个协议开放几个端口,以便允许 web 数据、电子邮件和类似的通信通过.默认情况下,XMPP 使用端口 5222,这很可能是公司防火墙阻止的端口.</p>
+<p>假设您知道您的用户前面的防火墙在端口 80 上允许 HTTP（这是用于访问 web 的默认协议和端口）.理想情况是您的 XMPP 通信能够越过该端口上的 HTTP.但是,HTTP 的设计并不针对持续连接.web 的架构不同于实时数据所需的通信架构.</p>
+<p>下面我们看看 Bidirectional-streams Over Synchronous HTTP (BOSH) 的标准,该标准为双向同步数据提供一个模拟层.借助这个标准,可以与一个 XMPP 服务器建立一个较长的 HTTP 连接（时长一分钟或两分钟）.<br>如果新数据在那个期间到达,则 HTTP 请求返回数据并关闭；否则,该请求只是失效.不管是哪种情况,一旦一个请求关闭,另一个请求将重新建立.<br>尽管结果是对一个 web 服务器的一系列重复连接,但它是一个比 Ajax 轮询更有效的数量级,特别是因为连接到的是一个专业服务器而不是直接连接到 web 应用程序.</p>
+<p>BOSH 上的 XMPP 允许 web 应用程序通过一个原生连接持续与 XMPP 服务器通信.客户端通过端口 80 上的 HTTP 上的一个标准 URL 连接.然后,web 服务器将这个连接代理到由 XMPP 服务器操作的一个不同端口 — 通常是 7070 — 上的 HTTP URL.<br>这样,无论何时数据被发送到 XMPP 服务器,web 应用程序只需使用一些资源,而 web 客户端可以使用通常支持的 web 标准从防火墙后操作.<br>维持 BOSH 的较长 HTTP 轮询的开销主要由 XMPP 服务器而不是 web 服务器或 web 应用程序承担.web 服务器和 XMPP 服务器都不会受到与使用 JavaScript 进行通信一样的域限制,正是因为这一点,消息才能够被发送到其他 XMPP 服务器和客户端.</p>
+<p>现在,您理解了 XMPP 如何适合实时 web,可以下载并设置它,以便开始创建这个 Pingstream 应用程序.</p>
+</blockquote>
+<hr>
+<h5 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h5><p><a href="https://tonghuix.io/2015/03/xmpp-chat/" target="_blank" rel="external">弃用QQ和微信！全面转向基于XMPP(Jabber)的即时聊天</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="u5173_u4E8E_XMPP__u534F_u8BAE"><a href="#u5173_u4E8E_XMPP__u534F_u8BAE" class="headerlink" title="关于 XMPP 协议"></a>关于 XMPP 协议</h3><p><a href="http://xmpp.org/xmpp-protocols/xmpp-extensions/">XMPP 扩展协议标准</a><br><a href="http://wiki.jabbercn.org/XEP-0045">Ejabberd 中文翻译文档上面的 关于 Ejabberd 使用的协议介绍</a></p>
+<hr>
+<p><a href="https://xmpp.net/directory.php">XMPP 免费服务器列表</a></p>
+<p>比较好的公共服务器</p>
+<p><a href="https://www.xmpp.jp/signup">xmpp.jp</a></p>
+<p>XMPP 客户端</p>
+<blockquote>
+<p>PC端肯定要推荐一些比较经典的啦,诸如Pidgin、Empathy、Kopete、Miranda IM(只支持Windows)或Adium(只支持Mac OS X)这样的都可以很好的兼容XMPP/Jabber协议,<br>不过呢还有一些专门的客户端软件,比如 Gajim和Psi+(这是Psi的升级版,增加了更多功能)这样的XMPP专业工具.<br>类似Pidgin这样大而全的软件可以很好的支持XMPP几乎所有的功能(通过各种插件).<br>而专有的软件则可以更加专注于协议的实现,更加完善,也更加富有使用的优势,特别是需要加密聊天比如OTR和PGP这样的时候,专攻XMPP协议的这些客户端就更方便可靠了.<br>当然还有命令行下的软件,mcabber是专门设计给XMPP/Jabber使用的,可以非常方便的提供OTR和PGP加密聊天.</p>
+</blockquote>]]>
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[关于 MQTT 协议]]></title>
+    <link href="http://yoursite.com/2016/01/03/MQTT/"/>
+    <id>http://yoursite.com/2016/01/03/MQTT/</id>
+    <published>2016-01-03T12:52:05.000Z</published>
+    <updated>2016-01-07T12:31:20.830Z</updated>
+    <content type="html"><![CDATA[<h3 id="u5173_u4E8E_MQTT__u534F_u8BAE"><a href="#u5173_u4E8E_MQTT__u534F_u8BAE" class="headerlink" title="关于 MQTT 协议"></a>关于 MQTT 协议</h3><p><a href="https://github.com/liangjingyang/MQTT-CN/blob/master/mqtt-v3.1.1-os.md" target="_blank" rel="external">MQTT 中文文档 Version 3.1.1</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="u5173_u4E8E_MQTT__u534F_u8BAE"><a href="#u5173_u4E8E_MQTT__u534F_u8BAE" class="headerlink" title="关于 MQTT 协议"></a>关于 MQTT 协议</h3><p>]]>
+    </summary>
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Ejabberd Note]]></title>
+    <link href="http://yoursite.com/2016/01/03/EjabberdNote/"/>
+    <id>http://yoursite.com/2016/01/03/EjabberdNote/</id>
+    <published>2016-01-03T12:52:05.000Z</published>
+    <updated>2016-01-07T12:30:50.235Z</updated>
+    <content type="html"><![CDATA[<h4 id="Ejabberd_Note"><a href="#Ejabberd_Note" class="headerlink" title="Ejabberd Note"></a>Ejabberd Note</h4><p>XMPP协议的命名空间:</p>
+<pre><code>jabber:iq:private   -- 私有数据存储,用于本地用户私人设置信息,比如用户备注等.
+jabber:iq:conference  -- 一般会议,用于多个用户之间的信息共享
+jabber:x:encrypted -- 加密的消息,用于发送加密消息
+jabber:x:expire  -- 消息终止
+jabber:iq:time  -- 客户端时间
+jabber:iq:auth  -- 简单用户认证,一般用于服务器之间或者服务器和客户端之间的认证
+jabber:x:roster  -- 内部花名册
+jabber:x:signed  -- 标记的在线状态
+jabber:iq:search -- 用户数据库查询,用于向服务器发送查询请求
+jabber:iq:register -- 注册请求,用于用户注册相关信息
+jabber:x:iq:roster -- 花名册管理
+jabber:x:conference -- 会议邀请,用于向参加会议用户发送开会通知
+jabber:x:event  -- 消息事件
+vcard-temp  -- 临时的vCard,用于设置用户的头像以及昵称等
+</code></pre>]]></content>
+    <summary type="html">
+    <![CDATA[<h4 id="Ejabberd_Note"><a href="#Ejabberd_Note" class="headerlink" title="Ejabberd Note"></a>Ejabberd Note</h4><p>XMPP协议的命名空间:</p>
+<pre><cod]]>
+    </summary>
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[blog/myNewBloger]]></title>
+    <link href="http://yoursite.com/2016/01/03/blog-myNewBlog/"/>
+    <id>http://yoursite.com/2016/01/03/blog-myNewBlog/</id>
+    <published>2016-01-03T12:52:05.000Z</published>
+    <updated>2016-01-03T13:01:11.555Z</updated>
+    <content type="html"><![CDATA[<h3 id="HEXO__u535A_u5BA2_u642D_u5EFA"><a href="#HEXO__u535A_u5BA2_u642D_u5EFA" class="headerlink" title="HEXO 博客搭建"></a>HEXO 博客搭建</h3><h4 id="Window__u4E0B_u73AF_u5883_u642D_u5EFA"><a href="#Window__u4E0B_u73AF_u5883_u642D_u5EFA" class="headerlink" title="Window 下环境搭建"></a>Window 下环境搭建</h4><pre><code>npm install hexo-cli -g
+npm install hexo --save
+</code></pre><p>#如果命令无法运行，可以尝试更换taobao的npm源</p>
+<pre><code>npm install -g cnpm --registry=https://registry.npm.taobao.org
+</code></pre><h4 id="Hexo__u521D_u59CB_u5316"><a href="#Hexo__u521D_u59CB_u5316" class="headerlink" title="Hexo 初始化"></a>Hexo 初始化</h4><p>#安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。</p>
+<pre><code>$ hexo init &lt;folder&gt;
+$ cd &lt;folder&gt;
+$ npm install
+</code></pre><h1 id="u65B0_u5EFA_u5B8C_u6210_u540E_uFF0C_u6307_u5B9A_u6587_u4EF6_u5939_u7684_u76EE_u5F55_u5982_u4E0B"><a href="#u65B0_u5EFA_u5B8C_u6210_u540E_uFF0C_u6307_u5B9A_u6587_u4EF6_u5939_u7684_u76EE_u5F55_u5982_u4E0B" class="headerlink" title="新建完成后，指定文件夹的目录如下"></a>新建完成后，指定文件夹的目录如下</h1><pre><code>.
+├── _config.yml
+├── package.json
+├── scaffolds
+├── scripts
+├── source
+|      ├── _drafts
+|      └── _posts
+└── themes
+</code></pre><p>安装Hexo插件</p>
+<pre><code>npm install hexo-generator-index --save
+npm install hexo-generator-archive --save
+npm install hexo-generator-category --save
+npm install hexo-generator-tag --save
+npm install hexo-server --save
+npm install hexo-deployer-git --save
+npm install hexo-deployer-heroku --save
+npm install hexo-deployer-rsync --save
+npm install hexo-deployer-openshift --save
+npm install hexo-renderer-marked@0.2 --save
+npm install hexo-renderer-stylus@0.2 --save
+npm install hexo-generator-feed@1 --save
+npm install hexo-generator-sitemap@1 --save
+</code></pre><h4 id="u672C_u5730_u67E5_u770B_u6548_u679C"><a href="#u672C_u5730_u67E5_u770B_u6548_u679C" class="headerlink" title="本地查看效果"></a>本地查看效果</h4><p>继续执行以下命令，成功后可登录localhost:4000查看效果</p>
+<p>hexo server</p>
+<p>Hexo简写命令</p>
+<p>hexo n #生成文章，或者source_posts手动编辑<br>hexo s #本地发布预览效果<br>hexo g #生成public静态文件</p>
+<p>最后我选择手动同步更新至GitHub</p>
+<h4 id="u90E8_u7F72_u9759_u6001_u7F51_u9875_u5230GitHub"><a href="#u90E8_u7F72_u9759_u6001_u7F51_u9875_u5230GitHub" class="headerlink" title="部署静态网页到GitHub"></a>部署静态网页到GitHub</h4><p>在 GitHub 下创建项目 coam.github.com</p>
+<p>修改 _config.yml 的以下部分为</p>
+<pre><code>deploy:
+  type: git
+  repository: git@github.com:coam/coam.github.io.git
+  branch: master
+</code></pre><p>执行命令以下命令发布博客</p>
+<pre><code>hexo g //生成博客文章
+hexo d //上传至 github
+hexo new myNewBlog
+</code></pre><h3 id="Hexo__u4E3B_u9898_Jacman"><a href="#Hexo__u4E3B_u9898_Jacman" class="headerlink" title="Hexo 主题 Jacman"></a>Hexo 主题 Jacman</h3><blockquote>
+<p>hexo 默认 theme 主题是 landscape ，修改为 jacman</p>
+</blockquote>
+<pre><code>git clone https://github.com/wuchong/jacman.git themes/jacman
+</code></pre><p>参考列表</p>
+<p><a href="http://wsgzao.github.io/post/hexo-guide/" target="_blank" rel="external">使用GitHub和Hexo搭建免费静态Blog</a><br><a href="http://wsgzao.github.io/post/hexo-jacman/" target="_blank" rel="external">Jacman基于Pacman修改的Hexo主题</a><br><a href="https://github.com/wuchong/jacman/blob/master/README_zh.md" target="_blank" rel="external">wuchong/jacman</a><br><a href="http://wuchong.me/blog/2014/11/20/how-to-use-jacman/" target="_blank" rel="external">如何使用 Jacman 主题</a></p>
+<p><a href="https://hexo.io/zh-cn/docs/migration.html" target="_blank" rel="external">Wordpress 迁移到 Hexo</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="HEXO__u535A_u5BA2_u642D_u5EFA"><a href="#HEXO__u535A_u5BA2_u642D_u5EFA" class="headerlink" title="HEXO 博客搭建"></a>HEXO 博客搭建</h3><h4 i]]>
+    </summary>
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Lua 学习摘要]]></title>
+    <link href="http://yoursite.com/2016/01/03/Lua/"/>
+    <id>http://yoursite.com/2016/01/03/Lua/</id>
+    <published>2016-01-03T12:52:05.000Z</published>
+    <updated>2016-01-07T12:31:05.476Z</updated>
+    <content type="html"><![CDATA[<h3 id="Lua__u5B66_u4E60_u6458_u8981"><a href="#Lua__u5B66_u4E60_u6458_u8981" class="headerlink" title="Lua 学习摘要"></a>Lua 学习摘要</h3><p><a href="http://dhq.me/lua-learning-notes-package-and-module" target="_blank" rel="external">Lua 学习笔记(4) – 模块与包</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="Lua__u5B66_u4E60_u6458_u8981"><a href="#Lua__u5B66_u4E60_u6458_u8981" class="headerlink" title="Lua 学习摘要"></a>Lua 学习摘要</h3><p><a hre]]>
+    </summary>
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[使用 Rebar 管理 erlang 项目]]></title>
+    <link href="http://yoursite.com/2016/01/03/Rebar/"/>
+    <id>http://yoursite.com/2016/01/03/Rebar/</id>
+    <published>2016-01-03T12:52:05.000Z</published>
+    <updated>2016-01-07T12:31:27.475Z</updated>
+    <content type="html"><![CDATA[<h3 id="u4F7F_u7528_Rebar__u7BA1_u7406_erlang__u9879_u76EE"><a href="#u4F7F_u7528_Rebar__u7BA1_u7406_erlang__u9879_u76EE" class="headerlink" title="使用 Rebar 管理 erlang 项目"></a>使用 Rebar 管理 erlang 项目</h3><p><a href="https://github.com/rebar/rebar" target="_blank" rel="external">GitHub - </a></p>
+<h4 id="u4F7F_u7528_Intellij_idea15__u5229_u7528_rebar__u5F00_u53D1_u8C03_u8BD5_ejabberd"><a href="#u4F7F_u7528_Intellij_idea15__u5229_u7528_rebar__u5F00_u53D1_u8C03_u8BD5_ejabberd" class="headerlink" title="使用 Intellij idea15 利用 rebar 开发调试 ejabberd"></a>使用 Intellij idea15 利用 rebar 开发调试 ejabberd</h4><blockquote>
+<p>默认 Erlang 的 ejabberd 根项目下已经有 rebar 文件了</p>
+</blockquote>
+<p>1.Win下安装 <a href="http://www.erlang.org/download/otp_win64_18.2.1.exe" target="_blank" rel="external">otp.18</a> 到 G:\Program Files\erl7.2.1 下<br>2.将 G:\Program Files\erl7.2.1 添加系统环境变量 PATH<br>3.Intellij idea 项目 ejabberd 中 SDK 添加 OTP18.**<br>4.win下使用 Cygwin 安装 rebar</p>
+<pre><code>$ git clone git://github.com/rebar/rebar.git
+$ cd rebar
+$ ./bootstrap
+Recompile: src/getopt
+...
+Recompile: src/rebar_utils
+==&gt; rebar (compile)
+Congratulations! You now have a self-contained script called &quot;rebar&quot; in
+your current working directory. Place this script anywhere in your path
+and you can use rebar to build OTP-compliant apps.
+</code></pre><p>它将自动将 rebar 安装到 C:\Users\yafei\rebar 下</p>
+<ol>
+<li><p>File-&gt;Other Setting-&gt;Default Setting-&gt;Erlang Extenal Tools 配置 PATH 为 C:\Users\yafei\rebar\rebar.cmd</p>
+</li>
+<li><p>File-&gt;Setting-&gt;Setting-&gt;In “Build, Execution, Deployment/Erlan Compiler”, 勾选 “Compile project with rebar”.</p>
+</li>
+</ol>
+<p>6.Menu -&gt; Run -&gt; Edit Configurations -&gt; 添加按钮 -&gt; Erlang Rebar ,具体配置为 在 Command 一栏添加 任务 delete-deps clean get-deps compile 并任意填写一个任务名称 coamerlangtask</p>
+<p>7.在 Intellij idea 右上角可以点击运行开始打包</p>
+<hr>
+<h3 id="u9519_u8BEF_u5206_u6790"><a href="#u9519_u8BEF_u5206_u6790" class="headerlink" title="错误分析"></a>错误分析</h3><blockquote>
+<p>rebar unable to get dependency from github</p>
+<p>使用简单的 clean compile 命令会出现很多未找到依赖包 * ,因为编译 compile 前先要 get-deps 所以将 rebar 编译命令改为 delete-deps clean get-deps compile</p>
+</blockquote>
+<p>参考 <a href="http://stackoverflow.com/questions/10059579/rebar-unable-to-get-dependency-from-github" target="_blank" rel="external">rebar unable to get dependency from github</a></p>
+<hr>
+<p>参考列表<br><a href="https://github.com/rebar/rebar/wiki/Rebar-commands" target="_blank" rel="external">Rebar commands</a><br><a href="http://zewaren.net/site/?q=node/144" target="_blank" rel="external">Using Intellij IDEA to write and debug Erlang code</a><br><a href="https://www.jetbrains.com/idea/help/getting-started-with-erlang.html#d207953e377" target="_blank" rel="external">Intellij Idea 官网说明</a><br><a href="http://blog.csdn.net/shake1050/article/details/43670281" target="_blank" rel="external">windows下使用IntelliJ IDEA的erlang编译环境搭建(含rebar工具)</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="u4F7F_u7528_Rebar__u7BA1_u7406_erlang__u9879_u76EE"><a href="#u4F7F_u7528_Rebar__u7BA1_u7406_erlang__u9879_u76EE" class="headerlink"]]>
+    </summary>
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Erlang Mnesia Database]]></title>
+    <link href="http://yoursite.com/2016/01/03/Mnesia/"/>
+    <id>http://yoursite.com/2016/01/03/Mnesia/</id>
+    <published>2016-01-03T12:52:05.000Z</published>
+    <updated>2016-01-07T12:31:15.428Z</updated>
+    <content type="html"><![CDATA[<h3 id="Erlang_Mnesia_Database"><a href="#Erlang_Mnesia_Database" class="headerlink" title="Erlang Mnesia Database"></a>Erlang Mnesia Database</h3><p><a href="http://www.erlang.org/doc/man/mnesia.html" target="_blank" rel="external">Erlang Mnesia Doc</a></p>
+<p>最近学习erlang,在erlang中天然集成了一个分布式数据库名字叫mnesia,因为数据库天然就和erlang的元组,记录无缝结合,并且具有良好的分布式特性,能够自动地在几个erlang节点上实现数据复制,效果有点像zookeeper的节点集群,<br>而且mnesia还支持数据库事务特性,所以mnesia在erlang应用中使用得非常频繁.</p>
+<p>要在本地创建一个mnesia数据库,并且要实现插入,查询功能需要实现以下这几步:<br>1.启动erlang节点:</p>
+<pre><code>#erl -mnesia dir &apos;&quot;d://tmp//mnesia&quot;&apos; -sname mynode
+erl -mnesia dir &apos;&quot;C:\Users\yafei\DevWork\Erlang\dev\mnesia\data&quot;&apos; -name win@27.16.194.65 -setcookie 456789
+sudo erl -mnesia dir &apos;&quot;/data/home/data/mnesia/&quot;&apos; -name ali@42.96.194.60 -setcookie 456789
+</code></pre><p>注意路径双引号<br> 以上这个 “/data/home/data/mnesia/“ 目录是存放mnesia数据库的schema数据的,当然这个目录也可以不指定,那么mnesia数据库启动之后将把数据库的schema中的数据放在内存中,如果下次节点重启之后,之前数据库中创建的表结构数据就消失了.<br>2.接下来就是在erl shell中本地初始化一个空的 mnesia 数据库</p>
+<pre><code>mnesia:create_schema([node()]).
+</code></pre><p>  从参数上是一个节点列表,所以其实需要的话,可以在参数列表上设置多个erlang节点,就能在多个erlang节点上同时创建mnesia数据库并构成 Mnesia 集群.<br>3.启动mnesia数据库<br>  初始化完成了mnesia数据库schema之后,接下来就可以启动mneisa数据库了.</p>
+<pre><code>mnesia:start().
+</code></pre><p>至此,一个空的mneisa已经创建启动成功了,我们可以调用mnesia:info(). 查看当前mnesia数据库的一些状态,结果如下:</p>
+<pre><code>(ali@localhost)2&gt; mnesia:info().
+===&gt; System info in version &quot;4.13.2&quot;, debug level = none &lt;===
+opt_disc. Directory &quot;/data/home/data/mnesia&quot; is used.
+use fallback at restart = true
+running db nodes   = []
+stopped db nodes   = [ali@localhost]
+ok
+(ali@localhost)3&gt; mnesia:start().
+ok
+(ali@localhost)4&gt; mnesia:info().
+---&gt; Processes holding locks &lt;---
+---&gt; Processes waiting for locks &lt;---
+---&gt; Participant transactions &lt;---
+---&gt; Coordinator transactions &lt;---
+---&gt; Uncertain transactions &lt;---
+---&gt; Active tables &lt;---
+schema         : with 1        records occupying 408      words of mem
+===&gt; System info in version &quot;4.13.2&quot;, debug level = none &lt;===
+opt_disc. Directory &quot;/data/home/data/mnesia&quot; is used.
+use fallback at restart = false
+running db nodes   = [ali@localhost]
+stopped db nodes   = []
+master node tables = []
+remote             = []
+ram_copies         = []
+disc_copies        = [schema]
+disc_only_copies   = []
+[{ali@localhost,disc_copies}] = [schema]
+2 transactions committed, 0 aborted, 0 restarted, 0 logged to disc
+0 held locks, 0 in queue; 0 local transactions, 0 remote
+0 transactions waits for other nodes: []
+ok
+</code></pre><p>从 [{ali@localhost,disc_copies}] = [schema] 这行上来看当前数据库中只有一个数据库的schema表.</p>
+<hr>
+<h4 id="Mnesia__u96C6_u7FA4"><a href="#Mnesia__u96C6_u7FA4" class="headerlink" title="Mnesia 集群"></a>Mnesia 集群</h4><p>分别在 阿里云 ali 和 本机 win 启动两个节点</p>
+<pre><code>sudo -mnesia dir &apos;&quot;/data/home/data/mnesia/&quot;&apos; -name ali@42.96.194.60 -setcookie 456789
+erl -mnesia dir &apos;&quot;C:\Users\yafei\DevWork\Erlang\dev\mnesia\data&quot;&apos; -name win@27.16.194.65 -setcookie 456789
+</code></pre><p>保证两个节点都启动,并且 mnesia 没有启用</p>
+<pre><code>mnesia:delete_schema([&apos;win@27.16.194.65&apos;, &apos;ali@42.96.194.60&apos;]).
+mnesia:create_schema([&apos;win@27.16.194.65&apos;, &apos;ali@42.96.194.60&apos;]).
+</code></pre><p>然后启动两个节点的 mnesia,查看运行详情</p>
+<pre><code>(win@27.16.194.65)9&gt; mnesia:start().
+(win@27.16.194.65)9&gt; mnesia:info().
+---&gt; Processes holding locks &lt;---
+---&gt; Processes waiting for locks &lt;---
+---&gt; Participant transactions &lt;---
+---&gt; Coordinator transactions &lt;---
+---&gt; Uncertain transactions &lt;---
+---&gt; Active tables &lt;---
+schema         : with 1        records occupying 414      words of mem
+===&gt; System info in version &quot;4.13.2&quot;, debug level = none &lt;===
+opt_disc. Directory [99,58,47,85,115,101,114,115,47,121,97,102,101,105,47,68,
+101,118,87,111,114,107,47,69,114,108,97,110,103,47,100,
+101,118,47,109,110,101,115,105,97,47,85,115,101,114,115,
+121,97,102,101,105,68,101,118,87,111,114,107,69,114,108,
+97,110,103,127,101,118,109,110,101,115,105,97,127,97,116,
+97] is used.
+use fallback at restart = false
+running db nodes   = [&apos;ali@42.96.194.60&apos;,&apos;win@27.16.194.65&apos;]
+stopped db nodes   = []
+master node tables = []
+remote             = []
+ram_copies         = []
+disc_copies        = [schema]
+disc_only_copies   = []
+[{&apos;ali@42.96.194.60&apos;,disc_copies},{&apos;win@27.16.194.65&apos;,disc_copies}] = [schema]
+3 transactions committed, 0 aborted, 1 restarted, 2 logged to disc
+0 held locks, 0 in queue; 0 local transactions, 0 remote
+0 transactions waits for other nodes: []
+ok
+</code></pre><p>根据 running db nodes   = [‘ali@42.96.194.60’,’win@27.16.194.65’] 可以看出两个节点已成功组成 节点</p>
+<p>在任何一个节点添加数据表</p>
+<hr>
+<h4 id="erlang_mnesia__u6570_u636E_u5E93_u5B9E_u73B0SQL_u67E5_u8BE2"><a href="#erlang_mnesia__u6570_u636E_u5E93_u5B9E_u73B0SQL_u67E5_u8BE2" class="headerlink" title="erlang mnesia 数据库实现SQL查询"></a>erlang mnesia 数据库实现SQL查询</h4><blockquote>
+<p>Mnesia是一个分布式数据库管理系统,适合于电信和其它需要持续运行和具备软实时特性的Erlang应用,越来越受关注和使用,但是目前Mnesia资料却不多,很多都只有官方的用户指南.<br>下面的内容将着重说明  Mnesia 数据库如何实现SQL查询,实现select / insert / update / where / order by / join / limit / delete等SQL操作.</p>
+</blockquote>
+<p>参见示例 sql.erl</p>
+<blockquote>
+<p>注:使用qlc模块查询,需要在文件顶部声明”-include_lib(“stdlib/include/qlc.hrl”).”,否则编译时会产生”Warning: qlc:q/1 called, but “qlc.hrl” not included”的警告.</p>
+</blockquote>
+<hr>
+<h4 id="u4F7F_u7528_u5355_u72EC_u7684_u811A_u672C_u8FDE_u63A5_ejabberd_mnesia__u6570_u636E_u5E93"><a href="#u4F7F_u7528_u5355_u72EC_u7684_u811A_u672C_u8FDE_u63A5_ejabberd_mnesia__u6570_u636E_u5E93" class="headerlink" title="使用单独的脚本连接 ejabberd mnesia 数据库"></a>使用单独的脚本连接 ejabberd mnesia 数据库</h4><pre><code>Cookie = &apos;YOUR_EJABBERD_COOKIE&apos;. % mine was found in /var/lib/ejabberd/.erlang.cookie
+EjabberdNode = &apos;ejabberd@127.0.0.1&apos;. % or whatever you set as EJABBERD_NODE
+erlang:set_cookie(EjabberdNode, Cookie).
+net_adm:ping(EjabberdNode).
+rpc:call(EjabberdNode, mnesia, system_info, [tables]).
+</code></pre><p>参考 <a href="http://stackoverflow.com/questions/9232510/how-can-i-connect-to-ejabberds-mnesia-database-with-a-separate-script" target="_blank" rel="external">How can I connect to ejabberd’s Mnesia database with a separate script?</a></p>
+<hr>
+<h4 id="mnesia_u8868_u6570_u636EId_u81EA_u589E_u957F"><a href="#mnesia_u8868_u6570_u636EId_u81EA_u589E_u957F" class="headerlink" title="mnesia表数据Id自增长"></a>mnesia表数据Id自增长</h4><p>1.使用函数:</p>
+<pre><code>mnesia:dirty_update_counter(unique_id, mine_result, 1).
+</code></pre><p>2.该函数参数示意,<br>   unique_id 表名, mine_result 表名,每次自增N.<br>3.<br>   1.创建如下结构的mnesia数据库表 -record(unique_id, {item, uid}),该表是为了存储 mine_result 表的最大的Id值;<br>   2.每为 mine_result 表加入一条新记录时,需要得到新的id值: </p>
+<pre><code>mnesia:dirty_update_counter(unique_id,  mine_result , 1),
+</code></pre><p>从unique_id表中取出最大的Id值加1,更新unique_id表的数据,返回最大Id值加1,<br>注意:请在建立unique_id表的时候,往里面插入数据;表名,初始值,{ mine_result  ,0},<br>我做了一个实验如果unique_id表中没有数据的时候,并发向mine_result库中插入100条数据时,不稳定.<br>但是unique_id表中加入一个数据后,并发数提高到30000,还是很稳定.</p>
+<hr>
+<p>参考<br><a href="http://wudaijun.com/2015/04/erlang-mnesia/" target="_blank" rel="external">wudaijun’s blog - Erlang mnesia</a><br><a href="http://www.tqcto.com/article/db/11625.html" target="_blank" rel="external">创设Mnesia数据库</a><br><a href="http://www.infoq.com/cn/news/2007/08/mnesia" target="_blank" rel="external">Erlang的Mnesia——为高伸缩性应用准备的数据库管理系统</a><br><a href="http://www.cnblogs.com/liangjingyang/archive/2012/09/27/2705451.html" target="_blank" rel="external">[Erlang-0008][OTP] 高效指南 – 表和数据库(ets mnesia)</a><br><a href="http://www.dlive.me/2014/12/10/erlangmnesia/" target="_blank" rel="external">Erlang基础Mnesia 之应用场景</a><br><a href="http://blog.maxkit.com.tw/2014/04/erlang-mnesia.html" target="_blank" rel="external">erlang Mnesia - 尚待研究</a></p>
+<p><a href="http://4096.info/2013/10/28/mnesia%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C/" target="_blank" rel="external">mnesia数据库使用体验</a><br><a href="http://4096.info/2014/11/07/no-title-2/" target="_blank" rel="external">mnesia数据库优化</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="Erlang_Mnesia_Database"><a href="#Erlang_Mnesia_Database" class="headerlink" title="Erlang Mnesia Database"></a>Erlang Mnesia Databa]]>
+    </summary>
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Erlang 研究相关]]></title>
+    <link href="http://yoursite.com/2016/01/03/Erlang/"/>
+    <id>http://yoursite.com/2016/01/03/Erlang/</id>
+    <published>2016-01-03T12:52:05.000Z</published>
+    <updated>2016-01-07T12:30:57.770Z</updated>
+    <content type="html"><![CDATA[<h3 id="Erlang__u7814_u7A76_u76F8_u5173"><a href="#Erlang__u7814_u7A76_u76F8_u5173" class="headerlink" title="Erlang 研究相关"></a>Erlang 研究相关</h3><blockquote>
+<p>比较好的 Erlang 开发者博客及文档</p>
+</blockquote>
+<p><a href="http://allran.github.io/2015/05/13/erlang-use/" target="_blank" rel="external">木头人 - erlang use</a><br><a href="http://www.erlang-cn.com/118.html" target="_blank" rel="external">Erlang 中文教程Erlang中文教程,欢迎广大Erlang爱好者加入</a><br><a href="http://www.cnblogs.com/liangjingyang/archive/2012/07/15/2592691.html" target="_blank" rel="external">Simple - liangjingyang 博客</a><br><a href="http://wiki.jikexueyuan.com/project/erlang/#6f142dcd2b9ce7c7dd576f3a36fe2e9e" target="_blank" rel="external">Erlang 教程中文版</a><br><a href="http://svn.liancheng.info/cpie-cn/trunk/.build/html/part-i/index.html" target="_blank" rel="external">Erlang并发编程</a><br><a href="http://youthyblog.com/2015/07/22/erl%E5%91%BD%E4%BB%A4%E5%92%8C%E5%8F%82%E6%95%B0/" target="_blank" rel="external">erl命令和参数</a><br><a href="http://developerworks.github.io/" target="_blank" rel="external">元气糯米团子的Coding Blog</a><br><a href="http://wudaijun.com/categories/erlang/" target="_blank" rel="external">wudaijun’s blog</a></p>
+<p><a href="http://www.dlive.me/category/distributed/" target="_blank" rel="external">Erlang 相关</a></p>
+<hr>
+<h5 id="u7CFB_u7EDF_u9884_u5B9A_u4E49_u7684_u5B8F_3A"><a href="#u7CFB_u7EDF_u9884_u5B9A_u4E49_u7684_u5B8F_3A" class="headerlink" title="系统预定义的宏:"></a>系统预定义的宏:</h5><pre><code>?MODULE 表示当前模块名
+?MODULE_STRING 同上,但是以字符串形式
+?FILE 当前模块的文件名
+?LINE 调用的当前代码行数
+?MACHINE 机器名
+</code></pre><p><a href="https://bitbucket.org/gamexg/erlang/wiki/Home" target="_blank" rel="external">Erlang 语言学习笔记 / Home</a></p>
+<h5 id="u8981_u77E5_u9053_u4E00_u4E2A_u8282_u70B9ping_u901A_u4E48_3A"><a href="#u8981_u77E5_u9053_u4E00_u4E2A_u8282_u70B9ping_u901A_u4E48_3A" class="headerlink" title="要知道一个节点ping通么:"></a>要知道一个节点ping通么:</h5><pre><code>net_adm:ping(Nodes).-&gt; pong |pang
+node() 返回本节点名
+nodes() 返回所有其它节点名.
+</code></pre><p>[pong:成功 |pang: 失败]</p>
+<hr>
+<p>收藏<br><a href="http://dhq.me/the-interaction-experiment-between-erlang-and-websocket" target="_blank" rel="external">Erlang 与 WebSocket 之间的通讯交互</a><br><a href="http://dhq.me/parse-xml-in-erlang" target="_blank" rel="external">erlang 解析 xml 格式数据</a><br><a href="http://dhq.me/erlang-dict-intro" target="_blank" rel="external">Erlang 的 dict 模块函数方法介绍</a><br><a href="http://dhq.me/build-compile-eunit-release-erlang-application-with-rebar" target="_blank" rel="external">用 rebar 来构建、编译、测试、发布 Erlang 应用程序</a></p>
+<p><a href="http://no001.blog.51cto.com/1142339/1320855" target="_blank" rel="external">Erlang不能错过的盛宴</a></p>
+<p><a href="http://pzjay.blogspot.com/2012/11/test.html" target="_blank" rel="external">40+行erlang代码实现一个简易分布式计算框架</a></p>
+<h4 id="u9519_u8BEF_u5206_u6790"><a href="#u9519_u8BEF_u5206_u6790" class="headerlink" title="错误分析"></a>错误分析</h4><blockquote>
+<p>运行 rebar 出现如下错误</p>
+</blockquote>
+<pre><code>Sun Dec 20 21:15:31 yzhang@coam:~/RunProject/ejabberd$ sudo ./rebar get-deps
+/usr/bin/env: escript: No such file or directory
+
+Sun Dec 20 21:22:50 yzhang@coam:~/RunProject$ whereis escript
+escript: /opt/otp/bin/escript
+</code></pre><p>原因是我安装 otp 时 使用命令 ./configure –prefix=/opt/otp/ 指定安装 otp 到 /opt/otp/ 下</p>
+<p>于是重新安装 otp ,并取消 ~/.bashrc 中配置的 erlang 环境变量</p>
+<h1 id="Erlang"><a href="#Erlang" class="headerlink" title="Erlang"></a>Erlang</h1><p>#export PATH=/opt/otp/bin:$PATH</p>
+<p>重启 ubuntu 后敲 erl 命令提示未找到,注释成功,重新使用默认参数安装otp</p>
+<blockquote>
+<p>ejabberd 源码编译安装,执行命令 ejabberd ./configure 后出现如下错误</p>
+</blockquote>
+<pre><code>Sun Dec 20 21:21:26 yzhang@coam:~/RunProject/ejabberd$ sudo ./configure
+checking whether make sets $(MAKE)... yes
+checking for a BSD-compatible install... /usr/bin/install -c
+checking for a sed that does not truncate output... /bin/sed
+checking for erl... no
+checking for erlc... no
+checking for erl... no
+configure: error: Erlang/OTP interpreter (erl) not found but required
+</code></pre><p>解决方案,重新安装 otp到系统默认路径</p>
+<p>参考 <a href="http://stackoverflow.com/questions/12327809/why-cannot-escript-run" target="_blank" rel="external">http://stackoverflow.com/questions/12327809/why-cannot-escript-run</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="Erlang__u7814_u7A76_u76F8_u5173"><a href="#Erlang__u7814_u7A76_u76F8_u5173" class="headerlink" title="Erlang 研究相关"></a>Erlang 研究相关</]]>
+    </summary>
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Hello tow]]></title>
+    <link href="http://yoursite.com/2016/01/03/hello-two/"/>
+    <id>http://yoursite.com/2016/01/03/hello-two/</id>
+    <published>2016-01-03T12:49:04.726Z</published>
+    <updated>2016-01-03T12:49:04.725Z</updated>
+    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post 兔子"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <link href="http://yoursite.com/2016/01/03/hello-world/"/>
+    <id>http://yoursite.com/2016/01/03/hello-world/</id>
+    <published>2016-01-03T11:40:19.831Z</published>
+    <updated>2016-01-03T11:40:19.830Z</updated>
+    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info 卡卡: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Hello One]]></title>
+    <link href="http://yoursite.com/2016/01/03/hello-one/"/>
+    <id>http://yoursite.com/2016/01/03/hello-one/</id>
+    <published>2016-01-03T11:39:51.880Z</published>
+    <updated>2016-01-03T11:39:51.879Z</updated>
+    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io]]>
+    </summary>
+    
+  </entry>
+  
+</feed>

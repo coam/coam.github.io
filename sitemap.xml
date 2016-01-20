@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://yoursite.com/2016/01/08/MarkDownNote/</loc>
+    <lastmod>2016-01-08T03:16:39.208Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/01/07/my-blogs/</loc>
+    <lastmod>2016-01-07T14:23:11.261Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/01/03/XMPP/</loc>
+    <lastmod>2016-01-07T12:38:18.640Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/01/03/Rebar/</loc>
+    <lastmod>2016-01-07T12:31:27.475Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/01/03/MQTT/</loc>
+    <lastmod>2016-01-07T12:31:20.830Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/01/03/Mnesia/</loc>
+    <lastmod>2016-01-07T12:31:15.428Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/01/03/Lua/</loc>
+    <lastmod>2016-01-07T12:31:05.476Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/01/03/Erlang/</loc>
+    <lastmod>2016-01-07T12:30:57.770Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/01/03/EjabberdNote/</loc>
+    <lastmod>2016-01-07T12:30:50.235Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/01/03/blog-myNewBlog/</loc>
+    <lastmod>2016-01-03T13:01:11.555Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/01/03/hello-two/</loc>
+    <lastmod>2016-01-03T12:49:04.725Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/01/03/hello-world/</loc>
+    <lastmod>2016-01-03T11:40:19.830Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/01/03/hello-one/</loc>
+    <lastmod>2016-01-03T11:39:51.879Z</lastmod>
+  </url>
+  
+</urlset>
