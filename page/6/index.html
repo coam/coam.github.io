@@ -140,7 +140,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/markdown-gfw-hexo-jekyll/" style="font-size: 10px;">markdown gfw hexo jekyll</a>
+                        <a href="/tags/markdown-gfw-hexo-jekyll/" style="font-size: 10px;">markdown gfw hexo jekyll</a>
                     </div>
                 </section>
                 
@@ -215,366 +215,6 @@
     </div>
 </nav>
       <div class="body-wrap">
-  
-    <article id="post-Server/ServerContingencyPlans" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/07/Server/ServerContingencyPlans/" class="article-date">
-      <time datetime="2016-01-07T09:59:14.145Z" itemprop="datePublished">2016-01-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="u670D_u52A1_u5668_u707E_u5907_u91CD_u5EFA_u5E94_u6025_u5904_u7406_u5907_u5FD8_u5F55-_u670D_u52A1_u5668_u5E94_u6025_u9884_u6848"><a href="#u670D_u52A1_u5668_u707E_u5907_u91CD_u5EFA_u5E94_u6025_u5904_u7406_u5907_u5FD8_u5F55-_u670D_u52A1_u5668_u5E94_u6025_u9884_u6848" class="headerlink" title="服务器灾备重建应急处理备忘录-服务器应急预案"></a>服务器灾备重建应急处理备忘录-服务器应急预案</h2><hr>
-<h3 id="u670D_u52A1_u5668_u91CD_u542F_2C_u68C0_u67E5_u4EE5_u4E0B_u8F6F_u4EF6_3A"><a href="#u670D_u52A1_u5668_u91CD_u542F_2C_u68C0_u67E5_u4EE5_u4E0B_u8F6F_u4EF6_3A" class="headerlink" title="服务器重启,检查以下软件:"></a>服务器重启,检查以下软件:</h3><p>一、手动重启GPS数据处理程序 MinaGPS.jar</p>
-<p>二、手动重启 MongoDB</p>
-<pre><code>sudo mongod -f /etc/mongodb.conf
-</code></pre><p>可以找到目前的进程</p>
-<pre><code>ps -ef | grep mongodb
-</code></pre><p>或者</p>
-<pre><code>/etc/init.d/mongodb restart
-</code></pre><p>三、mysql手动连接redis</p>
-<pre><code>select redis_servers_set_v2(&quot;127.0.0.1&quot;,6379);
-</code></pre><p>四、重建Redis运行数据</p>
-<p>包括 AccountInfoSerial AreaSerialList AppShareInfoList</p>
-<pre><code>http://www.syam.cc/index/RebuildRedis
-</code></pre><p>五、重启 PHPResque 队列任务服务（参考 MicroApp/cli/READE.ME文件）</p>
-<pre><code>sudo nohup php /data/home/yzhang/www/www/applications/plugins/PHPResque/bin/resque &amp;
-</code></pre><p>六、启动推送服务器 emqttd</p>
-<pre><code>cd RunProject
-sudo emqttd/bin/emqttd start
-</code></pre><hr>
-<h2 id="u670D_u52A1_u5668_u6545_u969C_u8F6C_u79FB_u5904_u7406_u529E_u6CD5_3A"><a href="#u670D_u52A1_u5668_u6545_u969C_u8F6C_u79FB_u5904_u7406_u529E_u6CD5_3A" class="headerlink" title="服务器故障转移处理办法:"></a>服务器故障转移处理办法:</h2><p>若出现服务器突发故障,重建服务器应执行以下几步:</p>
-<p>一、安装 Nginx</p>
-<p>二、安装 Mysql</p>
-<p>导入备份数据库 LonalDatabase、IM_Ejabberd、Wordpress</p>
-<p>三、安装 PHP</p>
-<p>四、复制项目源文件至新的服务器</p>
-<p>四、安装 Redis</p>
-<p>五、安装 MemCache</p>
-<p>七、安装 mongodb</p>
-<p>参考官方文档 <a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/" target="_blank" rel="external">http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/</a></p>
-<p>mongo备份与恢复,参考</p>
-<p><a href="http://weizhifeng.net/backup-and-restore-data-of-mongodb.html" target="_blank" rel="external">Mongodb数据的备份与恢复</a></p>
-<p><a href="https://mms.mongodb.com/host/list/55438b39e4b07f9b24b20133#deployment/topology" target="_blank" rel="external">https://mms.mongodb.com/host/list/</a></p>
-<p>六、安装PHP的Phalcon扩展框架</p>
-<p>参见 <a href="http://phalconphp.com/en/download" target="_blank" rel="external">http://phalconphp.com/en/download</a></p>
-<p>安装mysql2redis</p>
-<p>参考:<a href="https://github.com/dawnbreaks/mysql2redis" target="_blank" rel="external">https://github.com/dawnbreaks/mysql2redis</a></p>
-<p>参见:<a href="http://wp.iirii.com/?p=1073" target="_blank" rel="external">http://wp.iirii.com/?p=1073</a></p>
-<p>安装MQTT推送框架emqtt,在/data/home/yzhang/RunProject/下</p>
-<p>参见 <a href="http://emqtt.io/" target="_blank" rel="external">http://emqtt.io/</a></p>
-<p>安装邮件服务器</p>
-<p>测试</p>
-<hr>
-<h2 id="u670D_u52A1_u5668_u65E5_u5E38_u7EF4_u62A4_u53CA_u5907_u4EFD_u4E8B_u9879_3A"><a href="#u670D_u52A1_u5668_u65E5_u5E38_u7EF4_u62A4_u53CA_u5907_u4EFD_u4E8B_u9879_3A" class="headerlink" title="服务器日常维护及备份事项:"></a>服务器日常维护及备份事项:</h2><p>问题集锦:</p>
-<p>一、安装php扩展,不仅不要在 /etc/php5/fpm 下安装相应的so,也应在/etc/php5/cli 里边添加so,两者都可独立运行,否则安装了fpm的扩展,还是不能找到相应的扩展.</p>
-<p>二、更新php5-fpm后,php出现错误</p>
-<pre><code>PHP Fatal error:  Class &apos;MongoClient&apos; not found in /data/home/yzhang/www/www/applications/config/Services.php on line 146
-</code></pre><p>查看phpinfo发现无mongodb 扩展,错误原因为未安装php的 mongoClient drive</p>
-<p>首先执行命令依次安装以下程序:</p>
-<pre><code>sudo apt-get install php-pear
-sudo apt-get install php5-dev
-sudo pecl install mongo
-</code></pre><p>安装完成之后 将以下行添加到 php.ini:</p>
-<pre><code>extension=mongo.so
-</code></pre><p>重启 php5-fpm 问题解决</p>
-<p>参考 <a href="http://php.net/manual/zh/mongo.installation.php" target="_blank" rel="external">http://php.net/manual/zh/mongo.installation.php</a></p>
-<p>参考 <a href="http://askubuntu.com/questions/403327/install-pecl-packages-on-ubuntu" target="_blank" rel="external">http://askubuntu.com/questions/403327/install-pecl-packages-on-ubuntu</a></p>
-<p>重启 nginx php5-fpm</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Server/Config/Server/ServerDisasterRestart" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/07/Server/Config/Server/ServerDisasterRestart/" class="article-date">
-      <time datetime="2016-01-07T09:59:14.120Z" itemprop="datePublished">2016-01-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="u670D_u52A1_u5668_u707E_u5907_u91CD_u5EFA_u5E94_u6025_u5904_u7406_u5907_u5FD8_u5F55_-__u670D_u52A1_u5668_u610F_u5916_u91CD_u542F"><a href="#u670D_u52A1_u5668_u707E_u5907_u91CD_u5EFA_u5E94_u6025_u5904_u7406_u5907_u5FD8_u5F55_-__u670D_u52A1_u5668_u610F_u5916_u91CD_u542F" class="headerlink" title="服务器灾备重建应急处理备忘录 - 服务器意外重启"></a>服务器灾备重建应急处理备忘录 - 服务器意外重启</h2><hr>
-<h3 id="u670D_u52A1_u5668_u610F_u5916_u91CD_u542F_2C_u68C0_u67E5_u4EE5_u4E0B_u8F6F_u4EF6_3A"><a href="#u670D_u52A1_u5668_u610F_u5916_u91CD_u542F_2C_u68C0_u67E5_u4EE5_u4E0B_u8F6F_u4EF6_3A" class="headerlink" title="服务器意外重启,检查以下软件:"></a>服务器意外重启,检查以下软件:</h3><h3 id="u4E00_u3001_u624B_u52A8_u91CD_u542FGPS_u6570_u636E_u5904_u7406_u7A0B_u5E8F_MinaGPS-jar"><a href="#u4E00_u3001_u624B_u52A8_u91CD_u542FGPS_u6570_u636E_u5904_u7406_u7A0B_u5E8F_MinaGPS-jar" class="headerlink" title="一、手动重启GPS数据处理程序 MinaGPS.jar"></a>一、手动重启GPS数据处理程序 MinaGPS.jar</h3><hr>
-<h3 id="u4E8C_u3001MongoDB_u76F8_u5173"><a href="#u4E8C_u3001MongoDB_u76F8_u5173" class="headerlink" title="二、MongoDB相关"></a>二、MongoDB相关</h3><p>可以找到目前的进程</p>
-<pre><code>ps -ef | grep mongodb
-</code></pre><p>手动重启 MongoDB</p>
-<pre><code>sudo mongod -f /etc/mongodb.conf
-</code></pre><p>或者</p>
-<pre><code>/etc/init.d/mongodb restart
-</code></pre><h4 id="u6D4B_u8BD5"><a href="#u6D4B_u8BD5" class="headerlink" title="测试"></a>测试</h4><hr>
-<h3 id="u4E09_u3001mysql_u624B_u52A8_u8FDE_u63A5redis"><a href="#u4E09_u3001mysql_u624B_u52A8_u8FDE_u63A5redis" class="headerlink" title="三、mysql手动连接redis"></a>三、mysql手动连接redis</h3><pre><code>select redis_servers_set_v2(&quot;43.241.222.110&quot;,6379);
-</code></pre><hr>
-<h3 id="u56DB_u3001Redis_u76F8_u5173"><a href="#u56DB_u3001Redis_u76F8_u5173" class="headerlink" title="四、Redis相关"></a>四、Redis相关</h3><p>重建Redis运行数据包括 AccountInfoSerial areaSerialList AppShareInfoList</p>
-<p><a href="http://www.syam.cc/index/RebuildRedis" target="_blank" rel="external">http://www.syam.cc/index/RebuildRedis</a></p>
-<hr>
-<h3 id="u4E94_u3001_u91CD_u542F_PHPResque__u961F_u5217_u4EFB_u52A1_u670D_u52A1_uFF08_u53C2_u8003_MicroApp/cli/READE-ME_u6587_u4EF6_uFF09"><a href="#u4E94_u3001_u91CD_u542F_PHPResque__u961F_u5217_u4EFB_u52A1_u670D_u52A1_uFF08_u53C2_u8003_MicroApp/cli/READE-ME_u6587_u4EF6_uFF09" class="headerlink" title="五、重启 PHPResque 队列任务服务（参考 MicroApp/cli/READE.ME文件）"></a>五、重启 PHPResque 队列任务服务（参考 MicroApp/cli/READE.ME文件）</h3><pre><code>sudo nohup php /data/home/yzhang/www/www/applications/plugins/PHPResque/bin/resque &amp;
-</code></pre><hr>
-<h3 id="u516D_u3001MQTT_u63A8_u9001_u670D_u52A1_u5668_emqttd__u76F8_u5173"><a href="#u516D_u3001MQTT_u63A8_u9001_u670D_u52A1_u5668_emqttd__u76F8_u5173" class="headerlink" title="六、MQTT推送服务器 emqttd 相关"></a>六、MQTT推送服务器 emqttd 相关</h3><p>启动 <strong>emqttd</strong> 推送服务器</p>
-<pre><code>cd RunProject
-emqttd/bin/emqttd start
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Server/Config/Server/ServerDisasterRecovery" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/07/Server/Config/Server/ServerDisasterRecovery/" class="article-date">
-      <time datetime="2016-01-07T09:59:14.102Z" itemprop="datePublished">2016-01-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="u670D_u52A1_u5668_u707E_u5907_u91CD_u5EFA_u5E94_u6025_u5904_u7406_u5907_u5FD8_u5F55_-__u670D_u52A1_u5668_u6545_u969C_u8F6C_u79FB_u5904_u7406_u529E_u6CD5"><a href="#u670D_u52A1_u5668_u707E_u5907_u91CD_u5EFA_u5E94_u6025_u5904_u7406_u5907_u5FD8_u5F55_-__u670D_u52A1_u5668_u6545_u969C_u8F6C_u79FB_u5904_u7406_u529E_u6CD5" class="headerlink" title="服务器灾备重建应急处理备忘录 - 服务器故障转移处理办法"></a>服务器灾备重建应急处理备忘录 - 服务器故障转移处理办法</h2><blockquote>
-<p>若出现服务器突发故障,应遵循以下步骤重建服务器</p>
-</blockquote>
-<hr>
-<h3 id="u4E00_u3001_u5B89_u88C5Nginx"><a href="#u4E00_u3001_u5B89_u88C5Nginx" class="headerlink" title="一、安装Nginx"></a>一、安装Nginx</h3><hr>
-<h3 id="u4E8C_u3001_u5B89_u88C5Mysql"><a href="#u4E8C_u3001_u5B89_u88C5Mysql" class="headerlink" title="二、安装Mysql"></a>二、安装Mysql</h3><p>导入备份数据库 LonalDatabase、IM_Ejabberd、Wordpress</p>
-<hr>
-<h3 id="u4E09_u3001_u5B89_u88C5PHP"><a href="#u4E09_u3001_u5B89_u88C5PHP" class="headerlink" title="三、安装PHP"></a>三、安装PHP</h3><hr>
-<h3 id="u56DB_u3001_u590D_u5236_u9879_u76EE_u6E90_u6587_u4EF6_u81F3_u65B0_u7684_u670D_u52A1_u5668"><a href="#u56DB_u3001_u590D_u5236_u9879_u76EE_u6E90_u6587_u4EF6_u81F3_u65B0_u7684_u670D_u52A1_u5668" class="headerlink" title="四、复制项目源文件至新的服务器"></a>四、复制项目源文件至新的服务器</h3><hr>
-<h3 id="u56DB_u3001_u5B89_u88C5Redis"><a href="#u56DB_u3001_u5B89_u88C5Redis" class="headerlink" title="四、安装Redis"></a>四、安装Redis</h3><hr>
-<h3 id="u4E94_u3001_u5B89_u88C5MemCache"><a href="#u4E94_u3001_u5B89_u88C5MemCache" class="headerlink" title="五、安装MemCache"></a>五、安装MemCache</h3><hr>
-<h3 id="u4E03_u3001_u5B89_u88C5mongodb"><a href="#u4E03_u3001_u5B89_u88C5mongodb" class="headerlink" title="七、安装mongodb"></a>七、安装mongodb</h3><p>参考官方文档 <a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/" target="_blank" rel="external">http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/</a></p>
-<p>mongo备份与恢复,参考</p>
-<p><a href="http://weizhifeng.net/backup-and-restore-data-of-mongodb.html" target="_blank" rel="external">http://weizhifeng.net/backup-and-restore-data-of-mongodb.html</a></p>
-<p><a href="https://mms.mongodb.com/host/list/55438b39e4b07f9b24b20133#deployment/topology" target="_blank" rel="external">https://mms.mongodb.com/host/list/55438b39e4b07f9b24b20133#deployment/topology</a></p>
-<hr>
-<h3 id="u516D_u3001_u5B89_u88C5PHP_u7684Phalcon_u6269_u5C55_u6846_u67B6"><a href="#u516D_u3001_u5B89_u88C5PHP_u7684Phalcon_u6269_u5C55_u6846_u67B6" class="headerlink" title="六、安装PHP的Phalcon扩展框架"></a>六、安装PHP的Phalcon扩展框架</h3><p>参见 <a href="http://phalconphp.com/en/download" target="_blank" rel="external">http://phalconphp.com/en/download</a></p>
-<p>安装 mysql2redis</p>
-<p>参考:<a href="https://github.com/dawnbreaks/mysql2redis" target="_blank" rel="external">https://github.com/dawnbreaks/mysql2redis</a></p>
-<p>参见:<a href="http://wp.iirii.com/?p=1073" target="_blank" rel="external">http://wp.iirii.com/?p=1073</a></p>
-<p>安装MQTT推送框架emqtt,在/data/home/yzhang/RunProject/ 下</p>
-<p>参见 <a href="http://emqtt.io/" target="_blank" rel="external">http://emqtt.io/</a></p>
-<p>测试</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Server/PPA" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/07/Server/PPA/" class="article-date">
-      <time datetime="2016-01-07T09:59:14.068Z" itemprop="datePublished">2016-01-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="u4F7F_u7528_PPA__u5B89_u88C5_u8F6F_u4EF6"><a href="#u4F7F_u7528_PPA__u5B89_u88C5_u8F6F_u4EF6" class="headerlink" title="使用 PPA 安装软件"></a>使用 PPA 安装软件</h3><p><a href="https://launchpad.net/" target="_blank" rel="external">https://launchpad.net/</a><br>常见的 ppa 源 </p>
-<pre><code>sudo apt-get install python-software-properties
-sudo apt-get install -y language-pack-en-base
-sudo LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php-7.0
-sudo apt-get update
-#sudo apt-get dist-upgrade // 这步为系统全部更新,不推荐
-sudo apt-get install php7.0
-</code></pre><p>将会在 /etc/apt/t/sources.list.d/ ondrej-php-7_0-trusty.list 和  ondrej-php-7_0-trusty.list.save 两个文件</p>
-<hr>
-<p>使用以下命令可以查看所有使用 添加的ppa源,当程序需要卸载或降级的时候需要将最新的 ondrej-php-7_0-trusty.list* 删掉</p>
-<blockquote>
-<p>查看所有已添加的 ppa 源</p>
-</blockquote>
-<pre><code>grep ^ /etc/apt/sources.list /etc/apt/sources.list.d/*
-</code></pre><p>参考 <a href="http://askubuntu.com/questions/148932/how-can-i-get-a-list-of-all-repositories-and-ppas-from-the-command-line" target="_blank" rel="external">How can I get a list of all repositories and PPAs from the command line?</a></p>
-<blockquote>
-<p>手动删除 [/etc/apt/t/sources.list.d/ -&gt; ondrej-php-7_0-trusty.list*] 后,需要删掉自动添加的key,使用以下命令查看所有已添加的 ppa key:</p>
-</blockquote>
-<pre><code>$ sudo apt-key list
-...
-/etc/apt/trusted.gpg.d/ondrej-php-7_0.gpg
------------------------------------------
-pub   1024R/E5267A6C 2009-01-26
-uid                  Launchpad PPA for Ondřej Surý
-
-/etc/apt/trusted.gpg.d/ondrej-php5-5_6.gpg
-------------------------------------------
-pub   1024R/E5267A6C 2009-01-26
-uid                  Launchpad PPA for Ondřej Surý
-
-/etc/apt/trusted.gpg.d/ondrej-php5.gpg
---------------------------------------
-pub   1024R/E5267A6C 2009-01-26
-uid                  Launchpad PPA for Ondřej Surý
-...
-</code></pre><blockquote>
-<p>删除对应的 key</p>
-</blockquote>
-<pre><code>$ apt-key del $ID
-$ sudo apt-key del E5267A6C
-</code></pre><p>参考 <a href="http://unix.stackexchange.com/questions/60595/how-to-undo-sudo-add-apt-repository" target="_blank" rel="external">How to undo sudo add-apt-repository?</a></p>
-<hr>
-<h4 id="u4F7F_u7528apt-get__u5B89_u88C5_php7__u540E_2C_u53D1_u73B0phalcon__u6682_u65F6_u4E0D_u652F_u6301php7_2C_u4E8E_u662F_u51B3_u5B9A_u5378_u8F7Dphp7_u91CD_u65B0_u5B89_u88C5php5-6"><a href="#u4F7F_u7528apt-get__u5B89_u88C5_php7__u540E_2C_u53D1_u73B0phalcon__u6682_u65F6_u4E0D_u652F_u6301php7_2C_u4E8E_u662F_u51B3_u5B9A_u5378_u8F7Dphp7_u91CD_u65B0_u5B89_u88C5php5-6" class="headerlink" title="使用apt-get 安装 php7 后,发现phalcon 暂时不支持php7,于是决定卸载php7重新安装php5.6"></a>使用apt-get 安装 php7 后,发现phalcon 暂时不支持php7,于是决定卸载php7重新安装php5.6</h4><p>使用如下命令卸载 php7.0</p>
-<pre><code>sudo apt-get --purge remove php7.0
-</code></pre><p>需要同时卸载 php*-common 依赖软件</p>
-<pre><code>sudo apt-get --purge remove php5-common
-sudo apt-get autoremove
-</code></pre><h4 id="ppa__u964D_u7EA7_u6216_u5378_u8F7D_u5DF2_u5B89_u88C5_u8F6F_u4EF6__u5927_u6982_u4E3A_u4EE5_u4E0B_u51E0_u6B65_3A"><a href="#ppa__u964D_u7EA7_u6216_u5378_u8F7D_u5DF2_u5B89_u88C5_u8F6F_u4EF6__u5927_u6982_u4E3A_u4EE5_u4E0B_u51E0_u6B65_3A" class="headerlink" title="ppa 降级或卸载已安装软件 大概为以下几步:"></a>ppa 降级或卸载已安装软件 大概为以下几步:</h4><p>安装ppa源扩展工具</p>
-<pre><code>apt-get install -y ppa-purge
-</code></pre><p>现在的版本是php5.5.要是不小心安装了php5.5要怎么样,才能重新安装php5.4呢? 方法如下:</p>
-<pre><code>add-apt-repository  ppa:ondrej/php5-oldstable
-apt-get update
-ppa-purge ppa:ondrej/php5
-apt-get update &amp;&amp; apt-get upgrade -y &amp;&amp; apt-get autoremove -y &amp;&amp; apt-get autoclean -y
-apt-get install php5-fpm
-</code></pre><p>参考 <a href="http://blog.x228.com/archives/316.html" target="_blank" rel="external">ubuntu通过ppa源安装php5.4或php5.5</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd_old" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/07/Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd_old/" class="article-date">
-      <time datetime="2016-01-07T09:58:58.524Z" itemprop="datePublished">2016-01-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        {"loglevel":5,"log_rotate_size":10485760,"log_rotate_date":"","log_rotate_count":1,"log_rate_limit":100,"hosts":["coopens.com"],"define_macro":{"COOPENS_SSL_CERT_LOCATION":"/etc/ejabberd/ejabberd.pem","ICQ_JABBER_AT_PASSWORD":"123456","AIM_JABBER_AT_PASSWORD":"123456","TLS_OPTIONS":["no_sslv2","no_sslv3","no_tlsv1"],"TLS_CIPHERS":"ECDH:DH:!CAMELLIA128:!3DES:!MD5:!RC4:!aNULL:!NULL:!EXPORT:!LOW:!MEDIUM","TRANSPORTS":["aim.coopens.com","icq.coopens.com"]},"disable_sasl_mechanisms":["X-OAUTH2"],"commands_admin_access":"xmlrpc_access","commands":[{"add_commands":"user"}],"oauth_expire":3600,"listen":[{"port":4560,"ip":"42.96.194.60","module":"ejabberd_xmlrpc","maxsessions":10,"timeout":5000,"AccessCommands":{},"access_commands":{"xmlrpc_access":{"commands":"all","options":{}},"xmlrpc":{"commands":["register","change_password","send_message","registered_users","unregister"],"options":[]}}},{"port":5222,"module":"ejabberd_c2s","certfile":"/etc/ejabberd/ejabberd.pem","starttls":true,"starttls_required":true,"protocol_options":"TLS_OPTIONS","ciphers":"TLS_CIPHERS","resend_on_timeout":true,"zlib":true,"max_stanza_size":65536,"max_ack_queue":32767,"resume_timeout":1200,"shaper":"c2s_shaper","access":"c2s"},{"port":5269,"module":"ejabberd_s2s_in","max_stanza_size":65536},{"port":5280,"module":"ejabberd_http","request_handlers":{"/websocket":"ejabberd_http_ws","/pub/archive":"mod_http_fileserver","/log":"mod_log_http","/oauth":"ejabberd_oauth","/api":"mod_http_api"},"web_admin":true,"http_poll":false,"http_bind":true,"captcha":true},{"ip":"::","port":5349,"module":"ejabberd_stun","tls":true,"certfile":"COOPENS_SSL_CERT_LOCATION","use_turn":true,"turn_ip":"42.96.194.60","turn_min_port":49152,"turn_max_port":50000,"access":"local"},{"ip":"127.0.0.1","port":5401,"module":"ejabberd_service","hosts":{"icq.coopens.com":{"password":"ICQ_JABBER_AT_PASSWORD"}},"access":"local"},{"ip":"127.0.0.1","port":5403,"module":"ejabberd_service","hosts":{"aim.coopens.com":{"password":"AIM_JABBER_AT_PASSWORD"}},"access":"locald"},{"port":5443,"module":"ejabberd_http","tls":true,"certfile":"/etc/ejabberd/ejabberd.pem","request_handlers":{"upload":"mod_http_upload"}}],"s2s_use_starttls":"optional","s2s_certfile":"/etc/ejabberd/ejabberd.pem","s2s_protocol_options":"TLS_OPTIONS","s2s_ciphers":"TLS_CIPHERS","s2s_access":"authenticated","outgoing_s2s_families":["ipv4","ipv6"],"outgoing_s2s_port":5269,"outgoing_s2s_timeout":10000,"auth_method":"odbc","redis_server":"43.241.222.110","redis_db":0,"odbc_type":"mysql","odbc_server":"localhost","odbc_database":"IM_Ejabberd","odbc_username":"zhangyanxi","odbc_password":"yanxi312","odbc_port":3306,"odbc_start_interval":20,"odbc_keepalive_interval":30,"shaper":{"normal":1000,"fast":50000},"max_fsm_queue":1000,"acl":{"admin":{"user":[{"zyf":"coopens.com"}]},"loopback":{"ip":["127.0.0.0/8"]},"local":{"user_regexp":""},"trusted_servers":{"server":["coopens.com"]},"muc_admin":{"user":[{"zyf":"coopens.com"},{"viper":"jabber.at"},{"tom":"fnord.at"},{"michaelpuermayr":"jabber.at"}]},"xmlrpc_access":{"user":[{"zyf":"coopens.com"}]},"xmlrpc_bot":{"user":[{"xmlrpc-robot":"coopens.com"},{"zyf":"coopens.com"}]},"xmlrpc_users":{"user":[{"xmlrpc":"coopens.com"},{"zyf":"coopens.com"}]}},"access":{"admin":{"blocked":"deny","admin":"allow"},"everybody":{"blocked":"deny","all":"allow"},"max_user_sessions":{"admin":"infinity","anon_jabber_at":1,"all":3},"max_user_offline_messages":{"admin":2000,"anon_jabber_at":0,"all":100},"local":{"blocked":"deny","anon_jabber_at":"deny","local":"allow"},"authenticated":{"blocked":"deny","anon_jabber_at":"deny","all":"allow"},"webchat":{"blocked":"deny","local":"allow","anon_jabber_at":"allow"},"max_user_mam_messages":{"admin":0,"anon_jabber_at":0,"all":100000},"c2s":{"blocked":"deny","all":"allow"},"c2s_shaper":{"admin":"none","all":"normal"},"s2s_shaper":{"all":"fast"},"proxy_shaper":{"admin":"none","local":"proxy"},"announce":{"admin":"allow"},"configure":{"blocked":"deny","admin":"allow"},"muc_admin":{"admin":"allow"},"muc_create":{"local":"allow"},"muc":{"all":"allow"},"pubsub_createnode":{"local":"allow"},"register":{"all":"deny"},"trusted_network":{"loopback":"allow"},"xmlrpc_access":{"admin":"allow","user":"allow","xmlrpc_users":"allow","xmlrpc_bot":"allow"}},"language":"en","host_config":{"coopens.com":{"language":"zh"}},"default_db":"odbc","modules":{"mod_adhoc":{},"mod_admin_extra":{},"mod_announce":{"access":"admin","db_type":"odbc"},"mod_blocking":{},"mod_caps":{},"mod_carboncopy":{},"mod_client_state":{"drop_chat_states":true,"queue_presence":true},"mod_configure":{},"mod_disco":{},"mod_echo":{},"mod_irc":{"access":"authenticated","default_encoding":"utf-8"},"mod_fail2ban":{"c2s_max_auth_failures":5},"mod_http_bind":{"max_inactivity":400},"mod_last":{"db_type":"odbc"},"mod_muc":{"access":"muc","access_create":"muc_create","access_persistent":"muc_create","access_admin":"muc_admin","db_type":"odbc","history_size":20,"max_users":200},"mod_muc_log":{"access_log":"muc","cssfile":"http://coopens.com/my.css","dirtype":"plain","dirname":"room_jid","outdir":"/data/home/yzhang/Home/www/public/muclogs","timezone":"universal","spam_prevention":true,"top_link":{"http://www.jabber.ru/":"Jabber.ru"}},"mod_muc_admin":{},"mod_offline":{"access_max_user_messages":"max_user_offline_messages","db_type":"odbc"},"mod_ping":{"send_pings":true,"ping_interval":300,"timeout_action":"kill"},"mod_pres_counter":{"count":5,"interval":60},"mod_privacy":{"db_type":"odbc"},"mod_private":{"db_type":"odbc"},"mod_proxy65":{"ip":"::","name":"File Transfer Proxy","host":"proxy.coopens.com","hostname":"42.96.194.60","port":7777,"access":"all","auth_type":"anonymous","max_connections":10,"shaper":"proxy_shaper"},"mod_http_fileserver":{"docroot":"/data/home/yzhang/Home/www/public/ejabberd/www","accesslog":"/var/log/ejabberd/access.log","directory_indices":["index.html","main.htm"],"custom_headers":{"X-Powered-By":"Erlang/OTP","X-Fry":"It's a widely-believed fact!"},"content_types":{".ogg":"audio/ogg",".png":"image/png"},"default_content_type":"text/html"},"mod_http_upload":{"docroot":"/data/home/yzhang/Home/www/public/ejabberd/upload","put_url":"https://@HOST@:5443/upload","thumbnail":true,"rm_on_unregister":false},"mod_http_upload_quota":{"max_days":100},"mod_mam":{"default":"always","db_type":"odbc"},"mod_pubsub":{"db_type":"odbc","access_createnode":"pubsub_createnode","ignore_pep_from_offline":true,"last_item_cache":false,"max_items_node":1000,"plugins":["flat","hometree","pep"]},"mod_register":{"welcome_message":{"subject":"Welcome!","body":"Hi.\nWelcome to this XMPP server."},"ip_access":"trusted_network","access_from":"register"},"mod_roster":{"versioning":true,"db_type":"odbc","store_current_id":true},"mod_shared_roster":{"db_type":"odbc"},"mod_stats":{},"mod_time":{},"mod_vcard":{"search":true,"db_type":"odbc"},"mod_vcard_xupdate":{"db_type":"odbc"},"mod_version":{"show_os":true,"iqdisc":"parallel"}},"sm_db_type":"odbc","append_host_config":{"coopens.com":{"modules":{"mod_disco":{"server_info":[{"modules":["mod_muc"],"name":"Chatroom logs","urls":["https://coopens.com/ejabberd/logs"]}]},"mod_muc":{"access":"everybody","access_create":"local","access_admin":"muc_admin","min_message_interval":1,"min_presence_interval":5},"mod_muc_log":{"access_log":"everybody","timezone":"local","outdir":"/data/home/yzhang/Home/www/public/ejabberd/logs","file_permissions":{"mode":644,"group":33},"spam_prevention":true}}}},"allow_contrib_modules":true}
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
   
     <article id="post-Server/Config/MongoDB/Mos_etc_mongod.cnf" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -793,9 +433,214 @@ apt-get install php5-fpm
 
 
   
+    <article id="post-Server/Config/Ejabberd/slava_ejabberd" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/28/Server/Config/Ejabberd/slava_ejabberd/" class="article-date">
+      <time datetime="2015-12-28T11:17:55.477Z" itemprop="datePublished">2015-12-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        {"loglevel":4,"log_rotate_size":10485760,"log_rotate_date":"","log_rotate_count":1,"log_rate_limit":100,"hosts":["localhost","test.ru","vyacheslav-pc"],"listen":[{"port":5222,"module":"ejabberd_c2s","max_stanza_size":65536,"shaper":"c2s_shaper","access":"c2s"},{"port":5269,"module":"ejabberd_s2s_in"},{"port":4560,"module":"ejabberd_xmlrpc","maxsessions":10,"timeout":5000,"access_commands":{"xmlrpc_access":{"commands":"all","options":{}}}},{"port":5280,"module":"ejabberd_http","request_handlers":{"/websocket":"ejabberd_http_ws","/archive":"mod_archive_webview","/oauth":"ejabberd_oauth","/api":"mod_http_api"},"web_admin":true,"http_bind":true,"captcha":true,"commands_admin_access":"configure","commands":[{"add_commands":"user"}],"oauth_expire":31556926}],"auth_method":"external","extauth_program":"node auth.js","shaper":{"normal":1000,"fast":50000},"max_fsm_queue":1000,"acl":{"admin":{"user":[{"admin":"localhost"},{"testAuthUser":"localhost"}]},"local":{"user_regexp":""},"loopback":{"ip":["127.0.0.0/8"]}},"access":{"max_user_sessions":{"all":10},"max_user_offline_messages":{"admin":5000,"all":100},"local":{"local":"allow"},"c2s":{"blocked":"deny","all":"allow"},"c2s_shaper":{"admin":"none","all":"normal"},"s2s_shaper":{"all":"fast"},"announce":{"admin":"allow"},"configure":{"admin":"allow"},"muc_admin":{"admin":"allow"},"muc_create":{"local":"allow"},"muc":{"all":"allow"},"pubsub_createnode":{"local":"allow"},"register":{"all":"allow"},"trusted_network":{"loopback":"allow"},"xmlrpc_access":{"all":"allow"},"oauth_access":{"all":"allow"}},"language":"en","modules":{"mod_adhoc":{},"mod_announce":{"access":"announce"},"mod_blocking":{},"mod_caps":{},"mod_carboncopy":{},"mod_client_state":{},"mod_configure":{},"mod_disco":{},"mod_irc":{},"mod_http_bind":{},"mod_last":{},"mod_muc":{"access":"muc","access_create":"muc_create","access_persistent":"muc_create","access_admin":"muc_admin"},"mod_offline":{"access_max_user_messages":"max_user_offline_messages"},"mod_ping":{},"mod_privacy":{},"mod_private":{},"mod_pubsub":{"access_createnode":"pubsub_createnode","ignore_pep_from_offline":true,"last_item_cache":false,"plugins":["flat","hometree","pep"]},"mod_register":{"welcome_message":{"subject":"Welcome!","body":"Hi.\nWelcome to this XMPP server."},"ip_access":"trusted_network","access":"register"},"mod_roster":{},"mod_shared_roster":{},"mod_stats":{},"mod_time":{},"mod_vcard":{},"mod_version":{},"mod_mam_mnesia":{}},"allow_contrib_modules":true}
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Server/Config/Ejabberd/jabber/ports" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/27/Server/Config/Ejabberd/jabber/ports/" class="article-date">
+      <time datetime="2015-12-27T06:17:19.953Z" itemprop="datePublished">2015-12-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        {"listen":[{"port":4560,"ip":"INTERNAL_IP","module":"ejabberd_xmlrpc","maxsessions":10,"timeout":5000,"access_commands":{"xmlrpc":{"commands":["register","set_last","check_account","check_password","change_password","send_message","registered_users","unregister"],"options":[]}}},{"ip":"::","port":5061,"module":"ejabberd_sip","tls":true,"certfile":"CERT_LOCATION","access":"local"},{"ip":"::","port":5222,"module":"ejabberd_c2s","max_stanza_size":65536,"shaper":"c2s_shaper","access":"local","starttls_required":true,"protocol_options":"TLS_OPTIONS","ciphers":"TLS_CIPHERS","dhfile":"DHPARAM_LOCATION","resend_on_timeout":"if_offline","zlib":true},{"ip":"::","port":5269,"module":"ejabberd_s2s_in"},{"ip":"127.0.0.1","port":5281,"module":"ejabberd_http","web_admin":true},{"ip":"::","port":5349,"module":"ejabberd_stun","tls":true,"certfile":"CERT_LOCATION","use_turn":true,"turn_ip":"128.130.95.63","turn_min_port":49152,"turn_max_port":50000,"access":"local"},{"ip":"127.0.0.1","port":5401,"module":"ejabberd_service","hosts":{"icq.jabber.at":{"password":"ICQ_JABBER_AT_PASSWORD"}},"access":"local"},{"ip":"127.0.0.1","port":5403,"module":"ejabberd_service","hosts":{"aim.jabber.at":{"password":"AIM_JABBER_AT_PASSWORD"}},"access":"local"},{"ip":"::","port":5443,"module":"ejabberd_http","request_handlers":{"presence":"mod_webpresence","ws":"ejabberd_http_ws"},"access":"webchat","http_bind":true,"tls":true,"certfile":"CERT_LOCATION","ciphers":"TLS_CIPHERS","protocol_options":"TLS_OPTIONS","dhfile":"DHPARAM_LOCATION","websocket_timeout":3600}],"outgoing_s2s_families":["ipv6","ipv4"],"outgoing_s2s_port":5269,"outgoing_s2s_timeout":10000,"s2s_access":"authenticated","s2s_certfile":"CERT_LOCATION","s2s_use_starttls":"required","s2s_protocol_options":"TLS_OPTIONS","s2s_ciphers":"TLS_CIPHERS","s2s_dhfile":"DHPARAM_LOCATION"}
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Server/Config/Ejabberd/jabber/modules" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/27/Server/Config/Ejabberd/jabber/modules/" class="article-date">
+      <time datetime="2015-12-27T06:17:19.952Z" itemprop="datePublished">2015-12-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        {"modules":{"mod_adhoc":{},"mod_admin_extra":{},"mod_announce":{"access":"admin"},"mod_blocking":{},"mod_caps":{},"mod_carboncopy":{},"mod_client_state":{"drop_chat_states":true,"queue_presence":true},"mod_configure":{},"mod_echo":{},"mod_fail2ban":{"c2s_max_auth_failures":5},"mod_http_bind":{"max_inactivity":300},"mod_http_upload":{"service_url":"https://account.jabber.at/share/slot/","rm_on_unregister":false},"mod_irc":{"access":"authenticated","default_encoding":"utf-8"},"mod_last":{},"mod_muc_admin":{},"mod_offline":{"access_max_user_messages":"max_user_offline_messages"},"mod_ping":{"send_pings":true,"ping_interval":300,"timeout_action":"kill"},"mod_pres_counter":{"count":5,"interval":60},"mod_pubsub":{"access_createnode":"local","plugins":["flat","hometree","pep"]},"mod_privacy":{},"mod_private":{},"mod_proxy65":{"ip":"::","host":"proxy.jabber.at","hostname":"128.130.95.63","auth_type":"anonymous","shaper":"proxy_shaper","max_connections":10,"access":"local"},"mod_register":{"access":"register","access_from":"none"},"mod_roster":{"versioning":true,"store_current_id":true},"mod_sic":{},"mod_sip":{},"mod_stats":{},"mod_time":{},"mod_vcard":{},"mod_vcard_xupdate":{},"mod_version":{},"mod_mam_mnesia":{},"mod_webpresence":{"pixmaps_path":"/usr/share/ejabberd-mod-webpresence/pixmaps/","baseurl":"https://@HOST@/presence/","access":"local"}},"append_host_config":{"jabber.at":{"modules":{"mod_disco":{"server_info":[{"modules":["mod_muc"],"name":"Chatroom logs","urls":["https://jabber.at/logs"]}]},"mod_muc":{"access":"everybody","access_create":"local","access_admin":"muc_admin","min_message_interval":1,"min_presence_interval":5},"mod_muc_log":{"access_log":"everybody","timezone":"local","outdir":"/var/www/jabber.at/sites/jabber.at/logs/","file_permissions":{"mode":644,"group":33},"spam_prevention":true}}},"jabber.fsinf.at":{"modules":{"mod_disco":{},"mod_webpresence":{"pixmaps_path":"/usr/share/ejabberd-mod-webpresence/pixmaps/","baseurl":"https://jabber.fsinf.at/presence/","access":"local"}}},"fsinf.at":{"modules":{"mod_disco":{"server_info":[{"modules":["mod_muc"],"name":"Chatroom logs","urls":["http://jabber.at/logs"]}],"extra_domains":"TRANSPORTS"},"mod_muc":{"access":"everybody","access_create":"local","access_admin":"muc_admin","min_message_interval":1,"min_presence_interval":5},"mod_muc_log":{"access_log":"everybody","timezone":"local","outdir":"/var/www/jabber.at/sites/jabber.at/logs/","file_permissions":{"mode":644,"group":33},"spam_prevention":true}}},"jabber.wien":{"modules":{"mod_disco":{"server_info":[{"modules":["mod_muc"],"name":"Chatroom logs","urls":["https://jabber.wien/logs"]}],"extra_domains":"TRANSPORTS"},"mod_muc":{"access":"everybody","access_create":"local","access_admin":"muc_admin","min_message_interval":1,"min_presence_interval":5},"mod_muc_log":{"access_log":"everybody","timezone":"local","outdir":"/var/www/jabber.at/sites/jabber.at/logs/","file_permissions":{"mode":644,"group":33},"spam_prevention":true}}},"jabber.zone":{"modules":{"mod_disco":{"server_info":[{"modules":["mod_muc"],"name":"Chatroom logs","urls":["https://jabber.zone/logs"]}],"extra_domains":"TRANSPORTS"},"mod_muc":{"access":"everybody","access_create":"local","access_admin":"muc_admin","min_message_interval":1,"min_presence_interval":5},"mod_muc_log":{"access_log":"everybody","timezone":"local","outdir":"/var/www/jabber.at/sites/jabber.at/logs/","file_permissions":{"mode":644,"group":33},"spam_prevention":true}}},"xmpp.zone":{"modules":{"mod_disco":{"server_info":[{"modules":["mod_muc"],"name":"Chatroom logs","urls":["https://xmpp.zone/logs"]}],"extra_domains":"TRANSPORTS"},"mod_muc":{"access":"everybody","access_create":"local","access_admin":"muc_admin","min_message_interval":1,"min_presence_interval":5},"mod_muc_log":{"access_log":"everybody","timezone":"local","outdir":"/var/www/jabber.at/sites/jabber.at/logs/","file_permissions":{"mode":644,"group":33},"spam_prevention":true}}}}}
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Server/Config/Ejabberd/jabber/ejabberd" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/27/Server/Config/Ejabberd/jabber/ejabberd/" class="article-date">
+      <time datetime="2015-12-27T06:17:19.950Z" itemprop="datePublished">2015-12-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        {"hosts":["jabber.at","jabber.fsinf.at","fsinf.at","anon.jabber.at","jabber.wien","jabber.zone","xmpp.zone"],"language":"en","auth_method":"internal","auth_password_format":"scram","registration_timeout":3600,"captcha_cmd":"/usr/lib/ejabberd/priv/bin/captcha.sh","captcha_host":"https://jabber.at:443","loglevel":2,"hide_sensitive_log_data":true,"shaper":{"normal":2000,"proxy":20000,"fast":50000},"disable_sasl_mechanisms":["digest-md5","oauth2"],"commands_admin_access":"xmlrpc","define_macro":{"TLS_OPTIONS":["no_sslv2","no_sslv3"],"TLS_CIPHERS":"ECDH:DH:!CAMELLIA128:!3DES:!MD5:!RC4:!aNULL:!NULL:!EXPORT:!LOW:!MEDIUM","TRANSPORTS":["aim.jabber.at","icq.jabber.at"]},"include_config_file":{"/etc/ejabberd/secrets.yml":[],"/etc/ejabberd/acl.yml":[],"/etc/ejabberd/access.yml":[],"/etc/ejabberd/ports.yml":[],"/etc/ejabberd/modules.yml":[]},"host_config":{"jabber.at":{"domain_certfile":"CERT_LOCATION_JABBER_AT","acl":{"admin":{"user":[{"ra":"jabber.at"},{"klausi":"jabber.at"}]}}},"anon.jabber.at":{"domain_certfile":"CERT_LOCATION_JABBER_AT","auth_method":["anonymous"],"anonymous_protocol":"both"},"jabber.fsinf.at":{"domain_certfile":"CERT_LOCATION_JABBER_FSINF_AT"},"fsinf.at":{"domain_certfile":"CERT_LOCATION_FSINF_AT"},"jabber.zone":{"domain_certfile":"CERT_LOCATION_JABBER_ZONE"},"jabber.wien":{"domain_certfile":"CERT_LOCATION_JABBER_WIEN"},"xmpp.zone":{"domain_certfile":"CERT_LOCATION_XMPP_ZONE"}}}
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Server/Config/Ejabberd/jabber/acl" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/12/27/Server/Config/Ejabberd/jabber/acl/" class="article-date">
+      <time datetime="2015-12-27T06:17:19.949Z" itemprop="datePublished">2015-12-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        {"acl":{"admin":{"user":[{"klausi":"jabber.at"},{"astra":"jabber.at"},{"mati":"jabber.at"}]},"loopback":{"ip":["127.0.0.0/8"]},"blocked":{"server":["gtalk2voip.com","talkonaut.com","syriatalk.org"],"user":["jabber.at","jabber.fsinf.at","fsinf.at","jabber.wien","jabber.zone","xmpp.zone","webmaster","root","postmaster","jabber","hostmaster","fsinf","ejabberd","admin"],"user_regexp":["^.*owner.*$","^.*admin.*$"]},"fsinf_at":{"server":["fsinf.at"]},"jabber_at":{"server":["jabber.at"]},"jabber_fsinf_at":{"server":["jabber.fsinf.at"]},"jabber_wien":{"server":["jabber.wien"]},"jabber_zone":{"server":["jabber.zone"]},"xmpp_zone":{"server":["xmpp.zone"]},"anon_jabber_at":{"server":["anon.jabber.at"]},"local":{"server":["jabber.at","jabber.fsinf.at","fsinf.at","jabber.wien","jabber.zone","xmpp.zone"]},"muc_admin":{"user":[{"viper":"jabber.at"},{"tom":"fnord.at"},{"michaelpuermayr":"jabber.at"}]},"xmlrpc":{"user":[{"xmlrpc":"jabber.at"}]}}}
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
     </nav>
   
 </div>

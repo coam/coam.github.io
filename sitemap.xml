@@ -132,11 +132,6 @@
   </url>
   
   <url>
-    <loc>https://coam.co/2016/01/10/AndroidPushMQTT/</loc>
-    <lastmod>2016-01-20T08:46:52.570Z</lastmod>
-  </url>
-  
-  <url>
     <loc>https://coam.co/2016/01/20/Info/hospital/</loc>
     <lastmod>2016-01-20T07:20:53.436Z</lastmod>
   </url>
@@ -149,11 +144,6 @@
   <url>
     <loc>https://coam.co/2016/01/08/Others/MarkDownNote/</loc>
     <lastmod>2016-01-18T14:18:50.315Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://coam.co/2016/01/10/Erlang/</loc>
-    <lastmod>2016-01-17T11:38:43.421Z</lastmod>
   </url>
   
   <url>
@@ -187,11 +177,6 @@
   </url>
   
   <url>
-    <loc>https://coam.co/2016/01/10/Mnesia/</loc>
-    <lastmod>2016-01-10T12:57:21.021Z</lastmod>
-  </url>
-  
-  <url>
     <loc>https://coam.co/2016/01/10/Erlang/MQTT/</loc>
     <lastmod>2016-01-10T12:57:14.396Z</lastmod>
   </url>
@@ -214,41 +199,6 @@
   <url>
     <loc>https://coam.co/2016/01/08/Http/HttpNote/</loc>
     <lastmod>2016-01-08T04:30:26.161Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://coam.co/2016/01/08/MarkDownNote/</loc>
-    <lastmod>2016-01-08T03:16:39.208Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://coam.co/2016/01/07/my-blogs/</loc>
-    <lastmod>2016-01-07T14:23:11.261Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://coam.co/2016/01/03/XMPP/</loc>
-    <lastmod>2016-01-07T12:38:18.640Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://coam.co/2016/01/03/Rebar/</loc>
-    <lastmod>2016-01-07T12:31:27.475Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://coam.co/2016/01/03/MQTT/</loc>
-    <lastmod>2016-01-07T12:31:20.830Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://coam.co/2016/01/03/Lua/</loc>
-    <lastmod>2016-01-07T12:31:05.476Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://coam.co/2016/01/03/EjabberdNote/</loc>
-    <lastmod>2016-01-07T12:30:50.235Z</lastmod>
   </url>
   
   <url>
@@ -327,26 +277,6 @@
   </url>
   
   <url>
-    <loc>https://coam.co/2016/01/03/blog-myNewBlog/</loc>
-    <lastmod>2016-01-03T13:01:11.555Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://coam.co/2016/01/03/hello-two/</loc>
-    <lastmod>2016-01-03T12:49:04.725Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://coam.co/2016/01/03/hello-world/</loc>
-    <lastmod>2016-01-03T11:40:19.830Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://coam.co/2016/01/03/hello-one/</loc>
-    <lastmod>2016-01-03T11:39:51.879Z</lastmod>
-  </url>
-  
-  <url>
     <loc>https://coam.co/2015/12/28/Server/Config/Ejabberd/slava_ejabberd/</loc>
     <lastmod>2015-12-28T11:17:55.477Z</lastmod>
   </url>
@@ -382,7 +312,7 @@
   </url>
   
   <url>
-    <loc>https://coam.co/2015/12/27/Server/Config/Ejabberd/jabber/modules/</loc>
+    <loc>https://coam.co/2015/12/27/Server/Config/Ejabberd/jabber/ejabberd/</loc>
     <lastmod>2015-12-08T14:12:54.000Z</lastmod>
   </url>
   
@@ -392,17 +322,17 @@
   </url>
   
   <url>
-    <loc>https://coam.co/2015/12/27/Server/Config/Ejabberd/jabber/README/</loc>
-    <lastmod>2015-12-08T14:12:54.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>https://coam.co/2015/12/27/Server/Config/Ejabberd/jabber/access/</loc>
     <lastmod>2015-12-08T14:12:54.000Z</lastmod>
   </url>
   
   <url>
-    <loc>https://coam.co/2015/12/27/Server/Config/Ejabberd/jabber/ejabberd/</loc>
+    <loc>https://coam.co/2015/12/27/Server/Config/Ejabberd/jabber/README/</loc>
+    <lastmod>2015-12-08T14:12:54.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://coam.co/2015/12/27/Server/Config/Ejabberd/jabber/modules/</loc>
     <lastmod>2015-12-08T14:12:54.000Z</lastmod>
   </url>
   

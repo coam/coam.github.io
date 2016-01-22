@@ -140,7 +140,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/markdown-gfw-hexo-jekyll/" style="font-size: 10px;">markdown gfw hexo jekyll</a>
+                        <a href="/tags/markdown-gfw-hexo-jekyll/" style="font-size: 10px;">markdown gfw hexo jekyll</a>
                     </div>
                 </section>
                 
@@ -216,657 +216,6 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-Nginx/NginxNote" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/10/Nginx/NginxNote/" class="article-date">
-      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/Nginx/NginxNote/">NginxNote</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="Nginx__u7B14_u8BB0"><a href="#Nginx__u7B14_u8BB0" class="headerlink" title="Nginx 笔记"></a>Nginx 笔记</h1><p><a href="http://www.nginx.org">Nginx 官网</a></p>
-<h2 id="u4E0D_u9519_u7684Nginx_u5F00_u53D1_u8005_u535A_u5BA2"><a href="#u4E0D_u9519_u7684Nginx_u5F00_u53D1_u8005_u535A_u5BA2" class="headerlink" title="不错的Nginx开发者博客"></a>不错的Nginx开发者博客</h2><p><a href="http://www.just4coding.com/blog/categories/nginx/">Just For Coding</a></p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a  href="/2016/01/10/Nginx/NginxNote/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Erlang/MQTT" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/10/Erlang/MQTT/" class="article-date">
-      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/Erlang/MQTT/">MQTTNote</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="u5173_u4E8E_MQTT__u534F_u8BAE"><a href="#u5173_u4E8E_MQTT__u534F_u8BAE" class="headerlink" title="关于 MQTT 协议"></a>关于 MQTT 协议</h3><p><a href="https://github.com/liangjingyang/MQTT-CN/blob/master/mqtt-v3.1.1-os.md" target="_blank" rel="external">MQTT 中文文档 Version 3.1.1</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Erlang/Mnesia" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/10/Erlang/Mnesia/" class="article-date">
-      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/Erlang/Mnesia/">MnesiaNote</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="Erlang_Mnesia_Database"><a href="#Erlang_Mnesia_Database" class="headerlink" title="Erlang Mnesia Database"></a>Erlang Mnesia Database</h3><p><a href="http://www.erlang.org/doc/man/mnesia.html" target="_blank" rel="external">Erlang Mnesia Doc</a></p>
-<p>最近学习erlang,在erlang中天然集成了一个分布式数据库名字叫mnesia,因为数据库天然就和erlang的元组,记录无缝结合,并且具有良好的分布式特性,能够自动地在几个erlang节点上实现数据复制,效果有点像zookeeper的节点集群,<br>而且mnesia还支持数据库事务特性,所以mnesia在erlang应用中使用得非常频繁.</p>
-<p>要在本地创建一个mnesia数据库,并且要实现插入,查询功能需要实现以下这几步:<br>1.启动erlang节点:</p>
-<pre><code>#erl -mnesia dir &apos;&quot;d://tmp//mnesia&quot;&apos; -sname mynode
-erl -mnesia dir &apos;&quot;C:\Users\yafei\DevWork\Erlang\dev\mnesia\data&quot;&apos; -name win@27.16.194.65 -setcookie 456789
-sudo erl -mnesia dir &apos;&quot;/data/home/data/mnesia/&quot;&apos; -name ali@42.96.194.60 -setcookie 456789
-</code></pre><p>注意路径双引号<br> 以上这个 “/data/home/data/mnesia/“ 目录是存放mnesia数据库的schema数据的,当然这个目录也可以不指定,那么mnesia数据库启动之后将把数据库的schema中的数据放在内存中,如果下次节点重启之后,之前数据库中创建的表结构数据就消失了.<br>2.接下来就是在erl shell中本地初始化一个空的 mnesia 数据库</p>
-<pre><code>mnesia:create_schema([node()]).
-</code></pre><p>  从参数上是一个节点列表,所以其实需要的话,可以在参数列表上设置多个erlang节点,就能在多个erlang节点上同时创建mnesia数据库并构成 Mnesia 集群.<br>3.启动mnesia数据库<br>  初始化完成了mnesia数据库schema之后,接下来就可以启动mneisa数据库了.</p>
-<pre><code>mnesia:start().
-</code></pre><p>至此,一个空的mneisa已经创建启动成功了,我们可以调用mnesia:info(). 查看当前mnesia数据库的一些状态,结果如下:</p>
-<pre><code>(ali@localhost)2&gt; mnesia:info().
-===&gt; System info in version &quot;4.13.2&quot;, debug level = none &lt;===
-opt_disc. Directory &quot;/data/home/data/mnesia&quot; is used.
-use fallback at restart = true
-running db nodes   = []
-stopped db nodes   = [ali@localhost]
-ok
-(ali@localhost)3&gt; mnesia:start().
-ok
-(ali@localhost)4&gt; mnesia:info().
----&gt; Processes holding locks &lt;---
----&gt; Processes waiting for locks &lt;---
----&gt; Participant transactions &lt;---
----&gt; Coordinator transactions &lt;---
----&gt; Uncertain transactions &lt;---
----&gt; Active tables &lt;---
-schema         : with 1        records occupying 408      words of mem
-===&gt; System info in version &quot;4.13.2&quot;, debug level = none &lt;===
-opt_disc. Directory &quot;/data/home/data/mnesia&quot; is used.
-use fallback at restart = false
-running db nodes   = [ali@localhost]
-stopped db nodes   = []
-master node tables = []
-remote             = []
-ram_copies         = []
-disc_copies        = [schema]
-disc_only_copies   = []
-[{ali@localhost,disc_copies}] = [schema]
-2 transactions committed, 0 aborted, 0 restarted, 0 logged to disc
-0 held locks, 0 in queue; 0 local transactions, 0 remote
-0 transactions waits for other nodes: []
-ok
-</code></pre><p>从 [{ali@localhost,disc_copies}] = [schema] 这行上来看当前数据库中只有一个数据库的schema表.</p>
-<hr>
-<h4 id="Mnesia__u96C6_u7FA4"><a href="#Mnesia__u96C6_u7FA4" class="headerlink" title="Mnesia 集群"></a>Mnesia 集群</h4><p>分别在 阿里云 ali 和 本机 win 启动两个节点</p>
-<pre><code>sudo -mnesia dir &apos;&quot;/data/home/data/mnesia/&quot;&apos; -name ali@42.96.194.60 -setcookie 456789
-erl -mnesia dir &apos;&quot;C:\Users\yafei\DevWork\Erlang\dev\mnesia\data&quot;&apos; -name win@27.16.194.65 -setcookie 456789
-</code></pre><p>保证两个节点都启动,并且 mnesia 没有启用</p>
-<pre><code>mnesia:delete_schema([&apos;win@27.16.194.65&apos;, &apos;ali@42.96.194.60&apos;]).
-mnesia:create_schema([&apos;win@27.16.194.65&apos;, &apos;ali@42.96.194.60&apos;]).
-</code></pre><p>然后启动两个节点的 mnesia,查看运行详情</p>
-<pre><code>(win@27.16.194.65)9&gt; mnesia:start().
-(win@27.16.194.65)9&gt; mnesia:info().
----&gt; Processes holding locks &lt;---
----&gt; Processes waiting for locks &lt;---
----&gt; Participant transactions &lt;---
----&gt; Coordinator transactions &lt;---
----&gt; Uncertain transactions &lt;---
----&gt; Active tables &lt;---
-schema         : with 1        records occupying 414      words of mem
-===&gt; System info in version &quot;4.13.2&quot;, debug level = none &lt;===
-opt_disc. Directory [99,58,47,85,115,101,114,115,47,121,97,102,101,105,47,68,
-101,118,87,111,114,107,47,69,114,108,97,110,103,47,100,
-101,118,47,109,110,101,115,105,97,47,85,115,101,114,115,
-121,97,102,101,105,68,101,118,87,111,114,107,69,114,108,
-97,110,103,127,101,118,109,110,101,115,105,97,127,97,116,
-97] is used.
-use fallback at restart = false
-running db nodes   = [&apos;ali@42.96.194.60&apos;,&apos;win@27.16.194.65&apos;]
-stopped db nodes   = []
-master node tables = []
-remote             = []
-ram_copies         = []
-disc_copies        = [schema]
-disc_only_copies   = []
-[{&apos;ali@42.96.194.60&apos;,disc_copies},{&apos;win@27.16.194.65&apos;,disc_copies}] = [schema]
-3 transactions committed, 0 aborted, 1 restarted, 2 logged to disc
-0 held locks, 0 in queue; 0 local transactions, 0 remote
-0 transactions waits for other nodes: []
-ok
-</code></pre><p>根据 running db nodes   = [‘ali@42.96.194.60’,’win@27.16.194.65’] 可以看出两个节点已成功组成 节点</p>
-<p>在任何一个节点添加数据表</p>
-<hr>
-<h4 id="erlang_mnesia__u6570_u636E_u5E93_u5B9E_u73B0SQL_u67E5_u8BE2"><a href="#erlang_mnesia__u6570_u636E_u5E93_u5B9E_u73B0SQL_u67E5_u8BE2" class="headerlink" title="erlang mnesia 数据库实现SQL查询"></a>erlang mnesia 数据库实现SQL查询</h4><blockquote>
-<p>Mnesia是一个分布式数据库管理系统,适合于电信和其它需要持续运行和具备软实时特性的Erlang应用,越来越受关注和使用,但是目前Mnesia资料却不多,很多都只有官方的用户指南.<br>下面的内容将着重说明  Mnesia 数据库如何实现SQL查询,实现select / insert / update / where / order by / join / limit / delete等SQL操作.</p>
-</blockquote>
-<p>参见示例 sql.erl</p>
-<blockquote>
-<p>注:使用qlc模块查询,需要在文件顶部声明”-include_lib(“stdlib/include/qlc.hrl”).”,否则编译时会产生”Warning: qlc:q/1 called, but “qlc.hrl” not included”的警告.</p>
-</blockquote>
-<hr>
-<h4 id="u4F7F_u7528_u5355_u72EC_u7684_u811A_u672C_u8FDE_u63A5_ejabberd_mnesia__u6570_u636E_u5E93"><a href="#u4F7F_u7528_u5355_u72EC_u7684_u811A_u672C_u8FDE_u63A5_ejabberd_mnesia__u6570_u636E_u5E93" class="headerlink" title="使用单独的脚本连接 ejabberd mnesia 数据库"></a>使用单独的脚本连接 ejabberd mnesia 数据库</h4><pre><code>Cookie = &apos;YOUR_EJABBERD_COOKIE&apos;. % mine was found in /var/lib/ejabberd/.erlang.cookie
-EjabberdNode = &apos;ejabberd@127.0.0.1&apos;. % or whatever you set as EJABBERD_NODE
-erlang:set_cookie(EjabberdNode, Cookie).
-net_adm:ping(EjabberdNode).
-rpc:call(EjabberdNode, mnesia, system_info, [tables]).
-</code></pre><p>参考 <a href="http://stackoverflow.com/questions/9232510/how-can-i-connect-to-ejabberds-mnesia-database-with-a-separate-script" target="_blank" rel="external">How can I connect to ejabberd’s Mnesia database with a separate script?</a></p>
-<hr>
-<h4 id="mnesia_u8868_u6570_u636EId_u81EA_u589E_u957F"><a href="#mnesia_u8868_u6570_u636EId_u81EA_u589E_u957F" class="headerlink" title="mnesia表数据Id自增长"></a>mnesia表数据Id自增长</h4><p>1.使用函数:</p>
-<pre><code>mnesia:dirty_update_counter(unique_id, mine_result, 1).
-</code></pre><p>2.该函数参数示意,<br>   unique_id 表名, mine_result 表名,每次自增N.<br>3.<br>   1.创建如下结构的mnesia数据库表 -record(unique_id, {item, uid}),该表是为了存储 mine_result 表的最大的Id值;<br>   2.每为 mine_result 表加入一条新记录时,需要得到新的id值: </p>
-<pre><code>mnesia:dirty_update_counter(unique_id,  mine_result , 1),
-</code></pre><p>从unique_id表中取出最大的Id值加1,更新unique_id表的数据,返回最大Id值加1,<br>注意:请在建立unique_id表的时候,往里面插入数据;表名,初始值,{ mine_result  ,0},<br>我做了一个实验如果unique_id表中没有数据的时候,并发向mine_result库中插入100条数据时,不稳定.<br>但是unique_id表中加入一个数据后,并发数提高到30000,还是很稳定.</p>
-<hr>
-<p>参考<br><a href="http://wudaijun.com/2015/04/erlang-mnesia/" target="_blank" rel="external">wudaijun’s blog - Erlang mnesia</a><br><a href="http://www.tqcto.com/article/db/11625.html" target="_blank" rel="external">创设Mnesia数据库</a><br><a href="http://www.infoq.com/cn/news/2007/08/mnesia" target="_blank" rel="external">Erlang的Mnesia——为高伸缩性应用准备的数据库管理系统</a><br><a href="http://www.cnblogs.com/liangjingyang/archive/2012/09/27/2705451.html" target="_blank" rel="external">[Erlang-0008][OTP] 高效指南 – 表和数据库(ets mnesia)</a><br><a href="http://www.dlive.me/2014/12/10/erlangmnesia/" target="_blank" rel="external">Erlang基础Mnesia 之应用场景</a><br><a href="http://blog.maxkit.com.tw/2014/04/erlang-mnesia.html" target="_blank" rel="external">erlang Mnesia - 尚待研究</a></p>
-<p><a href="http://4096.info/2013/10/28/mnesia%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C/" target="_blank" rel="external">mnesia数据库使用体验</a><br><a href="http://4096.info/2014/11/07/no-title-2/" target="_blank" rel="external">mnesia数据库优化</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Erlang/Rebar" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/10/Erlang/Rebar/" class="article-date">
-      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/Erlang/Rebar/">RebarNote</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="u4F7F_u7528_Rebar__u7BA1_u7406_erlang__u9879_u76EE"><a href="#u4F7F_u7528_Rebar__u7BA1_u7406_erlang__u9879_u76EE" class="headerlink" title="使用 Rebar 管理 erlang 项目"></a>使用 Rebar 管理 erlang 项目</h3><p><a href="https://github.com/rebar/rebar" target="_blank" rel="external">GitHub - </a></p>
-<h4 id="u4F7F_u7528_Intellij_idea15__u5229_u7528_rebar__u5F00_u53D1_u8C03_u8BD5_ejabberd"><a href="#u4F7F_u7528_Intellij_idea15__u5229_u7528_rebar__u5F00_u53D1_u8C03_u8BD5_ejabberd" class="headerlink" title="使用 Intellij idea15 利用 rebar 开发调试 ejabberd"></a>使用 Intellij idea15 利用 rebar 开发调试 ejabberd</h4><blockquote>
-<p>默认 Erlang 的 ejabberd 根项目下已经有 rebar 文件了</p>
-</blockquote>
-<p>1.Win下安装 <a href="http://www.erlang.org/download/otp_win64_18.2.1.exe" target="_blank" rel="external">otp.18</a> 到 G:\Program Files\erl7.2.1 下<br>2.将 G:\Program Files\erl7.2.1 添加系统环境变量 PATH<br>3.Intellij idea 项目 ejabberd 中 SDK 添加 OTP18.**<br>4.win下使用 Cygwin 安装 rebar</p>
-<pre><code>$ git clone git://github.com/rebar/rebar.git
-$ cd rebar
-$ ./bootstrap
-Recompile: src/getopt
-...
-Recompile: src/rebar_utils
-==&gt; rebar (compile)
-Congratulations! You now have a self-contained script called &quot;rebar&quot; in
-your current working directory. Place this script anywhere in your path
-and you can use rebar to build OTP-compliant apps.
-</code></pre><p>它将自动将 rebar 安装到 C:\Users\yafei\rebar 下</p>
-<ol>
-<li><p>File-&gt;Other Setting-&gt;Default Setting-&gt;Erlang Extenal Tools 配置 PATH 为 C:\Users\yafei\rebar\rebar.cmd</p>
-</li>
-<li><p>File-&gt;Setting-&gt;Setting-&gt;In “Build, Execution, Deployment/Erlan Compiler”, 勾选 “Compile project with rebar”.</p>
-</li>
-</ol>
-<p>6.Menu -&gt; Run -&gt; Edit Configurations -&gt; 添加按钮 -&gt; Erlang Rebar ,具体配置为 在 Command 一栏添加 任务 delete-deps clean get-deps compile 并任意填写一个任务名称 coamerlangtask</p>
-<p>7.在 Intellij idea 右上角可以点击运行开始打包</p>
-<hr>
-<h3 id="u9519_u8BEF_u5206_u6790"><a href="#u9519_u8BEF_u5206_u6790" class="headerlink" title="错误分析"></a>错误分析</h3><blockquote>
-<p>rebar unable to get dependency from github</p>
-<p>使用简单的 clean compile 命令会出现很多未找到依赖包 * ,因为编译 compile 前先要 get-deps 所以将 rebar 编译命令改为 delete-deps clean get-deps compile</p>
-</blockquote>
-<p>参考 <a href="http://stackoverflow.com/questions/10059579/rebar-unable-to-get-dependency-from-github" target="_blank" rel="external">rebar unable to get dependency from github</a></p>
-<hr>
-<p>参考列表<br><a href="https://github.com/rebar/rebar/wiki/Rebar-commands" target="_blank" rel="external">Rebar commands</a><br><a href="http://zewaren.net/site/?q=node/144" target="_blank" rel="external">Using Intellij IDEA to write and debug Erlang code</a><br><a href="https://www.jetbrains.com/idea/help/getting-started-with-erlang.html#d207953e377" target="_blank" rel="external">Intellij Idea 官网说明</a><br><a href="http://blog.csdn.net/shake1050/article/details/43670281" target="_blank" rel="external">windows下使用IntelliJ IDEA的erlang编译环境搭建(含rebar工具)</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-SSL/LetSSL" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/10/SSL/LetSSL/" class="article-date">
-      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/SSL/LetSSL/">Title</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="letsencrypt__u8BC1_u4E66_u7B7E_u53D1_u673A_u6784"><a href="#letsencrypt__u8BC1_u4E66_u7B7E_u53D1_u673A_u6784" class="headerlink" title="letsencrypt 证书签发机构"></a>letsencrypt 证书签发机构</h3><p><a href="https://letsencrypt.org/" target="_blank" rel="external">官网</a><br><a href="https://github.com/letsencrypt/letsencrypt" target="_blank" rel="external">GitHub - letsencrypt/letsencrypt</a></p>
-<h3 id="letscrypt__u8BC1_u4E66_u7B7E_u53D1_u53CA_u4F7F_u7528_u95EE_u9898"><a href="#letscrypt__u8BC1_u4E66_u7B7E_u53D1_u53CA_u4F7F_u7528_u95EE_u9898" class="headerlink" title="letscrypt 证书签发及使用问题"></a>letscrypt 证书签发及使用问题</h3><pre><code>$ git clone https://github.com/letsencrypt/letsencrypt
-$ cd letsencrypt
-$ ./letsencrypt-auto --help
-</code></pre><p>首先停止服务器正在运行的nginx 服务器</p>
-<p>To obtain a cert using a “standalone” webserver (you may need to temporarily stop your exising webserver) for example.com and www.example.com:</p>
-<h3 id="23_*-coopens-com_Certificate"><a href="#23_*-coopens-com_Certificate" class="headerlink" title="# *.coopens.com Certificate"></a><ip:42.96.194.60> # *.coopens.com Certificate</ip:42.96.194.60></h3><pre><code>./letsencrypt-auto certonly --standalone \
--d coopens.com \
--d www.coopens.com \
--d 56.coopens.com \
--d app.coopens.com \
--d dp.coopens.com \
--d cp.coopens.com \
--d lp.coopens.com \
--d pp.coopens.com \
--d mp.coopens.com \
--d im.coopens.com \
--d sns.coopens.com \
--d blog.coopens.com \
--d gps.coopens.com \
--d lw.coopens.com \
--d ma.coopens.com \
--d mirror.coopens.com \
--d nw.coopens.com \
--d open.coopens.com \
--d pay.coopens.com \
--d forum.coopens.com
-</code></pre><h3 id="23_*-nocs-com_Certificate"><a href="#23_*-nocs-com_Certificate" class="headerlink" title="# *.nocs.com Certificate"></a><ip:45.63.50.67> # *.nocs.com Certificate</ip:45.63.50.67></h3><pre><code>./letsencrypt-auto certonly --standalone \
--d nocs.cn \
--d www.nocs.cn \
--d 56.nocs.cn \
--d app.nocs.cn \
--d dp.nocs.cn \
--d cp.nocs.cn \
--d lp.nocs.cn \
--d pp.nocs.cn \
--d mp.nocs.cn \
--d im.nocs.cn \
--d sns.nocs.cn \
--d blog.nocs.cn \
--d gps.nocs.cn \
--d lw.nocs.cn \
--d ma.nocs.cn \
--d mirror.nocs.cn \
--d nw.nocs.cn \
--d open.nocs.cn \
--d pay.nocs.cn \
--d forum.nocs.cn
-</code></pre><h3 id="23_*-coam-com_Certificate"><a href="#23_*-coam-com_Certificate" class="headerlink" title="# *.coam.com Certificate"></a><ip:43.241.222.110> # *.coam.com Certificate</ip:43.241.222.110></h3><pre><code>./letsencrypt-auto certonly --standalone \
--d coam.co \
--d www.coam.co \
--d 56.coam.co \
--d app.coam.co \
--d dp.coam.co \
--d cp.coam.co \
--d lp.coam.co \
--d pp.coam.co \
--d mp.coam.co \
--d im.coam.co \
--d sns.coam.co \
--d blog.coam.co \
--d gps.coam.co \
--d lw.coam.co \
--d ma.coam.co \
--d mirror.coam.co \
--d nw.coam.co \
--d open.coam.co \
--d pay.coam.co \
--d forum.coam.co
-</code></pre><h3 id="23_*-syam-com_Certificate"><a href="#23_*-syam-com_Certificate" class="headerlink" title="# *.syam.com Certificate"></a><ip:43.241.222.110> # *.syam.com Certificate</ip:43.241.222.110></h3><pre><code>./letsencrypt-auto certonly --standalone \
--d syam.cc \
--d www.syam.cc \
--d 56.syam.cc \
--d app.syam.cc \
--d dp.syam.cc \
--d cp.syam.cc \
--d lp.syam.cc \
--d pp.syam.cc \
--d mp.syam.cc \
--d im.syam.cc \
--d sns.syam.cc \
--d blog.syam.cc \
--d gps.syam.cc \
--d lw.syam.cc \
--d ma.syam.cc \
--d mirror.syam.cc \
--d nw.syam.cc \
--d open.syam.cc \
--d pay.syam.cc \
--d forum.syam.cc
-</code></pre><h3 id="23_*-lonal-com_Certificate"><a href="#23_*-lonal-com_Certificate" class="headerlink" title="# *.lonal.com Certificate"></a><ip:43.241.222.110> # *.lonal.com Certificate</ip:43.241.222.110></h3><pre><code>./letsencrypt-auto certonly --standalone \
--d lonal.com \
--d www.lonal.com \
--d 56.lonal.com \
--d app.lonal.com \
--d dp.lonal.com \
--d cp.lonal.com \
--d lp.lonal.com \
--d pp.lonal.com \
--d mp.lonal.com \
--d im.lonal.com \
--d sns.lonal.com \
--d blog.lonal.com \
--d gps.lonal.com \
--d lw.lonal.com \
--d ma.lonal.com \
--d mirror.lonal.com \
--d nw.lonal.com \
--d open.lonal.com \
--d pay.lonal.com \
--d forum.lonal.com
-</code></pre><h3 id="23_*-iirii-com_Certificate"><a href="#23_*-iirii-com_Certificate" class="headerlink" title="# *.iirii.com Certificate"></a><ip:42.96.194.60> # *.iirii.com Certificate</ip:42.96.194.60></h3><pre><code>./letsencrypt-auto certonly --standalone \
--d iirii.com \
--d www.iirii.com \
--d wp.iirii.com \
--d ash.iirii.com \
--d ftp.iirii.com \
--d sarah.iirii.com
-</code></pre><h3 id="23_*-iirii-com_Certificate-1"><a href="#23_*-iirii-com_Certificate-1" class="headerlink" title="# *.iirii.com Certificate"></a><ip:43.241.222.110> # *.iirii.com Certificate</ip:43.241.222.110></h3><pre><code>./letsencrypt-auto certonly --standalone \
--d msh.iirii.com
-</code></pre><h3 id="23_*-iirii-com_Certificate-2"><a href="#23_*-iirii-com_Certificate-2" class="headerlink" title="# *.iirii.com Certificate"></a><ip:45.63.50.67> # *.iirii.com Certificate</ip:45.63.50.67></h3><pre><code>./letsencrypt-auto certonly --standalone \
--d vsh.iirii.com
-</code></pre><h3 id="23_*-apolloyl-com_Certificate"><a href="#23_*-apolloyl-com_Certificate" class="headerlink" title="# *.apolloyl.com Certificate"></a><ip:42.96.194.60> # *.apolloyl.com Certificate</ip:42.96.194.60></h3><pre><code>./letsencrypt-auto certonly --standalone \
--d apolloyl.com \
--d www.apolloyl.com \
--d mirror.apolloyl.com \
--d t.apolloyl.com
-</code></pre><h3 id="23_*-yntongji-com_Certificate"><a href="#23_*-yntongji-com_Certificate" class="headerlink" title="# *.yntongji.com Certificate"></a><ip:42.96.194.60> # *.yntongji.com Certificate</ip:42.96.194.60></h3><pre><code>./letsencrypt-auto certonly --standalone \
--d yntongji.com \
--d www.yntongji.com \
--d open.yntongji.com \
--d t.yntongji.com
-</code></pre><h3 id="23_*-hszhyy120-com_Certificate"><a href="#23_*-hszhyy120-com_Certificate" class="headerlink" title="# *.hszhyy120.com Certificate"></a><ip:42.96.194.60> # *.hszhyy120.com Certificate</ip:42.96.194.60></h3><pre><code>./letsencrypt-auto certonly --standalone \
--d hszhyy120.com \
--d www.hszhyy120.com \
--d open.hszhyy120.com \
--d t.hszhyy120.com
-</code></pre><p>To obtain a cert using the “webroot” plugin, which can work with the webroot directory of any webserver software:</p>
-<pre><code>./letsencrypt-auto certonly --webroot -w /var/www/example -d example.com -d www.example.com -w /var/www/thing -d thing.is -d m.thing.is
-</code></pre><p>最后提示如下成功信息</p>
-<pre><code>IMPORTANT NOTES:
- - Congratulations! Your certificate and chain have been saved at
-   /etc/letsencrypt/live/coopens.com/fullchain.pem. Your cert will
-   expire on 2016-03-22. To obtain a new version of the certificate in
-   the future, simply run Let&apos;s Encrypt again.
- - If you like Let&apos;s Encrypt, please consider supporting our work by:
-
-   Donating to ISRG / Let&apos;s Encrypt:   https://letsencrypt.org/donate
-   Donating to EFF:                    https://eff.org/donate-le
-</code></pre><p>按提示在 /etc/letsencrypt/live/coopens.com/fullchain.pem 四个文件</p>
-<pre><code>cert.pem 
-chain.pem
-fullchain.pem
-privkey.pem
-</code></pre><p>修改相应的 coopens.com 配置</p>
-<pre><code>#ssl_certificate /data/home/yzhang/GlobalSign/SYAM/syam.crt;
-#ssl_certificate_key /data/home/yzhang/GlobalSign/SYAM/syam.key;
-ssl_certificate /etc/letsencrypt/live/coopens.com/fullchain.pem;
-ssl_certificate_key /etc/letsencrypt/live/coopens.com/privkey.pem;
-</code></pre><p>重启 nginx 即可</p>
-<hr>
-<h5 id="u53C2_u8003_u5217_u8868"><a href="#u53C2_u8003_u5217_u8868" class="headerlink" title="参考列表"></a>参考列表</h5><p><a href="https://letsencrypt.org/howitworks/" target="_blank" rel="external">letsencrypt</a><br><a href="https://www.gehaowu.com/labs/2015/11/letsencrypt-https-certificate/" target="_blank" rel="external">使用 Let’s Encrypt 开源 SSL 证书</a><br><a href="https://mitnk.com/2015/11/lets_encrypt/" target="_blank" rel="external">为Nginx手动获取Let’S Encrypt的免费SSL证书</a><br><a href="https://linuxtoy.org/archives/lets-encrypt.html" target="_blank" rel="external">Let’s Encrypt 试用记</a></p>
-<p><a href="https://www.hatoko.net/nginx/nginx-ssl.html" target="_blank" rel="external">Nginx下SSL配置解释</a><br><a href="https://johnmaguire.me/2015/12/configuring-nginx-lets-encrypt-automatic-renewal/" target="_blank" rel="external">Configuring Let’s Encrypt for nginx with Automatic Renewal</a><br><a href="/"></a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Erlang" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/10/Erlang/" class="article-date">
-      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/Erlang/">ErlangNote</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="Erlang__u7814_u7A76_u76F8_u5173"><a href="#Erlang__u7814_u7A76_u76F8_u5173" class="headerlink" title="Erlang 研究相关"></a>Erlang 研究相关</h3><blockquote>
-<p>比较好的 Erlang 开发者博客及文档</p>
-</blockquote>
-<p><a href="http://allran.github.io/2015/05/13/erlang-use/" target="_blank" rel="external">木头人 - erlang use</a><br><a href="http://www.erlang-cn.com/118.html" target="_blank" rel="external">Erlang 中文教程Erlang中文教程,欢迎广大Erlang爱好者加入</a><br><a href="http://www.cnblogs.com/liangjingyang/archive/2012/07/15/2592691.html" target="_blank" rel="external">Simple - liangjingyang 博客</a><br><a href="http://wiki.jikexueyuan.com/project/erlang/#6f142dcd2b9ce7c7dd576f3a36fe2e9e" target="_blank" rel="external">Erlang 教程中文版</a><br><a href="http://svn.liancheng.info/cpie-cn/trunk/.build/html/part-i/index.html" target="_blank" rel="external">Erlang并发编程</a><br><a href="http://cpie-cn.readthedocs.org/en/latest/index.html" target="_blank" rel="external">Erlang并发编程-新版</a><br><a href="http://youthyblog.com/2015/07/22/erl%E5%91%BD%E4%BB%A4%E5%92%8C%E5%8F%82%E6%95%B0/" target="_blank" rel="external">erl命令和参数</a><br><a href="http://developerworks.github.io/" target="_blank" rel="external">元气糯米团子的Coding Blog</a><br><a href="http://wudaijun.com/categories/erlang/" target="_blank" rel="external">wudaijun’s blog</a></p>
-<p><a href="http://www.dlive.me/category/distributed/" target="_blank" rel="external">Erlang 相关</a></p>
-<hr>
-<h5 id="u7CFB_u7EDF_u9884_u5B9A_u4E49_u7684_u5B8F_3A"><a href="#u7CFB_u7EDF_u9884_u5B9A_u4E49_u7684_u5B8F_3A" class="headerlink" title="系统预定义的宏:"></a>系统预定义的宏:</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">?MODULE 表示当前模块名</span><br><span class="line">?MODULE_STRING 同上,但是以字符串形式</span><br><span class="line">?FILE 当前模块的文件名</span><br><span class="line">?LINE 调用的当前代码行数</span><br><span class="line">?MACHINE 机器名</span><br></pre></td></tr></table></figure>
-<p><a href="https://bitbucket.org/gamexg/erlang/wiki/Home" target="_blank" rel="external">Erlang 语言学习笔记 / Home</a></p>
-<h5 id="u8981_u77E5_u9053_u4E00_u4E2A_u8282_u70B9ping_u901A_u4E48_3A"><a href="#u8981_u77E5_u9053_u4E00_u4E2A_u8282_u70B9ping_u901A_u4E48_3A" class="headerlink" title="要知道一个节点ping通么:"></a>要知道一个节点ping通么:</h5><pre><code>net_adm:ping(Nodes).-&gt; pong |pang
-node() 返回本节点名
-nodes() 返回所有其它节点名.
-</code></pre><p>[pong:成功 |pang: 失败]</p>
-<hr>
-<p>收藏<br><a href="http://dhq.me/the-interaction-experiment-between-erlang-and-websocket" target="_blank" rel="external">Erlang 与 WebSocket 之间的通讯交互</a><br><a href="http://dhq.me/parse-xml-in-erlang" target="_blank" rel="external">erlang 解析 xml 格式数据</a><br><a href="http://dhq.me/erlang-dict-intro" target="_blank" rel="external">Erlang 的 dict 模块函数方法介绍</a><br><a href="http://dhq.me/build-compile-eunit-release-erlang-application-with-rebar" target="_blank" rel="external">用 rebar 来构建、编译、测试、发布 Erlang 应用程序</a></p>
-<p><a href="http://no001.blog.51cto.com/1142339/1320855" target="_blank" rel="external">Erlang不能错过的盛宴</a></p>
-<p><a href="http://pzjay.blogspot.com/2012/11/test.html" target="_blank" rel="external">40+行erlang代码实现一个简易分布式计算框架</a></p>
-<h4 id="u9519_u8BEF_u5206_u6790"><a href="#u9519_u8BEF_u5206_u6790" class="headerlink" title="错误分析"></a>错误分析</h4><blockquote>
-<p>运行 rebar 出现如下错误</p>
-</blockquote>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">Sun Dec </span><span class="number">20</span> <span class="number">21</span><span class="symbol">:</span><span class="number">15</span><span class="symbol">:</span><span class="number">31</span> yzhang<span class="variable">@coam</span><span class="symbol">:~/RunProject/ejabberd</span><span class="variable">$ </span>sudo ./rebar get-deps</span><br><span class="line">/usr/bin/<span class="symbol">env:</span> <span class="symbol">escript:</span> <span class="constant">No </span>such file <span class="keyword">or</span> directory</span><br><span class="line"></span><br><span class="line"><span class="constant">Sun Dec </span><span class="number">20</span> <span class="number">21</span><span class="symbol">:</span><span class="number">22</span><span class="symbol">:</span><span class="number">50</span> yzhang<span class="variable">@coam</span><span class="symbol">:~/RunProject</span><span class="variable">$ </span>whereis escript</span><br><span class="line"><span class="symbol">escript:</span> /opt/otp/bin/escript</span><br></pre></td></tr></table></figure>
-<p>原因是我安装 otp 时 使用命令 ./configure –prefix=/opt/otp/ 指定安装 otp 到 /opt/otp/ 下</p>
-<p>于是重新安装 otp ,并取消 ~/.bashrc 中配置的 erlang 环境变量</p>
-<h1 id="Erlang"><a href="#Erlang" class="headerlink" title="Erlang"></a>Erlang</h1><p>#export PATH=/opt/otp/bin:$PATH</p>
-<p>重启 ubuntu 后敲 erl 命令提示未找到,注释成功,重新使用默认参数安装otp</p>
-<blockquote>
-<p>ejabberd 源码编译安装,执行命令 ejabberd ./configure 后出现如下错误</p>
-</blockquote>
-<figure class="highlight java"><figcaption><span>错误分析</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Sun Dec <span class="number">20</span> <span class="number">21</span>:<span class="number">21</span>:<span class="number">26</span> yzhang<span class="annotation">@coam</span>:~/RunProject/ejabberd$ sudo ./configure</span><br><span class="line">checking whether make sets $(MAKE)... yes</span><br><span class="line">checking <span class="keyword">for</span> a BSD-compatible install... /usr/bin/install -c</span><br><span class="line">checking <span class="keyword">for</span> a sed that does not truncate output... /bin/sed</span><br><span class="line">checking <span class="keyword">for</span> erl... no</span><br><span class="line">checking <span class="keyword">for</span> erlc... no</span><br><span class="line">checking <span class="keyword">for</span> erl... no</span><br><span class="line">configure: error: Erlang/<span class="function">OTP <span class="title">interpreter</span> <span class="params">(erl)</span> not found but required</span></span><br></pre></td></tr></table></figure>
-<p>解决方案,重新安装 otp到系统默认路径</p>
-<p>参考 <a href="http://stackoverflow.com/questions/12327809/why-cannot-escript-run" target="_blank" rel="external">http://stackoverflow.com/questions/12327809/why-cannot-escript-run</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
     <article id="post-GPS/GPSNote" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -920,10 +269,10 @@ nodes() 返回所有其它节点名.
 
 
   
-    <article id="post-NodeJs/NodeJsNote" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Erlang/Lua" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/10/NodeJs/NodeJsNote/" class="article-date">
+      <a href="/2016/01/10/Erlang/Lua/" class="article-date">
       <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
 </a>
     </div>
@@ -937,7 +286,7 @@ nodes() 返回所有其它节点名.
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/NodeJs/NodeJsNote/">Title</a>
+      <a class="article-title" href="/2016/01/10/Erlang/Lua/">LuaNote</a>
     </h1>
   
 
@@ -947,7 +296,71 @@ nodes() 返回所有其它节点名.
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="Node-js_Note"><a href="#Node-js_Note" class="headerlink" title="Node.js Note"></a>Node.js Note</h1><h4 id="Node-js__u548C_Socket-io__u642D_u5EFA_u6D88_u606F_u5B9E_u65F6_u63A8_u9001"><a href="#Node-js__u548C_Socket-io__u642D_u5EFA_u6D88_u606F_u5B9E_u65F6_u63A8_u9001" class="headerlink" title="Node.js 和 Socket.io 搭建消息实时推送"></a>Node.js 和 Socket.io 搭建消息实时推送</h4><p>参考 <a href="http://www.jianshu.com/p/d9b1273a93fd" target="_blank" rel="external">http://www.jianshu.com/p/d9b1273a93fd</a><br>参考 <a href="http://socket.io/" target="_blank" rel="external">http://socket.io/</a><br>参考 <a href="http://segmentfault.com/a/1190000000382788" target="_blank" rel="external">http://segmentfault.com/a/1190000000382788</a><br>参考 <a href="http://segmentfault.com/blog/jiyinyiyong/1190000000453817" target="_blank" rel="external">http://segmentfault.com/blog/jiyinyiyong/1190000000453817</a><br>参考 <a href="http://www.oseye.net/user/kevin/blog/83" target="_blank" rel="external">http://www.oseye.net/user/kevin/blog/83</a><br>参考 <a href="http://zh.wikipedia.org/wiki/WebSocket" target="_blank" rel="external">http://zh.wikipedia.org/wiki/WebSocket</a></p>
+        <h3 id="Lua__u5B66_u4E60_u6458_u8981"><a href="#Lua__u5B66_u4E60_u6458_u8981" class="headerlink" title="Lua 学习摘要"></a>Lua 学习摘要</h3><p><a href="http://dhq.me/lua-learning-notes-package-and-module" target="_blank" rel="external">Lua 学习笔记(4) – 模块与包</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-PHP/phpMyAdmin" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/PHP/phpMyAdmin/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/PHP/phpMyAdmin/">Title</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="phpMyAdmin__u76F8_u5173"><a href="#phpMyAdmin__u76F8_u5173" class="headerlink" title="phpMyAdmin 相关"></a>phpMyAdmin 相关</h3><p>修改phpMyAdmin中的默认1440超时时间</p>
+<p>步骤一:修改PHP配置中session的过期时间.</p>
+<pre><code>session.gc_maxlifetime = 1440
+# 改为
+session.gc_maxlifetime = 14400
+</code></pre><p>步骤二:修改phpMyAdmin配置中 session 的过期时间.</p>
+<p>找到 phpMyAdmin/libraries/config.default.php 文件,打开修改</p>
+<pre><code>$cfg[&apos;LoginCookieValidity&apos;] = 1440;
+// 改为
+$cfg[&apos;LoginCookieValidity&apos;] = 10000;
+</code></pre><p>注意:</p>
+<p>$cfg[‘LoginCookieValidity’] 的值不能大于 php.ini 里的 session.gc_maxlifetime 的值,否则phpmyadmin 里会出现”您的 PHP 配置参数 session.gc_maxlifetime (外链,英文) 短于您在 phpMyAdmin 中设置的 Cookies 有效期,<br>此您的登录会话有效期将会比您在 phpMyAdmin 中设置的时间要更短.</p>
 
       
     </div>
@@ -1078,10 +491,10 @@ $ git push -u origin master
 
 
   
-    <article id="post-PHP/phpMyAdmin" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-PHP/Composer" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/10/PHP/phpMyAdmin/" class="article-date">
+      <a href="/2016/01/10/PHP/Composer/" class="article-date">
       <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
 </a>
     </div>
@@ -1095,7 +508,7 @@ $ git push -u origin master
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/PHP/phpMyAdmin/">Title</a>
+      <a class="article-title" href="/2016/01/10/PHP/Composer/">Title</a>
     </h1>
   
 
@@ -1105,18 +518,64 @@ $ git push -u origin master
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="phpMyAdmin__u76F8_u5173"><a href="#phpMyAdmin__u76F8_u5173" class="headerlink" title="phpMyAdmin 相关"></a>phpMyAdmin 相关</h3><p>修改phpMyAdmin中的默认1440超时时间</p>
-<p>步骤一:修改PHP配置中session的过期时间.</p>
-<pre><code>session.gc_maxlifetime = 1440
-# 改为
-session.gc_maxlifetime = 14400
-</code></pre><p>步骤二:修改phpMyAdmin配置中 session 的过期时间.</p>
-<p>找到 phpMyAdmin/libraries/config.default.php 文件,打开修改</p>
-<pre><code>$cfg[&apos;LoginCookieValidity&apos;] = 1440;
-// 改为
-$cfg[&apos;LoginCookieValidity&apos;] = 10000;
-</code></pre><p>注意:</p>
-<p>$cfg[‘LoginCookieValidity’] 的值不能大于 php.ini 里的 session.gc_maxlifetime 的值,否则phpmyadmin 里会出现”您的 PHP 配置参数 session.gc_maxlifetime (外链,英文) 短于您在 phpMyAdmin 中设置的 Cookies 有效期,<br>此您的登录会话有效期将会比您在 phpMyAdmin 中设置的时间要更短.</p>
+        <h2 id="Composer"><a href="#Composer" class="headerlink" title="Composer"></a>Composer</h2><p><a href="http://www.phpcomposer.com/" target="_blank" rel="external">Composer 中文网</a><br><a href="http://rivsen.github.io/post/how-to-publish-package-to-packagist-using-github-and-composer-step-by-step/" target="_blank" rel="external">使用GitHub、Composer、Packagist管理公开的PHP包（Step By Step）</a></p>
+<h3 id="Packagist_/_Composer__u4E2D_u56FD_u5168_u91CF_u955C_u50CF"><a href="#Packagist_/_Composer__u4E2D_u56FD_u5168_u91CF_u955C_u50CF" class="headerlink" title="Packagist / Composer 中国全量镜像"></a>Packagist / Composer 中国全量镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config -g repositories.packagist composer http://packagist.phpcomposer.com</span><br></pre></td></tr></table></figure>
+<p>##</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo composer clearcache  <span class="comment"># 清除缓存</span></span><br><span class="line">sudo rm -r ~/.composer/cache <span class="comment"># 清除缓存</span></span><br></pre></td></tr></table></figure>
+<h3 id="u4E0D_u7F16_u8F91composer-json_u7684_u60C5_u51B5_u4E0B_u5B89_u88C5_u5E93"><a href="#u4E0D_u7F16_u8F91composer-json_u7684_u60C5_u51B5_u4E0B_u5B89_u88C5_u5E93" class="headerlink" title="不编辑composer.json的情况下安装库"></a>不编辑composer.json的情况下安装库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer require <span class="string">"foo/bar:1.0.0"</span></span><br></pre></td></tr></table></figure>
+<h3 id="u5F3A_u5236_u4ECE_github__u514B_u9686_u6E90_u4EE3_u7801"><a href="#u5F3A_u5236_u4ECE_github__u514B_u9686_u6E90_u4EE3_u7801" class="headerlink" title="强制从 github 克隆源代码"></a>强制从 github 克隆源代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer update symfony/yaml --prefer-source</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-NodeJs/NodeJsNote" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/NodeJs/NodeJsNote/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/NodeJs/NodeJsNote/">Title</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Node-js_Note"><a href="#Node-js_Note" class="headerlink" title="Node.js Note"></a>Node.js Note</h1><h4 id="Node-js__u548C_Socket-io__u642D_u5EFA_u6D88_u606F_u5B9E_u65F6_u63A8_u9001"><a href="#Node-js__u548C_Socket-io__u642D_u5EFA_u6D88_u606F_u5B9E_u65F6_u63A8_u9001" class="headerlink" title="Node.js 和 Socket.io 搭建消息实时推送"></a>Node.js 和 Socket.io 搭建消息实时推送</h4><p>参考 <a href="http://www.jianshu.com/p/d9b1273a93fd" target="_blank" rel="external">http://www.jianshu.com/p/d9b1273a93fd</a><br>参考 <a href="http://socket.io/" target="_blank" rel="external">http://socket.io/</a><br>参考 <a href="http://segmentfault.com/a/1190000000382788" target="_blank" rel="external">http://segmentfault.com/a/1190000000382788</a><br>参考 <a href="http://segmentfault.com/blog/jiyinyiyong/1190000000453817" target="_blank" rel="external">http://segmentfault.com/blog/jiyinyiyong/1190000000453817</a><br>参考 <a href="http://www.oseye.net/user/kevin/blog/83" target="_blank" rel="external">http://www.oseye.net/user/kevin/blog/83</a><br>参考 <a href="http://zh.wikipedia.org/wiki/WebSocket" target="_blank" rel="external">http://zh.wikipedia.org/wiki/WebSocket</a></p>
 
       
     </div>
@@ -1142,9 +601,266 @@ $cfg[&apos;LoginCookieValidity&apos;] = 10000;
 
 
   
+    <article id="post-Erlang/MQTT" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Erlang/MQTT/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Erlang/MQTT/">MQTTNote</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="u5173_u4E8E_MQTT__u534F_u8BAE"><a href="#u5173_u4E8E_MQTT__u534F_u8BAE" class="headerlink" title="关于 MQTT 协议"></a>关于 MQTT 协议</h3><p><a href="https://github.com/liangjingyang/MQTT-CN/blob/master/mqtt-v3.1.1-os.md" target="_blank" rel="external">MQTT 中文文档 Version 3.1.1</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Erlang/Erlang" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Erlang/Erlang/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="Erlang__u7814_u7A76_u76F8_u5173"><a href="#Erlang__u7814_u7A76_u76F8_u5173" class="headerlink" title="Erlang 研究相关"></a>Erlang 研究相关</h3><blockquote>
+<p>比较好的 Erlang 开发者博客及文档</p>
+</blockquote>
+<p><a href="http://allran.github.io/2015/05/13/erlang-use/" target="_blank" rel="external">木头人 - erlang use</a><br><a href="http://www.erlang-cn.com/118.html" target="_blank" rel="external">Erlang 中文教程Erlang中文教程,欢迎广大Erlang爱好者加入</a><br><a href="http://www.cnblogs.com/liangjingyang/archive/2012/07/15/2592691.html" target="_blank" rel="external">Simple - liangjingyang 博客</a><br><a href="http://wiki.jikexueyuan.com/project/erlang/#6f142dcd2b9ce7c7dd576f3a36fe2e9e" target="_blank" rel="external">Erlang 教程中文版</a><br><a href="http://svn.liancheng.info/cpie-cn/trunk/.build/html/part-i/index.html" target="_blank" rel="external">Erlang并发编程</a><br><a href="http://cpie-cn.readthedocs.org/en/latest/index.html" target="_blank" rel="external">Erlang并发编程-新版</a><br><a href="http://youthyblog.com/2015/07/22/erl%E5%91%BD%E4%BB%A4%E5%92%8C%E5%8F%82%E6%95%B0/" target="_blank" rel="external">erl命令和参数</a><br><a href="http://developerworks.github.io/" target="_blank" rel="external">元气糯米团子的Coding Blog</a><br><a href="http://wudaijun.com/categories/erlang/" target="_blank" rel="external">wudaijun’s blog</a></p>
+<p><a href="http://www.dlive.me/category/distributed/" target="_blank" rel="external">Erlang 相关</a></p>
+<hr>
+<h5 id="u7CFB_u7EDF_u9884_u5B9A_u4E49_u7684_u5B8F_3A"><a href="#u7CFB_u7EDF_u9884_u5B9A_u4E49_u7684_u5B8F_3A" class="headerlink" title="系统预定义的宏:"></a>系统预定义的宏:</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">?MODULE 表示当前模块名</span><br><span class="line">?MODULE_STRING 同上,但是以字符串形式</span><br><span class="line">?FILE 当前模块的文件名</span><br><span class="line">?LINE 调用的当前代码行数</span><br><span class="line">?MACHINE 机器名</span><br></pre></td></tr></table></figure>
+<p><a href="https://bitbucket.org/gamexg/erlang/wiki/Home" target="_blank" rel="external">Erlang 语言学习笔记 / Home</a></p>
+<h5 id="u8981_u77E5_u9053_u4E00_u4E2A_u8282_u70B9ping_u901A_u4E48_3A"><a href="#u8981_u77E5_u9053_u4E00_u4E2A_u8282_u70B9ping_u901A_u4E48_3A" class="headerlink" title="要知道一个节点ping通么:"></a>要知道一个节点ping通么:</h5><pre><code>net_adm:ping(Nodes).-&gt; pong |pang
+node() 返回本节点名
+nodes() 返回所有其它节点名.
+</code></pre><p>[pong:成功 |pang: 失败]</p>
+<hr>
+<p>收藏<br><a href="http://dhq.me/the-interaction-experiment-between-erlang-and-websocket" target="_blank" rel="external">Erlang 与 WebSocket 之间的通讯交互</a><br><a href="http://dhq.me/parse-xml-in-erlang" target="_blank" rel="external">erlang 解析 xml 格式数据</a><br><a href="http://dhq.me/erlang-dict-intro" target="_blank" rel="external">Erlang 的 dict 模块函数方法介绍</a><br><a href="http://dhq.me/build-compile-eunit-release-erlang-application-with-rebar" target="_blank" rel="external">用 rebar 来构建、编译、测试、发布 Erlang 应用程序</a></p>
+<p><a href="http://no001.blog.51cto.com/1142339/1320855" target="_blank" rel="external">Erlang不能错过的盛宴</a></p>
+<p><a href="http://pzjay.blogspot.com/2012/11/test.html" target="_blank" rel="external">40+行erlang代码实现一个简易分布式计算框架</a></p>
+<h4 id="u9519_u8BEF_u5206_u6790"><a href="#u9519_u8BEF_u5206_u6790" class="headerlink" title="错误分析"></a>错误分析</h4><blockquote>
+<p>运行 rebar 出现如下错误</p>
+</blockquote>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">Sun Dec </span><span class="number">20</span> <span class="number">21</span><span class="symbol">:</span><span class="number">15</span><span class="symbol">:</span><span class="number">31</span> yzhang<span class="variable">@coam</span><span class="symbol">:~/RunProject/ejabberd</span><span class="variable">$ </span>sudo ./rebar get-deps</span><br><span class="line">/usr/bin/<span class="symbol">env:</span> <span class="symbol">escript:</span> <span class="constant">No </span>such file <span class="keyword">or</span> directory</span><br><span class="line"></span><br><span class="line"><span class="constant">Sun Dec </span><span class="number">20</span> <span class="number">21</span><span class="symbol">:</span><span class="number">22</span><span class="symbol">:</span><span class="number">50</span> yzhang<span class="variable">@coam</span><span class="symbol">:~/RunProject</span><span class="variable">$ </span>whereis escript</span><br><span class="line"><span class="symbol">escript:</span> /opt/otp/bin/escript</span><br></pre></td></tr></table></figure>
+<p>原因是我安装 otp 时 使用命令 ./configure –prefix=/opt/otp/ 指定安装 otp 到 /opt/otp/ 下</p>
+<p>于是重新安装 otp ,并取消 ~/.bashrc 中配置的 erlang 环境变量</p>
+<h1 id="Erlang"><a href="#Erlang" class="headerlink" title="Erlang"></a>Erlang</h1><p>#export PATH=/opt/otp/bin:$PATH</p>
+<p>重启 ubuntu 后敲 erl 命令提示未找到,注释成功,重新使用默认参数安装otp</p>
+<blockquote>
+<p>ejabberd 源码编译安装,执行命令 ejabberd ./configure 后出现如下错误</p>
+</blockquote>
+<figure class="highlight java"><figcaption><span>错误分析</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Sun Dec <span class="number">20</span> <span class="number">21</span>:<span class="number">21</span>:<span class="number">26</span> yzhang<span class="annotation">@coam</span>:~/RunProject/ejabberd$ sudo ./configure</span><br><span class="line">checking whether make sets $(MAKE)... yes</span><br><span class="line">checking <span class="keyword">for</span> a BSD-compatible install... /usr/bin/install -c</span><br><span class="line">checking <span class="keyword">for</span> a sed that does not truncate output... /bin/sed</span><br><span class="line">checking <span class="keyword">for</span> erl... no</span><br><span class="line">checking <span class="keyword">for</span> erlc... no</span><br><span class="line">checking <span class="keyword">for</span> erl... no</span><br><span class="line">configure: error: Erlang/<span class="function">OTP <span class="title">interpreter</span> <span class="params">(erl)</span> not found but required</span></span><br></pre></td></tr></table></figure>
+<p>解决方案,重新安装 otp到系统默认路径</p>
+<p>参考 <a href="http://stackoverflow.com/questions/12327809/why-cannot-escript-run" target="_blank" rel="external">http://stackoverflow.com/questions/12327809/why-cannot-escript-run</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Http/HttpNote" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/08/Http/HttpNote/" class="article-date">
+      <time datetime="2016-01-08T04:28:31.000Z" itemprop="datePublished">2016-01-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/08/Http/HttpNote/">Http协议相关</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h1 id="Http_u534F_u8BAE_u76F8_u5173"><a href="#Http_u534F_u8BAE_u76F8_u5173" class="headerlink" title="Http协议相关"></a>Http协议相关</h1>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a  href="/2016/01/08/Http/HttpNote/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Others/MarkDownNote" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/08/Others/MarkDownNote/" class="article-date">
+      <time datetime="2016-01-08T02:51:31.000Z" itemprop="datePublished">2016-01-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/08/Others/MarkDownNote/">MarkDown 相关</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h1 id="Markdown__u76F8_u5173_u7B14_u8BB0_u6458_u8981"><a href="#Markdown__u76F8_u5173_u7B14_u8BB0_u6458_u8981" class="headerlink" title="Markdown 相关笔记摘要"></a>Markdown 相关笔记摘要</h1><p><a href="http://www.debug4.me/%E5%B7%A5%E5%85%B7/markdown-learning/">Markdown标准语法与GitHub Flavored Markdown语法大全</a></p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/markdown/">markdown</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown-gfw-hexo-jekyll/">markdown gfw hexo jekyll</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/01/08/Others/MarkDownNote/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
   
 </div>

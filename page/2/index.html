@@ -140,7 +140,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/markdown-gfw-hexo-jekyll/" style="font-size: 10px;">markdown gfw hexo jekyll</a>
+                        <a href="/tags/markdown-gfw-hexo-jekyll/" style="font-size: 10px;">markdown gfw hexo jekyll</a>
                     </div>
                 </section>
                 
@@ -275,10 +275,10 @@
 
 
   
-    <article id="post-AndroidPushMQTT" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Erlang/Mnesia" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/10/AndroidPushMQTT/" class="article-date">
+      <a href="/2016/01/10/Erlang/Mnesia/" class="article-date">
       <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
 </a>
     </div>
@@ -292,7 +292,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/AndroidPushMQTT/">Android 推送之 MQTT</a>
+      <a class="article-title" href="/2016/01/10/Erlang/Mnesia/">MnesiaNote</a>
     </h1>
   
 
@@ -302,234 +302,113 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="Android__u5F00_u53D1_u63A8_u9001_u65B9_u6848"><a href="#Android__u5F00_u53D1_u63A8_u9001_u65B9_u6848" class="headerlink" title="Android 开发推送方案"></a>Android 开发推送方案</h2><h2 id="MQTT__u670D_u52A1_u5668"><a href="#MQTT__u670D_u52A1_u5668" class="headerlink" title="MQTT 服务器"></a>MQTT 服务器</h2><p>使用 emqttd broken<br><a href="https://github.com/emqtt/emqttd" target="_blank" rel="external">GitHub - emqtt/emqttd</a><br><a href="http://emqtt.io/" target="_blank" rel="external">官网</a></p>
-<p><a href="https://github.com/emqtt/emqttd/wiki/Configuration" target="_blank" rel="external">emqttd 主要配置参数</a></p>
-<p>emqttd 使用以下命令调试输出</p>
-<pre><code>./bin/emqttd console
-</code></pre><p>如果没有打印输出日志信息,可以参考取消 rel/files/emqttd.config.production 或 ./etc/emqttd.config 中对 %%{lager_console_backend, info} 的注释<br><a href="https://github.com/emqtt/emqttd/issues/407" target="_blank" rel="external">关于提问</a></p>
+        <h3 id="Erlang_Mnesia_Database"><a href="#Erlang_Mnesia_Database" class="headerlink" title="Erlang Mnesia Database"></a>Erlang Mnesia Database</h3><p><a href="http://www.erlang.org/doc/man/mnesia.html" target="_blank" rel="external">Erlang Mnesia Doc</a></p>
+<p>最近学习erlang,在erlang中天然集成了一个分布式数据库名字叫mnesia,因为数据库天然就和erlang的元组,记录无缝结合,并且具有良好的分布式特性,能够自动地在几个erlang节点上实现数据复制,效果有点像zookeeper的节点集群,<br>而且mnesia还支持数据库事务特性,所以mnesia在erlang应用中使用得非常频繁.</p>
+<p>要在本地创建一个mnesia数据库,并且要实现插入,查询功能需要实现以下这几步:<br>1.启动erlang节点:</p>
+<pre><code>#erl -mnesia dir &apos;&quot;d://tmp//mnesia&quot;&apos; -sname mynode
+erl -mnesia dir &apos;&quot;C:\Users\yafei\DevWork\Erlang\dev\mnesia\data&quot;&apos; -name win@27.16.194.65 -setcookie 456789
+sudo erl -mnesia dir &apos;&quot;/data/home/data/mnesia/&quot;&apos; -name ali@42.96.194.60 -setcookie 456789
+</code></pre><p>注意路径双引号<br> 以上这个 “/data/home/data/mnesia/“ 目录是存放mnesia数据库的schema数据的,当然这个目录也可以不指定,那么mnesia数据库启动之后将把数据库的schema中的数据放在内存中,如果下次节点重启之后,之前数据库中创建的表结构数据就消失了.<br>2.接下来就是在erl shell中本地初始化一个空的 mnesia 数据库</p>
+<pre><code>mnesia:create_schema([node()]).
+</code></pre><p>  从参数上是一个节点列表,所以其实需要的话,可以在参数列表上设置多个erlang节点,就能在多个erlang节点上同时创建mnesia数据库并构成 Mnesia 集群.<br>3.启动mnesia数据库<br>  初始化完成了mnesia数据库schema之后,接下来就可以启动mneisa数据库了.</p>
+<pre><code>mnesia:start().
+</code></pre><p>至此,一个空的mneisa已经创建启动成功了,我们可以调用mnesia:info(). 查看当前mnesia数据库的一些状态,结果如下:</p>
+<pre><code>(ali@localhost)2&gt; mnesia:info().
+===&gt; System info in version &quot;4.13.2&quot;, debug level = none &lt;===
+opt_disc. Directory &quot;/data/home/data/mnesia&quot; is used.
+use fallback at restart = true
+running db nodes   = []
+stopped db nodes   = [ali@localhost]
+ok
+(ali@localhost)3&gt; mnesia:start().
+ok
+(ali@localhost)4&gt; mnesia:info().
+---&gt; Processes holding locks &lt;---
+---&gt; Processes waiting for locks &lt;---
+---&gt; Participant transactions &lt;---
+---&gt; Coordinator transactions &lt;---
+---&gt; Uncertain transactions &lt;---
+---&gt; Active tables &lt;---
+schema         : with 1        records occupying 408      words of mem
+===&gt; System info in version &quot;4.13.2&quot;, debug level = none &lt;===
+opt_disc. Directory &quot;/data/home/data/mnesia&quot; is used.
+use fallback at restart = false
+running db nodes   = [ali@localhost]
+stopped db nodes   = []
+master node tables = []
+remote             = []
+ram_copies         = []
+disc_copies        = [schema]
+disc_only_copies   = []
+[{ali@localhost,disc_copies}] = [schema]
+2 transactions committed, 0 aborted, 0 restarted, 0 logged to disc
+0 held locks, 0 in queue; 0 local transactions, 0 remote
+0 transactions waits for other nodes: []
+ok
+</code></pre><p>从 [{ali@localhost,disc_copies}] = [schema] 这行上来看当前数据库中只有一个数据库的schema表.</p>
 <hr>
-<h4 id="MQTT_Android__u5BA2_u6237_u7AEF"><a href="#MQTT_Android__u5BA2_u6237_u7AEF" class="headerlink" title="MQTT Android 客户端"></a>MQTT Android 客户端</h4><blockquote>
-<p>之前使用 IBM 提供的 wmqtt.jar 和 tokudu 项目示例</p>
+<h4 id="Mnesia__u96C6_u7FA4"><a href="#Mnesia__u96C6_u7FA4" class="headerlink" title="Mnesia 集群"></a>Mnesia 集群</h4><p>分别在 阿里云 ali 和 本机 win 启动两个节点</p>
+<pre><code>sudo -mnesia dir &apos;&quot;/data/home/data/mnesia/&quot;&apos; -name ali@42.96.194.60 -setcookie 456789
+erl -mnesia dir &apos;&quot;C:\Users\yafei\DevWork\Erlang\dev\mnesia\data&quot;&apos; -name win@27.16.194.65 -setcookie 456789
+</code></pre><p>保证两个节点都启动,并且 mnesia 没有启用</p>
+<pre><code>mnesia:delete_schema([&apos;win@27.16.194.65&apos;, &apos;ali@42.96.194.60&apos;]).
+mnesia:create_schema([&apos;win@27.16.194.65&apos;, &apos;ali@42.96.194.60&apos;]).
+</code></pre><p>然后启动两个节点的 mnesia,查看运行详情</p>
+<pre><code>(win@27.16.194.65)9&gt; mnesia:start().
+(win@27.16.194.65)9&gt; mnesia:info().
+---&gt; Processes holding locks &lt;---
+---&gt; Processes waiting for locks &lt;---
+---&gt; Participant transactions &lt;---
+---&gt; Coordinator transactions &lt;---
+---&gt; Uncertain transactions &lt;---
+---&gt; Active tables &lt;---
+schema         : with 1        records occupying 414      words of mem
+===&gt; System info in version &quot;4.13.2&quot;, debug level = none &lt;===
+opt_disc. Directory [99,58,47,85,115,101,114,115,47,121,97,102,101,105,47,68,
+101,118,87,111,114,107,47,69,114,108,97,110,103,47,100,
+101,118,47,109,110,101,115,105,97,47,85,115,101,114,115,
+121,97,102,101,105,68,101,118,87,111,114,107,69,114,108,
+97,110,103,127,101,118,109,110,101,115,105,97,127,97,116,
+97] is used.
+use fallback at restart = false
+running db nodes   = [&apos;ali@42.96.194.60&apos;,&apos;win@27.16.194.65&apos;]
+stopped db nodes   = []
+master node tables = []
+remote             = []
+ram_copies         = []
+disc_copies        = [schema]
+disc_only_copies   = []
+[{&apos;ali@42.96.194.60&apos;,disc_copies},{&apos;win@27.16.194.65&apos;,disc_copies}] = [schema]
+3 transactions committed, 0 aborted, 1 restarted, 2 logged to disc
+0 held locks, 0 in queue; 0 local transactions, 0 remote
+0 transactions waits for other nodes: []
+ok
+</code></pre><p>根据 running db nodes   = [‘ali@42.96.194.60’,’win@27.16.194.65’] 可以看出两个节点已成功组成 节点</p>
+<p>在任何一个节点添加数据表</p>
+<hr>
+<h4 id="erlang_mnesia__u6570_u636E_u5E93_u5B9E_u73B0SQL_u67E5_u8BE2"><a href="#erlang_mnesia__u6570_u636E_u5E93_u5B9E_u73B0SQL_u67E5_u8BE2" class="headerlink" title="erlang mnesia 数据库实现SQL查询"></a>erlang mnesia 数据库实现SQL查询</h4><blockquote>
+<p>Mnesia是一个分布式数据库管理系统,适合于电信和其它需要持续运行和具备软实时特性的Erlang应用,越来越受关注和使用,但是目前Mnesia资料却不多,很多都只有官方的用户指南.<br>下面的内容将着重说明  Mnesia 数据库如何实现SQL查询,实现select / insert / update / where / order by / join / limit / delete等SQL操作.</p>
 </blockquote>
-<p><a href="ftp://public.dhe.ibm.com/software/integration/support/supportpacs/individual/ia92.zip" target="_blank" rel="external">wmqtt.jar</a><br><a href="https://github.com/tokudu/AndroidPushNotificationsDemo" target="_blank" rel="external">tokudu/AndroidPushNotificationsDemo</a></p>
+<p>参见示例 sql.erl</p>
 <blockquote>
-<p>由于 wmqttd 几乎没有更新,于是采用新的Android客户端 <a href="http://www.eclipse.org/paho/" target="_blank" rel="external">Paho</a> 方案</p>
-</blockquote>
-<p>需要添加如下两个依赖 <a href="/">org.eclipse.paho:org.eclipse.paho.client.mqttv3</a> 和 <a href="https://repo.eclipse.org/index.html#nexus-search;quick~paho.android" target="_blank" rel="external">org.eclipse.paho:org.eclipse.paho.android.service</a></p>
-<pre><code>dependencies {
-    // http://www.eclipse.org/paho/clients/android/
-    compile(&apos;org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.0.2&apos;)
-    compile(&apos;org.eclipse.paho:org.eclipse.paho.android.service:1.0.2&apos;) {
-        exclude module: &quot;org.eclipse.paho.client.mqttv3&quot;, group: &quot;org.eclipse.paho&quot;
-        exclude module: &quot;support-v4&quot;, group: &quot;com.google.android&quot;
-    }
-}
-</code></pre><p>比较好的参考演示项目:<br><a href="https://github.com/jeffprestes/AndroidMQTTDemo" target="_blank" rel="external">jeffprestes/AndroidMQTTDemo</a><br><a href="http://www.eclipse.org/paho/clients/android/sample/" target="_blank" rel="external">样例使用示例</a></p>
-<p>其它<br><a href="http://xiaoxinzhou.blog.163.com/blog/static/20704538620145411306821/" target="_blank" rel="external">MQTT协议实现Eclipse Paho学习总结一</a><br><a href="http://www.longdw.com/mqtt-server-client-android/" target="_blank" rel="external">编写和MQTT服务器通信的Android客户端程序(二)</a><br><a href="http://blog.csdn.net/zhu_tianwei/article/details/42983689" target="_blank" rel="external"> MQTT协议之订阅及发布(使用paho-mqtt-client或mqttv3实现)</a></p>
-<hr>
-<h4 id="u670D_u52A1_u5668_PHP__u5BA2_u6237_u7AEF_SAM"><a href="#u670D_u52A1_u5668_PHP__u5BA2_u6237_u7AEF_SAM" class="headerlink" title="服务器 PHP 客户端 SAM"></a>服务器 PHP 客户端 SAM</h4><blockquote>
-<p>SAM 针对MQTT写的PHP库 (下载链接为Tokudu PHPMQTT通信项目),其中send_mqtt.php是一个通过POST接收消息并且通过SAM将消息发送给RSMB的PHP脚本.<br><a href="http://pecl.php.net/package/sam" target="_blank" rel="external">SAM</a></p>
-<p>参考 tokudu 项目<br><a href="https://github.com/tokudu/PhpMQTTClient" target="_blank" rel="external">tokudu/PhpMQTTClient</a><br><a href="https://github.com/bluerhinos/phpMQTT" target="_blank" rel="external">bluerhinos/phpMQTT</a></p>
+<p>注:使用qlc模块查询,需要在文件顶部声明”-include_lib(“stdlib/include/qlc.hrl”).”,否则编译时会产生”Warning: qlc:q/1 called, but “qlc.hrl” not included”的警告.</p>
 </blockquote>
 <hr>
-<h4 id="MQTT_u534F_u8BAE_u7B14_u8BB0_u4E4B_u8FDE_u63A5_u548C_u5FC3_u8DF3"><a href="#MQTT_u534F_u8BAE_u7B14_u8BB0_u4E4B_u8FDE_u63A5_u548C_u5FC3_u8DF3" class="headerlink" title="MQTT协议笔记之连接和心跳"></a>MQTT协议笔记之连接和心跳</h4><blockquote>
-<p>几种 MQTT 协议 包 格式有: 连接(CONNECT)、心跳(PINGREQ/PINGRESP)、确认(CONNACK)、断开连接(DISCONNECT)、订阅(SUBSCRIBE)、取消订阅(SUBACK)</p>
-</blockquote>
+<h4 id="u4F7F_u7528_u5355_u72EC_u7684_u811A_u672C_u8FDE_u63A5_ejabberd_mnesia__u6570_u636E_u5E93"><a href="#u4F7F_u7528_u5355_u72EC_u7684_u811A_u672C_u8FDE_u63A5_ejabberd_mnesia__u6570_u636E_u5E93" class="headerlink" title="使用单独的脚本连接 ejabberd mnesia 数据库"></a>使用单独的脚本连接 ejabberd mnesia 数据库</h4><pre><code>Cookie = &apos;YOUR_EJABBERD_COOKIE&apos;. % mine was found in /var/lib/ejabberd/.erlang.cookie
+EjabberdNode = &apos;ejabberd@127.0.0.1&apos;. % or whatever you set as EJABBERD_NODE
+erlang:set_cookie(EjabberdNode, Cookie).
+net_adm:ping(EjabberdNode).
+rpc:call(EjabberdNode, mnesia, system_info, [tables]).
+</code></pre><p>参考 <a href="http://stackoverflow.com/questions/9232510/how-can-i-connect-to-ejabberds-mnesia-database-with-a-separate-script" target="_blank" rel="external">How can I connect to ejabberd’s Mnesia database with a separate script?</a></p>
 <hr>
-<h5 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h5><p><a href="http://www.cnblogs.com/linsongbin/p/4736227.html" target="_blank" rel="external">mqtt 协议之 PINGREQ, PINGRESP</a><br><a href="http://www.blogjava.net/yongboy/archive/2014/02/09/409630.html" target="_blank" rel="external">MQTT协议笔记之连接和心跳</a></p>
-<p><a href="http://bbs.hiapk.com/thread-4652657-1-1.html" target="_blank" rel="external">Android消息推送完美方案 </a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Erlang/Elixir" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/10/Erlang/Elixir/" class="article-date">
-      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/Erlang/Elixir/">ElixirNote</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="Erlang__u52A8_u6001_u7F16_u7A0B_u8BED_u8A00_Elixir__u76F8_u5173"><a href="#Erlang__u52A8_u6001_u7F16_u7A0B_u8BED_u8A00_Elixir__u76F8_u5173" class="headerlink" title="Erlang 动态编程语言 Elixir 相关"></a>Erlang 动态编程语言 Elixir 相关</h3><p><a href="http://elixir-lang.org/getting-started/introduction.html" target="_blank" rel="external">Elixir 官网</a></p>
-<p><a href="https://github.com/elixir-lang-china/elixir_guide_cn/blob/master/getting_started/Chapter2.md" target="_blank" rel="external">GitHub - elixir-lang-china/elixir_guide_cn</a><br><a href="https://github.com/straightdave/programming_elixir" target="_blank" rel="external">GitHub - straightdave/programming_elixir</a><br><a href="/"></a></p>
+<h4 id="mnesia_u8868_u6570_u636EId_u81EA_u589E_u957F"><a href="#mnesia_u8868_u6570_u636EId_u81EA_u589E_u957F" class="headerlink" title="mnesia表数据Id自增长"></a>mnesia表数据Id自增长</h4><p>1.使用函数:</p>
+<pre><code>mnesia:dirty_update_counter(unique_id, mine_result, 1).
+</code></pre><p>2.该函数参数示意,<br>   unique_id 表名, mine_result 表名,每次自增N.<br>3.<br>   1.创建如下结构的mnesia数据库表 -record(unique_id, {item, uid}),该表是为了存储 mine_result 表的最大的Id值;<br>   2.每为 mine_result 表加入一条新记录时,需要得到新的id值: </p>
+<pre><code>mnesia:dirty_update_counter(unique_id,  mine_result , 1),
+</code></pre><p>从unique_id表中取出最大的Id值加1,更新unique_id表的数据,返回最大Id值加1,<br>注意:请在建立unique_id表的时候,往里面插入数据;表名,初始值,{ mine_result  ,0},<br>我做了一个实验如果unique_id表中没有数据的时候,并发向mine_result库中插入100条数据时,不稳定.<br>但是unique_id表中加入一个数据后,并发数提高到30000,还是很稳定.</p>
 <hr>
-<p>参考列表</p>
-<p><a href="/"></a><br><a href="/"></a><br><a href="/"></a><br><a href="/"></a><br><a href="/"></a><br><a href="/"></a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Erlang/Erlang" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/10/Erlang/Erlang/" class="article-date">
-      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="Erlang__u7814_u7A76_u76F8_u5173"><a href="#Erlang__u7814_u7A76_u76F8_u5173" class="headerlink" title="Erlang 研究相关"></a>Erlang 研究相关</h3><blockquote>
-<p>比较好的 Erlang 开发者博客及文档</p>
-</blockquote>
-<p><a href="http://allran.github.io/2015/05/13/erlang-use/" target="_blank" rel="external">木头人 - erlang use</a><br><a href="http://www.erlang-cn.com/118.html" target="_blank" rel="external">Erlang 中文教程Erlang中文教程,欢迎广大Erlang爱好者加入</a><br><a href="http://www.cnblogs.com/liangjingyang/archive/2012/07/15/2592691.html" target="_blank" rel="external">Simple - liangjingyang 博客</a><br><a href="http://wiki.jikexueyuan.com/project/erlang/#6f142dcd2b9ce7c7dd576f3a36fe2e9e" target="_blank" rel="external">Erlang 教程中文版</a><br><a href="http://svn.liancheng.info/cpie-cn/trunk/.build/html/part-i/index.html" target="_blank" rel="external">Erlang并发编程</a><br><a href="http://cpie-cn.readthedocs.org/en/latest/index.html" target="_blank" rel="external">Erlang并发编程-新版</a><br><a href="http://youthyblog.com/2015/07/22/erl%E5%91%BD%E4%BB%A4%E5%92%8C%E5%8F%82%E6%95%B0/" target="_blank" rel="external">erl命令和参数</a><br><a href="http://developerworks.github.io/" target="_blank" rel="external">元气糯米团子的Coding Blog</a><br><a href="http://wudaijun.com/categories/erlang/" target="_blank" rel="external">wudaijun’s blog</a></p>
-<p><a href="http://www.dlive.me/category/distributed/" target="_blank" rel="external">Erlang 相关</a></p>
-<hr>
-<h5 id="u7CFB_u7EDF_u9884_u5B9A_u4E49_u7684_u5B8F_3A"><a href="#u7CFB_u7EDF_u9884_u5B9A_u4E49_u7684_u5B8F_3A" class="headerlink" title="系统预定义的宏:"></a>系统预定义的宏:</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">?MODULE 表示当前模块名</span><br><span class="line">?MODULE_STRING 同上,但是以字符串形式</span><br><span class="line">?FILE 当前模块的文件名</span><br><span class="line">?LINE 调用的当前代码行数</span><br><span class="line">?MACHINE 机器名</span><br></pre></td></tr></table></figure>
-<p><a href="https://bitbucket.org/gamexg/erlang/wiki/Home" target="_blank" rel="external">Erlang 语言学习笔记 / Home</a></p>
-<h5 id="u8981_u77E5_u9053_u4E00_u4E2A_u8282_u70B9ping_u901A_u4E48_3A"><a href="#u8981_u77E5_u9053_u4E00_u4E2A_u8282_u70B9ping_u901A_u4E48_3A" class="headerlink" title="要知道一个节点ping通么:"></a>要知道一个节点ping通么:</h5><pre><code>net_adm:ping(Nodes).-&gt; pong |pang
-node() 返回本节点名
-nodes() 返回所有其它节点名.
-</code></pre><p>[pong:成功 |pang: 失败]</p>
-<hr>
-<p>收藏<br><a href="http://dhq.me/the-interaction-experiment-between-erlang-and-websocket" target="_blank" rel="external">Erlang 与 WebSocket 之间的通讯交互</a><br><a href="http://dhq.me/parse-xml-in-erlang" target="_blank" rel="external">erlang 解析 xml 格式数据</a><br><a href="http://dhq.me/erlang-dict-intro" target="_blank" rel="external">Erlang 的 dict 模块函数方法介绍</a><br><a href="http://dhq.me/build-compile-eunit-release-erlang-application-with-rebar" target="_blank" rel="external">用 rebar 来构建、编译、测试、发布 Erlang 应用程序</a></p>
-<p><a href="http://no001.blog.51cto.com/1142339/1320855" target="_blank" rel="external">Erlang不能错过的盛宴</a></p>
-<p><a href="http://pzjay.blogspot.com/2012/11/test.html" target="_blank" rel="external">40+行erlang代码实现一个简易分布式计算框架</a></p>
-<h4 id="u9519_u8BEF_u5206_u6790"><a href="#u9519_u8BEF_u5206_u6790" class="headerlink" title="错误分析"></a>错误分析</h4><blockquote>
-<p>运行 rebar 出现如下错误</p>
-</blockquote>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">Sun Dec </span><span class="number">20</span> <span class="number">21</span><span class="symbol">:</span><span class="number">15</span><span class="symbol">:</span><span class="number">31</span> yzhang<span class="variable">@coam</span><span class="symbol">:~/RunProject/ejabberd</span><span class="variable">$ </span>sudo ./rebar get-deps</span><br><span class="line">/usr/bin/<span class="symbol">env:</span> <span class="symbol">escript:</span> <span class="constant">No </span>such file <span class="keyword">or</span> directory</span><br><span class="line"></span><br><span class="line"><span class="constant">Sun Dec </span><span class="number">20</span> <span class="number">21</span><span class="symbol">:</span><span class="number">22</span><span class="symbol">:</span><span class="number">50</span> yzhang<span class="variable">@coam</span><span class="symbol">:~/RunProject</span><span class="variable">$ </span>whereis escript</span><br><span class="line"><span class="symbol">escript:</span> /opt/otp/bin/escript</span><br></pre></td></tr></table></figure>
-<p>原因是我安装 otp 时 使用命令 ./configure –prefix=/opt/otp/ 指定安装 otp 到 /opt/otp/ 下</p>
-<p>于是重新安装 otp ,并取消 ~/.bashrc 中配置的 erlang 环境变量</p>
-<h1 id="Erlang"><a href="#Erlang" class="headerlink" title="Erlang"></a>Erlang</h1><p>#export PATH=/opt/otp/bin:$PATH</p>
-<p>重启 ubuntu 后敲 erl 命令提示未找到,注释成功,重新使用默认参数安装otp</p>
-<blockquote>
-<p>ejabberd 源码编译安装,执行命令 ejabberd ./configure 后出现如下错误</p>
-</blockquote>
-<figure class="highlight java"><figcaption><span>错误分析</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Sun Dec <span class="number">20</span> <span class="number">21</span>:<span class="number">21</span>:<span class="number">26</span> yzhang<span class="annotation">@coam</span>:~/RunProject/ejabberd$ sudo ./configure</span><br><span class="line">checking whether make sets $(MAKE)... yes</span><br><span class="line">checking <span class="keyword">for</span> a BSD-compatible install... /usr/bin/install -c</span><br><span class="line">checking <span class="keyword">for</span> a sed that does not truncate output... /bin/sed</span><br><span class="line">checking <span class="keyword">for</span> erl... no</span><br><span class="line">checking <span class="keyword">for</span> erlc... no</span><br><span class="line">checking <span class="keyword">for</span> erl... no</span><br><span class="line">configure: error: Erlang/<span class="function">OTP <span class="title">interpreter</span> <span class="params">(erl)</span> not found but required</span></span><br></pre></td></tr></table></figure>
-<p>解决方案,重新安装 otp到系统默认路径</p>
-<p>参考 <a href="http://stackoverflow.com/questions/12327809/why-cannot-escript-run" target="_blank" rel="external">http://stackoverflow.com/questions/12327809/why-cannot-escript-run</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Erlang/Lua" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/10/Erlang/Lua/" class="article-date">
-      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/Erlang/Lua/">LuaNote</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="Lua__u5B66_u4E60_u6458_u8981"><a href="#Lua__u5B66_u4E60_u6458_u8981" class="headerlink" title="Lua 学习摘要"></a>Lua 学习摘要</h3><p><a href="http://dhq.me/lua-learning-notes-package-and-module" target="_blank" rel="external">Lua 学习笔记(4) – 模块与包</a></p>
+<p>参考<br><a href="http://wudaijun.com/2015/04/erlang-mnesia/" target="_blank" rel="external">wudaijun’s blog - Erlang mnesia</a><br><a href="http://www.tqcto.com/article/db/11625.html" target="_blank" rel="external">创设Mnesia数据库</a><br><a href="http://www.infoq.com/cn/news/2007/08/mnesia" target="_blank" rel="external">Erlang的Mnesia——为高伸缩性应用准备的数据库管理系统</a><br><a href="http://www.cnblogs.com/liangjingyang/archive/2012/09/27/2705451.html" target="_blank" rel="external">[Erlang-0008][OTP] 高效指南 – 表和数据库(ets mnesia)</a><br><a href="http://www.dlive.me/2014/12/10/erlangmnesia/" target="_blank" rel="external">Erlang基础Mnesia 之应用场景</a><br><a href="http://blog.maxkit.com.tw/2014/04/erlang-mnesia.html" target="_blank" rel="external">erlang Mnesia - 尚待研究</a></p>
+<p><a href="http://4096.info/2013/10/28/mnesia%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C/" target="_blank" rel="external">mnesia数据库使用体验</a><br><a href="http://4096.info/2014/11/07/no-title-2/" target="_blank" rel="external">mnesia数据库优化</a></p>
 
       
     </div>
@@ -933,9 +812,612 @@ public class CrunchifyIterateThroughList {
 
 
   
+    <article id="post-Java/LearnOkHttp" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Java/LearnOkHttp/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Java/LearnOkHttp/">Title</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="Square_OkHttp__u5F00_u53D1_u6307_u5357"><a href="#Square_OkHttp__u5F00_u53D1_u6307_u5357" class="headerlink" title="Square OkHttp 开发指南"></a>Square OkHttp 开发指南</h3><p><a href="http://square.github.io/okhttp/javadoc/index.html" target="_blank" rel="external">OkHttp文档</a></p>
+<h4 id="u540C_u6B65get"><a href="#u540C_u6B65get" class="headerlink" title="同步get"></a>同步get</h4><blockquote>
+<p>下载一个文件,打印他的响应头,以string形式打印响应体.<br>响应体的 string() 方法对于小文档来说十分方便、高效.但是如果响应体太大(超过1MB),应避免适应 string()方法 ,因为他会将把整个文档加载到内存中.<br>对于超过1MB的响应body,应使用流的方式来处理body.</p>
+</blockquote>
+<pre><code>private final OkHttpClient client = new OkHttpClient();
+public void run() throws Exception {
+    Request request = new Request.Builder()
+        .url(&quot;http://publicobject.com/helloworld.txt&quot;)
+        .build();
+
+    Response response = client.newCall(request).execute();
+    if (!response.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response);
+
+    Headers responseHeaders = response.headers();
+    for (int i = 0; i &lt; responseHeaders.size(); i++) {
+        System.out.println(responseHeaders.name(i) + &quot;: &quot; + responseHeaders.value(i));
+    }
+
+    System.out.println(response.body().string());
+}
+</code></pre><h4 id="u5F02_u6B65get"><a href="#u5F02_u6B65get" class="headerlink" title="异步get"></a>异步get</h4><blockquote>
+<p>在一个工作线程中下载文件,当响应可读时回调Callback接口.读取响应时会阻塞当前线程.OkHttp现阶段不提供异步api来接收响应体.</p>
+</blockquote>
+<pre><code>private final OkHttpClient client = new OkHttpClient();
+public void run() throws Exception {
+    Request request = new Request.Builder()
+        .url(&quot;http://publicobject.com/helloworld.txt&quot;)
+        .build();
+
+    client.newCall(request).enqueue(new Callback() {
+      @Override public void onFailure(Request request, Throwable throwable) {
+        throwable.printStackTrace();
+      }
+
+      @Override public void onResponse(Response response) throws IOException {
+        if (!response.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response);
+
+        Headers responseHeaders = response.headers();
+        for (int i = 0; i &lt; responseHeaders.size(); i++) {
+          System.out.println(responseHeaders.name(i) + &quot;: &quot; + responseHeaders.value(i));
+        }
+
+        System.out.println(response.body().string());
+      }
+    });
+}
+</code></pre><h4 id="u63D0_u53D6_u54CD_u5E94_u5934"><a href="#u63D0_u53D6_u54CD_u5E94_u5934" class="headerlink" title="提取响应头"></a>提取响应头</h4><blockquote>
+<p>典型的HTTP头 像是一个 Map<string, string=""> :每个字段都有一个或没有值.但是一些头允许多个值,像Guava的Multimap.例如:HTTP响应里面提供的Vary响应头,就是多值的.OkHttp的api试图让这些情况都适用.<br>当写请求头的时候,使用header(name, value)可以设置唯一的name、value.如果已经有值,旧的将被移除,然后添加新的.使用addHeader(name, value)可以添加多值(添加,不移除已有的).<br>当读取响应头时,使用header(name)返回最 后出现的name、value.通常情况这也是唯一的name、value.如果没有值,那么header(name)将返回null.如果想读取字段对应的所有值,使用headers(name)会返回一个list.<br>为了获取所有的Header,Headers类支持按index访问.</string,></p>
+</blockquote>
+<pre><code>private final OkHttpClient client = new OkHttpClient();
+public void run() throws Exception {
+    Request request = new Request.Builder()
+        .url(&quot;https://api.github.com/repos/square/okhttp/issues&quot;)
+        .header(&quot;User-Agent&quot;, &quot;OkHttp Headers.java&quot;)
+        .addHeader(&quot;Accept&quot;, &quot;application/json; q=0.5&quot;)
+        .addHeader(&quot;Accept&quot;, &quot;application/vnd.github.v3+json&quot;)
+        .build();
+
+    Response response = client.newCall(request).execute();
+    if (!response.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response);
+
+    System.out.println(&quot;Server: &quot; + response.header(&quot;Server&quot;));
+    System.out.println(&quot;Date: &quot; + response.header(&quot;Date&quot;));
+    System.out.println(&quot;Vary: &quot; + response.headers(&quot;Vary&quot;));
+}
+</code></pre><h4 id="Post_u65B9_u5F0F_u63D0_u4EA4String"><a href="#Post_u65B9_u5F0F_u63D0_u4EA4String" class="headerlink" title="Post方式提交String"></a>Post方式提交String</h4><blockquote>
+<p>使用HTTP POST提交请求到服务.这个例子提交了一个markdown文档到web服务,以HTML方式渲染markdown.因为整个请求体都在内存中,因此避免使用此api提交大文档(大于1MB).</p>
+</blockquote>
+<pre><code>public static final MediaType MEDIA_TYPE_MARKDOWN = MediaType.parse(&quot;text/x-markdown; charset=utf-8&quot;);
+private final OkHttpClient client = new OkHttpClient();
+public void run() throws Exception {
+    String postBody = &quot;&quot;
+        + &quot;Releases\n&quot;
+        + &quot;--------\n&quot;
+        + &quot;\n&quot;
+        + &quot; * _1.0_ May 6, 2013\n&quot;
+        + &quot; * _1.1_ June 15, 2013\n&quot;
+        + &quot; * _1.2_ August 11, 2013\n&quot;;
+
+    Request request = new Request.Builder()
+        .url(&quot;https://api.github.com/markdown/raw&quot;)
+        .post(RequestBody.create(MEDIA_TYPE_MARKDOWN, postBody))
+        .build();
+
+    Response response = client.newCall(request).execute();
+    if (!response.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response);
+
+    System.out.println(response.body().string());
+}
+</code></pre><h4 id="Post_u65B9_u5F0F_u63D0_u4EA4_u6D41"><a href="#Post_u65B9_u5F0F_u63D0_u4EA4_u6D41" class="headerlink" title="Post方式提交流"></a>Post方式提交流</h4><blockquote>
+<p>以流的方式POST提交请求体.请求体的内容由流写入产生.这个例子是流直接写入Okio的BufferedSink.你的程序可能会使用OutputStream,你可以使用BufferedSink.outputStream()来获取.</p>
+</blockquote>
+<pre><code>public static final MediaType MEDIA_TYPE_MARKDOWN
+      = MediaType.parse(&quot;text/x-markdown; charset=utf-8&quot;);
+
+private final OkHttpClient client = new OkHttpClient();
+
+public void run() throws Exception {
+    RequestBody requestBody = new RequestBody() {
+      @Override public MediaType contentType() {
+        return MEDIA_TYPE_MARKDOWN;
+      }
+
+      @Override public void writeTo(BufferedSink sink) throws IOException {
+        sink.writeUtf8(&quot;Numbers\n&quot;);
+        sink.writeUtf8(&quot;-------\n&quot;);
+        for (int i = 2; i &lt;= 997; i++) {
+          sink.writeUtf8(String.format(&quot; * %s = %s\n&quot;, i, factor(i)));
+        }
+      }
+
+      private String factor(int n) {
+        for (int i = 2; i &lt; n; i++) {
+          int x = n / i;
+          if (x * i == n) return factor(x) + &quot; × &quot; + i;
+        }
+        return Integer.toString(n);
+      }
+    };
+
+    Request request = new Request.Builder()
+        .url(&quot;https://api.github.com/markdown/raw&quot;)
+        .post(requestBody)
+        .build();
+
+    Response response = client.newCall(request).execute();
+    if (!response.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response);
+
+    System.out.println(response.body().string());
+}
+</code></pre><h4 id="Post_u65B9_u5F0F_u63D0_u4EA4_u6587_u4EF6"><a href="#Post_u65B9_u5F0F_u63D0_u4EA4_u6587_u4EF6" class="headerlink" title="Post方式提交文件"></a>Post方式提交文件</h4><blockquote>
+<p>以文件作为请求体是十分简单的.</p>
+</blockquote>
+<pre><code>public static final MediaType MEDIA_TYPE_MARKDOWN
+  = MediaType.parse(&quot;text/x-markdown; charset=utf-8&quot;);
+
+private final OkHttpClient client = new OkHttpClient();
+
+public void run() throws Exception {
+    File file = new File(&quot;README.md&quot;);
+
+    Request request = new Request.Builder()
+        .url(&quot;https://api.github.com/markdown/raw&quot;)
+        .post(RequestBody.create(MEDIA_TYPE_MARKDOWN, file))
+        .build();
+
+    Response response = client.newCall(request).execute();
+    if (!response.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response);
+
+    System.out.println(response.body().string());
+}
+</code></pre><h4 id="Post_u65B9_u5F0F_u63D0_u4EA4_u8868_u5355"><a href="#Post_u65B9_u5F0F_u63D0_u4EA4_u8868_u5355" class="headerlink" title="Post方式提交表单"></a>Post方式提交表单</h4><blockquote>
+<p>使用FormEncodingBuilder来构建和HTML<form>标签相同效果的请求体.键值对将使用一种HTML兼容形式的URL编码来进行编码.</form></p>
+</blockquote>
+<pre><code>private final OkHttpClient client = new OkHttpClient();
+
+public void run() throws Exception {
+    RequestBody formBody = new FormEncodingBuilder()
+        .add(&quot;search&quot;, &quot;Jurassic Park&quot;)
+        .build();
+    Request request = new Request.Builder()
+        .url(&quot;https://en.wikipedia.org/w/index.php&quot;)
+        .post(formBody)
+        .build();
+
+    Response response = client.newCall(request).execute();
+    if (!response.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response);
+
+    System.out.println(response.body().string());
+}
+</code></pre><h4 id="Post_u65B9_u5F0F_u63D0_u4EA4_u5206_u5757_u8BF7_u6C42"><a href="#Post_u65B9_u5F0F_u63D0_u4EA4_u5206_u5757_u8BF7_u6C42" class="headerlink" title="Post方式提交分块请求"></a>Post方式提交分块请求</h4><blockquote>
+<p>MultipartBuilder可以构建复杂的请求体,与HTML文件上传形式兼容.多块请求体中每块请求都是一个请求体,可以定义自己的请求头.这些请求头可以用来描述这块请求,例如他的Content-Disposition.如果Content-Length和Content-Type可用的话,他们会被自动添加到请求头中.</p>
+</blockquote>
+<pre><code>private static final String IMGUR_CLIENT_ID = &quot;...&quot;;
+private static final MediaType MEDIA_TYPE_PNG = MediaType.parse(&quot;image/png&quot;);
+
+private final OkHttpClient client = new OkHttpClient();
+
+public void run() throws Exception {
+    // Use the imgur image upload API as documented at https://api.imgur.com/endpoints/image
+    RequestBody requestBody = new MultipartBuilder()
+        .type(MultipartBuilder.FORM)
+        .addPart(
+            Headers.of(&quot;Content-Disposition&quot;, &quot;form-data; name=\&quot;title\&quot;&quot;),
+            RequestBody.create(null, &quot;Square Logo&quot;))
+        .addPart(
+            Headers.of(&quot;Content-Disposition&quot;, &quot;form-data; name=\&quot;image\&quot;&quot;),
+            RequestBody.create(MEDIA_TYPE_PNG, new File(&quot;website/static/logo-square.png&quot;)))
+        .build();
+
+    Request request = new Request.Builder()
+        .header(&quot;Authorization&quot;, &quot;Client-ID &quot; + IMGUR_CLIENT_ID)
+        .url(&quot;https://api.imgur.com/3/image&quot;)
+        .post(requestBody)
+        .build();
+
+    Response response = client.newCall(request).execute();
+    if (!response.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response);
+
+    System.out.println(response.body().string());
+}
+</code></pre><h4 id="u4F7F_u7528Gson_u6765_u89E3_u6790JSON_u54CD_u5E94"><a href="#u4F7F_u7528Gson_u6765_u89E3_u6790JSON_u54CD_u5E94" class="headerlink" title="使用Gson来解析JSON响应"></a>使用Gson来解析JSON响应</h4><blockquote>
+<p>Gson是一个在JSON和Java对象之间转换非常方便的api.这里我们用Gson来解析Github API的JSON响应.<br>注意:ResponseBody.charStream()使用响应头Content-Type指定的字符集来解析响应体.默认是UTF-8.</p>
+</blockquote>
+<pre><code>private final OkHttpClient client = new OkHttpClient();
+private final Gson gson = new Gson();
+
+public void run() throws Exception {
+    Request request = new Request.Builder()
+        .url(&quot;https://api.github.com/gists/c2a7c39532239ff261be&quot;)
+        .build();
+    Response response = client.newCall(request).execute();
+    if (!response.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response);
+
+    Gist gist = gson.fromJson(response.body().charStream(), Gist.class);
+    for (Map.Entry&lt;String, GistFile&gt; entry : gist.files.entrySet()) {
+      System.out.println(entry.getKey());
+      System.out.println(entry.getValue().content);
+    }
+}
+
+static class Gist {
+    Map&lt;String, GistFile&gt; files;
+}
+
+static class GistFile {
+    String content;
+}
+</code></pre><h4 id="u54CD_u5E94_u7F13_u5B58"><a href="#u54CD_u5E94_u7F13_u5B58" class="headerlink" title="响应缓存"></a>响应缓存</h4><blockquote>
+<p>为了缓存响应,你需要一个你可以读写的缓存目录,和缓存大小的限制.这个缓存目录应该是私有的,不信任的程序应不能读取缓存内容.<br>一个缓存目录同时拥有多个缓存访问是错误的.大多数程序只需要调用一次new OkHttp(),在第一次调用时配置好缓存,然后其他地方只需要调用这个实例就可以了.否则两个缓存示例互相干扰,破坏响应缓存,而且有可能会导致程序崩溃.<br>响应缓存使用HTTP头作为配置.你可以在请求头中添加Cache-Control: max-stale=3600 ,OkHttp缓存会支持.你的服务通过响应头确定响应缓存多长时间,例如使用Cache-Control: max-age=9600.</p>
+</blockquote>
+<pre><code>private final OkHttpClient client;
+public CacheResponse(File cacheDirectory) throws Exception {
+    int cacheSize = 10 * 1024 * 1024; // 10 MiB
+    Cache cache = new Cache(cacheDirectory, cacheSize);
+
+    client = new OkHttpClient();
+    client.setCache(cache);
+}
+
+public void run() throws Exception {
+    Request request = new Request.Builder()
+        .url(&quot;http://publicobject.com/helloworld.txt&quot;)
+        .build();
+
+    Response response1 = client.newCall(request).execute();
+    if (!response1.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response1);
+
+    String response1Body = response1.body().string();
+    System.out.println(&quot;Response 1 response:          &quot; + response1);
+    System.out.println(&quot;Response 1 cache response:    &quot; + response1.cacheResponse());
+    System.out.println(&quot;Response 1 network response:  &quot; + response1.networkResponse());
+
+    Response response2 = client.newCall(request).execute();
+    if (!response2.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response2);
+
+    String response2Body = response2.body().string();
+    System.out.println(&quot;Response 2 response:          &quot; + response2);
+    System.out.println(&quot;Response 2 cache response:    &quot; + response2.cacheResponse());
+    System.out.println(&quot;Response 2 network response:  &quot; + response2.networkResponse());
+
+    System.out.println(&quot;Response 2 equals Response 1? &quot; + response1Body.equals(response2Body));
+}
+</code></pre><hr>
+<h3 id="u6269_u5C55"><a href="#u6269_u5C55" class="headerlink" title="扩展"></a>扩展</h3><p>在这一节还提到了下面一句:<br>There are cache headers to force a cached response, force a network response, or force the network response to be validated with a conditional GET.</p>
+<p>我不是很懂cache,平时用到的也不多,所以把Google在Android Developers一段相关的解析放到这里吧.</p>
+<p>Force a Network Response<br>In some situations, such as after a user clicks a ‘refresh’ button, it may be necessary to skip the cache, and fetch data directly from the server. To force a full refresh, add the no-cache directive:<br>connection.addRequestProperty(“Cache-Control”, “no-cache”);<br>If it is only necessary to force a cached response to be validated by the server, use the more efficient max-age=0 instead:</p>
+<p>connection.addRequestProperty(“Cache-Control”, “max-age=0”);<br>Force a Cache Response</p>
+<p>Sometimes you’ll want to show resources if they are available immediately, but not otherwise. This can be used so your application can show something while waiting for the latest data to be downloaded. To restrict a request to locally-cached resources, add the only-if-cached directive:</p>
+<pre><code>try {
+     connection.addRequestProperty(&quot;Cache-Control&quot;, &quot;only-if-cached&quot;);
+     InputStream cached = connection.getInputStream();
+     // the resource was cached! show it
+  catch (FileNotFoundException e) {
+     // the resource was not cached
+  }
+}
+This technique works even better in situations where a stale response is better than no response. To permit stale cached responses, use the max-stale directive with the maximum staleness in seconds:
+
+int maxStale = 60 * 60 * 24 * 28; // tolerate 4-weeks stale
+connection.addRequestProperty(&quot;Cache-Control&quot;, &quot;max-stale=&quot; + maxStale);
+</code></pre><p>以上信息来自:HttpResponseCache - Android SDK | Android Developers</p>
+<h4 id="u53D6_u6D88_u4E00_u4E2ACall"><a href="#u53D6_u6D88_u4E00_u4E2ACall" class="headerlink" title="取消一个Call"></a>取消一个Call</h4><blockquote>
+<p>使用Call.cancel()可以立即停止掉一个正在执行的call.如果一个线程正在写请求或者读响应,将会引发IOException.当call没有必要的时候,使用这个api可以节约网络资源.例如当用户离开一个应用时.不管同步还是异步的call都可以取消.<br>你可以通过tags来同时取消多个请求.当你构建一请求时,使用RequestBuilder.tag(tag)来分配一个标签.之后你就可以用OkHttpClient.cancel(tag)来取消所有带有这个tag的call.</p>
+</blockquote>
+<pre><code>private final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+private final OkHttpClient client = new OkHttpClient();
+
+public void run() throws Exception {
+    Request request = new Request.Builder()
+        .url(&quot;http://httpbin.org/delay/2&quot;) // This URL is served with a 2 second delay.
+        .build();
+
+    final long startNanos = System.nanoTime();
+    final Call call = client.newCall(request);
+
+    // Schedule a job to cancel the call in 1 second.
+    executor.schedule(new Runnable() {
+      @Override public void run() {
+        System.out.printf(&quot;%.2f Canceling call.%n&quot;, (System.nanoTime() - startNanos) / 1e9f);
+        call.cancel();
+        System.out.printf(&quot;%.2f Canceled call.%n&quot;, (System.nanoTime() - startNanos) / 1e9f);
+      }
+    }, 1, TimeUnit.SECONDS);
+
+    try {
+      System.out.printf(&quot;%.2f Executing call.%n&quot;, (System.nanoTime() - startNanos) / 1e9f);
+      Response response = call.execute();
+      System.out.printf(&quot;%.2f Call was expected to fail, but completed: %s%n&quot;,
+          (System.nanoTime() - startNanos) / 1e9f, response);
+    } catch (IOException e) {
+      System.out.printf(&quot;%.2f Call failed as expected: %s%n&quot;,
+          (System.nanoTime() - startNanos) / 1e9f, e);
+    }
+}
+</code></pre><h4 id="u8D85_u65F6"><a href="#u8D85_u65F6" class="headerlink" title="超时"></a>超时</h4><blockquote>
+<p>没有响应时使用超时结束call.没有响应的原因可能是客户点链接问题、服务器可用性问题或者这之间的其他东西.OkHttp支持连接,读取和写入超时.</p>
+</blockquote>
+<pre><code>private final OkHttpClient client;
+
+public ConfigureTimeouts() throws Exception {
+    client = new OkHttpClient();
+    client.setConnectTimeout(10, TimeUnit.SECONDS);
+    client.setWriteTimeout(10, TimeUnit.SECONDS);
+    client.setReadTimeout(30, TimeUnit.SECONDS);
+}
+
+public void run() throws Exception {
+    Request request = new Request.Builder()
+        .url(&quot;http://httpbin.org/delay/2&quot;) // This URL is served with a 2 second delay.
+        .build();
+
+    Response response = client.newCall(request).execute();
+    System.out.println(&quot;Response completed: &quot; + response);
+}
+</code></pre><h4 id="u6BCF_u4E2Acall_u7684_u914D_u7F6E"><a href="#u6BCF_u4E2Acall_u7684_u914D_u7F6E" class="headerlink" title="每个call的配置"></a>每个call的配置</h4><blockquote>
+<p>使用OkHttpClient,所有的HTTP Client配置包括代理设置、超时设置、缓存设置.当你需要为单个call改变配置的时候,clone 一个 OkHttpClient.这个api将会返回一个浅拷贝(shallow copy),你可以用来单独自定义.下面的例子中,我们让一个请求是500ms的超时、另一个是3000ms的超时.</p>
+</blockquote>
+<pre><code>private final OkHttpClient client = new OkHttpClient();
+public void run() throws Exception {
+    Request request = new Request.Builder()
+        .url(&quot;http://httpbin.org/delay/1&quot;) // This URL is served with a 1 second delay.
+        .build();
+
+    try {
+      Response response = client.clone() // Clone to make a customized OkHttp for this request.
+          .setReadTimeout(500, TimeUnit.MILLISECONDS)
+          .newCall(request)
+          .execute();
+      System.out.println(&quot;Response 1 succeeded: &quot; + response);
+    } catch (IOException e) {
+      System.out.println(&quot;Response 1 failed: &quot; + e);
+    }
+
+    try {
+      Response response = client.clone() // Clone to make a customized OkHttp for this request.
+          .setReadTimeout(3000, TimeUnit.MILLISECONDS)
+          .newCall(request)
+          .execute();
+      System.out.println(&quot;Response 2 succeeded: &quot; + response);
+    } catch (IOException e) {
+      System.out.println(&quot;Response 2 failed: &quot; + e);
+    }
+}
+</code></pre><h4 id="u5904_u7406_u9A8C_u8BC1"><a href="#u5904_u7406_u9A8C_u8BC1" class="headerlink" title="处理验证"></a>处理验证</h4><blockquote>
+<p>这部分和HTTP AUTH有关.<br>相关资料:HTTP AUTH 那些事 - 王绍全的博客 - 博客频道 - CSDN.NET<br>OkHttp会自动重试未验证的请求.当响应是401 Not Authorized时,Authenticator会被要求提供证书.Authenticator的实现中需要建立一个新的包含证书的请求.如果没有证书可用,返回null来跳过尝试.</p>
+</blockquote>
+<pre><code>public List&lt;Challenge&gt; challenges()
+Returns the authorization challenges appropriate for this response&apos;s code. If the response code is 401 unauthorized, this returns the &quot;WWW-Authenticate&quot; challenges. If the response code is 407 proxy unauthorized, this returns the &quot;Proxy-Authenticate&quot; challenges. Otherwise this returns an empty list of challenges.
+当需要实现一个Basic challenge, 使用Credentials.basic(username, password)来编码请求头.
+
+private final OkHttpClient client = new OkHttpClient();
+
+public void run() throws Exception {
+    client.setAuthenticator(new Authenticator() {
+      @Override public Request authenticate(Proxy proxy, Response response) {
+        System.out.println(&quot;Authenticating for response: &quot; + response);
+        System.out.println(&quot;Challenges: &quot; + response.challenges());
+        String credential = Credentials.basic(&quot;jesse&quot;, &quot;password1&quot;);
+        return response.request().newBuilder()
+            .header(&quot;Authorization&quot;, credential)
+            .build();
+      }
+
+      @Override public Request authenticateProxy(Proxy proxy, Response response) {
+        return null; // Null indicates no attempt to authenticate.
+      }
+    });
+
+    Request request = new Request.Builder()
+        .url(&quot;http://publicobject.com/secrets/hellosecret.txt&quot;)
+        .build();
+
+    Response response = client.newCall(request).execute();
+    if (!response.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response);
+
+    System.out.println(response.body().string());
+}
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Java/LearnRetrofit" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Java/LearnRetrofit/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Java/LearnRetrofit/">Title</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="Retrofit__u76F8_u5173"><a href="#Retrofit__u76F8_u5173" class="headerlink" title="Retrofit 相关"></a>Retrofit 相关</h3><p><a href="https://www.gitbook.com/book/asce1885/android-rd-senior-advanced/details" target="_blank" rel="external">更上一层楼－Android研发工程师高级进阶</a><br><a href="http://www.jianshu.com/p/87c36d8dabce" target="_blank" rel="external">Retrofit 解析 JSON 数据</a><br><a href="http://inthecheesefactory.com/blog/retrofit-2.0/en" target="_blank" rel="external">Retrofit 2.0: The biggest update yet on the best HTTP Client Library for Android</a><br><a href="https://futurestud.io/blog/retrofit-2-upgrade-guide-from-1-9/" target="_blank" rel="external">Retrofit 2 — Upgrade Guide from 1.9</a><br><a href="https://bng86.gitbooks.io/android-third-party-/content/retrofit.html" target="_blank" rel="external">Retrofit 开发示例</a></p>
+<h4 id="u4F7F_u7528_Retrofit_Post_u53D1_u9001_u4E00_u4E2A_u5BF9_u8C61"><a href="#u4F7F_u7528_Retrofit_Post_u53D1_u9001_u4E00_u4E2A_u5BF9_u8C61" class="headerlink" title="使用 Retrofit Post发送一个对象"></a>使用 Retrofit Post发送一个对象</h4><p><a href="https://futurestud.io/blog/retrofit-send-objects-in-request-body/" target="_blank" rel="external">Retrofit — Send Objects in Request Body</a><br><a href="https://github.com/square/retrofit/issues/854" target="_blank" rel="external">method POST must have a request body</a><br><a href="https://objectpartners.com/2015/08/04/retrofit-api-integration-made-easy/" target="_blank" rel="external">Retrofit: API Integration Made Easy</a><br>问题分析总结</p>
+<p>出现错误</p>
+<pre><code>java.lang.IllegalArgumentException: Unable to create call adapter for rx.Observable&lt;java.util.List&lt;com.coam.model.test.GithubUser&gt;&gt;
+</code></pre><p>需要将rxjava结合到retrofit,在构建请求客户端的地方加上 .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) 如下:</p>
+<pre><code>Retrofit retrofit = new Retrofit.Builder().baseUrl(ENDPOINT)
+        .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+        .build();
+
+//mService = retrofit.create(GithubAPIInterface.class);
+return new GithubService(retrofit.create(GithubAPIInterface.class));
+</code></pre><p>并在dependencies中引入</p>
+<pre><code>compile &apos;com.squareup.retrofit:adapter-rxjava:2.0.0-beta2&apos;
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Java/LearnRetrolambda" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Java/LearnRetrolambda/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Java/LearnRetrolambda/">Title</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="android_u4E0A_u7684JAVA8_3A_u4F7F_u7528retrolambda_-__28_u4E00_u4E2A_u8BA9android_u652F_u6301lambda_u8BED_u6CD5_u7684_u6269_u5C55_u6846_u67B6_29"><a href="#android_u4E0A_u7684JAVA8_3A_u4F7F_u7528retrolambda_-__28_u4E00_u4E2A_u8BA9android_u652F_u6301lambda_u8BED_u6CD5_u7684_u6269_u5C55_u6846_u67B6_29" class="headerlink" title="android上的JAVA8:使用retrolambda - (一个让android支持lambda语法的扩展框架)"></a>android上的JAVA8:使用retrolambda - (一个让android支持lambda语法的扩展框架)</h4><p><a href="https://github.com/orfjackal/retrolambda#gradle-plugin" target="_blank" rel="external">retrolambda GitHub</a><br><a href="https://github.com/evant/gradle-retrolambda" target="_blank" rel="external">gradle-retrolambda plugin</a><br><a href="http://juude.net/lambdajava/" target="_blank" rel="external">android上的JAVA8:使用retrolambda</a><br><a href="http://www.jianshu.com/p/5fc2b3362702" target="_blank" rel="external">jdk1.8新特性之lambda表达式及在Android Studio中的使用</a></p>
+<p><a href="http://www.importnew.com/16436.html" target="_blank" rel="external">Java8 lambda表达式10个示例</a><br><a href="http://www.importnew.com/10360.html" target="_blank" rel="external">Java 8简明教程</a></p>
+<p>Java8引入了 lambda 表达式,让许多开发者激动不已,本文介绍如何在Android上使用lambda.</p>
+<p>首先下载 java8 sdk,并且配置完成<br>在 build.gradle 中加入编译的依赖,这会使用 retrolambda 来编译Java代码</p>
+<pre><code>buildscript {
+    //开始加入
+    dependencies {
+        classpath &apos;me.tatarka:gradle-retrolambda:3.1.0&apos;
+    }
+    //结束插入
+}
+</code></pre><p>同时要加入plugin声明</p>
+<pre><code>apply plugin: &apos;me.tatarka.retrolambda&apos;
+</code></pre><p>3 . 加入compileOptions,这会让IDE使用用JAVA8语法解析</p>
+<pre><code>compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+}
+</code></pre><p>4 . 指定将源码编译的级别,,使用下列代码,会将代码编译到兼容1.6的字节码格式</p>
+<pre><code>retrolambda {
+    javaVersion JavaVersion.VERSION_1_6
+}
+</code></pre><p>5 . 添加测试代码, 对于只有一个方法的接口,java8中可以使用lambda表达式代替,所以我们熟悉的设定View点击事件的代码,只要这样写就可以了</p>
+<pre><code>v.setOnClickListener(v1 -&gt; Toast.makeText(getActivity(), &quot;clicked&quot;, Toast.LENGTH_LONG).show());
+</code></pre><p>对比一下之前的代码量,是不是爽爆了？！！</p>
+<pre><code>v.setOnClickListener(new View.OnClickListener(View v) {
+@Override
+    public void onClick(View v) {
+        Toast.makeText(getActivity(), &quot;clicked&quot;, Toast.LENGTH_LONG).show()
+    }
+});
+</code></pre><p>所有代码可以在这里找到:</p>
+<p><a href="https://github.com/Juude/droidViews/blob/master/app/build.gradle" target="_blank" rel="external">http://tinyurl.com/qdbae7d</a></p>
+<p><a href="https://github.com/evant/gradle-retrolambda/issues/74" target="_blank" rel="external">retrolambda配置参考</a><br><a href="http://www.jianshu.com/p/5fc2b3362702" target="_blank" rel="external">jdk1.8新特性之lambda表达式及在Android Studio中的使用</a><br><a href="http://www.importnew.com/10360.html" target="_blank" rel="external">Java 8简明教程</a></p>
+<h4 id="u95EE_u9898_u5206_u6790"><a href="#u95EE_u9898_u5206_u6790" class="headerlink" title="问题分析"></a>问题分析</h4><h4 id="Lint_fails_on_java_files_that_have_lambdas"><a href="#Lint_fails_on_java_files_that_have_lambdas" class="headerlink" title="Lint fails on java files that have lambdas."></a>Lint fails on java files that have lambdas.</h4><p>由于Android’s lint doesn’t understand java 8 syntax and will fail silently or loudly.<br><a href="https://github.com/evant/android-retrolambda-lombok" target="_blank" rel="external">evant/android-retrolambda-lombok</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 </div>
