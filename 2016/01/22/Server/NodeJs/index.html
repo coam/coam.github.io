@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>商运物流</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Node.js 管理相关在Ubuntu 安装 Node.js安裝 Node.js起始这个步骤很重要,而且如果参考大部分教学就会踩到雷.主要原因是如果用上面那篇的方法,不会自动帮你做好软连接,后续很容易出現莫名其妙的问题.
+sudo apt-get update
+sudo apt-get install nodejs-legacy
+直接用 nodejs-legacy 即可.這個会自动建立软连接,可以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="商运物流">
+<meta property="og:url" content="https://coam.co/2016/01/22/Server/NodeJs/index.html">
+<meta property="og:site_name" content="商运物流">
+<meta property="og:description" content="Node.js 管理相关在Ubuntu 安装 Node.js安裝 Node.js起始这个步骤很重要,而且如果参考大部分教学就会踩到雷.主要原因是如果用上面那篇的方法,不会自动帮你做好软连接,后续很容易出現莫名其妙的问题.
+sudo apt-get update
+sudo apt-get install nodejs-legacy
+直接用 nodejs-legacy 即可.這個会自动建立软连接,可以">
+<meta property="og:updated_time" content="2016-01-22T04:03:49.038Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="商运物流">
+<meta name="twitter:description" content="Node.js 管理相关在Ubuntu 安装 Node.js安裝 Node.js起始这个步骤很重要,而且如果参考大部分教学就会踩到雷.主要原因是如果用上面那篇的方法,不会自动帮你做好软连接,后续很容易出現莫名其妙的问题.
+sudo apt-get update
+sudo apt-get install nodejs-legacy
+直接用 nodejs-legacy 即可.這個会自动建立软连接,可以">
+  
+    <link rel="alternative" href="/atom.xml" title="商运物流" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/author.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">张亚飞</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/markdown-gfw-hexo-jekyll/" style="font-size: 10px;">markdown gfw hexo jekyll</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://coam.co">商运物流</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/zyfmix/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://wp.iirii.com/">商运技术博客</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于物流设计</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">张亚飞</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img lazy-src="/img/author.jpg" class="js-avatar">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">张亚飞</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Server/NodeJs" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/22/Server/NodeJs/" class="article-date">
+      <time datetime="2016-01-22T04:03:49.038Z" itemprop="datePublished">2016-01-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="Node-js__u7BA1_u7406_u76F8_u5173"><a href="#Node-js__u7BA1_u7406_u76F8_u5173" class="headerlink" title="Node.js 管理相关"></a>Node.js 管理相关</h2><h3 id="u5728Ubuntu__u5B89_u88C5_Node-js"><a href="#u5728Ubuntu__u5B89_u88C5_Node-js" class="headerlink" title="在Ubuntu 安装 Node.js"></a>在Ubuntu 安装 Node.js</h3><h2 id="u5B89_u88DD_Node-js"><a href="#u5B89_u88DD_Node-js" class="headerlink" title="安裝 Node.js"></a>安裝 Node.js</h2><p>起始这个步骤很重要,而且如果参考大部分教学就会踩到雷.主要原因是如果用上面那篇的方法,不会自动帮你做好软连接,后续很容易出現莫名其妙的问题.</p>
+<pre><code>sudo apt-get update
+sudo apt-get install nodejs-legacy
+</code></pre><p>直接用 nodejs-legacy 即可.這個会自动建立软连接,可以避免不少比较旧的库的问题.</p>
+<p>在 安装node的时候,安装位置为 /usr/local/bin/node ,但这个位置是需要root权限的,而截图上提示的错误就是你的权限不 够,node没有安装成功.如果你用源码编译安装,记得最后安装时加sudo执行.而且你在执行nodejs的时候,截图也提示你了,你的nodejs没 有安装,但你可以使用 sudo apt-get install nodejs 这个命令来安装,这是因为你之前添加了ppa才可以这样安装.</p>
+<p>另 外,我想补充的是,你所用的ppa的方法,已经是很旧的了,即使安装成功也是很老版本的,这个ppa已经很久不更新了,现在ubuntu软件仓库就已经有 node了,所以你可以先用</p>
+<pre><code>sudo apt-add-repository -r ppa:chris-lea/node.js-devel
+</code></pre><p>删除这个ppa,然后安装仓库里的node:</p>
+<pre><code>sudo apt-get install nodejs
+</code></pre><p>如果你发现仓库里的nodejs版本不够高,可以更新一下仓库和软件版本:</p>
+<pre><code>sudo apt-get update
+sudo apt-get upgrade
+</code></pre><p>你也可以用源代码编译安装node,也很简单,下载node的源代码包,解压,进入目录执行:</p>
+<pre><code>./configure &amp;&amp; make &amp;&amp; sudo make install
+</code></pre><p>补充:</p>
+<h4 id="u4E3A_u4EC0_u4E48_u6267_u884C_node_-v__u6CA1_u6709_u8F93_u51FA_uFF1F"><a href="#u4E3A_u4EC0_u4E48_u6267_u884C_node_-v__u6CA1_u6709_u8F93_u51FA_uFF1F" class="headerlink" title="为什么执行 node -v 没有输出？"></a>为什么执行 node -v 没有输出？</h4><blockquote>
+<p>Ubuntu 的仓库里面,已经存在一个叫node的软件包了,可以执行aptitude search node`查看,这是一个先于nodejs存在的软件名,已经被用了,所以ubuntu只能把用于js开发的这个node改名叫nodejs,如果系统已 经安装此软件,执行node -v并非nodejs的node,它跟nodejs一点关系也没有,它的-v参数是不显示任何东西的.<br>node 还是 nodejs ?</p>
+</blockquote>
+<p>用 apt-get install nodejs 方法安装的,或是ppa方法安装的,命令都应该叫 nodejs,应该使用nodejs -v来测试.不过如果使用源代码的方式编译安装的（默认安装到 /usr/local/bin ,除非指定prefix参数）,也叫node,这个node是 真正的nodejs的node,所以为了避免与ubuntu仓库中的node引起混淆,建议安装后,把node改名为nodejs</p>
+<p>windows下是 node -v;ubuntu下是 nodejs -v</p>
+<hr>
+<h3 id="nvm"><a href="#nvm" class="headerlink" title="nvm"></a>nvm</h3><p>参考 <a href="http://eyas.leanote.com/post/use-nvm-install-nodejs" target="_blank" rel="external">使用 nvm 安装 nodejs</a></p>
+<p><a href="https://github.com/creationix/nvm" target="_blank" rel="external">建议使用版本管理工具nvm，来安装Node，因为可以自由切换版本</a></p>
+<h4 id="Window__u4E0B_u5B89_u88C5_nvm"><a href="#Window__u4E0B_u5B89_u88C5_nvm" class="headerlink" title="Window 下安装 nvm"></a>Window 下安装 nvm</h4><p><a href="https://github.com/coreybutler/nvm-windows" target="_blank" rel="external">nvm-windows</a><br>下载安装文件 <a href="https://github.com/coreybutler/nvm-windows/releases/download/1.1.0/nvm-setup.zip" target="_blank" rel="external">nvm-setup.zip</a></p>
+<p>nvm 将 nodejs 安装到目录 <strong>C:\Users\yafei\AppData\Roaming\nvm\v5.5.0</strong><br>使用 npm install -g <em> 将包安装到目录 <em>*C:\Users\yafei\AppData\Roaming\nvm\v5.5.0\node_modules</em></em></p>
+<p>window 下 nvm 常用命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nvm list</span><br><span class="line">nvm install latest</span><br><span class="line">nvm on: Enable node.js version management.</span><br><span class="line">nvm off: Disable node.js version management (does not uninstall anything).</span><br><span class="line">nvm proxy [url]: Set a proxy to use <span class="keyword">for</span> downloads. Leave [url] blank to see the current proxy. Set [url] to <span class="string">"none"</span> to remove the proxy.</span><br><span class="line">nvm uninstall &lt;version&gt;: Uninstall a specific version.</span><br><span class="line">nvm use &lt;version&gt; [arch]:</span><br></pre></td></tr></table></figure>
+<h4 id="Ubuntu__u4E0B_u5B89_u88C5_nvm"><a href="#Ubuntu__u4E0B_u5B89_u88C5_nvm" class="headerlink" title="Ubuntu 下安装 nvm"></a>Ubuntu 下安装 nvm</h4><p><a href="https://github.com/creationix/nvm" target="_blank" rel="external">nvm</a><br>使用 安装脚本安装 nvm</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.<span class="number">30.2</span>/install.sh | bash</span><br><span class="line">. ~/.nvm/nvm.sh</span><br></pre></td></tr></table></figure>
+<p>Ubuntu 下 nvm 常用命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nvm ls-remote  // 列出所有可用版本</span><br><span class="line">nvm install latest</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="u5B89_u88C5_npm"><a href="#u5B89_u88C5_npm" class="headerlink" title="安装 npm"></a>安装 npm</h3><pre><code>sudo apt-get install npm
+</code></pre><h4 id="npm_u5E38_u7528_u547D_u4EE4"><a href="#npm_u5E38_u7528_u547D_u4EE4" class="headerlink" title="npm常用命令"></a>npm常用命令</h4><pre><code>npm install &lt;name&gt;安装nodejs的依赖包
+</code></pre><p>例如 npm install express 就会默认安装express的最新版本,也可以通过在后面加版本号的方式安装指定版本,如npm install express@3.0.6</p>
+<pre><code>npm install &lt;name&gt; -g  将包安装到全局环境中
+</code></pre><p>但是代码中,直接通过require()的方式是没有办法调用全局安装的包的.全局的安装是供命令行使用的,就好像全局安装了vmarket后,就可以在命令行中直接运行vm命令</p>
+<pre><code>npm install &lt;name&gt; --save  安装的同时,将信息写入package.json中
+</code></pre><p>项目路径中如果有package.json文件时,直接使用npm install方法就可以根据dependencies配置安装所有的依赖包</p>
+<p>这样代码提交到github时,就不用提交 node_modules 这个文件夹了.</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> init   会引导你创建一个package.json文件,包括名称、版本、作者这些信息等</span><br><span class="line"><span class="built_in">npm</span> remove &lt;name&gt;移除</span><br><span class="line"><span class="built_in">npm</span> update &lt;name&gt;更新</span><br><span class="line"><span class="built_in">npm</span> ls 列出当前安装的了所有包</span><br><span class="line"><span class="built_in">npm</span> root  查看当前包的安装路径</span><br><span class="line"><span class="built_in">npm</span> root -g  查看全局的包的安装路径</span><br><span class="line"><span class="built_in">npm</span> help  帮助,如果要单独查看install命令的帮助,可以使用的<span class="built_in">npm</span> help install</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>升级npm到最新版本,使用以下命令</p>
+</blockquote>
+<pre><code>npm install npm@latest -g
+</code></pre><blockquote>
+<p>国内npm安装nodejs modules失败的几个解决方案</p>
+</blockquote>
+<pre><code>npm config set proxy=&quot;http://127.0.0.1:8087&quot;//设置代理地址 http://www.xxxx.com:port格式
+npm config set registry=&quot;http://registry.npmjs.org&quot;//设置npm源地址
+</code></pre><p><a href="http://www.tuicool.com/articles/VNZ7Vb" target="_blank" rel="external">nodejs国内npm安装nodejs modules失败的几个解决方案 </a></p>
+<p>参考列表</p>
+<p><a href="http://codeblog.niwyclin.org/posts/210397-ubuntu-installed-nodejs-and-npm" target="_blank" rel="external">Ubuntu 正确安装 Node.js 和 Npm</a><br><a href="http://segmentfault.com/q/1010000003753704" target="_blank" rel="external">Ubuntu下装nodejs的问题</a></p>
+<h3 id="u9519_u8BEF_u53CA_u5E38_u7528_u547D_u4EE4"><a href="#u9519_u8BEF_u53CA_u5E38_u7528_u547D_u4EE4" class="headerlink" title="错误及常用命令"></a>错误及常用命令</h3><blockquote>
+<p>清除缓存重新安装<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rm -rf node_modules</span><br><span class="line"><span class="built_in">npm</span> cache clean</span><br><span class="line"><span class="built_in">npm</span> install</span><br></pre></td></tr></table></figure></p>
+<p>在 Ubuntu 下安装 converse.js 频繁出现以下错误</p>
+</blockquote>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Please <span class="keyword">report</span> this full <span class="keyword">log</span> at https:<span class="comment">//github.com/Medium/phantomjs</span></span><br><span class="line">npm WARN This failure might be due to the <span class="keyword">use</span> of legacy binary <span class="string">"node"</span></span><br><span class="line">npm WARN <span class="keyword">For</span> further explanations, please <span class="keyword">read</span></span><br><span class="line">/usr/share/doc/nodejs/README.Debian</span><br><span class="line"></span><br><span class="line">npm <span class="keyword">ERR</span>! weird <span class="keyword">error</span> 1</span><br><span class="line">npm <span class="keyword">ERR</span>! not ok code 0</span><br><span class="line">make: *** [stamp-npm] <span class="keyword">Error</span> 1</span><br></pre></td></tr></table></figure>
+<p>网友提示需要安装 nodejs<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nodejs-legacy</span><br></pre></td></tr></table></figure></p>
+<p>但是执行此命令提示我已安装</p>
+<ul>
+<li>Setup with Ubuntu</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl <span class="operator">-s</span>L https://deb.nodesource.com/setup_5.x | sudo -E bash -</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Then install with Ubuntu:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install --yes nodejs</span><br></pre></td></tr></table></figure>
+<ul>
+<li>If you get node: command not found chances are likely you need to link your binary:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln <span class="operator">-s</span> /usr/bin/nodejs /usr/bin/node</span><br></pre></td></tr></table></figure>
+<p>参考 <a href="https://github.com/nodejs/node-v0.x-archive/wiki/Installing-Node.js-via-package-manager" target="_blank" rel="external">Installing Node.js via package manager</a></p>
+<p>重新执行命令安装出现如下错误<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Failed at the phantomjs@<span class="number">1.9</span>.<span class="number">19</span> install script '<span class="keyword">node</span><span class="identifier"> </span><span class="title">install</span>.js'.</span><br></pre></td></tr></table></figure></p>
+<p>执行命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> strict-ssl <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/Medium/phantomjs/issues/430" target="_blank" rel="external">Failed at the phantomjs@1.9.19 install script ‘node install.js’.</a></p>
+<hr>
+<h3 id="u5B89_u88C5_nrm__u2013__u5FEB_u901F_u5207_u6362_NPM__u6E90__uFF08_u9644_u5E26_u6D4B_u901F_u529F_u80FD_uFF09"><a href="#u5B89_u88C5_nrm__u2013__u5FEB_u901F_u5207_u6362_NPM__u6E90__uFF08_u9644_u5E26_u6D4B_u901F_u529F_u80FD_uFF09" class="headerlink" title="安装 nrm – 快速切换 NPM 源 （附带测速功能）"></a>安装 nrm – 快速切换 NPM 源 （附带测速功能）</h3><pre><code>npm install -g nrm
+</code></pre><h4 id="u5E38_u7528_u547D_u4EE4"><a href="#u5E38_u7528_u547D_u4EE4" class="headerlink" title="常用命令"></a>常用命令</h4><p>列出可选的源</p>
+<pre><code>$ nrm ls
+* npm ---- https://registry.npmjs.org/
+  cnpm --- http://r.cnpmjs.org/
+  taobao - http://registry.npm.taobao.org/
+  eu ----- http://registry.npmjs.eu/
+  au ----- http://registry.npmjs.org.au/
+  sl ----- http://npm.strongloop.com/
+  nj ----- https://registry.nodejitsu.com/
+</code></pre><p>切换源到 taobao</p>
+<pre><code>$ nrm use taobao
+Registry has been set to: http://registry.npm.taobao.org/
+</code></pre><p>增加源<br>你可以增加定制的源,特别适用于添加企业内部的私有源.私有源可以使用cnpmjs架设.</p>
+<pre><code>nrm add  &lt;registry&gt; &lt;url&gt; [home]
+</code></pre><p>删除源</p>
+<pre><code>nrm del &lt;registry&gt;
+</code></pre><p>测试速度<br>你还可以通过 nrm test 测试相应源的响应时间.</p>
+<p>例如,测试官方源的响应时间:</p>
+<pre><code>$ nrm test npm
+npm ---- 1328ms
+</code></pre><p>测试所有源的响应时间:</p>
+<pre><code>$ nrm test
+  npm ---- 891ms
+  cnpm --- 1213ms
+* taobao - 460ms
+  eu ----- 3859ms
+  au ----- 1073ms
+  sl ----- 4150ms
+  nj ----- 8008ms
+</code></pre><p>注意,为了取得较准确的结果,可以考虑多次测试取平均值.</p>
+<hr>
+<h3 id="u5B89_u88C5_Bower__u5305_u7BA1_u7406_u5DE5_u5177"><a href="#u5B89_u88C5_Bower__u5305_u7BA1_u7406_u5DE5_u5177" class="headerlink" title="安装 Bower 包管理工具"></a>安装 Bower 包管理工具</h3><pre><code>sudo npm install bower -g
+</code></pre><blockquote>
+<p>bower 常用命令</p>
+</blockquote>
+<pre><code>bower install
+bower update
+</code></pre><p><a href="http://stackoverflow.com/questions/21491996/installing-bower-on-ubuntu" target="_blank" rel="external">Installing Bower on Ubuntu</a></p>
+<h3 id="u5B89_u88C5_mongo-express"><a href="#u5B89_u88C5_mongo-express" class="headerlink" title="安装 mongo-express"></a>安装 mongo-express</h3><p>在安装 mongo-express 的时候,需要服务器有 nodejs 环境</p>
+<blockquote>
+<p>mongo-express 是一个基于 Node.js 和 express 的开源的MongoDB Web管理界面.</p>
+<p>主要功能:</p>
+</blockquote>
+<pre><code>连接多个数据库
+分别连接和认证独立的数据库
+认证为管理员查看所有数据库
+数据库 黑名单/白名单
+集合(collections)的增删查改
+文档(documents)的增删查改
+在文档中使用BSON数据类型
+</code></pre><blockquote>
+<p>限制</p>
+</blockquote>
+<pre><code>被编辑的文档必须有document._id属性
+无GridFS的支持（有可能成为计划功能）
+二进制BSON数据类型没有经过测试
+JSON文档是通过JavaScript虚拟机解析,所以可以在服务器上的Web界面执行恶意JavaScript代码.
+</code></pre><blockquote>
+<p>安装:</p>
+</blockquote>
+<pre><code>npm install mongo-express
+</code></pre><blockquote>
+<p>或者全局安装:</p>
+</blockquote>
+<pre><code>npm install -g mongo-express
+</code></pre><p>或者从Github上直接拿下来解压后运行 npm install 即可</p>
+<p>下载 <a href="https://github.com/andzdroid/mongo-express" target="_blank" rel="external">Mongo-express</a></p>
+<p>配置:</p>
+<p>复制或者把 config.default.js 改名为 config.js 的新文件.</p>
+<p>在配置文件中填写 MongoDB 的连接等你想更改的信息.</p>
+<p>启动运行:</p>
+<pre><code>nodejs app
+</code></pre><p>查看 <a href="http://localhost:8081" target="_blank" rel="external">http://localhost:8081</a> 或者你在配置中写的 URL/port .</p>
+<p>在Ubuntu下执行启动命令会提示如下错误</p>
+<pre><code>yzhang@coamn:~/Home/Tools/MongoDB$ node app
+ The program &apos;node&apos; can be found in the following packages:
+  * node
+  * nodejs-legacy
+Ask your administrator to install one of them
+</code></pre><p>提示没有安装node程序,需要先检查是否已安装nodejs运行环境</p>
+<pre><code>Thu Sep 24 12:58:16 yzhang@coam:~/Home/Tools/MongoDB$ nodejs -v
+v0.10.25
+</code></pre><p>然后执行命令</p>
+<pre><code>nodejs app
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/01/22/Server/NodeJs/"></a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 张亚飞 的个人博客">张亚飞</a></p>
+        <p><span>发布时间:</span>2016年01月22日 - 12时03分</p>
+        <p><span>最后更新:</span>2016年01月22日 - 12时03分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/01/22/Server/NodeJs/" title="">https://coam.co/2016/01/22/Server/NodeJs/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://coam.co/2016/01/22/Server/NodeJs/　　作者: 张亚飞" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/01/21/NodeJs/CheerioNote/">
+                    CheerioNote
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-js__u7BA1_u7406_u76F8_u5173"><span class="toc-number">1.</span> <span class="toc-text">Node.js 管理相关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#u5728Ubuntu__u5B89_u88C5_Node-js"><span class="toc-number">1.1.</span> <span class="toc-text">在Ubuntu 安装 Node.js</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u5B89_u88DD_Node-js"><span class="toc-number">2.</span> <span class="toc-text">安裝 Node.js</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#u4E3A_u4EC0_u4E48_u6267_u884C_node_-v__u6CA1_u6709_u8F93_u51FA_uFF1F"><span class="toc-number">2.0.1.</span> <span class="toc-text">为什么执行 node -v 没有输出？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nvm"><span class="toc-number">2.1.</span> <span class="toc-text">nvm</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Window__u4E0B_u5B89_u88C5_nvm"><span class="toc-number">2.1.1.</span> <span class="toc-text">Window 下安装 nvm</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ubuntu__u4E0B_u5B89_u88C5_nvm"><span class="toc-number">2.1.2.</span> <span class="toc-text">Ubuntu 下安装 nvm</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5B89_u88C5_npm"><span class="toc-number">2.2.</span> <span class="toc-text">安装 npm</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#npm_u5E38_u7528_u547D_u4EE4"><span class="toc-number">2.2.1.</span> <span class="toc-text">npm常用命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u9519_u8BEF_u53CA_u5E38_u7528_u547D_u4EE4"><span class="toc-number">2.3.</span> <span class="toc-text">错误及常用命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5B89_u88C5_nrm__u2013__u5FEB_u901F_u5207_u6362_NPM__u6E90__uFF08_u9644_u5E26_u6D4B_u901F_u529F_u80FD_uFF09"><span class="toc-number">2.4.</span> <span class="toc-text">安装 nrm – 快速切换 NPM 源 （附带测速功能）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#u5E38_u7528_u547D_u4EE4"><span class="toc-number">2.4.1.</span> <span class="toc-text">常用命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5B89_u88C5_Bower__u5305_u7BA1_u7406_u5DE5_u5177"><span class="toc-number">2.5.</span> <span class="toc-text">安装 Bower 包管理工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#u5B89_u88C5_mongo-express"><span class="toc-number">2.6.</span> <span class="toc-text">安装 mongo-express</span></a></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/01/21/NodeJs/CheerioNote/" title="下一篇: CheerioNote">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/Server/NodeJs/">Server/NodeJs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/CheerioNote/">CheerioNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/MochaNote/">MochaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/GulpNote/">NodeJs/GulpNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/WebpackNote/">WebPack 自动打包工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/Info/hospital/">hospital</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/19/Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd/">Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Java/JavaNote/">JavaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/Python/PythonNote/">PythonNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Server/Ejabberd/">Ejabberd Install</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/PhpNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/AndroidPushMQTT/">Android 推送之 MQTT</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Elixir/">ElixirNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Lua/">LuaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnAsyncTask/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnGoogleGuava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaArray/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaHashMap/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnLombok/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnOkHttp/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrofit/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrolambda/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRxJava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnSupportAnnotations/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/MongoNotes/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mysql/MysqlTrigger/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Nginx/NginxNote/">NginxNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/MQTT/">MQTTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Rebar/">RebarNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/SSL/LetSSL/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/GPS/GPSNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/NodeJs/NodeJsNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Git/git/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/phpMyAdmin/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/Composer/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Http/HttpNote/">Http协议相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Others/MarkDownNote/">MarkDown 相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/MarkDownNote/">MarkDown 相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/my-blogs/">my blogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Server/ServerDisasterBackup/">Server/Config/Server/ServerDisasterBackup</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Nginx/Other/waf/README/">Server/Config/Nginx/Other/waf/README</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Nginx/">Server/Nginx</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/PHP/">Server/PHP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/MongoDB/">Server/MongoDB</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/ServerContingencyPlans/">Server/ServerContingencyPlans</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Server/ServerDisasterRestart/">Server/Config/Server/ServerDisasterRestart</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Server/ServerDisasterRecovery/">Server/Config/Server/ServerDisasterRecovery</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/PPA/">Server/PPA</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd_old/">Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd_old</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/MongoDB/Mos_etc_mongod.cnf/">Server/Config/MongoDB/Mos_etc_mongod.cnf</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Server/Ubuntu/">Server/Ubuntu</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Plan/FreeShareInfoIdea/">Plan/FreeShareInfoIdea</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Info/EnshrineBlogs/">Info/EnshrineBlogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Phalcon/PhalconNote/">Phalcon/PhalconNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/Lua/">Lua 学习摘要</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/MQTT/">关于 MQTT 协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/blog-myNewBlog/">blog/myNewBloger</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/XMPP/">关于 XMPP 协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/Rebar/">使用 Rebar 管理 erlang 项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/EjabberdNote/">Ejabberd Note</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/hello-two/">Hello tow</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/hello-one/">Hello One</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/28/Server/Config/Ejabberd/slava_ejabberd/">Server/Config/Ejabberd/slava_ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/ports/">Server/Config/Ejabberd/jabber/ports</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/modules/">Server/Config/Ejabberd/jabber/modules</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/ejabberd/">Server/Config/Ejabberd/jabber/ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/acl/">Server/Config/Ejabberd/jabber/acl</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/access/">Server/Config/Ejabberd/jabber/access</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/README/">Server/Config/Ejabberd/jabber/README</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/24/Server/Config/Ejabberd/test_ejabberd/">Server/Config/Ejabberd/test_ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/MongoDB/Ali_etc_mongod.cnf/">Server/Config/MongoDB/Ali_etc_mongod.cnf</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/MongoDB/Vultr_etc_mongod.cnf/">Server/Config/MongoDB/Vultr_etc_mongod.cnf</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/Ejabberd/default.ejabberd/">Server/Config/Ejabberd/default.ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/Ejabberd/old.ejabberd/">Server/Config/Ejabberd/old.ejabberd</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 张亚飞
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        <div class="visit">
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <span id="site-visit" >本站到访数: 
+                    <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </span>
+            <span id="busuanzi_container_page_pv" style='display:none'>
+                <span id="page-visit">, 本页阅读量: 
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </span>
+        </div>
+    </div>
+</footer>
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

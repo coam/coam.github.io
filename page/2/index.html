@@ -216,11 +216,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-Rebar" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-PHP/PhpNote" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/03/Rebar/" class="article-date">
-      <time datetime="2016-01-03T12:52:05.000Z" itemprop="datePublished">2016-01-03</time>
+      <a href="/2016/01/10/PHP/PhpNote/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
 </a>
     </div>
   
@@ -233,7 +233,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/03/Rebar/">使用 Rebar 管理 erlang 项目</a>
+      <a class="article-title" href="/2016/01/10/PHP/PhpNote/">Title</a>
     </h1>
   
 
@@ -243,103 +243,101 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="u4F7F_u7528_Rebar__u7BA1_u7406_erlang__u9879_u76EE"><a href="#u4F7F_u7528_Rebar__u7BA1_u7406_erlang__u9879_u76EE" class="headerlink" title="使用 Rebar 管理 erlang 项目"></a>使用 Rebar 管理 erlang 项目</h3><p><a href="https://github.com/rebar/rebar" target="_blank" rel="external">GitHub - </a></p>
-<h4 id="u4F7F_u7528_Intellij_idea15__u5229_u7528_rebar__u5F00_u53D1_u8C03_u8BD5_ejabberd"><a href="#u4F7F_u7528_Intellij_idea15__u5229_u7528_rebar__u5F00_u53D1_u8C03_u8BD5_ejabberd" class="headerlink" title="使用 Intellij idea15 利用 rebar 开发调试 ejabberd"></a>使用 Intellij idea15 利用 rebar 开发调试 ejabberd</h4><blockquote>
-<p>默认 Erlang 的 ejabberd 根项目下已经有 rebar 文件了</p>
-</blockquote>
-<p>1.Win下安装 <a href="http://www.erlang.org/download/otp_win64_18.2.1.exe" target="_blank" rel="external">otp.18</a> 到 G:\Program Files\erl7.2.1 下<br>2.将 G:\Program Files\erl7.2.1 添加系统环境变量 PATH<br>3.Intellij idea 项目 ejabberd 中 SDK 添加 OTP18.**<br>4.win下使用 Cygwin 安装 rebar</p>
-<pre><code>$ git clone git://github.com/rebar/rebar.git
-$ cd rebar
-$ ./bootstrap
-Recompile: src/getopt
-...
-Recompile: src/rebar_utils
-==&gt; rebar (compile)
-Congratulations! You now have a self-contained script called &quot;rebar&quot; in
-your current working directory. Place this script anywhere in your path
-and you can use rebar to build OTP-compliant apps.
-</code></pre><p>它将自动将 rebar 安装到 C:\Users\yafei\rebar 下</p>
-<ol>
-<li><p>File-&gt;Other Setting-&gt;Default Setting-&gt;Erlang Extenal Tools 配置 PATH 为 C:\Users\yafei\rebar\rebar.cmd</p>
-</li>
-<li><p>File-&gt;Setting-&gt;Setting-&gt;In “Build, Execution, Deployment/Erlan Compiler”, 勾选 “Compile project with rebar”.</p>
-</li>
-</ol>
-<p>6.Menu -&gt; Run -&gt; Edit Configurations -&gt; 添加按钮 -&gt; Erlang Rebar ,具体配置为 在 Command 一栏添加 任务 delete-deps clean get-deps compile 并任意填写一个任务名称 coamerlangtask</p>
-<p>7.在 Intellij idea 右上角可以点击运行开始打包</p>
+        <h3 id="Php__u5F00_u53D1_u7B14_u8BB0_u76F8_u5173"><a href="#Php__u5F00_u53D1_u7B14_u8BB0_u76F8_u5173" class="headerlink" title="Php 开发笔记相关"></a>Php 开发笔记相关</h3><hr>
+<p><a href="http://get.jobdeer.com/1134.get" target="_blank" rel="external">参考 PHP高效率写法（详解原因）</a></p>
+<p>PHP读取软件接ln 的相对父路径问题</p>
+<p>PHP读取软连接下的PHP程序使用 <strong>DIR</strong> 获取的相对路径,获取的父级目录是源文件的父级目录,若想获取软连接的父级目录,应使用 $_SERVER[“SCRIPT_FILENAME”]来获取当前脚本文件绝句路径再拼接</p>
+<p><a href="http://www.kaijia.me/2012/10/__file__-issue-with-symlink-in-php-solved/" target="_blank" rel="external">详见 PHP魔术常量<strong>FILE</strong>无法识别符号链接问题解决</a></p>
 <hr>
-<h3 id="u9519_u8BEF_u5206_u6790"><a href="#u9519_u8BEF_u5206_u6790" class="headerlink" title="错误分析"></a>错误分析</h3><blockquote>
-<p>rebar unable to get dependency from github</p>
-<p>使用简单的 clean compile 命令会出现很多未找到依赖包 * ,因为编译 compile 前先要 get-deps 所以将 rebar 编译命令改为 delete-deps clean get-deps compile</p>
-</blockquote>
-<p>参考 <a href="http://stackoverflow.com/questions/10059579/rebar-unable-to-get-dependency-from-github" target="_blank" rel="external">rebar unable to get dependency from github</a></p>
+<h3 id="u5173_u4E8E_CGI_2C_FastCGI_2C_PHP-FPM_2C_SPAWN-FCGI_2C_Nginx__u5B83_u4EEC_u4E4B_u95F4_u7684_u5173_u7CFB"><a href="#u5173_u4E8E_CGI_2C_FastCGI_2C_PHP-FPM_2C_SPAWN-FCGI_2C_Nginx__u5B83_u4EEC_u4E4B_u95F4_u7684_u5173_u7CFB" class="headerlink" title="关于 CGI, FastCGI, PHP-FPM, SPAWN-FCGI, Nginx 它们之间的关系"></a>关于 CGI, FastCGI, PHP-FPM, SPAWN-FCGI, Nginx 它们之间的关系</h3><p><a href="http://bigxing.github.io/2015/02/03/cgi-fastcgi-phpfpm-spawnfcgi/" target="_blank" rel="external">CGI, FastCGI, PHP-FPM, SPAWN-FCGI, Nginx 它们之间的关系</a><br><a href="https://segmentfault.com/q/1010000002434806" target="_blank" rel="external">php fpm和fast-CGI有啥关系？而且还有一个疑问,就是PHP以CGI方式运行,请问以CGI方式运行到底是啥意思？？</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-AndroidPushMQTT" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/AndroidPushMQTT/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/AndroidPushMQTT/">Android 推送之 MQTT</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="Android__u5F00_u53D1_u63A8_u9001_u65B9_u6848"><a href="#Android__u5F00_u53D1_u63A8_u9001_u65B9_u6848" class="headerlink" title="Android 开发推送方案"></a>Android 开发推送方案</h2><h2 id="MQTT__u670D_u52A1_u5668"><a href="#MQTT__u670D_u52A1_u5668" class="headerlink" title="MQTT 服务器"></a>MQTT 服务器</h2><p>使用 emqttd broken<br><a href="https://github.com/emqtt/emqttd" target="_blank" rel="external">GitHub - emqtt/emqttd</a><br><a href="http://emqtt.io/" target="_blank" rel="external">官网</a></p>
+<p><a href="https://github.com/emqtt/emqttd/wiki/Configuration" target="_blank" rel="external">emqttd 主要配置参数</a></p>
+<p>emqttd 使用以下命令调试输出</p>
+<pre><code>./bin/emqttd console
+</code></pre><p>如果没有打印输出日志信息,可以参考取消 rel/files/emqttd.config.production 或 ./etc/emqttd.config 中对 %%{lager_console_backend, info} 的注释<br><a href="https://github.com/emqtt/emqttd/issues/407" target="_blank" rel="external">关于提问</a></p>
 <hr>
-<p>参考列表<br><a href="https://github.com/rebar/rebar/wiki/Rebar-commands" target="_blank" rel="external">Rebar commands</a><br><a href="http://zewaren.net/site/?q=node/144" target="_blank" rel="external">Using Intellij IDEA to write and debug Erlang code</a><br><a href="https://www.jetbrains.com/idea/help/getting-started-with-erlang.html#d207953e377" target="_blank" rel="external">Intellij Idea 官网说明</a><br><a href="http://blog.csdn.net/shake1050/article/details/43670281" target="_blank" rel="external">windows下使用IntelliJ IDEA的erlang编译环境搭建(含rebar工具)</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-hello-two" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/03/hello-two/" class="article-date">
-      <time datetime="2016-01-03T12:49:04.726Z" itemprop="datePublished">2016-01-03</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/03/hello-two/">Hello tow</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post 兔子"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+<h4 id="MQTT_Android__u5BA2_u6237_u7AEF"><a href="#MQTT_Android__u5BA2_u6237_u7AEF" class="headerlink" title="MQTT Android 客户端"></a>MQTT Android 客户端</h4><blockquote>
+<p>之前使用 IBM 提供的 wmqtt.jar 和 tokudu 项目示例</p>
+</blockquote>
+<p><a href="ftp://public.dhe.ibm.com/software/integration/support/supportpacs/individual/ia92.zip" target="_blank" rel="external">wmqtt.jar</a><br><a href="https://github.com/tokudu/AndroidPushNotificationsDemo" target="_blank" rel="external">tokudu/AndroidPushNotificationsDemo</a></p>
+<blockquote>
+<p>由于 wmqttd 几乎没有更新,于是采用新的Android客户端 <a href="http://www.eclipse.org/paho/" target="_blank" rel="external">Paho</a> 方案</p>
+</blockquote>
+<p>需要添加如下两个依赖 <a href="/">org.eclipse.paho:org.eclipse.paho.client.mqttv3</a> 和 <a href="https://repo.eclipse.org/index.html#nexus-search;quick~paho.android" target="_blank" rel="external">org.eclipse.paho:org.eclipse.paho.android.service</a></p>
+<pre><code>dependencies {
+    // http://www.eclipse.org/paho/clients/android/
+    compile(&apos;org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.0.2&apos;)
+    compile(&apos;org.eclipse.paho:org.eclipse.paho.android.service:1.0.2&apos;) {
+        exclude module: &quot;org.eclipse.paho.client.mqttv3&quot;, group: &quot;org.eclipse.paho&quot;
+        exclude module: &quot;support-v4&quot;, group: &quot;com.google.android&quot;
+    }
+}
+</code></pre><p>比较好的参考演示项目:<br><a href="https://github.com/jeffprestes/AndroidMQTTDemo" target="_blank" rel="external">jeffprestes/AndroidMQTTDemo</a><br><a href="http://www.eclipse.org/paho/clients/android/sample/" target="_blank" rel="external">样例使用示例</a></p>
+<p>其它<br><a href="http://xiaoxinzhou.blog.163.com/blog/static/20704538620145411306821/" target="_blank" rel="external">MQTT协议实现Eclipse Paho学习总结一</a><br><a href="http://www.longdw.com/mqtt-server-client-android/" target="_blank" rel="external">编写和MQTT服务器通信的Android客户端程序(二)</a><br><a href="http://blog.csdn.net/zhu_tianwei/article/details/42983689" target="_blank" rel="external"> MQTT协议之订阅及发布(使用paho-mqtt-client或mqttv3实现)</a></p>
+<hr>
+<h4 id="u670D_u52A1_u5668_PHP__u5BA2_u6237_u7AEF_SAM"><a href="#u670D_u52A1_u5668_PHP__u5BA2_u6237_u7AEF_SAM" class="headerlink" title="服务器 PHP 客户端 SAM"></a>服务器 PHP 客户端 SAM</h4><blockquote>
+<p>SAM 针对MQTT写的PHP库 (下载链接为Tokudu PHPMQTT通信项目),其中send_mqtt.php是一个通过POST接收消息并且通过SAM将消息发送给RSMB的PHP脚本.<br><a href="http://pecl.php.net/package/sam" target="_blank" rel="external">SAM</a></p>
+<p>参考 tokudu 项目<br><a href="https://github.com/tokudu/PhpMQTTClient" target="_blank" rel="external">tokudu/PhpMQTTClient</a><br><a href="https://github.com/bluerhinos/phpMQTT" target="_blank" rel="external">bluerhinos/phpMQTT</a></p>
+</blockquote>
+<hr>
+<h4 id="MQTT_u534F_u8BAE_u7B14_u8BB0_u4E4B_u8FDE_u63A5_u548C_u5FC3_u8DF3"><a href="#MQTT_u534F_u8BAE_u7B14_u8BB0_u4E4B_u8FDE_u63A5_u548C_u5FC3_u8DF3" class="headerlink" title="MQTT协议笔记之连接和心跳"></a>MQTT协议笔记之连接和心跳</h4><blockquote>
+<p>几种 MQTT 协议 包 格式有: 连接(CONNECT)、心跳(PINGREQ/PINGRESP)、确认(CONNACK)、断开连接(DISCONNECT)、订阅(SUBSCRIBE)、取消订阅(SUBACK)</p>
+</blockquote>
+<hr>
+<h5 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h5><p><a href="http://www.cnblogs.com/linsongbin/p/4736227.html" target="_blank" rel="external">mqtt 协议之 PINGREQ, PINGRESP</a><br><a href="http://www.blogjava.net/yongboy/archive/2014/02/09/409630.html" target="_blank" rel="external">MQTT协议笔记之连接和心跳</a></p>
+<p><a href="http://bbs.hiapk.com/thread-4652657-1-1.html" target="_blank" rel="external">Android消息推送完美方案 </a></p>
 
       
     </div>
@@ -365,11 +363,11 @@ and you can use rebar to build OTP-compliant apps.
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Erlang/Elixir" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/03/hello-world/" class="article-date">
-      <time datetime="2016-01-03T11:40:19.831Z" itemprop="datePublished">2016-01-03</time>
+      <a href="/2016/01/10/Erlang/Elixir/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
 </a>
     </div>
   
@@ -382,7 +380,7 @@ and you can use rebar to build OTP-compliant apps.
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/03/hello-world/">Hello World</a>
+      <a class="article-title" href="/2016/01/10/Erlang/Elixir/">ElixirNote</a>
     </h1>
   
 
@@ -392,15 +390,11 @@ and you can use rebar to build OTP-compliant apps.
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info 卡卡: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h3 id="Erlang__u52A8_u6001_u7F16_u7A0B_u8BED_u8A00_Elixir__u76F8_u5173"><a href="#Erlang__u52A8_u6001_u7F16_u7A0B_u8BED_u8A00_Elixir__u76F8_u5173" class="headerlink" title="Erlang 动态编程语言 Elixir 相关"></a>Erlang 动态编程语言 Elixir 相关</h3><p><a href="http://elixir-lang.org/getting-started/introduction.html" target="_blank" rel="external">Elixir 官网</a></p>
+<p><a href="https://github.com/elixir-lang-china/elixir_guide_cn/blob/master/getting_started/Chapter2.md" target="_blank" rel="external">GitHub - elixir-lang-china/elixir_guide_cn</a><br><a href="https://github.com/straightdave/programming_elixir" target="_blank" rel="external">GitHub - straightdave/programming_elixir</a><br><a href="/"></a></p>
+<hr>
+<p>参考列表</p>
+<p><a href="/"></a><br><a href="/"></a><br><a href="/"></a><br><a href="/"></a><br><a href="/"></a><br><a href="/"></a></p>
 
       
     </div>
@@ -426,11 +420,11 @@ and you can use rebar to build OTP-compliant apps.
 
 
   
-    <article id="post-hello-one" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Erlang/Erlang" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/03/hello-one/" class="article-date">
-      <time datetime="2016-01-03T11:39:51.880Z" itemprop="datePublished">2016-01-03</time>
+      <a href="/2016/01/10/Erlang/Erlang/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
 </a>
     </div>
   
@@ -443,7 +437,7 @@ and you can use rebar to build OTP-compliant apps.
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/03/hello-one/">Hello One</a>
+      <a class="article-title" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a>
     </h1>
   
 
@@ -453,15 +447,467 @@ and you can use rebar to build OTP-compliant apps.
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h3 id="Erlang__u7814_u7A76_u76F8_u5173"><a href="#Erlang__u7814_u7A76_u76F8_u5173" class="headerlink" title="Erlang 研究相关"></a>Erlang 研究相关</h3><blockquote>
+<p>比较好的 Erlang 开发者博客及文档</p>
+</blockquote>
+<p><a href="http://allran.github.io/2015/05/13/erlang-use/" target="_blank" rel="external">木头人 - erlang use</a><br><a href="http://www.erlang-cn.com/118.html" target="_blank" rel="external">Erlang 中文教程Erlang中文教程,欢迎广大Erlang爱好者加入</a><br><a href="http://www.cnblogs.com/liangjingyang/archive/2012/07/15/2592691.html" target="_blank" rel="external">Simple - liangjingyang 博客</a><br><a href="http://wiki.jikexueyuan.com/project/erlang/#6f142dcd2b9ce7c7dd576f3a36fe2e9e" target="_blank" rel="external">Erlang 教程中文版</a><br><a href="http://svn.liancheng.info/cpie-cn/trunk/.build/html/part-i/index.html" target="_blank" rel="external">Erlang并发编程</a><br><a href="http://cpie-cn.readthedocs.org/en/latest/index.html" target="_blank" rel="external">Erlang并发编程-新版</a><br><a href="http://youthyblog.com/2015/07/22/erl%E5%91%BD%E4%BB%A4%E5%92%8C%E5%8F%82%E6%95%B0/" target="_blank" rel="external">erl命令和参数</a><br><a href="http://developerworks.github.io/" target="_blank" rel="external">元气糯米团子的Coding Blog</a><br><a href="http://wudaijun.com/categories/erlang/" target="_blank" rel="external">wudaijun’s blog</a></p>
+<p><a href="http://www.dlive.me/category/distributed/" target="_blank" rel="external">Erlang 相关</a></p>
+<hr>
+<h5 id="u7CFB_u7EDF_u9884_u5B9A_u4E49_u7684_u5B8F_3A"><a href="#u7CFB_u7EDF_u9884_u5B9A_u4E49_u7684_u5B8F_3A" class="headerlink" title="系统预定义的宏:"></a>系统预定义的宏:</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">?MODULE 表示当前模块名</span><br><span class="line">?MODULE_STRING 同上,但是以字符串形式</span><br><span class="line">?FILE 当前模块的文件名</span><br><span class="line">?LINE 调用的当前代码行数</span><br><span class="line">?MACHINE 机器名</span><br></pre></td></tr></table></figure>
+<p><a href="https://bitbucket.org/gamexg/erlang/wiki/Home" target="_blank" rel="external">Erlang 语言学习笔记 / Home</a></p>
+<h5 id="u8981_u77E5_u9053_u4E00_u4E2A_u8282_u70B9ping_u901A_u4E48_3A"><a href="#u8981_u77E5_u9053_u4E00_u4E2A_u8282_u70B9ping_u901A_u4E48_3A" class="headerlink" title="要知道一个节点ping通么:"></a>要知道一个节点ping通么:</h5><pre><code>net_adm:ping(Nodes).-&gt; pong |pang
+node() 返回本节点名
+nodes() 返回所有其它节点名.
+</code></pre><p>[pong:成功 |pang: 失败]</p>
+<hr>
+<p>收藏<br><a href="http://dhq.me/the-interaction-experiment-between-erlang-and-websocket" target="_blank" rel="external">Erlang 与 WebSocket 之间的通讯交互</a><br><a href="http://dhq.me/parse-xml-in-erlang" target="_blank" rel="external">erlang 解析 xml 格式数据</a><br><a href="http://dhq.me/erlang-dict-intro" target="_blank" rel="external">Erlang 的 dict 模块函数方法介绍</a><br><a href="http://dhq.me/build-compile-eunit-release-erlang-application-with-rebar" target="_blank" rel="external">用 rebar 来构建、编译、测试、发布 Erlang 应用程序</a></p>
+<p><a href="http://no001.blog.51cto.com/1142339/1320855" target="_blank" rel="external">Erlang不能错过的盛宴</a></p>
+<p><a href="http://pzjay.blogspot.com/2012/11/test.html" target="_blank" rel="external">40+行erlang代码实现一个简易分布式计算框架</a></p>
+<h4 id="u9519_u8BEF_u5206_u6790"><a href="#u9519_u8BEF_u5206_u6790" class="headerlink" title="错误分析"></a>错误分析</h4><blockquote>
+<p>运行 rebar 出现如下错误</p>
+</blockquote>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">Sun Dec </span><span class="number">20</span> <span class="number">21</span><span class="symbol">:</span><span class="number">15</span><span class="symbol">:</span><span class="number">31</span> yzhang<span class="variable">@coam</span><span class="symbol">:~/RunProject/ejabberd</span><span class="variable">$ </span>sudo ./rebar get-deps</span><br><span class="line">/usr/bin/<span class="symbol">env:</span> <span class="symbol">escript:</span> <span class="constant">No </span>such file <span class="keyword">or</span> directory</span><br><span class="line"></span><br><span class="line"><span class="constant">Sun Dec </span><span class="number">20</span> <span class="number">21</span><span class="symbol">:</span><span class="number">22</span><span class="symbol">:</span><span class="number">50</span> yzhang<span class="variable">@coam</span><span class="symbol">:~/RunProject</span><span class="variable">$ </span>whereis escript</span><br><span class="line"><span class="symbol">escript:</span> /opt/otp/bin/escript</span><br></pre></td></tr></table></figure>
+<p>原因是我安装 otp 时 使用命令 ./configure –prefix=/opt/otp/ 指定安装 otp 到 /opt/otp/ 下</p>
+<p>于是重新安装 otp ,并取消 ~/.bashrc 中配置的 erlang 环境变量</p>
+<h1 id="Erlang"><a href="#Erlang" class="headerlink" title="Erlang"></a>Erlang</h1><p>#export PATH=/opt/otp/bin:$PATH</p>
+<p>重启 ubuntu 后敲 erl 命令提示未找到,注释成功,重新使用默认参数安装otp</p>
+<blockquote>
+<p>ejabberd 源码编译安装,执行命令 ejabberd ./configure 后出现如下错误</p>
+</blockquote>
+<figure class="highlight java"><figcaption><span>错误分析</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Sun Dec <span class="number">20</span> <span class="number">21</span>:<span class="number">21</span>:<span class="number">26</span> yzhang<span class="annotation">@coam</span>:~/RunProject/ejabberd$ sudo ./configure</span><br><span class="line">checking whether make sets $(MAKE)... yes</span><br><span class="line">checking <span class="keyword">for</span> a BSD-compatible install... /usr/bin/install -c</span><br><span class="line">checking <span class="keyword">for</span> a sed that does not truncate output... /bin/sed</span><br><span class="line">checking <span class="keyword">for</span> erl... no</span><br><span class="line">checking <span class="keyword">for</span> erlc... no</span><br><span class="line">checking <span class="keyword">for</span> erl... no</span><br><span class="line">configure: error: Erlang/<span class="function">OTP <span class="title">interpreter</span> <span class="params">(erl)</span> not found but required</span></span><br></pre></td></tr></table></figure>
+<p>解决方案,重新安装 otp到系统默认路径</p>
+<p>参考 <a href="http://stackoverflow.com/questions/12327809/why-cannot-escript-run" target="_blank" rel="external">http://stackoverflow.com/questions/12327809/why-cannot-escript-run</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Erlang/Lua" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Erlang/Lua/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Erlang/Lua/">LuaNote</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="Lua__u5B66_u4E60_u6458_u8981"><a href="#Lua__u5B66_u4E60_u6458_u8981" class="headerlink" title="Lua 学习摘要"></a>Lua 学习摘要</h3><p><a href="http://dhq.me/lua-learning-notes-package-and-module" target="_blank" rel="external">Lua 学习笔记(4) – 模块与包</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Java/LearnAsyncTask" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Java/LearnAsyncTask/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Java/LearnAsyncTask/">Title</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="Android__u5F00_u53D1_u4E4B_AsyncTask__u5F02_u6B65_u4EFB_u52A1"><a href="#Android__u5F00_u53D1_u4E4B_AsyncTask__u5F02_u6B65_u4EFB_u52A1" class="headerlink" title="Android 开发之 AsyncTask 异步任务"></a>Android 开发之 AsyncTask 异步任务</h4><p><a href="http://code.oneapm.com/android/2015/06/02/android1/" target="_blank" rel="external">Android开发者:你真的会用AsyncTask吗？</a><br><a href="http://stackvoid.com/understanding-AsyncTask-in-Android/" target="_blank" rel="external">深入理解AsyncTask</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Java/LearnGoogleGuava" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Java/LearnGoogleGuava/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Java/LearnGoogleGuava/">Title</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="Google_Guava__u5F00_u53D1_u6458_u8981"><a href="#Google_Guava__u5F00_u53D1_u6458_u8981" class="headerlink" title="Google Guava 开发摘要"></a>Google Guava 开发摘要</h3><p><a href="https://github.com/google/guava" target="_blank" rel="external">google/guava GitHub</a><br><a href="http://ifeve.com/google-guava/" target="_blank" rel="external">Google Guava官方教程(中文版)</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Java/LearnJavaArray" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Java/LearnJavaArray/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Java/LearnJavaArray/">Title</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="Java_u6570_u7EC4"><a href="#Java_u6570_u7EC4" class="headerlink" title="Java数组"></a>Java数组</h4><h4 id="u58F0_u660E_u4E00_u4E2A_u6570_u7EC4_28Declare_an_array_29"><a href="#u58F0_u660E_u4E00_u4E2A_u6570_u7EC4_28Declare_an_array_29" class="headerlink" title="声明一个数组(Declare an array)"></a>声明一个数组(Declare an array)</h4><pre><code>String[] aArray = new String[5];
+String[] bArray = {&quot;a&quot;,&quot;b&quot;,&quot;c&quot;, &quot;d&quot;, &quot;e&quot;};
+String[] cArray = new String[]{&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;};
+</code></pre><h4 id="u5728Java_u4E2D_u8F93_u51FA_u4E00_u4E2A_u6570_u7EC4_28Print_an_array_in_Java_29"><a href="#u5728Java_u4E2D_u8F93_u51FA_u4E00_u4E2A_u6570_u7EC4_28Print_an_array_in_Java_29" class="headerlink" title="在Java中输出一个数组(Print an array in Java)"></a>在Java中输出一个数组(Print an array in Java)</h4><pre><code>int[] intArray = { 1, 2, 3, 4, 5 };
+String intArrayString = Arrays.toString(intArray);
+
+// print directly will print reference value
+System.out.println(intArray);
+// [I@7150bd4d
+
+System.out.println(intArrayString);
+// [1, 2, 3, 4, 5]
+</code></pre><h4 id="u4ECE_u6570_u7EC4_u4E2D_u521B_u5EFA_u6570_u7EC4_u5217_u8868_28Create_an_ArrayList_from_an_array_29"><a href="#u4ECE_u6570_u7EC4_u4E2D_u521B_u5EFA_u6570_u7EC4_u5217_u8868_28Create_an_ArrayList_from_an_array_29" class="headerlink" title="从数组中创建数组列表(Create an ArrayList from an array)"></a>从数组中创建数组列表(Create an ArrayList from an array)</h4><pre><code>String[] stringArray = { &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot; };
+ArrayList&lt;String&gt; arrayList = new ArrayList&lt;String&gt;(Arrays.asList(stringArray));
+System.out.println(arrayList);
+// [a, b, c, d, e]
+</code></pre><h4 id="u68C0_u67E5_u6570_u7EC4_u4E2D_u662F_u5426_u5305_u542B_u7279_u5B9A_u503C_28Check_if_an_array_contains_a_certain_value_29"><a href="#u68C0_u67E5_u6570_u7EC4_u4E2D_u662F_u5426_u5305_u542B_u7279_u5B9A_u503C_28Check_if_an_array_contains_a_certain_value_29" class="headerlink" title="检查数组中是否包含特定值(Check if an array contains a certain value)"></a>检查数组中是否包含特定值(Check if an array contains a certain value)</h4><pre><code>String[] stringArray = { &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot; };
+boolean b = Arrays.asList(stringArray).contains(&quot;a&quot;);
+System.out.println(b);
+// true
+</code></pre><h4 id="u8FDE_u63A5_u4E24_u4E2A_u6570_u7EC4_28_Concatenate_two_arrays_29"><a href="#u8FDE_u63A5_u4E24_u4E2A_u6570_u7EC4_28_Concatenate_two_arrays_29" class="headerlink" title="连接两个数组( Concatenate two arrays)"></a>连接两个数组( Concatenate two arrays)</h4><pre><code>int[] intArray = { 1, 2, 3, 4, 5 };
+int[] intArray2 = { 6, 7, 8, 9, 10 };
+// Apache Commons Lang library
+int[] combinedIntArray = ArrayUtils.addAll(intArray, intArray2);
+</code></pre><h4 id="u58F0_u660E_u4E00_u4E2A_u6570_u7EC4_u5185_u94FE_28Declare_an_array_inline__29"><a href="#u58F0_u660E_u4E00_u4E2A_u6570_u7EC4_u5185_u94FE_28Declare_an_array_inline__29" class="headerlink" title="声明一个数组内链(Declare an array inline )"></a>声明一个数组内链(Declare an array inline )</h4><pre><code>method(new String[]{&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;});
+</code></pre><h4 id="u5C06_u6570_u7EC4_u5143_u7D20_u52A0_u5165_u5230_u4E00_u4E2A_u72EC_u7ACB_u7684_u5B57_u7B26_u4E32_u4E2D_28Joins_the_elements_of_the_provided_array_into_a_single_String_29"><a href="#u5C06_u6570_u7EC4_u5143_u7D20_u52A0_u5165_u5230_u4E00_u4E2A_u72EC_u7ACB_u7684_u5B57_u7B26_u4E32_u4E2D_28Joins_the_elements_of_the_provided_array_into_a_single_String_29" class="headerlink" title="将数组元素加入到一个独立的字符串中(Joins the elements of the provided array into a single String)"></a>将数组元素加入到一个独立的字符串中(Joins the elements of the provided array into a single String)</h4><pre><code>// containing the provided list of elements
+// Apache common lang
+String j = StringUtils.join(new String[] { &quot;a&quot;, &quot;b&quot;, &quot;c&quot; }, &quot;, &quot;);
+System.out.println(j);
+// a, b, c
+</code></pre><h4 id="u5C06_u6570_u7EC4_u5217_u8868_u8F6C_u6362_u6210_u4E00_u4E2A_u6570_u7EC4__28Covnert_an_ArrayList_to_an_array_29"><a href="#u5C06_u6570_u7EC4_u5217_u8868_u8F6C_u6362_u6210_u4E00_u4E2A_u6570_u7EC4__28Covnert_an_ArrayList_to_an_array_29" class="headerlink" title="将数组列表转换成一个数组 (Covnert an ArrayList to an array)"></a>将数组列表转换成一个数组 (Covnert an ArrayList to an array)</h4><pre><code>String[] stringArray = { &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot; };
+ArrayList&lt;String&gt; arrayList = new ArrayList&lt;String&gt;(Arrays.asList(stringArray));
+String[] stringArr = new String[arrayList.size()];
+arrayList.toArray(stringArr);
+for (String s : stringArr)
+    System.out.println(s);
+</code></pre><h4 id="u5C06_u6570_u7EC4_u8F6C_u6362_u6210_u4E00_u4E2A_u96C6_u5408_28Convert_an_array_to_a_set_29"><a href="#u5C06_u6570_u7EC4_u8F6C_u6362_u6210_u4E00_u4E2A_u96C6_u5408_28Convert_an_array_to_a_set_29" class="headerlink" title="将数组转换成一个集合(Convert an array to a set)"></a>将数组转换成一个集合(Convert an array to a set)</h4><pre><code>Set&lt;String&gt; set = new HashSet&lt;String&gt;(Arrays.asList(stringArray));
+System.out.println(set);
+//[d, e, b, c, a]
+</code></pre><h4 id="u53CD_u5411_u6570_u7EC4_28Reverse_an_array_29"><a href="#u53CD_u5411_u6570_u7EC4_28Reverse_an_array_29" class="headerlink" title="反向数组(Reverse an array)"></a>反向数组(Reverse an array)</h4><pre><code>int[] intArray = { 1, 2, 3, 4, 5 };
+ArrayUtils.reverse(intArray);
+System.out.println(Arrays.toString(intArray));
+//[5, 4, 3, 2, 1]
+</code></pre><h4 id="u5220_u9664_u6570_u7EC4_u5143_u7D20_28Remove_element_of_an_array_29"><a href="#u5220_u9664_u6570_u7EC4_u5143_u7D20_28Remove_element_of_an_array_29" class="headerlink" title="删除数组元素(Remove element of an array)"></a>删除数组元素(Remove element of an array)</h4><pre><code>int[] intArray = { 1, 2, 3, 4, 5 };
+int[] removed = ArrayUtils.removeElement(intArray, 3);//create a new array
+System.out.println(Arrays.toString(removed));
+One more – convert int to byte array 
+byte[] bytes = ByteBuffer.allocate(4).putInt(8).array();
+
+for (byte t : bytes) {
+   System.out.format(&quot;0x%x &quot;, t);
+}
+</code></pre><hr>
+<h4 id="Five__285_29_ways_to_Iterate_Through_Loop_in_Java"><a href="#Five__285_29_ways_to_Iterate_Through_Loop_in_Java" class="headerlink" title="Five (5) ways to Iterate Through Loop in Java"></a>Five (5) ways to Iterate Through Loop in Java</h4><pre><code>package crunchify.com.tutorial;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+/**
+ * @author Crunchify.com
+ */
+
+public class CrunchifyIterateThroughList {
+
+    public static void main(String[] argv) {
+
+        // create list
+        List&lt;String&gt; CrunchifyList = new ArrayList&lt;String&gt;();
+
+        // add 4 different values to list
+        CrunchifyList.add(&quot;eBay&quot;);
+        CrunchifyList.add(&quot;Paypal&quot;);
+        CrunchifyList.add(&quot;Google&quot;);
+        CrunchifyList.add(&quot;Yahoo&quot;);
+
+        // iterate via &quot;for loop&quot;
+        System.out.println(&quot;==&gt; For Loop Example.&quot;);
+        for (int i = 0; i &lt; CrunchifyList.size(); i++) {
+            System.out.println(CrunchifyList.get(i));
+        }
+
+        // iterate via &quot;New way to loop&quot;
+        System.out.println(&quot;\n==&gt; Advance For Loop Example..&quot;);
+        for (String temp : CrunchifyList) {
+            System.out.println(temp);
+        }
+
+        // iterate via &quot;iterator loop&quot;
+        System.out.println(&quot;\n==&gt; Iterator Example...&quot;);
+        Iterator&lt;String&gt; CrunchifyIterator = CrunchifyList.iterator();
+        while (CrunchifyIterator.hasNext()) {
+            System.out.println(CrunchifyIterator.next());
+        }
+
+        // iterate via &quot;while loop&quot;
+        System.out.println(&quot;\n==&gt; While Loop Example....&quot;);
+        int i = 0;
+        while (i &lt; CrunchifyList.size()) {
+            System.out.println(CrunchifyList.get(i));
+            i++;
+        }
+
+        // collection stream() util: Returns a sequential Stream with this collection as its source
+        System.out.println(&quot;\n==&gt; collection stream() util....&quot;);
+        CrunchifyList.forEach((temp) -&gt; {
+            System.out.println(temp);
+        });
+    }
+}
+</code></pre><hr>
+<h4 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h4><p><a href="http://crunchify.com/how-to-iterate-through-java-list-4-way-to-iterate-through-loop/" target="_blank" rel="external">Java List For 循环 How to iterate through Java List? Five (5) ways to Iterate Through Loop in Java</a><br><a href="http://www.programcreek.com/2014/01/java%E7%A8%8B%E5%BA%8F%E5%91%98%E5%B8%B8%E7%8A%AF%E7%9A%8410%E4%B8%AA%E9%94%99%E8%AF%AF/" target="_blank" rel="external">Java程序员常犯的10个错误</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Java/LearnJavaHashMap" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Java/LearnJavaHashMap/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Java/LearnJavaHashMap/">Title</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="SparseArray__u548C_HashMap__u7684_u5B9E_u73B0_u4E0E_u4F18_u5316"><a href="#SparseArray__u548C_HashMap__u7684_u5B9E_u73B0_u4E0E_u4F18_u5316" class="headerlink" title="SparseArray 和 HashMap 的实现与优化"></a>SparseArray 和 HashMap 的实现与优化</h3><p><a href="http://www.jianshu.com/p/e54047b2b563" target="_blank" rel="external">HashMap的实现与优化</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Java/LearnLombok" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Java/LearnLombok/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Java/LearnLombok/">Title</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="Lombok__u6CE8_u89E3_u652F_u6301"><a href="#Lombok__u6CE8_u89E3_u652F_u6301" class="headerlink" title="Lombok 注解支持"></a>Lombok 注解支持</h4><p><a href="https://projectlombok.org/index.html" target="_blank" rel="external">Lombok官网</a><br><a href="http://it.deepinmind.com/java/2014/04/08/lombok-for-java-development.html" target="_blank" rel="external">Lombok: Java开发的利器</a><br><a href="https://github.com/rzwitserloot/lombok" target="_blank" rel="external">Lombok GitHub</a></p>
+<p><a href="http://codepub.cn/2015/07/30/Lombok-development-guidelines/" target="_blank" rel="external">Lombok开发指南</a></p>
+<h4 id="Android_Studio_Lombok__u63D2_u4EF6"><a href="#Android_Studio_Lombok__u63D2_u4EF6" class="headerlink" title="Android Studio Lombok 插件"></a>Android Studio Lombok 插件</h4><p><a href="https://github.com/mplushnikov/lombok-intellij-plugin" target="_blank" rel="external">lombok-intellij-plugin</a></p>
 
       
     </div>
@@ -489,7 +935,7 @@ and you can use rebar to build OTP-compliant apps.
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 </div>

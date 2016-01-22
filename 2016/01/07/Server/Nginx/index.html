@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>商运物流</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Nginx 安装管理相关NGINX官网Ubuntu Server 编译安装 NginxNginx 配置之性能篇
+ubuntu下使用apt方式安装、卸载nginx–更新nginx源安装最新版1、添加升级源,把 nginx 团队官方的 PPA 加入到 apt-get 的源配置文件中,并更新源
+add-apt-repository ppa:nginx/stable
+如果提示找不到 add-apt-rep">
+<meta property="og:type" content="article">
+<meta property="og:title" content="商运物流">
+<meta property="og:url" content="https://coam.co/2016/01/07/Server/Nginx/index.html">
+<meta property="og:site_name" content="商运物流">
+<meta property="og:description" content="Nginx 安装管理相关NGINX官网Ubuntu Server 编译安装 NginxNginx 配置之性能篇
+ubuntu下使用apt方式安装、卸载nginx–更新nginx源安装最新版1、添加升级源,把 nginx 团队官方的 PPA 加入到 apt-get 的源配置文件中,并更新源
+add-apt-repository ppa:nginx/stable
+如果提示找不到 add-apt-rep">
+<meta property="og:updated_time" content="2016-01-07T09:59:14.185Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="商运物流">
+<meta name="twitter:description" content="Nginx 安装管理相关NGINX官网Ubuntu Server 编译安装 NginxNginx 配置之性能篇
+ubuntu下使用apt方式安装、卸载nginx–更新nginx源安装最新版1、添加升级源,把 nginx 团队官方的 PPA 加入到 apt-get 的源配置文件中,并更新源
+add-apt-repository ppa:nginx/stable
+如果提示找不到 add-apt-rep">
+  
+    <link rel="alternative" href="/atom.xml" title="商运物流" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/author.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">张亚飞</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/markdown-gfw-hexo-jekyll/" style="font-size: 10px;">markdown gfw hexo jekyll</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://coam.co">商运物流</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/zyfmix/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://wp.iirii.com/">商运技术博客</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于物流设计</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">张亚飞</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img lazy-src="/img/author.jpg" class="js-avatar">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">张亚飞</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Server/Nginx" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/07/Server/Nginx/" class="article-date">
+      <time datetime="2016-01-07T09:59:14.186Z" itemprop="datePublished">2016-01-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="Nginx__u5B89_u88C5_u7BA1_u7406_u76F8_u5173"><a href="#Nginx__u5B89_u88C5_u7BA1_u7406_u76F8_u5173" class="headerlink" title="Nginx 安装管理相关"></a>Nginx 安装管理相关</h2><p><a href="http://nginx.org/" target="_blank" rel="external">NGINX官网</a><br><a href="https://www.king.moe/posts/Ubuntu%20Server%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%20Nginx" target="_blank" rel="external">Ubuntu Server 编译安装 Nginx</a><br><a href="https://www.imququ.com/post/my-nginx-conf-for-wpo.html" target="_blank" rel="external">Nginx 配置之性能篇</a></p>
+<p>ubuntu下使用apt方式安装、卸载nginx–更新nginx源安装最新版<br>1、添加升级源,把 nginx 团队官方的 PPA 加入到 apt-get 的源配置文件中,并更新源</p>
+<pre><code>add-apt-repository ppa:nginx/stable
+</code></pre><p>如果提示找不到 add-apt-repository</p>
+<pre><code>apt-get install python-software-properties -y
+apt-get update
+</code></pre><p>2、更新nginx</p>
+<pre><code>apt-get upgrade nginx -y
+nginx -v
+</code></pre><p>3、重启nginx</p>
+<pre><code>kill -9 `pidof nginx`
+/etc/init.d/nginx restart
+</code></pre><p>安装nginx后,卸载不完整,使用源码安装最新nginx,一直不通过,卸载nginx的方法:</p>
+<pre><code>sudo apt-get --purge remove nginx
+sudo apt-get autoremove
+dpkg --get-selections|grep nginx
+</code></pre><p>列出与nginx相关的软件:</p>
+<pre><code>nginx-common deinstall
+</code></pre><p>然后</p>
+<pre><code>sudo apt-get --purge remove nginx-common
+</code></pre><p>这样就可以完全卸载掉nginx包括配置文件</p>
+<p>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
+<pre><code>sudo apt-get remove nginx nginx-common # Removes all but config files.
+sudo apt-get purge nginx nginx-common # Removes everything.
+sudo apt-get autoremove # After using any of the above commands, use this in order to remove dependencies used by nginx which are no longer required.
+</code></pre><p>参考 <a href="http://askubuntu.com/questions/235347/what-is-the-best-way-to-uninstall-nginx" target="_blank" rel="external">http://askubuntu.com/questions/235347/what-is-the-best-way-to-uninstall-nginx</a></p>
+<p>//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
+<p>Nginx 配置 SSL 证书相关</p>
+<p>关于 OCSP 配置相关</p>
+<pre><code>ssl_stapling on;
+ssl_stapling_verify on;
+ssl_trusted_certificate /you/path/to/domain.chain.pem;
+resolver 8.8.8.8 8.8.4.4 valid=300s;(国外)
+resolver 223.5.5.5 223.6.6.6 valid=300s;(国内)
+resolver_timeout 10s;
+</code></pre><p>使用如下命令测试 ocsp 状态</p>
+<pre><code>openssl s_client -connect coopens.com:443 -tls1 -tlsextdebug -status
+openssl ocsp -issuer chain.pem -cert cert.pem -text -url http://ocsp.int-x1.letsencrypt.org -header &quot;HOST&quot; &quot;ocsp.int-x1.letsencrypt.org&quot; -no_nonce
+openssl ocsp -no_nonce \
+-header Host ocsp.int-x1.letsencrypt.org \
+-url http://ocsp.int-x1.letsencrypt.org/ \
+-issuer chain.pem \
+-CAfile chain.pem \
+-cert cert.pem
+</code></pre><p>关于 ocsp 根证书配置</p>
+<pre><code>cat fullchain.pem /data/home/yzhang/Homg/Documents/Server/Config/Nginx/Certify/dst_root.pem &gt; rootchain.pem
+</code></pre><p>其中 fullchain.pem 为当前网站的 证书链,dst_root.pem 为 letsencrypt 根证书 ,更新了 OCSP 证书之后需要测试两次,否则查看 ocsp 缓存失败<br>参考<a href="https://github.com/letsencrypt/letsencrypt/issues/1813" target="_blank" rel="external">Nginx OCSP stapling ssl_trusted_certificate #1813</a></p>
+<p>ssl_trusted_certificate 是用来验证ocsp响应的各个ca证书+中级证书,和信任的ca根证书列表.当用来验证ocsp响应的时候,应该配置为你的ca根证书+和中级ca证书的列表,此处可以简单和ssl_certificate使用同一个证书列表文件.</p>
+<pre><code>[[Solved] Cannot verify ocsp](https://community.letsencrypt.org/t/solved-cannot-verify-ocsp/3306)
+[Unable to verify OCSP response](https://community.letsencrypt.org/t/unable-to-verify-ocsp-response/7264)
+</code></pre><p>配置 ssl_dhparam 提高ssl证书加密安全系数</p>
+<p>使用如下命令生成 4096 位的 dhparam.pem 加密密钥</p>
+<pre><code>openssl dhparam -out dhparam.pem 4096
+</code></pre><p>配置 HTTP 严格传输安全(HSTS)(HTTP Strict Transport Security)</p>
+<p>nginx server{} 段添加如下响应头</p>
+<pre><code>add_header Strict-Transport-Security max-age=15768000;
+</code></pre><p>配置 ssl_session_ticket_key</p>
+<pre><code>#ssl_session_ticket_key /etc/nginx/conf.d/tls_session_ticket.key;
+ssl_session_tickets on;
+</code></pre><p>其中 tls_session_ticket.key 可以按如下方式生成 (参考 <a href="https://blog.helong.info/blog/2015/05/08/https-config-optimize-in-nginx" target="_blank" rel="external">Nginx下配置高性能,高安全性的https TLS服务</a>)</p>
+<pre><code>openssl rand 48 &gt; tls_session_ticket.key
+</code></pre><p>使用 <a href="https://www.ssllabs.com/ssltest/analyze.html?d=coopens.com" target="_blank" rel="external">https://www.ssllabs.com/ssltest/analyze.html?d=coopens.com</a> 检测 网站证书安全性</p>
+<p><a href="https://mozilla.github.io/server-side-tls/ssl-config-generator/" target="_blank" rel="external">Mozilla 查看最新推荐 Nginx 配置项</a><br><a href="https://www.pupboss.com/nginx-add-ssl/" target="_blank" rel="external">Nginx 配置上更安全的 SSL &amp; ECC 证书</a></p>
+<p><a href="https://bbs.wosign.com/thread-1923-1-1.html" target="_blank" rel="external">HTTPS协议介绍—使用Nginx+SSL实现部署与性能优化</a><br><a href="http://songchenwen.com/tech/2015/09/09/nginx-configuration-with-ssl-labs-class-a-plus/" target="_blank" rel="external">SSL Labs 评分 A+ 的 nginx 配置</a><br><a href="https://blog.hinablue.me/entry/bi-ji-ssl-nginx-hsts-spdy-breach-fips-ocsp-stapling/" target="_blank" rel="external">SSL, Nginx, HSTS, SPDY, BREACH, FIPS, OCSP Stapling</a></p>
+<p>//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
+<p>Nginx相关</p>
+<p><a href="http://seanlook.com/2015/05/17/nginx-location-rewrite/" target="_blank" rel="external">nginx配置location总结及rewrite规则写法</a><br><a href="https://www.gehaowu.com/notes/2015/08/NGINXHTTP2/" target="_blank" rel="external">为 NGINX 开启 HTTP2 功能</a><br><a href="https://imququ.com/post/nginx-http2-patch.html" target="_blank" rel="external">Nginx 开始支持 HTTP/2 了</a><br>[HTTP2 on Nginx 測試] (<a href="https://blog.hinablue.me/entry/http2-on-nginx-ce-shi/" target="_blank" rel="external">https://blog.hinablue.me/entry/http2-on-nginx-ce-shi/</a>)</p>
+<p>Nginx 变量相关</p>
+<p><a href="http://note.axiaoxin.com/contents/nginx-variables-note.html" target="_blank" rel="external">Nginx配置-变量笔记</a><br><a href="https://moonbingbing.gitbooks.io/openresty-best-practices/content/openresty/inline_var.html" target="_blank" rel="external">获取Nginx内置绑定变量</a><br><a href="http://www.cnphp.info/nginx-embedded-variables-lasted-version.html" target="_blank" rel="external">最新版 nginx内置变量 大全</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/01/07/Server/Nginx/"></a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 张亚飞 的个人博客">张亚飞</a></p>
+        <p><span>发布时间:</span>2016年01月07日 - 17时59分</p>
+        <p><span>最后更新:</span>2016年01月07日 - 17时59分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/01/07/Server/Nginx/" title="">https://coam.co/2016/01/07/Server/Nginx/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://coam.co/2016/01/07/Server/Nginx/　　作者: 张亚飞" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/01/07/Server/Config/Nginx/Other/waf/README/">
+                    
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/01/07/Server/PHP/">
+                    
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx__u5B89_u88C5_u7BA1_u7406_u76F8_u5173"><span class="toc-number">1.</span> <span class="toc-text">Nginx 安装管理相关</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/01/07/Server/Config/Nginx/Other/waf/README/" title="上一篇: ">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/01/07/Server/PHP/" title="下一篇: ">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/Server/NodeJs/">Server/NodeJs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/CheerioNote/">CheerioNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/MochaNote/">MochaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/GulpNote/">NodeJs/GulpNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/WebpackNote/">WebPack 自动打包工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/Info/hospital/">hospital</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/19/Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd/">Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Java/JavaNote/">JavaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/Python/PythonNote/">PythonNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Server/Ejabberd/">Ejabberd Install</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/PhpNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/AndroidPushMQTT/">Android 推送之 MQTT</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Elixir/">ElixirNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Lua/">LuaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnAsyncTask/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnGoogleGuava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaArray/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaHashMap/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnLombok/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnOkHttp/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrofit/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrolambda/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRxJava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnSupportAnnotations/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/MongoNotes/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mysql/MysqlTrigger/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Nginx/NginxNote/">NginxNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/MQTT/">MQTTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Rebar/">RebarNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/SSL/LetSSL/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/GPS/GPSNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/NodeJs/NodeJsNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Git/git/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/phpMyAdmin/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/Composer/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Http/HttpNote/">Http协议相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Others/MarkDownNote/">MarkDown 相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/MarkDownNote/">MarkDown 相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/my-blogs/">my blogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Server/ServerDisasterBackup/">Server/Config/Server/ServerDisasterBackup</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Nginx/Other/waf/README/">Server/Config/Nginx/Other/waf/README</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Nginx/">Server/Nginx</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/PHP/">Server/PHP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/MongoDB/">Server/MongoDB</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/ServerContingencyPlans/">Server/ServerContingencyPlans</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Server/ServerDisasterRestart/">Server/Config/Server/ServerDisasterRestart</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Server/ServerDisasterRecovery/">Server/Config/Server/ServerDisasterRecovery</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/PPA/">Server/PPA</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd_old/">Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd_old</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/MongoDB/Mos_etc_mongod.cnf/">Server/Config/MongoDB/Mos_etc_mongod.cnf</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Server/Ubuntu/">Server/Ubuntu</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Plan/FreeShareInfoIdea/">Plan/FreeShareInfoIdea</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Info/EnshrineBlogs/">Info/EnshrineBlogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Phalcon/PhalconNote/">Phalcon/PhalconNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/Lua/">Lua 学习摘要</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/MQTT/">关于 MQTT 协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/blog-myNewBlog/">blog/myNewBloger</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/XMPP/">关于 XMPP 协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/Rebar/">使用 Rebar 管理 erlang 项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/EjabberdNote/">Ejabberd Note</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/hello-two/">Hello tow</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/hello-one/">Hello One</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/28/Server/Config/Ejabberd/slava_ejabberd/">Server/Config/Ejabberd/slava_ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/ports/">Server/Config/Ejabberd/jabber/ports</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/modules/">Server/Config/Ejabberd/jabber/modules</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/ejabberd/">Server/Config/Ejabberd/jabber/ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/acl/">Server/Config/Ejabberd/jabber/acl</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/access/">Server/Config/Ejabberd/jabber/access</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/README/">Server/Config/Ejabberd/jabber/README</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/24/Server/Config/Ejabberd/test_ejabberd/">Server/Config/Ejabberd/test_ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/MongoDB/Ali_etc_mongod.cnf/">Server/Config/MongoDB/Ali_etc_mongod.cnf</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/MongoDB/Vultr_etc_mongod.cnf/">Server/Config/MongoDB/Vultr_etc_mongod.cnf</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/Ejabberd/default.ejabberd/">Server/Config/Ejabberd/default.ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/Ejabberd/old.ejabberd/">Server/Config/Ejabberd/old.ejabberd</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 张亚飞
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        <div class="visit">
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <span id="site-visit" >本站到访数: 
+                    <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </span>
+            <span id="busuanzi_container_page_pv" style='display:none'>
+                <span id="page-visit">, 本页阅读量: 
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </span>
+        </div>
+    </div>
+</footer>
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Title | 商运物流</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="MongoDB 主动复制参考 http://www.lanceyan.com/tech/mongodb/mongodb_cluster_1.html参考 MongoDB学习札记第六篇之主从复制参考 高可用的MongoDB集群
+
+在大数据的时代,传统的关系型数据库要能更高的服务必须要解决高并发读写、海量数据高效存储、高可扩展性和高可用性这些难题.不过就是因为这些问题Nosql诞生了.
+
+NOSQL有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Title">
+<meta property="og:url" content="https://coam.co/2016/01/10/MongoDB/mongo-slave/index.html">
+<meta property="og:site_name" content="商运物流">
+<meta property="og:description" content="MongoDB 主动复制参考 http://www.lanceyan.com/tech/mongodb/mongodb_cluster_1.html参考 MongoDB学习札记第六篇之主从复制参考 高可用的MongoDB集群
+
+在大数据的时代,传统的关系型数据库要能更高的服务必须要解决高并发读写、海量数据高效存储、高可扩展性和高可用性这些难题.不过就是因为这些问题Nosql诞生了.
+
+NOSQL有">
+<meta property="og:updated_time" content="2016-01-20T08:56:16.817Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Title">
+<meta name="twitter:description" content="MongoDB 主动复制参考 http://www.lanceyan.com/tech/mongodb/mongodb_cluster_1.html参考 MongoDB学习札记第六篇之主从复制参考 高可用的MongoDB集群
+
+在大数据的时代,传统的关系型数据库要能更高的服务必须要解决高并发读写、海量数据高效存储、高可扩展性和高可用性这些难题.不过就是因为这些问题Nosql诞生了.
+
+NOSQL有">
+  
+    <link rel="alternative" href="/atom.xml" title="商运物流" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/author.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">张亚飞</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/markdown-gfw-hexo-jekyll/" style="font-size: 10px;">markdown gfw hexo jekyll</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://coam.co">商运物流</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/zyfmix/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://wp.iirii.com/">商运技术博客</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于物流设计</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">张亚飞</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img lazy-src="/img/author.jpg" class="js-avatar">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">张亚飞</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-MongoDB/mongo-slave" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/MongoDB/mongo-slave/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Title
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="MongoDB__u4E3B_u52A8_u590D_u5236"><a href="#MongoDB__u4E3B_u52A8_u590D_u5236" class="headerlink" title="MongoDB 主动复制"></a>MongoDB 主动复制</h2><p>参考 <a href="http://www.lanceyan.com/tech/mongodb/mongodb_cluster_1.html" target="_blank" rel="external">http://www.lanceyan.com/tech/mongodb/mongodb_cluster_1.html</a><br>参考 <a href="http://segmentfault.com/a/1190000002924522" target="_blank" rel="external">MongoDB学习札记第六篇之主从复制</a><br>参考 <a href="http://www.jianshu.com/p/2825a66d6aed" target="_blank" rel="external">高可用的MongoDB集群</a></p>
+<blockquote>
+<p>在大数据的时代,传统的关系型数据库要能更高的服务必须要解决高并发读写、海量数据高效存储、高可扩展性和高可用性这些难题.不过就是因为这些问题Nosql诞生了.</p>
+</blockquote>
+<p>NOSQL有这些优势:</p>
+<p>大数据量,可以通过廉价服务器存储大量的数据,轻松摆脱传统mysql单表存储量级限制.</p>
+<p>高扩展性,Nosql去掉了关系数据库的关系型特性,很容易横向扩展,摆脱了以往老是纵向扩展的诟病.</p>
+<p>高性能,Nosql通过简单的key-value方式获取数据,非常快速.还有NoSQL的Cache是记录级的,是一种细粒度的Cache,所以NoSQL在这个层面上来说就要性能高很多.</p>
+<p>灵活的数据模型,NoSQL无需事先为要存储的数据建立字段,随时可以存储自定义的数据格式.而在关系数据库里,增删字段是一件非常麻烦的事情.如果是非常大数据量的表,增加字段简直就是一个噩梦.</p>
+<p>高可用,NoSQL在不太影响性能的情况,就可以方便的实现高可用的架构.比如mongodb通过mongos、mongo分片就可以快速配置出高可用配置.</p>
+<p>在nosql数据库里,大部分的查询都是键值对（key、value）的方式.MongoDB是一个介于关系数据库和非关系数据库之间的产品,是非关系数据库当中最像关系数据库的.支持类似于面向对象的查询语言,几乎可以实现类似关系数据库单表查询的绝大部分功能,而且还支持对数据建立索引.所以这个非常方便,我们可以用sql操作MongoDB,从关系型数据库迁移过来,开发人员学习成本会大大减少.如果再对底层的sql API做一层封装,开发基本可以感觉不到mongodb和关系型数据库的区别.同样MongoDB也是号称自己能够快速搭建一个高可用可扩展的的分布式集群,网上有很多搭建的文章,在我们搭建的时候还需要查找修改很多东西,所以把自己实战的步骤记录下来以备忘.我们看看如何一步一步搭建这个东东.</p>
+<p>一、mongodb单实例.这种配置只适合简易开发时使用,生产使用不行,因为单节点挂掉整个数据业务全挂,如下图.<br>虽然不能生产使用,但这个模式可以快速搭建启动,并且能够用mongodb的命令操作数据库.下面列出在linux下安装单节点mongodb的步骤</p>
+<p>二、主从模式.使用mysql数据库时大家广泛用到,采用双机备份后主节点挂掉了后从节点可以接替主机继续服务.所以这种模式比单节点的高可用性要好很多.<br>下面看一下怎么一步步搭建一个mongodb的主从复制节点:<br>1、准备两台机器 43.241.222.110 和 42.96.194.60. 43.241.222.110 当作主节点, 42.96.194.60作为从节点.<br>2、分别下载 mongodb 安装程序包.在 43.241.222.110 上建立文件夹 /home/data/mongodb,42.96.194.60 建立文件夹 /home/data/mongodb<br>两台MongoDB服务器的配置文件均为 /etc/mongod.cnf</p>
+<pre><code>storage:
+    dbPath: &quot;/data/home/data/mongodb&quot;
+    engine: wiredTiger
+    wiredTiger:
+        engineConfig:
+            cacheSizeGB: 20
+        collectionConfig:
+            blockCompressor: snappy
+
+systemLog:
+   destination: file
+   path: &quot;/var/log/mongodb/mongod.log&quot;
+   logAppend: true
+
+processManagement:
+    fork: true
+
+net:
+    #bindIp: 127.0.0.1,43.241.222.110,42.96.194.60  不能绑定外网访问ip,局域网的貌似可以,只能在iptable设定允许指定ip访问27017
+    #bindIp: 0.0.0.0
+    port: 27017
+    # Enable the HTTP interface (Defaults to port 28017).
+    http:
+        enabled: false
+</code></pre><p>3、在43.241.222.110启动mongodb主节点程序.注意后面的这个 “-master”参数,标示主节点.启动主节点 </p>
+<pre><code>sudo mongod -f /etc/mongod.cnf -master
+</code></pre><p>4、在42.96.194.60启动 mongodb 从节点程序.关键配置,指定主节点ip地址和端口 -source 43.241.222.110:27017 和 标示从节点 -slave 参数.</p>
+<pre><code>sudo mongod -f /etc/mongod.cnf -slave -source 43.241.222.110:27017
+</code></pre><p>输出日志如下,成功！</p>
+<p>#日志显示从节点 从主节点同步复制数据</p>
+<pre><code>[replslave] repl: from host:43.241.222.110:27017
+</code></pre><p>配置完Mongo主从复制后开始测试主从复制.</p>
+<p>在主节点上连接到终端:</p>
+<pre><code>mongo 127.0.0.1
+</code></pre><p>#建立test 数据库.</p>
+<pre><code>use test;
+</code></pre><p>往testdb表插入数据.</p>
+<pre><code>&gt; db.testdb.insert({&quot;test1&quot;:&quot;testval1&quot;})
+</code></pre><p>查询testdb数据看看是否成功.</p>
+<pre><code>&gt; db.testdb.find();
+{ &quot;_id&quot; : ObjectId(&quot;5284e5cb1f4eb215b2ecc463&quot;), &quot;test1&quot; : &quot;testval1&quot; }
+</code></pre><p>检查从主机的数据.</p>
+<pre><code>mongo 127.0.0.1
+</code></pre><p>查看当前数据库.</p>
+<pre><code>&gt; show dbs;
+  local   0.203125GB
+  test    0.203125GB
+
+use test;
+db.testdb.find();
+{ &quot;_id&quot; : ObjectId(&quot;5284e5cb1f4eb215b2ecc463&quot;), &quot;test1&quot; : &quot;testval1&quot; }
+</code></pre><p>查询后数据已经同步过来了.再看看日志,发现从主机确实从主机同步了数据.</p>
+<p>查看服务状态</p>
+<pre><code>&gt; db.printReplicationInfo();
+this is a slave, printing slave replication info.
+source:   43.241.222.110:27017
+  syncedTo: Sun Nov 17 2013 16:04:02 GMT+0800 (CST) = -54 secs ago (-0.01hrs)
+</code></pre><p>到此主从结构的mongodb搭建好了.</p>
+<p>参考 <a href="http://segmentfault.com/a/1190000002924522" target="_blank" rel="external">MongoDB学习札记第六篇之主从复制</a></p>
+<p><a href="http://dev.guanghe.tv/2015/05/mongdb3-upgrade-bug.html" target="_blank" rel="external">MongoDB 3.0 复制集升级操作以及坑</a></p>
+<hr>
+<h3 id="u95EE_u9898_u5206_u6790"><a href="#u95EE_u9898_u5206_u6790" class="headerlink" title="问题分析"></a>问题分析</h3><p>进入MongoShell执行以下命令</p>
+<pre><code>&gt;show dbs
+</code></pre><p>提示以下错误</p>
+<pre><code>E QUERY Error: listDatabases failed: 
+        { &quot;note&quot; : &quot;from execCommand&quot;, &quot;ok&quot; : 0, &quot;errmsg&quot; : &quot;not master&quot; }
+at Error (&lt;anonymous&gt;)
+</code></pre><p>查看mongo状态</p>
+<pre><code>&gt; rs.status()
+{ &quot;ok&quot; : 0, &quot;errmsg&quot; : &quot;not running with --replSet&quot;, &quot;code&quot; : 76 }
+</code></pre><p>每次登陆mongoShell后都需要执行以下命令</p>
+<pre><code>&gt; rs.slaveOK()
+2015-09-24T17:03:16.528+0800 E QUERY    TypeError: Object function () { return &quot;try rs.help()&quot;; } has no method &apos;slaveOK&apos;    at (shell):1:4
+</code></pre><p>参考 MongoDB 3.0 复制集升级操作以及坑 <a href="http://dev.guanghe.tv/2015/05/mongdb3-upgrade-bug.html" target="_blank" rel="external">http://dev.guanghe.tv/2015/05/mongdb3-upgrade-bug.html</a></p>
+<p>//查看状态</p>
+<pre><code>&gt; rs.status()
+{ &quot;ok&quot; : 0, &quot;errmsg&quot; : &quot;not running with --replSet&quot;, &quot;code&quot; : 76 }
+</code></pre><p>查看运行时配置</p>
+<pre><code>&gt; use admin
+switched to db admin
+&gt; db.runCommand(&quot;getCmdLineOpts&quot;)
+{
+    &quot;argv&quot; : [
+        &quot;mongod&quot;,
+        &quot;-f&quot;,
+        &quot;/etc/mongod.cnf&quot;,
+        &quot;-slave&quot;,
+        &quot;-source&quot;,
+        &quot;43.241.222.110:27017&quot;
+    ],
+    &quot;parsed&quot; : {
+        &quot;config&quot; : &quot;/etc/mongod.cnf&quot;,
+        &quot;net&quot; : {
+            &quot;http&quot; : {
+                &quot;enabled&quot; : false
+            },
+            &quot;port&quot; : 27017
+        },
+        &quot;processManagement&quot; : {
+            &quot;fork&quot; : true
+        },
+        &quot;slave&quot; : true,
+        &quot;source&quot; : &quot;43.241.222.110:27017&quot;,
+        &quot;storage&quot; : {
+            &quot;dbPath&quot; : &quot;/data/home/data/mongodb&quot;,
+            &quot;engine&quot; : &quot;wiredTiger&quot;,
+            &quot;wiredTiger&quot; : {
+                &quot;collectionConfig&quot; : {
+                    &quot;blockCompressor&quot; : &quot;snappy&quot;
+                },
+                &quot;engineConfig&quot; : {
+                    &quot;cacheSizeGB&quot; : 20
+                }
+            }
+        },
+        &quot;systemLog&quot; : {
+            &quot;destination&quot; : &quot;file&quot;,
+            &quot;logAppend&quot; : true,
+            &quot;path&quot; : &quot;/var/log/mongodb/mongod.log&quot;
+        }
+    },
+    &quot;ok&quot; : 1
+}
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/01/10/MongoDB/mongo-slave/">Title</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 张亚飞 的个人博客">张亚飞</a></p>
+        <p><span>发布时间:</span>2016年01月10日 - 19时41分</p>
+        <p><span>最后更新:</span>2016年01月20日 - 16时56分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/01/10/MongoDB/mongo-slave/" title="Title">https://coam.co/2016/01/10/MongoDB/mongo-slave/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://coam.co/2016/01/10/MongoDB/mongo-slave/　　作者: 张亚飞" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/01/10/MongoDB/mongo-replicaSet/">
+                    Title
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/01/10/Mysql/MysqlTrigger/">
+                    Title
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MongoDB__u4E3B_u52A8_u590D_u5236"><span class="toc-number">1.</span> <span class="toc-text">MongoDB 主动复制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#u95EE_u9898_u5206_u6790"><span class="toc-number">1.1.</span> <span class="toc-text">问题分析</span></a></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/01/10/MongoDB/mongo-replicaSet/" title="上一篇: Title">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/01/10/Mysql/MysqlTrigger/" title="下一篇: Title">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/Server/NodeJs/">Server/NodeJs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/CheerioNote/">CheerioNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/MochaNote/">MochaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/GulpNote/">NodeJs/GulpNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/WebpackNote/">WebPack 自动打包工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/Info/hospital/">hospital</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/19/Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd/">Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Java/JavaNote/">JavaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/Python/PythonNote/">PythonNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Server/Ejabberd/">Ejabberd Install</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/PhpNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/AndroidPushMQTT/">Android 推送之 MQTT</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Elixir/">ElixirNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Lua/">LuaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnAsyncTask/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnGoogleGuava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaArray/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaHashMap/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnLombok/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnOkHttp/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrofit/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrolambda/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRxJava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnSupportAnnotations/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/MongoNotes/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mysql/MysqlTrigger/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Nginx/NginxNote/">NginxNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/MQTT/">MQTTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Rebar/">RebarNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/SSL/LetSSL/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/GPS/GPSNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/NodeJs/NodeJsNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Git/git/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/phpMyAdmin/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/Composer/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Http/HttpNote/">Http协议相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Others/MarkDownNote/">MarkDown 相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/MarkDownNote/">MarkDown 相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/my-blogs/">my blogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Server/ServerDisasterBackup/">Server/Config/Server/ServerDisasterBackup</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Nginx/Other/waf/README/">Server/Config/Nginx/Other/waf/README</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Nginx/">Server/Nginx</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/PHP/">Server/PHP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/MongoDB/">Server/MongoDB</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/ServerContingencyPlans/">Server/ServerContingencyPlans</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Server/ServerDisasterRestart/">Server/Config/Server/ServerDisasterRestart</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Server/ServerDisasterRecovery/">Server/Config/Server/ServerDisasterRecovery</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/PPA/">Server/PPA</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd_old/">Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd_old</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/MongoDB/Mos_etc_mongod.cnf/">Server/Config/MongoDB/Mos_etc_mongod.cnf</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Server/Ubuntu/">Server/Ubuntu</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Plan/FreeShareInfoIdea/">Plan/FreeShareInfoIdea</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Info/EnshrineBlogs/">Info/EnshrineBlogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Phalcon/PhalconNote/">Phalcon/PhalconNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/Lua/">Lua 学习摘要</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/MQTT/">关于 MQTT 协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/blog-myNewBlog/">blog/myNewBloger</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/XMPP/">关于 XMPP 协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/Rebar/">使用 Rebar 管理 erlang 项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/EjabberdNote/">Ejabberd Note</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/hello-two/">Hello tow</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/hello-one/">Hello One</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/28/Server/Config/Ejabberd/slava_ejabberd/">Server/Config/Ejabberd/slava_ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/ports/">Server/Config/Ejabberd/jabber/ports</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/modules/">Server/Config/Ejabberd/jabber/modules</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/ejabberd/">Server/Config/Ejabberd/jabber/ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/acl/">Server/Config/Ejabberd/jabber/acl</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/access/">Server/Config/Ejabberd/jabber/access</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/README/">Server/Config/Ejabberd/jabber/README</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/24/Server/Config/Ejabberd/test_ejabberd/">Server/Config/Ejabberd/test_ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/MongoDB/Ali_etc_mongod.cnf/">Server/Config/MongoDB/Ali_etc_mongod.cnf</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/MongoDB/Vultr_etc_mongod.cnf/">Server/Config/MongoDB/Vultr_etc_mongod.cnf</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/Ejabberd/default.ejabberd/">Server/Config/Ejabberd/default.ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/Ejabberd/old.ejabberd/">Server/Config/Ejabberd/old.ejabberd</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 张亚飞
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        <div class="visit">
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <span id="site-visit" >本站到访数: 
+                    <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </span>
+            <span id="busuanzi_container_page_pv" style='display:none'>
+                <span id="page-visit">, 本页阅读量: 
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </span>
+        </div>
+    </div>
+</footer>
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

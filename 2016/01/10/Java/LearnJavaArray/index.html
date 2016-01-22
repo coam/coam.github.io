@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Title | 商运物流</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Java数组声明一个数组(Declare an array)String[] aArray = new String[5];
+String[] bArray = {&amp;quot;a&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;c&amp;quot;, &amp;quot;d&amp;quot;, &amp;quot;e&amp;quot;};
+String[] cArray = new String[]{&amp;quot;a&amp;quot;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Title">
+<meta property="og:url" content="https://coam.co/2016/01/10/Java/LearnJavaArray/index.html">
+<meta property="og:site_name" content="商运物流">
+<meta property="og:description" content="Java数组声明一个数组(Declare an array)String[] aArray = new String[5];
+String[] bArray = {&amp;quot;a&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;c&amp;quot;, &amp;quot;d&amp;quot;, &amp;quot;e&amp;quot;};
+String[] cArray = new String[]{&amp;quot;a&amp;quot;">
+<meta property="og:updated_time" content="2016-01-20T08:55:12.181Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Title">
+<meta name="twitter:description" content="Java数组声明一个数组(Declare an array)String[] aArray = new String[5];
+String[] bArray = {&amp;quot;a&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;c&amp;quot;, &amp;quot;d&amp;quot;, &amp;quot;e&amp;quot;};
+String[] cArray = new String[]{&amp;quot;a&amp;quot;">
+  
+    <link rel="alternative" href="/atom.xml" title="商运物流" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/author.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">张亚飞</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/markdown-gfw-hexo-jekyll/" style="font-size: 10px;">markdown gfw hexo jekyll</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://coam.co">商运物流</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/zyfmix/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://wp.iirii.com/">商运技术博客</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于物流设计</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">张亚飞</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img lazy-src="/img/author.jpg" class="js-avatar">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">张亚飞</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Java/LearnJavaArray" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Java/LearnJavaArray/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Title
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="Java_u6570_u7EC4"><a href="#Java_u6570_u7EC4" class="headerlink" title="Java数组"></a>Java数组</h4><h4 id="u58F0_u660E_u4E00_u4E2A_u6570_u7EC4_28Declare_an_array_29"><a href="#u58F0_u660E_u4E00_u4E2A_u6570_u7EC4_28Declare_an_array_29" class="headerlink" title="声明一个数组(Declare an array)"></a>声明一个数组(Declare an array)</h4><pre><code>String[] aArray = new String[5];
+String[] bArray = {&quot;a&quot;,&quot;b&quot;,&quot;c&quot;, &quot;d&quot;, &quot;e&quot;};
+String[] cArray = new String[]{&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;};
+</code></pre><h4 id="u5728Java_u4E2D_u8F93_u51FA_u4E00_u4E2A_u6570_u7EC4_28Print_an_array_in_Java_29"><a href="#u5728Java_u4E2D_u8F93_u51FA_u4E00_u4E2A_u6570_u7EC4_28Print_an_array_in_Java_29" class="headerlink" title="在Java中输出一个数组(Print an array in Java)"></a>在Java中输出一个数组(Print an array in Java)</h4><pre><code>int[] intArray = { 1, 2, 3, 4, 5 };
+String intArrayString = Arrays.toString(intArray);
+
+// print directly will print reference value
+System.out.println(intArray);
+// [I@7150bd4d
+
+System.out.println(intArrayString);
+// [1, 2, 3, 4, 5]
+</code></pre><h4 id="u4ECE_u6570_u7EC4_u4E2D_u521B_u5EFA_u6570_u7EC4_u5217_u8868_28Create_an_ArrayList_from_an_array_29"><a href="#u4ECE_u6570_u7EC4_u4E2D_u521B_u5EFA_u6570_u7EC4_u5217_u8868_28Create_an_ArrayList_from_an_array_29" class="headerlink" title="从数组中创建数组列表(Create an ArrayList from an array)"></a>从数组中创建数组列表(Create an ArrayList from an array)</h4><pre><code>String[] stringArray = { &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot; };
+ArrayList&lt;String&gt; arrayList = new ArrayList&lt;String&gt;(Arrays.asList(stringArray));
+System.out.println(arrayList);
+// [a, b, c, d, e]
+</code></pre><h4 id="u68C0_u67E5_u6570_u7EC4_u4E2D_u662F_u5426_u5305_u542B_u7279_u5B9A_u503C_28Check_if_an_array_contains_a_certain_value_29"><a href="#u68C0_u67E5_u6570_u7EC4_u4E2D_u662F_u5426_u5305_u542B_u7279_u5B9A_u503C_28Check_if_an_array_contains_a_certain_value_29" class="headerlink" title="检查数组中是否包含特定值(Check if an array contains a certain value)"></a>检查数组中是否包含特定值(Check if an array contains a certain value)</h4><pre><code>String[] stringArray = { &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot; };
+boolean b = Arrays.asList(stringArray).contains(&quot;a&quot;);
+System.out.println(b);
+// true
+</code></pre><h4 id="u8FDE_u63A5_u4E24_u4E2A_u6570_u7EC4_28_Concatenate_two_arrays_29"><a href="#u8FDE_u63A5_u4E24_u4E2A_u6570_u7EC4_28_Concatenate_two_arrays_29" class="headerlink" title="连接两个数组( Concatenate two arrays)"></a>连接两个数组( Concatenate two arrays)</h4><pre><code>int[] intArray = { 1, 2, 3, 4, 5 };
+int[] intArray2 = { 6, 7, 8, 9, 10 };
+// Apache Commons Lang library
+int[] combinedIntArray = ArrayUtils.addAll(intArray, intArray2);
+</code></pre><h4 id="u58F0_u660E_u4E00_u4E2A_u6570_u7EC4_u5185_u94FE_28Declare_an_array_inline__29"><a href="#u58F0_u660E_u4E00_u4E2A_u6570_u7EC4_u5185_u94FE_28Declare_an_array_inline__29" class="headerlink" title="声明一个数组内链(Declare an array inline )"></a>声明一个数组内链(Declare an array inline )</h4><pre><code>method(new String[]{&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;});
+</code></pre><h4 id="u5C06_u6570_u7EC4_u5143_u7D20_u52A0_u5165_u5230_u4E00_u4E2A_u72EC_u7ACB_u7684_u5B57_u7B26_u4E32_u4E2D_28Joins_the_elements_of_the_provided_array_into_a_single_String_29"><a href="#u5C06_u6570_u7EC4_u5143_u7D20_u52A0_u5165_u5230_u4E00_u4E2A_u72EC_u7ACB_u7684_u5B57_u7B26_u4E32_u4E2D_28Joins_the_elements_of_the_provided_array_into_a_single_String_29" class="headerlink" title="将数组元素加入到一个独立的字符串中(Joins the elements of the provided array into a single String)"></a>将数组元素加入到一个独立的字符串中(Joins the elements of the provided array into a single String)</h4><pre><code>// containing the provided list of elements
+// Apache common lang
+String j = StringUtils.join(new String[] { &quot;a&quot;, &quot;b&quot;, &quot;c&quot; }, &quot;, &quot;);
+System.out.println(j);
+// a, b, c
+</code></pre><h4 id="u5C06_u6570_u7EC4_u5217_u8868_u8F6C_u6362_u6210_u4E00_u4E2A_u6570_u7EC4__28Covnert_an_ArrayList_to_an_array_29"><a href="#u5C06_u6570_u7EC4_u5217_u8868_u8F6C_u6362_u6210_u4E00_u4E2A_u6570_u7EC4__28Covnert_an_ArrayList_to_an_array_29" class="headerlink" title="将数组列表转换成一个数组 (Covnert an ArrayList to an array)"></a>将数组列表转换成一个数组 (Covnert an ArrayList to an array)</h4><pre><code>String[] stringArray = { &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot; };
+ArrayList&lt;String&gt; arrayList = new ArrayList&lt;String&gt;(Arrays.asList(stringArray));
+String[] stringArr = new String[arrayList.size()];
+arrayList.toArray(stringArr);
+for (String s : stringArr)
+    System.out.println(s);
+</code></pre><h4 id="u5C06_u6570_u7EC4_u8F6C_u6362_u6210_u4E00_u4E2A_u96C6_u5408_28Convert_an_array_to_a_set_29"><a href="#u5C06_u6570_u7EC4_u8F6C_u6362_u6210_u4E00_u4E2A_u96C6_u5408_28Convert_an_array_to_a_set_29" class="headerlink" title="将数组转换成一个集合(Convert an array to a set)"></a>将数组转换成一个集合(Convert an array to a set)</h4><pre><code>Set&lt;String&gt; set = new HashSet&lt;String&gt;(Arrays.asList(stringArray));
+System.out.println(set);
+//[d, e, b, c, a]
+</code></pre><h4 id="u53CD_u5411_u6570_u7EC4_28Reverse_an_array_29"><a href="#u53CD_u5411_u6570_u7EC4_28Reverse_an_array_29" class="headerlink" title="反向数组(Reverse an array)"></a>反向数组(Reverse an array)</h4><pre><code>int[] intArray = { 1, 2, 3, 4, 5 };
+ArrayUtils.reverse(intArray);
+System.out.println(Arrays.toString(intArray));
+//[5, 4, 3, 2, 1]
+</code></pre><h4 id="u5220_u9664_u6570_u7EC4_u5143_u7D20_28Remove_element_of_an_array_29"><a href="#u5220_u9664_u6570_u7EC4_u5143_u7D20_28Remove_element_of_an_array_29" class="headerlink" title="删除数组元素(Remove element of an array)"></a>删除数组元素(Remove element of an array)</h4><pre><code>int[] intArray = { 1, 2, 3, 4, 5 };
+int[] removed = ArrayUtils.removeElement(intArray, 3);//create a new array
+System.out.println(Arrays.toString(removed));
+One more – convert int to byte array 
+byte[] bytes = ByteBuffer.allocate(4).putInt(8).array();
+
+for (byte t : bytes) {
+   System.out.format(&quot;0x%x &quot;, t);
+}
+</code></pre><hr>
+<h4 id="Five__285_29_ways_to_Iterate_Through_Loop_in_Java"><a href="#Five__285_29_ways_to_Iterate_Through_Loop_in_Java" class="headerlink" title="Five (5) ways to Iterate Through Loop in Java"></a>Five (5) ways to Iterate Through Loop in Java</h4><pre><code>package crunchify.com.tutorial;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+/**
+ * @author Crunchify.com
+ */
+
+public class CrunchifyIterateThroughList {
+
+    public static void main(String[] argv) {
+
+        // create list
+        List&lt;String&gt; CrunchifyList = new ArrayList&lt;String&gt;();
+
+        // add 4 different values to list
+        CrunchifyList.add(&quot;eBay&quot;);
+        CrunchifyList.add(&quot;Paypal&quot;);
+        CrunchifyList.add(&quot;Google&quot;);
+        CrunchifyList.add(&quot;Yahoo&quot;);
+
+        // iterate via &quot;for loop&quot;
+        System.out.println(&quot;==&gt; For Loop Example.&quot;);
+        for (int i = 0; i &lt; CrunchifyList.size(); i++) {
+            System.out.println(CrunchifyList.get(i));
+        }
+
+        // iterate via &quot;New way to loop&quot;
+        System.out.println(&quot;\n==&gt; Advance For Loop Example..&quot;);
+        for (String temp : CrunchifyList) {
+            System.out.println(temp);
+        }
+
+        // iterate via &quot;iterator loop&quot;
+        System.out.println(&quot;\n==&gt; Iterator Example...&quot;);
+        Iterator&lt;String&gt; CrunchifyIterator = CrunchifyList.iterator();
+        while (CrunchifyIterator.hasNext()) {
+            System.out.println(CrunchifyIterator.next());
+        }
+
+        // iterate via &quot;while loop&quot;
+        System.out.println(&quot;\n==&gt; While Loop Example....&quot;);
+        int i = 0;
+        while (i &lt; CrunchifyList.size()) {
+            System.out.println(CrunchifyList.get(i));
+            i++;
+        }
+
+        // collection stream() util: Returns a sequential Stream with this collection as its source
+        System.out.println(&quot;\n==&gt; collection stream() util....&quot;);
+        CrunchifyList.forEach((temp) -&gt; {
+            System.out.println(temp);
+        });
+    }
+}
+</code></pre><hr>
+<h4 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h4><p><a href="http://crunchify.com/how-to-iterate-through-java-list-4-way-to-iterate-through-loop/" target="_blank" rel="external">Java List For 循环 How to iterate through Java List? Five (5) ways to Iterate Through Loop in Java</a><br><a href="http://www.programcreek.com/2014/01/java%E7%A8%8B%E5%BA%8F%E5%91%98%E5%B8%B8%E7%8A%AF%E7%9A%8410%E4%B8%AA%E9%94%99%E8%AF%AF/" target="_blank" rel="external">Java程序员常犯的10个错误</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/01/10/Java/LearnJavaArray/">Title</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 张亚飞 的个人博客">张亚飞</a></p>
+        <p><span>发布时间:</span>2016年01月10日 - 19时41分</p>
+        <p><span>最后更新:</span>2016年01月20日 - 16时55分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/01/10/Java/LearnJavaArray/" title="Title">https://coam.co/2016/01/10/Java/LearnJavaArray/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://coam.co/2016/01/10/Java/LearnJavaArray/　　作者: 张亚飞" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/01/10/Java/LearnGoogleGuava/">
+                    Title
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/01/10/Java/LearnJavaHashMap/">
+                    Title
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Java_u6570_u7EC4"><span class="toc-number">1.</span> <span class="toc-text">Java数组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u58F0_u660E_u4E00_u4E2A_u6570_u7EC4_28Declare_an_array_29"><span class="toc-number">2.</span> <span class="toc-text">声明一个数组(Declare an array)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u5728Java_u4E2D_u8F93_u51FA_u4E00_u4E2A_u6570_u7EC4_28Print_an_array_in_Java_29"><span class="toc-number">3.</span> <span class="toc-text">在Java中输出一个数组(Print an array in Java)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u4ECE_u6570_u7EC4_u4E2D_u521B_u5EFA_u6570_u7EC4_u5217_u8868_28Create_an_ArrayList_from_an_array_29"><span class="toc-number">4.</span> <span class="toc-text">从数组中创建数组列表(Create an ArrayList from an array)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u68C0_u67E5_u6570_u7EC4_u4E2D_u662F_u5426_u5305_u542B_u7279_u5B9A_u503C_28Check_if_an_array_contains_a_certain_value_29"><span class="toc-number">5.</span> <span class="toc-text">检查数组中是否包含特定值(Check if an array contains a certain value)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u8FDE_u63A5_u4E24_u4E2A_u6570_u7EC4_28_Concatenate_two_arrays_29"><span class="toc-number">6.</span> <span class="toc-text">连接两个数组( Concatenate two arrays)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u58F0_u660E_u4E00_u4E2A_u6570_u7EC4_u5185_u94FE_28Declare_an_array_inline__29"><span class="toc-number">7.</span> <span class="toc-text">声明一个数组内链(Declare an array inline )</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u5C06_u6570_u7EC4_u5143_u7D20_u52A0_u5165_u5230_u4E00_u4E2A_u72EC_u7ACB_u7684_u5B57_u7B26_u4E32_u4E2D_28Joins_the_elements_of_the_provided_array_into_a_single_String_29"><span class="toc-number">8.</span> <span class="toc-text">将数组元素加入到一个独立的字符串中(Joins the elements of the provided array into a single String)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u5C06_u6570_u7EC4_u5217_u8868_u8F6C_u6362_u6210_u4E00_u4E2A_u6570_u7EC4__28Covnert_an_ArrayList_to_an_array_29"><span class="toc-number">9.</span> <span class="toc-text">将数组列表转换成一个数组 (Covnert an ArrayList to an array)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u5C06_u6570_u7EC4_u8F6C_u6362_u6210_u4E00_u4E2A_u96C6_u5408_28Convert_an_array_to_a_set_29"><span class="toc-number">10.</span> <span class="toc-text">将数组转换成一个集合(Convert an array to a set)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u53CD_u5411_u6570_u7EC4_28Reverse_an_array_29"><span class="toc-number">11.</span> <span class="toc-text">反向数组(Reverse an array)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u5220_u9664_u6570_u7EC4_u5143_u7D20_28Remove_element_of_an_array_29"><span class="toc-number">12.</span> <span class="toc-text">删除数组元素(Remove element of an array)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Five__285_29_ways_to_Iterate_Through_Loop_in_Java"><span class="toc-number">13.</span> <span class="toc-text">Five (5) ways to Iterate Through Loop in Java</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#u53C2_u8003"><span class="toc-number">14.</span> <span class="toc-text">参考</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/01/10/Java/LearnGoogleGuava/" title="上一篇: Title">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/01/10/Java/LearnJavaHashMap/" title="下一篇: Title">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/Server/NodeJs/">Server/NodeJs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/CheerioNote/">CheerioNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/MochaNote/">MochaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/GulpNote/">NodeJs/GulpNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/WebpackNote/">WebPack 自动打包工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/Info/hospital/">hospital</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/19/Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd/">Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Java/JavaNote/">JavaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/Python/PythonNote/">PythonNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Server/Ejabberd/">Ejabberd Install</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/PhpNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/AndroidPushMQTT/">Android 推送之 MQTT</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Elixir/">ElixirNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Lua/">LuaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnAsyncTask/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnGoogleGuava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaArray/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaHashMap/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnLombok/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnOkHttp/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrofit/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrolambda/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRxJava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnSupportAnnotations/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/MongoNotes/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mysql/MysqlTrigger/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Nginx/NginxNote/">NginxNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/MQTT/">MQTTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Rebar/">RebarNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/SSL/LetSSL/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/GPS/GPSNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/NodeJs/NodeJsNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Git/git/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/phpMyAdmin/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/Composer/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Http/HttpNote/">Http协议相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Others/MarkDownNote/">MarkDown 相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/MarkDownNote/">MarkDown 相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/my-blogs/">my blogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Server/ServerDisasterBackup/">Server/Config/Server/ServerDisasterBackup</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Nginx/Other/waf/README/">Server/Config/Nginx/Other/waf/README</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Nginx/">Server/Nginx</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/PHP/">Server/PHP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/MongoDB/">Server/MongoDB</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/ServerContingencyPlans/">Server/ServerContingencyPlans</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Server/ServerDisasterRestart/">Server/Config/Server/ServerDisasterRestart</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Server/ServerDisasterRecovery/">Server/Config/Server/ServerDisasterRecovery</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/PPA/">Server/PPA</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd_old/">Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd_old</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/MongoDB/Mos_etc_mongod.cnf/">Server/Config/MongoDB/Mos_etc_mongod.cnf</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Server/Ubuntu/">Server/Ubuntu</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Plan/FreeShareInfoIdea/">Plan/FreeShareInfoIdea</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Info/EnshrineBlogs/">Info/EnshrineBlogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Phalcon/PhalconNote/">Phalcon/PhalconNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/Lua/">Lua 学习摘要</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/MQTT/">关于 MQTT 协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/blog-myNewBlog/">blog/myNewBloger</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/XMPP/">关于 XMPP 协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/Rebar/">使用 Rebar 管理 erlang 项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/EjabberdNote/">Ejabberd Note</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/hello-two/">Hello tow</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/03/hello-one/">Hello One</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/28/Server/Config/Ejabberd/slava_ejabberd/">Server/Config/Ejabberd/slava_ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/ports/">Server/Config/Ejabberd/jabber/ports</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/modules/">Server/Config/Ejabberd/jabber/modules</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/ejabberd/">Server/Config/Ejabberd/jabber/ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/acl/">Server/Config/Ejabberd/jabber/acl</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/access/">Server/Config/Ejabberd/jabber/access</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/README/">Server/Config/Ejabberd/jabber/README</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/24/Server/Config/Ejabberd/test_ejabberd/">Server/Config/Ejabberd/test_ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/MongoDB/Ali_etc_mongod.cnf/">Server/Config/MongoDB/Ali_etc_mongod.cnf</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/MongoDB/Vultr_etc_mongod.cnf/">Server/Config/MongoDB/Vultr_etc_mongod.cnf</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/Ejabberd/default.ejabberd/">Server/Config/Ejabberd/default.ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/Ejabberd/old.ejabberd/">Server/Config/Ejabberd/old.ejabberd</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 张亚飞
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        <div class="visit">
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <span id="site-visit" >本站到访数: 
+                    <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </span>
+            <span id="busuanzi_container_page_pv" style='display:none'>
+                <span id="page-visit">, 本页阅读量: 
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </span>
+        </div>
+    </div>
+</footer>
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

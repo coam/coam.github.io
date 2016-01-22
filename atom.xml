@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="https://coam.co/"/>
-  <updated>2016-01-20T08:46:52.570Z</updated>
+  <updated>2016-01-22T04:03:49.038Z</updated>
   <id>https://coam.co/</id>
   
   <author>
@@ -13,6 +13,439 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://coam.co/2016/01/22/Server/NodeJs/"/>
+    <id>https://coam.co/2016/01/22/Server/NodeJs/</id>
+    <published>2016-01-22T04:03:49.038Z</published>
+    <updated>2016-01-22T04:03:49.038Z</updated>
+    <content type="html"><![CDATA[<h2 id="Node-js__u7BA1_u7406_u76F8_u5173"><a href="#Node-js__u7BA1_u7406_u76F8_u5173" class="headerlink" title="Node.js 管理相关"></a>Node.js 管理相关</h2><h3 id="u5728Ubuntu__u5B89_u88C5_Node-js"><a href="#u5728Ubuntu__u5B89_u88C5_Node-js" class="headerlink" title="在Ubuntu 安装 Node.js"></a>在Ubuntu 安装 Node.js</h3><h2 id="u5B89_u88DD_Node-js"><a href="#u5B89_u88DD_Node-js" class="headerlink" title="安裝 Node.js"></a>安裝 Node.js</h2><p>起始这个步骤很重要,而且如果参考大部分教学就会踩到雷.主要原因是如果用上面那篇的方法,不会自动帮你做好软连接,后续很容易出現莫名其妙的问题.</p>
+<pre><code>sudo apt-get update
+sudo apt-get install nodejs-legacy
+</code></pre><p>直接用 nodejs-legacy 即可.這個会自动建立软连接,可以避免不少比较旧的库的问题.</p>
+<p>在 安装node的时候,安装位置为 /usr/local/bin/node ,但这个位置是需要root权限的,而截图上提示的错误就是你的权限不 够,node没有安装成功.如果你用源码编译安装,记得最后安装时加sudo执行.而且你在执行nodejs的时候,截图也提示你了,你的nodejs没 有安装,但你可以使用 sudo apt-get install nodejs 这个命令来安装,这是因为你之前添加了ppa才可以这样安装.</p>
+<p>另 外,我想补充的是,你所用的ppa的方法,已经是很旧的了,即使安装成功也是很老版本的,这个ppa已经很久不更新了,现在ubuntu软件仓库就已经有 node了,所以你可以先用</p>
+<pre><code>sudo apt-add-repository -r ppa:chris-lea/node.js-devel
+</code></pre><p>删除这个ppa,然后安装仓库里的node:</p>
+<pre><code>sudo apt-get install nodejs
+</code></pre><p>如果你发现仓库里的nodejs版本不够高,可以更新一下仓库和软件版本:</p>
+<pre><code>sudo apt-get update
+sudo apt-get upgrade
+</code></pre><p>你也可以用源代码编译安装node,也很简单,下载node的源代码包,解压,进入目录执行:</p>
+<pre><code>./configure &amp;&amp; make &amp;&amp; sudo make install
+</code></pre><p>补充:</p>
+<h4 id="u4E3A_u4EC0_u4E48_u6267_u884C_node_-v__u6CA1_u6709_u8F93_u51FA_uFF1F"><a href="#u4E3A_u4EC0_u4E48_u6267_u884C_node_-v__u6CA1_u6709_u8F93_u51FA_uFF1F" class="headerlink" title="为什么执行 node -v 没有输出？"></a>为什么执行 node -v 没有输出？</h4><blockquote>
+<p>Ubuntu 的仓库里面,已经存在一个叫node的软件包了,可以执行aptitude search node`查看,这是一个先于nodejs存在的软件名,已经被用了,所以ubuntu只能把用于js开发的这个node改名叫nodejs,如果系统已 经安装此软件,执行node -v并非nodejs的node,它跟nodejs一点关系也没有,它的-v参数是不显示任何东西的.<br>node 还是 nodejs ?</p>
+</blockquote>
+<p>用 apt-get install nodejs 方法安装的,或是ppa方法安装的,命令都应该叫 nodejs,应该使用nodejs -v来测试.不过如果使用源代码的方式编译安装的（默认安装到 /usr/local/bin ,除非指定prefix参数）,也叫node,这个node是 真正的nodejs的node,所以为了避免与ubuntu仓库中的node引起混淆,建议安装后,把node改名为nodejs</p>
+<p>windows下是 node -v;ubuntu下是 nodejs -v</p>
+<hr>
+<h3 id="nvm"><a href="#nvm" class="headerlink" title="nvm"></a>nvm</h3><p>参考 <a href="http://eyas.leanote.com/post/use-nvm-install-nodejs" target="_blank" rel="external">使用 nvm 安装 nodejs</a></p>
+<p><a href="https://github.com/creationix/nvm" target="_blank" rel="external">建议使用版本管理工具nvm，来安装Node，因为可以自由切换版本</a></p>
+<h4 id="Window__u4E0B_u5B89_u88C5_nvm"><a href="#Window__u4E0B_u5B89_u88C5_nvm" class="headerlink" title="Window 下安装 nvm"></a>Window 下安装 nvm</h4><p><a href="https://github.com/coreybutler/nvm-windows" target="_blank" rel="external">nvm-windows</a><br>下载安装文件 <a href="https://github.com/coreybutler/nvm-windows/releases/download/1.1.0/nvm-setup.zip" target="_blank" rel="external">nvm-setup.zip</a></p>
+<p>nvm 将 nodejs 安装到目录 <strong>C:\Users\yafei\AppData\Roaming\nvm\v5.5.0</strong><br>使用 npm install -g <em> 将包安装到目录 <em>*C:\Users\yafei\AppData\Roaming\nvm\v5.5.0\node_modules</em></em></p>
+<p>window 下 nvm 常用命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nvm list</span><br><span class="line">nvm install latest</span><br><span class="line">nvm on: Enable node.js version management.</span><br><span class="line">nvm off: Disable node.js version management (does not uninstall anything).</span><br><span class="line">nvm proxy [url]: Set a proxy to use <span class="keyword">for</span> downloads. Leave [url] blank to see the current proxy. Set [url] to <span class="string">"none"</span> to remove the proxy.</span><br><span class="line">nvm uninstall &lt;version&gt;: Uninstall a specific version.</span><br><span class="line">nvm use &lt;version&gt; [arch]:</span><br></pre></td></tr></table></figure>
+<h4 id="Ubuntu__u4E0B_u5B89_u88C5_nvm"><a href="#Ubuntu__u4E0B_u5B89_u88C5_nvm" class="headerlink" title="Ubuntu 下安装 nvm"></a>Ubuntu 下安装 nvm</h4><p><a href="https://github.com/creationix/nvm" target="_blank" rel="external">nvm</a><br>使用 安装脚本安装 nvm</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.<span class="number">30.2</span>/install.sh | bash</span><br><span class="line">. ~/.nvm/nvm.sh</span><br></pre></td></tr></table></figure>
+<p>Ubuntu 下 nvm 常用命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nvm ls-remote  // 列出所有可用版本</span><br><span class="line">nvm install latest</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="u5B89_u88C5_npm"><a href="#u5B89_u88C5_npm" class="headerlink" title="安装 npm"></a>安装 npm</h3><pre><code>sudo apt-get install npm
+</code></pre><h4 id="npm_u5E38_u7528_u547D_u4EE4"><a href="#npm_u5E38_u7528_u547D_u4EE4" class="headerlink" title="npm常用命令"></a>npm常用命令</h4><pre><code>npm install &lt;name&gt;安装nodejs的依赖包
+</code></pre><p>例如 npm install express 就会默认安装express的最新版本,也可以通过在后面加版本号的方式安装指定版本,如npm install express@3.0.6</p>
+<pre><code>npm install &lt;name&gt; -g  将包安装到全局环境中
+</code></pre><p>但是代码中,直接通过require()的方式是没有办法调用全局安装的包的.全局的安装是供命令行使用的,就好像全局安装了vmarket后,就可以在命令行中直接运行vm命令</p>
+<pre><code>npm install &lt;name&gt; --save  安装的同时,将信息写入package.json中
+</code></pre><p>项目路径中如果有package.json文件时,直接使用npm install方法就可以根据dependencies配置安装所有的依赖包</p>
+<p>这样代码提交到github时,就不用提交 node_modules 这个文件夹了.</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> init   会引导你创建一个package.json文件,包括名称、版本、作者这些信息等</span><br><span class="line"><span class="built_in">npm</span> remove &lt;name&gt;移除</span><br><span class="line"><span class="built_in">npm</span> update &lt;name&gt;更新</span><br><span class="line"><span class="built_in">npm</span> ls 列出当前安装的了所有包</span><br><span class="line"><span class="built_in">npm</span> root  查看当前包的安装路径</span><br><span class="line"><span class="built_in">npm</span> root -g  查看全局的包的安装路径</span><br><span class="line"><span class="built_in">npm</span> help  帮助,如果要单独查看install命令的帮助,可以使用的<span class="built_in">npm</span> help install</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>升级npm到最新版本,使用以下命令</p>
+</blockquote>
+<pre><code>npm install npm@latest -g
+</code></pre><blockquote>
+<p>国内npm安装nodejs modules失败的几个解决方案</p>
+</blockquote>
+<pre><code>npm config set proxy=&quot;http://127.0.0.1:8087&quot;//设置代理地址 http://www.xxxx.com:port格式
+npm config set registry=&quot;http://registry.npmjs.org&quot;//设置npm源地址
+</code></pre><p><a href="http://www.tuicool.com/articles/VNZ7Vb" target="_blank" rel="external">nodejs国内npm安装nodejs modules失败的几个解决方案 </a></p>
+<p>参考列表</p>
+<p><a href="http://codeblog.niwyclin.org/posts/210397-ubuntu-installed-nodejs-and-npm" target="_blank" rel="external">Ubuntu 正确安装 Node.js 和 Npm</a><br><a href="http://segmentfault.com/q/1010000003753704" target="_blank" rel="external">Ubuntu下装nodejs的问题</a></p>
+<h3 id="u9519_u8BEF_u53CA_u5E38_u7528_u547D_u4EE4"><a href="#u9519_u8BEF_u53CA_u5E38_u7528_u547D_u4EE4" class="headerlink" title="错误及常用命令"></a>错误及常用命令</h3><blockquote>
+<p>清除缓存重新安装<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rm -rf node_modules</span><br><span class="line"><span class="built_in">npm</span> cache clean</span><br><span class="line"><span class="built_in">npm</span> install</span><br></pre></td></tr></table></figure></p>
+<p>在 Ubuntu 下安装 converse.js 频繁出现以下错误</p>
+</blockquote>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Please <span class="keyword">report</span> this full <span class="keyword">log</span> at https:<span class="comment">//github.com/Medium/phantomjs</span></span><br><span class="line">npm WARN This failure might be due to the <span class="keyword">use</span> of legacy binary <span class="string">"node"</span></span><br><span class="line">npm WARN <span class="keyword">For</span> further explanations, please <span class="keyword">read</span></span><br><span class="line">/usr/share/doc/nodejs/README.Debian</span><br><span class="line"></span><br><span class="line">npm <span class="keyword">ERR</span>! weird <span class="keyword">error</span> 1</span><br><span class="line">npm <span class="keyword">ERR</span>! not ok code 0</span><br><span class="line">make: *** [stamp-npm] <span class="keyword">Error</span> 1</span><br></pre></td></tr></table></figure>
+<p>网友提示需要安装 nodejs<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nodejs-legacy</span><br></pre></td></tr></table></figure></p>
+<p>但是执行此命令提示我已安装</p>
+<ul>
+<li>Setup with Ubuntu</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl <span class="operator">-s</span>L https://deb.nodesource.com/setup_5.x | sudo -E bash -</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Then install with Ubuntu:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install --yes nodejs</span><br></pre></td></tr></table></figure>
+<ul>
+<li>If you get node: command not found chances are likely you need to link your binary:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln <span class="operator">-s</span> /usr/bin/nodejs /usr/bin/node</span><br></pre></td></tr></table></figure>
+<p>参考 <a href="https://github.com/nodejs/node-v0.x-archive/wiki/Installing-Node.js-via-package-manager" target="_blank" rel="external">Installing Node.js via package manager</a></p>
+<p>重新执行命令安装出现如下错误<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Failed at the phantomjs@<span class="number">1.9</span>.<span class="number">19</span> install script '<span class="keyword">node</span><span class="identifier"> </span><span class="title">install</span>.js'.</span><br></pre></td></tr></table></figure></p>
+<p>执行命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> strict-ssl <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/Medium/phantomjs/issues/430" target="_blank" rel="external">Failed at the phantomjs@1.9.19 install script ‘node install.js’.</a></p>
+<hr>
+<h3 id="u5B89_u88C5_nrm__u2013__u5FEB_u901F_u5207_u6362_NPM__u6E90__uFF08_u9644_u5E26_u6D4B_u901F_u529F_u80FD_uFF09"><a href="#u5B89_u88C5_nrm__u2013__u5FEB_u901F_u5207_u6362_NPM__u6E90__uFF08_u9644_u5E26_u6D4B_u901F_u529F_u80FD_uFF09" class="headerlink" title="安装 nrm – 快速切换 NPM 源 （附带测速功能）"></a>安装 nrm – 快速切换 NPM 源 （附带测速功能）</h3><pre><code>npm install -g nrm
+</code></pre><h4 id="u5E38_u7528_u547D_u4EE4"><a href="#u5E38_u7528_u547D_u4EE4" class="headerlink" title="常用命令"></a>常用命令</h4><p>列出可选的源</p>
+<pre><code>$ nrm ls
+* npm ---- https://registry.npmjs.org/
+  cnpm --- http://r.cnpmjs.org/
+  taobao - http://registry.npm.taobao.org/
+  eu ----- http://registry.npmjs.eu/
+  au ----- http://registry.npmjs.org.au/
+  sl ----- http://npm.strongloop.com/
+  nj ----- https://registry.nodejitsu.com/
+</code></pre><p>切换源到 taobao</p>
+<pre><code>$ nrm use taobao
+Registry has been set to: http://registry.npm.taobao.org/
+</code></pre><p>增加源<br>你可以增加定制的源,特别适用于添加企业内部的私有源.私有源可以使用cnpmjs架设.</p>
+<pre><code>nrm add  &lt;registry&gt; &lt;url&gt; [home]
+</code></pre><p>删除源</p>
+<pre><code>nrm del &lt;registry&gt;
+</code></pre><p>测试速度<br>你还可以通过 nrm test 测试相应源的响应时间.</p>
+<p>例如,测试官方源的响应时间:</p>
+<pre><code>$ nrm test npm
+npm ---- 1328ms
+</code></pre><p>测试所有源的响应时间:</p>
+<pre><code>$ nrm test
+  npm ---- 891ms
+  cnpm --- 1213ms
+* taobao - 460ms
+  eu ----- 3859ms
+  au ----- 1073ms
+  sl ----- 4150ms
+  nj ----- 8008ms
+</code></pre><p>注意,为了取得较准确的结果,可以考虑多次测试取平均值.</p>
+<hr>
+<h3 id="u5B89_u88C5_Bower__u5305_u7BA1_u7406_u5DE5_u5177"><a href="#u5B89_u88C5_Bower__u5305_u7BA1_u7406_u5DE5_u5177" class="headerlink" title="安装 Bower 包管理工具"></a>安装 Bower 包管理工具</h3><pre><code>sudo npm install bower -g
+</code></pre><blockquote>
+<p>bower 常用命令</p>
+</blockquote>
+<pre><code>bower install
+bower update
+</code></pre><p><a href="http://stackoverflow.com/questions/21491996/installing-bower-on-ubuntu" target="_blank" rel="external">Installing Bower on Ubuntu</a></p>
+<h3 id="u5B89_u88C5_mongo-express"><a href="#u5B89_u88C5_mongo-express" class="headerlink" title="安装 mongo-express"></a>安装 mongo-express</h3><p>在安装 mongo-express 的时候,需要服务器有 nodejs 环境</p>
+<blockquote>
+<p>mongo-express 是一个基于 Node.js 和 express 的开源的MongoDB Web管理界面.</p>
+<p>主要功能:</p>
+</blockquote>
+<pre><code>连接多个数据库
+分别连接和认证独立的数据库
+认证为管理员查看所有数据库
+数据库 黑名单/白名单
+集合(collections)的增删查改
+文档(documents)的增删查改
+在文档中使用BSON数据类型
+</code></pre><blockquote>
+<p>限制</p>
+</blockquote>
+<pre><code>被编辑的文档必须有document._id属性
+无GridFS的支持（有可能成为计划功能）
+二进制BSON数据类型没有经过测试
+JSON文档是通过JavaScript虚拟机解析,所以可以在服务器上的Web界面执行恶意JavaScript代码.
+</code></pre><blockquote>
+<p>安装:</p>
+</blockquote>
+<pre><code>npm install mongo-express
+</code></pre><blockquote>
+<p>或者全局安装:</p>
+</blockquote>
+<pre><code>npm install -g mongo-express
+</code></pre><p>或者从Github上直接拿下来解压后运行 npm install 即可</p>
+<p>下载 <a href="https://github.com/andzdroid/mongo-express" target="_blank" rel="external">Mongo-express</a></p>
+<p>配置:</p>
+<p>复制或者把 config.default.js 改名为 config.js 的新文件.</p>
+<p>在配置文件中填写 MongoDB 的连接等你想更改的信息.</p>
+<p>启动运行:</p>
+<pre><code>nodejs app
+</code></pre><p>查看 <a href="http://localhost:8081" target="_blank" rel="external">http://localhost:8081</a> 或者你在配置中写的 URL/port .</p>
+<p>在Ubuntu下执行启动命令会提示如下错误</p>
+<pre><code>yzhang@coamn:~/Home/Tools/MongoDB$ node app
+ The program &apos;node&apos; can be found in the following packages:
+  * node
+  * nodejs-legacy
+Ask your administrator to install one of them
+</code></pre><p>提示没有安装node程序,需要先检查是否已安装nodejs运行环境</p>
+<pre><code>Thu Sep 24 12:58:16 yzhang@coam:~/Home/Tools/MongoDB$ nodejs -v
+v0.10.25
+</code></pre><p>然后执行命令</p>
+<pre><code>nodejs app
+</code></pre>]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="Node-js__u7BA1_u7406_u76F8_u5173"><a href="#Node-js__u7BA1_u7406_u76F8_u5173" class="headerlink" title="Node.js 管理相关"></a>Node.js 管理]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[CheerioNote]]></title>
+    <link href="https://coam.co/2016/01/21/NodeJs/CheerioNote/"/>
+    <id>https://coam.co/2016/01/21/NodeJs/CheerioNote/</id>
+    <published>2016-01-21T08:34:31.000Z</published>
+    <updated>2016-01-21T08:35:03.437Z</updated>
+    <content type="html"><![CDATA[<a id="more"></a>]]></content>
+    <summary type="html">
+    <![CDATA[<a id="more"></a>]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[MochaNote]]></title>
+    <link href="https://coam.co/2016/01/21/NodeJs/MochaNote/"/>
+    <id>https://coam.co/2016/01/21/NodeJs/MochaNote/</id>
+    <published>2016-01-21T04:07:31.000Z</published>
+    <updated>2016-01-21T08:29:18.020Z</updated>
+    <content type="html"><![CDATA[<a id="more"></a>
+<p><a href="http://www.hubwiz.com/course/562085141bc20c980538e25a/" target="_blank" rel="external">测试利器Mocha</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<a id="more"></a>
+<p><a href="http://www.hubwiz.com/course/562085141bc20c980538e25a/" target="_blank" rel="external">测试利器Mocha</a></p>
+]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://coam.co/2016/01/20/NodeJs/GulpNote/"/>
+    <id>https://coam.co/2016/01/20/NodeJs/GulpNote/</id>
+    <published>2016-01-20T13:26:31.000Z</published>
+    <updated>2016-01-20T13:30:17.378Z</updated>
+    <content type="html"><![CDATA[<p><a href="http://www.hubwiz.com/course/562089cb1bc20c980538e25b/" target="_blank" rel="external">自动化工具Gulp</a></p>
+<a id="more"></a>
+<p>环境安装<br>首先确保你已经正确安装了nodejs环境。然后以全局方式安装gulp：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g gulp</span><br></pre></td></tr></table></figure>
+<p>全局安装gulp后，还需要在每个要使用gulp的项目中都单独安装一次。把目录切换到你的项目文件夹中，然后在命令行中执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install gulp</span><br></pre></td></tr></table></figure>
+<p>如果想在安装的时候把gulp写进项目package.json文件的依赖中，则可以加上–save-dev：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev gulp</span><br></pre></td></tr></table></figure>
+<p>这样就完成了gulp的安装，接下来就可以在项目中应用gulp了。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><a href="http://www.hubwiz.com/course/562089cb1bc20c980538e25b/">自动化工具Gulp</a></p>]]>
+    
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[WebPack 自动打包工具]]></title>
+    <link href="https://coam.co/2016/01/20/NodeJs/WebpackNote/"/>
+    <id>https://coam.co/2016/01/20/NodeJs/WebpackNote/</id>
+    <published>2016-01-20T13:26:31.000Z</published>
+    <updated>2016-01-20T14:09:55.116Z</updated>
+    <content type="html"><![CDATA[<p><a href="http://www.hubwiz.com/course/5670d0a77e7d40946afc5e65/" target="_blank" rel="external">webpack入门</a></p>
+<a id="more"></a>
+<p><a href="https://github.com/webpack/webpack" target="_blank" rel="external">GitHub - webpack</a><br><a href="https://webpack.github.io/docs/list-of-loaders.html" target="_blank" rel="external">webpack 加载器列表</a><br><a href="https://webpack.github.io/docs/list-of-plugins.html" target="_blank" rel="external">webpack 插件列表</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><a href="http://www.hubwiz.com/course/5670d0a77e7d40946afc5e65/">webpack入门</a></p>]]>
+    
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[hospital]]></title>
+    <link href="https://coam.co/2016/01/20/Info/hospital/"/>
+    <id>https://coam.co/2016/01/20/Info/hospital/</id>
+    <published>2016-01-20T07:20:31.000Z</published>
+    <updated>2016-01-20T07:20:53.436Z</updated>
+    <content type="html"><![CDATA[<a id="more"></a>
+<p>胸痛是以胸部疼痛为痛苦的一种自觉症状，为内科心、肺、肝系疾病的常见症状。<br>其基本病机是病邪壅阻心胸血脉，气血不通而疼痛，一般为实证，病邪有寒、热、痰、瘀，但也有本虚标实证。<br>临床时应分析疼痛的性质、牵连部位及伴随的症状等:<br>胸痛憋闷，有压榨感，多为气滞、痰阻;<br>胸痛如刺，夜间为甚，多为血瘀阻滞;<br>胸痛连脘腹，手不可触者，寒热结胸;<br>胸痛连胁，病在肝胆;<br>胸痛痛连左手尺侧者，为胸痹心痛;<br><em>胸痛痛引肩背，发热呕恶者，为肝胆湿热;
+</em>胸痛痛连肩背，脉沉紧者，为寒凝心胸。<br>胸痛伴发热咳嗽，咳则痛甚，为肺热络伤;<br>胸痛伴咳吐脓血痰，为肺痈;<br>*胸部隐痛，咳嗽无力，多为肺气虚弱，余邪未尽的肺热病后期，也可见于肺痨;<br>胸痛伴心悸，病在心;<br>心胸卒然大痛，持续不解，面青肢冷，脉微细者，为心脉闭阻不通，特称“真心痛”以示危证。</p>
+<p>在各种胸痛中需重视并快速做出判断的疾病有：急性冠脉综合症、主动脉夹层、肺栓塞、自发性气胸。<br>急性冠脉综合症：患者既往胸痛发作持续20分钟以上，心肌坏死标记物有动态演变，心电图有特异性变化。<br>主动脉夹层：经CT扫描可确诊。<br>肺栓塞：严重呼吸困难，呼吸增快，胸痛，面部紫绀，甚至出现晕厥。<br>自发性气胸：经X线片可鉴别诊断。</p>
+<p>胸痛的常见原因及症状</p>
+<pre><code>胸痛的原因有外伤、炎症、机械性压迫、组织缺血缺氧等。它不仅见于呼吸系统疾病，亦可发生于心血管系统、消化系统、神经系统疾病以及胸壁组织疾病。不同器官和不同疾病引起的胸痛，在部位、性质和发生时间上不尽相同。
+</code></pre><p>通过详细询问病史和体格检查，辅以X线或心电图等特殊检查，可以得出正确诊断。</p>
+<h2 id="u80F8_u58C1_u75C5_u53D8"><a href="#u80F8_u58C1_u75C5_u53D8" class="headerlink" title="胸壁病变"></a>胸壁病变</h2><blockquote>
+<p>胸壁软组织损伤及炎症，有局限性疼痛和压痛。肋间神经炎痛沿肋间神经分布，在脊柱旁、腋部和胸骨旁常有压痛点。带状疱疹引起的胸痛可以相当剧烈，但与咳嗽和深呼吸无关。肋骨骨折，除压痛外还有骨裂声，挤压胸部时疼痛加剧。肋骨骨髓炎有局限性疼痛、周围肌肉痉挛和发热，晚期有骨坏死和脓窦。癌肿转移到肋骨，则出现剧烈难忍的胸痛和局部压痛。</p>
+</blockquote>
+<h2 id="u80F8_u819C_u53CA_u80BA_u90E8_u75C5_u53D8_*"><a href="#u80F8_u819C_u53CA_u80BA_u90E8_u75C5_u53D8_*" class="headerlink" title="胸膜及肺部病变 *"></a>胸膜及肺部病变 *</h2><blockquote>
+<p>干性胸膜炎患者胸膜表面有纤维素渗出及附着，呼吸时两层胸膜互相摩擦发生疼痛。其性质多为刺痛，以胸廓扩张幅度较大的部位如肋部最显著，随呼吸和咳嗽而加剧。自发性气胸及胸膜腔出血均刺激胸膜引起疼痛，每伴有气急。胸膜恶性肿瘤的胸痛持续而剧烈，常合并大量血性胸水。肺部疾病，当病变影响壁层胸膜时可引起疼痛，多位于病变邻近部位，随咳嗽和深呼吸加重。</p>
+</blockquote>
+<h2 id="u5FC3_u8840_u7BA1_u75BE_u75C5_*"><a href="#u5FC3_u8840_u7BA1_u75BE_u75C5_*" class="headerlink" title="心血管疾病 *"></a>心血管疾病 *</h2><blockquote>
+<p>常见于冠心病、心包炎、胸主动脉瘤等。冠心病的心绞痛多位于心前区或胸骨后，可向左肩及臂部放射，常因体力活动、饱食和情绪激动而诱发，休息或用硝基甘油可迅速缓解。</p>
+</blockquote>
+<h2 id="u7EB5_u9694_u75C5_u53D8"><a href="#u7EB5_u9694_u75C5_u53D8" class="headerlink" title="纵隔病变"></a>纵隔病变</h2><blockquote>
+<p>纵隔气肿时胸骨下有强烈的疼痛，可因吞咽而加剧。急性食管炎为胸骨下灼痛，亦随吞咽而加重。</p>
+</blockquote>
+<h2 id="u8188_u808C_u53CA_u8188_u4E0B_u75C5_u53D8"><a href="#u8188_u808C_u53CA_u8188_u4E0B_u75C5_u53D8" class="headerlink" title="膈肌及膈下病变"></a>膈肌及膈下病变</h2><blockquote>
+<p>如膈疝、隔胸膜炎、膈下脓肿、肝脏疾患等。疼痛一般位于胸骨及胸廓下部，可放射至肩背部。</p>
+</blockquote>
+<p>胸痛治疗首要的是治疗引起胸痛的疾病。疼痛剧烈者可选用镇痛药。若疼痛与呼吸运动有关，则可在胸廓贴以胶布固定，以减少胸廓活动，缓解疼痛。</p>
+<p>胸膜及肺部病变|心血管疾病</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<a id="more"></a>
+<p>胸痛是以胸部疼痛为痛苦的一种自觉症状，为内科心、肺、肝系疾病的常见症状。<br>其基本病机是病邪壅阻心胸血脉，气血不通而疼痛，一般为实证，病邪有寒、热、痰、瘀，但也有本虚标实证。<br>临床时应分析疼痛的性质、牵连部位及伴随的症状等:<b]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://coam.co/2016/01/19/Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd/"/>
+    <id>https://coam.co/2016/01/19/Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd/</id>
+    <published>2016-01-19T10:01:08.576Z</published>
+    <updated>2016-01-19T10:01:08.574Z</updated>
+    <content type="html"><![CDATA[{"loglevel":5,"log_rotate_size":10485760,"log_rotate_date":"","log_rotate_count":1,"log_rate_limit":100,"hosts":["coopens.com"],"define_macro":{"COOPENS_SSL_EJABBERD_CERT":"/etc/ejabberd/ejabberd.pem","COAM_SSL_EJABBERD_CERT":"/etc/ejabberd/ejabberd.pem","DHPARAM_LOCATION":"/data/home/yzhang/Home/Documents/Server/Config/Nginx/Certify/dhparam.pem","LOCAL_EJABBERD_SERVER_IP":"127.0.0.1","TEST_EJABBERD_SERVER_IP":"42.96.194.60","COOPENS_EJABBERD_SERVER_IP":"42.96.194.60","COAM_EJABBERD_SERVER_IP":"43.241.222.110","TLS_OPTIONS":["no_sslv2","no_sslv3"],"TLS_CIPHERS":"ECDH:DH:!CAMELLIA128:!3DES:!MD5:!RC4:!aNULL:!NULL:!EXPORT:!LOW:!MEDIUM","TRANSPORTS":["aim.coopens.com","icq.coopens.com"]},"commands_admin_access":"xmlrpc_access","listen":[{"port":4560,"ip":"TEST_EJABBERD_SERVER_IP","module":"ejabberd_xmlrpc","maxsessions":10,"timeout":5000,"access_commands":{"xmlrpc_access":{"all":{}}}},{"port":5222,"module":"ejabberd_c2s","certfile":"COOPENS_SSL_EJABBERD_CERT","starttls":true,"starttls_required":true,"protocol_options":"TLS_OPTIONS","ciphers":"TLS_CIPHERS","dhfile":"DHPARAM_LOCATION","resend_on_timeout":true,"zlib":true,"max_stanza_size":65536,"max_ack_queue":32767,"resume_timeout":1200,"shaper":"c2s_shaper","access":"c2s"},{"port":5269,"module":"ejabberd_s2s_in","shaper":"s2s_shaper","max_stanza_size":65536,"transport":"tcp","tls_compression":true},{"port":5280,"module":"ejabberd_http","tls":true,"certfile":"COOPENS_SSL_EJABBERD_CERT","dhfile":"DHPARAM_LOCATION","request_handlers":{"/websocket":"ejabberd_http_ws","/pub/archive":"mod_http_fileserver","/log":"mod_log_http","/http-bind":"mod_http_bind","/oauth":"ejabberd_oauth","/api":"mod_http_api","users":"mod_available_user","online":"mod_online_users","/custom":"mod_custom"},"web_admin":true,"http_poll":true,"http_bind":true,"register":true,"captcha":true},{"ip":"::","port":5349,"module":"ejabberd_stun","tls":true,"certfile":"COOPENS_SSL_EJABBERD_CERT","use_turn":true,"turn_ip":"TEST_EJABBERD_SERVER_IP","turn_min_port":49152,"turn_max_port":50000,"access":"local"},{"ip":"LOCAL_EJABBERD_SERVER_IP","port":5401,"module":"ejabberd_service","hosts":{"icq.coopens.com":{"password":"123456"}},"access":"local"},{"ip":"LOCAL_EJABBERD_SERVER_IP","port":5403,"module":"ejabberd_service","hosts":{"aim.coopens.com":{"password":"123456"}},"access":"locald"},{"port":5443,"module":"ejabberd_http","tls":true,"certfile":"COOPENS_SSL_EJABBERD_CERT","dhfile":"DHPARAM_LOCATION","request_handlers":{"upload":"mod_http_upload"}}],"s2s_use_starttls":"optional","s2s_certfile":"COOPENS_SSL_EJABBERD_CERT","s2s_protocol_options":"TLS_OPTIONS","s2s_ciphers":"TLS_CIPHERS","s2s_dhfile":"DHPARAM_LOCATION","s2s_access":"authenticated","outgoing_s2s_families":["ipv4","ipv6"],"outgoing_s2s_port":5269,"outgoing_s2s_timeout":10000,"auth_method":"odbc","redis_server":"COOPENS_EJABBERD_SERVER_IP","redis_db":0,"odbc_type":"mysql","odbc_server":"localhost","odbc_database":"IM_Ejabberd","odbc_username":"zhangyanxi","odbc_password":"yanxi312","odbc_port":3306,"odbc_start_interval":20,"odbc_keepalive_interval":30,"shaper":{"normal":1000,"fast":50000},"max_fsm_queue":1000,"acl":{"admin":{"user":[{"zyf":"coopens.com"}]},"loopback":{"ip":["127.0.0.0/8"]},"local":{"user_regexp":""},"trusted_servers":{"server":["coopens.com"]},"muc_admin":{"user":[{"zyf":"coopens.com"}]},"xmlrpc_users":{"user":[{"zyf":"coopens.com"}]}},"access":{"admin":{"blocked":"deny","admin":"allow"},"everybody":{"blocked":"deny","all":"allow"},"max_user_sessions":{"admin":"infinity","anon_jabber_at":1,"all":3},"max_user_offline_messages":{"admin":2000,"anon_jabber_at":0,"all":100},"local":{"blocked":"deny","anon_jabber_at":"deny","local":"allow"},"authenticated":{"blocked":"deny","anon_jabber_at":"deny","all":"allow"},"webchat":{"blocked":"deny","local":"allow","anon_jabber_at":"allow"},"max_user_mam_messages":{"admin":0,"anon_jabber_at":0,"all":100000},"c2s":{"blocked":"deny","all":"allow"},"c2s_shaper":{"admin":"none","all":"normal"},"s2s_shaper":{"all":"fast"},"proxy_shaper":{"admin":"none","local":"proxy"},"announce":{"admin":"allow"},"configure":{"blocked":"deny","admin":"allow"},"muc_admin":{"admin":"allow"},"muc_create":{"local":"allow"},"muc":{"all":"allow"},"pubsub_createnode":{"local":"allow"},"register":{"all":"deny"},"trusted_network":{"loopback":"allow"},"xmlrpc_access":{"xmlrpc_users":"allow"}},"language":"en","host_config":{"coopens.com":{"language":"zh"}},"default_db":"odbc","modules":{"mod_adhoc":{},"mod_announce":{"access":"admin","db_type":"odbc"},"mod_blocking":{},"mod_caps":{"db_type":"odbc"},"mod_carboncopy":{},"mod_client_state":{"drop_chat_states":true,"queue_presence":true},"mod_configure":{},"mod_disco":{},"mod_echo":{},"mod_irc":{"access":"authenticated","default_encoding":"utf-8"},"mod_fail2ban":{"c2s_max_auth_failures":5},"mod_http_bind":{"max_inactivity":400},"mod_last":{"db_type":"odbc"},"mod_muc":{"access":"muc","access_create":"muc_create","access_persistent":"muc_create","access_admin":"muc_admin","db_type":"odbc","history_size":20,"max_users":200},"mod_muc_log":{"access_log":"muc","cssfile":"http://coopens.com/my.css","dirtype":"plain","dirname":"room_jid","outdir":"/data/home/yzhang/Home/www/public/muclogs","timezone":"universal","spam_prevention":true,"top_link":{"http://www.jabber.ru/":"Jabber.ru"}},"mod_muc_admin":{},"mod_admin_extra":{},"mod_offline":{"access_max_user_messages":"max_user_offline_messages","db_type":"odbc"},"mod_ping":{"send_pings":true,"ping_interval":300,"timeout_action":"kill"},"mod_pres_counter":{"count":5,"interval":60},"mod_privacy":{"db_type":"odbc"},"mod_private":{"db_type":"odbc"},"mod_proxy65":{"ip":"::","name":"File Transfer Proxy.","host":"proxy.coopens.com","hostname":"TEST_EJABBERD_SERVER_IP","port":7777,"access":"all","auth_type":"anonymous","max_connections":10,"shaper":"proxy_shaper"},"mod_http_fileserver":{"docroot":"/data/home/yzhang/Home/www/public/ejabberd/www","accesslog":"/var/log/ejabberd/access.log","directory_indices":["index.html","main.htm"],"custom_headers":{"X-Powered-By":"Erlang/OTP","X-Fry":"It's a widely-believed fact!"},"content_types":{".ogg":"audio/ogg",".png":"image/png"},"default_content_type":"text/html"},"mod_http_upload":{"docroot":"/data/home/yzhang/Home/www/public/ejabberd/upload","put_url":"https://@HOST@:5443/upload","thumbnail":true,"rm_on_unregister":false},"mod_http_upload_quota":{"max_days":100},"mod_mam":{"default":"always","db_type":"odbc"},"mod_pubsub":{"db_type":"odbc","access_createnode":"pubsub_createnode","ignore_pep_from_offline":true,"last_item_cache":false,"max_items_node":1000,"pep_mapping":{"http://jabber.org/protocol/tune":"tune"},"plugins":["flat","hometree","pep"]},"mod_register":{"welcome_message":{"subject":"Welcome!","body":"Hi.\nWelcome to this XMPP server."},"ip_access":"trusted_network","access_from":"register"},"mod_roster":{"versioning":true,"db_type":"odbc","store_current_id":true},"mod_shared_roster":{"db_type":"odbc"},"mod_stats":{},"mod_time":{},"mod_vcard":{"search":true,"db_type":"odbc"},"mod_vcard_xupdate":{"db_type":"odbc"},"mod_version":{"show_os":true,"iqdisc":"parallel"}},"sm_db_type":"odbc","allow_contrib_modules":true}]]></content>
+    <summary type="html">
+    <![CDATA[{"loglevel":5,"log_rotate_size":10485760,"log_rotate_date":"","log_rotate_count":1,"log_rate_limit":100,"hosts":["coopens.com"],"define_macr]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[JavaNote]]></title>
+    <link href="https://coam.co/2016/01/14/Java/JavaNote/"/>
+    <id>https://coam.co/2016/01/14/Java/JavaNote/</id>
+    <published>2016-01-14T10:02:31.000Z</published>
+    <updated>2016-01-14T10:03:00.507Z</updated>
+    <content type="html"><![CDATA[<h1 id="Java__u76F8_u5173_u7B14_u8BB0"><a href="#Java__u76F8_u5173_u7B14_u8BB0" class="headerlink" title="Java 相关笔记"></a>Java 相关笔记</h1><a id="more"></a>]]></content>
+    <summary type="html">
+    <![CDATA[<h1 id="Java__u76F8_u5173_u7B14_u8BB0"><a href="#Java__u76F8_u5173_u7B14_u8BB0" class="headerlink" title="Java 相关笔记"></a>Java 相关笔记</h1>]]>
+    
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[PythonNote]]></title>
+    <link href="https://coam.co/2016/01/13/Python/PythonNote/"/>
+    <id>https://coam.co/2016/01/13/Python/PythonNote/</id>
+    <published>2016-01-13T09:11:31.000Z</published>
+    <updated>2016-01-14T09:46:07.525Z</updated>
+    <content type="html"><![CDATA[<h1 id="Python__u7B14_u8BB0"><a href="#Python__u7B14_u8BB0" class="headerlink" title="Python 笔记"></a>Python 笔记</h1><p><a href="https://pycoders-weekly-chinese.readthedocs.org/en/latest/" target="_blank" rel="external">PyCoder’s Weekly 中文翻译</a><br><a id="more"></a></p>
+<p><a href="http://python.jobbole.com/81666/" target="_blank" rel="external">每个 Python 程序员都要知道的日志实践</a><br><a href="http://pycoders-weekly-chinese.readthedocs.org/en/latest/issue6/a-guide-to-pythons-magic-methods.html" target="_blank" rel="external">Python 魔术方法指南</a><br><a href="http://python.jobbole.com/81393/" target="_blank" rel="external">初学者必知的Python中优雅的用法</a><br><a href="http://dongweiming.github.io/Expert-Python/#1" target="_blank" rel="external">Python高级编程</a></p>
+<h4 id="u95EE_u9898_u5206_u6790"><a href="#u95EE_u9898_u5206_u6790" class="headerlink" title="问题分析"></a>问题分析</h4><p>使用php调用python程序使用日志打印日志文件错误，因为运行php的文件夹和没有写权限导致</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$result</span> = shell_exec(<span class="string">'python /data/home/yzhang/Home/Python/logger.py'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># handler = logging.FileHandler('tester.log')</span></span><br><span class="line">handler = logging.FileHandler(<span class="string">'/data/home/yzhang/Home/Python/tester.log'</span>)</span><br></pre></td></tr></table></figure>
+<p>参考 [Python Logging Impeding Call from PHP Script</p>
+<p>](<a href="http://stackoverflow.com/questions/25529937/python-logging-impeding-call-from-php-script" target="_blank" rel="external">http://stackoverflow.com/questions/25529937/python-logging-impeding-call-from-php-script</a>)</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h1 id="Python__u7B14_u8BB0"><a href="#Python__u7B14_u8BB0" class="headerlink" title="Python 笔记"></a>Python 笔记</h1><p><a href="https://pycoders-weekly-chinese.readthedocs.org/en/latest/">PyCoder’s Weekly 中文翻译</a><br>]]>
+    
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Ejabberd Install]]></title>
+    <link href="https://coam.co/2016/01/10/Server/Ejabberd/"/>
+    <id>https://coam.co/2016/01/10/Server/Ejabberd/</id>
+    <published>2016-01-10T11:45:31.000Z</published>
+    <updated>2016-01-10T11:55:45.919Z</updated>
+    <content type="html"><![CDATA[<h3 id="u4E00_u3001_u7F16_u8BD1_u5B89_u88C5"><a href="#u4E00_u3001_u7F16_u8BD1_u5B89_u88C5" class="headerlink" title="一、编译安装"></a>一、编译安装</h3><h5 id="1-__u9996_u5148_u5B89_u88C5_u76F8_u5173_u4F9D_u8D56"><a href="#1-__u9996_u5148_u5B89_u88C5_u76F8_u5173_u4F9D_u8D56" class="headerlink" title="1. 首先安装相关依赖"></a>1. 首先安装相关依赖</h5><p>ejabberd 需要安装 Erlang 运行环境,否则编译会出错 </p>
+<p>下载 ejabberd 源码,编译安装:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/processone/ejabberd.git</span><br><span class="line">./autogen.sh</span><br><span class="line">./configure --enable-odbc --enable-mysql --enable-json</span><br><span class="line"><span class="comment"># ./configure --prefix=/Users/allran/SDK/chart/my-ejabberd --enable-mysql        //附加mysql</span></span><br><span class="line"><span class="comment"># ./configure --prefix=/Users/allran/SDK/chart/my-ejabberd --enable-all     //附加所有</span></span><br><span class="line">./rebar get-deps</span><br><span class="line">./rebar compile</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<p>将会分别安装到以下相关目录:</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">配置文件 /etc/ejabberd/</span><br><span class="line"><span class="constant">Install</span> ejabberd binary, header and runtime files in /<span class="class"><span class="keyword">lib</span>/<span class="title">ejabberd</span>/</span></span><br><span class="line"><span class="constant">Install</span> the administration <span class="symbol">script:</span> /sbin/ejabberdctl</span><br><span class="line">ejabberd 帮助文档 /share/doc/ejabberd/</span><br><span class="line"><span class="constant">Create</span> a spool <span class="symbol">directory:</span> /var/<span class="class"><span class="keyword">lib</span>/<span class="title">ejabberd</span>/</span></span><br><span class="line">日志文件: <span class="regexp">/var/log</span><span class="regexp">/ejabberd/</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注:如果安装失败,清除掉痕迹: make distclean</p>
+<p>编译安装中出现的错误:</p>
+</blockquote>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">configure: error: libyaml <span class="tag">header</span> file yaml<span class="class">.h</span> was not found</span><br><span class="line">ERROR: Command [<span class="string">'get-deps'</span>] failed!</span><br></pre></td></tr></table></figure>
+<p>需要安装 yaml 依赖</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget http:<span class="comment">//pyyaml.org/download/libyaml/yaml-0.1.6.tar.gz</span></span><br><span class="line">tar -xzvf yaml-<span class="number">0.1</span><span class="number">.6</span>.tar.gz</span><br><span class="line">cd yaml-<span class="number">0.1</span><span class="number">.6</span></span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<p>// 或者也可以简单方法 ,但是没试过<br>// 参考 <a href="http://stackoverflow.com/questions/25425068/ejabberd-configure-error-libyaml-library-was-not-found" target="_blank" rel="external">http://stackoverflow.com/questions/25425068/ejabberd-configure-error-libyaml-library-was-not-found</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libyaml-dev</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/processone/ejabberd" target="_blank" rel="external">ejabberd GitHub 官方说明</a><br><a href="https://www.ejabberd.im/node/22230" target="_blank" rel="external">ERROR: Command [‘get-deps’] failed!</a></p>
+<hr>
+<h2 id="Ejabberd__u6DFB_u52A0_u4F9D_u8D56"><a href="#Ejabberd__u6DFB_u52A0_u4F9D_u8D56" class="headerlink" title="Ejabberd 添加依赖"></a>Ejabberd 添加依赖</h2><h3 id="emysql"><a href="#emysql" class="headerlink" title="emysql"></a>emysql</h3><blockquote>
+<p>配置 rebar.config</p>
+</blockquote>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">Deps</span> = [</span><br><span class="line">    ...</span><br><span class="line">    <span class="tuple">&#123;emysql, <span class="string">".*"</span>, <span class="tuple">&#123;git, <span class="string">"git://github.com/Eonblast/Emysql.git"</span>&#125;</span>&#125;</span></span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+<p>加入 emaysql 编译出现错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Compiled src/emysql_worker.erl</span><br><span class="line">/data/home/yzhang/Home/Erlang/ejabberd/deps/emysql/include/emysql.hrl:<span class="number">38</span>: <span class="built_in">type</span> gb_tree() undefined</span><br><span class="line">/data/home/yzhang/Home/Erlang/ejabberd/deps/emysql/include/emysql.hrl:<span class="number">39</span>: <span class="built_in">type</span> queue() undefined</span><br><span class="line">ERROR: compile failed <span class="keyword">while</span> processing /data/home/yzhang/Home/Erlang/ejabberd/deps/emysql: rebar_abort</span><br><span class="line">make: *** [deps/.built] Error <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>原因是 emysql 暂时没有更新到 otp18 的支持<br>fork emysql 修改部分参见 <a href="https://github.com/deadtrickster/Emysql/commit/52b802098322aad372198b9f5fa9ae9a4c758ad1" target="_blank" rel="external">https://github.com/deadtrickster/Emysql/commit/52b802098322aad372198b9f5fa9ae9a4c758ad1</a> 修改 Deps 并重新编译 ejabberd</p>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tuple">&#123;emysql, <span class="string">".*"</span>, <span class="tuple">&#123;git, <span class="string">"https://github.com/zyfmix/Emysql.git"</span>&#125;</span>&#125;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<h3 id="u4E09_u3001_u542F_u7528mysql_u652F_u6301"><a href="#u4E09_u3001_u542F_u7528mysql_u652F_u6301" class="headerlink" title="三、启用mysql支持"></a>三、启用mysql支持</h3><p>编译时使用扩展参数</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">.</span><span class="comment">/configure</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">enable</span><span class="literal">-</span><span class="comment">odbc</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">enable</span><span class="literal">-</span><span class="comment">mysql</span></span><br></pre></td></tr></table></figure>
+<p>如果提示以下错误:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">failed to start application <span class="string">'p1_mysql'</span>: &#123;error,</span><br><span class="line">                                         &#123;<span class="string">"no such file or directory"</span>,</span><br><span class="line">                                          <span class="string">"p1_mysql.app"</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>表示mysql依赖驱动未加载,修改 rebar.config.script 第88行,添加 p1_mysql 的依赖(注意 “1”为数字1,不是字母l):</p>
+<p>照做会出现其他问题,后来只修改了 第 88 行,然后再执行以下命令引入依赖,没有报错.</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rebar <span class="keyword">get</span>-deps</span><br></pre></td></tr></table></figure>
+<p>新建数据库 IM_Ejabberd 按官方的源码,导入 /sql/mysql.sql </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">$HOME</span>/RunProject/ejabberd/sql/</span><br><span class="line">mysql -u zhangyanxi -p</span><br><span class="line">...</span><br><span class="line">mysql:&gt; use IM_Ejabberd  </span><br><span class="line">mysql:&gt;<span class="built_in">source</span> mysql.sql;</span><br></pre></td></tr></table></figure>
+<p>配置文件 /etc/ejabberd/ejabberd.yml 的修改,主要包括:</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#auth_method: internal.</span></span><br><span class="line"><span class="label">auth_method:</span> odbc.</span><br></pre></td></tr></table></figure>
+<p>取消注释并设置数据库名称和密码: </p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">odbc_type</span>: <span class="string">mysql</span></span><br><span class="line"><span class="attribute">odbc_server</span>: <span class="string">"localhost"</span></span><br><span class="line"><span class="attribute">odbc_database</span>: <span class="string">"IM_Ejabberd"</span></span><br><span class="line"><span class="attribute">odbc_username</span>: <span class="string">"zhangyanxi"</span></span><br><span class="line"><span class="attribute">odbc_password</span>: <span class="string">"yanxi312"</span></span><br></pre></td></tr></table></figure>
+<p>重启 </p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ejabberdctl live </span><br><span class="line">...</span><br><span class="line"><span class="number">19</span>:<span class="number">17</span>:<span class="number">55.853</span> [<span class="number">inf</span>o] Application p1_mysql <span class="literal">started</span> on <span class="keyword">node</span><span class="identifier"> </span><span class="title">'ejabberd</span>@coopens.com'</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>没有报错,在启动日志看到上面那条 p1_mysql 记录,表示 ejabberd 服务器使用了新的数据库,这个时候数据库里边的数据全部为 0 条,使用命令</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ejabberdctl register zyfmix coopens.com <span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span></span><br></pre></td></tr></table></figure>
+<p>注册用户后,发现数据库表 users 已经有了新添加的用户记录:</p>
+<p>根据网上介绍的配置经验:</p>
+<p>新版的下面的模块配置项不用修改(添加_odbc),否则会报错</p>
+<p><a href="http://allran.github.io/2015/04/15/ejabberd-install/" target="_blank" rel="external">木头人 - ejabberd install</a><br><a href="http://developerworks.github.io/2015/03/17/ejabberd-easy-installer-and-structure-for-ejabberd-contributed-modules/" target="_blank" rel="external">Ejabberd模块安装工具</a></p>
+<hr>
+<h4 id="Ejabberd_mnesia__u8FDC_u7A0B_u8FDE_u63A5"><a href="#Ejabberd_mnesia__u8FDC_u7A0B_u8FDE_u63A5" class="headerlink" title="Ejabberd mnesia 远程连接"></a>Ejabberd mnesia 远程连接</h4><blockquote>
+<p>使用 observer 远程连接 mnesia 数据库</p>
+<p>ejabberd mnesia 服务器</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ erl -name <span class="string">'ejabberd@coopens.com'</span> -mnesia dir <span class="string">'"/var/lib/ejabberd"'</span> (ip为本机的ip,必须,否则不能ping通)</span><br><span class="line">(ejabberd@coopens.com)<span class="number">1</span>&gt; auth:get_cookie(). (获取cookie,或者 erlang:get_cookie(). )</span><br><span class="line">(ejabberd@coopens.com)<span class="number">2</span>&gt; <span class="string">'JCNBOQTVXCDZNLCRJQUI'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>复制cookie,然后在本机上操作:</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ erl -name yafei@<span class="number">192.168</span>.<span class="number">1.102</span> -setcookie JCNBOQTVXCDZNLCRJQUI</span><br><span class="line">(yafei@<span class="number">192.168</span>.<span class="number">1.102</span>)<span class="number">1</span>&gt; net_adm:ping(<span class="string">'ejabberd@coopens.com'</span>).</span><br><span class="line">(yafei@<span class="number">192.168</span>.<span class="number">1.102</span>)<span class="number">2</span>&gt; pong</span><br><span class="line">(yafei@<span class="number">192.168</span>.<span class="number">1.102</span>)<span class="number">3</span>&gt; observer:start().</span><br></pre></td></tr></table></figure>
+<p>参考列表</p>
+<p><a href="http://www.cnblogs.com/lovechengcheng/p/5052403.html" target="_blank" rel="external">远程连接ejabberd的mnesia数据库</a><br><a href="http://blog.csdn.net/mycwq/article/details/24738599" target="_blank" rel="external">erlang在windows下和虚拟机节点通信</a></p>
+<hr>
+<hr>
+<h2 id="Ejabberd__u670D_u52A1_u5668_u8FD0_u8425_u5E38_u89C1_u95EE_u9898_u89E3_u51B3"><a href="#Ejabberd__u670D_u52A1_u5668_u8FD0_u8425_u5E38_u89C1_u95EE_u9898_u89E3_u51B3" class="headerlink" title="Ejabberd 服务器运营常见问题解决"></a>Ejabberd 服务器运营常见问题解决</h2><h4 id="u4F7F_u7528_u547D_u4EE4_sudo_ejabberdctl_status__u67E5_u770B_ejabberd__u8FD0_u884C_u72B6_u6001_u6216_u662F_u8FD0_u884C_u5176_u5B83_u547D_u4EE4__5Bsudo_ejabberdctl_modules_available_5D_2C_u53D1_u73B0_u8001_u662F_u63D0_u793A_u9519_u8BEF_3A"><a href="#u4F7F_u7528_u547D_u4EE4_sudo_ejabberdctl_status__u67E5_u770B_ejabberd__u8FD0_u884C_u72B6_u6001_u6216_u662F_u8FD0_u884C_u5176_u5B83_u547D_u4EE4__5Bsudo_ejabberdctl_modules_available_5D_2C_u53D1_u73B0_u8001_u662F_u63D0_u793A_u9519_u8BEF_3A" class="headerlink" title="使用命令 sudo ejabberdctl status 查看 ejabberd 运行状态或是运行其它命令 [sudo ejabberdctl modules_available],发现老是提示错误:"></a>使用命令 sudo ejabberdctl status 查看 ejabberd 运行状态或是运行其它命令 [sudo ejabberdctl modules_available],发现老是提示错误:</h4><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Failed RPC connection to the <span class="keyword">node</span><span class="identifier"> </span><span class="title">'ejabberd</span>@coopens.com': nodedown</span><br></pre></td></tr></table></figure>
+<p>一般是 ejabberd 服务未运行,启动 ejabberd 服务即可.</p>
+<p>也有一种情况是 ejabberdctl.cfg 配置 不正确(不是 *@coopens.com ).或者 /etc/ejabberd/ejabberdctl.cfg 已经是配置的 coopens.com ,并且当前 ejabberd 服务器节点正在运行,估计未销毁之前的 ejabberd 关联 epmd 进程,检查并关闭如下端口的进程:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo netstat -antup | grep epmd</span><br><span class="line">sudo <span class="built_in">kill</span> pid</span><br><span class="line">sudo netstat -antup | grep beam.smp</span><br><span class="line">sudo <span class="built_in">kill</span> pid</span><br></pre></td></tr></table></figure>
+<p>其中 epmd 是 Erlang Port Mapper Daemon 的缩写,全称足够明确表达它的功能了(相比之下,OTP就是一个难以从字面理解的名字);epmd 完成 Erlang 节点和IP,端口的映射关系,比如在我的测试机上</p>
+<p>再使用命令 sudo ejabberdctl restart 重启即可重新打开 ejabberd 进程服务即可</p>
+<hr>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="u4E00_u3001_u7F16_u8BD1_u5B89_u88C5"><a href="#u4E00_u3001_u7F16_u8BD1_u5B89_u88C5" class="headerlink" title="一、编译安装"></a>一、编译安装</h3]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Title]]></title>
+    <link href="https://coam.co/2016/01/10/PHP/PhpNote/"/>
+    <id>https://coam.co/2016/01/10/PHP/PhpNote/</id>
+    <published>2016-01-10T11:41:31.000Z</published>
+    <updated>2016-01-20T08:58:00.006Z</updated>
+    <content type="html"><![CDATA[<h3 id="Php__u5F00_u53D1_u7B14_u8BB0_u76F8_u5173"><a href="#Php__u5F00_u53D1_u7B14_u8BB0_u76F8_u5173" class="headerlink" title="Php 开发笔记相关"></a>Php 开发笔记相关</h3><hr>
+<p><a href="http://get.jobdeer.com/1134.get" target="_blank" rel="external">参考 PHP高效率写法（详解原因）</a></p>
+<p>PHP读取软件接ln 的相对父路径问题</p>
+<p>PHP读取软连接下的PHP程序使用 <strong>DIR</strong> 获取的相对路径,获取的父级目录是源文件的父级目录,若想获取软连接的父级目录,应使用 $_SERVER[“SCRIPT_FILENAME”]来获取当前脚本文件绝句路径再拼接</p>
+<p><a href="http://www.kaijia.me/2012/10/__file__-issue-with-symlink-in-php-solved/" target="_blank" rel="external">详见 PHP魔术常量<strong>FILE</strong>无法识别符号链接问题解决</a></p>
+<hr>
+<h3 id="u5173_u4E8E_CGI_2C_FastCGI_2C_PHP-FPM_2C_SPAWN-FCGI_2C_Nginx__u5B83_u4EEC_u4E4B_u95F4_u7684_u5173_u7CFB"><a href="#u5173_u4E8E_CGI_2C_FastCGI_2C_PHP-FPM_2C_SPAWN-FCGI_2C_Nginx__u5B83_u4EEC_u4E4B_u95F4_u7684_u5173_u7CFB" class="headerlink" title="关于 CGI, FastCGI, PHP-FPM, SPAWN-FCGI, Nginx 它们之间的关系"></a>关于 CGI, FastCGI, PHP-FPM, SPAWN-FCGI, Nginx 它们之间的关系</h3><p><a href="http://bigxing.github.io/2015/02/03/cgi-fastcgi-phpfpm-spawnfcgi/" target="_blank" rel="external">CGI, FastCGI, PHP-FPM, SPAWN-FCGI, Nginx 它们之间的关系</a><br><a href="https://segmentfault.com/q/1010000002434806" target="_blank" rel="external">php fpm和fast-CGI有啥关系？而且还有一个疑问,就是PHP以CGI方式运行,请问以CGI方式运行到底是啥意思？？</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="Php__u5F00_u53D1_u7B14_u8BB0_u76F8_u5173"><a href="#Php__u5F00_u53D1_u7B14_u8BB0_u76F8_u5173" class="headerlink" title="Php 开发笔记相关">]]>
+    </summary>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Android 推送之 MQTT]]></title>
@@ -64,9 +497,27 @@
   </entry>
   
   <entry>
+    <title><![CDATA[ElixirNote]]></title>
+    <link href="https://coam.co/2016/01/10/Erlang/Elixir/"/>
+    <id>https://coam.co/2016/01/10/Erlang/Elixir/</id>
+    <published>2016-01-10T11:41:31.000Z</published>
+    <updated>2016-01-10T12:57:38.924Z</updated>
+    <content type="html"><![CDATA[<h3 id="Erlang__u52A8_u6001_u7F16_u7A0B_u8BED_u8A00_Elixir__u76F8_u5173"><a href="#Erlang__u52A8_u6001_u7F16_u7A0B_u8BED_u8A00_Elixir__u76F8_u5173" class="headerlink" title="Erlang 动态编程语言 Elixir 相关"></a>Erlang 动态编程语言 Elixir 相关</h3><p><a href="http://elixir-lang.org/getting-started/introduction.html" target="_blank" rel="external">Elixir 官网</a></p>
+<p><a href="https://github.com/elixir-lang-china/elixir_guide_cn/blob/master/getting_started/Chapter2.md" target="_blank" rel="external">GitHub - elixir-lang-china/elixir_guide_cn</a><br><a href="https://github.com/straightdave/programming_elixir" target="_blank" rel="external">GitHub - straightdave/programming_elixir</a><br><a href="/"></a></p>
+<hr>
+<p>参考列表</p>
+<p><a href="/"></a><br><a href="/"></a><br><a href="/"></a><br><a href="/"></a><br><a href="/"></a><br><a href="/"></a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="Erlang__u52A8_u6001_u7F16_u7A0B_u8BED_u8A00_Elixir__u76F8_u5173"><a href="#Erlang__u52A8_u6001_u7F16_u7A0B_u8BED_u8A00_Elixir__u76F8]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[ErlangNote]]></title>
-    <link href="https://coam.co/2016/01/10/Erlang/"/>
-    <id>https://coam.co/2016/01/10/Erlang/</id>
+    <link href="https://coam.co/2016/01/10/Erlang/Erlang/"/>
+    <id>https://coam.co/2016/01/10/Erlang/Erlang/</id>
     <published>2016-01-10T11:41:31.000Z</published>
     <updated>2016-01-17T11:38:43.421Z</updated>
     <content type="html"><![CDATA[<h3 id="Erlang__u7814_u7A76_u76F8_u5173"><a href="#Erlang__u7814_u7A76_u76F8_u5173" class="headerlink" title="Erlang 研究相关"></a>Erlang 研究相关</h3><blockquote>
@@ -107,570 +558,198 @@ nodes() 返回所有其它节点名.
   </entry>
   
   <entry>
-    <title><![CDATA[MnesiaNote]]></title>
-    <link href="https://coam.co/2016/01/10/Mnesia/"/>
-    <id>https://coam.co/2016/01/10/Mnesia/</id>
+    <title><![CDATA[LuaNote]]></title>
+    <link href="https://coam.co/2016/01/10/Erlang/Lua/"/>
+    <id>https://coam.co/2016/01/10/Erlang/Lua/</id>
     <published>2016-01-10T11:41:31.000Z</published>
-    <updated>2016-01-10T12:57:21.021Z</updated>
-    <content type="html"><![CDATA[<h3 id="Erlang_Mnesia_Database"><a href="#Erlang_Mnesia_Database" class="headerlink" title="Erlang Mnesia Database"></a>Erlang Mnesia Database</h3><p><a href="http://www.erlang.org/doc/man/mnesia.html" target="_blank" rel="external">Erlang Mnesia Doc</a></p>
-<p>最近学习erlang,在erlang中天然集成了一个分布式数据库名字叫mnesia,因为数据库天然就和erlang的元组,记录无缝结合,并且具有良好的分布式特性,能够自动地在几个erlang节点上实现数据复制,效果有点像zookeeper的节点集群,<br>而且mnesia还支持数据库事务特性,所以mnesia在erlang应用中使用得非常频繁.</p>
-<p>要在本地创建一个mnesia数据库,并且要实现插入,查询功能需要实现以下这几步:<br>1.启动erlang节点:</p>
-<pre><code>#erl -mnesia dir &apos;&quot;d://tmp//mnesia&quot;&apos; -sname mynode
-erl -mnesia dir &apos;&quot;C:\Users\yafei\DevWork\Erlang\dev\mnesia\data&quot;&apos; -name win@27.16.194.65 -setcookie 456789
-sudo erl -mnesia dir &apos;&quot;/data/home/data/mnesia/&quot;&apos; -name ali@42.96.194.60 -setcookie 456789
-</code></pre><p>注意路径双引号<br> 以上这个 “/data/home/data/mnesia/“ 目录是存放mnesia数据库的schema数据的,当然这个目录也可以不指定,那么mnesia数据库启动之后将把数据库的schema中的数据放在内存中,如果下次节点重启之后,之前数据库中创建的表结构数据就消失了.<br>2.接下来就是在erl shell中本地初始化一个空的 mnesia 数据库</p>
-<pre><code>mnesia:create_schema([node()]).
-</code></pre><p>  从参数上是一个节点列表,所以其实需要的话,可以在参数列表上设置多个erlang节点,就能在多个erlang节点上同时创建mnesia数据库并构成 Mnesia 集群.<br>3.启动mnesia数据库<br>  初始化完成了mnesia数据库schema之后,接下来就可以启动mneisa数据库了.</p>
-<pre><code>mnesia:start().
-</code></pre><p>至此,一个空的mneisa已经创建启动成功了,我们可以调用mnesia:info(). 查看当前mnesia数据库的一些状态,结果如下:</p>
-<pre><code>(ali@localhost)2&gt; mnesia:info().
-===&gt; System info in version &quot;4.13.2&quot;, debug level = none &lt;===
-opt_disc. Directory &quot;/data/home/data/mnesia&quot; is used.
-use fallback at restart = true
-running db nodes   = []
-stopped db nodes   = [ali@localhost]
-ok
-(ali@localhost)3&gt; mnesia:start().
-ok
-(ali@localhost)4&gt; mnesia:info().
----&gt; Processes holding locks &lt;---
----&gt; Processes waiting for locks &lt;---
----&gt; Participant transactions &lt;---
----&gt; Coordinator transactions &lt;---
----&gt; Uncertain transactions &lt;---
----&gt; Active tables &lt;---
-schema         : with 1        records occupying 408      words of mem
-===&gt; System info in version &quot;4.13.2&quot;, debug level = none &lt;===
-opt_disc. Directory &quot;/data/home/data/mnesia&quot; is used.
-use fallback at restart = false
-running db nodes   = [ali@localhost]
-stopped db nodes   = []
-master node tables = []
-remote             = []
-ram_copies         = []
-disc_copies        = [schema]
-disc_only_copies   = []
-[{ali@localhost,disc_copies}] = [schema]
-2 transactions committed, 0 aborted, 0 restarted, 0 logged to disc
-0 held locks, 0 in queue; 0 local transactions, 0 remote
-0 transactions waits for other nodes: []
-ok
-</code></pre><p>从 [{ali@localhost,disc_copies}] = [schema] 这行上来看当前数据库中只有一个数据库的schema表.</p>
-<hr>
-<h4 id="Mnesia__u96C6_u7FA4"><a href="#Mnesia__u96C6_u7FA4" class="headerlink" title="Mnesia 集群"></a>Mnesia 集群</h4><p>分别在 阿里云 ali 和 本机 win 启动两个节点</p>
-<pre><code>sudo -mnesia dir &apos;&quot;/data/home/data/mnesia/&quot;&apos; -name ali@42.96.194.60 -setcookie 456789
-erl -mnesia dir &apos;&quot;C:\Users\yafei\DevWork\Erlang\dev\mnesia\data&quot;&apos; -name win@27.16.194.65 -setcookie 456789
-</code></pre><p>保证两个节点都启动,并且 mnesia 没有启用</p>
-<pre><code>mnesia:delete_schema([&apos;win@27.16.194.65&apos;, &apos;ali@42.96.194.60&apos;]).
-mnesia:create_schema([&apos;win@27.16.194.65&apos;, &apos;ali@42.96.194.60&apos;]).
-</code></pre><p>然后启动两个节点的 mnesia,查看运行详情</p>
-<pre><code>(win@27.16.194.65)9&gt; mnesia:start().
-(win@27.16.194.65)9&gt; mnesia:info().
----&gt; Processes holding locks &lt;---
----&gt; Processes waiting for locks &lt;---
----&gt; Participant transactions &lt;---
----&gt; Coordinator transactions &lt;---
----&gt; Uncertain transactions &lt;---
----&gt; Active tables &lt;---
-schema         : with 1        records occupying 414      words of mem
-===&gt; System info in version &quot;4.13.2&quot;, debug level = none &lt;===
-opt_disc. Directory [99,58,47,85,115,101,114,115,47,121,97,102,101,105,47,68,
-101,118,87,111,114,107,47,69,114,108,97,110,103,47,100,
-101,118,47,109,110,101,115,105,97,47,85,115,101,114,115,
-121,97,102,101,105,68,101,118,87,111,114,107,69,114,108,
-97,110,103,127,101,118,109,110,101,115,105,97,127,97,116,
-97] is used.
-use fallback at restart = false
-running db nodes   = [&apos;ali@42.96.194.60&apos;,&apos;win@27.16.194.65&apos;]
-stopped db nodes   = []
-master node tables = []
-remote             = []
-ram_copies         = []
-disc_copies        = [schema]
-disc_only_copies   = []
-[{&apos;ali@42.96.194.60&apos;,disc_copies},{&apos;win@27.16.194.65&apos;,disc_copies}] = [schema]
-3 transactions committed, 0 aborted, 1 restarted, 2 logged to disc
-0 held locks, 0 in queue; 0 local transactions, 0 remote
-0 transactions waits for other nodes: []
-ok
-</code></pre><p>根据 running db nodes   = [‘ali@42.96.194.60’,’win@27.16.194.65’] 可以看出两个节点已成功组成 节点</p>
-<p>在任何一个节点添加数据表</p>
-<hr>
-<h4 id="erlang_mnesia__u6570_u636E_u5E93_u5B9E_u73B0SQL_u67E5_u8BE2"><a href="#erlang_mnesia__u6570_u636E_u5E93_u5B9E_u73B0SQL_u67E5_u8BE2" class="headerlink" title="erlang mnesia 数据库实现SQL查询"></a>erlang mnesia 数据库实现SQL查询</h4><blockquote>
-<p>Mnesia是一个分布式数据库管理系统,适合于电信和其它需要持续运行和具备软实时特性的Erlang应用,越来越受关注和使用,但是目前Mnesia资料却不多,很多都只有官方的用户指南.<br>下面的内容将着重说明  Mnesia 数据库如何实现SQL查询,实现select / insert / update / where / order by / join / limit / delete等SQL操作.</p>
-</blockquote>
-<p>参见示例 sql.erl</p>
-<blockquote>
-<p>注:使用qlc模块查询,需要在文件顶部声明”-include_lib(“stdlib/include/qlc.hrl”).”,否则编译时会产生”Warning: qlc:q/1 called, but “qlc.hrl” not included”的警告.</p>
-</blockquote>
-<hr>
-<h4 id="u4F7F_u7528_u5355_u72EC_u7684_u811A_u672C_u8FDE_u63A5_ejabberd_mnesia__u6570_u636E_u5E93"><a href="#u4F7F_u7528_u5355_u72EC_u7684_u811A_u672C_u8FDE_u63A5_ejabberd_mnesia__u6570_u636E_u5E93" class="headerlink" title="使用单独的脚本连接 ejabberd mnesia 数据库"></a>使用单独的脚本连接 ejabberd mnesia 数据库</h4><pre><code>Cookie = &apos;YOUR_EJABBERD_COOKIE&apos;. % mine was found in /var/lib/ejabberd/.erlang.cookie
-EjabberdNode = &apos;ejabberd@127.0.0.1&apos;. % or whatever you set as EJABBERD_NODE
-erlang:set_cookie(EjabberdNode, Cookie).
-net_adm:ping(EjabberdNode).
-rpc:call(EjabberdNode, mnesia, system_info, [tables]).
-</code></pre><p>参考 <a href="http://stackoverflow.com/questions/9232510/how-can-i-connect-to-ejabberds-mnesia-database-with-a-separate-script" target="_blank" rel="external">How can I connect to ejabberd’s Mnesia database with a separate script?</a></p>
-<hr>
-<h4 id="mnesia_u8868_u6570_u636EId_u81EA_u589E_u957F"><a href="#mnesia_u8868_u6570_u636EId_u81EA_u589E_u957F" class="headerlink" title="mnesia表数据Id自增长"></a>mnesia表数据Id自增长</h4><p>1.使用函数:</p>
-<pre><code>mnesia:dirty_update_counter(unique_id, mine_result, 1).
-</code></pre><p>2.该函数参数示意,<br>   unique_id 表名, mine_result 表名,每次自增N.<br>3.<br>   1.创建如下结构的mnesia数据库表 -record(unique_id, {item, uid}),该表是为了存储 mine_result 表的最大的Id值;<br>   2.每为 mine_result 表加入一条新记录时,需要得到新的id值: </p>
-<pre><code>mnesia:dirty_update_counter(unique_id,  mine_result , 1),
-</code></pre><p>从unique_id表中取出最大的Id值加1,更新unique_id表的数据,返回最大Id值加1,<br>注意:请在建立unique_id表的时候,往里面插入数据;表名,初始值,{ mine_result  ,0},<br>我做了一个实验如果unique_id表中没有数据的时候,并发向mine_result库中插入100条数据时,不稳定.<br>但是unique_id表中加入一个数据后,并发数提高到30000,还是很稳定.</p>
-<hr>
-<p>参考<br><a href="http://wudaijun.com/2015/04/erlang-mnesia/" target="_blank" rel="external">wudaijun’s blog - Erlang mnesia</a><br><a href="http://www.tqcto.com/article/db/11625.html" target="_blank" rel="external">创设Mnesia数据库</a><br><a href="http://www.infoq.com/cn/news/2007/08/mnesia" target="_blank" rel="external">Erlang的Mnesia——为高伸缩性应用准备的数据库管理系统</a><br><a href="http://www.cnblogs.com/liangjingyang/archive/2012/09/27/2705451.html" target="_blank" rel="external">[Erlang-0008][OTP] 高效指南 – 表和数据库(ets mnesia)</a><br><a href="http://www.dlive.me/2014/12/10/erlangmnesia/" target="_blank" rel="external">Erlang基础Mnesia 之应用场景</a><br><a href="http://blog.maxkit.com.tw/2014/04/erlang-mnesia.html" target="_blank" rel="external">erlang Mnesia - 尚待研究</a></p>
-<p><a href="http://4096.info/2013/10/28/mnesia%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C/" target="_blank" rel="external">mnesia数据库使用体验</a><br><a href="http://4096.info/2014/11/07/no-title-2/" target="_blank" rel="external">mnesia数据库优化</a></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<h3 id="Erlang_Mnesia_Database"><a href="#Erlang_Mnesia_Database" class="headerlink" title="Erlang Mnesia Database"></a>Erlang Mnesia Databa]]>
-    </summary>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[MarkDown 相关]]></title>
-    <link href="https://coam.co/2016/01/08/MarkDownNote/"/>
-    <id>https://coam.co/2016/01/08/MarkDownNote/</id>
-    <published>2016-01-08T02:51:31.000Z</published>
-    <updated>2016-01-08T03:16:39.208Z</updated>
-    <content type="html"><![CDATA[<h1 id="Markdown__u76F8_u5173_u7B14_u8BB0_u6458_u8981"><a href="#Markdown__u76F8_u5173_u7B14_u8BB0_u6458_u8981" class="headerlink" title="Markdown 相关笔记摘要"></a>Markdown 相关笔记摘要</h1><p><a href="http://www.debug4.me/%E5%B7%A5%E5%85%B7/markdown-learning/" target="_blank" rel="external">Markdown标准语法与GitHub Flavored Markdown语法大全</a></p>
-<a id="more"></a>
-<h3 id="markdown__u652F_u6301_u7684_u7F16_u7A0B_u8BED_u8A00_uFF1A"><a href="#markdown__u652F_u6301_u7684_u7F16_u7A0B_u8BED_u8A00_uFF1A" class="headerlink" title="markdown 支持的编程语言："></a>markdown 支持的编程语言：</h3><blockquote>
-<p>actionscript, apache, bash, clojure, cmake, coffeescript, cpp, cs, css, d, delphi, django, erlang, go, haskell, html,<br> http, ini, java, javascript, json, lisp, lua, markdown, matlab, nginx, objectivec, perl, php, python, r, ruby, scala, smalltalk, sql, tex, vbscript, xml</p>
-</blockquote>
-<p><a href="https://www.zybuluo.com" target="_blank" rel="external">国内不错但收费的markdown在线编辑器</a></p>
-<h2 id="u53C2_u8003_u5217_u8868"><a href="#u53C2_u8003_u5217_u8868" class="headerlink" title="参考列表"></a>参考列表</h2><hr>
-<h2 id="Hexo__u76F8_u5173"><a href="#Hexo__u76F8_u5173" class="headerlink" title="Hexo 相关"></a>Hexo 相关</h2><p><a href="http://www.blackshow.me/2015/11/30/hexo-cheats/" target="_blank" rel="external">HEXO使用心得(持续更新)</a><br><a href="https://hexo.io/zh-cn/docs/tag-plugins.html" target="_blank" rel="external">标签插件（Tag Plugins）</a></p>
-<h3 id="HEXO__u535A_u5BA2_u642D_u5EFA"><a href="#HEXO__u535A_u5BA2_u642D_u5EFA" class="headerlink" title="HEXO 博客搭建"></a>HEXO 博客搭建</h3><h4 id="Window__u4E0B_u73AF_u5883_u642D_u5EFA"><a href="#Window__u4E0B_u73AF_u5883_u642D_u5EFA" class="headerlink" title="Window 下环境搭建"></a>Window 下环境搭建</h4><pre><code>npm install hexo-cli -g
-npm install hexo --save
-</code></pre><blockquote>
-<p>如果命令无法运行,可以尝试更换taobao的npm源</p>
-</blockquote>
-<pre><code>npm install -g cnpm --registry=https://registry.npm.taobao.org
-</code></pre><h4 id="Hexo__u521D_u59CB_u5316"><a href="#Hexo__u521D_u59CB_u5316" class="headerlink" title="Hexo 初始化"></a>Hexo 初始化</h4><ol>
-<li>安装 Hexo 完成后,请执行下列命令,Hexo 将会在指定文件夹中新建所需要的文件.</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
-<ol>
-<li>新建完成后,指定文件夹的目录如下</li>
-</ol>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── scripts</span><br><span class="line">├── source</span><br><span class="line"><span class="string">|      ├── _drafts</span></span><br><span class="line"><span class="string">|      └── _posts</span></span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure>
-<ul>
-<li>scaffolds 工具模板</li>
-<li>scripts hexo的功能js</li>
-<li>source 博客资源文件夹</li>
-<li>source/_drafts 草稿文件夹</li>
-<li>source/_posts 文章文件夹</li>
-<li>themes 存放皮肤的文件夹</li>
-<li>themes/landscape 默认皮肤文件夹</li>
-<li>_config.yml 全局配置文件</li>
-<li>db.json json格式的静态常量数据库</li>
-<li>_posts目录：Hexo存放博客文章的文件夹</li>
-<li>themes目录：存放皮肤的文件夹，默认使用官方的主题 你也可以从hexo主题页面下载你喜欢的主题</li>
-</ul>
-<ol>
-<li>安装Hexo插件</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-index --save</span><br><span class="line">npm install hexo-generator-archive --save</span><br><span class="line">npm install hexo-generator-category --save</span><br><span class="line">npm install hexo-generator-tag --save</span><br><span class="line">npm install hexo-server --save</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">npm install hexo-deployer-heroku --save</span><br><span class="line">npm install hexo-deployer-rsync --save</span><br><span class="line">npm install hexo-deployer-openshift --save</span><br><span class="line">npm install hexo-renderer-marked@<span class="number">0.2</span> --save</span><br><span class="line">npm install hexo-renderer-stylus@<span class="number">0.2</span> --save</span><br><span class="line">npm install hexo-generator-feed@<span class="number">1</span> --save</span><br><span class="line">npm install hexo-generator-sitemap@<span class="number">1</span> --save</span><br></pre></td></tr></table></figure>
-<h4 id="u672C_u5730_u67E5_u770B_u6548_u679C"><a href="#u672C_u5730_u67E5_u770B_u6548_u679C" class="headerlink" title="本地查看效果"></a>本地查看效果</h4><p>继续执行以下命令,成功后可登录localhost:4000查看效果</p>
-<pre><code>hexo server
-</code></pre><p>Hexo简写命令</p>
-<pre><code>hexo n #生成文章,或者source\_posts手动编辑
-hexo s #本地发布预览效果
-hexo g #生成public静态文件
-</code></pre><p>最后我选择手动同步更新至GitHub</p>
-<h4 id="u90E8_u7F72_u9759_u6001_u7F51_u9875_u5230GitHub"><a href="#u90E8_u7F72_u9759_u6001_u7F51_u9875_u5230GitHub" class="headerlink" title="部署静态网页到GitHub"></a>部署静态网页到GitHub</h4><p>在 GitHub 下创建项目 coam.github.com</p>
-<p>修改 _config.yml 的以下部分为</p>
-<pre><code>deploy:
-  type: git
-  repository: git@github.com:coam/coam.github.io.git
-  branch: master
-</code></pre><p>执行命令以下命令发布博客</p>
-<pre><code>hexo g //生成博客文章
-hexo d //上传至 github
-hexo new myNewBlog
-</code></pre><h3 id="Hexo__u4E3B_u9898_Jacman"><a href="#Hexo__u4E3B_u9898_Jacman" class="headerlink" title="Hexo 主题 Jacman"></a>Hexo 主题 Jacman</h3><blockquote>
-<p>hexo 默认 theme 主题是 landscape ,修改为 jacman</p>
-</blockquote>
-<pre><code>git clone https://github.com/wuchong/jacman.git themes/jacman
-</code></pre><p>参考</p>
-<p><a href="http://wsgzao.github.io/post/hexo-guide/" target="_blank" rel="external">使用GitHub和Hexo搭建免费静态Blog</a><br><a href="http://wsgzao.github.io/post/hexo-jacman/" target="_blank" rel="external">Jacman基于Pacman修改的Hexo主题</a><br><a href="https://github.com/wuchong/jacman/blob/master/README_zh.md" target="_blank" rel="external">wuchong/jacman</a><br><a href="http://wuchong.me/blog/2014/11/20/how-to-use-jacman/" target="_blank" rel="external">如何使用 Jacman 主题</a></p>
-<p><a href="https://hexo.io/zh-cn/docs/migration.html" target="_blank" rel="external">Wordpress 迁移到 Hexo</a><br><a href="http://www.jianshu.com/p/73779eacb494" target="_blank" rel="external">配置参考 - Hexo 静态博客使用指南</a></p>
-<hr>
-<h2 id="jekyll_blog__u76F8_u5173"><a href="#jekyll_blog__u76F8_u5173" class="headerlink" title="jekyll blog 相关"></a>jekyll blog 相关</h2><p><a href="http://jekyllcn.com/docs/usage/" target="_blank" rel="external">jekyll 基本用法</a></p>
-<p><a href="https://github.com/gdg-managua/jekyll-mdl" target="_blank" rel="external">Markdown Material theme-gdg-managua/jekyll-mdl</a><br><a href="https://github.com/CloudCannon/Read-Only-Jekyll-Theme" target="_blank" rel="external">Markdown Material theme-CloudCannon/Read-Only-Jekyll-Theme</a></p>
-<p><a href="https://github.com/cenalulu/cenalulu.github.io" target="_blank" rel="external">Jekyll 参照 博客 cenalulu/cenalulu.github.io</a></p>
-<p><a href="http://dillinger.io/" target="_blank" rel="external">Markdown 在线编辑器</a></p>
-<p>参考<br><a href="http://huangziwei.com/tech/blogging-with-git-github-and-jekyll/" target="_blank" rel="external">Git 笔记:用 Github + Jekyll 写博客</a><br><a href="https://segmentfault.com/a/1190000000406011" target="_blank" rel="external">使用Jekyll在Github上搭建个人博客(环境搭建)</a><br><a href="http://huangziwei.com/tech/blogging-with-git-github-and-jekyll/" target="_blank" rel="external">Git 笔记:用 Github + Jekyll 写博客</a><br><a href="http://jekyll-windows.juthilo.com/3-syntax-highlighting/" target="_blank" rel="external">Install a Syntax Highlighter</a></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<h1 id="Markdown__u76F8_u5173_u7B14_u8BB0_u6458_u8981"><a href="#Markdown__u76F8_u5173_u7B14_u8BB0_u6458_u8981" class="headerlink" title="Markdown 相关笔记摘要"></a>Markdown 相关笔记摘要</h1><p><a href="http://www.debug4.me/%E5%B7%A5%E5%85%B7/markdown-learning/">Markdown标准语法与GitHub Flavored Markdown语法大全</a></p>]]>
-    
-    </summary>
-    
-      <category term="markdown gfw hexo jekyll" scheme="https://coam.co/tags/markdown-gfw-hexo-jekyll/"/>
-    
-      <category term="markdown" scheme="https://coam.co/categories/markdown/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[my blogs]]></title>
-    <link href="https://coam.co/2016/01/07/my-blogs/"/>
-    <id>https://coam.co/2016/01/07/my-blogs/</id>
-    <published>2016-01-07T12:56:16.000Z</published>
-    <updated>2016-01-07T14:23:11.261Z</updated>
-    <content type="html"><![CDATA[<blockquote><p>content</p>
-</blockquote>
-<figure class="highlight"><figcaption><span>[title] [] [url] [link text]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code snippet</span><br></pre></td></tr></table></figure>
-<figure class="highlight php"><figcaption><span>mycode</span><a href="https://www.coam.co" target="_blank" rel="external">coam.com</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Build DOMDocument with standard xmpp body child node.</span><br><span class="line"> *</span><br><span class="line"> * <span class="doctag">@return</span> DOMDocument</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">buildBody</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="variable">$xml</span> = <span class="keyword">new</span> DOMDocument(<span class="string">'1.0'</span>, <span class="string">'UTF-8'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="variable">$body</span> = <span class="variable">$xml</span>-&gt;createElement(<span class="string">'body'</span>);</span><br><span class="line">    <span class="variable">$xml</span>-&gt;appendChild(<span class="variable">$body</span>);</span><br><span class="line"></span><br><span class="line">    <span class="variable">$body</span>-&gt;appendChild(<span class="keyword">self</span>::getNewTextAttribute(<span class="variable">$xml</span>, <span class="string">'xmlns'</span>, <span class="keyword">self</span>::XMLNS_BODY));</span><br><span class="line">    <span class="variable">$body</span>-&gt;appendChild(<span class="keyword">self</span>::getNewTextAttribute(<span class="variable">$xml</span>, <span class="string">'content'</span>, <span class="keyword">self</span>::CONTENT_TYPE));</span><br><span class="line">    <span class="variable">$body</span>-&gt;appendChild(<span class="keyword">self</span>::getNewTextAttribute(<span class="variable">$xml</span>, <span class="string">'rid'</span>, <span class="variable">$this</span>-&gt;getAndIncrementRid()));</span><br><span class="line">    <span class="variable">$body</span>-&gt;appendChild(<span class="keyword">self</span>::getNewTextAttribute(<span class="variable">$xml</span>, <span class="string">'xml:lang'</span>, <span class="keyword">self</span>::XML_LANG));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$this</span>-&gt;sid != <span class="string">''</span>) &#123;</span><br><span class="line">        <span class="variable">$body</span>-&gt;appendChild(<span class="keyword">self</span>::getNewTextAttribute(<span class="variable">$xml</span>, <span class="string">'sid'</span>, <span class="variable">$this</span>-&gt;sid));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$xml</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><figcaption><span>title</span><a href="https://app.coopens.com" target="_blank" rel="external">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onMessage</span>(<span class="params">msg</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> to = msg.getAttribute(<span class="string">'to'</span>);</span><br><span class="line">    <span class="keyword">var</span> from = msg.getAttribute(<span class="string">'from'</span>);</span><br><span class="line">    <span class="keyword">var</span> type = msg.getAttribute(<span class="string">'type'</span>);</span><br><span class="line">    <span class="keyword">var</span> elems = msg.getElementsByTagName(<span class="string">'body'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (type == <span class="string">"chat"</span> &amp;&amp; elems.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> body = elems[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">        log(<span class="string">'ECHOBOT: I got a message from '</span> + from + <span class="string">': '</span> +</span><br><span class="line">            Strophe.getText(body));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> reply = $msg(&#123;to: from, from: to, type: <span class="string">'chat'</span>&#125;)</span><br><span class="line">            .cnode(Strophe.copyElement(body));</span><br><span class="line">        connection.send(reply.tree());</span><br><span class="line"></span><br><span class="line">        log(<span class="string">'ECHOBOT: I sent '</span> + from + <span class="string">': '</span> + Strophe.getText(body));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// we must return true to keep the handler alive.  </span></span><br><span class="line">    <span class="comment">// returning false would remove it after it finishes.</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><figcaption><span>Android SDK 代码</span><a href="http://www.badu.com" target="_blank" rel="external">[link text ..]</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.preference.Preference;</span><br><span class="line"><span class="keyword">import</span> android.util.AttributeSet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> eu.siacs.conversations.utils.PhoneHelper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AboutPreference</span> <span class="keyword">extends</span> <span class="title">Preference</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">AboutPreference</span><span class="params">(<span class="keyword">final</span> Context context, <span class="keyword">final</span> AttributeSet attrs, <span class="keyword">final</span> <span class="keyword">int</span> defStyle)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(context, attrs, defStyle);</span><br><span class="line">		setSummary();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">AboutPreference</span><span class="params">(<span class="keyword">final</span> Context context, <span class="keyword">final</span> AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(context, attrs);</span><br><span class="line">		setSummary();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onClick();</span><br><span class="line">        <span class="keyword">final</span> Intent intent = <span class="keyword">new</span> Intent(getContext(), AboutActivity.class);</span><br><span class="line">        getContext().startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setSummary</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		setSummary(<span class="string">"Conversations "</span> + PhoneHelper.getVersionName(getContext()));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">happy</span><br></pre></td></tr></table></figure>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">colon</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><figcaption><span>title</span><a href="http://www.coopens.com" target="_blank" rel="external">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setSummary</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    setSummary(<span class="string">"Conversations "</span> + PhoneHelper.getVersionName(getContext()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    <summary type="html">
-    <![CDATA[<blockquote><p>content</p>
-</blockquote>
-<figure class="highlight"><figcaption><span>[title] [] [url] [link text]</span></figcaption><table>]]>
-    </summary>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[blog/myNewBloger]]></title>
-    <link href="https://coam.co/2016/01/03/blog-myNewBlog/"/>
-    <id>https://coam.co/2016/01/03/blog-myNewBlog/</id>
-    <published>2016-01-03T12:52:05.000Z</published>
-    <updated>2016-01-03T13:01:11.555Z</updated>
-    <content type="html"><![CDATA[<h3 id="HEXO__u535A_u5BA2_u642D_u5EFA"><a href="#HEXO__u535A_u5BA2_u642D_u5EFA" class="headerlink" title="HEXO 博客搭建"></a>HEXO 博客搭建</h3><h4 id="Window__u4E0B_u73AF_u5883_u642D_u5EFA"><a href="#Window__u4E0B_u73AF_u5883_u642D_u5EFA" class="headerlink" title="Window 下环境搭建"></a>Window 下环境搭建</h4><pre><code>npm install hexo-cli -g
-npm install hexo --save
-</code></pre><p>#如果命令无法运行，可以尝试更换taobao的npm源</p>
-<pre><code>npm install -g cnpm --registry=https://registry.npm.taobao.org
-</code></pre><h4 id="Hexo__u521D_u59CB_u5316"><a href="#Hexo__u521D_u59CB_u5316" class="headerlink" title="Hexo 初始化"></a>Hexo 初始化</h4><p>#安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。</p>
-<pre><code>$ hexo init &lt;folder&gt;
-$ cd &lt;folder&gt;
-$ npm install
-</code></pre><h1 id="u65B0_u5EFA_u5B8C_u6210_u540E_uFF0C_u6307_u5B9A_u6587_u4EF6_u5939_u7684_u76EE_u5F55_u5982_u4E0B"><a href="#u65B0_u5EFA_u5B8C_u6210_u540E_uFF0C_u6307_u5B9A_u6587_u4EF6_u5939_u7684_u76EE_u5F55_u5982_u4E0B" class="headerlink" title="新建完成后，指定文件夹的目录如下"></a>新建完成后，指定文件夹的目录如下</h1><pre><code>.
-├── _config.yml
-├── package.json
-├── scaffolds
-├── scripts
-├── source
-|      ├── _drafts
-|      └── _posts
-└── themes
-</code></pre><p>安装Hexo插件</p>
-<pre><code>npm install hexo-generator-index --save
-npm install hexo-generator-archive --save
-npm install hexo-generator-category --save
-npm install hexo-generator-tag --save
-npm install hexo-server --save
-npm install hexo-deployer-git --save
-npm install hexo-deployer-heroku --save
-npm install hexo-deployer-rsync --save
-npm install hexo-deployer-openshift --save
-npm install hexo-renderer-marked@0.2 --save
-npm install hexo-renderer-stylus@0.2 --save
-npm install hexo-generator-feed@1 --save
-npm install hexo-generator-sitemap@1 --save
-</code></pre><h4 id="u672C_u5730_u67E5_u770B_u6548_u679C"><a href="#u672C_u5730_u67E5_u770B_u6548_u679C" class="headerlink" title="本地查看效果"></a>本地查看效果</h4><p>继续执行以下命令，成功后可登录localhost:4000查看效果</p>
-<p>hexo server</p>
-<p>Hexo简写命令</p>
-<p>hexo n #生成文章，或者source_posts手动编辑<br>hexo s #本地发布预览效果<br>hexo g #生成public静态文件</p>
-<p>最后我选择手动同步更新至GitHub</p>
-<h4 id="u90E8_u7F72_u9759_u6001_u7F51_u9875_u5230GitHub"><a href="#u90E8_u7F72_u9759_u6001_u7F51_u9875_u5230GitHub" class="headerlink" title="部署静态网页到GitHub"></a>部署静态网页到GitHub</h4><p>在 GitHub 下创建项目 coam.github.com</p>
-<p>修改 _config.yml 的以下部分为</p>
-<pre><code>deploy:
-  type: git
-  repository: git@github.com:coam/coam.github.io.git
-  branch: master
-</code></pre><p>执行命令以下命令发布博客</p>
-<pre><code>hexo g //生成博客文章
-hexo d //上传至 github
-hexo new myNewBlog
-</code></pre><h3 id="Hexo__u4E3B_u9898_Jacman"><a href="#Hexo__u4E3B_u9898_Jacman" class="headerlink" title="Hexo 主题 Jacman"></a>Hexo 主题 Jacman</h3><blockquote>
-<p>hexo 默认 theme 主题是 landscape ，修改为 jacman</p>
-</blockquote>
-<pre><code>git clone https://github.com/wuchong/jacman.git themes/jacman
-</code></pre><p>参考列表</p>
-<p><a href="http://wsgzao.github.io/post/hexo-guide/" target="_blank" rel="external">使用GitHub和Hexo搭建免费静态Blog</a><br><a href="http://wsgzao.github.io/post/hexo-jacman/" target="_blank" rel="external">Jacman基于Pacman修改的Hexo主题</a><br><a href="https://github.com/wuchong/jacman/blob/master/README_zh.md" target="_blank" rel="external">wuchong/jacman</a><br><a href="http://wuchong.me/blog/2014/11/20/how-to-use-jacman/" target="_blank" rel="external">如何使用 Jacman 主题</a></p>
-<p><a href="https://hexo.io/zh-cn/docs/migration.html" target="_blank" rel="external">Wordpress 迁移到 Hexo</a></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<h3 id="HEXO__u535A_u5BA2_u642D_u5EFA"><a href="#HEXO__u535A_u5BA2_u642D_u5EFA" class="headerlink" title="HEXO 博客搭建"></a>HEXO 博客搭建</h3><h4 i]]>
-    </summary>
-    
-      <category term="hexo" scheme="https://coam.co/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[关于 XMPP 协议]]></title>
-    <link href="https://coam.co/2016/01/03/XMPP/"/>
-    <id>https://coam.co/2016/01/03/XMPP/</id>
-    <published>2016-01-03T12:52:05.000Z</published>
-    <updated>2016-01-07T12:38:18.640Z</updated>
-    <content type="html"><![CDATA[<h3 id="u5173_u4E8E_XMPP__u534F_u8BAE"><a href="#u5173_u4E8E_XMPP__u534F_u8BAE" class="headerlink" title="关于 XMPP 协议"></a>关于 XMPP 协议</h3><p><a href="http://xmpp.org/xmpp-protocols/xmpp-extensions/" target="_blank" rel="external">XMPP 扩展协议标准</a><br><a href="http://wiki.jabbercn.org/XEP-0045" target="_blank" rel="external">Ejabberd 中文翻译文档上面的 关于 Ejabberd 使用的协议介绍</a></p>
-<hr>
-<p><a href="https://xmpp.net/directory.php" target="_blank" rel="external">XMPP 免费服务器列表</a></p>
-<p>比较好的公共服务器</p>
-<p><a href="https://www.xmpp.jp/signup" target="_blank" rel="external">xmpp.jp</a></p>
-<p>XMPP 客户端</p>
-<blockquote>
-<p>PC端肯定要推荐一些比较经典的啦,诸如Pidgin、Empathy、Kopete、Miranda IM(只支持Windows)或Adium(只支持Mac OS X)这样的都可以很好的兼容XMPP/Jabber协议,<br>不过呢还有一些专门的客户端软件,比如 Gajim和Psi+(这是Psi的升级版,增加了更多功能)这样的XMPP专业工具.<br>类似Pidgin这样大而全的软件可以很好的支持XMPP几乎所有的功能(通过各种插件).<br>而专有的软件则可以更加专注于协议的实现,更加完善,也更加富有使用的优势,特别是需要加密聊天比如OTR和PGP这样的时候,专攻XMPP协议的这些客户端就更方便可靠了.<br>当然还有命令行下的软件,mcabber是专门设计给XMPP/Jabber使用的,可以非常方便的提供OTR和PGP加密聊天.</p>
-</blockquote>
-<a id="more"></a>
-<h4 id="Android__u5F00_u6E90_u5BA2_u6237_u7AEF"><a href="#Android__u5F00_u6E90_u5BA2_u6237_u7AEF" class="headerlink" title="Android 开源客户端"></a>Android 开源客户端</h4><p><a href="https://github.com/siacs/Conversations" target="_blank" rel="external">Conversations</a><br><a href="https://github.com/guardianproject/ChatSecureAndroid" target="_blank" rel="external">ChatSecureAndroid</a><br><a href="https://github.com/pfleidi/yaxim" target="_blank" rel="external">yaxim</a></p>
-<hr>
-<h4 id="1_2CXMPP__u7684_u4E09_u79CD_u57FA_u672C_u89D2_u8272_3A_u5BA2_u6237_u7AEF_u3001_u670D_u52A1_u5668_u548C_u7F51_u5173"><a href="#1_2CXMPP__u7684_u4E09_u79CD_u57FA_u672C_u89D2_u8272_3A_u5BA2_u6237_u7AEF_u3001_u670D_u52A1_u5668_u548C_u7F51_u5173" class="headerlink" title="1,XMPP 的三种基本角色:客户端、服务器和网关"></a>1,XMPP 的三种基本角色:客户端、服务器和网关</h4><blockquote>
-<p>通信能够在这三者的任意两个之间双向发生.服务器端同时承担了客户端信息记录、连接管理和信息路由的功能.网关则承担着与异构系统的互联互通功能.在 RFC 3920 XMPP Core 中对 XMPP 网络结构有一个描述:</p>
-</blockquote>
-<pre><code>C1----S1---S2—C3
-     |
-C2----+--G1===FN1===FC1
-</code></pre><p>这里 C1,C2,C3 表示 XMPP 客户端;S1,S2 表示 XMPP 服务器;G1 表示网关,用来负责 XMPP 协议和外部聊天协议的转换;FN1 表示外部消息网络的服务器,FC1 表示外部网络客户端.</p>
-<h5 id="u670D_u52A1_u5668__u5145_u5F53xmpp_u901A_u4FE1_u7684_u4E00_u4E2A_u667A_u80FD_u62BD_u8C61_u5C42_uFF0C_u8D1F_u8D23"><a href="#u670D_u52A1_u5668__u5145_u5F53xmpp_u901A_u4FE1_u7684_u4E00_u4E2A_u667A_u80FD_u62BD_u8C61_u5C42_uFF0C_u8D1F_u8D23" class="headerlink" title="服务器 充当xmpp通信的一个智能抽象层，负责"></a>服务器 充当xmpp通信的一个智能抽象层，负责</h5><blockquote>
-<p>对受验证的客户端，服务器以及其他实体之间以xml流的形式的连接和会话进行管理。在这些实体间使用xml流对合理编址的xml节进行路由存储和处理客户端使用的数据</p>
-</blockquote>
-<h5 id="u5BA2_u6237_u7AEF"><a href="#u5BA2_u6237_u7AEF" class="headerlink" title="客户端"></a>客户端</h5><blockquote>
-<p>通过TCP连接直接连接到服务器，并通过xmpp获得由服务器以及联合服务器所提供的全部功能。多个不同的客户端可以同时登陆并且并发的连接到一个服务器，每个不同资源的客户端通过xmpp地址的资源标识符来区分。建议的客户端和服务器连接的端口时5222</p>
-</blockquote>
-<h5 id="u7F51_u5173"><a href="#u7F51_u5173" class="headerlink" title="网关"></a>网关</h5><blockquote>
-<p>网关是一个特殊用途的服务器端的服务，主要功能是把xmpp翻译成外部消息系统，并把返回的消息翻译成xmpp.</p>
-</blockquote>
-<p>大家可能会奇怪,这里为什么需要一个网关呢.这要从 XMPP 的来源说起.1996 年 Mirabilis 公司推出了世界上第一个即时通信系统 ICQ,不到 10 年,IM 就成了最流行的应用之一,MSN、Gtalk、雅虎即时通、AIM、Adium、Pidgin 等各种软件如雨后春笋般涌现,<br>但是这些服务之间没有统一的标准,不能互联互通,XMPP 的设计目的就是为了实现整个及时通信服务协议的互通,让 IM 成为继 WEB 和 Email 之后的互联网第三大服务.</p>
-<h4 id="2_2CXMPP__u7684_u6D88_u606F_u683C_u5F0F"><a href="#2_2CXMPP__u7684_u6D88_u606F_u683C_u5F0F" class="headerlink" title="2,XMPP 的消息格式."></a>2,XMPP 的消息格式.</h4><blockquote>
-<p>XMPP 协议的所有消息都是 XML 格式的,这是 XMPP 协议的另一个充满历史意味的选择,想当年 SOA / SOAP 一时间爆发起来,很多消息交换协议都采用了 XML 格式,但是不想 XML 很快就成了「大数据」的代名词.<br> 在 RFC 3920 XMPP Core 中定义了两个基础概念,XML Stream 和 XML Stanza,XML Stream 是两个节点之间进行数据交换的容器,它定义了顶层的XML节点 ;XML Stanza 则定义了实体消息的具体语义单元,在 XMPP 中定义了 3 个顶层消息:</p>
-</blockquote>
-<h5 id="2-1_Presence__u8054_u673A_u72B6_u6001"><a href="#2-1_Presence__u8054_u673A_u72B6_u6001" class="headerlink" title="2.1 Presence 联机状态"></a>2.1 Presence 联机状态</h5><blockquote>
-<p>联机状态,它允许用户广播其在线状态和可用性；元素用来传递一个用户的存在状态的感知信息.用户可以是”available”,要么是”unavailable”,”Hide”等.当用户连接到即时消息服务器后,好友发给他的消息就立即被传递.<br>如果用户没有连接到服务器,好友发给他的消息将被服务器存储起来直到用户连接到服务器.<br> 用户通过即时消息客户端自己控制可用性.但是,如果用户断开了同服务器的连接,服务器将发送给订阅了这个用户的存在信息的用户通知他们用户已经不可用.还包含了两个子元素:和.包含了一个对的文本描述.<br>用于确定用户的状态.消息结构举例如下(每个 XML 的 node 还会有很多其他 attribute,为了简单起见这里省略,下同):</p>
-</blockquote>
-<pre><code>&lt;presence from=&quot;abc@jabber.org/contact&quot; to=&quot;def@jabber.org/contact&quot;&gt;
-    &lt;status&gt;online&lt;/status&gt;
-&lt;/presence&gt;
-</code></pre><h5 id="2-2_Message__u6D88_u606F_u4F20_u9012"><a href="#2-2_Message__u6D88_u606F_u4F20_u9012" class="headerlink" title="2.2 Message 消息传递"></a>2.2 Message 消息传递</h5><blockquote>
-<p>消息传递,其中数据在有关各方之间传输；一个即时消息系统最基本的功能就是能够在两个用户之间实时交换消息,元素就提供了这个功能.每条消息都有一个或多个属性和子元素.属性”from”和”to”分别表示了消息发送者和接收者的地址.<br> 也可以包含一个”type”属性,这给接收者一个提示,这个消息是什么样的消息.表3-1给出了”type”属性的可能取值.中也可以包含”id”属性,用来唯一的标识一个输出消息的响应.<br>用于在两个用户之间发送消息.消息结构举例如下:</p>
-</blockquote>
-<pre><code>&lt;message from=&quot;abc@jabber.org/contact&quot; to=&quot;def@jabber.org/contact&quot; type=&quot;chat&quot;&gt;
-    &lt;body&gt;hello&lt;/body&gt;
-&lt;/message&gt;
-</code></pre><h5 id="2-3_IQ__u4FE1_u606F/_u67E5_u8BE2_u8BF7_u6C42"><a href="#2-3_IQ__u4FE1_u606F/_u67E5_u8BE2_u8BF7_u6C42" class="headerlink" title="2.3 IQ 信息/查询请求"></a>2.3 IQ 信息/查询请求</h5><blockquote>
-<p>信息/查询请求,它允许 XMPP 实体发起请求并从另一个实体接收响应.IQ元素是Jabber/XMPP消息协议的第三个顶层元素.IQ代表”Info/Query”,用来发送和获取实体之间的信息.IQ消息是通过”请求/响应”机制在实体间进行交换的.<br> IQ元素用于不同的目的,它们之间通过不同的命名空间来加以区分.在Jabber/XMPP消息协议里有许多的命名空间,但最常用的命名空间是:”jabber:iq:register”,”jabber:iq:auth”,”jabber:iq:roster”<br>信息/请求,是一个请求－响应机制,管理XMPP服务器上两个用户的转换,允许他们通过相应的XML格式进行查询和响应.</p>
-</blockquote>
-<pre><code>&lt;iq from=&quot;abc@jabber.org/contact&quot; id=&quot;id11&quot; type=&quot;result&quot;&gt;
-&lt;/iq&gt;
-</code></pre><h4 id="3_2CXMPP__u7684_u4EA4_u4E92_u6D41_u7A0B"><a href="#3_2CXMPP__u7684_u4EA4_u4E92_u6D41_u7A0B" class="headerlink" title="3,XMPP 的交互流程."></a>3,XMPP 的交互流程.</h4><blockquote>
-<p>XMPP 通过 TCP 传输了什么内容？在 QQ 里面,消息是使用二进制形式发送的,在 MSN 里面是采用纯文本指令加参数加换行符的形式发送的,<br>而 XMPP 传输的即时通讯指令与他们相仿,只是协议的形式变成了 XML 格式的纯文本,这让解析更容易,方便了开发和查错,但是也带来了数据负载过重的缺点,而被人广为诟病.</p>
-</blockquote>
-<p>XMPP 聊天的过程如下:</p>
-<p>所有从一个 client 到另一个 client 的消息和数据都要经过 XMPP Server;</p>
-<pre><code>client1 连接到Server;
-server 利用本地目录系统的证书对其认证;
-client1 指定 client2 目标地址,让 server 告知 client2 目标状态;
-server 查找,连接并进行互相认证;
-client1 和 client2 进行交互.
-</code></pre><p>参考<br><a href="http://segmentfault.com/a/1190000000656509" target="_blank" rel="external">XMPP 协议适合用来做移动 IM 么</a><br><a href="http://blog.csdn.net/jessonlv/article/details/44833273" target="_blank" rel="external">XMPP——xmpp客户端、服务器、网关以及地址和消息格式详解</a><br><a href="http://blog.csdn.net/jessonlv/article/details/44811253" target="_blank" rel="external">XMPP——xmpp协议详解、优点、缺点及优化思路</a><br><a href="http://www.jianshu.com/p/af87ff15bfe3" target="_blank" rel="external">简书-xmpp协议初识</a></p>
-<hr>
-<h3 id="XMPP__u4F7F_u7528_BOSH__u8D8A_u8FC7_HTTP"><a href="#XMPP__u4F7F_u7528_BOSH__u8D8A_u8FC7_HTTP" class="headerlink" title="XMPP 使用 BOSH 越过 HTTP"></a>XMPP 使用 BOSH 越过 HTTP</h3><blockquote>
-<p>要通过使用 JavaScript 的 XMPP 进行通信的 web 应用程序必须符合一些特殊要求.出于安全考虑,不允许 JavaScript 从 web 页面的域与不同域上的多个服务器通信.<br>如果您的 web 应用程序界面被托管在 application.mydomain.com,所有 XMPP 通信也必须发生在 application.mydomain.com.</p>
-<p>防火墙是另一个问题所在.理想情况下,如果您将 XMPP 用作您的 web 界面的实时元素的基础,那么您希望它对防火墙后面的用户有效.<br>但是,公司防火墙通常只对少数几个协议开放几个端口,以便允许 web 数据、电子邮件和类似的通信通过.默认情况下,XMPP 使用端口 5222,这很可能是公司防火墙阻止的端口.</p>
-<p>假设您知道您的用户前面的防火墙在端口 80 上允许 HTTP（这是用于访问 web 的默认协议和端口）.理想情况是您的 XMPP 通信能够越过该端口上的 HTTP.但是,HTTP 的设计并不针对持续连接.web 的架构不同于实时数据所需的通信架构.</p>
-<p>下面我们看看 Bidirectional-streams Over Synchronous HTTP (BOSH) 的标准,该标准为双向同步数据提供一个模拟层.借助这个标准,可以与一个 XMPP 服务器建立一个较长的 HTTP 连接（时长一分钟或两分钟）.<br>如果新数据在那个期间到达,则 HTTP 请求返回数据并关闭；否则,该请求只是失效.不管是哪种情况,一旦一个请求关闭,另一个请求将重新建立.<br>尽管结果是对一个 web 服务器的一系列重复连接,但它是一个比 Ajax 轮询更有效的数量级,特别是因为连接到的是一个专业服务器而不是直接连接到 web 应用程序.</p>
-<p>BOSH 上的 XMPP 允许 web 应用程序通过一个原生连接持续与 XMPP 服务器通信.客户端通过端口 80 上的 HTTP 上的一个标准 URL 连接.然后,web 服务器将这个连接代理到由 XMPP 服务器操作的一个不同端口 — 通常是 7070 — 上的 HTTP URL.<br>这样,无论何时数据被发送到 XMPP 服务器,web 应用程序只需使用一些资源,而 web 客户端可以使用通常支持的 web 标准从防火墙后操作.<br>维持 BOSH 的较长 HTTP 轮询的开销主要由 XMPP 服务器而不是 web 服务器或 web 应用程序承担.web 服务器和 XMPP 服务器都不会受到与使用 JavaScript 进行通信一样的域限制,正是因为这一点,消息才能够被发送到其他 XMPP 服务器和客户端.</p>
-<p>现在,您理解了 XMPP 如何适合实时 web,可以下载并设置它,以便开始创建这个 Pingstream 应用程序.</p>
-</blockquote>
-<hr>
-<h5 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h5><p><a href="https://tonghuix.io/2015/03/xmpp-chat/" target="_blank" rel="external">弃用QQ和微信！全面转向基于XMPP(Jabber)的即时聊天</a></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<h3 id="u5173_u4E8E_XMPP__u534F_u8BAE"><a href="#u5173_u4E8E_XMPP__u534F_u8BAE" class="headerlink" title="关于 XMPP 协议"></a>关于 XMPP 协议</h3><p><a href="http://xmpp.org/xmpp-protocols/xmpp-extensions/">XMPP 扩展协议标准</a><br><a href="http://wiki.jabbercn.org/XEP-0045">Ejabberd 中文翻译文档上面的 关于 Ejabberd 使用的协议介绍</a></p>
-<hr>
-<p><a href="https://xmpp.net/directory.php">XMPP 免费服务器列表</a></p>
-<p>比较好的公共服务器</p>
-<p><a href="https://www.xmpp.jp/signup">xmpp.jp</a></p>
-<p>XMPP 客户端</p>
-<blockquote>
-<p>PC端肯定要推荐一些比较经典的啦,诸如Pidgin、Empathy、Kopete、Miranda IM(只支持Windows)或Adium(只支持Mac OS X)这样的都可以很好的兼容XMPP/Jabber协议,<br>不过呢还有一些专门的客户端软件,比如 Gajim和Psi+(这是Psi的升级版,增加了更多功能)这样的XMPP专业工具.<br>类似Pidgin这样大而全的软件可以很好的支持XMPP几乎所有的功能(通过各种插件).<br>而专有的软件则可以更加专注于协议的实现,更加完善,也更加富有使用的优势,特别是需要加密聊天比如OTR和PGP这样的时候,专攻XMPP协议的这些客户端就更方便可靠了.<br>当然还有命令行下的软件,mcabber是专门设计给XMPP/Jabber使用的,可以非常方便的提供OTR和PGP加密聊天.</p>
-</blockquote>]]>
-    
-    </summary>
-    
-      <category term="hexo" scheme="https://coam.co/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Ejabberd Note]]></title>
-    <link href="https://coam.co/2016/01/03/EjabberdNote/"/>
-    <id>https://coam.co/2016/01/03/EjabberdNote/</id>
-    <published>2016-01-03T12:52:05.000Z</published>
-    <updated>2016-01-07T12:30:50.235Z</updated>
-    <content type="html"><![CDATA[<h4 id="Ejabberd_Note"><a href="#Ejabberd_Note" class="headerlink" title="Ejabberd Note"></a>Ejabberd Note</h4><p>XMPP协议的命名空间:</p>
-<pre><code>jabber:iq:private   -- 私有数据存储,用于本地用户私人设置信息,比如用户备注等.
-jabber:iq:conference  -- 一般会议,用于多个用户之间的信息共享
-jabber:x:encrypted -- 加密的消息,用于发送加密消息
-jabber:x:expire  -- 消息终止
-jabber:iq:time  -- 客户端时间
-jabber:iq:auth  -- 简单用户认证,一般用于服务器之间或者服务器和客户端之间的认证
-jabber:x:roster  -- 内部花名册
-jabber:x:signed  -- 标记的在线状态
-jabber:iq:search -- 用户数据库查询,用于向服务器发送查询请求
-jabber:iq:register -- 注册请求,用于用户注册相关信息
-jabber:x:iq:roster -- 花名册管理
-jabber:x:conference -- 会议邀请,用于向参加会议用户发送开会通知
-jabber:x:event  -- 消息事件
-vcard-temp  -- 临时的vCard,用于设置用户的头像以及昵称等
-</code></pre>]]></content>
-    <summary type="html">
-    <![CDATA[<h4 id="Ejabberd_Note"><a href="#Ejabberd_Note" class="headerlink" title="Ejabberd Note"></a>Ejabberd Note</h4><p>XMPP协议的命名空间:</p>
-<pre><cod]]>
-    </summary>
-    
-      <category term="hexo" scheme="https://coam.co/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Lua 学习摘要]]></title>
-    <link href="https://coam.co/2016/01/03/Lua/"/>
-    <id>https://coam.co/2016/01/03/Lua/</id>
-    <published>2016-01-03T12:52:05.000Z</published>
-    <updated>2016-01-07T12:31:05.476Z</updated>
+    <updated>2016-01-10T12:57:26.989Z</updated>
     <content type="html"><![CDATA[<h3 id="Lua__u5B66_u4E60_u6458_u8981"><a href="#Lua__u5B66_u4E60_u6458_u8981" class="headerlink" title="Lua 学习摘要"></a>Lua 学习摘要</h3><p><a href="http://dhq.me/lua-learning-notes-package-and-module" target="_blank" rel="external">Lua 学习笔记(4) – 模块与包</a></p>
 ]]></content>
     <summary type="html">
     <![CDATA[<h3 id="Lua__u5B66_u4E60_u6458_u8981"><a href="#Lua__u5B66_u4E60_u6458_u8981" class="headerlink" title="Lua 学习摘要"></a>Lua 学习摘要</h3><p><a hre]]>
     </summary>
     
-      <category term="hexo" scheme="https://coam.co/tags/hexo/"/>
-    
   </entry>
   
   <entry>
-    <title><![CDATA[关于 MQTT 协议]]></title>
-    <link href="https://coam.co/2016/01/03/MQTT/"/>
-    <id>https://coam.co/2016/01/03/MQTT/</id>
-    <published>2016-01-03T12:52:05.000Z</published>
-    <updated>2016-01-07T12:31:20.830Z</updated>
-    <content type="html"><![CDATA[<h3 id="u5173_u4E8E_MQTT__u534F_u8BAE"><a href="#u5173_u4E8E_MQTT__u534F_u8BAE" class="headerlink" title="关于 MQTT 协议"></a>关于 MQTT 协议</h3><p><a href="https://github.com/liangjingyang/MQTT-CN/blob/master/mqtt-v3.1.1-os.md" target="_blank" rel="external">MQTT 中文文档 Version 3.1.1</a></p>
+    <title><![CDATA[Title]]></title>
+    <link href="https://coam.co/2016/01/10/Java/LearnAsyncTask/"/>
+    <id>https://coam.co/2016/01/10/Java/LearnAsyncTask/</id>
+    <published>2016-01-10T11:41:31.000Z</published>
+    <updated>2016-01-20T08:55:12.188Z</updated>
+    <content type="html"><![CDATA[<h4 id="Android__u5F00_u53D1_u4E4B_AsyncTask__u5F02_u6B65_u4EFB_u52A1"><a href="#Android__u5F00_u53D1_u4E4B_AsyncTask__u5F02_u6B65_u4EFB_u52A1" class="headerlink" title="Android 开发之 AsyncTask 异步任务"></a>Android 开发之 AsyncTask 异步任务</h4><p><a href="http://code.oneapm.com/android/2015/06/02/android1/" target="_blank" rel="external">Android开发者:你真的会用AsyncTask吗？</a><br><a href="http://stackvoid.com/understanding-AsyncTask-in-Android/" target="_blank" rel="external">深入理解AsyncTask</a></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h3 id="u5173_u4E8E_MQTT__u534F_u8BAE"><a href="#u5173_u4E8E_MQTT__u534F_u8BAE" class="headerlink" title="关于 MQTT 协议"></a>关于 MQTT 协议</h3><p>]]>
-    </summary>
-    
-      <category term="hexo" scheme="https://coam.co/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[使用 Rebar 管理 erlang 项目]]></title>
-    <link href="https://coam.co/2016/01/03/Rebar/"/>
-    <id>https://coam.co/2016/01/03/Rebar/</id>
-    <published>2016-01-03T12:52:05.000Z</published>
-    <updated>2016-01-07T12:31:27.475Z</updated>
-    <content type="html"><![CDATA[<h3 id="u4F7F_u7528_Rebar__u7BA1_u7406_erlang__u9879_u76EE"><a href="#u4F7F_u7528_Rebar__u7BA1_u7406_erlang__u9879_u76EE" class="headerlink" title="使用 Rebar 管理 erlang 项目"></a>使用 Rebar 管理 erlang 项目</h3><p><a href="https://github.com/rebar/rebar" target="_blank" rel="external">GitHub - </a></p>
-<h4 id="u4F7F_u7528_Intellij_idea15__u5229_u7528_rebar__u5F00_u53D1_u8C03_u8BD5_ejabberd"><a href="#u4F7F_u7528_Intellij_idea15__u5229_u7528_rebar__u5F00_u53D1_u8C03_u8BD5_ejabberd" class="headerlink" title="使用 Intellij idea15 利用 rebar 开发调试 ejabberd"></a>使用 Intellij idea15 利用 rebar 开发调试 ejabberd</h4><blockquote>
-<p>默认 Erlang 的 ejabberd 根项目下已经有 rebar 文件了</p>
-</blockquote>
-<p>1.Win下安装 <a href="http://www.erlang.org/download/otp_win64_18.2.1.exe" target="_blank" rel="external">otp.18</a> 到 G:\Program Files\erl7.2.1 下<br>2.将 G:\Program Files\erl7.2.1 添加系统环境变量 PATH<br>3.Intellij idea 项目 ejabberd 中 SDK 添加 OTP18.**<br>4.win下使用 Cygwin 安装 rebar</p>
-<pre><code>$ git clone git://github.com/rebar/rebar.git
-$ cd rebar
-$ ./bootstrap
-Recompile: src/getopt
-...
-Recompile: src/rebar_utils
-==&gt; rebar (compile)
-Congratulations! You now have a self-contained script called &quot;rebar&quot; in
-your current working directory. Place this script anywhere in your path
-and you can use rebar to build OTP-compliant apps.
-</code></pre><p>它将自动将 rebar 安装到 C:\Users\yafei\rebar 下</p>
-<ol>
-<li><p>File-&gt;Other Setting-&gt;Default Setting-&gt;Erlang Extenal Tools 配置 PATH 为 C:\Users\yafei\rebar\rebar.cmd</p>
-</li>
-<li><p>File-&gt;Setting-&gt;Setting-&gt;In “Build, Execution, Deployment/Erlan Compiler”, 勾选 “Compile project with rebar”.</p>
-</li>
-</ol>
-<p>6.Menu -&gt; Run -&gt; Edit Configurations -&gt; 添加按钮 -&gt; Erlang Rebar ,具体配置为 在 Command 一栏添加 任务 delete-deps clean get-deps compile 并任意填写一个任务名称 coamerlangtask</p>
-<p>7.在 Intellij idea 右上角可以点击运行开始打包</p>
-<hr>
-<h3 id="u9519_u8BEF_u5206_u6790"><a href="#u9519_u8BEF_u5206_u6790" class="headerlink" title="错误分析"></a>错误分析</h3><blockquote>
-<p>rebar unable to get dependency from github</p>
-<p>使用简单的 clean compile 命令会出现很多未找到依赖包 * ,因为编译 compile 前先要 get-deps 所以将 rebar 编译命令改为 delete-deps clean get-deps compile</p>
-</blockquote>
-<p>参考 <a href="http://stackoverflow.com/questions/10059579/rebar-unable-to-get-dependency-from-github" target="_blank" rel="external">rebar unable to get dependency from github</a></p>
-<hr>
-<p>参考列表<br><a href="https://github.com/rebar/rebar/wiki/Rebar-commands" target="_blank" rel="external">Rebar commands</a><br><a href="http://zewaren.net/site/?q=node/144" target="_blank" rel="external">Using Intellij IDEA to write and debug Erlang code</a><br><a href="https://www.jetbrains.com/idea/help/getting-started-with-erlang.html#d207953e377" target="_blank" rel="external">Intellij Idea 官网说明</a><br><a href="http://blog.csdn.net/shake1050/article/details/43670281" target="_blank" rel="external">windows下使用IntelliJ IDEA的erlang编译环境搭建(含rebar工具)</a></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<h3 id="u4F7F_u7528_Rebar__u7BA1_u7406_erlang__u9879_u76EE"><a href="#u4F7F_u7528_Rebar__u7BA1_u7406_erlang__u9879_u76EE" class="headerlink"]]>
-    </summary>
-    
-      <category term="hexo" scheme="https://coam.co/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Hello tow]]></title>
-    <link href="https://coam.co/2016/01/03/hello-two/"/>
-    <id>https://coam.co/2016/01/03/hello-two/</id>
-    <published>2016-01-03T12:49:04.726Z</published>
-    <updated>2016-01-03T12:49:04.725Z</updated>
-    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post 兔子"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io]]>
+    <![CDATA[<h4 id="Android__u5F00_u53D1_u4E4B_AsyncTask__u5F02_u6B65_u4EFB_u52A1"><a href="#Android__u5F00_u53D1_u4E4B_AsyncTask__u5F02_u6B65_u4EFB_u52]]>
     </summary>
     
   </entry>
   
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <link href="https://coam.co/2016/01/03/hello-world/"/>
-    <id>https://coam.co/2016/01/03/hello-world/</id>
-    <published>2016-01-03T11:40:19.831Z</published>
-    <updated>2016-01-03T11:40:19.830Z</updated>
-    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info 卡卡: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+    <title><![CDATA[Title]]></title>
+    <link href="https://coam.co/2016/01/10/Java/LearnGoogleGuava/"/>
+    <id>https://coam.co/2016/01/10/Java/LearnGoogleGuava/</id>
+    <published>2016-01-10T11:41:31.000Z</published>
+    <updated>2016-01-20T08:55:12.163Z</updated>
+    <content type="html"><![CDATA[<h3 id="Google_Guava__u5F00_u53D1_u6458_u8981"><a href="#Google_Guava__u5F00_u53D1_u6458_u8981" class="headerlink" title="Google Guava 开发摘要"></a>Google Guava 开发摘要</h3><p><a href="https://github.com/google/guava" target="_blank" rel="external">google/guava GitHub</a><br><a href="http://ifeve.com/google-guava/" target="_blank" rel="external">Google Guava官方教程(中文版)</a></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io]]>
+    <![CDATA[<h3 id="Google_Guava__u5F00_u53D1_u6458_u8981"><a href="#Google_Guava__u5F00_u53D1_u6458_u8981" class="headerlink" title="Google Guava 开发摘要"]]>
     </summary>
     
   </entry>
   
   <entry>
-    <title><![CDATA[Hello One]]></title>
-    <link href="https://coam.co/2016/01/03/hello-one/"/>
-    <id>https://coam.co/2016/01/03/hello-one/</id>
-    <published>2016-01-03T11:39:51.880Z</published>
-    <updated>2016-01-03T11:39:51.879Z</updated>
-    <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+    <title><![CDATA[Title]]></title>
+    <link href="https://coam.co/2016/01/10/Java/LearnJavaArray/"/>
+    <id>https://coam.co/2016/01/10/Java/LearnJavaArray/</id>
+    <published>2016-01-10T11:41:31.000Z</published>
+    <updated>2016-01-20T08:55:12.181Z</updated>
+    <content type="html"><![CDATA[<h4 id="Java_u6570_u7EC4"><a href="#Java_u6570_u7EC4" class="headerlink" title="Java数组"></a>Java数组</h4><h4 id="u58F0_u660E_u4E00_u4E2A_u6570_u7EC4_28Declare_an_array_29"><a href="#u58F0_u660E_u4E00_u4E2A_u6570_u7EC4_28Declare_an_array_29" class="headerlink" title="声明一个数组(Declare an array)"></a>声明一个数组(Declare an array)</h4><pre><code>String[] aArray = new String[5];
+String[] bArray = {&quot;a&quot;,&quot;b&quot;,&quot;c&quot;, &quot;d&quot;, &quot;e&quot;};
+String[] cArray = new String[]{&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;};
+</code></pre><h4 id="u5728Java_u4E2D_u8F93_u51FA_u4E00_u4E2A_u6570_u7EC4_28Print_an_array_in_Java_29"><a href="#u5728Java_u4E2D_u8F93_u51FA_u4E00_u4E2A_u6570_u7EC4_28Print_an_array_in_Java_29" class="headerlink" title="在Java中输出一个数组(Print an array in Java)"></a>在Java中输出一个数组(Print an array in Java)</h4><pre><code>int[] intArray = { 1, 2, 3, 4, 5 };
+String intArrayString = Arrays.toString(intArray);
+
+// print directly will print reference value
+System.out.println(intArray);
+// [I@7150bd4d
+
+System.out.println(intArrayString);
+// [1, 2, 3, 4, 5]
+</code></pre><h4 id="u4ECE_u6570_u7EC4_u4E2D_u521B_u5EFA_u6570_u7EC4_u5217_u8868_28Create_an_ArrayList_from_an_array_29"><a href="#u4ECE_u6570_u7EC4_u4E2D_u521B_u5EFA_u6570_u7EC4_u5217_u8868_28Create_an_ArrayList_from_an_array_29" class="headerlink" title="从数组中创建数组列表(Create an ArrayList from an array)"></a>从数组中创建数组列表(Create an ArrayList from an array)</h4><pre><code>String[] stringArray = { &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot; };
+ArrayList&lt;String&gt; arrayList = new ArrayList&lt;String&gt;(Arrays.asList(stringArray));
+System.out.println(arrayList);
+// [a, b, c, d, e]
+</code></pre><h4 id="u68C0_u67E5_u6570_u7EC4_u4E2D_u662F_u5426_u5305_u542B_u7279_u5B9A_u503C_28Check_if_an_array_contains_a_certain_value_29"><a href="#u68C0_u67E5_u6570_u7EC4_u4E2D_u662F_u5426_u5305_u542B_u7279_u5B9A_u503C_28Check_if_an_array_contains_a_certain_value_29" class="headerlink" title="检查数组中是否包含特定值(Check if an array contains a certain value)"></a>检查数组中是否包含特定值(Check if an array contains a certain value)</h4><pre><code>String[] stringArray = { &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot; };
+boolean b = Arrays.asList(stringArray).contains(&quot;a&quot;);
+System.out.println(b);
+// true
+</code></pre><h4 id="u8FDE_u63A5_u4E24_u4E2A_u6570_u7EC4_28_Concatenate_two_arrays_29"><a href="#u8FDE_u63A5_u4E24_u4E2A_u6570_u7EC4_28_Concatenate_two_arrays_29" class="headerlink" title="连接两个数组( Concatenate two arrays)"></a>连接两个数组( Concatenate two arrays)</h4><pre><code>int[] intArray = { 1, 2, 3, 4, 5 };
+int[] intArray2 = { 6, 7, 8, 9, 10 };
+// Apache Commons Lang library
+int[] combinedIntArray = ArrayUtils.addAll(intArray, intArray2);
+</code></pre><h4 id="u58F0_u660E_u4E00_u4E2A_u6570_u7EC4_u5185_u94FE_28Declare_an_array_inline__29"><a href="#u58F0_u660E_u4E00_u4E2A_u6570_u7EC4_u5185_u94FE_28Declare_an_array_inline__29" class="headerlink" title="声明一个数组内链(Declare an array inline )"></a>声明一个数组内链(Declare an array inline )</h4><pre><code>method(new String[]{&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;});
+</code></pre><h4 id="u5C06_u6570_u7EC4_u5143_u7D20_u52A0_u5165_u5230_u4E00_u4E2A_u72EC_u7ACB_u7684_u5B57_u7B26_u4E32_u4E2D_28Joins_the_elements_of_the_provided_array_into_a_single_String_29"><a href="#u5C06_u6570_u7EC4_u5143_u7D20_u52A0_u5165_u5230_u4E00_u4E2A_u72EC_u7ACB_u7684_u5B57_u7B26_u4E32_u4E2D_28Joins_the_elements_of_the_provided_array_into_a_single_String_29" class="headerlink" title="将数组元素加入到一个独立的字符串中(Joins the elements of the provided array into a single String)"></a>将数组元素加入到一个独立的字符串中(Joins the elements of the provided array into a single String)</h4><pre><code>// containing the provided list of elements
+// Apache common lang
+String j = StringUtils.join(new String[] { &quot;a&quot;, &quot;b&quot;, &quot;c&quot; }, &quot;, &quot;);
+System.out.println(j);
+// a, b, c
+</code></pre><h4 id="u5C06_u6570_u7EC4_u5217_u8868_u8F6C_u6362_u6210_u4E00_u4E2A_u6570_u7EC4__28Covnert_an_ArrayList_to_an_array_29"><a href="#u5C06_u6570_u7EC4_u5217_u8868_u8F6C_u6362_u6210_u4E00_u4E2A_u6570_u7EC4__28Covnert_an_ArrayList_to_an_array_29" class="headerlink" title="将数组列表转换成一个数组 (Covnert an ArrayList to an array)"></a>将数组列表转换成一个数组 (Covnert an ArrayList to an array)</h4><pre><code>String[] stringArray = { &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot; };
+ArrayList&lt;String&gt; arrayList = new ArrayList&lt;String&gt;(Arrays.asList(stringArray));
+String[] stringArr = new String[arrayList.size()];
+arrayList.toArray(stringArr);
+for (String s : stringArr)
+    System.out.println(s);
+</code></pre><h4 id="u5C06_u6570_u7EC4_u8F6C_u6362_u6210_u4E00_u4E2A_u96C6_u5408_28Convert_an_array_to_a_set_29"><a href="#u5C06_u6570_u7EC4_u8F6C_u6362_u6210_u4E00_u4E2A_u96C6_u5408_28Convert_an_array_to_a_set_29" class="headerlink" title="将数组转换成一个集合(Convert an array to a set)"></a>将数组转换成一个集合(Convert an array to a set)</h4><pre><code>Set&lt;String&gt; set = new HashSet&lt;String&gt;(Arrays.asList(stringArray));
+System.out.println(set);
+//[d, e, b, c, a]
+</code></pre><h4 id="u53CD_u5411_u6570_u7EC4_28Reverse_an_array_29"><a href="#u53CD_u5411_u6570_u7EC4_28Reverse_an_array_29" class="headerlink" title="反向数组(Reverse an array)"></a>反向数组(Reverse an array)</h4><pre><code>int[] intArray = { 1, 2, 3, 4, 5 };
+ArrayUtils.reverse(intArray);
+System.out.println(Arrays.toString(intArray));
+//[5, 4, 3, 2, 1]
+</code></pre><h4 id="u5220_u9664_u6570_u7EC4_u5143_u7D20_28Remove_element_of_an_array_29"><a href="#u5220_u9664_u6570_u7EC4_u5143_u7D20_28Remove_element_of_an_array_29" class="headerlink" title="删除数组元素(Remove element of an array)"></a>删除数组元素(Remove element of an array)</h4><pre><code>int[] intArray = { 1, 2, 3, 4, 5 };
+int[] removed = ArrayUtils.removeElement(intArray, 3);//create a new array
+System.out.println(Arrays.toString(removed));
+One more – convert int to byte array 
+byte[] bytes = ByteBuffer.allocate(4).putInt(8).array();
+
+for (byte t : bytes) {
+   System.out.format(&quot;0x%x &quot;, t);
+}
+</code></pre><hr>
+<h4 id="Five__285_29_ways_to_Iterate_Through_Loop_in_Java"><a href="#Five__285_29_ways_to_Iterate_Through_Loop_in_Java" class="headerlink" title="Five (5) ways to Iterate Through Loop in Java"></a>Five (5) ways to Iterate Through Loop in Java</h4><pre><code>package crunchify.com.tutorial;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+/**
+ * @author Crunchify.com
+ */
+
+public class CrunchifyIterateThroughList {
+
+    public static void main(String[] argv) {
+
+        // create list
+        List&lt;String&gt; CrunchifyList = new ArrayList&lt;String&gt;();
+
+        // add 4 different values to list
+        CrunchifyList.add(&quot;eBay&quot;);
+        CrunchifyList.add(&quot;Paypal&quot;);
+        CrunchifyList.add(&quot;Google&quot;);
+        CrunchifyList.add(&quot;Yahoo&quot;);
+
+        // iterate via &quot;for loop&quot;
+        System.out.println(&quot;==&gt; For Loop Example.&quot;);
+        for (int i = 0; i &lt; CrunchifyList.size(); i++) {
+            System.out.println(CrunchifyList.get(i));
+        }
+
+        // iterate via &quot;New way to loop&quot;
+        System.out.println(&quot;\n==&gt; Advance For Loop Example..&quot;);
+        for (String temp : CrunchifyList) {
+            System.out.println(temp);
+        }
+
+        // iterate via &quot;iterator loop&quot;
+        System.out.println(&quot;\n==&gt; Iterator Example...&quot;);
+        Iterator&lt;String&gt; CrunchifyIterator = CrunchifyList.iterator();
+        while (CrunchifyIterator.hasNext()) {
+            System.out.println(CrunchifyIterator.next());
+        }
+
+        // iterate via &quot;while loop&quot;
+        System.out.println(&quot;\n==&gt; While Loop Example....&quot;);
+        int i = 0;
+        while (i &lt; CrunchifyList.size()) {
+            System.out.println(CrunchifyList.get(i));
+            i++;
+        }
+
+        // collection stream() util: Returns a sequential Stream with this collection as its source
+        System.out.println(&quot;\n==&gt; collection stream() util....&quot;);
+        CrunchifyList.forEach((temp) -&gt; {
+            System.out.println(temp);
+        });
+    }
+}
+</code></pre><hr>
+<h4 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h4><p><a href="http://crunchify.com/how-to-iterate-through-java-list-4-way-to-iterate-through-loop/" target="_blank" rel="external">Java List For 循环 How to iterate through Java List? Five (5) ways to Iterate Through Loop in Java</a><br><a href="http://www.programcreek.com/2014/01/java%E7%A8%8B%E5%BA%8F%E5%91%98%E5%B8%B8%E7%8A%AF%E7%9A%8410%E4%B8%AA%E9%94%99%E8%AF%AF/" target="_blank" rel="external">Java程序员常犯的10个错误</a></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io]]>
+    <![CDATA[<h4 id="Java_u6570_u7EC4"><a href="#Java_u6570_u7EC4" class="headerlink" title="Java数组"></a>Java数组</h4><h4 id="u58F0_u660E_u4E00_u4E2A_u6570]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Title]]></title>
+    <link href="https://coam.co/2016/01/10/Java/LearnJavaHashMap/"/>
+    <id>https://coam.co/2016/01/10/Java/LearnJavaHashMap/</id>
+    <published>2016-01-10T11:41:31.000Z</published>
+    <updated>2016-01-20T08:56:16.785Z</updated>
+    <content type="html"><![CDATA[<h3 id="SparseArray__u548C_HashMap__u7684_u5B9E_u73B0_u4E0E_u4F18_u5316"><a href="#SparseArray__u548C_HashMap__u7684_u5B9E_u73B0_u4E0E_u4F18_u5316" class="headerlink" title="SparseArray 和 HashMap 的实现与优化"></a>SparseArray 和 HashMap 的实现与优化</h3><p><a href="http://www.jianshu.com/p/e54047b2b563" target="_blank" rel="external">HashMap的实现与优化</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="SparseArray__u548C_HashMap__u7684_u5B9E_u73B0_u4E0E_u4F18_u5316"><a href="#SparseArray__u548C_HashMap__u7684_u5B9E_u73B0_u4E0E_u4F18]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Title]]></title>
+    <link href="https://coam.co/2016/01/10/Java/LearnLombok/"/>
+    <id>https://coam.co/2016/01/10/Java/LearnLombok/</id>
+    <published>2016-01-10T11:41:31.000Z</published>
+    <updated>2016-01-20T08:56:16.790Z</updated>
+    <content type="html"><![CDATA[<h4 id="Lombok__u6CE8_u89E3_u652F_u6301"><a href="#Lombok__u6CE8_u89E3_u652F_u6301" class="headerlink" title="Lombok 注解支持"></a>Lombok 注解支持</h4><p><a href="https://projectlombok.org/index.html" target="_blank" rel="external">Lombok官网</a><br><a href="http://it.deepinmind.com/java/2014/04/08/lombok-for-java-development.html" target="_blank" rel="external">Lombok: Java开发的利器</a><br><a href="https://github.com/rzwitserloot/lombok" target="_blank" rel="external">Lombok GitHub</a></p>
+<p><a href="http://codepub.cn/2015/07/30/Lombok-development-guidelines/" target="_blank" rel="external">Lombok开发指南</a></p>
+<h4 id="Android_Studio_Lombok__u63D2_u4EF6"><a href="#Android_Studio_Lombok__u63D2_u4EF6" class="headerlink" title="Android Studio Lombok 插件"></a>Android Studio Lombok 插件</h4><p><a href="https://github.com/mplushnikov/lombok-intellij-plugin" target="_blank" rel="external">lombok-intellij-plugin</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h4 id="Lombok__u6CE8_u89E3_u652F_u6301"><a href="#Lombok__u6CE8_u89E3_u652F_u6301" class="headerlink" title="Lombok 注解支持"></a>Lombok 注解支持</]]>
     </summary>
     
   </entry>
