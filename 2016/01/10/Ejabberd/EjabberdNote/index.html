@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>EjabberdNote | 商运物流</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Ejabberd NoteEjabberd Xamp 服务器搭建[ejabberd官方文档] (http://docs.ejabberd.im/)ejabberd githubEjabberd2 中文翻译文档
+Ejabberd - configuration 配置文件文档Ejabberd XEP-* 支持列表
+优秀 Ejabberd 开发者博客木头人 ejabberd Modules develo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EjabberdNote">
+<meta property="og:url" content="https://coam.co/2016/01/10/Ejabberd/EjabberdNote/index.html">
+<meta property="og:site_name" content="商运物流">
+<meta property="og:description" content="Ejabberd NoteEjabberd Xamp 服务器搭建[ejabberd官方文档] (http://docs.ejabberd.im/)ejabberd githubEjabberd2 中文翻译文档
+Ejabberd - configuration 配置文件文档Ejabberd XEP-* 支持列表
+优秀 Ejabberd 开发者博客木头人 ejabberd Modules develo">
+<meta property="og:updated_time" content="2016-05-11T10:31:12.510Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EjabberdNote">
+<meta name="twitter:description" content="Ejabberd NoteEjabberd Xamp 服务器搭建[ejabberd官方文档] (http://docs.ejabberd.im/)ejabberd githubEjabberd2 中文翻译文档
+Ejabberd - configuration 配置文件文档Ejabberd XEP-* 支持列表
+优秀 Ejabberd 开发者博客木头人 ejabberd Modules develo">
+  
+    <link rel="alternative" href="/atom.xml" title="商运物流" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/author.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">张亚飞</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/markdown-gfw-hexo-jekyll/" style="font-size: 10px;">markdown gfw hexo jekyll</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://coam.co">商运物流</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/zyfmix/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://wp.iirii.com/">商运技术博客</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于物流设计</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">张亚飞</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img lazy-src="/img/author.jpg" class="js-avatar">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">张亚飞</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Ejabberd/EjabberdNote" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Ejabberd/EjabberdNote/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      EjabberdNote
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Ejabberd-Note"><a href="#Ejabberd-Note" class="headerlink" title="Ejabberd Note"></a>Ejabberd Note</h1><h3 id="Ejabberd-Xamp-服务器搭建"><a href="#Ejabberd-Xamp-服务器搭建" class="headerlink" title="Ejabberd Xamp 服务器搭建"></a>Ejabberd Xamp 服务器搭建</h3><p>[ejabberd官方文档] (<a href="http://docs.ejabberd.im/" target="_blank" rel="external">http://docs.ejabberd.im/</a>)<br><a href="https://github.com/processone/ejabberd" target="_blank" rel="external">ejabberd github</a><br><a href="http://wiki.jabbercn.org/Ejabberd2:%E5%AE%89%E8%A3%85%E5%92%8C%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97" target="_blank" rel="external">Ejabberd2 中文翻译文档</a></p>
+<p><a href="http://docs.ejabberd.im/admin/guide/configuration/#modroster" target="_blank" rel="external">Ejabberd - configuration 配置文件文档</a><br><a href="https://www.process-one.net/en/ejabberd/protocols/" target="_blank" rel="external">Ejabberd XEP-* 支持列表</a></p>
+<h3 id="优秀-Ejabberd-开发者博客"><a href="#优秀-Ejabberd-开发者博客" class="headerlink" title="优秀 Ejabberd 开发者博客"></a>优秀 Ejabberd 开发者博客</h3><p><a href="http://allran.github.io/2015/04/16/ejabberd-Modules-development/" target="_blank" rel="external">木头人 ejabberd Modules development</a><br><a href="http://developerworks.github.io/" target="_blank" rel="external">元气糯米团子的Coding Blog</a><br><a href="http://www.just4coding.com/blog/2014/12/09/ejabberd-config/" target="_blank" rel="external">Ejabberd配置模块分析</a><br><a href="http://blog.zlxstar.me/blog/2013/07/20/ejabberd-starting-process/" target="_blank" rel="external">zlx_star - Ejabberd 启动过程</a></p>
+<h3 id="收藏博客文章"><a href="#收藏博客文章" class="headerlink" title="收藏博客文章"></a>收藏博客文章</h3><p><a href="http://segmentfault.com/a/1190000000665676" target="_blank" rel="external">Worktile中的实时消息推送服务实现</a></p>
+<hr>
+<h2 id="常见的-Ejabberd-服务器管理命令"><a href="#常见的-Ejabberd-服务器管理命令" class="headerlink" title="常见的 Ejabberd 服务器管理命令"></a>常见的 Ejabberd 服务器管理命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo ejabberdctl live    <span class="comment"># 调试 ejabberd 配置文件并打印日志信息</span></span><br><span class="line">sudo ejabberdctl start   <span class="comment"># 启动 ejabberd 服务器</span></span><br><span class="line">sudo ejabberdctl restart <span class="comment"># 重启 ejabberd 服务器</span></span><br><span class="line"><span class="comment">#sudo ejabberdctl status  # 查看 ejabberd 服务器运行状态</span></span><br><span class="line">sudo ejabberdctl debug  <span class="comment"># 查看 ejabberd 服务器运行状态</span></span><br><span class="line">ejabberdctl register zyfmix coam.co ****** <span class="comment"># 添加注册新用户</span></span><br><span class="line"></span><br><span class="line">ejabberdctl modules_update_specs <span class="comment"># 更新所有模块</span></span><br><span class="line">ejabberdctl modules_available    <span class="comment"># 查看可用安装模块</span></span><br><span class="line">ejabberdctl module_install mod_mam <span class="comment"># 安装模块 mod_mam</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="http://allran.github.io/2015/04/15/ejabberd-install/" target="_blank" rel="external">木头人 - ejabberd install</a><br><a href="http://developerworks.github.io/2014/09/25/ejabberd-compile-issues/" target="_blank" rel="external">编译Ejabberd遇到的问题</a></p>
+<hr>
+<h2 id="XMPP协议的命名空间"><a href="#XMPP协议的命名空间" class="headerlink" title="XMPP协议的命名空间:"></a>XMPP协议的命名空间:</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">jabber:</span><span class="string">iq:</span><span class="keyword">private</span>   -- 私有数据存储,用于本地用户私人设置信息,比如用户备注等.</span><br><span class="line"><span class="string">jabber:</span><span class="string">iq:</span>conference  -- 一般会议,用于多个用户之间的信息共享</span><br><span class="line"><span class="string">jabber:</span><span class="string">x:</span>encrypted -- 加密的消息,用于发送加密消息</span><br><span class="line"><span class="string">jabber:</span><span class="string">x:</span>expire  -- 消息终止</span><br><span class="line"><span class="string">jabber:</span><span class="string">iq:</span>time  -- 客户端时间</span><br><span class="line"><span class="string">jabber:</span><span class="string">iq:</span>auth  -- 简单用户认证,一般用于服务器之间或者服务器和客户端之间的认证</span><br><span class="line"><span class="string">jabber:</span><span class="string">x:</span>roster  -- 内部花名册</span><br><span class="line"><span class="string">jabber:</span><span class="string">x:</span>signed  -- 标记的在线状态</span><br><span class="line"><span class="string">jabber:</span><span class="string">iq:</span>search -- 用户数据库查询,用于向服务器发送查询请求</span><br><span class="line"><span class="string">jabber:</span><span class="string">iq:</span>register -- 注册请求,用于用户注册相关信息</span><br><span class="line"><span class="string">jabber:</span><span class="string">x:</span><span class="string">iq:</span>roster -- 花名册管理</span><br><span class="line"><span class="string">jabber:</span><span class="string">x:</span>conference -- 会议邀请,用于向参加会议用户发送开会通知</span><br><span class="line"><span class="string">jabber:</span><span class="string">x:</span>event  -- 消息事件</span><br><span class="line">vcard-temp  -- 临时的vCard,用于设置用户的头像以及昵称等</span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<h3 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h3><p>只装在你想要的模块.<br>在你自己的自定义模块扩展ejabberd.<br>安全性<br>支持c2s和s2s连接的SASL和STARTTLS.<br>支持s2s连接的STARTTLS和Dialback.<br>可通过HTTPS安全访问的Web管理.<br>数据库<br>快速布署的内部数据库(Mnesia).<br>原生的MySQL支持.<br>原生的PostgreSQL支持.<br>支持ODBC数据存储.<br>支持Microsoft SQL Server.<br>验证<br>内部验证.<br>PAM, LDAP 和 ODBC.<br>外部验证脚本.<br>其他<br>支持虚拟主机.<br>XML流压缩 (XEP-0138).<br>统计 (XEP-0039).<br>支持IPv6的c2s和s2s连接.<br>支持集群和HTML日志的多用户聊天模块.<br>基于用户vCards的用户目录.<br>支持基于PubSub的个人事件的发行-订阅组件.<br>支持web客户端: HTTP轮询和HTTP绑定(BOSH)服务.<br>IRC网关.<br>组件支持: 安装特定网关之后和外部网络的接口,如 AIM, ICQ 和 MSN.</p>
+<h3 id="模块一览"><a href="#模块一览" class="headerlink" title="模块一览"></a>模块一览</h3><p>下表列出ejabberd里的所有模块.</p>
+<p>模块 功能 依赖<br>mod_adhoc 特定命令 (XEP-0050)</p>
+<p>mod_announce 管理公告<br>推荐 mod_adhoc<br>mod_caps 实体能力 (XEP-0115)</p>
+<p>mod_configure 使用特定命令配置服务器<br>mod_adhoc<br>mod_disco 服务发现 (XEP-0030)</p>
+<p>mod_echo XMPP节回音</p>
+<p>mod_irc IRC网关<br>mod_last 最后活动 (XEP-0012)</p>
+<p>mod_last_odbc 最后活动 (XEP-0012)<br>支持的数据库 (*)<br>mod_muc 多用户聊天 (XEP-0045)</p>
+<p>mod_muc_log 多用户聊天室记录<br>mod_muc<br>mod_offline 离线消息存储 (XEP-0160)</p>
+<p>mod_offline_odbc 离线消息存储 (XEP-0160)<br>支持的数据库 (*)<br>mod_ping XMPP Ping 和定期保持连接 (XEP-0199)</p>
+<p>mod_privacy 禁止通讯 (XMPP IM)</p>
+<p>mod_privacy_odbc 禁止通讯 ((XMPP IM)<br>支持的数据库 (*)<br>mod_private 私有XML存储 (XEP-0049)</p>
+<p>mod_private_odbc 私有XML存储 (XEP-0049)<br>支持的数据库 (*)<br>mod_proxy65 SOCKS5字节流 (XEP-0065)</p>
+<p>mod_pubsub 发行-订阅 (XEP-0060), PEP (XEP-0163)<br>mod_caps<br>mod_pubsub_odbc 发行-订阅 (XEP-0060), PEP (XEP-0163)<br>支持的数据库 (*) 和 mod_caps<br>mod_register I带内注册 (XEP-0077)</p>
+<p>mod_roster 名册管理 (XMPP IM)</p>
+<p>mod_roster_odbc 名册管理 (XMPP IM)<br>支持的数据库 (*)<br>mod_service_log 拷贝用户消息到日志服务</p>
+<p>mod_shared_roster 共享名册管理<br>mod_roster 或 mod_roster_odbc<br>mod_sic Server IP检查 (XEP-0279)</p>
+<p>mod_stats 统计信息收集 (XEP-0039)</p>
+<p>mod_time 实体时间 (XEP-0202)</p>
+<p>mod_vcard 电子名片 (XEP-0054)</p>
+<p>mod_vcard_ldap 电子名片 (XEP-0054)<br>LDAP服务器<br>mod_vcard_odbc 电子名片 (XEP-0054)<br>支持的数据库 (*)<br>mod_vcard_xupdate 基于vCard的头像 (XEP-0153)<br>mod_vcard 或 mod_vcard_odbc<br>mod_version 软件版本 (XEP-0092)</p>
+<hr>
+<h3 id="Ejabberd-修改列表"><a href="#Ejabberd-修改列表" class="headerlink" title="Ejabberd 修改列表"></a>Ejabberd 修改列表</h3><p>~/src/ejabberd_oauth.erl // 修改 301 问题 参见 <a href="https://github.com/barabansheg/ejabberd/blob/master/src/ejabberd_oauth.erl" target="_blank" rel="external">https://github.com/barabansheg/ejabberd/blob/master/src/ejabberd_oauth.erl</a></p>
+<p>~/src/mod_sunshine.erl // 增加,测试 参见 <a href="http://developerworks.github.io/2014/09/18/ejabberd-modules-presence-storms/" target="_blank" rel="external">http://developerworks.github.io/2014/09/18/ejabberd-modules-presence-storms/</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/01/10/Ejabberd/EjabberdNote/">EjabberdNote</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 张亚飞 的个人博客">张亚飞</a></p>
+        <p><span>发布时间:</span>2016年01月10日 - 19时41分</p>
+        <p><span>最后更新:</span>2016年05月11日 - 18时31分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/01/10/Ejabberd/EjabberdNote/" title="EjabberdNote">https://coam.co/2016/01/10/Ejabberd/EjabberdNote/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://coam.co/2016/01/10/Ejabberd/EjabberdNote/　　作者: 张亚飞" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/01/10/Ejabberd/XMPP/">
+                    XMPPNote
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/01/10/PHP/Composer/">
+                    Title
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Ejabberd-Note"><span class="toc-number">1.</span> <span class="toc-text">Ejabberd Note</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ejabberd-Xamp-服务器搭建"><span class="toc-number">1.0.1.</span> <span class="toc-text">Ejabberd Xamp 服务器搭建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优秀-Ejabberd-开发者博客"><span class="toc-number">1.0.2.</span> <span class="toc-text">优秀 Ejabberd 开发者博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#收藏博客文章"><span class="toc-number">1.0.3.</span> <span class="toc-text">收藏博客文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见的-Ejabberd-服务器管理命令"><span class="toc-number">1.1.</span> <span class="toc-text">常见的 Ejabberd 服务器管理命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XMPP协议的命名空间"><span class="toc-number">1.2.</span> <span class="toc-text">XMPP协议的命名空间:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模块化"><span class="toc-number">1.2.1.</span> <span class="toc-text">模块化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模块一览"><span class="toc-number">1.2.2.</span> <span class="toc-text">模块一览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ejabberd-修改列表"><span class="toc-number">1.2.3.</span> <span class="toc-text">Ejabberd 修改列表</span></a></li></ol></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/01/10/Ejabberd/XMPP/" title="上一篇: XMPPNote">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/01/10/PHP/Composer/" title="下一篇: Title">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Erlang/InstallOTP/">InstallOTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Redis/RedisSyncNote/">RedisSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/Ubuntu/">Linux/Ubuntu</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/SystemInstall/">Linux/SystemInstall</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Others/YL/">Others/YL</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/Linux/LinuxCommand/">LinuxCommand</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlSyncNote/">MysqlSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlToRedis/">MysqlToRedis</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlNote/">MysqlNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlSql/">MysqlSql</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Redis/RedisNote/">RedisNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Mongo/MongoNotes/">MongoNotes</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/Linux/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/25/Android/AndroidNDK/">AndroidNDK</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/Design/PhotoShop/">PhotoShop 设计笔记摘要</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/15/Others/Enshrine/">Enshrine收藏</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/03/Others/Imagine/">【脑洞大开】你看过这样的动态图吗?——太牛了！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/26/Linux/Linux.bashrc/">Linux.bashrc</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/24/WinScripts/WinNote/">WinNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/21/Android/ProGuard/">ProGuard</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Linux/ShadowSocks/">ShadowSocks</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Web/WebDesign/">WebDesign</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Plan/FreeShareInfoIdea/">Plan/FreeShareInfoIdea</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Phalcon/PhalconNote/">Phalcon/PhalconNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Info/EnshrineBlogs/">Info/EnshrineBlogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/CLang/cMake/">cMake</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/13/Android/CoamApp/">CoamApp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/30/CLang/GccNote/">GCCNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/QT/QTNote/">QTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/DevIDENote/">DevIDENote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/CNote/">CNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/QT/Cygwin/">Cygwin</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/Electron/ElectronNote/">ElectronNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/CheerioNote/">CheerioNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/MochaNote/">MochaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/WebpackNote/">WebPack 自动打包工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/GulpNote/">NodeJs/GulpNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/Info/hospital/">hospital</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/18/Angular/TypeScriptNote/">TypeScriptNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/17/Angular/AngularNote/">Angular 开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Java/JavaNote/">JavaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/Python/PythonNote/">PythonNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdModule/">EjabberdModule</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdConfigure/">EjabberdConfigure</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrofit/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/PhpNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnLombok/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaHashMap/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaArray/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnGoogleGuava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnAsyncTask/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/NodeJs/NodeJsNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/MongoNotes/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/GPS/GPSNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Rebar/">RebarNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/MQTT/">MQTTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Lua/">LuaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Elixir/">ElixirNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/XMPP/">XMPPNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdNote/">EjabberdNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/Composer/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/SSL/LetSSL/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidStudio/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Nginx/NginxNote/">NginxNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mysql/MysqlTrigger/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidPushMQTT/">Android 推送之 MQTT</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/phpMyAdmin/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnSupportAnnotations/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRxJava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrolambda/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnOther/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnListView/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnGradle/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidFragment/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidDesign/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidContext/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroid/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/EventBus/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidStethoAppWithChrome/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidLog/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/Conversations.IM/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnOkHttp/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Http/HttpNote/">Http协议相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Others/MarkDownNote/">MarkDown 相关</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 张亚飞
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        <div class="visit">
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <span id="site-visit" >本站到访数: 
+                    <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </span>
+            <span id="busuanzi_container_page_pv" style='display:none'>
+                <span id="page-visit">, 本页阅读量: 
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </span>
+        </div>
+    </div>
+</footer>
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

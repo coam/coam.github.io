@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>RedisSyncNote | 商运物流</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Redis 主从同步配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RedisSyncNote">
+<meta property="og:url" content="https://coam.co/2016/05/19/Redis/RedisSyncNote/index.html">
+<meta property="og:site_name" content="商运物流">
+<meta property="og:description" content="Redis 主从同步配置">
+<meta property="og:updated_time" content="2016-05-19T08:26:49.390Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RedisSyncNote">
+<meta name="twitter:description" content="Redis 主从同步配置">
+  
+    <link rel="alternative" href="/atom.xml" title="商运物流" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/author.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">张亚飞</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/markdown-gfw-hexo-jekyll/" style="font-size: 10px;">markdown gfw hexo jekyll</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://coam.co">商运物流</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/zyfmix/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://wp.iirii.com/">商运技术博客</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于物流设计</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">张亚飞</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img lazy-src="/img/author.jpg" class="js-avatar">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">张亚飞</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Redis/RedisSyncNote" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/19/Redis/RedisSyncNote/" class="article-date">
+      <time datetime="2016-05-19T08:21:31.000Z" itemprop="datePublished">2016-05-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      RedisSyncNote
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="Redis-主从同步配置"><a href="#Redis-主从同步配置" class="headerlink" title="Redis 主从同步配置"></a>Redis 主从同步配置</h4><a id="more"></a>
+<p>Redis的安装,但是在生产环境中,没有人使用一台 Redis 服务器,至少也得是个主从架构,配置Redis主从其实很简单.</p>
+<p>Redis主从环境介绍</p>
+<pre><code>Redis 主: 43.241.222.110
+Redis 从: 42.96.194.60
+</code></pre><ol>
+<li>Redis 工作原理</li>
+</ol>
+<p>无论是初次连接还是重新连接,当建立一个从服务器时,从服务器都将向主服务器发送一个 SYNC 命令,接到 SYNC 命令的主服务器将开始执行 BGSAVE ,并在保存操作执行期间,将所有新执行的写入命令都保存到一个缓冲区里面.当 BGSAVE 执行完毕后,主服务器将执行保存操作所得的 .rdb 文件发送给从服务器,从服务器接收这个 .rdb 文件,并将文件中的数据载入到内存中.之后主服务器会以 Redis 命令协议的格式,将写命令缓冲区中积累的所有内容都发送给从服务器.如果Master和Slave之间的链接出现断连现象,Slave可以自动重连Master,但是在连接成功之后,在 Redis 2.8 版本之前,断线之后重连的从服务器总要执行一次完整重同步(full resynchronization)操作,但是从 Redis 2.8 版本开始,从服务器可以根据主服务器的情况来选择执行完整重同步还是部分重同步(partial resynchronization).</p>
+<ol>
+<li>Redis的主从复制的特点</li>
+</ol>
+<p>同一个Master可以同步多个Slaves.<br>Slave同样可以接受其它Slaves的连接和同步请求,这样可以有效的分载Master的同步压力.因此我们可以将Redis的Replication架构视为图结构.<br>Master Server是以非阻塞的方式为Slaves提供服务.所以在Master-Slave同步期间,客户端仍然可以提交查询或修改请求.<br>Slave Server同样是以非阻塞的方式完成数据同步.在同步期间,如果有客户端提交查询请求,Redis则返回同步之前的数据.<br>为了分载Master的读操作压力,Slave服务器可以为客户端提供只读操作的服务,写服务仍然必须由Master来完成.即便如此,系统的伸缩性还是得到了很大的提高.<br>Master可以将数据保存操作交给Slaves完成,从而避免了在Master中要有独立的进程来完成此操作.</p>
+<p>Redis 使用异步复制.从 Redis 2.8 开始,从服务器会以每秒一次的频率向主服务器报告复制流(replication stream)的处理进度.</p>
+<ol>
+<li>Redis服务的安装</li>
+</ol>
+<p>请点击 Redis 基础安装</p>
+<ol>
+<li>主从配置</li>
+</ol>
+<p>4.1. 修改 Redis 从服务器配置文件 <em>/etc/redis.conf</em>  添加如下两行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">slaveof <span class="number">43.241</span>.<span class="number">222.110</span> <span class="number">6379</span></span><br><span class="line">slave-priority <span class="number">100</span></span><br></pre></td></tr></table></figure>
+<p>4.2. 启动从redis服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@tshare365-slave redis-<span class="number">2.8</span>.<span class="number">19</span>]<span class="comment"># redis-server  /etc/redis.conf </span></span><br><span class="line">[root@tshare365-slaveredis-<span class="number">2.8</span>.<span class="number">19</span>]<span class="comment"># redis-cli -h 42.96.194.60</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>主从同步测试</li>
+</ol>
+<p>5.1. 主redis启动并写入数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@tshare365-master redis-<span class="number">2.8</span>.<span class="number">19</span>]<span class="comment"># redis-server  /etc/redis.conf </span></span><br><span class="line">[root@tshare365-master redis-<span class="number">2.8</span>.<span class="number">19</span>]<span class="comment"># redis-cli  -h 43.241.222.110</span></span><br><span class="line"><span class="number">43.241</span>.<span class="number">222.110</span>:<span class="number">6379</span>&gt; <span class="built_in">set</span> a <span class="number">1</span></span><br><span class="line">OK</span><br><span class="line"><span class="number">43.241</span>.<span class="number">222.110</span>:<span class="number">6379</span>&gt; get a</span><br><span class="line"><span class="string">"1"</span></span><br><span class="line"><span class="number">43.241</span>.<span class="number">222.110</span>:<span class="number">6379</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>5.2. 从Redis查看数据是否同步过来</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@tshare365-slave redis-<span class="number">2.8</span>.<span class="number">19</span>]<span class="comment"># redis-cli -h 42.96.194.60</span></span><br><span class="line"><span class="number">42.96</span>.<span class="number">194.60</span>:<span class="number">6379</span>&gt; get a</span><br><span class="line"><span class="string">"1"</span></span><br><span class="line"><span class="number">42.96</span>.<span class="number">194.60</span>:<span class="number">6379</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>Redis的主从复制就到此结束了</p>
+<hr>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="http://tshare365.com/archives/709.html" target="_blank" rel="external">Redis主从环境安装</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/05/19/Redis/RedisSyncNote/">RedisSyncNote</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 张亚飞 的个人博客">张亚飞</a></p>
+        <p><span>发布时间:</span>2016年05月19日 - 16时21分</p>
+        <p><span>最后更新:</span>2016年05月19日 - 16时26分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/19/Redis/RedisSyncNote/" title="RedisSyncNote">https://coam.co/2016/05/19/Redis/RedisSyncNote/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://coam.co/2016/05/19/Redis/RedisSyncNote/　　作者: 张亚飞" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/05/19/Erlang/InstallOTP/">
+                    InstallOTP
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/05/16/Linux/Ubuntu/">
+                    
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis-主从同步配置"><span class="toc-number">1.</span> <span class="toc-text">Redis 主从同步配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考"><span class="toc-number">2.</span> <span class="toc-text">参考</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/05/19/Erlang/InstallOTP/" title="上一篇: InstallOTP">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/05/16/Linux/Ubuntu/" title="下一篇: ">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Erlang/InstallOTP/">InstallOTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Redis/RedisSyncNote/">RedisSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/Ubuntu/">Linux/Ubuntu</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/SystemInstall/">Linux/SystemInstall</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Others/YL/">Others/YL</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/Linux/LinuxCommand/">LinuxCommand</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlSyncNote/">MysqlSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlToRedis/">MysqlToRedis</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlNote/">MysqlNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlSql/">MysqlSql</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Redis/RedisNote/">RedisNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Mongo/MongoNotes/">MongoNotes</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/Linux/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/25/Android/AndroidNDK/">AndroidNDK</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/Design/PhotoShop/">PhotoShop 设计笔记摘要</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/15/Others/Enshrine/">Enshrine收藏</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/03/Others/Imagine/">【脑洞大开】你看过这样的动态图吗?——太牛了！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/26/Linux/Linux.bashrc/">Linux.bashrc</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/24/WinScripts/WinNote/">WinNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/21/Android/ProGuard/">ProGuard</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Linux/ShadowSocks/">ShadowSocks</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Web/WebDesign/">WebDesign</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Plan/FreeShareInfoIdea/">Plan/FreeShareInfoIdea</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Phalcon/PhalconNote/">Phalcon/PhalconNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Info/EnshrineBlogs/">Info/EnshrineBlogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/CLang/cMake/">cMake</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/13/Android/CoamApp/">CoamApp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/30/CLang/GccNote/">GCCNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/QT/QTNote/">QTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/DevIDENote/">DevIDENote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/CNote/">CNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/QT/Cygwin/">Cygwin</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/Electron/ElectronNote/">ElectronNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/CheerioNote/">CheerioNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/MochaNote/">MochaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/WebpackNote/">WebPack 自动打包工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/GulpNote/">NodeJs/GulpNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/Info/hospital/">hospital</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/18/Angular/TypeScriptNote/">TypeScriptNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/17/Angular/AngularNote/">Angular 开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Java/JavaNote/">JavaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/Python/PythonNote/">PythonNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdModule/">EjabberdModule</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdConfigure/">EjabberdConfigure</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrofit/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/PhpNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnLombok/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaHashMap/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaArray/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnGoogleGuava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnAsyncTask/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/NodeJs/NodeJsNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/MongoNotes/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/GPS/GPSNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Rebar/">RebarNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/MQTT/">MQTTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Lua/">LuaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Elixir/">ElixirNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/XMPP/">XMPPNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdNote/">EjabberdNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/Composer/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/SSL/LetSSL/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidStudio/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Nginx/NginxNote/">NginxNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mysql/MysqlTrigger/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidPushMQTT/">Android 推送之 MQTT</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/phpMyAdmin/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnSupportAnnotations/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRxJava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrolambda/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnOther/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnListView/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnGradle/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidFragment/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidDesign/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidContext/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroid/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/EventBus/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidStethoAppWithChrome/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidLog/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/Conversations.IM/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnOkHttp/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Http/HttpNote/">Http协议相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Others/MarkDownNote/">MarkDown 相关</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 张亚飞
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        <div class="visit">
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <span id="site-visit" >本站到访数: 
+                    <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </span>
+            <span id="busuanzi_container_page_pv" style='display:none'>
+                <span id="page-visit">, 本页阅读量: 
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </span>
+        </div>
+    </div>
+</footer>
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>iptables | 商运物流</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="iptables入门教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iptables">
+<meta property="og:url" content="https://coam.co/2016/05/09/Linux/iptables/index.html">
+<meta property="og:site_name" content="商运物流">
+<meta property="og:description" content="iptables入门教程">
+<meta property="og:image" content="https://coam.co/../iptables/1.png">
+<meta property="og:image" content="https://coam.co/../iptables/2.jpg">
+<meta property="og:image" content="https://coam.co/../iptables/3.jpg">
+<meta property="og:image" content="https://coam.co/../iptables/4.jpg">
+<meta property="og:image" content="https://coam.co/../iptables/5.jpg">
+<meta property="og:updated_time" content="2016-05-16T14:12:46.567Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iptables">
+<meta name="twitter:description" content="iptables入门教程">
+  
+    <link rel="alternative" href="/atom.xml" title="商运物流" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/author.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">张亚飞</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/markdown-gfw-hexo-jekyll/" style="font-size: 10px;">markdown gfw hexo jekyll</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://coam.co">商运物流</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/zyfmix/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://wp.iirii.com/">商运技术博客</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于物流设计</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">张亚飞</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img lazy-src="/img/author.jpg" class="js-avatar">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">张亚飞</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Linux/iptables" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/09/Linux/iptables/" class="article-date">
+      <time datetime="2016-05-09T13:53:31.000Z" itemprop="datePublished">2016-05-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iptables
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="iptables入门教程"><a href="#iptables入门教程" class="headerlink" title="iptables入门教程"></a>iptables入门教程</h3><a id="more"></a>
+<h3 id="iptables介绍"><a href="#iptables介绍" class="headerlink" title="iptables介绍"></a>iptables介绍</h3><p>linux的包过滤功能,即linux防火墙,它由netfilter 和 iptables 两个组件组成.</p>
+<p>netfilter 组件也称为内核空间,是内核的一部分,由一些信息包过滤表组成,这些表包含内核用来控制信息包过滤处理的规则集.</p>
+<p>iptables 组件是一种工具,也称为用户空间,它使插入. 修改和除去信息包过滤表中的规则变得容易.</p>
+<p><img src="../iptables/1.png" alt="1.png"></p>
+<h3 id="iptables的结构"><a href="#iptables的结构" class="headerlink" title="iptables的结构"></a>iptables的结构</h3><p>iptables的结构:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -&gt; Tables -&gt; Chains -&gt; Rules</span><br></pre></td></tr></table></figure>
+<p>简单地讲,tables由chains组成,而chains又由rules组成.iptables 默认有四个表Filter, NAT, Mangle, Raw,其对于的链如下图.</p>
+<p><img src="../iptables/2.jpg" alt="2.jpg"></p>
+<p>0x02 iptables工作流程</p>
+<p><img src="../iptables/3.jpg" alt="3.jpg"></p>
+<h3 id="filter表详解"><a href="#filter表详解" class="headerlink" title="filter表详解"></a>filter表详解</h3><ol>
+<li><p>在iptables中,filter表起过滤数据包的功能,它具有以下三种内建链:</p>
+<p> INPUT链 – 处理来自外部的数据.<br> OUTPUT链 – 处理向外发送的数据.<br> FORWARD链 – 将数据转发到本机的其他网卡设备上. </p>
+</li>
+<li><p>数据流向场景</p>
+</li>
+</ol>
+<p>访问本机:在INPUT链上做过滤</p>
+<p>本机访问外部:在OUTPUT链上做过滤</p>
+<p>通过本机访问其他主机:在FORWARD链上做过滤</p>
+<ol>
+<li>Iptables基本操作</li>
+</ol>
+<p>启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables:service iptables start</span><br></pre></td></tr></table></figure>
+<p>关闭</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables:service iptables stop</span><br></pre></td></tr></table></figure>
+<p>重启</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables:service iptables restart</span><br></pre></td></tr></table></figure>
+<p>查看iptables状态:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables status</span><br></pre></td></tr></table></figure>
+<p>保存iptables配置:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables save</span><br></pre></td></tr></table></figure>
+<p>Iptables服务配置文件:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/sysconfig/iptables-config</span><br></pre></td></tr></table></figure>
+<p>Iptables规则保存文件:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/sysconfig/iptables</span><br></pre></td></tr></table></figure>
+<p>打开iptables转发:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"1"</span>&gt; /proc/sys/net/ipv4/ip_forward</span><br></pre></td></tr></table></figure>
+<h3 id="iptables命令参考"><a href="#iptables命令参考" class="headerlink" title="iptables命令参考"></a>iptables命令参考</h3><p>命令:</p>
+<pre><code>iptables [ -t 表名] 命令选项 [链名] [条件匹配] [-j 目标动作或跳转] 
+</code></pre><ol>
+<li>表名</li>
+</ol>
+<p>表名:Filter, NAT, Mangle, Raw</p>
+<p>起包过滤功能的为表Filter,可以不填,不填默认为Filter</p>
+<ol>
+<li><p>命令选项</p>
+<p> 选项名    功能及特点<br> -A    在指定链的末尾添加(–append)一条新的规则<br> -D    删除(–delete)指定链中的某一条规则,按规则序号或内容确定要删除的规则<br> -I    在指定链中插入(–insert)一条新的规则,默认在链的开头插入<br> -R    修改. 替换(–replace)指定链中的一条规则,按规则序号或内容确定<br> -L    列出(–list)指定链中的所有的规则进行查看,默认列出表中所有链的内容<br> -F    清空(–flush)指定链中的所有规则,默认清空表中所有链的内容<br> -N    新建(–new-chain)一条用户自己定义的规则链<br> -X    删除指定表中用户自定义的规则链(–delete-chain)<br> -P    设置指定链的默认策略(–policy)<br> -n    用数字形式(–numeric)显示输出结果,若显示主机的 IP地址而不是主机名<br> -P    设置指定链的默认策略(–policy)<br> -v    查看规则列表时显示详细(–verbose)的信息<br> -V    查看iptables命令工具的版本(–Version)信息<br> -h    查看命令帮助信息(–help)<br> –line-number    查看规则列表时,同时显示规则在链中的顺序号</p>
+</li>
+<li><p>链名</p>
+</li>
+</ol>
+<p>可以根据数据流向来确定具体使用哪个链,在Filter中的使用情况如下:</p>
+<pre><code>INPUT链 – 处理来自外部的数据. 
+OUTPUT链 – 处理向外发送的数据. 
+FORWARD链 – 将数据转发到本机的其他网卡设备上.
+</code></pre><ol>
+<li>条件匹配</li>
+</ol>
+<p>条件匹配分为基本匹配和扩展匹配,拓展匹配又分为隐式扩展和显示扩展.</p>
+<p>a)基本匹配包括:</p>
+<pre><code>匹配参数    说明
+-p    指定规则协议,如tcp, udp,icmp等,可以使用all来指定所有协议
+-s    指定数据包的源地址参数,可以使IP地址. 网络地址. 主机名
+-d    指定目的地址
+-i    输入接口
+-o    输出接口
+</code></pre><p>b)隐式扩展包括:</p>
+<p><img src="../iptables/4.jpg" alt="4.jpg"></p>
+<p>c)常用显式扩展</p>
+<p><img src="../iptables/5.jpg" alt="5.jpg"></p>
+<ol>
+<li>目标值</li>
+</ol>
+<p>数据包控制方式包括四种为:</p>
+<pre><code>ACCEPT:允许数据包通过. 
+DROP:直接丢弃数据包,不给出任何回应信息. 
+REJECT:拒绝数据包通过,必须时会给数据发送端一个响应信息. 
+LOG:在/var/log/messages 文件中记录日志信息,然后将数据包传递给下一条规则. 
+QUEUE:防火墙将数据包移交到用户空间 
+RETURN:防火墙停止执行当前链中的后续Rules,并返回到调用链(the calling chain) 
+0x05 Iptables常见命令
+</code></pre><p>a) 1. 删除iptables现有规则</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables –F</span><br></pre></td></tr></table></figure>
+<p>b) 2. 查看iptables规则</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables –L(iptables –L –v -n)</span><br></pre></td></tr></table></figure>
+<p>c) 3. 增加一条规则到最后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -i eth0 -p tcp --dport <span class="number">80</span> -m state --state NEW,ESTABLISHED -j ACCEPT</span><br></pre></td></tr></table></figure>
+<p>d) 4.添加一条规则到指定位置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT <span class="number">2</span> -i eth0 -p tcp --dport <span class="number">80</span> -m state --state NEW,ESTABLISHED -j ACCEPT</span><br></pre></td></tr></table></figure>
+<p>e) 5.  删除一条规则</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptabels -D INPUT <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>f) 6.修改一条规则</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -R INPUT <span class="number">3</span> -i eth0 -p tcp --dport <span class="number">80</span> -m state --state NEW,ESTABLISHED -j ACCEPT</span><br></pre></td></tr></table></figure>
+<p>g) 7. 设置默认策略</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -P INPUT DROP</span><br></pre></td></tr></table></figure>
+<p>h) 8.允许远程主机进行SSH连接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -i eth0 -p tcp --dport <span class="number">22</span> -m state --state NEW,ESTABLISHED -j ACCEPT </span><br><span class="line">iptables -A OUTPUT -o eth0 -p tcp --sport <span class="number">22</span> -m state --state ESTABLISHED -j ACCEPT</span><br></pre></td></tr></table></figure>
+<p>i) 9.允许本地主机进行SSH连接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -A OUTPUT -o eth0 -p tcp --dport <span class="number">22</span> -m state --state NEW,ESTABLISHED -j ACCEPT </span><br><span class="line">iptables -A INTPUT -i eth0 -p tcp --sport <span class="number">22</span> -m state --state ESTABLISHED -j ACCEPT</span><br></pre></td></tr></table></figure>
+<p>j) 10.允许HTTP请求</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -i eth0 -p tcp --dport <span class="number">80</span> -m state --state NEW,ESTABLISHED -j ACCEPT </span><br><span class="line">iptables -A OUTPUT -o eth0 -p tcp --sport <span class="number">80</span> -m state --state ESTABLISHED -j ACCEPT</span><br></pre></td></tr></table></figure>
+<p>k) 11.限制ping 192.168.146.3主机的数据包数,平均2/s个,最多不能超过3个</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -i eth0 <span class="operator">-d</span> <span class="number">192.168</span>.<span class="number">146.3</span> -p icmp --icmp-type <span class="number">8</span> -m <span class="built_in">limit</span> --limit <span class="number">2</span>/second --limit-burst <span class="number">3</span> -j ACCEPT</span><br></pre></td></tr></table></figure>
+<p>l) 12.限制SSH连接速率(默认策略是DROP)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT <span class="number">1</span> -p tcp --dport <span class="number">22</span> <span class="operator">-d</span> <span class="number">192.168</span>.<span class="number">146.3</span> -m state --state ESTABLISHED -j ACCEPT  </span><br><span class="line">iptables -I INPUT <span class="number">2</span> -p tcp --dport <span class="number">22</span> <span class="operator">-d</span> <span class="number">192.168</span>.<span class="number">146.3</span> -m <span class="built_in">limit</span> --limit <span class="number">2</span>/minute --limit-burst <span class="number">2</span> -m state --state NEW -j ACCEPT</span><br></pre></td></tr></table></figure>
+<p>0x06 如何正确配置iptables</p>
+<p>a) 1. 删除现有规则</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -F</span><br></pre></td></tr></table></figure>
+<p>b) 2.  配置默认链策略</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">iptables -P INPUT DROP </span><br><span class="line">iptables -P FORWARD DROP </span><br><span class="line">iptables -P OUTPUT DROP</span><br></pre></td></tr></table></figure>
+<p>c) 3. 允许远程主机进行SSH连接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -i eth0 -p tcp –dport <span class="number">22</span> -m state –state NEW,ESTABLISHED -j ACCEPT </span><br><span class="line">iptables -A OUTPUT -o eth0 -p tcp –sport <span class="number">22</span> -m state –state ESTABLISHED -j ACCEPT</span><br></pre></td></tr></table></figure>
+<p>d) 4. 允许本地主机进行SSH连接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -A OUTPUT -o eth0 -p tcp –dport <span class="number">22</span> -m state –state NEW,ESTABLISHED -j ACCEPT </span><br><span class="line">iptables -A INPUT -i eth0 -p tcp –sport <span class="number">22</span> -m state –state ESTABLISHED -j ACCEPT</span><br></pre></td></tr></table></figure>
+<p>e) 5. 允许HTTP请求</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -i eth0 -p tcp –dport <span class="number">80</span> -m state –state NEW,ESTABLISHED -j ACCEPT </span><br><span class="line">iptables -A OUTPUT -o eth0 -p tcp –sport <span class="number">80</span> -m state –state ESTABLISHED -j ACCEPT</span><br></pre></td></tr></table></figure>
+<h3 id="使用iptables抵抗常见攻击"><a href="#使用iptables抵抗常见攻击" class="headerlink" title="使用iptables抵抗常见攻击"></a>使用iptables抵抗常见攻击</h3><p>1.防止syn攻击</p>
+<p>思路一:限制syn的请求速度(这个方式需要调节一个合理的速度值,不然会影响正常用户的请求)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">iptables -N syn-flood </span><br><span class="line">iptables -A INPUT -p tcp --syn -j syn-flood </span><br><span class="line">iptables -A syn-flood -m <span class="built_in">limit</span> --limit <span class="number">1</span>/s --limit-burst <span class="number">4</span> -j RETURN </span><br><span class="line">iptables -A syn-flood -j DROP</span><br></pre></td></tr></table></figure>
+<p>思路二:限制单个ip的最大syn连接数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables –A INPUT –i eth0 –p tcp --syn -m connlimit --connlimit-above <span class="number">15</span> -j DROP</span><br></pre></td></tr></table></figure>
+<ol>
+<li>防止DOS攻击</li>
+</ol>
+<p>利用recent模块抵御DOS攻击</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT -p tcp -dport <span class="number">22</span> -m connlimit --connlimit-above <span class="number">3</span> -j DROP</span><br></pre></td></tr></table></figure>
+<p>单个IP最多连接3个会话</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT -p tcp --dport <span class="number">22</span> -m state --state NEW -m recent --set --name SSH</span><br></pre></td></tr></table></figure>
+<p>只要是新的连接请求,就把它加入到SSH列表中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Iptables -I INPUT -p tcp --dport <span class="number">22</span> -m state NEW -m recent --update --seconds <span class="number">300</span> --hitcount <span class="number">3</span> --name SSH -j DROP</span><br></pre></td></tr></table></figure>
+<p>5分钟内你的尝试次数达到3次,就拒绝提供SSH列表中的这个IP服务.被限制5分钟后即可恢复访问.</p>
+<ol>
+<li>防止单个ip访问量过大</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT -p tcp --dport <span class="number">80</span> -m connlimit --connlimit-above <span class="number">30</span> -j DROP</span><br></pre></td></tr></table></figure>
+<ol>
+<li>木马反弹</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables –A OUTPUT –m state --state NEW –j DROP</span><br></pre></td></tr></table></figure>
+<ol>
+<li>防止ping攻击</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -p icmp --icmp-type <span class="built_in">echo</span>-request -m <span class="built_in">limit</span> --limit <span class="number">1</span>/m -j ACCEPT</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="参考列表"><a href="#参考列表" class="headerlink" title="参考列表"></a>参考列表</h3><p><a href="http://drops.wooyun.org/tips/1424" target="_blank" rel="external">Iptables入门教程</a><br><a href="https://wiki.vpsmm.com/iptables/" target="_blank" rel="external">Linux防火墙iptables基本应用</a><br><a href="https://wiki.vpsmm.com/iptables-ping-ddos/" target="_blank" rel="external">iptables之禁ping和ddos向外发包</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/05/09/Linux/iptables/">iptables</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 张亚飞 的个人博客">张亚飞</a></p>
+        <p><span>发布时间:</span>2016年05月09日 - 21时53分</p>
+        <p><span>最后更新:</span>2016年05月16日 - 22时12分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/09/Linux/iptables/" title="iptables">https://coam.co/2016/05/09/Linux/iptables/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://coam.co/2016/05/09/Linux/iptables/　　作者: 张亚飞" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/05/10/Mongo/MongoNotes/">
+                    MongoNotes
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/04/25/Android/AndroidNDK/">
+                    AndroidNDK
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#iptables入门教程"><span class="toc-number">1.</span> <span class="toc-text">iptables入门教程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iptables介绍"><span class="toc-number">2.</span> <span class="toc-text">iptables介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iptables的结构"><span class="toc-number">3.</span> <span class="toc-text">iptables的结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#filter表详解"><span class="toc-number">4.</span> <span class="toc-text">filter表详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iptables命令参考"><span class="toc-number">5.</span> <span class="toc-text">iptables命令参考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用iptables抵抗常见攻击"><span class="toc-number">6.</span> <span class="toc-text">使用iptables抵抗常见攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考列表"><span class="toc-number">7.</span> <span class="toc-text">参考列表</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/05/10/Mongo/MongoNotes/" title="上一篇: MongoNotes">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/04/25/Android/AndroidNDK/" title="下一篇: AndroidNDK">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Erlang/InstallOTP/">InstallOTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Redis/RedisSyncNote/">RedisSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/Ubuntu/">Linux/Ubuntu</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/SystemInstall/">Linux/SystemInstall</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Others/YL/">Others/YL</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/Linux/LinuxCommand/">LinuxCommand</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlSyncNote/">MysqlSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlToRedis/">MysqlToRedis</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlNote/">MysqlNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlSql/">MysqlSql</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Redis/RedisNote/">RedisNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Mongo/MongoNotes/">MongoNotes</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/Linux/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/25/Android/AndroidNDK/">AndroidNDK</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/Design/PhotoShop/">PhotoShop 设计笔记摘要</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/15/Others/Enshrine/">Enshrine收藏</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/03/Others/Imagine/">【脑洞大开】你看过这样的动态图吗?——太牛了！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/26/Linux/Linux.bashrc/">Linux.bashrc</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/24/WinScripts/WinNote/">WinNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/21/Android/ProGuard/">ProGuard</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Linux/ShadowSocks/">ShadowSocks</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Web/WebDesign/">WebDesign</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Plan/FreeShareInfoIdea/">Plan/FreeShareInfoIdea</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Phalcon/PhalconNote/">Phalcon/PhalconNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Info/EnshrineBlogs/">Info/EnshrineBlogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/CLang/cMake/">cMake</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/13/Android/CoamApp/">CoamApp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/30/CLang/GccNote/">GCCNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/QT/QTNote/">QTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/DevIDENote/">DevIDENote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/CNote/">CNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/QT/Cygwin/">Cygwin</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/Electron/ElectronNote/">ElectronNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/CheerioNote/">CheerioNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/MochaNote/">MochaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/WebpackNote/">WebPack 自动打包工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/GulpNote/">NodeJs/GulpNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/Info/hospital/">hospital</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/18/Angular/TypeScriptNote/">TypeScriptNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/17/Angular/AngularNote/">Angular 开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Java/JavaNote/">JavaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/Python/PythonNote/">PythonNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdModule/">EjabberdModule</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdConfigure/">EjabberdConfigure</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrofit/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/PhpNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnLombok/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaHashMap/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaArray/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnGoogleGuava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnAsyncTask/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/NodeJs/NodeJsNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/MongoNotes/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/GPS/GPSNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Rebar/">RebarNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/MQTT/">MQTTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Lua/">LuaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Elixir/">ElixirNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/XMPP/">XMPPNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdNote/">EjabberdNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/Composer/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/SSL/LetSSL/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidStudio/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Nginx/NginxNote/">NginxNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mysql/MysqlTrigger/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidPushMQTT/">Android 推送之 MQTT</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/phpMyAdmin/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnSupportAnnotations/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRxJava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrolambda/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnOther/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnListView/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnGradle/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidFragment/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidDesign/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidContext/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroid/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/EventBus/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidStethoAppWithChrome/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidLog/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/Conversations.IM/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnOkHttp/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Http/HttpNote/">Http协议相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Others/MarkDownNote/">MarkDown 相关</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 张亚飞
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        <div class="visit">
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <span id="site-visit" >本站到访数: 
+                    <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </span>
+            <span id="busuanzi_container_page_pv" style='display:none'>
+                <span id="page-visit">, 本页阅读量: 
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </span>
+        </div>
+    </div>
+</footer>
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

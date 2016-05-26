@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Title | 商运物流</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Android 相关CodePath Android CliffnotesAndroid开发中那些相见恨晚的方法. 类. 接口. 工具C 算法研究学习最佳实践之Android代码规范
+Android经典面试问题安卓面试题总结
+不错的 Android 开发者博客Java 单例真的写对了么?Givemepass’s Android 惡補筆記Android 经验碎片笔记(一)避免Android中Cont">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Title">
+<meta property="og:url" content="https://coam.co/2016/01/10/Android/LearnAndroid/index.html">
+<meta property="og:site_name" content="商运物流">
+<meta property="og:description" content="Android 相关CodePath Android CliffnotesAndroid开发中那些相见恨晚的方法. 类. 接口. 工具C 算法研究学习最佳实践之Android代码规范
+Android经典面试问题安卓面试题总结
+不错的 Android 开发者博客Java 单例真的写对了么?Givemepass’s Android 惡補筆記Android 经验碎片笔记(一)避免Android中Cont">
+<meta property="og:updated_time" content="2016-05-22T03:03:50.241Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Title">
+<meta name="twitter:description" content="Android 相关CodePath Android CliffnotesAndroid开发中那些相见恨晚的方法. 类. 接口. 工具C 算法研究学习最佳实践之Android代码规范
+Android经典面试问题安卓面试题总结
+不错的 Android 开发者博客Java 单例真的写对了么?Givemepass’s Android 惡補筆記Android 经验碎片笔记(一)避免Android中Cont">
+  
+    <link rel="alternative" href="/atom.xml" title="商运物流" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/author.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">张亚飞</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/markdown-gfw-hexo-jekyll/" style="font-size: 10px;">markdown gfw hexo jekyll</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://coam.co">商运物流</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/zyfmix/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://wp.iirii.com/">商运技术博客</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于物流设计</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">张亚飞</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img lazy-src="/img/author.jpg" class="js-avatar">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">张亚飞</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Android/LearnAndroid" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Android/LearnAndroid/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Title
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Android-相关"><a href="#Android-相关" class="headerlink" title="Android 相关"></a>Android 相关</h1><p><a href="http://guides.codepath.com/android" target="_blank" rel="external">CodePath Android Cliffnotes</a><br><a href="http://chenqichao.me/2015/08/01/161-Amazing-utils-in-android-api/" target="_blank" rel="external">Android开发中那些相见恨晚的方法. 类. 接口. 工具</a><br><a href="http://chenqichao.me/2015/07/13/120-Cracking-the-Coding-Interview-1.1/" target="_blank" rel="external">C 算法研究学习</a><br><a href="http://www.androidchina.net/2141.html" target="_blank" rel="external">最佳实践之Android代码规范</a></p>
+<p><a href="http://www.jianshu.com/p/66ac183f8ec1" target="_blank" rel="external">Android经典面试问题</a><br><a href="http://www.salton123.com/2016/01/26/%E5%AE%89%E5%8D%93%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/" target="_blank" rel="external">安卓面试题总结</a></p>
+<h2 id="不错的-Android-开发者博客"><a href="#不错的-Android-开发者博客" class="headerlink" title="不错的 Android 开发者博客"></a>不错的 Android 开发者博客</h2><p><a href="http://www.race604.com/java-double-checked-singleton/" target="_blank" rel="external">Java 单例真的写对了么?</a><br><a href="http://givemepass-blog.logdown.com/" target="_blank" rel="external">Givemepass’s Android 惡補筆記</a><br><a href="https://www.zybuluo.com/mSolo/note/89294" target="_blank" rel="external">Android 经验碎片笔记(一)</a><br><a href="http://droidyue.com/blog/2015/04/12/avoid-memory-leaks-on-context-in-android/" target="_blank" rel="external">避免Android中Context引起的内存泄露</a><br><a href="http://droidyue.com/blog/2015/09/26/android-tuning-tool-strictmode/" target="_blank" rel="external">Android性能调优利器StrictMode</a></p>
+<p><a href="http://landerlyoung.github.io/" target="_blank" rel="external">http://landerlyoung.github.io/ - retrolambda测试报告</a><br><a href="http://zlv.me/posts/2015/07/13/14_android-studio-tips/" target="_blank" rel="external">JeremyHe - 倍数提高工作效率的Android Studio奇技</a></p>
+<p><a href="http://inthecheesefactory.com/blog/things-you-need-to-know-about-android-m-permission-developer-edition/en" target="_blank" rel="external">Everything every Android Developer must know about new Android’s Runtime Permission</a></p>
+<p><a href="http://hukai.me/android-dev-patterns/" target="_blank" rel="external">Android开发最佳实践</a><br><a href="http://zmywly8866.github.io/2015/12/12/android-develop-experencies.html" target="_blank" rel="external">Android开发经验总结</a></p>
+<p><a href="http://yaohepeng.com/2016/04/01/RxJava%E5%85%A5%E9%97%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" target="_blank" rel="external">姚贺鹏的博客 - 记录生活点滴 -  RxJava入门使用教程</a><br><a href="http://www.u3coding.com/2016/03/10/android%E4%B8%ADview%E7%9A%84%E6%BB%91%E5%8A%A8%E5%86%B2%E7%AA%81%E5%8F%8A%E5%85%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/" target="_blank" rel="external">u3coding - Android中View的滑动冲突及其解决方式</a></p>
+<hr>
+<h3 id="优秀-Android-开发博客"><a href="#优秀-Android-开发博客" class="headerlink" title="优秀 Android 开发博客"></a>优秀 Android 开发博客</h3><p><a href="http://www.sunmoonblog.com/" target="_blank" rel="external">http://www.sunmoonblog.com/</a><br><a href="http://zmywly8866.github.io/" target="_blank" rel="external">http://zmywly8866.github.io/</a><br><a href="http://blog.lichengwu.cn/java/2014/03/21/jdk8-in-action/" target="_blank" rel="external">佐井 ~ 做有积累的事情</a><br><a href="http://yuluoding.com/" target="_blank" rel="external">如何阅读Android源码</a></p>
+<hr>
+<h3 id="Android-不错的文章收藏"><a href="#Android-不错的文章收藏" class="headerlink" title="Android 不错的文章收藏"></a>Android 不错的文章收藏</h3><p><a href="http://blog.lichengwu.cn/java/2013/11/24/use-findbugs-code-review/" target="_blank" rel="external">使用findbugs为自己的代码review</a><br><a href="http://leanote.com/blog/post/561658f938f41126b2000298?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="external">Android6.0 新特性详解</a><br><a href="http://pingguohe.net/2016/02/26/Android-App-secure-ssl.html" target="_blank" rel="external">Android App 安全的HTTPS 通信</a><br><a href="http://www.race604.com/flatbuffers-intro/" target="_blank" rel="external">FlatBuffers 体验-跨平台数据解析库</a></p>
+<hr>
+<h3 id="Android开发-so文件知识"><a href="#Android开发-so文件知识" class="headerlink" title="Android开发 so文件知识"></a>Android开发 so文件知识</h3><p><a href="http://alphayang.community/2015/11/27/so-files-guide/" target="_blank" rel="external">Android开发,不可不知的so文件知识大全</a></p>
+<hr>
+<h3 id="Android开发-Data-Binding-数据绑定"><a href="#Android开发-Data-Binding-数据绑定" class="headerlink" title="Android开发 Data Binding 数据绑定"></a>Android开发 Data Binding 数据绑定</h3><p><a href="https://developer.android.com/topic/libraries/data-binding/index.html" target="_blank" rel="external">Data Binding Library</a><br><a href="https://github.com/LyndonChin/MasteringAndroidDataBinding" target="_blank" rel="external">LyndonChin/MasteringAndroidDataBinding</a><br><a href="https://www.zhihu.com/question/32037895" target="_blank" rel="external">Android 开发有哪些新技术出现？</a><br><a href="http://stackoverflow.com/questions/27414173/equivalent-of-listview-setemptyview-in-recyclerview" target="_blank" rel="external">Equivalent of ListView.setEmptyView in RecyclerView</a><br><a href="http://stackoverflow.com/questions/28217436/how-to-show-an-empty-view-with-a-recyclerview" target="_blank" rel="external">How to show an empty view with a RecyclerView?</a></p>
+<hr>
+<h3 id="Android6-权限知识"><a href="#Android6-权限知识" class="headerlink" title="Android6 权限知识"></a>Android6 权限知识</h3><p><a href="http://inthecheesefactory.com/blog/things-you-need-to-know-about-android-m-permission-developer-edition/en" target="_blank" rel="external">Everything every Android Developer must know about new Android’s Runtime Permission</a><br><a href="http://hotchemi.github.io/PermissionsDispatcher/" target="_blank" rel="external">Permissionsdispatcher 权限管理注解</a><br><a href="https://developer.android.com/intl/es/training/permissions/best-practices.html#testing" target="_blank" rel="external">Android.com - Permissions Best Practices</a><br><a href="http://blog.csdn.net/quan356270259/article/details/50876272" target="_blank" rel="external">Android6.0权限管理-PermissionsDispatcher</a></p>
+<p><a href="http://droidyue.com/blog/2016/01/17/understanding-marshmallow-runtime-permission/" target="_blank" rel="external">聊一聊Android 6.0的运行时权限</a><br><a href="http://jijiaxin89.com/2015/08/30/Android-s-Runtime-Permission/" target="_blank" rel="external">Android M 新的运行时权限开发者需要知道的一切</a><br><a href="https://segmentfault.com/a/1190000004348012" target="_blank" rel="external">Android工具箱之Android 6.0权限管理</a><br><a href="https://www.aswifter.com/2015/11/04/android-6-permission/" target="_blank" rel="external">Android 6.0 运行时权限处理</a></p>
+<p><a href="http://lmbj.net/blog/solve-android-5.0-installed-app-failed-problem/" target="_blank" rel="external">解决Android5.0应用安装失败的问题</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Installation failed with message INSTALL_FAILED_DUPLICATE_PERMISSION</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Android-电源管理"><a href="#Android-电源管理" class="headerlink" title="Android 电源管理"></a>Android 电源管理</h3><p><a href="http://zlv.me/posts/2015/06/09/12_keep-device-awake/" target="_blank" rel="external">保持设备为唤醒状态</a><br><a href="http://landerlyoung.github.io/blog/2014/10/31/androidzhong-de-wakelockshi-yong/" target="_blank" rel="external">Android中的WakeLock使用</a></p>
+<hr>
+<hr>
+<h3 id="Android-的-AlarmManager"><a href="#Android-的-AlarmManager" class="headerlink" title="Android 的 AlarmManager"></a>Android 的 AlarmManager</h3><p><a href="http://zlv.me/posts/2015/06/10/13_tips-when-using-repeating-alarms/" target="_blank" rel="external">在Android中使用Alarm小结</a></p>
+<hr>
+<h3 id="Android-监听短信"><a href="#Android-监听短信" class="headerlink" title="Android 监听短信"></a>Android 监听短信</h3><p><a href="http://hello1010.com/verifycode/" target="_blank" rel="external">注册信息验证时的用户体验提升</a><br><a href="http://landerlyoung.github.io/blog/2014/09/30/an-zhuo-jian-ting-xin-shou-dao-duan-xin/" target="_blank" rel="external">安卓监听新收到短信</a></p>
+<hr>
+<h3 id="Android-Service"><a href="#Android-Service" class="headerlink" title="Android Service"></a>Android Service</h3><p><a href="http://www.apkbus.com/android-6760-1.html" target="_blank" rel="external">Android里Service的bindService()和startService()混合使用深入分析</a><br><a href="http://landerlyoung.github.io/blog/2014/11/09/androidzhong-servicede-shi-yong/" target="_blank" rel="external">Android中service的使用</a><br><a href="http://www.cnblogs.com/menlsh/archive/2013/04/25/3043770.html" target="_blank" rel="external">Android学习笔记39:Android四大组件之Service</a></p>
+<p><a href="http://www.jianshu.com/p/ae09fafe88bc" target="_blank" rel="external">基础总结篇之四:Service全解析</a><br><a href="http://blog.csdn.net/u011068702/article/details/50724546" target="_blank" rel="external">Andorid之BINDSERVICE的使用方法总结</a><br><a href="http://zhidao.baidu.com/link?url=VMt5yQESfrjEg6CYp1POuMFeBz0kcAUuPNyWYcDAzT1MFYL_pn5sW-U21-mBHT7L2z9iiPeyYPFIxu0tGaZYhcqzeQ1M3nlzjLfbwMuZxKu" target="_blank" rel="external">android startservice和bindservice的区别</a></p>
+<hr>
+<h3 id="Android-BroadcastReceiver"><a href="#Android-BroadcastReceiver" class="headerlink" title="Android BroadcastReceiver"></a>Android BroadcastReceiver</h3><p><a href="http://www.jianshu.com/p/903e08cba4b6" target="_blank" rel="external">基础总结篇之五:BroadcastReceiver应用详解</a></p>
+<hr>
+<h3 id="Android-Notification"><a href="#Android-Notification" class="headerlink" title="Android Notification"></a>Android Notification</h3><p><a href="http://www.jianshu.com/p/5c6ec7ed6109" target="_blank" rel="external">Notification使用</a></p>
+<hr>
+<h4 id="Android-Camera"><a href="#Android-Camera" class="headerlink" title="Android Camera"></a>Android Camera</h4><p><a href="http://ragnraok.github.io/rxcamera-introduce.html" target="_blank" rel="external">RxCamera, 一个RxJava风格的android camera封装</a><br><a href="https://github.com/ragnraok/RxCamera" target="_blank" rel="external">RxCamera</a></p>
+<hr>
+<hr>
+<h4 id="Android-动画相关"><a href="#Android-动画相关" class="headerlink" title="Android 动画相关"></a>Android 动画相关</h4><p><a href="http://www.lightskystreet.com/2015/08/31/android_how_to_lean_anim_efficiently/" target="_blank" rel="external">如何高效的学习Android动画</a><br><a href="https://github.com/dodola/MetaballLoading" target="_blank" rel="external">dodola/MetaballLoading</a><br><a href="https://github.com/daimajia/AndroidViewAnimations" target="_blank" rel="external">daimajia/AndroidViewAnimations 动画集合</a></p>
+<hr>
+<h4 id="Android-Emoji"><a href="#Android-Emoji" class="headerlink" title="Android Emoji"></a>Android Emoji</h4><p><a href="http://www.cypressnorth.com/wp-content/uploads/2013/05/Google-Hangout-Emojis.jpg" target="_blank" rel="external">http://www.cypressnorth.com/wp-content/uploads/2013/05/Google-Hangout-Emojis.jpg</a><br><a href="http://emojipedia.org/google/" target="_blank" rel="external">Google-Hangout-Emojis</a><br><a href="http://apps.timwhitlock.info/emoji/tables/unicode#block-3-transport-and-map-symbols" target="_blank" rel="external">Emoji Unicode Tables</a></p>
+<hr>
+<hr>
+<h3 id="Android-Bitmap"><a href="#Android-Bitmap" class="headerlink" title="Android Bitmap"></a>Android Bitmap</h3><p><a href="http://www.lightskystreet.com/2015/01/31/official-doc-study-canvas-and-drawable/" target="_blank" rel="external">官方文档学习 - Canvas and Drawables</a><br><a href="http://keeganlee.me/post/android/20150916" target="_blank" rel="external">Android样式的开发:drawable汇总篇</a></p>
+<hr>
+<h3 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h3><p><a href="http://blog.csdn.net/qinjuning/article/details/6936783" target="_blank" rel="external">Andriod中绘(画)图—-Canvas的使用详解</a></p>
+<hr>
+<h3 id="Picasso-框架"><a href="#Picasso-框架" class="headerlink" title="Picasso 框架"></a>Picasso 框架</h3><p><a href="http://alight.sinaapp.com/?p=131" target="_blank" rel="external">Picasso 加载图片转换为圆角或圆形</a><br><a href="http://stackoverflow.com/questions/34721054/draw-bitmap-on-canvas-with-picasso" target="_blank" rel="external">Draw bitmap on canvas with Picasso</a></p>
+<blockquote>
+<p>Picasso onBitmapLoaded never called 的问题<br><a href="http://stackoverflow.com/questions/25975006/picasso-onbitmaploaded-never-called/36310327#36310327" target="_blank" rel="external">Picasso onBitmapLoaded never called</a><br><a href="http://www.hasibuan.me/2015/09/17/weak-reference-in-java-and-android/" target="_blank" rel="external">Weak Reference in Java and Android</a></p>
+</blockquote>
+<hr>
+<h4 id="Android-Material-Design"><a href="#Android-Material-Design" class="headerlink" title="Android Material Design"></a>Android Material Design</h4><p><a href="https://github.com/chrisbanes/cheesesquare" target="_blank" rel="external">chrisbanes/cheesesquare</a><br><a href="http://www.ui.cn/detail/61157.html" target="_blank" rel="external">学习笔记:一起来了解 Android Design Support Library</a></p>
+<hr>
+<h4 id="Android-Toolbar"><a href="#Android-Toolbar" class="headerlink" title="Android Toolbar"></a>Android Toolbar</h4><p><a href="http://givemepass-blog.logdown.com/posts/292008-how-to-use-the-toolbar" target="_blank" rel="external">如何使用Toolbar(Actionbar)+DrawerLayout</a><br><a href="http://www.cnblogs.com/oyjt/p/4762640.html" target="_blank" rel="external">Android Toolbar样式定制详解</a></p>
+<p><a href="http://blog.rhesoft.com/2015/03/30/tutorial-android-actionbar-with-material-design-and-search-field/" target="_blank" rel="external">搜索输入框 [Tutorial] Android ActionBar with Material Design and search field</a></p>
+<p><a href="http://www.jianshu.com/p/0c2e56748cd9" target="_blank" rel="external">如何将DrawerLayout显示在ActionBar/Toolbar和status bar之间</a><br><a href="https://yanlu.me/android-4-4-translucent-system-barstatus-bar/" target="_blank" rel="external">Android 4.4 实现透明状态栏Translucent system bar(Status bar)</a></p>
+<p><a href="http://blog.csdn.net/ys408973279/article/details/49994407" target="_blank" rel="external">Android使用fitsSystemWindows属性实现–状态栏【status_bar】各版本适配方案</a><br><a href="https://github.com/bboyfeiyu/android-tech-frontier/blob/master/issue-35/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E4%BB%AC%E8%A6%81%E7%94%A8fitsSystemWindows.md" target="_blank" rel="external">我们为什么要用fitsSystemWindows?</a><br><a href="https://www.zhihu.com/question/40607390" target="_blank" rel="external">对于MIUI7,网易新闻客户端和知乎客户端是如何实现透明状态栏的?</a><br><a href="http://stormzhang.com/android/2015/08/16/boohee-toolbar/" target="_blank" rel="external">薄荷Toolbar(ActionBar)的适配方案</a></p>
+<hr>
+<hr>
+<h4 id="Android-Design-SearchView"><a href="#Android-Design-SearchView" class="headerlink" title="Android Design SearchView"></a>Android Design SearchView</h4><p><a href="http://stackoverflow.com/questions/27556623/creating-a-searchview-that-looks-like-the-material-design-guidelines" target="_blank" rel="external">Creating a SearchView that looks like the material design guidelines</a><br><a href="https://gist.github.com/slightfoot/5514856" target="_blank" rel="external">slightfoot/SearchActivity.java</a></p>
+<hr>
+<h4 id="Android-CoordinatorLayout"><a href="#Android-CoordinatorLayout" class="headerlink" title="Android CoordinatorLayout"></a>Android CoordinatorLayout</h4><p><a href="http://blog.csdn.net/xyz_lmn/article/details/48055919" target="_blank" rel="external">android CoordinatorLayout使用</a><br><a href="http://stackoverflow.com/questions/31169137/inflating-appbarlayout-with-toolbar-tablayout" target="_blank" rel="external">Inflating AppBarLayout with Toolbar + TabLayout</a><br><a href="http://stackoverflow.com/questions/30680824/how-to-use-a-tablayout-with-toolbar-inside-collapsingtoolbarlayout" target="_blank" rel="external">How to use a TabLayout with Toolbar inside CollapsingToolbarLayout?</a></p>
+<hr>
+<h4 id="Android-Floating-Action-Bar"><a href="#Android-Floating-Action-Bar" class="headerlink" title="Android Floating Action Bar"></a>Android Floating Action Bar</h4><p><a href="http://guides.codepath.com/android/Floating-Action-Buttons#using-coordinatorlayout" target="_blank" rel="external">Floating Action Buttons</a></p>
+<hr>
+<hr>
+<h4 id="Android-透明状态栏"><a href="#Android-透明状态栏" class="headerlink" title="Android 透明状态栏"></a>Android 透明状态栏</h4><p><a href="https://github.com/laobie/StatusBarUtil" target="_blank" rel="external">laobie/StatusBarUtil</a><br><a href="http://laobie.github.io/android/2016/03/27/statusbar-util.html" target="_blank" rel="external">Android 状态栏工具类(实现沉浸式状态栏/变色状态栏)</a></p>
+<hr>
+<h4 id="CardView"><a href="#CardView" class="headerlink" title="CardView"></a>CardView</h4><p><a href="http://www.jianshu.com/p/2982071a20c4" target="_blank" rel="external">CardView简述</a></p>
+<hr>
+<h4 id="Android-ViewPager…"><a href="#Android-ViewPager…" class="headerlink" title="Android ViewPager…"></a>Android ViewPager…</h4><p><a href="http://m.blog.csdn.net/blog/ITjianghuxiaoxiong/44938305" target="_blank" rel="external">巧解ViewPager滑动冲突</a></p>
+<hr>
+<h4 id="Android-RecyclerView…"><a href="#Android-RecyclerView…" class="headerlink" title="Android RecyclerView…"></a>Android RecyclerView…</h4><p><a href="http://blog.cgsdream.org/2015/06/11/recyclerview/" target="_blank" rel="external">RecyclerView使用详解</a><br><a href="http://frank-zhu.github.io/android/2015/02/25/android-recyclerview-part-2/" target="_blank" rel="external">RecyclerView使用详解 三</a><br><a href="http://yat3s.com/2015/09/21/RecyclerView/" target="_blank" rel="external">RecyclerView的使用技巧</a></p>
+<p><a href="http://blog.iderzheng.com/first-date-with-recyclerview/" target="_blank" rel="external">RecyclerView体验简介</a><br><a href="http://yaohp.github.io/2016/01/22/RecyclerView%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97%E4%B9%8B%E5%8A%A0%E8%BD%BD%E6%9B%B4%E5%A4%9A%E5%92%8C%E6%B7%BB%E5%8A%A0%E5%A4%B4%E9%83%A8%E5%B8%83%E5%B1%80/" target="_blank" rel="external">RecyclerView使用心得之加载更多和添加头部布局</a></p>
+<hr>
+<h4 id="Android-触摸事件"><a href="#Android-触摸事件" class="headerlink" title="Android 触摸事件"></a>Android 触摸事件</h4><p><a href="http://www.cnblogs.com/supersugar/archive/2012/08/08/2628602.html" target="_blank" rel="external">android自定义布局中的平滑移动</a><br><a href="http://blog.csdn.net/lonelyroamer/article/details/7560598" target="_blank" rel="external">滑轮控件研究四. VelocityTracker的简单研究</a><br><a href="http://blog.csdn.net/bigconvience/article/details/26391743" target="_blank" rel="external">Android的Touch系统简介(一)</a><br><a href="http://blog.csdn.net/android_tutor/article/details/7193090" target="_blank" rel="external">两分钟彻底让你明白Android中onInterceptTouchEvent与onTouchEvent(图文)!</a><br><a href="https://github.com/CharonChui/AndroidNote/blob/master/Android%E5%8A%A0%E5%BC%BA/Android%20Touch%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E8%AF%A6%E8%A7%A3.md" target="_blank" rel="external">Android Touch事件分发详解</a></p>
+<p><a href="http://www.jianshu.com/p/ce3eb03abb5a" target="_blank" rel="external">Android触摸事件传递(上)</a><br><a href="http://www.jianshu.com/p/a4bb029c0b7c" target="_blank" rel="external">Android触摸事件传递(下)</a></p>
+<p><a href="http://www.jianshu.com/p/a2185e4b1b53" target="_blank" rel="external">android 事件处理机制总结,ScrollView ViewPager ListView GridView嵌套小结</a><br><a href="http://pingguohe.net/2016/01/16/view-event.html" target="_blank" rel="external">Android事件传递小结</a><br><a href="http://m.blog.csdn.net/article/details?id=41084921" target="_blank" rel="external">android事件拦截处理机制详解</a></p>
+<hr>
+<p><a href="http://download.androidhive.info/dashboard" target="_blank" rel="external">Android 开发设计相关blog及源码</a></p>
+<p><a href="http://www.androidhive.info/2014/10/android-building-group-chat-app-using-sockets-part-1/" target="_blank" rel="external">Android 开发IM聊天Android Building Group Chat App using Sockets – Part 1</a></p>
+<h4 id="Android-下拉刷新"><a href="#Android-下拉刷新" class="headerlink" title="Android 下拉刷新"></a>Android 下拉刷新</h4><p><a href="https://github.com/stormzhang/SwipeRefreshLayoutDemo" target="_blank" rel="external">stormzhang/SwipeRefreshLayoutDemo</a><br><a href="http://www.androidhive.info/2015/05/android-swipe-down-to-refresh-listview-tutorial/" target="_blank" rel="external">Android Swipe Down to Refresh ListView Tutorial</a><br><a href="https://github.com/OrangeGangsters/SwipyRefreshLayout" target="_blank" rel="external">OrangeGangsters/SwipyRefreshLayout</a></p>
+<p><a href="https://yanlu.me/recyclerview_pull_up_load_more/" target="_blank" rel="external">RecyclerView的上拉加载更多</a></p>
+<p><a href="http://www.cnblogs.com/boy1025/p/4635490.html" target="_blank" rel="external">Android程序设计-RecyclerView的使用</a><br><a href="http://codentrick.com/how-to-implement-load-more-recyclerview-with-progressbar-at-bottom/" target="_blank" rel="external">How to implement Load More RecyclerView with progressbar at bottom</a><br><a href="http://cloay.com/blog/2014/07/23/li-yong-swiperefreshlayouthe-loadmorelistviewshi-xian-xia-la-shua-xin-he-shang-la-jia-zai-geng-duo/" target="_blank" rel="external">利用SwipeRefreshLayout和LoadMoreListView实现下拉刷新和上拉加载更多</a></p>
+<hr>
+<h4 id="butterknife"><a href="#butterknife" class="headerlink" title="butterknife"></a>butterknife</h4><p><a href="http://www.aiuxian.com/article/p-2362256.html" target="_blank" rel="external">关于开源项目ButterKnife的使用心得</a><br><a href="http://www.cnblogs.com/mengdd/archive/2015/06/23/4595973.html" target="_blank" rel="external">ButterKnife基本使用</a></p>
+<hr>
+<h3 id="Android三种数据存储方式"><a href="#Android三种数据存储方式" class="headerlink" title="Android三种数据存储方式"></a>Android三种数据存储方式</h3><p><a href="https://www.zybuluo.com/excavator/note/104074" target="_blank" rel="external">Android三种数据存储方式</a></p>
+<hr>
+<hr>
+<h4 id="自定义-View"><a href="#自定义-View" class="headerlink" title="自定义 View"></a>自定义 View</h4><p><a href="http://www.jianshu.com/p/84cee705b0d3" target="_blank" rel="external">教你搞定Android自定义View</a><br><a href="http://www.jianshu.com/p/138b98095778" target="_blank" rel="external">教你搞定Android自定义ViewGroup</a></p>
+<hr>
+<h4 id="Android-应用使用自定义字体"><a href="#Android-应用使用自定义字体" class="headerlink" title="Android 应用使用自定义字体"></a>Android 应用使用自定义字体</h4><p><a href="http://stackoverflow.com/questions/2711858/is-it-possible-to-set-font-for-entire-application/16883281#16883281" target="_blank" rel="external">Is it possible to set font for entire Application?</a><br><a href="https://github.com/chrisjenx/Calligraphy" target="_blank" rel="external">GitHub chrisjenx/Calligraphy</a><br><a href="https://github.com/vsvankhede/easyfonts" target="_blank" rel="external">GitHub vsvankhede/easyfonts</a><br><a href="https://github.com/shellum/fontView" target="_blank" rel="external">GitHub shellum/fontView</a><br><a href="http://blog.goyello.com/2014/08/01/how-to-use-custom-fonts-in-android-apps-and-not-get-fat-3/" target="_blank" rel="external">How to use custom fonts in Android apps (and not get fat)</a></p>
+<h5 id="使用-Calligraphy-自定义字体"><a href="#使用-Calligraphy-自定义字体" class="headerlink" title="使用 Calligraphy 自定义字体"></a>使用 Calligraphy 自定义字体</h5><p>引入依赖</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    <span class="keyword">compile</span> <span class="string">'uk.co.chrisjenx:calligraphy:2.1.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 Application 中添加配置项</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Calligraphy 自定义字体</span></span><br><span class="line">CalligraphyConfig.initDefault(<span class="keyword">new</span> CalligraphyConfig.Builder()</span><br><span class="line">        .setDefaultFontPath(<span class="string">"carbon/FZLT.ttf"</span>)</span><br><span class="line">        .setFontAttrId(R.attr.fontPath)</span><br><span class="line">        <span class="comment">//.addCustomViewWithSetTypeface(CustomViewWithTypefaceSupport.class)</span></span><br><span class="line">        <span class="comment">//.addCustomStyle(TextField.class, R.attr.textFieldStyle)</span></span><br><span class="line">        .build());</span><br></pre></td></tr></table></figure>
+<p>在需要使用自定义字体的 Activity 或自定义基类 BaseActivity 中复写以下方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">attachBaseContext</span><span class="params">(Context newBase)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>于是全局的程序应该都是使用自定义字体渲染了<br>注意事项:动态加载的文字没有被自动渲染成自定义字体,需要在加载后手动设置;引入自定义字体后的程序性能可能会受到影响,继续研究</p>
+<hr>
+<h3 id="Android-Java8"><a href="#Android-Java8" class="headerlink" title="Android Java8"></a>Android Java8</h3><p><a href="http://www.jianshu.com/p/8c11262fcb41" target="_blank" rel="external">Java 8+Android M新特性总结(简略版)</a><br><a href="http://blog.csdn.net/wbwjx/article/details/50513602" target="_blank" rel="external">Android Studio 中使用Java 8 特性</a></p>
+<hr>
+<h4 id="开源表情库"><a href="#开源表情库" class="headerlink" title="开源表情库"></a>开源表情库</h4><p><a href="https://github.com/rockerhieu/emojicon" target="_blank" rel="external">rockerhieu/emojicon</a><br><a href="https://github.com/arvida/emoji-cheat-sheet.com" target="_blank" rel="external">arvida/emoji-cheat-sheet.com</a></p>
+<hr>
+<h3 id="不错的开源库"><a href="#不错的开源库" class="headerlink" title="不错的开源库"></a>不错的开源库</h3><p><a href="https://github.com/Yalantis/Phoenix" target="_blank" rel="external">Yalantis/Phoenix</a><br><a href="https://github.com/Yalantis/Taurus" target="_blank" rel="external">Yalantis/Taurus</a></p>
+<h4 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h4><p><a href="http://www.androidhive.info/2015/09/android-material-design-working-with-tabs/" target="_blank" rel="external">Android Material Design working with Tabs</a><br><a href="http://songchenwen.com/tech/2015/01/28/android-trust-self-signed-ssl-certificate/" target="_blank" rel="external">Android 开发中如何信任自签名 Https 证书</a></p>
+<h3 id="专业收藏开发者相关博客"><a href="#专业收藏开发者相关博客" class="headerlink" title="专业收藏开发者相关博客"></a>专业收藏开发者相关博客</h3><p><a href="http://ginsmile.github.io/" target="_blank" rel="external">Gin’s Blog</a><br><a href="http://chenfuduo.me/2015/11/06/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%8D%81%E5%A4%A7%E7%AE%97%E6%B3%95/" target="_blank" rel="external">机器学习十大算法</a></p>
+<pre><code>C4.5算法
+Kmeans算法
+朴素贝叶斯算法
+K最近邻分类算法(KNN)
+EM最大期望算法
+PageRank算法
+AdaBoost
+Apriori算法
+SVM支持向量机
+CART分类与回归树
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/01/10/Android/LearnAndroid/">Title</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 张亚飞 的个人博客">张亚飞</a></p>
+        <p><span>发布时间:</span>2016年01月10日 - 19时41分</p>
+        <p><span>最后更新:</span>2016年05月22日 - 11时03分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/01/10/Android/LearnAndroid/" title="Title">https://coam.co/2016/01/10/Android/LearnAndroid/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://coam.co/2016/01/10/Android/LearnAndroid/　　作者: 张亚飞" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/01/10/Android/LearnAndroidContext/">
+                    Title
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/01/10/Android/EventBus/">
+                    Title
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android-相关"><span class="toc-number">1.</span> <span class="toc-text">Android 相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#不错的-Android-开发者博客"><span class="toc-number">1.1.</span> <span class="toc-text">不错的 Android 开发者博客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优秀-Android-开发博客"><span class="toc-number">1.1.1.</span> <span class="toc-text">优秀 Android 开发博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-不错的文章收藏"><span class="toc-number">1.1.2.</span> <span class="toc-text">Android 不错的文章收藏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android开发-so文件知识"><span class="toc-number">1.1.3.</span> <span class="toc-text">Android开发 so文件知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android开发-Data-Binding-数据绑定"><span class="toc-number">1.1.4.</span> <span class="toc-text">Android开发 Data Binding 数据绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android6-权限知识"><span class="toc-number">1.1.5.</span> <span class="toc-text">Android6 权限知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-电源管理"><span class="toc-number">1.1.6.</span> <span class="toc-text">Android 电源管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-的-AlarmManager"><span class="toc-number">1.1.7.</span> <span class="toc-text">Android 的 AlarmManager</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-监听短信"><span class="toc-number">1.1.8.</span> <span class="toc-text">Android 监听短信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-Service"><span class="toc-number">1.1.9.</span> <span class="toc-text">Android Service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-BroadcastReceiver"><span class="toc-number">1.1.10.</span> <span class="toc-text">Android BroadcastReceiver</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-Notification"><span class="toc-number">1.1.11.</span> <span class="toc-text">Android Notification</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-Camera"><span class="toc-number">1.1.11.1.</span> <span class="toc-text">Android Camera</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-动画相关"><span class="toc-number">1.1.11.2.</span> <span class="toc-text">Android 动画相关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-Emoji"><span class="toc-number">1.1.11.3.</span> <span class="toc-text">Android Emoji</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-Bitmap"><span class="toc-number">1.1.12.</span> <span class="toc-text">Android Bitmap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Canvas"><span class="toc-number">1.1.13.</span> <span class="toc-text">Canvas</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Picasso-框架"><span class="toc-number">1.1.14.</span> <span class="toc-text">Picasso 框架</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-Material-Design"><span class="toc-number">1.1.14.1.</span> <span class="toc-text">Android Material Design</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-Toolbar"><span class="toc-number">1.1.14.2.</span> <span class="toc-text">Android Toolbar</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-Design-SearchView"><span class="toc-number">1.1.14.3.</span> <span class="toc-text">Android Design SearchView</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-CoordinatorLayout"><span class="toc-number">1.1.14.4.</span> <span class="toc-text">Android CoordinatorLayout</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-Floating-Action-Bar"><span class="toc-number">1.1.14.5.</span> <span class="toc-text">Android Floating Action Bar</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-透明状态栏"><span class="toc-number">1.1.14.6.</span> <span class="toc-text">Android 透明状态栏</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CardView"><span class="toc-number">1.1.14.7.</span> <span class="toc-text">CardView</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-ViewPager…"><span class="toc-number">1.1.14.8.</span> <span class="toc-text">Android ViewPager…</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-RecyclerView…"><span class="toc-number">1.1.14.9.</span> <span class="toc-text">Android RecyclerView…</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-触摸事件"><span class="toc-number">1.1.14.10.</span> <span class="toc-text">Android 触摸事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-下拉刷新"><span class="toc-number">1.1.14.11.</span> <span class="toc-text">Android 下拉刷新</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#butterknife"><span class="toc-number">1.1.14.12.</span> <span class="toc-text">butterknife</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android三种数据存储方式"><span class="toc-number">1.1.15.</span> <span class="toc-text">Android三种数据存储方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#自定义-View"><span class="toc-number">1.1.15.1.</span> <span class="toc-text">自定义 View</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-应用使用自定义字体"><span class="toc-number">1.1.15.2.</span> <span class="toc-text">Android 应用使用自定义字体</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用-Calligraphy-自定义字体"><span class="toc-number">1.1.15.2.1.</span> <span class="toc-text">使用 Calligraphy 自定义字体</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-Java8"><span class="toc-number">1.1.16.</span> <span class="toc-text">Android Java8</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#开源表情库"><span class="toc-number">1.1.16.1.</span> <span class="toc-text">开源表情库</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不错的开源库"><span class="toc-number">1.1.17.</span> <span class="toc-text">不错的开源库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#其它"><span class="toc-number">1.1.17.1.</span> <span class="toc-text">其它</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#专业收藏开发者相关博客"><span class="toc-number">1.1.18.</span> <span class="toc-text">专业收藏开发者相关博客</span></a></li></ol></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/01/10/Android/LearnAndroidContext/" title="上一篇: Title">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/01/10/Android/EventBus/" title="下一篇: Title">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Erlang/InstallOTP/">InstallOTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Redis/RedisSyncNote/">RedisSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/Ubuntu/">Linux/Ubuntu</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/SystemInstall/">Linux/SystemInstall</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Others/YL/">Others/YL</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/Linux/LinuxCommand/">LinuxCommand</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlSyncNote/">MysqlSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlToRedis/">MysqlToRedis</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlNote/">MysqlNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlSql/">MysqlSql</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Redis/RedisNote/">RedisNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Mongo/MongoNotes/">MongoNotes</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/Linux/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/25/Android/AndroidNDK/">AndroidNDK</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/Design/PhotoShop/">PhotoShop 设计笔记摘要</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/15/Others/Enshrine/">Enshrine收藏</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/03/Others/Imagine/">【脑洞大开】你看过这样的动态图吗?——太牛了！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/26/Linux/Linux.bashrc/">Linux.bashrc</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/24/WinScripts/WinNote/">WinNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/21/Android/ProGuard/">ProGuard</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Linux/ShadowSocks/">ShadowSocks</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Web/WebDesign/">WebDesign</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Plan/FreeShareInfoIdea/">Plan/FreeShareInfoIdea</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Phalcon/PhalconNote/">Phalcon/PhalconNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Info/EnshrineBlogs/">Info/EnshrineBlogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/CLang/cMake/">cMake</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/13/Android/CoamApp/">CoamApp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/30/CLang/GccNote/">GCCNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/QT/QTNote/">QTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/DevIDENote/">DevIDENote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/CNote/">CNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/QT/Cygwin/">Cygwin</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/Electron/ElectronNote/">ElectronNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/CheerioNote/">CheerioNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/MochaNote/">MochaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/WebpackNote/">WebPack 自动打包工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/GulpNote/">NodeJs/GulpNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/Info/hospital/">hospital</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/18/Angular/TypeScriptNote/">TypeScriptNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/17/Angular/AngularNote/">Angular 开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Java/JavaNote/">JavaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/Python/PythonNote/">PythonNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdModule/">EjabberdModule</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdConfigure/">EjabberdConfigure</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrofit/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/PhpNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnLombok/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaHashMap/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaArray/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnGoogleGuava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnAsyncTask/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/NodeJs/NodeJsNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/MongoNotes/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/GPS/GPSNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Rebar/">RebarNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/MQTT/">MQTTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Lua/">LuaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Elixir/">ElixirNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/XMPP/">XMPPNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdNote/">EjabberdNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/Composer/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/SSL/LetSSL/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidStudio/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Nginx/NginxNote/">NginxNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mysql/MysqlTrigger/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidPushMQTT/">Android 推送之 MQTT</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/phpMyAdmin/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnSupportAnnotations/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRxJava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrolambda/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnOther/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnListView/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnGradle/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidFragment/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidDesign/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidContext/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroid/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/EventBus/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidStethoAppWithChrome/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidLog/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/Conversations.IM/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnOkHttp/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Http/HttpNote/">Http协议相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Others/MarkDownNote/">MarkDown 相关</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 张亚飞
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        <div class="visit">
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <span id="site-visit" >本站到访数: 
+                    <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </span>
+            <span id="busuanzi_container_page_pv" style='display:none'>
+                <span id="page-visit">, 本页阅读量: 
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </span>
+        </div>
+    </div>
+</footer>
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

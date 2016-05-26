@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Title | 商运物流</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="使用Chrome来调试你的Android AppGithub使用Chrome来调试你的Android AppFacebook Stetho 使用学习Android调试工具 stetho
+#### 
+
+添加依赖
+
+123456compile &apos;com.facebook.stetho:stetho:1.2.0&apos;//调试 HttpURLConnection 建立的网络请求compile &apos;com.fac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Title">
+<meta property="og:url" content="https://coam.co/2016/01/10/Android/DebugAndroidStethoAppWithChrome/index.html">
+<meta property="og:site_name" content="商运物流">
+<meta property="og:description" content="使用Chrome来调试你的Android AppGithub使用Chrome来调试你的Android AppFacebook Stetho 使用学习Android调试工具 stetho
+#### 
+
+添加依赖
+
+123456compile &apos;com.facebook.stetho:stetho:1.2.0&apos;//调试 HttpURLConnection 建立的网络请求compile &apos;com.fac">
+<meta property="og:updated_time" content="2016-01-20T08:53:01.221Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Title">
+<meta name="twitter:description" content="使用Chrome来调试你的Android AppGithub使用Chrome来调试你的Android AppFacebook Stetho 使用学习Android调试工具 stetho
+#### 
+
+添加依赖
+
+123456compile &apos;com.facebook.stetho:stetho:1.2.0&apos;//调试 HttpURLConnection 建立的网络请求compile &apos;com.fac">
+  
+    <link rel="alternative" href="/atom.xml" title="商运物流" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/author.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">张亚飞</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/markdown-gfw-hexo-jekyll/" style="font-size: 10px;">markdown gfw hexo jekyll</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://coam.co">商运物流</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/zyfmix/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://wp.iirii.com/">商运技术博客</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于物流设计</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">张亚飞</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img lazy-src="/img/author.jpg" class="js-avatar">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">张亚飞</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Android/DebugAndroidStethoAppWithChrome" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Android/DebugAndroidStethoAppWithChrome/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Title
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="使用Chrome来调试你的Android-App"><a href="#使用Chrome来调试你的Android-App" class="headerlink" title="使用Chrome来调试你的Android App"></a>使用Chrome来调试你的Android App</h3><p><a href="https://github.com/facebook/stetho" target="_blank" rel="external">Github</a><br><a href="http://stormzhang.com/android/2015/03/05/android-debug-use-chrome/" target="_blank" rel="external">使用Chrome来调试你的Android App</a><br><a href="http://tech.luffyjet.com/2015/04/08/facebook-stetho-okhttp-study/" target="_blank" rel="external">Facebook Stetho 使用学习</a><br><a href="http://www.5uzh.com/view.aspx?kn=50021483" target="_blank" rel="external">Android调试工具 stetho</a></p>
+<p>#### </p>
+<blockquote>
+<p>添加依赖</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">compile <span class="string">'com.facebook.stetho:stetho:1.2.0'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//调试 HttpURLConnection 建立的网络请求</span></span><br><span class="line">compile <span class="string">'com.facebook.stetho:stetho-urlconnection:1.2.0'</span></span><br><span class="line"><span class="comment">//调试 OKHttp 建立的网络请求</span></span><br><span class="line">compile <span class="string">'com.facebook.stetho:stetho-okhttp:1.2.0'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在Application中启动配置</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Stetho.initialize(Stetho.newInitializerBuilder(<span class="keyword">this</span>)</span><br><span class="line">    .enableDumpapp(Stetho.defaultDumperPluginsProvider(<span class="keyword">this</span>))</span><br><span class="line">    .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(<span class="keyword">this</span>))</span><br><span class="line">    .build());</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>使用HttpUrlConnection调试网络请求,导入官方的一个网络请求类 Networker [stetho/stetho-sample/src/main/java/com/facebook/stetho/sample/Networker.java]</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Post请求</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">sendHUCTPost</span><span class="params">(Context context, String url, Map&lt;String, String&gt; params)</span> </span>&#123;</span><br><span class="line">    PrintWriter out = <span class="keyword">null</span>;</span><br><span class="line">    BufferedReader in = <span class="keyword">null</span>;</span><br><span class="line">    String response = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        URL realUrl = <span class="keyword">new</span> URL(url);</span><br><span class="line">        <span class="comment">// 打开和URL之间的连接</span></span><br><span class="line">        <span class="comment">//HttpURLConnection</span></span><br><span class="line"></span><br><span class="line">        StringBuffer requestParams = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">if</span> (params != <span class="keyword">null</span> &amp;&amp; params.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//conn.setDoOutput(true); // true indicates POST request</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// creates the params string, encode them using URLEncoder</span></span><br><span class="line">            Iterator&lt;String&gt; paramIterator = params.keySet().iterator();</span><br><span class="line">            <span class="keyword">while</span> (paramIterator.hasNext()) &#123;</span><br><span class="line">                String key = paramIterator.next();</span><br><span class="line">                String value = params.get(key);</span><br><span class="line">                requestParams.append(URLEncoder.encode(key, <span class="string">"UTF-8"</span>));</span><br><span class="line">                <span class="comment">//判断一下,防止传空值 null 程序[URLEncoder.encode(value, "UTF-8"]意外崩溃,不能用 value.isEmpty() 判断是否已赋值</span></span><br><span class="line">                <span class="keyword">if</span> (value != <span class="keyword">null</span>)</span><br><span class="line">                    requestParams.append(<span class="string">"="</span>).append(URLEncoder.encode(value, <span class="string">"UTF-8"</span>));</span><br><span class="line">                requestParams.append(<span class="string">"&amp;"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// sends POST data</span></span><br><span class="line"><span class="comment">//                OutputStreamWriter writer = new OutputStreamWriter(conn.getOutputStream());</span></span><br><span class="line"><span class="comment">//                writer.write(requestParams.toString());</span></span><br><span class="line"><span class="comment">//                writer.flush();</span></span><br><span class="line">            <span class="comment">// 获取URLConnection对象对应的输出流</span></span><br><span class="line"><span class="comment">//                out = new PrintWriter(conn.getOutputStream());</span></span><br><span class="line"><span class="comment">//                // 发送请求参数</span></span><br><span class="line"><span class="comment">//                out.print(requestParams);</span></span><br><span class="line"><span class="comment">//                // flush输出流的缓冲</span></span><br><span class="line"><span class="comment">//                out.flush();</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//byte[] postBytes = requestXML.getBytes("UTF-8");</span></span><br><span class="line">        <span class="comment">//byte[] postBytes = new byte[]&#123; (byte) 0x65, (byte)0x10, (byte)0xf3, (byte)0x29&#125;;</span></span><br><span class="line">        <span class="comment">// 将 StringBuffer 转换为 byte[] 数组 - 参考 http://stackoverflow.com/questions/8005327/convert-a-stringbuffer-to-a-byte-array-in-java</span></span><br><span class="line">        <span class="keyword">byte</span>[] postBytes = String.valueOf(requestParams).getBytes();</span><br><span class="line">        Networker.HttpRequest request = Networker.HttpRequest.newBuilder()</span><br><span class="line">                .friendlyName(<span class="string">"ShangYun"</span>)</span><br><span class="line">                .method(Networker.HttpMethod.POST)</span><br><span class="line">                .url(url)</span><br><span class="line">                .body(postBytes)</span><br><span class="line">                .build();</span><br><span class="line">        Networker.get().submit(request, mStoreRssResponse);</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> response;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Get请求</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendOneReq</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Networker.HttpRequest request = Networker.HttpRequest.newBuilder()</span><br><span class="line">            .friendlyName(<span class="string">"Bai Du"</span>)</span><br><span class="line">            .method(Networker.HttpMethod.GET)</span><br><span class="line">            .url(<span class="string">"http://www.baidu.com"</span>)</span><br><span class="line">            .build();</span><br><span class="line">    Networker.get().submit(request, mStoreRssResponse);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Networker.Callback mStoreRssResponse = <span class="keyword">new</span> Networker.Callback() &#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Networker.HttpResponse result)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (result.statusCode == <span class="number">200</span>) &#123;</span><br><span class="line">            String page22222=<span class="keyword">new</span> String(result.body);</span><br><span class="line">            System.out.println(<span class="string">"page22222 : "</span>+page22222);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"result.statusCode is not 200"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(IOException e)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"onFailure"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>最后在Chrome 浏览器输入 <a href="chrome://inspect/#devices" target="_blank" rel="external">chrome://inspect/#devices</a> 调试</p>
+</blockquote>
+<p>参考列表<br><a href="http://stackoverflow.com/questions/12844968/http-post-body-lost-spuriously-httpurlconnection-jetty" target="_blank" rel="external">HTTP post body lost spuriously (HttpURLConnection &amp; Jetty)</a><br><a href="http://stackoverflow.com/questions/17180645/post-byte-array-in-parameter" target="_blank" rel="external">Post byte array in parameter</a><br><a href="http://stackoverflow.com/questions/8005327/convert-a-stringbuffer-to-a-byte-array-in-java" target="_blank" rel="external">Convert a StringBuffer to a byte Array in Java</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/01/10/Android/DebugAndroidStethoAppWithChrome/">Title</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 张亚飞 的个人博客">张亚飞</a></p>
+        <p><span>发布时间:</span>2016年01月10日 - 19时41分</p>
+        <p><span>最后更新:</span>2016年01月20日 - 16时53分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/01/10/Android/DebugAndroidStethoAppWithChrome/" title="Title">https://coam.co/2016/01/10/Android/DebugAndroidStethoAppWithChrome/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://coam.co/2016/01/10/Android/DebugAndroidStethoAppWithChrome/　　作者: 张亚飞" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/01/10/Android/EventBus/">
+                    Title
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/01/10/Android/DebugAndroidLog/">
+                    Title
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Chrome来调试你的Android-App"><span class="toc-number">1.</span> <span class="toc-text">使用Chrome来调试你的Android App</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/01/10/Android/EventBus/" title="上一篇: Title">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/01/10/Android/DebugAndroidLog/" title="下一篇: Title">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Erlang/InstallOTP/">InstallOTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Redis/RedisSyncNote/">RedisSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/Ubuntu/">Linux/Ubuntu</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/SystemInstall/">Linux/SystemInstall</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Others/YL/">Others/YL</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/Linux/LinuxCommand/">LinuxCommand</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlSyncNote/">MysqlSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlToRedis/">MysqlToRedis</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlNote/">MysqlNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlSql/">MysqlSql</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Redis/RedisNote/">RedisNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Mongo/MongoNotes/">MongoNotes</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/Linux/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/25/Android/AndroidNDK/">AndroidNDK</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/Design/PhotoShop/">PhotoShop 设计笔记摘要</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/15/Others/Enshrine/">Enshrine收藏</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/03/Others/Imagine/">【脑洞大开】你看过这样的动态图吗?——太牛了！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/26/Linux/Linux.bashrc/">Linux.bashrc</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/24/WinScripts/WinNote/">WinNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/21/Android/ProGuard/">ProGuard</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Linux/ShadowSocks/">ShadowSocks</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Web/WebDesign/">WebDesign</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Plan/FreeShareInfoIdea/">Plan/FreeShareInfoIdea</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Phalcon/PhalconNote/">Phalcon/PhalconNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Info/EnshrineBlogs/">Info/EnshrineBlogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/CLang/cMake/">cMake</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/13/Android/CoamApp/">CoamApp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/30/CLang/GccNote/">GCCNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/QT/QTNote/">QTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/DevIDENote/">DevIDENote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/CNote/">CNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/QT/Cygwin/">Cygwin</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/Electron/ElectronNote/">ElectronNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/CheerioNote/">CheerioNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/MochaNote/">MochaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/WebpackNote/">WebPack 自动打包工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/GulpNote/">NodeJs/GulpNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/Info/hospital/">hospital</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/18/Angular/TypeScriptNote/">TypeScriptNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/17/Angular/AngularNote/">Angular 开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Java/JavaNote/">JavaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/Python/PythonNote/">PythonNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdModule/">EjabberdModule</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdConfigure/">EjabberdConfigure</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrofit/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/PhpNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnLombok/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaHashMap/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaArray/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnGoogleGuava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnAsyncTask/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/NodeJs/NodeJsNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/MongoNotes/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/GPS/GPSNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Rebar/">RebarNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/MQTT/">MQTTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Lua/">LuaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Elixir/">ElixirNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/XMPP/">XMPPNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdNote/">EjabberdNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/Composer/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/SSL/LetSSL/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidStudio/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Nginx/NginxNote/">NginxNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mysql/MysqlTrigger/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidPushMQTT/">Android 推送之 MQTT</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/phpMyAdmin/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnSupportAnnotations/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRxJava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrolambda/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnOther/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnListView/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnGradle/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidFragment/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidDesign/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidContext/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroid/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/EventBus/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidStethoAppWithChrome/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidLog/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/Conversations.IM/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnOkHttp/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Http/HttpNote/">Http协议相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Others/MarkDownNote/">MarkDown 相关</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 张亚飞
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        <div class="visit">
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <span id="site-visit" >本站到访数: 
+                    <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </span>
+            <span id="busuanzi_container_page_pv" style='display:none'>
+                <span id="page-visit">, 本页阅读量: 
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </span>
+        </div>
+    </div>
+</footer>
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

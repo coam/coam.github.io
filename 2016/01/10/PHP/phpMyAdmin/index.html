@@ -5,34 +5,43 @@
   
   <title>Title | 商运物流</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="phpMyAdmin 相关修改phpMyAdmin中的默认1440超时时间
-步骤一:修改PHP配置中session的过期时间.
-session.gc_maxlifetime = 1440
-# 改为
-session.gc_maxlifetime = 14400
-步骤二:修改phpMyAdmin配置中 session 的过期时间.
-找到 phpMyAdmin/libraries/config.defa">
+  <meta name="description" content="phpMyAdmin 相关http://www.phpmyadmin.net/phpmyadmin/phpmyadmin
+
+安装
+
+12sudo wget https://github.com/phpmyadmin/phpmyadmin/archive/RELEASE_4_6_1.zipunzip RELEASE_4_6_1.zip
+
+修改phpMyAdmin中的默认1440超时时间
+
+
+修改PH">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Title">
 <meta property="og:url" content="https://coam.co/2016/01/10/PHP/phpMyAdmin/index.html">
 <meta property="og:site_name" content="商运物流">
-<meta property="og:description" content="phpMyAdmin 相关修改phpMyAdmin中的默认1440超时时间
-步骤一:修改PHP配置中session的过期时间.
-session.gc_maxlifetime = 1440
-# 改为
-session.gc_maxlifetime = 14400
-步骤二:修改phpMyAdmin配置中 session 的过期时间.
-找到 phpMyAdmin/libraries/config.defa">
-<meta property="og:updated_time" content="2016-01-20T08:58:00.026Z">
+<meta property="og:description" content="phpMyAdmin 相关http://www.phpmyadmin.net/phpmyadmin/phpmyadmin
+
+安装
+
+12sudo wget https://github.com/phpmyadmin/phpmyadmin/archive/RELEASE_4_6_1.zipunzip RELEASE_4_6_1.zip
+
+修改phpMyAdmin中的默认1440超时时间
+
+
+修改PH">
+<meta property="og:updated_time" content="2016-05-22T03:14:40.878Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Title">
-<meta name="twitter:description" content="phpMyAdmin 相关修改phpMyAdmin中的默认1440超时时间
-步骤一:修改PHP配置中session的过期时间.
-session.gc_maxlifetime = 1440
-# 改为
-session.gc_maxlifetime = 14400
-步骤二:修改phpMyAdmin配置中 session 的过期时间.
-找到 phpMyAdmin/libraries/config.defa">
+<meta name="twitter:description" content="phpMyAdmin 相关http://www.phpmyadmin.net/phpmyadmin/phpmyadmin
+
+安装
+
+12sudo wget https://github.com/phpmyadmin/phpmyadmin/archive/RELEASE_4_6_1.zipunzip RELEASE_4_6_1.zip
+
+修改phpMyAdmin中的默认1440超时时间
+
+
+修改PH">
   
     <link rel="alternative" href="/atom.xml" title="商运物流" type="application/atom+xml">
   
@@ -264,18 +273,25 @@ session.gc_maxlifetime = 14400
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="phpMyAdmin__u76F8_u5173"><a href="#phpMyAdmin__u76F8_u5173" class="headerlink" title="phpMyAdmin 相关"></a>phpMyAdmin 相关</h3><p>修改phpMyAdmin中的默认1440超时时间</p>
-<p>步骤一:修改PHP配置中session的过期时间.</p>
-<pre><code>session.gc_maxlifetime = 1440
-# 改为
-session.gc_maxlifetime = 14400
-</code></pre><p>步骤二:修改phpMyAdmin配置中 session 的过期时间.</p>
-<p>找到 phpMyAdmin/libraries/config.default.php 文件,打开修改</p>
-<pre><code>$cfg[&apos;LoginCookieValidity&apos;] = 1440;
-// 改为
-$cfg[&apos;LoginCookieValidity&apos;] = 10000;
-</code></pre><p>注意:</p>
-<p>$cfg[‘LoginCookieValidity’] 的值不能大于 php.ini 里的 session.gc_maxlifetime 的值,否则phpmyadmin 里会出现”您的 PHP 配置参数 session.gc_maxlifetime (外链,英文) 短于您在 phpMyAdmin 中设置的 Cookies 有效期,<br>此您的登录会话有效期将会比您在 phpMyAdmin 中设置的时间要更短.</p>
+        <h3 id="phpMyAdmin-相关"><a href="#phpMyAdmin-相关" class="headerlink" title="phpMyAdmin 相关"></a>phpMyAdmin 相关</h3><p><a href="http://www.phpmyadmin.net/" target="_blank" rel="external">http://www.phpmyadmin.net/</a><br><a href="https://github.com/phpmyadmin/phpmyadmin" target="_blank" rel="external">phpmyadmin/phpmyadmin</a></p>
+<ul>
+<li>安装</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo wget https://github.com/phpmyadmin/phpmyadmin/archive/RELEASE_4_6_1.zip</span><br><span class="line">unzip RELEASE_4_6_1.zip</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改phpMyAdmin中的默认1440超时时间</li>
+</ul>
+<ol>
+<li>修改PHP配置中 session 的过期时间.</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">session.gc_maxlifetime = <span class="number">1440</span></span><br><span class="line"><span class="comment"># 改为</span></span><br><span class="line">session.gc_maxlifetime = <span class="number">86400</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>修改phpMyAdmin配置中 session 的过期时间.</li>
+</ol>
+<p>找到并修改 <em>phpMyAdmin/libraries/config.default.php</em> 文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$cfg</span>[<span class="string">'LoginCookieValidity'</span>] = <span class="number">1440</span>;</span><br><span class="line">// 改为</span><br><span class="line"><span class="variable">$cfg</span>[<span class="string">'LoginCookieValidity'</span>] = <span class="number">86400</span>;</span><br></pre></td></tr></table></figure>
+<p>注意:</p>
+<p>$cfg[‘LoginCookieValidity’] 的值不能大于 php.ini 里的 session.gc_maxlifetime 的值,否则 phpmyadmin 里会出现”您的 PHP 配置参数 session.gc_maxlifetime (外链,英文) 短于您在 phpMyAdmin 中设置的 Cookies 有效期,此您的登录会话有效期将会比您在 phpMyAdmin 中设置的时间要更短.</p>
 
       
     </div>
@@ -287,7 +303,7 @@ $cfg[&apos;LoginCookieValidity&apos;] = 10000;
         <p><span>本文标题:</span><a href="/2016/01/10/PHP/phpMyAdmin/">Title</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 张亚飞 的个人博客">张亚飞</a></p>
         <p><span>发布时间:</span>2016年01月10日 - 19时41分</p>
-        <p><span>最后更新:</span>2016年01月20日 - 16时58分</p>
+        <p><span>最后更新:</span>2016年05月22日 - 11时14分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/01/10/PHP/phpMyAdmin/" title="Title">https://coam.co/2016/01/10/PHP/phpMyAdmin/</a>
             <span class="copy-path" data-clipboard-text="原文: https://coam.co/2016/01/10/PHP/phpMyAdmin/　　作者: 张亚飞" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -304,14 +320,14 @@ $cfg[&apos;LoginCookieValidity&apos;] = 10000;
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/01/10/Erlang/Lua/">
-                    LuaNote
+                <a href="/2016/01/10/Android/AndroidPushMQTT/">
+                    Android 推送之 MQTT
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/01/10/Git/git/">
+                <a href="/2016/01/10/Java/LearnSupportAnnotations/">
                     Title
                 </a>
             </div>
@@ -323,7 +339,7 @@ $cfg[&apos;LoginCookieValidity&apos;] = 10000;
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#phpMyAdmin__u76F8_u5173"><span class="toc-number">1.</span> <span class="toc-text">phpMyAdmin 相关</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#phpMyAdmin-相关"><span class="toc-number">1.</span> <span class="toc-text">phpMyAdmin 相关</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -376,7 +392,7 @@ $cfg[&apos;LoginCookieValidity&apos;] = 10000;
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/01/10/Erlang/Lua/" title="上一篇: LuaNote">
+            <a href="/2016/01/10/Android/AndroidPushMQTT/" title="上一篇: Android 推送之 MQTT">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -384,13 +400,13 @@ $cfg[&apos;LoginCookieValidity&apos;] = 10000;
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/01/10/Git/git/" title="下一篇: Title">
+            <a href="/2016/01/10/Java/LearnSupportAnnotations/" title="下一篇: Title">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/Server/NodeJs/">Server/NodeJs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/CheerioNote/">CheerioNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/MochaNote/">MochaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/WebpackNote/">WebPack 自动打包工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/GulpNote/">NodeJs/GulpNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/Info/hospital/">hospital</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/19/Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd/">Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Java/JavaNote/">JavaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/Python/PythonNote/">PythonNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Server/Ejabberd/">Ejabberd Install</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/PhpNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnAsyncTask/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnGoogleGuava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaArray/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaHashMap/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnLombok/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnOkHttp/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrofit/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrolambda/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRxJava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnSupportAnnotations/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/MongoNotes/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mysql/MysqlTrigger/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Nginx/NginxNote/">NginxNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Elixir/">ElixirNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/SSL/LetSSL/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Rebar/">RebarNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/GPS/GPSNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Lua/">LuaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/phpMyAdmin/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Git/git/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/Composer/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/NodeJs/NodeJsNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/MQTT/">MQTTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Http/HttpNote/">Http协议相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Others/MarkDownNote/">MarkDown 相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Server/ServerDisasterBackup/">Server/Config/Server/ServerDisasterBackup</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Nginx/Other/waf/README/">Server/Config/Nginx/Other/waf/README</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Nginx/">Server/Nginx</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/PHP/">Server/PHP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/MongoDB/">Server/MongoDB</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/ServerContingencyPlans/">Server/ServerContingencyPlans</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Server/ServerDisasterRestart/">Server/Config/Server/ServerDisasterRestart</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Server/ServerDisasterRecovery/">Server/Config/Server/ServerDisasterRecovery</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/PPA/">Server/PPA</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd_old/">Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd_old</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/MongoDB/Mos_etc_mongod.cnf/">Server/Config/MongoDB/Mos_etc_mongod.cnf</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Server/Ubuntu/">Server/Ubuntu</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Plan/FreeShareInfoIdea/">Plan/FreeShareInfoIdea</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Info/EnshrineBlogs/">Info/EnshrineBlogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Phalcon/PhalconNote/">Phalcon/PhalconNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/28/Server/Config/Ejabberd/slava_ejabberd/">Server/Config/Ejabberd/slava_ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/ports/">Server/Config/Ejabberd/jabber/ports</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/modules/">Server/Config/Ejabberd/jabber/modules</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/ejabberd/">Server/Config/Ejabberd/jabber/ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/acl/">Server/Config/Ejabberd/jabber/acl</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/access/">Server/Config/Ejabberd/jabber/access</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/README/">Server/Config/Ejabberd/jabber/README</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/24/Server/Config/Ejabberd/test_ejabberd/">Server/Config/Ejabberd/test_ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/MongoDB/Ali_etc_mongod.cnf/">Server/Config/MongoDB/Ali_etc_mongod.cnf</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/MongoDB/Vultr_etc_mongod.cnf/">Server/Config/MongoDB/Vultr_etc_mongod.cnf</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/Ejabberd/default.ejabberd/">Server/Config/Ejabberd/default.ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/Ejabberd/old.ejabberd/">Server/Config/Ejabberd/old.ejabberd</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Erlang/InstallOTP/">InstallOTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Redis/RedisSyncNote/">RedisSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/Ubuntu/">Linux/Ubuntu</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/SystemInstall/">Linux/SystemInstall</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Others/YL/">Others/YL</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/Linux/LinuxCommand/">LinuxCommand</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlSyncNote/">MysqlSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlToRedis/">MysqlToRedis</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlNote/">MysqlNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlSql/">MysqlSql</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Redis/RedisNote/">RedisNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Mongo/MongoNotes/">MongoNotes</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/Linux/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/25/Android/AndroidNDK/">AndroidNDK</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/Design/PhotoShop/">PhotoShop 设计笔记摘要</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/15/Others/Enshrine/">Enshrine收藏</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/03/Others/Imagine/">【脑洞大开】你看过这样的动态图吗?——太牛了！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/26/Linux/Linux.bashrc/">Linux.bashrc</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/24/WinScripts/WinNote/">WinNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/21/Android/ProGuard/">ProGuard</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Linux/ShadowSocks/">ShadowSocks</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Web/WebDesign/">WebDesign</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Plan/FreeShareInfoIdea/">Plan/FreeShareInfoIdea</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Phalcon/PhalconNote/">Phalcon/PhalconNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Info/EnshrineBlogs/">Info/EnshrineBlogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/CLang/cMake/">cMake</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/13/Android/CoamApp/">CoamApp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/30/CLang/GccNote/">GCCNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/QT/QTNote/">QTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/DevIDENote/">DevIDENote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/CNote/">CNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/QT/Cygwin/">Cygwin</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/Electron/ElectronNote/">ElectronNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/CheerioNote/">CheerioNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/MochaNote/">MochaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/WebpackNote/">WebPack 自动打包工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/GulpNote/">NodeJs/GulpNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/Info/hospital/">hospital</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/18/Angular/TypeScriptNote/">TypeScriptNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/17/Angular/AngularNote/">Angular 开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Java/JavaNote/">JavaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/Python/PythonNote/">PythonNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdModule/">EjabberdModule</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdConfigure/">EjabberdConfigure</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrofit/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/PhpNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnLombok/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaHashMap/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaArray/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnGoogleGuava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnAsyncTask/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/NodeJs/NodeJsNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/MongoNotes/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/GPS/GPSNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Rebar/">RebarNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/MQTT/">MQTTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Lua/">LuaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Elixir/">ElixirNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/XMPP/">XMPPNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdNote/">EjabberdNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/Composer/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/SSL/LetSSL/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidStudio/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Nginx/NginxNote/">NginxNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mysql/MysqlTrigger/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidPushMQTT/">Android 推送之 MQTT</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/phpMyAdmin/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnSupportAnnotations/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRxJava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrolambda/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnOther/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnListView/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnGradle/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidFragment/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidDesign/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidContext/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroid/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/EventBus/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidStethoAppWithChrome/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidLog/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/Conversations.IM/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnOkHttp/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Http/HttpNote/">Http协议相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Others/MarkDownNote/">MarkDown 相关</a></li></ul>
     <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");

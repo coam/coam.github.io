@@ -216,11 +216,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-Server/Config/Server/ServerDisasterBackup" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Java/JavaNote" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/07/Server/Config/Server/ServerDisasterBackup/" class="article-date">
-      <time datetime="2016-01-07T09:59:14.229Z" itemprop="datePublished">2016-01-07</time>
+      <a href="/2016/01/14/Java/JavaNote/" class="article-date">
+      <time datetime="2016-01-14T10:02:31.000Z" itemprop="datePublished">2016-01-14</time>
 </a>
     </div>
   
@@ -229,24 +229,22 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/14/Java/JavaNote/">JavaNote</a>
+    </h1>
+  
+
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="u670D_u52A1_u5668_u707E_u5907_u91CD_u5EFA_u5E94_u6025_u5904_u7406_u5907_u5FD8_u5F55_-__u670D_u52A1_u5668_u65E5_u5E38_u7EF4_u62A4_u53CA_u5907_u4EFD_u4E8B_u9879"><a href="#u670D_u52A1_u5668_u707E_u5907_u91CD_u5EFA_u5E94_u6025_u5904_u7406_u5907_u5FD8_u5F55_-__u670D_u52A1_u5668_u65E5_u5E38_u7EF4_u62A4_u53CA_u5907_u4EFD_u4E8B_u9879" class="headerlink" title="服务器灾备重建应急处理备忘录 - 服务器日常维护及备份事项"></a>服务器灾备重建应急处理备忘录 - 服务器日常维护及备份事项</h2><hr>
-<h3 id="u4E00_u3001_u5B89_u88C5php_u6269_u5C55_2C_u4E0D_u4EC5_u4E0D_u8981_u5728_/etc/php5/fpm__u4E0B_u5B89_u88C5_u76F8_u5E94_u7684so_2C_u4E5F_u5E94_u5728_/etc/php5/cli__u91CC_u8FB9_u6DFB_u52A0so_2C_u4E24_u8005_u90FD_u53EF_u72EC_u7ACB_u8FD0_u884C_2C_u5426_u5219_u5B89_u88C5_u4E86fpm_u7684_u6269_u5C55_2C_u8FD8_u662F_u4E0D_u80FD_u627E_u5230_u76F8_u5E94_u7684_u6269_u5C55"><a href="#u4E00_u3001_u5B89_u88C5php_u6269_u5C55_2C_u4E0D_u4EC5_u4E0D_u8981_u5728_/etc/php5/fpm__u4E0B_u5B89_u88C5_u76F8_u5E94_u7684so_2C_u4E5F_u5E94_u5728_/etc/php5/cli__u91CC_u8FB9_u6DFB_u52A0so_2C_u4E24_u8005_u90FD_u53EF_u72EC_u7ACB_u8FD0_u884C_2C_u5426_u5219_u5B89_u88C5_u4E86fpm_u7684_u6269_u5C55_2C_u8FD8_u662F_u4E0D_u80FD_u627E_u5230_u76F8_u5E94_u7684_u6269_u5C55" class="headerlink" title="一、安装php扩展,不仅不要在 /etc/php5/fpm 下安装相应的so,也应在 /etc/php5/cli 里边添加so,两者都可独立运行,否则安装了fpm的扩展,还是不能找到相应的扩展."></a>一、安装php扩展,不仅不要在 /etc/php5/fpm 下安装相应的so,也应在 /etc/php5/cli 里边添加so,两者都可独立运行,否则安装了fpm的扩展,还是不能找到相应的扩展.</h3><hr>
-<h3 id="u4E8C_u3001_u66F4_u65B0php5-fpm_u540E_2Cphp_u51FA_u73B0_u9519_u8BEF"><a href="#u4E8C_u3001_u66F4_u65B0php5-fpm_u540E_2Cphp_u51FA_u73B0_u9519_u8BEF" class="headerlink" title="二、更新php5-fpm后,php出现错误"></a>二、更新php5-fpm后,php出现错误</h3><pre><code>PHP Fatal error:  Class &apos;MongoClient&apos; not found in /data/home/yzhang/www/www/applications/config/Services.php on line 146
-</code></pre><p>查看phpinfo发现无mongodb 扩展,错误原因为未安装php的 mongoClient drive</p>
-<p>首先执行命令依次安装以下程序:</p>
-<pre><code>sudo apt-get install php-pear
-sudo apt-get install php5-dev
-sudo pecl install mongo
-</code></pre><p>安装完成之后 将以下行添加到 php.ini:</p>
-<pre><code>extension=mongo.so
-</code></pre><p>重启 php5-fpm 问题解决</p>
-<p>参考 <a href="http://php.net/manual/zh/mongo.installation.php" target="_blank" rel="external">http://php.net/manual/zh/mongo.installation.php</a></p>
-<p>参考 <a href="http://askubuntu.com/questions/403327/install-pecl-packages-on-ubuntu" target="_blank" rel="external">http://askubuntu.com/questions/403327/install-pecl-packages-on-ubuntu</a></p>
-<p>重启 nginx php5-fpm</p>
-
+              <h1 id="Java-相关笔记"><a href="#Java-相关笔记" class="headerlink" title="Java 相关笔记"></a>Java 相关笔记</h1>
+          
       
     </div>
     
@@ -255,6 +253,10 @@ sudo pecl install mongo
       
 
       
+      
+        <p class="article-more-link">
+          <a  href="/2016/01/14/Java/JavaNote/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -271,11 +273,11 @@ sudo pecl install mongo
 
 
   
-    <article id="post-Server/Config/Nginx/Other/waf/README" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Python/PythonNote" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/07/Server/Config/Nginx/Other/waf/README/" class="article-date">
-      <time datetime="2016-01-07T09:59:14.202Z" itemprop="datePublished">2016-01-07</time>
+      <a href="/2016/01/13/Python/PythonNote/" class="article-date">
+      <time datetime="2016-01-13T09:11:31.000Z" itemprop="datePublished">2016-01-13</time>
 </a>
     </div>
   
@@ -284,96 +286,22 @@ sudo pecl install mongo
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/13/Python/PythonNote/">PythonNote</a>
+    </h1>
+  
+
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>##ngx_lua_waf</p>
-<p>ngx_lua_waf是我刚入职趣游时候开发的一个基于ngx_lua的web应用防火墙.</p>
-<p>代码很简单,开发初衷主要是使用简单,高性能和轻量级.</p>
-<p>现在开源出来,遵从MIT许可协议.其中包含我们的过滤规则.如果大家有什么建议和想fa,欢迎和我一起完善.</p>
-<p>###用途:</p>
-<pre><code>防止sql注入,本地包含,部分溢出,fuzzing测试,xss,SSRF等web攻击
-防止svn/备份之类文件泄漏
-防止ApacheBench之类压力测试工具的攻击
-屏蔽常见的扫描黑客工具,扫描器
-屏蔽异常的网络请求
-屏蔽图片附件类目录php执行权限
-防止webshell上传
-</code></pre><p>###推荐安装:</p>
-<p>推荐使用lujit2.1做lua支持</p>
-<p>ngx_lua如果是0.9.2以上版本,建议正则过滤函数改为ngx.re.find,匹配效率会提高三倍左右.</p>
-<p>###使用说明:</p>
-<p>nginx安装路径假设为:/usr/local/nginx/conf/</p>
-<p>把ngx_lua_waf下载到conf目录下,解压命名为waf</p>
-<p>在nginx.conf的http段添加</p>
-<pre><code>lua_package_path &quot;/usr/local/nginx/conf/waf/?.lua&quot;;
-lua_shared_dict limit 10m;
-init_by_lua_file  /usr/local/nginx/conf/waf/init.lua; 
-access_by_lua_file /usr/local/nginx/conf/waf/waf.lua;
-</code></pre><p>配置config.lua里的waf规则目录(一般在waf/conf/目录下)</p>
-<pre><code>RulePath = &quot;/usr/local/nginx/conf/waf/wafconf/&quot;
-</code></pre><p>绝对路径如有变动,需对应修改</p>
-<p>然后重启nginx即可</p>
-<p>###配置文件详细说明:</p>
-<pre><code>RulePath = &quot;/usr/local/nginx/conf/waf/wafconf/&quot;
---规则存放目录
-attacklog = &quot;off&quot;
---是否开启攻击信息记录,需要配置logdir
-logdir = &quot;/usr/local/nginx/logs/hack/&quot;
---log存储目录,该目录需要用户自己新建,切需要nginx用户的可写权限
-UrlDeny=&quot;on&quot;
---是否拦截url访问
-Redirect=&quot;on&quot;
---是否拦截后重定向
-CookieMatch = &quot;on&quot;
---是否拦截cookie攻击
-postMatch = &quot;on&quot; 
---是否拦截post攻击
-whiteModule = &quot;on&quot; 
---是否开启URL白名单
-black_fileExt={&quot;php&quot;,&quot;jsp&quot;}
---填写可上传文件后缀类型
-ipWhitelist={&quot;127.0.0.1&quot;}
---ip白名单,多个ip用逗号分隔
-ipBlocklist={&quot;1.0.0.1&quot;}
---ip黑名单,多个ip用逗号分隔
-CCDeny=&quot;on&quot;
---是否开启拦截cc攻击(需要nginx.conf的http段增加lua_shared_dict limit 10m;)
-CCrate = &quot;100/60&quot;
---设置cc攻击频率,单位为秒.
---默认1分钟同一个IP只能请求同一个地址100次
-html=[[Please go away~~]]
---警告内容,可在中括号内自定义
-备注:不要乱动双引号,区分大小写
-</code></pre><p>###检查规则是否生效</p>
-<p>部署完毕可以尝试如下命令:        </p>
-<pre><code>curl http://xxxx/test.php?id=../etc/passwd
-返回&quot;Please go away~~&quot;字样,说明规则生效.
-</code></pre><p>注意:默认,本机在白名单不过滤,可自行调整config.lua配置</p>
-<p>###效果图如下:</p>
-<p><img src="http://i.imgur.com/wTgOcm2.png" alt="sec"></p>
-<p><img src="http://i.imgur.com/DqU30au.png" alt="sec"></p>
-<p>###规则更新:</p>
-<p>考虑到正则的缓存问题,动态规则会影响性能,所以暂没用共享内存字典和redis之类东西做动态管理.</p>
-<p>规则更新可以把规则文件放置到其他服务器,通过crontab任务定时下载来更新规则,nginx reload即可生效.以保障ngx lua waf的高性能.</p>
-<p>只记录过滤日志,不开启过滤,在代码里在check前面加上–注释即可,如果需要过滤,反之</p>
-<p>###一些说明:</p>
-<pre><code>过滤规则在wafconf下,可根据需求自行调整,每条规则需换行,或者用|分割
-
-    global是全局过滤文件,里面的规则对post和get都过滤        
-    get是只在get请求过滤的规则        
-    post是只在post请求过滤的规则        
-    whitelist是白名单,里面的url匹配到不做过滤        
-    user-agent是对user-agent的过滤规则
-
-
-默认开启了get和post过滤,需要开启cookie过滤的,编辑waf.lua取消部分--注释即可
-
-日志文件名称格式如下:虚拟主机名_sec.log
-</code></pre><h2 id="Copyright"><a href="#Copyright" class="headerlink" title="Copyright"></a>Copyright</h2><table><br>  <tr><br>    <td>Weibo</td><td>神奇的魔法师</td><br>  </tr><br>  <tr><br>    <td>Forum</td><td><a href="http://bbs.linuxtone.org/" target="_blank" rel="external">http://bbs.linuxtone.org/</a></td><br>  </tr><br>  <tr><br>    <td>Copyright</td><td>Copyright (c) 2013- loveshell</td><br>  </tr><br>  <tr><br>    <td>License</td><td>MIT License</td><br>  </tr><br></table>
-
-<p>感谢ngx_lua模块的开发者<a href="https://github.com/agentzh/" target="_blank" rel="external">@agentzh</a>,春哥是我所接触过开源精神最好的人</p>
-
+              <h1 id="Python-笔记"><a href="#Python-笔记" class="headerlink" title="Python 笔记"></a>Python 笔记</h1><p><a href="https://pycoders-weekly-chinese.readthedocs.org/en/latest/">PyCoder’s Weekly 中文翻译</a><br>
+          
       
     </div>
     
@@ -382,6 +310,10 @@ html=[[Please go away~~]]
       
 
       
+      
+        <p class="article-more-link">
+          <a  href="/2016/01/13/Python/PythonNote/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -398,11 +330,11 @@ html=[[Please go away~~]]
 
 
   
-    <article id="post-Server/Nginx" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Ejabberd/EjabberdModule" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/07/Server/Nginx/" class="article-date">
-      <time datetime="2016-01-07T09:59:14.186Z" itemprop="datePublished">2016-01-07</time>
+      <a href="/2016/01/10/Ejabberd/EjabberdModule/" class="article-date">
+      <time datetime="2016-01-10T11:49:31.000Z" itemprop="datePublished">2016-01-10</time>
 </a>
     </div>
   
@@ -411,79 +343,22 @@ html=[[Please go away~~]]
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Ejabberd/EjabberdModule/">EjabberdModule</a>
+    </h1>
+  
+
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="Nginx__u5B89_u88C5_u7BA1_u7406_u76F8_u5173"><a href="#Nginx__u5B89_u88C5_u7BA1_u7406_u76F8_u5173" class="headerlink" title="Nginx 安装管理相关"></a>Nginx 安装管理相关</h2><p><a href="http://nginx.org/" target="_blank" rel="external">NGINX官网</a><br><a href="https://www.king.moe/posts/Ubuntu%20Server%20%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%20Nginx" target="_blank" rel="external">Ubuntu Server 编译安装 Nginx</a><br><a href="https://www.imququ.com/post/my-nginx-conf-for-wpo.html" target="_blank" rel="external">Nginx 配置之性能篇</a></p>
-<p>ubuntu下使用apt方式安装、卸载nginx–更新nginx源安装最新版<br>1、添加升级源,把 nginx 团队官方的 PPA 加入到 apt-get 的源配置文件中,并更新源</p>
-<pre><code>add-apt-repository ppa:nginx/stable
-</code></pre><p>如果提示找不到 add-apt-repository</p>
-<pre><code>apt-get install python-software-properties -y
-apt-get update
-</code></pre><p>2、更新nginx</p>
-<pre><code>apt-get upgrade nginx -y
-nginx -v
-</code></pre><p>3、重启nginx</p>
-<pre><code>kill -9 `pidof nginx`
-/etc/init.d/nginx restart
-</code></pre><p>安装nginx后,卸载不完整,使用源码安装最新nginx,一直不通过,卸载nginx的方法:</p>
-<pre><code>sudo apt-get --purge remove nginx
-sudo apt-get autoremove
-dpkg --get-selections|grep nginx
-</code></pre><p>列出与nginx相关的软件:</p>
-<pre><code>nginx-common deinstall
-</code></pre><p>然后</p>
-<pre><code>sudo apt-get --purge remove nginx-common
-</code></pre><p>这样就可以完全卸载掉nginx包括配置文件</p>
-<p>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
-<pre><code>sudo apt-get remove nginx nginx-common # Removes all but config files.
-sudo apt-get purge nginx nginx-common # Removes everything.
-sudo apt-get autoremove # After using any of the above commands, use this in order to remove dependencies used by nginx which are no longer required.
-</code></pre><p>参考 <a href="http://askubuntu.com/questions/235347/what-is-the-best-way-to-uninstall-nginx" target="_blank" rel="external">http://askubuntu.com/questions/235347/what-is-the-best-way-to-uninstall-nginx</a></p>
-<p>//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
-<p>Nginx 配置 SSL 证书相关</p>
-<p>关于 OCSP 配置相关</p>
-<pre><code>ssl_stapling on;
-ssl_stapling_verify on;
-ssl_trusted_certificate /you/path/to/domain.chain.pem;
-resolver 8.8.8.8 8.8.4.4 valid=300s;(国外)
-resolver 223.5.5.5 223.6.6.6 valid=300s;(国内)
-resolver_timeout 10s;
-</code></pre><p>使用如下命令测试 ocsp 状态</p>
-<pre><code>openssl s_client -connect coopens.com:443 -tls1 -tlsextdebug -status
-openssl ocsp -issuer chain.pem -cert cert.pem -text -url http://ocsp.int-x1.letsencrypt.org -header &quot;HOST&quot; &quot;ocsp.int-x1.letsencrypt.org&quot; -no_nonce
-openssl ocsp -no_nonce \
--header Host ocsp.int-x1.letsencrypt.org \
--url http://ocsp.int-x1.letsencrypt.org/ \
--issuer chain.pem \
--CAfile chain.pem \
--cert cert.pem
-</code></pre><p>关于 ocsp 根证书配置</p>
-<pre><code>cat fullchain.pem /data/home/yzhang/Homg/Documents/Server/Config/Nginx/Certify/dst_root.pem &gt; rootchain.pem
-</code></pre><p>其中 fullchain.pem 为当前网站的 证书链,dst_root.pem 为 letsencrypt 根证书 ,更新了 OCSP 证书之后需要测试两次,否则查看 ocsp 缓存失败<br>参考<a href="https://github.com/letsencrypt/letsencrypt/issues/1813" target="_blank" rel="external">Nginx OCSP stapling ssl_trusted_certificate #1813</a></p>
-<p>ssl_trusted_certificate 是用来验证ocsp响应的各个ca证书+中级证书,和信任的ca根证书列表.当用来验证ocsp响应的时候,应该配置为你的ca根证书+和中级ca证书的列表,此处可以简单和ssl_certificate使用同一个证书列表文件.</p>
-<pre><code>[[Solved] Cannot verify ocsp](https://community.letsencrypt.org/t/solved-cannot-verify-ocsp/3306)
-[Unable to verify OCSP response](https://community.letsencrypt.org/t/unable-to-verify-ocsp-response/7264)
-</code></pre><p>配置 ssl_dhparam 提高ssl证书加密安全系数</p>
-<p>使用如下命令生成 4096 位的 dhparam.pem 加密密钥</p>
-<pre><code>openssl dhparam -out dhparam.pem 4096
-</code></pre><p>配置 HTTP 严格传输安全(HSTS)(HTTP Strict Transport Security)</p>
-<p>nginx server{} 段添加如下响应头</p>
-<pre><code>add_header Strict-Transport-Security max-age=15768000;
-</code></pre><p>配置 ssl_session_ticket_key</p>
-<pre><code>#ssl_session_ticket_key /etc/nginx/conf.d/tls_session_ticket.key;
-ssl_session_tickets on;
-</code></pre><p>其中 tls_session_ticket.key 可以按如下方式生成 (参考 <a href="https://blog.helong.info/blog/2015/05/08/https-config-optimize-in-nginx" target="_blank" rel="external">Nginx下配置高性能,高安全性的https TLS服务</a>)</p>
-<pre><code>openssl rand 48 &gt; tls_session_ticket.key
-</code></pre><p>使用 <a href="https://www.ssllabs.com/ssltest/analyze.html?d=coopens.com" target="_blank" rel="external">https://www.ssllabs.com/ssltest/analyze.html?d=coopens.com</a> 检测 网站证书安全性</p>
-<p><a href="https://mozilla.github.io/server-side-tls/ssl-config-generator/" target="_blank" rel="external">Mozilla 查看最新推荐 Nginx 配置项</a><br><a href="https://www.pupboss.com/nginx-add-ssl/" target="_blank" rel="external">Nginx 配置上更安全的 SSL &amp; ECC 证书</a></p>
-<p><a href="https://bbs.wosign.com/thread-1923-1-1.html" target="_blank" rel="external">HTTPS协议介绍—使用Nginx+SSL实现部署与性能优化</a><br><a href="http://songchenwen.com/tech/2015/09/09/nginx-configuration-with-ssl-labs-class-a-plus/" target="_blank" rel="external">SSL Labs 评分 A+ 的 nginx 配置</a><br><a href="https://blog.hinablue.me/entry/bi-ji-ssl-nginx-hsts-spdy-breach-fips-ocsp-stapling/" target="_blank" rel="external">SSL, Nginx, HSTS, SPDY, BREACH, FIPS, OCSP Stapling</a></p>
-<p>//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
-<p>Nginx相关</p>
-<p><a href="http://seanlook.com/2015/05/17/nginx-location-rewrite/" target="_blank" rel="external">nginx配置location总结及rewrite规则写法</a><br><a href="https://www.gehaowu.com/notes/2015/08/NGINXHTTP2/" target="_blank" rel="external">为 NGINX 开启 HTTP2 功能</a><br><a href="https://imququ.com/post/nginx-http2-patch.html" target="_blank" rel="external">Nginx 开始支持 HTTP/2 了</a><br>[HTTP2 on Nginx 測試] (<a href="https://blog.hinablue.me/entry/http2-on-nginx-ce-shi/" target="_blank" rel="external">https://blog.hinablue.me/entry/http2-on-nginx-ce-shi/</a>)</p>
-<p>Nginx 变量相关</p>
-<p><a href="http://note.axiaoxin.com/contents/nginx-variables-note.html" target="_blank" rel="external">Nginx配置-变量笔记</a><br><a href="https://moonbingbing.gitbooks.io/openresty-best-practices/content/openresty/inline_var.html" target="_blank" rel="external">获取Nginx内置绑定变量</a><br><a href="http://www.cnphp.info/nginx-embedded-variables-lasted-version.html" target="_blank" rel="external">最新版 nginx内置变量 大全</a></p>
-
+              <h1 id="Ejabberd-模块"><a href="#Ejabberd-模块" class="headerlink" title="Ejabberd 模块"></a>Ejabberd 模块</h1>
+          
       
     </div>
     
@@ -492,6 +367,10 @@ ssl_session_tickets on;
       
 
       
+      
+        <p class="article-more-link">
+          <a  href="/2016/01/10/Ejabberd/EjabberdModule/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -508,11 +387,11 @@ ssl_session_tickets on;
 
 
   
-    <article id="post-Server/PHP" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Ejabberd/EjabberdConfigure" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/07/Server/PHP/" class="article-date">
-      <time datetime="2016-01-07T09:59:14.160Z" itemprop="datePublished">2016-01-07</time>
+      <a href="/2016/01/10/Ejabberd/EjabberdConfigure/" class="article-date">
+      <time datetime="2016-01-10T11:45:31.000Z" itemprop="datePublished">2016-01-10</time>
 </a>
     </div>
   
@@ -521,101 +400,91 @@ ssl_session_tickets on;
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Ejabberd/EjabberdConfigure/">EjabberdConfigure</a>
+    </h1>
+  
+
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="PHP__u7BA1_u7406"><a href="#PHP__u7BA1_u7406" class="headerlink" title="PHP 管理"></a>PHP 管理</h3><p><a href="http://www.php.net" target="_blank" rel="external">php.net</a></p>
-<h3 id="PHP5__u5B89_u88C5_u76F8_u5173"><a href="#PHP5__u5B89_u88C5_u76F8_u5173" class="headerlink" title="PHP5 安装相关"></a>PHP5 安装相关</h3><p>安装完nginx后,可以进一步安装php</p>
-<pre><code>sudo apt-get install php5-fpm
-sudo apt-get install php5-cli # Makes the php5 command available to the terminal for php5 scripting
-sudo apt-get install php5-common # php5-common 貌似根据依赖自动安装了
-sudo apt-get install php5-dev # phpize 运行工具
-sudo apt-get install php-apc # apc
-sudo apt-get install php5-intl # intl php国际化支持
-sudo apt-get install php5-gd # Popular image manipulation library; used extensively by Wordpress and it&apos;s plugins.
-sudo apt-get install php5-curl # Allows curl (file downloading tool) to be called from PHP5
-sudo apt-get install php-pear # Allows curl (file downloading tool) to be called from PHP5
-sudo apt-get install php5-mcrypt # Provides encryption algorithms to PHP scripts
-sudo apt-get install php5-mysql # Allows PHP5 scripts to talk to a MySQL Database
-sudo apt-get install php5-readline # Allows PHP5 scripts to use the readline function
-</code></pre><p>安装参考</p>
-<pre><code>apt-get install nginx mysql-client mysql-server memcached php5-common php5-dev php5-cgi php5-fpm php-apc php5-mysql php5-pgsql php5-sqlite php5-curl php5-gd php5-intl php-pear php5-mcrypt php5-memcache php5-ming php5-recode php5-tidy php5-xmlrpc php5-xsl php5-mcrypt php5-imap
-</code></pre><p>查看php5运行进程</p>
-<pre><code>ps -waux | grep php5
-</code></pre><p>打开关闭 php5 进程</p>
-<pre><code>sudo service php5-fpm stop
-sudo service php5-fpm start
-sudo service php5-fpm restart
-sudo service php5-fpm status
-</code></pre><p>配置php5监听端口 /etc/php5/fpm/pool.d/www.conf 修改为</p>
-<pre><code># listen = /var/run/php5-fpm.sock 
-listen = 127.0.0.1:9000
-</code></pre><p>重新运行php进程</p>
-<p>参考列表</p>
-<p><a href="http://www.cnblogs.com/Bonker/p/4252588.html" target="_blank" rel="external">ubuntu14.04 +nginx+php5-fpm</a><br><a href="http://www.xingzhewujiang.com/press/apt-get-nginx-mysql-php-on-ubuntu.html" target="_blank" rel="external">在Ubuntu上使用apt-get安装Nginx、MySQL、PHP5环境</a><br><a href="http://www.cnblogs.com/Bonker/p/4496415.html" target="_blank" rel="external">Ubuntu14.04 64bit 编译安装nginx1.7+php5.4+mysql5.6</a></p>
-<hr>
-<h3 id="PHP-ini__u914D_u7F6E_u76F8_u5173"><a href="#PHP-ini__u914D_u7F6E_u76F8_u5173" class="headerlink" title="PHP.ini 配置相关"></a>PHP.ini 配置相关</h3><pre><code>;listen = /run/php/php7.0-fpm.sock
-listen= 127.0.0.1:9000
-</code></pre><hr>
-<h3 id="PHP7__u5347_u7EA7"><a href="#PHP7__u5347_u7EA7" class="headerlink" title="PHP7 升级"></a>PHP7 升级</h3><p>php5更新到最新版本 Upgrade from PHP 5.3 to PHP 5.6 on Ubuntu 12.04 LTS</p>
-<p>首先确保已安装 python-software-properties 才能添加 PPA ,执行以下命令:</p>
-<pre><code>sudo apt-get update
-sudo apt-get install python-software-properties
-</code></pre><p>添加php的最新ppa源</p>
-<pre><code>sudo apt-get install -y language-pack-en-base
-sudo LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php-7.0
-sudo apt-get update
-#sudo apt-get dist-upgrade // 这步为系统全部更新,不推荐
-sudo apt-get install php7.0
-sudo apt-get install php7.0-common
-sudo apt-get install php7.0-cli
-sudo apt-get install php7.0-fpm
-sudo apt-get install php7.0-curl
-sudo apt-get install php7.0-sqlite3
-sudo apt-get install php7.0-json
-sudo apt-get install php7.0-tidy
-sudo apt-get install php7.0-mysql
-...
-sudo apt-get install -y php7.0-common php7.0-cli php7.0-fpm php7.0-curl php7.0-sqlite3 php7.0-json php7.0-tidy php7.0-mysql
-</code></pre><p>修改 /etc/nginx/sites-enabled/default 变 /var/run/php5-fpm.sock 为 /var/run/php/php7.0-fpm.sock</p>
-<p>如果 nginx 监听 9000 端口,修改 /etc/php/7.0/fpm/pool.d/www.conf 为以下,并重启 服务器</p>
-<pre><code>;listen = /run/php/php7.0-fpm.sock
-listen= 127.0.0.1:9000
-</code></pre><p>修改 /etc/php5/fpm/php.ini</p>
-<pre><code>session.gc_maxlifetime = 14400
-</code></pre><p>注:php7下 原来的 php5-fpm 进程已改为 php7.0-fpm</p>
-<p>参考<br><a href="https://www.digitalocean.com/community/tutorials/how-to-upgrade-to-php-7-on-ubuntu-14-04" target="_blank" rel="external">How To Upgrade to PHP 7 on Ubuntu 14.04</a><br><a href="http://blog.self.li/post/134686266812/how-to-install-php-7-ubuntu-14-04-lts" target="_blank" rel="external">How to install PHP 7 on Ubuntu 14.04</a><br><a href="http://phpave.com/upgrade-php-5-3-php-5-5-ubuntu-12-04-lts/" target="_blank" rel="external">Upgrade from PHP 5.3 to PHP 5.5 on Ubuntu 12.04 LTS</a><br><a href="https://launchpad.net/~ondrej/+archive/ubuntu/php-7.0" target="_blank" rel="external">PPA for PHP 7.0 </a><br><a href="http://www.kankanews.com/ICkengine/archives/36593.shtml" target="_blank" rel="external">ubuntu下搭载LNMP环境,解决 fpm监听失败</a></p>
-<hr>
-<h3 id="Php__u5E38_u89C1_u95EE_u9898_u89E3_u51B3"><a href="#Php__u5E38_u89C1_u95EE_u9898_u89E3_u51B3" class="headerlink" title="Php 常见问题解决"></a>Php 常见问题解决</h3><h4 id="u670D_u52A1_u5668_u9891_u7E41_u51FA_u73B0502_u9519_u8BEF_u95EE_u9898_u5206_u6790"><a href="#u670D_u52A1_u5668_u9891_u7E41_u51FA_u73B0502_u9519_u8BEF_u95EE_u9898_u5206_u6790" class="headerlink" title="服务器频繁出现502错误问题分析"></a>服务器频繁出现502错误问题分析</h4><p><a href="http://www.we3ew.com/?p=1263" target="_blank" rel="external">参考 nginx+php-fpm出现502 bad gateway错误解决方法</a></p>
-<h4 id="u5347_u7EA7_u5B8C_php__u540E_2C_u76F8_u5E94_u7684_php__u6269_u5C55_u4E5F_u5C06_u8981_u4E00_u5E76_u5B89_u88C5"><a href="#u5347_u7EA7_u5B8C_php__u540E_2C_u76F8_u5E94_u7684_php__u6269_u5C55_u4E5F_u5C06_u8981_u4E00_u5E76_u5B89_u88C5" class="headerlink" title="升级完 php 后,相应的 php 扩展也将要一并安装"></a>升级完 php 后,相应的 php 扩展也将要一并安装</h4><p>Phalcon</p>
-<pre><code>git clone --depth=1 git://github.com/phalcon/cphalcon.git
-cd cphalcon/build
-sudo ./install
-</code></pre><p>添加到 php.ini 中 </p>
-<pre><code>extension=phalcon.so
-</code></pre><h4 id="apt-get_install__u51FA_u73B0_u4F9D_u8D56_u9879_u95EE_u9898"><a href="#apt-get_install__u51FA_u73B0_u4F9D_u8D56_u9879_u95EE_u9898" class="headerlink" title="apt-get install 出现依赖项问题"></a>apt-get install 出现依赖项问题</h4><pre><code>$ sudo apt-get install php5-fpm
-Reading package lists... Done
-Building dependency tree
-Reading state information... Done
-Some packages could not be installed. This may mean that you have
-requested an impossible situation or if you are using the unstable
-distribution that some required packages have not yet been created
-or been moved out of Incoming.
-The following information may help to resolve the situation:
+              <h1 id="Ejabberd-配置相关"><a href="#Ejabberd-配置相关" class="headerlink" title="Ejabberd 配置相关"></a>Ejabberd 配置相关</h1>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
 
-The following packages have unmet dependencies:
- php5-fpm : Depends: php5-common (= 5.6.16+dfsg-3+deb.sury.org~trusty+1) but 7.20151230+deb.sury.org~trusty+1 is to be installed
-            Depends: php5-cli but it is not going to be installed
-            Depends: php5-json but it is not going to be installed
-E: Unable to correct problems, you have held broken packages.
-</code></pre><p>使用万能的 apt-get –purge remove 删掉php的依赖项 php5-common </p>
-<pre><code>sudo apt-get --purge remove php5-common
-sudo apt-get autoremove
-</code></pre><p>再重新执行安装即可</p>
-<p>使用 apt-get install php5-fpm 后出现类似如下错误</p>
-<pre><code>PHP Warning:  PHP Startup: Unable to load dynamic library &apos;/usr/lib/php5/20131226/recode.so&apos; - /usr/lib/php5/20131226/recode.so: cannot open shared object file: No such file or directory in Unknown on line 0
-</code></pre><p>使用 apt-get install php5-* 依次安装即可</p>
-<pre><code>apt-get install php5-recode
+      
+      
+        <p class="article-more-link">
+          <a  href="/2016/01/10/Ejabberd/EjabberdConfigure/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Java/LearnRetrofit" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Java/LearnRetrofit/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Java/LearnRetrofit/">Title</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="Retrofit-相关"><a href="#Retrofit-相关" class="headerlink" title="Retrofit 相关"></a>Retrofit 相关</h3><p><a href="https://www.gitbook.com/book/asce1885/android-rd-senior-advanced/details" target="_blank" rel="external">更上一层楼－Android研发工程师高级进阶</a><br><a href="http://www.jianshu.com/p/87c36d8dabce" target="_blank" rel="external">Retrofit 解析 JSON 数据</a><br><a href="http://inthecheesefactory.com/blog/retrofit-2.0/en" target="_blank" rel="external">Retrofit 2.0: The biggest update yet on the best HTTP Client Library for Android</a><br><a href="https://futurestud.io/blog/retrofit-2-upgrade-guide-from-1-9/" target="_blank" rel="external">Retrofit 2 — Upgrade Guide from 1.9</a><br><a href="https://bng86.gitbooks.io/android-third-party-/content/retrofit.html" target="_blank" rel="external">Retrofit 开发示例</a></p>
+<h4 id="使用-Retrofit-Post发送一个对象"><a href="#使用-Retrofit-Post发送一个对象" class="headerlink" title="使用 Retrofit Post发送一个对象"></a>使用 Retrofit Post发送一个对象</h4><p><a href="https://futurestud.io/blog/retrofit-send-objects-in-request-body/" target="_blank" rel="external">Retrofit — Send Objects in Request Body</a><br><a href="https://github.com/square/retrofit/issues/854" target="_blank" rel="external">method POST must have a request body</a><br><a href="https://objectpartners.com/2015/08/04/retrofit-api-integration-made-easy/" target="_blank" rel="external">Retrofit: API Integration Made Easy</a><br>问题分析总结</p>
+<p>出现错误</p>
+<pre><code>java.lang.IllegalArgumentException: Unable to create call adapter for rx.Observable&lt;java.util.List&lt;com.coam.model.test.GithubUser&gt;&gt;
+</code></pre><p>需要将rxjava结合到retrofit,在构建请求客户端的地方加上 .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) 如下:</p>
+<pre><code>Retrofit retrofit = new Retrofit.Builder().baseUrl(ENDPOINT)
+        .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+        .build();
+
+//mService = retrofit.create(GithubAPIInterface.class);
+return new GithubService(retrofit.create(GithubAPIInterface.class));
+</code></pre><p>并在dependencies中引入</p>
+<pre><code>compile &apos;com.squareup.retrofit:adapter-rxjava:2.0.0-beta2&apos;
 </code></pre>
       
     </div>
@@ -641,11 +510,11 @@ sudo apt-get autoremove
 
 
   
-    <article id="post-Server/MongoDB" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-PHP/PhpNote" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/07/Server/MongoDB/" class="article-date">
-      <time datetime="2016-01-07T09:59:14.153Z" itemprop="datePublished">2016-01-07</time>
+      <a href="/2016/01/10/PHP/PhpNote/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
 </a>
     </div>
   
@@ -654,102 +523,27 @@ sudo apt-get autoremove
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/PHP/PhpNote/">Title</a>
+    </h1>
+  
+
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="MongoDB__u6458_u8981"><a href="#MongoDB__u6458_u8981" class="headerlink" title="MongoDB 摘要"></a>MongoDB 摘要</h2><hr>
-<h3 id="MongoDB__u7BA1_u7406"><a href="#MongoDB__u7BA1_u7406" class="headerlink" title="MongoDB 管理"></a>MongoDB 管理</h3><p>重启MongoDb</p>
-<p>//sudo mongod -f /etc/mongodb.conf –storageEngine wiredTiger<br>sudo mongod -f /etc/mongod.cnf</p>
-<p>设定开机自启动,将以上命令添加到 /etc/rc.local 即可</p>
-<p>修改mongodb数据存储位置<br>默认mongodb数据存取位置为 /var/lib/mongodb</p>
-<p>修改mongodb配置文件 /etc/mongodb.conf</p>
-<p>将 dbpath=/var/lib/mongodb 修改为</p>
-<pre><code>dbpath=/data/home/data/mongodb
-</code></pre><p>复制数据文件到新的位置</p>
-<pre><code>cp -r /var/lib/mongodb /data/home/data/mongod
-</code></pre><p>重启MongoDB数据库,可正常访问新的MongoDB数据存储位置</p>
-<p>关于阿里云刚安装完mongodb后,启动不了,查看日志 /var/log/mongodb/mongo.log 提示如下错误</p>
-<p>mongodb的RAM不足解决方案</p>
-<pre><code>Please make at least 3379MB available in /var/lib/mongodb/journal or use --smallfiles
-</code></pre><p>按提示,修改mongodb.conf配置文件,取消注释</p>
-<pre><code>nojournal = true
-</code></pre><p>关闭,可以临时解决这个问题</p>
-<p>关闭MongoDB数据库服务<br>官方文档说可以使用killall mongo或kil  -15 PID来关闭.</p>
-<p>或者在Mongo Javascript Shell中</p>
-<pre><code>&gt; use admin
-&gt; db.shutdownServer()
-</code></pre><p>mongo默认处于test,如果直接运行 db.shutdownServer() 会出现错误:</p>
-<pre><code>shutdown command only works with the admin database; try &apos;use admin&apos;
-</code></pre><ol>
-<li><p>以admin身份启动shell命令</p>
-<p> mongo 127.0.0.1:27017/admin</p>
-</li>
-</ol>
-<p>安装 MongoDB3 参考 <a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/#install-the-mongodb-packages" target="_blank" rel="external">http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/#install-the-mongodb-packages</a></p>
-<p>卸载 MongoDB</p>
-<pre><code>sudo apt-get purge mongodb mongodb-clients mongodb-server mongodb-dev
-sudo apt-get purge mongodb-10gen
-sudo apt-get autoremove
-</code></pre><p>MongoDB的备份与恢复  <a href="http://weizhifeng.net/backup-and-restore-data-of-mongodb.html" target="_blank" rel="external">http://weizhifeng.net/backup-and-restore-data-of-mongodb.html</a></p>
-<p>安装MongoDB的PHP扩展</p>
-<pre><code>sudo pecl install mongo 
-</code></pre><p>#或源码安装 <a href="https://github.com/mongodb/mongo-php-driver推荐使用以上命令安装解决相关依赖" target="_blank" rel="external">https://github.com/mongodb/mongo-php-driver推荐使用以上命令安装解决相关依赖</a></p>
-<p>安装稳定版本,否则会出现连接502错误</p>
-<p>参考<br><a href="http://php.net/manual/zh/mongo.installation.php#mongo.installation.nix" target="_blank" rel="external">http://php.net/manual/zh/mongo.installation.php#mongo.installation.nix</a><br><a href="http://wwsun.me/posts/mongodb-upgrade.html" target="_blank" rel="external">升级到MongoDB 3.0</a></p>
-<p>———————————————————————————————————————————————————</p>
-<p>MongoDB数据服务器转移</p>
-<p>拷贝mongoDB的data目录 /data/home/data/mongodb 下的文件到另一服务器同一目录 /data/home/data/mongodb</p>
-<p>拷贝配置文件 /etc/mongodb.conf 过去,使用同样的命令重启mongod即可</p>
-<pre><code>sudo mongod -f /etc/mongodb.conf --storageEngine wiredTiger
-</code></pre><p>——————————————————————————————————————-</p>
-<p>使用wiredEngine需要使用新的YAML配置语法</p>
-<p>创建配置文件 mongod.cnf 并添加如下配置:</p>
-<pre><code>storage:
-dbPath: &quot;/data/home/data/mongodb&quot;  
-    engine: wiredTiger  
-    wiredTiger:
-        engineConfig:
-            cacheSizeGB: 20
-        collectionConfig:
-            blockCompressor: snappy
-
-systemLog:  
-   destination: file  
-   path: &quot;/var/log/mongodb/mongod.log&quot;  
-   logAppend: true  
-
-processManagement:
-    fork: true
-
-net:  
-    bindIp: 127.0.0.1  
-    port: 27017  
-    # Enable the HTTP interface (Defaults to port 28017).  
-    http:  
-        enabled: false  
-</code></pre><p>使用新的配置文件重启mongod</p>
-<pre><code>mongod -f mongod.cnf
-</code></pre><p>参考列表</p>
-<p><a href="http://dba.stackexchange.com/questions/82591/sample-yaml-configuration-files-for-mongodb" target="_blank" rel="external">Sample YAML Configuration Files for MongoDB?</a><br><a href="http://www.putaor.com/?p=577" target="_blank" rel="external">MongoDB 3.0 复制集集群搭建及安全认证实践</a><br><a href="https://laike9m.com/blog/ubuntu-yun-xing-mongodb-de-zheng-que-zi-shi,64/" target="_blank" rel="external">Ubuntu 运行 mongodb 的正确姿势</a><br><a href="http://www.mongoing.com/config_3_0" target="_blank" rel="external">MongoDB 3.0 WT引擎参考配置文件</a><br><a href="http://www.codefrom.com/p/mongodb" target="_blank" rel="external">MongoDB 学习集</a></p>
+        <h3 id="Php-开发笔记相关"><a href="#Php-开发笔记相关" class="headerlink" title="Php 开发笔记相关"></a>Php 开发笔记相关</h3><hr>
+<p><a href="http://get.jobdeer.com/1134.get" target="_blank" rel="external">参考 PHP高效率写法(详解原因)</a></p>
+<p>PHP读取软件接ln 的相对父路径问题</p>
+<p>PHP读取软连接下的PHP程序使用 <strong>DIR</strong> 获取的相对路径,获取的父级目录是源文件的父级目录,若想获取软连接的父级目录,应使用 $_SERVER[“SCRIPT_FILENAME”]来获取当前脚本文件绝句路径再拼接</p>
+<p><a href="http://www.kaijia.me/2012/10/__file__-issue-with-symlink-in-php-solved/" target="_blank" rel="external">详见 PHP魔术常量<strong>FILE</strong>无法识别符号链接问题解决</a></p>
 <hr>
-<h3 id="u91CD_u8981_u5E38_u7528_u65B9_u6CD5_u8BB0_u5F55"><a href="#u91CD_u8981_u5E38_u7528_u65B9_u6CD5_u8BB0_u5F55" class="headerlink" title="重要常用方法记录"></a>重要常用方法记录</h3><ul>
-<li><p>如果mongod服务未启动,使用命令手动启动 MongoDB</p>
-<p>  $ mongod -f mongod.cnf</p>
-</li>
-<li><p>登陆 MongoDB 服务器</p>
-<p>  $ mongo -host 43.241.222.110 -port 27017</p>
-</li>
-<li><p>查看 mongod 服务器集群状态</p>
-<blockquote>
-<p>rs.status()</p>
-</blockquote>
-</li>
-<li><p>关闭本机运行 MongoDB 服务</p>
-<blockquote>
-<p>use admin<br>db.shutdownServer()</p>
-</blockquote>
-</li>
-</ul>
+<h3 id="关于-CGI-FastCGI-PHP-FPM-SPAWN-FCGI-Nginx-它们之间的关系"><a href="#关于-CGI-FastCGI-PHP-FPM-SPAWN-FCGI-Nginx-它们之间的关系" class="headerlink" title="关于 CGI, FastCGI, PHP-FPM, SPAWN-FCGI, Nginx 它们之间的关系"></a>关于 CGI, FastCGI, PHP-FPM, SPAWN-FCGI, Nginx 它们之间的关系</h3><p><a href="http://bigxing.github.io/2015/02/03/cgi-fastcgi-phpfpm-spawnfcgi/" target="_blank" rel="external">CGI, FastCGI, PHP-FPM, SPAWN-FCGI, Nginx 它们之间的关系</a><br><a href="https://segmentfault.com/q/1010000002434806" target="_blank" rel="external">php fpm和fast-CGI有啥关系?而且还有一个疑问,就是PHP以CGI方式运行,请问以CGI方式运行到底是啥意思??</a></p>
 
       
     </div>
@@ -775,11 +569,11 @@ net:
 
 
   
-    <article id="post-Server/ServerContingencyPlans" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Java/LearnLombok" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/07/Server/ServerContingencyPlans/" class="article-date">
-      <time datetime="2016-01-07T09:59:14.145Z" itemprop="datePublished">2016-01-07</time>
+      <a href="/2016/01/10/Java/LearnLombok/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
 </a>
     </div>
   
@@ -788,190 +582,240 @@ net:
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Java/LearnLombok/">Title</a>
+    </h1>
+  
+
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="u670D_u52A1_u5668_u707E_u5907_u91CD_u5EFA_u5E94_u6025_u5904_u7406_u5907_u5FD8_u5F55-_u670D_u52A1_u5668_u5E94_u6025_u9884_u6848"><a href="#u670D_u52A1_u5668_u707E_u5907_u91CD_u5EFA_u5E94_u6025_u5904_u7406_u5907_u5FD8_u5F55-_u670D_u52A1_u5668_u5E94_u6025_u9884_u6848" class="headerlink" title="服务器灾备重建应急处理备忘录-服务器应急预案"></a>服务器灾备重建应急处理备忘录-服务器应急预案</h2><hr>
-<h3 id="u670D_u52A1_u5668_u91CD_u542F_2C_u68C0_u67E5_u4EE5_u4E0B_u8F6F_u4EF6_3A"><a href="#u670D_u52A1_u5668_u91CD_u542F_2C_u68C0_u67E5_u4EE5_u4E0B_u8F6F_u4EF6_3A" class="headerlink" title="服务器重启,检查以下软件:"></a>服务器重启,检查以下软件:</h3><p>一、手动重启GPS数据处理程序 MinaGPS.jar</p>
-<p>二、手动重启 MongoDB</p>
-<pre><code>sudo mongod -f /etc/mongodb.conf
-</code></pre><p>可以找到目前的进程</p>
-<pre><code>ps -ef | grep mongodb
-</code></pre><p>或者</p>
-<pre><code>/etc/init.d/mongodb restart
-</code></pre><p>三、mysql手动连接redis</p>
-<pre><code>select redis_servers_set_v2(&quot;127.0.0.1&quot;,6379);
-</code></pre><p>四、重建Redis运行数据</p>
-<p>包括 AccountInfoSerial AreaSerialList AppShareInfoList</p>
-<pre><code>http://www.syam.cc/index/RebuildRedis
-</code></pre><p>五、重启 PHPResque 队列任务服务（参考 MicroApp/cli/READE.ME文件）</p>
-<pre><code>sudo nohup php /data/home/yzhang/www/www/applications/plugins/PHPResque/bin/resque &amp;
-</code></pre><p>六、启动推送服务器 emqttd</p>
-<pre><code>cd RunProject
-sudo emqttd/bin/emqttd start
+        <h4 id="Lombok-注解支持"><a href="#Lombok-注解支持" class="headerlink" title="Lombok 注解支持"></a>Lombok 注解支持</h4><p><a href="https://projectlombok.org/index.html" target="_blank" rel="external">Lombok官网</a><br><a href="http://it.deepinmind.com/java/2014/04/08/lombok-for-java-development.html" target="_blank" rel="external">Lombok: Java开发的利器</a><br><a href="https://github.com/rzwitserloot/lombok" target="_blank" rel="external">Lombok GitHub</a></p>
+<p><a href="http://codepub.cn/2015/07/30/Lombok-development-guidelines/" target="_blank" rel="external">Lombok开发指南</a></p>
+<h4 id="Android-Studio-Lombok-插件"><a href="#Android-Studio-Lombok-插件" class="headerlink" title="Android Studio Lombok 插件"></a>Android Studio Lombok 插件</h4><p><a href="https://github.com/mplushnikov/lombok-intellij-plugin" target="_blank" rel="external">lombok-intellij-plugin</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Java/LearnJavaHashMap" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Java/LearnJavaHashMap/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Java/LearnJavaHashMap/">Title</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="SparseArray-和-HashMap-的实现与优化"><a href="#SparseArray-和-HashMap-的实现与优化" class="headerlink" title="SparseArray 和 HashMap 的实现与优化"></a>SparseArray 和 HashMap 的实现与优化</h3><p><a href="http://www.jianshu.com/p/e54047b2b563" target="_blank" rel="external">HashMap的实现与优化</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Java/LearnJavaArray" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Java/LearnJavaArray/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Java/LearnJavaArray/">Title</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="Java数组"><a href="#Java数组" class="headerlink" title="Java数组"></a>Java数组</h4><h4 id="声明一个数组-Declare-an-array"><a href="#声明一个数组-Declare-an-array" class="headerlink" title="声明一个数组(Declare an array)"></a>声明一个数组(Declare an array)</h4><pre><code>String[] aArray = new String[5];
+String[] bArray = {&quot;a&quot;,&quot;b&quot;,&quot;c&quot;, &quot;d&quot;, &quot;e&quot;};
+String[] cArray = new String[]{&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;};
+</code></pre><h4 id="在Java中输出一个数组-Print-an-array-in-Java"><a href="#在Java中输出一个数组-Print-an-array-in-Java" class="headerlink" title="在Java中输出一个数组(Print an array in Java)"></a>在Java中输出一个数组(Print an array in Java)</h4><pre><code>int[] intArray = { 1, 2, 3, 4, 5 };
+String intArrayString = Arrays.toString(intArray);
+
+// print directly will print reference value
+System.out.println(intArray);
+// [I@7150bd4d
+
+System.out.println(intArrayString);
+// [1, 2, 3, 4, 5]
+</code></pre><h4 id="从数组中创建数组列表-Create-an-ArrayList-from-an-array"><a href="#从数组中创建数组列表-Create-an-ArrayList-from-an-array" class="headerlink" title="从数组中创建数组列表(Create an ArrayList from an array)"></a>从数组中创建数组列表(Create an ArrayList from an array)</h4><pre><code>String[] stringArray = { &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot; };
+ArrayList&lt;String&gt; arrayList = new ArrayList&lt;String&gt;(Arrays.asList(stringArray));
+System.out.println(arrayList);
+// [a, b, c, d, e]
+</code></pre><h4 id="检查数组中是否包含特定值-Check-if-an-array-contains-a-certain-value"><a href="#检查数组中是否包含特定值-Check-if-an-array-contains-a-certain-value" class="headerlink" title="检查数组中是否包含特定值(Check if an array contains a certain value)"></a>检查数组中是否包含特定值(Check if an array contains a certain value)</h4><pre><code>String[] stringArray = { &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot; };
+boolean b = Arrays.asList(stringArray).contains(&quot;a&quot;);
+System.out.println(b);
+// true
+</code></pre><h4 id="连接两个数组-Concatenate-two-arrays"><a href="#连接两个数组-Concatenate-two-arrays" class="headerlink" title="连接两个数组( Concatenate two arrays)"></a>连接两个数组( Concatenate two arrays)</h4><pre><code>int[] intArray = { 1, 2, 3, 4, 5 };
+int[] intArray2 = { 6, 7, 8, 9, 10 };
+// Apache Commons Lang library
+int[] combinedIntArray = ArrayUtils.addAll(intArray, intArray2);
+</code></pre><h4 id="声明一个数组内链-Declare-an-array-inline"><a href="#声明一个数组内链-Declare-an-array-inline" class="headerlink" title="声明一个数组内链(Declare an array inline )"></a>声明一个数组内链(Declare an array inline )</h4><pre><code>method(new String[]{&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;});
+</code></pre><h4 id="将数组元素加入到一个独立的字符串中-Joins-the-elements-of-the-provided-array-into-a-single-String"><a href="#将数组元素加入到一个独立的字符串中-Joins-the-elements-of-the-provided-array-into-a-single-String" class="headerlink" title="将数组元素加入到一个独立的字符串中(Joins the elements of the provided array into a single String)"></a>将数组元素加入到一个独立的字符串中(Joins the elements of the provided array into a single String)</h4><pre><code>// containing the provided list of elements
+// Apache common lang
+String j = StringUtils.join(new String[] { &quot;a&quot;, &quot;b&quot;, &quot;c&quot; }, &quot;, &quot;);
+System.out.println(j);
+// a, b, c
+</code></pre><h4 id="将数组列表转换成一个数组-Covnert-an-ArrayList-to-an-array"><a href="#将数组列表转换成一个数组-Covnert-an-ArrayList-to-an-array" class="headerlink" title="将数组列表转换成一个数组 (Covnert an ArrayList to an array)"></a>将数组列表转换成一个数组 (Covnert an ArrayList to an array)</h4><pre><code>String[] stringArray = { &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot; };
+ArrayList&lt;String&gt; arrayList = new ArrayList&lt;String&gt;(Arrays.asList(stringArray));
+String[] stringArr = new String[arrayList.size()];
+arrayList.toArray(stringArr);
+for (String s : stringArr)
+    System.out.println(s);
+</code></pre><h4 id="将数组转换成一个集合-Convert-an-array-to-a-set"><a href="#将数组转换成一个集合-Convert-an-array-to-a-set" class="headerlink" title="将数组转换成一个集合(Convert an array to a set)"></a>将数组转换成一个集合(Convert an array to a set)</h4><pre><code>Set&lt;String&gt; set = new HashSet&lt;String&gt;(Arrays.asList(stringArray));
+System.out.println(set);
+//[d, e, b, c, a]
+</code></pre><h4 id="反向数组-Reverse-an-array"><a href="#反向数组-Reverse-an-array" class="headerlink" title="反向数组(Reverse an array)"></a>反向数组(Reverse an array)</h4><pre><code>int[] intArray = { 1, 2, 3, 4, 5 };
+ArrayUtils.reverse(intArray);
+System.out.println(Arrays.toString(intArray));
+//[5, 4, 3, 2, 1]
+</code></pre><h4 id="删除数组元素-Remove-element-of-an-array"><a href="#删除数组元素-Remove-element-of-an-array" class="headerlink" title="删除数组元素(Remove element of an array)"></a>删除数组元素(Remove element of an array)</h4><pre><code>int[] intArray = { 1, 2, 3, 4, 5 };
+int[] removed = ArrayUtils.removeElement(intArray, 3);//create a new array
+System.out.println(Arrays.toString(removed));
+One more – convert int to byte array 
+byte[] bytes = ByteBuffer.allocate(4).putInt(8).array();
+
+for (byte t : bytes) {
+   System.out.format(&quot;0x%x &quot;, t);
+}
 </code></pre><hr>
-<h2 id="u670D_u52A1_u5668_u6545_u969C_u8F6C_u79FB_u5904_u7406_u529E_u6CD5_3A"><a href="#u670D_u52A1_u5668_u6545_u969C_u8F6C_u79FB_u5904_u7406_u529E_u6CD5_3A" class="headerlink" title="服务器故障转移处理办法:"></a>服务器故障转移处理办法:</h2><p>若出现服务器突发故障,重建服务器应执行以下几步:</p>
-<p>一、安装 Nginx</p>
-<p>二、安装 Mysql</p>
-<p>导入备份数据库 LonalDatabase、IM_Ejabberd、Wordpress</p>
-<p>三、安装 PHP</p>
-<p>四、复制项目源文件至新的服务器</p>
-<p>四、安装 Redis</p>
-<p>五、安装 MemCache</p>
-<p>七、安装 mongodb</p>
-<p>参考官方文档 <a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/" target="_blank" rel="external">http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/</a></p>
-<p>mongo备份与恢复,参考</p>
-<p><a href="http://weizhifeng.net/backup-and-restore-data-of-mongodb.html" target="_blank" rel="external">Mongodb数据的备份与恢复</a></p>
-<p><a href="https://mms.mongodb.com/host/list/55438b39e4b07f9b24b20133#deployment/topology" target="_blank" rel="external">https://mms.mongodb.com/host/list/</a></p>
-<p>六、安装PHP的Phalcon扩展框架</p>
-<p>参见 <a href="http://phalconphp.com/en/download" target="_blank" rel="external">http://phalconphp.com/en/download</a></p>
-<p>安装mysql2redis</p>
-<p>参考:<a href="https://github.com/dawnbreaks/mysql2redis" target="_blank" rel="external">https://github.com/dawnbreaks/mysql2redis</a></p>
-<p>参见:<a href="http://wp.iirii.com/?p=1073" target="_blank" rel="external">http://wp.iirii.com/?p=1073</a></p>
-<p>安装MQTT推送框架emqtt,在/data/home/yzhang/RunProject/下</p>
-<p>参见 <a href="http://emqtt.io/" target="_blank" rel="external">http://emqtt.io/</a></p>
-<p>安装邮件服务器</p>
-<p>测试</p>
-<hr>
-<h2 id="u670D_u52A1_u5668_u65E5_u5E38_u7EF4_u62A4_u53CA_u5907_u4EFD_u4E8B_u9879_3A"><a href="#u670D_u52A1_u5668_u65E5_u5E38_u7EF4_u62A4_u53CA_u5907_u4EFD_u4E8B_u9879_3A" class="headerlink" title="服务器日常维护及备份事项:"></a>服务器日常维护及备份事项:</h2><p>问题集锦:</p>
-<p>一、安装php扩展,不仅不要在 /etc/php5/fpm 下安装相应的so,也应在/etc/php5/cli 里边添加so,两者都可独立运行,否则安装了fpm的扩展,还是不能找到相应的扩展.</p>
-<p>二、更新php5-fpm后,php出现错误</p>
-<pre><code>PHP Fatal error:  Class &apos;MongoClient&apos; not found in /data/home/yzhang/www/www/applications/config/Services.php on line 146
-</code></pre><p>查看phpinfo发现无mongodb 扩展,错误原因为未安装php的 mongoClient drive</p>
-<p>首先执行命令依次安装以下程序:</p>
-<pre><code>sudo apt-get install php-pear
-sudo apt-get install php5-dev
-sudo pecl install mongo
-</code></pre><p>安装完成之后 将以下行添加到 php.ini:</p>
-<pre><code>extension=mongo.so
-</code></pre><p>重启 php5-fpm 问题解决</p>
-<p>参考 <a href="http://php.net/manual/zh/mongo.installation.php" target="_blank" rel="external">http://php.net/manual/zh/mongo.installation.php</a></p>
-<p>参考 <a href="http://askubuntu.com/questions/403327/install-pecl-packages-on-ubuntu" target="_blank" rel="external">http://askubuntu.com/questions/403327/install-pecl-packages-on-ubuntu</a></p>
-<p>重启 nginx php5-fpm</p>
+<h4 id="Five-5-ways-to-Iterate-Through-Loop-in-Java"><a href="#Five-5-ways-to-Iterate-Through-Loop-in-Java" class="headerlink" title="Five (5) ways to Iterate Through Loop in Java"></a>Five (5) ways to Iterate Through Loop in Java</h4><pre><code>package crunchify.com.tutorial;
 
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+/**
+ * @author Crunchify.com
+ */
 
+public class CrunchifyIterateThroughList {
 
+    public static void main(String[] argv) {
 
+        // create list
+        List&lt;String&gt; CrunchifyList = new ArrayList&lt;String&gt;();
 
+        // add 4 different values to list
+        CrunchifyList.add(&quot;eBay&quot;);
+        CrunchifyList.add(&quot;Paypal&quot;);
+        CrunchifyList.add(&quot;Google&quot;);
+        CrunchifyList.add(&quot;Yahoo&quot;);
 
+        // iterate via &quot;for loop&quot;
+        System.out.println(&quot;==&gt; For Loop Example.&quot;);
+        for (int i = 0; i &lt; CrunchifyList.size(); i++) {
+            System.out.println(CrunchifyList.get(i));
+        }
 
+        // iterate via &quot;New way to loop&quot;
+        System.out.println(&quot;\n==&gt; Advance For Loop Example..&quot;);
+        for (String temp : CrunchifyList) {
+            System.out.println(temp);
+        }
 
+        // iterate via &quot;iterator loop&quot;
+        System.out.println(&quot;\n==&gt; Iterator Example...&quot;);
+        Iterator&lt;String&gt; CrunchifyIterator = CrunchifyList.iterator();
+        while (CrunchifyIterator.hasNext()) {
+            System.out.println(CrunchifyIterator.next());
+        }
 
-  
-    <article id="post-Server/Config/Server/ServerDisasterRestart" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/07/Server/Config/Server/ServerDisasterRestart/" class="article-date">
-      <time datetime="2016-01-07T09:59:14.120Z" itemprop="datePublished">2016-01-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="u670D_u52A1_u5668_u707E_u5907_u91CD_u5EFA_u5E94_u6025_u5904_u7406_u5907_u5FD8_u5F55_-__u670D_u52A1_u5668_u610F_u5916_u91CD_u542F"><a href="#u670D_u52A1_u5668_u707E_u5907_u91CD_u5EFA_u5E94_u6025_u5904_u7406_u5907_u5FD8_u5F55_-__u670D_u52A1_u5668_u610F_u5916_u91CD_u542F" class="headerlink" title="服务器灾备重建应急处理备忘录 - 服务器意外重启"></a>服务器灾备重建应急处理备忘录 - 服务器意外重启</h2><hr>
-<h3 id="u670D_u52A1_u5668_u610F_u5916_u91CD_u542F_2C_u68C0_u67E5_u4EE5_u4E0B_u8F6F_u4EF6_3A"><a href="#u670D_u52A1_u5668_u610F_u5916_u91CD_u542F_2C_u68C0_u67E5_u4EE5_u4E0B_u8F6F_u4EF6_3A" class="headerlink" title="服务器意外重启,检查以下软件:"></a>服务器意外重启,检查以下软件:</h3><h3 id="u4E00_u3001_u624B_u52A8_u91CD_u542FGPS_u6570_u636E_u5904_u7406_u7A0B_u5E8F_MinaGPS-jar"><a href="#u4E00_u3001_u624B_u52A8_u91CD_u542FGPS_u6570_u636E_u5904_u7406_u7A0B_u5E8F_MinaGPS-jar" class="headerlink" title="一、手动重启GPS数据处理程序 MinaGPS.jar"></a>一、手动重启GPS数据处理程序 MinaGPS.jar</h3><hr>
-<h3 id="u4E8C_u3001MongoDB_u76F8_u5173"><a href="#u4E8C_u3001MongoDB_u76F8_u5173" class="headerlink" title="二、MongoDB相关"></a>二、MongoDB相关</h3><p>可以找到目前的进程</p>
-<pre><code>ps -ef | grep mongodb
-</code></pre><p>手动重启 MongoDB</p>
-<pre><code>sudo mongod -f /etc/mongodb.conf
-</code></pre><p>或者</p>
-<pre><code>/etc/init.d/mongodb restart
-</code></pre><h4 id="u6D4B_u8BD5"><a href="#u6D4B_u8BD5" class="headerlink" title="测试"></a>测试</h4><hr>
-<h3 id="u4E09_u3001mysql_u624B_u52A8_u8FDE_u63A5redis"><a href="#u4E09_u3001mysql_u624B_u52A8_u8FDE_u63A5redis" class="headerlink" title="三、mysql手动连接redis"></a>三、mysql手动连接redis</h3><pre><code>select redis_servers_set_v2(&quot;43.241.222.110&quot;,6379);
+        // iterate via &quot;while loop&quot;
+        System.out.println(&quot;\n==&gt; While Loop Example....&quot;);
+        int i = 0;
+        while (i &lt; CrunchifyList.size()) {
+            System.out.println(CrunchifyList.get(i));
+            i++;
+        }
+
+        // collection stream() util: Returns a sequential Stream with this collection as its source
+        System.out.println(&quot;\n==&gt; collection stream() util....&quot;);
+        CrunchifyList.forEach((temp) -&gt; {
+            System.out.println(temp);
+        });
+    }
+}
 </code></pre><hr>
-<h3 id="u56DB_u3001Redis_u76F8_u5173"><a href="#u56DB_u3001Redis_u76F8_u5173" class="headerlink" title="四、Redis相关"></a>四、Redis相关</h3><p>重建Redis运行数据包括 AccountInfoSerial areaSerialList AppShareInfoList</p>
-<p><a href="http://www.syam.cc/index/RebuildRedis" target="_blank" rel="external">http://www.syam.cc/index/RebuildRedis</a></p>
-<hr>
-<h3 id="u4E94_u3001_u91CD_u542F_PHPResque__u961F_u5217_u4EFB_u52A1_u670D_u52A1_uFF08_u53C2_u8003_MicroApp/cli/READE-ME_u6587_u4EF6_uFF09"><a href="#u4E94_u3001_u91CD_u542F_PHPResque__u961F_u5217_u4EFB_u52A1_u670D_u52A1_uFF08_u53C2_u8003_MicroApp/cli/READE-ME_u6587_u4EF6_uFF09" class="headerlink" title="五、重启 PHPResque 队列任务服务（参考 MicroApp/cli/READE.ME文件）"></a>五、重启 PHPResque 队列任务服务（参考 MicroApp/cli/READE.ME文件）</h3><pre><code>sudo nohup php /data/home/yzhang/www/www/applications/plugins/PHPResque/bin/resque &amp;
-</code></pre><hr>
-<h3 id="u516D_u3001MQTT_u63A8_u9001_u670D_u52A1_u5668_emqttd__u76F8_u5173"><a href="#u516D_u3001MQTT_u63A8_u9001_u670D_u52A1_u5668_emqttd__u76F8_u5173" class="headerlink" title="六、MQTT推送服务器 emqttd 相关"></a>六、MQTT推送服务器 emqttd 相关</h3><p>启动 <strong>emqttd</strong> 推送服务器</p>
-<pre><code>cd RunProject
-emqttd/bin/emqttd start
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Server/Config/Server/ServerDisasterRecovery" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/07/Server/Config/Server/ServerDisasterRecovery/" class="article-date">
-      <time datetime="2016-01-07T09:59:14.102Z" itemprop="datePublished">2016-01-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="u670D_u52A1_u5668_u707E_u5907_u91CD_u5EFA_u5E94_u6025_u5904_u7406_u5907_u5FD8_u5F55_-__u670D_u52A1_u5668_u6545_u969C_u8F6C_u79FB_u5904_u7406_u529E_u6CD5"><a href="#u670D_u52A1_u5668_u707E_u5907_u91CD_u5EFA_u5E94_u6025_u5904_u7406_u5907_u5FD8_u5F55_-__u670D_u52A1_u5668_u6545_u969C_u8F6C_u79FB_u5904_u7406_u529E_u6CD5" class="headerlink" title="服务器灾备重建应急处理备忘录 - 服务器故障转移处理办法"></a>服务器灾备重建应急处理备忘录 - 服务器故障转移处理办法</h2><blockquote>
-<p>若出现服务器突发故障,应遵循以下步骤重建服务器</p>
-</blockquote>
-<hr>
-<h3 id="u4E00_u3001_u5B89_u88C5Nginx"><a href="#u4E00_u3001_u5B89_u88C5Nginx" class="headerlink" title="一、安装Nginx"></a>一、安装Nginx</h3><hr>
-<h3 id="u4E8C_u3001_u5B89_u88C5Mysql"><a href="#u4E8C_u3001_u5B89_u88C5Mysql" class="headerlink" title="二、安装Mysql"></a>二、安装Mysql</h3><p>导入备份数据库 LonalDatabase、IM_Ejabberd、Wordpress</p>
-<hr>
-<h3 id="u4E09_u3001_u5B89_u88C5PHP"><a href="#u4E09_u3001_u5B89_u88C5PHP" class="headerlink" title="三、安装PHP"></a>三、安装PHP</h3><hr>
-<h3 id="u56DB_u3001_u590D_u5236_u9879_u76EE_u6E90_u6587_u4EF6_u81F3_u65B0_u7684_u670D_u52A1_u5668"><a href="#u56DB_u3001_u590D_u5236_u9879_u76EE_u6E90_u6587_u4EF6_u81F3_u65B0_u7684_u670D_u52A1_u5668" class="headerlink" title="四、复制项目源文件至新的服务器"></a>四、复制项目源文件至新的服务器</h3><hr>
-<h3 id="u56DB_u3001_u5B89_u88C5Redis"><a href="#u56DB_u3001_u5B89_u88C5Redis" class="headerlink" title="四、安装Redis"></a>四、安装Redis</h3><hr>
-<h3 id="u4E94_u3001_u5B89_u88C5MemCache"><a href="#u4E94_u3001_u5B89_u88C5MemCache" class="headerlink" title="五、安装MemCache"></a>五、安装MemCache</h3><hr>
-<h3 id="u4E03_u3001_u5B89_u88C5mongodb"><a href="#u4E03_u3001_u5B89_u88C5mongodb" class="headerlink" title="七、安装mongodb"></a>七、安装mongodb</h3><p>参考官方文档 <a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/" target="_blank" rel="external">http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/</a></p>
-<p>mongo备份与恢复,参考</p>
-<p><a href="http://weizhifeng.net/backup-and-restore-data-of-mongodb.html" target="_blank" rel="external">http://weizhifeng.net/backup-and-restore-data-of-mongodb.html</a></p>
-<p><a href="https://mms.mongodb.com/host/list/55438b39e4b07f9b24b20133#deployment/topology" target="_blank" rel="external">https://mms.mongodb.com/host/list/55438b39e4b07f9b24b20133#deployment/topology</a></p>
-<hr>
-<h3 id="u516D_u3001_u5B89_u88C5PHP_u7684Phalcon_u6269_u5C55_u6846_u67B6"><a href="#u516D_u3001_u5B89_u88C5PHP_u7684Phalcon_u6269_u5C55_u6846_u67B6" class="headerlink" title="六、安装PHP的Phalcon扩展框架"></a>六、安装PHP的Phalcon扩展框架</h3><p>参见 <a href="http://phalconphp.com/en/download" target="_blank" rel="external">http://phalconphp.com/en/download</a></p>
-<p>安装 mysql2redis</p>
-<p>参考:<a href="https://github.com/dawnbreaks/mysql2redis" target="_blank" rel="external">https://github.com/dawnbreaks/mysql2redis</a></p>
-<p>参见:<a href="http://wp.iirii.com/?p=1073" target="_blank" rel="external">http://wp.iirii.com/?p=1073</a></p>
-<p>安装MQTT推送框架emqtt,在/data/home/yzhang/RunProject/ 下</p>
-<p>参见 <a href="http://emqtt.io/" target="_blank" rel="external">http://emqtt.io/</a></p>
-<p>测试</p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="http://crunchify.com/how-to-iterate-through-java-list-4-way-to-iterate-through-loop/" target="_blank" rel="external">Java List For 循环 How to iterate through Java List? Five (5) ways to Iterate Through Loop in Java</a><br><a href="http://www.programcreek.com/2014/01/java%E7%A8%8B%E5%BA%8F%E5%91%98%E5%B8%B8%E7%8A%AF%E7%9A%8410%E4%B8%AA%E9%94%99%E8%AF%AF/" target="_blank" rel="external">Java程序员常犯的10个错误</a></p>
 
       
     </div>
@@ -997,11 +841,11 @@ emqttd/bin/emqttd start
 
 
   
-    <article id="post-Server/PPA" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Java/LearnGoogleGuava" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/07/Server/PPA/" class="article-date">
-      <time datetime="2016-01-07T09:59:14.068Z" itemprop="datePublished">2016-01-07</time>
+      <a href="/2016/01/10/Java/LearnGoogleGuava/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
 </a>
     </div>
   
@@ -1010,107 +854,22 @@ emqttd/bin/emqttd start
       <input type="hidden" class="isFancy" />
     
     
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="u4F7F_u7528_PPA__u5B89_u88C5_u8F6F_u4EF6"><a href="#u4F7F_u7528_PPA__u5B89_u88C5_u8F6F_u4EF6" class="headerlink" title="使用 PPA 安装软件"></a>使用 PPA 安装软件</h3><p><a href="https://launchpad.net/" target="_blank" rel="external">https://launchpad.net/</a><br>常见的 ppa 源 </p>
-<pre><code>sudo apt-get install python-software-properties
-sudo apt-get install -y language-pack-en-base
-sudo LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php-7.0
-sudo apt-get update
-#sudo apt-get dist-upgrade // 这步为系统全部更新,不推荐
-sudo apt-get install php7.0
-</code></pre><p>将会在 /etc/apt/t/sources.list.d/ ondrej-php-7_0-trusty.list 和  ondrej-php-7_0-trusty.list.save 两个文件</p>
-<hr>
-<p>使用以下命令可以查看所有使用 添加的ppa源,当程序需要卸载或降级的时候需要将最新的 ondrej-php-7_0-trusty.list* 删掉</p>
-<blockquote>
-<p>查看所有已添加的 ppa 源</p>
-</blockquote>
-<pre><code>grep ^ /etc/apt/sources.list /etc/apt/sources.list.d/*
-</code></pre><p>参考 <a href="http://askubuntu.com/questions/148932/how-can-i-get-a-list-of-all-repositories-and-ppas-from-the-command-line" target="_blank" rel="external">How can I get a list of all repositories and PPAs from the command line?</a></p>
-<blockquote>
-<p>手动删除 [/etc/apt/t/sources.list.d/ -&gt; ondrej-php-7_0-trusty.list*] 后,需要删掉自动添加的key,使用以下命令查看所有已添加的 ppa key:</p>
-</blockquote>
-<pre><code>$ sudo apt-key list
-...
-/etc/apt/trusted.gpg.d/ondrej-php-7_0.gpg
------------------------------------------
-pub   1024R/E5267A6C 2009-01-26
-uid                  Launchpad PPA for Ondřej Surý
-
-/etc/apt/trusted.gpg.d/ondrej-php5-5_6.gpg
-------------------------------------------
-pub   1024R/E5267A6C 2009-01-26
-uid                  Launchpad PPA for Ondřej Surý
-
-/etc/apt/trusted.gpg.d/ondrej-php5.gpg
---------------------------------------
-pub   1024R/E5267A6C 2009-01-26
-uid                  Launchpad PPA for Ondřej Surý
-...
-</code></pre><blockquote>
-<p>删除对应的 key</p>
-</blockquote>
-<pre><code>$ apt-key del $ID
-$ sudo apt-key del E5267A6C
-</code></pre><p>参考 <a href="http://unix.stackexchange.com/questions/60595/how-to-undo-sudo-add-apt-repository" target="_blank" rel="external">How to undo sudo add-apt-repository?</a></p>
-<hr>
-<h4 id="u4F7F_u7528apt-get__u5B89_u88C5_php7__u540E_2C_u53D1_u73B0phalcon__u6682_u65F6_u4E0D_u652F_u6301php7_2C_u4E8E_u662F_u51B3_u5B9A_u5378_u8F7Dphp7_u91CD_u65B0_u5B89_u88C5php5-6"><a href="#u4F7F_u7528apt-get__u5B89_u88C5_php7__u540E_2C_u53D1_u73B0phalcon__u6682_u65F6_u4E0D_u652F_u6301php7_2C_u4E8E_u662F_u51B3_u5B9A_u5378_u8F7Dphp7_u91CD_u65B0_u5B89_u88C5php5-6" class="headerlink" title="使用apt-get 安装 php7 后,发现phalcon 暂时不支持php7,于是决定卸载php7重新安装php5.6"></a>使用apt-get 安装 php7 后,发现phalcon 暂时不支持php7,于是决定卸载php7重新安装php5.6</h4><p>使用如下命令卸载 php7.0</p>
-<pre><code>sudo apt-get --purge remove php7.0
-</code></pre><p>需要同时卸载 php*-common 依赖软件</p>
-<pre><code>sudo apt-get --purge remove php5-common
-sudo apt-get autoremove
-</code></pre><h4 id="ppa__u964D_u7EA7_u6216_u5378_u8F7D_u5DF2_u5B89_u88C5_u8F6F_u4EF6__u5927_u6982_u4E3A_u4EE5_u4E0B_u51E0_u6B65_3A"><a href="#ppa__u964D_u7EA7_u6216_u5378_u8F7D_u5DF2_u5B89_u88C5_u8F6F_u4EF6__u5927_u6982_u4E3A_u4EE5_u4E0B_u51E0_u6B65_3A" class="headerlink" title="ppa 降级或卸载已安装软件 大概为以下几步:"></a>ppa 降级或卸载已安装软件 大概为以下几步:</h4><p>安装ppa源扩展工具</p>
-<pre><code>apt-get install -y ppa-purge
-</code></pre><p>现在的版本是php5.5.要是不小心安装了php5.5要怎么样,才能重新安装php5.4呢? 方法如下:</p>
-<pre><code>add-apt-repository  ppa:ondrej/php5-oldstable
-apt-get update
-ppa-purge ppa:ondrej/php5
-apt-get update &amp;&amp; apt-get upgrade -y &amp;&amp; apt-get autoremove -y &amp;&amp; apt-get autoclean -y
-apt-get install php5-fpm
-</code></pre><p>参考 <a href="http://blog.x228.com/archives/316.html" target="_blank" rel="external">ubuntu通过ppa源安装php5.4或php5.5</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
+      <header class="article-header">
+        
   
-</article>
-
-
-
-
-
-
-
-
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Java/LearnGoogleGuava/">Title</a>
+    </h1>
   
-    <article id="post-Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd_old" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/07/Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd_old/" class="article-date">
-      <time datetime="2016-01-07T09:58:58.524Z" itemprop="datePublished">2016-01-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
+
+      </header>
+      
     
     <div class="article-entry" itemprop="articleBody">
       
           
-        {"loglevel":5,"log_rotate_size":10485760,"log_rotate_date":"","log_rotate_count":1,"log_rate_limit":100,"hosts":["coopens.com"],"define_macro":{"COOPENS_SSL_CERT_LOCATION":"/etc/ejabberd/ejabberd.pem","ICQ_JABBER_AT_PASSWORD":"123456","AIM_JABBER_AT_PASSWORD":"123456","TLS_OPTIONS":["no_sslv2","no_sslv3","no_tlsv1"],"TLS_CIPHERS":"ECDH:DH:!CAMELLIA128:!3DES:!MD5:!RC4:!aNULL:!NULL:!EXPORT:!LOW:!MEDIUM","TRANSPORTS":["aim.coopens.com","icq.coopens.com"]},"disable_sasl_mechanisms":["X-OAUTH2"],"commands_admin_access":"xmlrpc_access","commands":[{"add_commands":"user"}],"oauth_expire":3600,"listen":[{"port":4560,"ip":"42.96.194.60","module":"ejabberd_xmlrpc","maxsessions":10,"timeout":5000,"AccessCommands":{},"access_commands":{"xmlrpc_access":{"commands":"all","options":{}},"xmlrpc":{"commands":["register","change_password","send_message","registered_users","unregister"],"options":[]}}},{"port":5222,"module":"ejabberd_c2s","certfile":"/etc/ejabberd/ejabberd.pem","starttls":true,"starttls_required":true,"protocol_options":"TLS_OPTIONS","ciphers":"TLS_CIPHERS","resend_on_timeout":true,"zlib":true,"max_stanza_size":65536,"max_ack_queue":32767,"resume_timeout":1200,"shaper":"c2s_shaper","access":"c2s"},{"port":5269,"module":"ejabberd_s2s_in","max_stanza_size":65536},{"port":5280,"module":"ejabberd_http","request_handlers":{"/websocket":"ejabberd_http_ws","/pub/archive":"mod_http_fileserver","/log":"mod_log_http","/oauth":"ejabberd_oauth","/api":"mod_http_api"},"web_admin":true,"http_poll":false,"http_bind":true,"captcha":true},{"ip":"::","port":5349,"module":"ejabberd_stun","tls":true,"certfile":"COOPENS_SSL_CERT_LOCATION","use_turn":true,"turn_ip":"42.96.194.60","turn_min_port":49152,"turn_max_port":50000,"access":"local"},{"ip":"127.0.0.1","port":5401,"module":"ejabberd_service","hosts":{"icq.coopens.com":{"password":"ICQ_JABBER_AT_PASSWORD"}},"access":"local"},{"ip":"127.0.0.1","port":5403,"module":"ejabberd_service","hosts":{"aim.coopens.com":{"password":"AIM_JABBER_AT_PASSWORD"}},"access":"locald"},{"port":5443,"module":"ejabberd_http","tls":true,"certfile":"/etc/ejabberd/ejabberd.pem","request_handlers":{"upload":"mod_http_upload"}}],"s2s_use_starttls":"optional","s2s_certfile":"/etc/ejabberd/ejabberd.pem","s2s_protocol_options":"TLS_OPTIONS","s2s_ciphers":"TLS_CIPHERS","s2s_access":"authenticated","outgoing_s2s_families":["ipv4","ipv6"],"outgoing_s2s_port":5269,"outgoing_s2s_timeout":10000,"auth_method":"odbc","redis_server":"43.241.222.110","redis_db":0,"odbc_type":"mysql","odbc_server":"localhost","odbc_database":"IM_Ejabberd","odbc_username":"zhangyanxi","odbc_password":"yanxi312","odbc_port":3306,"odbc_start_interval":20,"odbc_keepalive_interval":30,"shaper":{"normal":1000,"fast":50000},"max_fsm_queue":1000,"acl":{"admin":{"user":[{"zyf":"coopens.com"}]},"loopback":{"ip":["127.0.0.0/8"]},"local":{"user_regexp":""},"trusted_servers":{"server":["coopens.com"]},"muc_admin":{"user":[{"zyf":"coopens.com"},{"viper":"jabber.at"},{"tom":"fnord.at"},{"michaelpuermayr":"jabber.at"}]},"xmlrpc_access":{"user":[{"zyf":"coopens.com"}]},"xmlrpc_bot":{"user":[{"xmlrpc-robot":"coopens.com"},{"zyf":"coopens.com"}]},"xmlrpc_users":{"user":[{"xmlrpc":"coopens.com"},{"zyf":"coopens.com"}]}},"access":{"admin":{"blocked":"deny","admin":"allow"},"everybody":{"blocked":"deny","all":"allow"},"max_user_sessions":{"admin":"infinity","anon_jabber_at":1,"all":3},"max_user_offline_messages":{"admin":2000,"anon_jabber_at":0,"all":100},"local":{"blocked":"deny","anon_jabber_at":"deny","local":"allow"},"authenticated":{"blocked":"deny","anon_jabber_at":"deny","all":"allow"},"webchat":{"blocked":"deny","local":"allow","anon_jabber_at":"allow"},"max_user_mam_messages":{"admin":0,"anon_jabber_at":0,"all":100000},"c2s":{"blocked":"deny","all":"allow"},"c2s_shaper":{"admin":"none","all":"normal"},"s2s_shaper":{"all":"fast"},"proxy_shaper":{"admin":"none","local":"proxy"},"announce":{"admin":"allow"},"configure":{"blocked":"deny","admin":"allow"},"muc_admin":{"admin":"allow"},"muc_create":{"local":"allow"},"muc":{"all":"allow"},"pubsub_createnode":{"local":"allow"},"register":{"all":"deny"},"trusted_network":{"loopback":"allow"},"xmlrpc_access":{"admin":"allow","user":"allow","xmlrpc_users":"allow","xmlrpc_bot":"allow"}},"language":"en","host_config":{"coopens.com":{"language":"zh"}},"default_db":"odbc","modules":{"mod_adhoc":{},"mod_admin_extra":{},"mod_announce":{"access":"admin","db_type":"odbc"},"mod_blocking":{},"mod_caps":{},"mod_carboncopy":{},"mod_client_state":{"drop_chat_states":true,"queue_presence":true},"mod_configure":{},"mod_disco":{},"mod_echo":{},"mod_irc":{"access":"authenticated","default_encoding":"utf-8"},"mod_fail2ban":{"c2s_max_auth_failures":5},"mod_http_bind":{"max_inactivity":400},"mod_last":{"db_type":"odbc"},"mod_muc":{"access":"muc","access_create":"muc_create","access_persistent":"muc_create","access_admin":"muc_admin","db_type":"odbc","history_size":20,"max_users":200},"mod_muc_log":{"access_log":"muc","cssfile":"http://coopens.com/my.css","dirtype":"plain","dirname":"room_jid","outdir":"/data/home/yzhang/Home/www/public/muclogs","timezone":"universal","spam_prevention":true,"top_link":{"http://www.jabber.ru/":"Jabber.ru"}},"mod_muc_admin":{},"mod_offline":{"access_max_user_messages":"max_user_offline_messages","db_type":"odbc"},"mod_ping":{"send_pings":true,"ping_interval":300,"timeout_action":"kill"},"mod_pres_counter":{"count":5,"interval":60},"mod_privacy":{"db_type":"odbc"},"mod_private":{"db_type":"odbc"},"mod_proxy65":{"ip":"::","name":"File Transfer Proxy","host":"proxy.coopens.com","hostname":"42.96.194.60","port":7777,"access":"all","auth_type":"anonymous","max_connections":10,"shaper":"proxy_shaper"},"mod_http_fileserver":{"docroot":"/data/home/yzhang/Home/www/public/ejabberd/www","accesslog":"/var/log/ejabberd/access.log","directory_indices":["index.html","main.htm"],"custom_headers":{"X-Powered-By":"Erlang/OTP","X-Fry":"It's a widely-believed fact!"},"content_types":{".ogg":"audio/ogg",".png":"image/png"},"default_content_type":"text/html"},"mod_http_upload":{"docroot":"/data/home/yzhang/Home/www/public/ejabberd/upload","put_url":"https://@HOST@:5443/upload","thumbnail":true,"rm_on_unregister":false},"mod_http_upload_quota":{"max_days":100},"mod_mam":{"default":"always","db_type":"odbc"},"mod_pubsub":{"db_type":"odbc","access_createnode":"pubsub_createnode","ignore_pep_from_offline":true,"last_item_cache":false,"max_items_node":1000,"plugins":["flat","hometree","pep"]},"mod_register":{"welcome_message":{"subject":"Welcome!","body":"Hi.\nWelcome to this XMPP server."},"ip_access":"trusted_network","access_from":"register"},"mod_roster":{"versioning":true,"db_type":"odbc","store_current_id":true},"mod_shared_roster":{"db_type":"odbc"},"mod_stats":{},"mod_time":{},"mod_vcard":{"search":true,"db_type":"odbc"},"mod_vcard_xupdate":{"db_type":"odbc"},"mod_version":{"show_os":true,"iqdisc":"parallel"}},"sm_db_type":"odbc","append_host_config":{"coopens.com":{"modules":{"mod_disco":{"server_info":[{"modules":["mod_muc"],"name":"Chatroom logs","urls":["https://coopens.com/ejabberd/logs"]}]},"mod_muc":{"access":"everybody","access_create":"local","access_admin":"muc_admin","min_message_interval":1,"min_presence_interval":5},"mod_muc_log":{"access_log":"everybody","timezone":"local","outdir":"/data/home/yzhang/Home/www/public/ejabberd/logs","file_permissions":{"mode":644,"group":33},"spam_prevention":true}}}},"allow_contrib_modules":true}
+        <h3 id="Google-Guava-开发摘要"><a href="#Google-Guava-开发摘要" class="headerlink" title="Google Guava 开发摘要"></a>Google Guava 开发摘要</h3><p><a href="https://github.com/google/guava" target="_blank" rel="external">google/guava GitHub</a><br><a href="http://ifeve.com/google-guava/" target="_blank" rel="external">Google Guava官方教程(中文版)</a></p>
+
       
     </div>
     
@@ -1137,7 +896,7 @@ apt-get install php5-fpm
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
     </nav>
   
 </div>

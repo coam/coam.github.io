@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Title | 商运物流</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="MongoDB 复制集参考 MongoDB学习札记第八篇之Replica Set 实战参考 MongoDB 3.0 复制集集群搭建及安全认证实践参考 MongoDB 3.0 WT引擎参考配置文件参考 MongoDB 副本集的原理. 搭建. 应用
+准备三台mongo服务器 分别为 43.241.222.110 42.96.194.60 和 45.63.50.67 搭建复制集
+如果对于怎么安装Mong">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Title">
+<meta property="og:url" content="https://coam.co/2016/01/10/Mongo/mongo-replicaSet/index.html">
+<meta property="og:site_name" content="商运物流">
+<meta property="og:description" content="MongoDB 复制集参考 MongoDB学习札记第八篇之Replica Set 实战参考 MongoDB 3.0 复制集集群搭建及安全认证实践参考 MongoDB 3.0 WT引擎参考配置文件参考 MongoDB 副本集的原理. 搭建. 应用
+准备三台mongo服务器 分别为 43.241.222.110 42.96.194.60 和 45.63.50.67 搭建复制集
+如果对于怎么安装Mong">
+<meta property="og:updated_time" content="2016-05-19T10:59:56.765Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Title">
+<meta name="twitter:description" content="MongoDB 复制集参考 MongoDB学习札记第八篇之Replica Set 实战参考 MongoDB 3.0 复制集集群搭建及安全认证实践参考 MongoDB 3.0 WT引擎参考配置文件参考 MongoDB 副本集的原理. 搭建. 应用
+准备三台mongo服务器 分别为 43.241.222.110 42.96.194.60 和 45.63.50.67 搭建复制集
+如果对于怎么安装Mong">
+  
+    <link rel="alternative" href="/atom.xml" title="商运物流" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/author.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">张亚飞</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/markdown-gfw-hexo-jekyll/" style="font-size: 10px;">markdown gfw hexo jekyll</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://coam.co">商运物流</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/zyfmix/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://wp.iirii.com/">商运技术博客</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于物流设计</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">张亚飞</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img lazy-src="/img/author.jpg" class="js-avatar">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">张亚飞</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Mongo/mongo-replicaSet" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Mongo/mongo-replicaSet/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Title
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="MongoDB-复制集"><a href="#MongoDB-复制集" class="headerlink" title="MongoDB 复制集"></a>MongoDB 复制集</h3><p>参考 <a href="http://www.codefrom.com/paper/MongoDB%E5%AD%A6%E4%B9%A0%E6%9C%AD%E8%AE%B0%E7%AC%AC%E5%85%AB%E7%AF%87%E4%B9%8BReplica%20Set%20%E5%AE%9E%E6%88%98" target="_blank" rel="external">MongoDB学习札记第八篇之Replica Set 实战</a><br>参考 <a href="http://www.putaor.com/?p=577" target="_blank" rel="external">MongoDB 3.0 复制集集群搭建及安全认证实践</a><br>参考 <a href="http://www.mongoing.com/config_3_0" target="_blank" rel="external">MongoDB 3.0 WT引擎参考配置文件</a><br>参考 <a href="http://www.cnblogs.com/zhoujinyi/p/3554010.html" target="_blank" rel="external">MongoDB 副本集的原理. 搭建. 应用</a></p>
+<p>准备三台mongo服务器 分别为 43.241.222.110 42.96.194.60 和 45.63.50.67 搭建复制集</p>
+<p>如果对于怎么安装Mongodb还不清楚的同学可以查看我之前的学习札记</p>
+<p>三台MongoDB服务器的配置文件均为 /etc/mongod.cnf</p>
+<pre><code>storage:
+    dbPath: &quot;/data/home/data/RSMongoDB&quot;
+    engine: wiredTiger
+    wiredTiger:
+        engineConfig:
+            cacheSizeGB: 20
+        collectionConfig:
+            blockCompressor: snappy
+
+systemLog:
+   destination: file
+   path: &quot;/var/log/mongodb/mongod.log&quot;
+   logAppend: true
+
+processManagement:
+    fork: true
+
+net:
+    #bindIp: 127.0.0.1,43.241.222.110,42.96.194.60  不能绑定外网访问ip,局域网的貌似可以,只能在iptable设定允许指定ip访问27017
+    #bindIp: 0.0.0.0
+    port: 27017
+    # Enable the HTTP interface (Defaults to port 28017).
+    http:
+        enabled: false
+</code></pre><p>第一步:</p>
+<p>在三台机器上分别运行(都要运行)</p>
+<pre><code>root@ubuntu:/usr/local/mongodb#mongod -f /etc/mongod.cnf --replSet CoamReSet
+</code></pre><p>注意这里的 —replSet 参数指定了副本集的名称,每一个副本集都有一个唯一的名称.</p>
+<p>等到三台机器都启动完了之后.使用mongo客户端登录其中一台mongod服务器.这里我登录到 43.241.222.110 这台机器</p>
+<pre><code>root@ubuntu:~# mongo
+</code></pre><p>登录之后要切换到admin数据库,这样我们可以进行副本集的配置,具体怎么配置,代码如下:</p>
+<pre><code>&gt; use admin
+switched to db admin
+</code></pre><p>定义副本集配置变量,这里的 _id:”repset” 和上面命令参数 “ –replSet repset” 要保持一样.</p>
+<pre><code>&gt; config = {_id:&quot;CoamReSet&quot;,members:[
+         {_id:0,host:&quot;43.241.222.110:27017&quot;,&quot;priority&quot;:1},
+         {_id:1,host:&quot;42.96.194.60:27017&quot;,&quot;priority&quot;:1},
+         {_id:2,host:&quot;45.63.50.67:27017&quot;,&quot;priority&quot;:0}]}
+</code></pre><h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><pre><code>{
+    &quot;_id&quot; : &quot;CoamReSet&quot;,
+    &quot;members&quot; : [
+        {
+            &quot;_id&quot; : 0,
+            &quot;host&quot; : &quot;43.241.222.110:27017&quot;
+        },
+        {
+            &quot;_id&quot; : 1,
+            &quot;host&quot; : &quot;42.96.194.60:27017&quot;
+        },
+        {
+            &quot;_id&quot; : 2,
+            &quot;host&quot; : &quot;45.63.50.67:27017&quot;
+        }
+    ]
+}
+</code></pre><h4 id="初始化副本集配置"><a href="#初始化副本集配置" class="headerlink" title="初始化副本集配置"></a>初始化副本集配置</h4><pre><code>&gt; rs.initiate(config);
+</code></pre><h4 id="输出成功"><a href="#输出成功" class="headerlink" title="输出成功"></a>输出成功</h4><pre><code>{ &quot;ok&quot; : 1 }
+</code></pre><h4 id="注意-新创建副本集必须要数据库没有数据-否则初始化会提示以下错误"><a href="#注意-新创建副本集必须要数据库没有数据-否则初始化会提示以下错误" class="headerlink" title="注意:新创建副本集必须要数据库没有数据,否则初始化会提示以下错误:"></a>注意:新创建副本集必须要数据库没有数据,否则初始化会提示以下错误:</h4><pre><code>{
+    &quot;ok&quot; : 0,
+    &quot;errmsg&quot; : &quot;&apos;42.96.194.60:27017&apos; has data already, cannot initiate set.&quot;,
+    &quot;code&quot; : 110
+}
+</code></pre><p>先定义 config 的配置信息, 然后通过 rs.initiate(config) 方法,将配置信息初始化.这两个步骤完成之后就表示我们的副本集配置信息初始化完成了,在这个CoamReSet的副本集中我们定义了三台主机(注意在定义配置信息的时候指定的 _id 必须和我们启动mongod的时候指定的参数 —replSet 这个参数的值是一样的.)</p>
+<p>过一会,mongodb就会帮我们选举出Primary节点和Secondary节点了.那在mongo客户端,我们可以通过 rs.status() 来查看副本集的状态信息</p>
+<pre><code>CoamReSet:SECONDARY&gt; rs.status()
+{
+    &quot;set&quot; : &quot;CoamReSet&quot;,
+    &quot;date&quot; : ISODate(&quot;2015-10-01T09:45:34.924Z&quot;),
+    &quot;myState&quot; : 1,
+    &quot;members&quot; : [
+        {
+            &quot;_id&quot; : 0,
+            &quot;name&quot; : &quot;43.241.222.110:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 1,
+            &quot;stateStr&quot; : &quot;PRIMARY&quot;,
+            &quot;uptime&quot; : 167,
+            &quot;optime&quot; : Timestamp(1443692712, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T09:45:12Z&quot;),
+            &quot;electionTime&quot; : Timestamp(1443692715, 1),
+            &quot;electionDate&quot; : ISODate(&quot;2015-10-01T09:45:15Z&quot;),
+            &quot;configVersion&quot; : 1,
+            &quot;self&quot; : true
+        },
+        {
+            &quot;_id&quot; : 1,
+            &quot;name&quot; : &quot;42.96.194.60:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 2,
+            &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+            &quot;uptime&quot; : 21,
+            &quot;optime&quot; : Timestamp(1443692712, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T09:45:12Z&quot;),
+            &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-01T09:45:33.166Z&quot;),
+            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-01T09:45:33.564Z&quot;),
+            &quot;pingMs&quot; : 16,
+            &quot;configVersion&quot; : 1
+        },
+        {
+            &quot;_id&quot; : 2,
+            &quot;name&quot; : &quot;45.63.50.67:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 2,
+            &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+            &quot;uptime&quot; : 21,
+            &quot;optime&quot; : Timestamp(1443692712, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T09:45:12Z&quot;),
+            &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-01T09:45:32.949Z&quot;),
+            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-01T09:45:33.973Z&quot;),
+            &quot;pingMs&quot; : 183,
+            &quot;configVersion&quot; : 1
+        }
+    ],
+    &quot;ok&quot; : 1
+}
+</code></pre><p>其中name表示我么你的主机, health表示主机是否健康(0/1) , state(主节点(1)还是从节点(2),或者是不可达节点)</p>
+<p>如果上面信息正常显示出来说明整个副本集群已经建立起来了.这时候我们来验证一下是否是真的能够自动备份数据,是否能够自动从失败中恢复,自动选举新的Primary节点.<br>这个实验我们这样来做:</p>
+<h4 id="先往-Primary-节点-43-241-222-110-插入数据-在-42-96-194-60-和-45-63-50-67-两台-Secondary-节点中查询数据-验证是否能够正常的同步机器"><a href="#先往-Primary-节点-43-241-222-110-插入数据-在-42-96-194-60-和-45-63-50-67-两台-Secondary-节点中查询数据-验证是否能够正常的同步机器" class="headerlink" title="先往 Primary 节点(43.241.222.110)插入数据,在 42.96.194.60 和 45.63.50.67 两台 Secondary 节点中查询数据,验证是否能够正常的同步机器."></a>先往 Primary 节点(43.241.222.110)插入数据,在 42.96.194.60 和 45.63.50.67 两台 Secondary 节点中查询数据,验证是否能够正常的同步机器.</h4><blockquote>
+<p>先往 Primary 节点(43.241.222.110)插入数据</p>
+</blockquote>
+<pre><code>CoamReSet:PRIMARY&gt; use test
+switched to db test
+CoamReSet:PRIMARY&gt; show collections
+CoamReSet:PRIMARY&gt; db.guids.insert({&quot;name&quot;:&quot;replica set&quot;,&quot;author&quot;:&quot;webinglin&quot;})
+WriteResult({ &quot;nInserted&quot; : 1 })
+CoamReSet:PRIMARY&gt; exit
+bye
+</code></pre><blockquote>
+<p>在 45.63.50.67 Secondary 节点中查询数据,验证是否能够正常的同步机器.</p>
+</blockquote>
+<pre><code>root@ubuntu:~# mongo --host 45.63.50.67
+MongoDB shell version: 3.0.3
+connecting to: 45.63.50.67:27017/test
+Server has startup warnings:
+2015-06-09T17:03:27.744-0700 I CONTROL  [initandlisten] ** WARNING: You are running this process as the root user, which is not re                                      commended.
+2015-06-09T17:03:27.744-0700 I CONTROL  [initandlisten]
+2015-06-09T17:03:27.745-0700 I CONTROL  [initandlisten]
+2015-06-09T17:03:27.745-0700 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is &apos;always&apos;.
+2015-06-09T17:03:27.745-0700 I CONTROL  [initandlisten] **        We suggest setting it to &apos;never&apos;
+2015-06-09T17:03:27.745-0700 I CONTROL  [initandlisten]
+CoamReSet:SECONDARY&gt; show dbs
+2015-06-09T17:13:49.138-0700 E QUERY    Error: listDatabases failed:{ &quot;note&quot; : &quot;from execCommand&quot;, &quot;ok&quot; : 0, &quot;errmsg&quot; : &quot;not master&quot; }
+    at Error (&lt;anonymous&gt;)
+    at Mongo.getDBs (src/mongo/shell/mongo.js:47:15)
+    at shellHelper.show (src/mongo/shell/utils.js:630:33)
+    at shellHelper (src/mongo/shell/utils.js:524:36)
+    at (shellhelp2):1:1 at src/mongo/shell/mongo.js:47
+CoamReSet:SECONDARY&gt; use test
+switched to db test
+CoamReSet:SECONDARY&gt; db.guids.find()
+Error: error: { &quot;$err&quot; : &quot;not master and slaveOk=false&quot;, &quot;code&quot; : 13435 }
+CoamReSet:SECONDARY&gt; rs.slaveOk()
+CoamReSet:SECONDARY&gt; rs.slaveOk()
+CoamReSet:SECONDARY&gt; db.guids.find()
+{ &quot;_id&quot; : ObjectId(&quot;557780ebd147e9391020860d&quot;), &quot;name&quot; : &quot;replica set&quot;, &quot;author&quot; : &quot;webinglin&quot; }
+CoamReSet:SECONDARY&gt; show collections()
+2015-06-09T17:14:24.219-0700 E QUERY    Error: don&apos;t know how to show [collections()]
+    at Error (&lt;anonymous&gt;)
+    at shellHelper.show (src/mongo/shell/utils.js:733:11)
+    at shellHelper (src/mongo/shell/utils.js:524:36)
+    at (shellhelp2):1:1 at src/mongo/shell/utils.js:733
+CoamReSet:SECONDARY&gt; show collections
+guids
+system.indexes
+CoamReSet:SECONDARY&gt; exit
+bye
+</code></pre><blockquote>
+<p>在 42.96.194.60 Secondary 节点中查询数据,验证是否能够正常的同步机器.</p>
+</blockquote>
+<pre><code>root@ubuntu:~# mongo --host 42.96.194.60
+MongoDB shell version: 3.0.3
+connecting to: 42.96.194.60:27017/test
+Server has startup warnings:
+2015-06-09T17:03:11.647-0700 I CONTROL  [initandlisten] ** WARNING: You are running this process as the root user, which is not re                                      commended.
+2015-06-09T17:03:11.647-0700 I CONTROL  [initandlisten]
+2015-06-09T17:03:11.647-0700 I CONTROL  [initandlisten]
+2015-06-09T17:03:11.648-0700 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is &apos;always&apos;.
+2015-06-09T17:03:11.648-0700 I CONTROL  [initandlisten] **        We suggest setting it to &apos;never&apos;
+2015-06-09T17:03:11.648-0700 I CONTROL  [initandlisten]
+CoamReSet:SECONDARY&gt; rs.slaveOk()
+CoamReSet:SECONDARY&gt; show dbs
+local  1.078GB
+test   0.078GB
+CoamReSet:SECONDARY&gt; use test
+switched to db test
+CoamReSet:SECONDARY&gt; show collections
+guids
+system.indexes
+CoamReSet:SECONDARY&gt; db.guids.find()
+{ &quot;_id&quot; : ObjectId(&quot;557780ebd147e9391020860d&quot;), &quot;name&quot; : &quot;replica set&quot;, &quot;author&quot; : &quot;webinglin&quot; }
+CoamReSet:SECONDARY&gt; exit
+bye
+</code></pre><p>至此,整个验证过程说明了我们集群部署是成功的.数据能够正常同步了.<br>那么接下来我们还要验证另一种情况,Primary异常终止之后(43.241.222.110),另外两个Secondary节点会不会自动选举出新的Primary节点呢?<br>这个实验我们这样处理: 将 43.241.222.110 机器的mongod服务停止掉,然后再来连接 42.96.194.60 或者 45.63.50.67 任意一台机器,通过 rs.status() 查看集群状态.</p>
+<blockquote>
+<p>在Primary节点(43.241.222.110)通过 ps -e | grep mongod 查看mongod服务是否开启,然后通过 killall mongod 或者 kill -15 &lt;进程号&gt; 来杀死mongod进程</p>
+</blockquote>
+<pre><code>root@ubuntu:~# ps -e | grep mongod
+ 3279 pts/0    00:00:19 mongod
+root@ubuntu:~# killall mongod
+</code></pre><blockquote>
+<p>登陆从节点 42.96.194.60 ,查看mongo服务器状态</p>
+</blockquote>
+<pre><code>root@ubuntu:~# mongo --host 42.96.194.60
+MongoDB shell version: 3.0.3
+connecting to: 42.96.194.60:27017/test
+Server has startup warnings:
+2015-06-09T17:03:11.647-0700 I CONTROL  [initandlisten] ** WARNING: You are running this process as the root user, which is not recommended.
+2015-06-09T17:03:11.647-0700 I CONTROL  [initandlisten]
+2015-06-09T17:03:11.647-0700 I CONTROL  [initandlisten]
+2015-06-09T17:03:11.648-0700 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is &apos;always&apos;.
+2015-06-09T17:03:11.648-0700 I CONTROL  [initandlisten] **        We suggest setting it to &apos;never&apos;
+2015-06-09T17:03:11.648-0700 I CONTROL  [initandlisten]
+CoamReSet:SECONDARY&gt; rs.status()
+{
+    &quot;set&quot; : &quot;CoamReSet&quot;,
+    &quot;date&quot; : ISODate(&quot;2015-10-01T10:09:57.981Z&quot;),
+    &quot;myState&quot; : 1,
+    &quot;members&quot; : [
+        {
+            &quot;_id&quot; : 0,
+            &quot;name&quot; : &quot;43.241.222.110:27017&quot;,
+            &quot;health&quot; : 0,
+            &quot;state&quot; : 8,
+            &quot;stateStr&quot; : &quot;(not reachable/healthy)&quot;,
+            &quot;uptime&quot; : 0,
+            &quot;optime&quot; : Timestamp(0, 0),
+            &quot;optimeDate&quot; : ISODate(&quot;1970-01-01T00:00:00Z&quot;),
+            &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-01T10:09:56.226Z&quot;),
+            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-01T10:07:54.850Z&quot;),
+            &quot;pingMs&quot; : 18,
+            &quot;lastHeartbeatMessage&quot; : &quot;Failed attempt to connect to 43.241.222.110:27017; couldn&apos;t connect to server 43.241.222.110:27017 (43.241.222.110), connection attempt failed&quot;,            &quot;configVersion&quot; : -1
+        },
+        {
+            &quot;_id&quot; : 1,
+            &quot;name&quot; : &quot;42.96.194.60:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 1,
+            &quot;stateStr&quot; : &quot;PRIMARY&quot;,
+            &quot;uptime&quot; : 1577,
+            &quot;optime&quot; : Timestamp(1443693679, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T10:01:19Z&quot;),
+            &quot;electionTime&quot; : Timestamp(1443694079, 1),
+            &quot;electionDate&quot; : ISODate(&quot;2015-10-01T10:07:59Z&quot;),
+            &quot;configVersion&quot; : 1,
+            &quot;self&quot; : true
+        },
+        {
+            &quot;_id&quot; : 2,
+            &quot;name&quot; : &quot;45.63.50.67:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 2,
+            &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+            &quot;uptime&quot; : 1481,
+            &quot;optime&quot; : Timestamp(1443693679, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T10:01:19Z&quot;),
+            &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-01T10:09:56.891Z&quot;),
+            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-01T10:09:57.259Z&quot;),
+            &quot;pingMs&quot; : 440,
+            &quot;configVersion&quot; : 1
+        }
+    ],
+    &quot;ok&quot; : 1
+}
+CoamReSet:SECONDARY&gt; exit
+bye
+</code></pre><p>通过上面这段代码的观察,我们发现,当把原来的Primary节点停止掉后(43.241.222.110停止), 那么整个mongodb的副本集群会重新选举出新的Primary节点( 42.96.194.60 机器)</p>
+<p>为了验证一下新选举的Primary是否正常,我们再次验证一把数据的同步情况,先连接到 42.96.194.60 主节点,将原来的数据删掉,再到 45.63.50.67 SECONDARY 进行验证,数据是否也被删除</p>
+<blockquote>
+<p>连接到 42.96.194.60 主节点,将原来的数据删掉</p>
+</blockquote>
+<pre><code>root@ubuntu:~# mongo --host 42.96.194.60
+CoamReSet:PRIMARY&gt; use test
+switched to db test
+CoamReSet:PRIMARY&gt; show collections
+guids
+CoamReSet:PRIMARY&gt; db.guids.find()
+{ &quot;_id&quot; : ObjectId(&quot;560d03099548a3e5bb8b03bf&quot;), &quot;name&quot; : &quot;replica set&quot;, &quot;author&quot; : &quot;webinglin&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;560d046f9548a3e5bb8b03c0&quot;), &quot;name&quot; : &quot;zhang&quot;, &quot;author&quot; : &quot;yafei...&quot; }
+CoamReSet:PRIMARY&gt; db.guids.remove({name:&quot;zhang&quot;})
+WriteResult({ &quot;nRemoved&quot; : 1 })
+CoamReSet:PRIMARY&gt; db.guids.find()
+{ &quot;_id&quot; : ObjectId(&quot;560d03099548a3e5bb8b03bf&quot;), &quot;name&quot; : &quot;replica set&quot;, &quot;author&quot; : &quot;webinglin&quot; }
+CoamReSet:PRIMARY&gt; exit
+bye
+</code></pre><blockquote>
+<p>再到 45.63.50.67 SECONDARY 进行验证,数据是否也被删除</p>
+</blockquote>
+<pre><code>root@ubuntu:~# mongo --host 45.63.50.67
+CoamReSet:SECONDARY&gt; rs.slaveOk()
+CoamReSet:SECONDARY&gt; db.guids.find()
+{ &quot;_id&quot; : ObjectId(&quot;557780ebd147e9391020860d&quot;), &quot;name&quot; : &quot;replica set&quot;, &quot;author&quot; : &quot;webinglin&quot; }
+CoamReSet:SECONDARY&gt; exit
+bye
+</code></pre><p>实践后发现,先选举的Primary节点也正常工作.我们的整个Mongodb副本集群测试完成.</p>
+<h3 id="动态添加节点-删除节点"><a href="#动态添加节点-删除节点" class="headerlink" title="动态添加节点,删除节点."></a>动态添加节点,删除节点.</h3><p>在开始这个实验之前,先把 43.241.222.110 的机器重新启动,然后用mongo客户端连到 43.241.222.110 进行验证数据是否也同步了.<br>登录 43.241.222.110 之后,我们发现数据也同步了,然后43.241.222.110节点变成了 Secondary 节点了.</p>
+<pre><code>root@ubuntu:~# mongo
+CoamReSet:SECONDARY&gt; rs.slaveOk()
+CoamReSet:SECONDARY&gt; show dbs
+local   0.000GB
+syData  0.000GB
+test    0.000GB
+CoamReSet:SECONDARY&gt; use test
+switched to db test
+CoamReSet:SECONDARY&gt; show collections
+guids
+CoamReSet:SECONDARY&gt; db.guids.find()
+{ &quot;_id&quot; : ObjectId(&quot;560d03099548a3e5bb8b03bf&quot;), &quot;name&quot; : &quot;replica set&quot;, &quot;author&quot; : &quot;webinglin&quot; }
+CoamReSet:SECONDARY&gt; rs.status()
+{
+    &quot;set&quot; : &quot;CoamReSet&quot;,
+    &quot;date&quot; : ISODate(&quot;2015-10-01T10:21:53.366Z&quot;),
+    &quot;myState&quot; : 2,
+    &quot;syncingTo&quot; : &quot;42.96.194.60:27017&quot;,
+    &quot;members&quot; : [
+        {
+            &quot;_id&quot; : 0,
+            &quot;name&quot; : &quot;43.241.222.110:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 2,
+            &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+            &quot;uptime&quot; : 68,
+            &quot;optime&quot; : Timestamp(1443694583, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T10:16:23Z&quot;),
+            &quot;syncingTo&quot; : &quot;42.96.194.60:27017&quot;,
+            &quot;configVersion&quot; : 1,
+            &quot;self&quot; : true
+        },
+        {
+            &quot;_id&quot; : 1,
+            &quot;name&quot; : &quot;42.96.194.60:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 1,
+            &quot;stateStr&quot; : &quot;PRIMARY&quot;,
+            &quot;uptime&quot; : 66,
+            &quot;optime&quot; : Timestamp(1443694583, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T10:16:23Z&quot;),
+            &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-01T10:21:53.026Z&quot;),
+            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-01T10:21:52.588Z&quot;),
+            &quot;pingMs&quot; : 16,
+            &quot;electionTime&quot; : Timestamp(1443694079, 1),
+            &quot;electionDate&quot; : ISODate(&quot;2015-10-01T10:07:59Z&quot;),
+            &quot;configVersion&quot; : 1
+        },
+        {
+            &quot;_id&quot; : 2,
+            &quot;name&quot; : &quot;45.63.50.67:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 2,
+            &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+            &quot;uptime&quot; : 66,
+            &quot;optime&quot; : Timestamp(1443694583, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T10:16:23Z&quot;),
+            &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-01T10:21:51.818Z&quot;),
+            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-01T10:21:53.006Z&quot;),
+            &quot;pingMs&quot; : 311,
+            &quot;syncingTo&quot; : &quot;42.96.194.60:27017&quot;,
+            &quot;configVersion&quot; : 1
+        }
+    ],
+    &quot;ok&quot; : 1
+}
+CoamReSet:SECONDARY&gt; exit
+bye
+</code></pre><p>登录到 42.96.194.60 Primary 节点,通过 rs.remove() 方法来删除副本集中的某一个节点,这里我们还是将 43.241.222.110 删除.删除之后我们还往 42.96.194.60 主节点中加入数据.</p>
+<pre><code>CoamReSet:PRIMARY&gt; rs.remove(&quot;43.241.222.110:27017&quot;)
+{ &quot;ok&quot; : 1 }
+CoamReSet:PRIMARY&gt; rs.status()
+{
+    &quot;set&quot; : &quot;CoamReSet&quot;,
+    &quot;date&quot; : ISODate(&quot;2015-10-01T10:24:35.061Z&quot;),
+    &quot;myState&quot; : 1,
+    &quot;members&quot; : [
+        {
+            &quot;_id&quot; : 1,
+            &quot;name&quot; : &quot;42.96.194.60:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 1,
+            &quot;stateStr&quot; : &quot;PRIMARY&quot;,
+            &quot;uptime&quot; : 2455,
+            &quot;optime&quot; : Timestamp(1443695065, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T10:24:25Z&quot;),
+            &quot;electionTime&quot; : Timestamp(1443694079, 1),
+            &quot;electionDate&quot; : ISODate(&quot;2015-10-01T10:07:59Z&quot;),
+            &quot;configVersion&quot; : 2,
+            &quot;self&quot; : true
+        },
+        {
+            &quot;_id&quot; : 2,
+            &quot;name&quot; : &quot;45.63.50.67:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 2,
+            &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+            &quot;uptime&quot; : 2358,
+            &quot;optime&quot; : Timestamp(1443695065, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T10:24:25Z&quot;),
+            &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-01T10:24:33.256Z&quot;),
+            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-01T10:24:34.102Z&quot;),
+            &quot;pingMs&quot; : 334,
+            &quot;configVersion&quot; : 2
+        }
+    ],
+    &quot;ok&quot; : 1
+}
+CoamReSet:PRIMARY&gt; db.guids.find()
+{ &quot;_id&quot; : ObjectId(&quot;560d03099548a3e5bb8b03bf&quot;), &quot;name&quot; : &quot;replica set&quot;, &quot;author&quot; : &quot;webinglin&quot; }
+CoamReSet:PRIMARY&gt; db.guids.insert({&quot;name&quot;:&quot;remove one node dync&quot;})
+WriteResult({ &quot;nInserted&quot; : 1 })
+CoamReSet:PRIMARY&gt; db.guids.find()
+{ &quot;_id&quot; : ObjectId(&quot;560d03099548a3e5bb8b03bf&quot;), &quot;name&quot; : &quot;replica set&quot;, &quot;author&quot; : &quot;webinglin&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;560d0a1d7d9deef6a0890b1f&quot;), &quot;name&quot; : &quot;remove one node dync&quot; }
+CoamReSet:PRIMARY&gt; exit
+bye
+</code></pre><p>删除 43.241.222.110 节点后,我们往 Primary 节点中加入了新的数据,然后先不要将 43.241.222.110 的 mongod 服务停掉,我们通过mongo连接到 43.241.222.110 的mongod服务来查看数据</p>
+<pre><code>root@ubuntu:~# mongo --host 43.241.222.110
+&gt; db.guids.find()
+{ &quot;_id&quot; : ObjectId(&quot;560d03099548a3e5bb8b03bf&quot;), &quot;name&quot; : &quot;replica set&quot;, &quot;author&quot; : &quot;webinglin&quot; }
+&gt; exit
+bye
+</code></pre><p>实验结果可以知道,我们在 45.63.50.67 新加入的数据 {name:”remove one node dync”} 并没有同步到43.241.222.110(已从副本集中删除).</p>
+<p>为了让实验结果更加确切,我们查看 43.241.222.110 是否有同步了数据:</p>
+<p>root@ubuntu:~# mongo –host 45.63.50.67<br>CoamReSet:SECONDARY&gt; db.guids.find()<br>{ “_id” : ObjectId(“557780ebd147e9391020860d”), “name” : “replica set”, “author” : “webinglin” }<br>{ “_id” : ObjectId(“557785bcbb56172c8e069341”), “name” : “remove one node dync” }<br>CoamReSet:SECONDARY&gt; exit<br>bye</p>
+<p>实验数据可以看到, 45.63.50.67 同步了在 42.96.194.60 主节点中新增的文档 {“name”:”remove one node dync”},这样就证明了动态删除副本集中的某一个节点的实验成功了.那怎么动态添加节点到副本集中呢?</p>
+<p>原理是一样的,但是调用的方法变成了 rs.add(“43.241.222.110:27017”)</p>
+<pre><code>CoamReSet:PRIMARY&gt; rs.add(&quot;43.241.222.110:27017&quot;);
+{ &quot;ok&quot; : 1 }
+CoamReSet:PRIMARY&gt; rs.status()
+{
+    &quot;set&quot; : &quot;CoamReSet&quot;,
+    &quot;date&quot; : ISODate(&quot;2015-10-01T10:32:45.284Z&quot;),
+    &quot;myState&quot; : 1,
+    &quot;members&quot; : [
+        {
+            &quot;_id&quot; : 1,
+            &quot;name&quot; : &quot;42.96.194.60:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 1,
+            &quot;stateStr&quot; : &quot;PRIMARY&quot;,
+            &quot;uptime&quot; : 2945,
+            &quot;optime&quot; : Timestamp(1443695560, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T10:32:40Z&quot;),
+            &quot;electionTime&quot; : Timestamp(1443694079, 1),
+            &quot;electionDate&quot; : ISODate(&quot;2015-10-01T10:07:59Z&quot;),
+            &quot;configVersion&quot; : 3,
+            &quot;self&quot; : true
+        },
+        {
+            &quot;_id&quot; : 2,
+            &quot;name&quot; : &quot;45.63.50.67:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 2,
+            &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+            &quot;uptime&quot; : 2849,
+            &quot;optime&quot; : Timestamp(1443695560, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T10:32:40Z&quot;),
+            &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-01T10:32:43.660Z&quot;),
+            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-01T10:32:44.079Z&quot;),
+            &quot;pingMs&quot; : 452,
+            &quot;syncingTo&quot; : &quot;42.96.194.60:27017&quot;,
+            &quot;configVersion&quot; : 2
+        },
+        {
+            &quot;_id&quot; : 3,
+            &quot;name&quot; : &quot;43.241.222.110:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 2,
+            &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+            &quot;uptime&quot; : 2,
+            &quot;optime&quot; : Timestamp(1443695560, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T10:32:40Z&quot;),
+            &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-01T10:32:44.739Z&quot;),
+            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-01T10:32:43.300Z&quot;),
+            &quot;pingMs&quot; : 16,
+            &quot;syncingTo&quot; : &quot;42.96.194.60:27017&quot;,
+            &quot;configVersion&quot; : 3
+        }
+    ],
+    &quot;ok&quot; : 1
+}
+CoamReSet:PRIMARY&gt; exit
+bye
+</code></pre><p>在rs.status()返回的结果中可以看到,43.241.222.110 节点已经成功加入副本集中了.加入之后,理论上应该会把在 43.241.222.110 主节点加入的数据同步过来,刚才删除之后是不会同步的.那这时候重新加入副本集,应该是要同步的.下面是实验结果:</p>
+<pre><code>root@ubuntu:~# mongo
+CoamReSet:SECONDARY&gt; db.guids.find()
+{ &quot;_id&quot; : ObjectId(&quot;560d03099548a3e5bb8b03bf&quot;), &quot;name&quot; : &quot;replica set&quot;, &quot;author&quot; : &quot;webinglin&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;560d0a1d7d9deef6a0890b1f&quot;), &quot;name&quot; : &quot;remove one node dync&quot; }
+CoamReSet:SECONDARY&gt; exit
+bye
+</code></pre><p>实验结果显示,动态添加操作也正常.动态的将 43.241.222.110 节点加入到副本集中能够保证数据同步成功.</p>
+<hr>
+<p>注意</p>
+<p>在调用 rs.add(“host:ip”) 或者 rs.remove(“host:ip”) 的时候,必须要在 Primary 节点中进行.</p>
+<p>add方法可以加入一个document对象,这样就可以在指定具体的Secondary节点的更多的设置项了,比如指定为priority: 0 或 priority: 0,hidden: true 或 priority:0,hidden:true,arbiterOnly:true</p>
+<pre><code>{
+  _id: &lt;int&gt;,
+  host: &lt;string&gt;,
+  arbiterOnly: &lt;boolean&gt;,
+  buildIndexes: &lt;boolean&gt;,
+  hidden: &lt;boolean&gt;,
+  priority: &lt;number&gt;,
+  tags: &lt;document&gt;,
+  slaveDelay: &lt;int&gt;,
+  votes: &lt;number&gt;
+}
+</code></pre><p>怎么对副本集进行权限验证,参考主从复制的安全部分,也是通过openssl来生成keyfile,然后再启动mongod的时候指定keyFile来设置安全的</p>
+<hr>
+<blockquote>
+<p>也可以在三个主机的复制集添加以下配置</p>
+</blockquote>
+<pre><code>replication:
+##oplog大小
+ oplogSizeMB: 20
+##复制集名称
+ replSetName: CoamReSet
+</code></pre><hr>
+<h3 id="复制集优先级问题"><a href="#复制集优先级问题" class="headerlink" title="复制集优先级问题"></a>复制集优先级问题</h3><blockquote>
+<p>默认设定节点 43.241.222.110 为Primary主节点,由于初始配置中没有设定,于是在主节点服务器重启后 43.241.222.110 自动切换成 从节点,而 42.96.194.60 切换成了主节点导致应用程序连接错误<br>于是在当前主节点 43.241.222.110 通过命令行手动切换主节点到 43.241.222.110</p>
+</blockquote>
+<pre><code>CoamReSet:PRIMARY&gt; rs.status()
+{
+        &quot;set&quot; : &quot;CoamReSet&quot;,
+        &quot;date&quot; : ISODate(&quot;2015-10-09T11:28:28.585Z&quot;),
+        &quot;myState&quot; : 1,
+        &quot;members&quot; : [
+                {
+                        &quot;_id&quot; : 1,
+                        &quot;name&quot; : &quot;42.96.194.60:27017&quot;,
+                        &quot;health&quot; : 1,
+                        &quot;state&quot; : 1,
+                        &quot;stateStr&quot; : &quot;PRIMARY&quot;,
+                        &quot;uptime&quot; : 614570,
+                        &quot;optime&quot; : Timestamp(1444378212, 1),
+                        &quot;optimeDate&quot; : ISODate(&quot;2015-10-09T08:10:12Z&quot;),
+                        &quot;electionTime&quot; : Timestamp(1444378334, 1),
+                        &quot;electionDate&quot; : ISODate(&quot;2015-10-09T08:12:14Z&quot;),
+                        &quot;configVersion&quot; : 3,
+                        &quot;self&quot; : true
+                },
+                {
+                        &quot;_id&quot; : 2,
+                        &quot;name&quot; : &quot;45.63.50.67:27017&quot;,
+                        &quot;health&quot; : 0,
+                        &quot;state&quot; : 8,
+                        &quot;stateStr&quot; : &quot;(not reachable/healthy)&quot;,
+                        &quot;uptime&quot; : 0,
+                        &quot;optime&quot; : Timestamp(0, 0),
+                        &quot;optimeDate&quot; : ISODate(&quot;1970-01-01T00:00:00Z&quot;),
+                        &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-09T11:28:27.754Z&quot;),
+                        &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-06T08:52:51.239Z&quot;),
+                        &quot;pingMs&quot; : 406,
+                        &quot;lastHeartbeatMessage&quot; : &quot;Failed attempt to connect to 45.63.50.67:27017; couldn&apos;t connect to server 45.63.50.67:27017 (45.63.50.67), connection attempt failed&quot;,
+                        &quot;configVersion&quot; : -1
+                },
+                {
+                        &quot;_id&quot; : 3,
+                        &quot;name&quot; : &quot;43.241.222.110:27017&quot;,
+                        &quot;health&quot; : 1,
+                        &quot;state&quot; : 2,
+                        &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+                        &quot;uptime&quot; : 90994,
+                        &quot;optime&quot; : Timestamp(1444378212, 1),
+                        &quot;optimeDate&quot; : ISODate(&quot;2015-10-09T08:10:12Z&quot;),
+                        &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-09T11:28:27.532Z&quot;),
+                        &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-09T11:28:27.299Z&quot;),
+                        &quot;pingMs&quot; : 15,
+                        &quot;configVersion&quot; : 3
+                }
+        ],
+        &quot;ok&quot; : 1
+}
+
+CoamReSet:PRIMARY&gt; config = rs.conf()
+{
+        &quot;_id&quot; : &quot;CoamReSet&quot;,
+        &quot;version&quot; : 3,
+        &quot;members&quot; : [
+                {
+                        &quot;_id&quot; : 1,
+                        &quot;host&quot; : &quot;42.96.194.60:27017&quot;,
+                        &quot;arbiterOnly&quot; : false,
+                        &quot;buildIndexes&quot; : true,
+                        &quot;hidden&quot; : false,
+                        &quot;priority&quot; : 1,
+                        &quot;tags&quot; : {
+
+                        },
+                        &quot;slaveDelay&quot; : 0,
+                        &quot;votes&quot; : 1
+                },
+                {
+                        &quot;_id&quot; : 2,
+                        &quot;host&quot; : &quot;45.63.50.67:27017&quot;,
+                        &quot;arbiterOnly&quot; : false,
+                        &quot;buildIndexes&quot; : true,
+                        &quot;hidden&quot; : false,
+                        &quot;priority&quot; : 1,
+                        &quot;tags&quot; : {
+
+                        },
+                        &quot;slaveDelay&quot; : 0,
+                        &quot;votes&quot; : 1
+                },
+                {
+                        &quot;_id&quot; : 3,
+                        &quot;host&quot; : &quot;43.241.222.110:27017&quot;,
+                        &quot;arbiterOnly&quot; : false,
+                        &quot;buildIndexes&quot; : true,
+                        &quot;hidden&quot; : false,
+                        &quot;priority&quot; : 1,
+                        &quot;tags&quot; : {
+
+                        },
+                        &quot;slaveDelay&quot; : 0,
+                        &quot;votes&quot; : 1
+                }
+        ],
+        &quot;settings&quot; : {
+                &quot;chainingAllowed&quot; : true,
+                &quot;heartbeatTimeoutSecs&quot; : 10,
+                &quot;getLastErrorModes&quot; : {
+
+                },
+                &quot;getLastErrorDefaults&quot; : {
+                        &quot;w&quot; : 1,
+                        &quot;wtimeout&quot; : 0
+                }
+        }
+}
+</code></pre><blockquote>
+<p>设置第一个节点 42.96.194.60 优先级为1,第二个节点 45.63.50.67 优先级为0,第三个节点 43.241.222.110 优先级为2;</p>
+</blockquote>
+<pre><code>CoamReSet:PRIMARY&gt; config.members[0].priority = 1
+1
+CoamReSet:PRIMARY&gt; config.members[1].priority = 0
+0
+CoamReSet:PRIMARY&gt; config.members[2].priority = 2
+2
+CoamReSet:PRIMARY&gt; rs.reconfig(config)
+{ &quot;ok&quot; : 1 }
+CoamReSet:PRIMARY&gt; rs.status()
+{
+        &quot;set&quot; : &quot;CoamReSet&quot;,
+        &quot;date&quot; : ISODate(&quot;2015-10-09T12:03:37.679Z&quot;),
+        &quot;myState&quot; : 2,
+        &quot;syncingTo&quot; : &quot;43.241.222.110:27017&quot;,
+        &quot;members&quot; : [
+                {
+                        &quot;_id&quot; : 1,
+                        &quot;name&quot; : &quot;42.96.194.60:27017&quot;,
+                        &quot;health&quot; : 1,
+                        &quot;state&quot; : 2,
+                        &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+                        &quot;uptime&quot; : 616679,
+                        &quot;optime&quot; : Timestamp(1444392119, 1),
+                        &quot;optimeDate&quot; : ISODate(&quot;2015-10-09T12:01:59Z&quot;),
+                        &quot;syncingTo&quot; : &quot;43.241.222.110:27017&quot;,
+                        &quot;configVersion&quot; : 5,
+                        &quot;self&quot; : true
+                },
+                {
+                        &quot;_id&quot; : 2,
+                        &quot;name&quot; : &quot;45.63.50.67:27017&quot;,
+                        &quot;health&quot; : 0,
+                        &quot;state&quot; : 8,
+                        &quot;stateStr&quot; : &quot;(not reachable/healthy)&quot;,
+                        &quot;uptime&quot; : 0,
+                        &quot;optime&quot; : Timestamp(0, 0),
+                        &quot;optimeDate&quot; : ISODate(&quot;1970-01-01T00:00:00Z&quot;),
+                        &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-09T12:03:35.875Z&quot;),
+                        &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-06T08:52:51.239Z&quot;),
+                        &quot;pingMs&quot; : 406,
+                        &quot;lastHeartbeatMessage&quot; : &quot;Failed attempt to connect to 45.63.50.67:27017; couldn&apos;t connect to server 45.63.50.67:27017 (45.63.50.67), connection attempt failed&quot;,
+                        &quot;configVersion&quot; : -1
+                },
+                {
+                        &quot;_id&quot; : 3,
+                        &quot;name&quot; : &quot;43.241.222.110:27017&quot;,
+                        &quot;health&quot; : 1,
+                        &quot;state&quot; : 1,
+                        &quot;stateStr&quot; : &quot;PRIMARY&quot;,
+                        &quot;uptime&quot; : 93103,
+                        &quot;optime&quot; : Timestamp(1444392119, 1),
+                        &quot;optimeDate&quot; : ISODate(&quot;2015-10-09T12:01:59Z&quot;),
+                        &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-09T12:03:35.817Z&quot;),
+                        &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-09T12:03:36.764Z&quot;),
+                        &quot;pingMs&quot; : 17,
+                        &quot;electionTime&quot; : Timestamp(1444390463, 1),
+                        &quot;electionDate&quot; : ISODate(&quot;2015-10-09T11:34:23Z&quot;),
+                        &quot;configVersion&quot; : 5
+                }
+        ],
+        &quot;ok&quot; : 1
+}
+</code></pre><p>可以看到 43.241.222.110 已经成功切换成主节点了<br>关闭主节点 43.241.222.110 后,发现两个从节点没有自动切换成主节点,相当于关闭了 MongoDB 复制集功能<br><a href="http://debugo.com/mongo-rs-prio/" target="_blank" rel="external">MongoDB RS优先级设置</a><br><a href="http://docs.mongodb.org/manual/tutorial/force-member-to-be-primary/" target="_blank" rel="external">http://docs.mongodb.org/manual/tutorial/force-member-to-be-primary/</a></p>
+<hr>
+<h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><blockquote>
+<p>主节点 43.241.222.110 服务意外停止后,在从节点 42.96.194.60 修改优先级出现如下错误</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">CoamReSet:RECOVERING&gt; config = rs.conf();</span><br><span class="line">CoamReSet:RECOVERING&gt;  config.members[<span class="number">2</span>].priority = <span class="number">0</span>;</span><br><span class="line">CoamReSet:RECOVERING&gt; rs.reconfig(config);</span><br><span class="line">&#123;</span><br><span class="line">        <span class="string">"ok"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"errmsg"</span> : <span class="string">"replSetReconfig should only be run on PRIMARY, but my state is RECOVERING; use the \"force\" argument to override"</span>,</span><br><span class="line">        <span class="string">"code"</span> : <span class="number">10107</span></span><br><span class="line">&#125;</span><br><span class="line">CoamReSet:RECOVERING&gt; rs.reconfig(config,&#123;force: <span class="literal">true</span>&#125;);</span><br><span class="line">&#123; <span class="string">"ok"</span> : <span class="number">1</span> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="参考列表"><a href="#参考列表" class="headerlink" title="参考列表"></a>参考列表</h3><p><a href="http://www.jianshu.com/p/2825a66d6aed" target="_blank" rel="external">高可用的MongoDB集群</a><br><a href="http://www.jianshu.com/p/c9609ce8a558" target="_blank" rel="external">MongoDB Replica Set 详细安装文档</a><br><a href="https://docs.mongodb.com/manual/reference/method/rs.reconfig/" target="_blank" rel="external">rs.reconfig()</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/01/10/Mongo/mongo-replicaSet/">Title</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 张亚飞 的个人博客">张亚飞</a></p>
+        <p><span>发布时间:</span>2016年01月10日 - 19时41分</p>
+        <p><span>最后更新:</span>2016年05月19日 - 18时59分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/01/10/Mongo/mongo-replicaSet/" title="Title">https://coam.co/2016/01/10/Mongo/mongo-replicaSet/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://coam.co/2016/01/10/Mongo/mongo-replicaSet/　　作者: 张亚飞" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/01/10/Erlang/Elixir/">
+                    ElixirNote
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/01/10/Ejabberd/XMPP/">
+                    XMPPNote
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#MongoDB-复制集"><span class="toc-number">1.</span> <span class="toc-text">MongoDB 复制集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#输出"><span class="toc-number">1.1.</span> <span class="toc-text">输出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#初始化副本集配置"><span class="toc-number">1.2.</span> <span class="toc-text">初始化副本集配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#输出成功"><span class="toc-number">1.3.</span> <span class="toc-text">输出成功</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注意-新创建副本集必须要数据库没有数据-否则初始化会提示以下错误"><span class="toc-number">1.4.</span> <span class="toc-text">注意:新创建副本集必须要数据库没有数据,否则初始化会提示以下错误:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#先往-Primary-节点-43-241-222-110-插入数据-在-42-96-194-60-和-45-63-50-67-两台-Secondary-节点中查询数据-验证是否能够正常的同步机器"><span class="toc-number">1.5.</span> <span class="toc-text">先往 Primary 节点(43.241.222.110)插入数据,在 42.96.194.60 和 45.63.50.67 两台 Secondary 节点中查询数据,验证是否能够正常的同步机器.</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态添加节点-删除节点"><span class="toc-number">2.</span> <span class="toc-text">动态添加节点,删除节点.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复制集优先级问题"><span class="toc-number">3.</span> <span class="toc-text">复制集优先级问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题解决"><span class="toc-number">4.</span> <span class="toc-text">问题解决</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考列表"><span class="toc-number">5.</span> <span class="toc-text">参考列表</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/01/10/Erlang/Elixir/" title="上一篇: ElixirNote">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/01/10/Ejabberd/XMPP/" title="下一篇: XMPPNote">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Erlang/InstallOTP/">InstallOTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Redis/RedisSyncNote/">RedisSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/Ubuntu/">Linux/Ubuntu</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/SystemInstall/">Linux/SystemInstall</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Others/YL/">Others/YL</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/Linux/LinuxCommand/">LinuxCommand</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlSyncNote/">MysqlSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlToRedis/">MysqlToRedis</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlNote/">MysqlNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlSql/">MysqlSql</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Redis/RedisNote/">RedisNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Mongo/MongoNotes/">MongoNotes</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/Linux/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/25/Android/AndroidNDK/">AndroidNDK</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/Design/PhotoShop/">PhotoShop 设计笔记摘要</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/15/Others/Enshrine/">Enshrine收藏</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/03/Others/Imagine/">【脑洞大开】你看过这样的动态图吗?——太牛了！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/26/Linux/Linux.bashrc/">Linux.bashrc</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/24/WinScripts/WinNote/">WinNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/21/Android/ProGuard/">ProGuard</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Linux/ShadowSocks/">ShadowSocks</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Web/WebDesign/">WebDesign</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Plan/FreeShareInfoIdea/">Plan/FreeShareInfoIdea</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Phalcon/PhalconNote/">Phalcon/PhalconNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Info/EnshrineBlogs/">Info/EnshrineBlogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/CLang/cMake/">cMake</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/13/Android/CoamApp/">CoamApp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/30/CLang/GccNote/">GCCNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/QT/QTNote/">QTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/DevIDENote/">DevIDENote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/CNote/">CNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/QT/Cygwin/">Cygwin</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/Electron/ElectronNote/">ElectronNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/CheerioNote/">CheerioNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/MochaNote/">MochaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/WebpackNote/">WebPack 自动打包工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/GulpNote/">NodeJs/GulpNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/Info/hospital/">hospital</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/18/Angular/TypeScriptNote/">TypeScriptNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/17/Angular/AngularNote/">Angular 开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Java/JavaNote/">JavaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/Python/PythonNote/">PythonNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdModule/">EjabberdModule</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdConfigure/">EjabberdConfigure</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrofit/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/PhpNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnLombok/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaHashMap/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaArray/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnGoogleGuava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnAsyncTask/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/NodeJs/NodeJsNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/MongoNotes/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/GPS/GPSNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Rebar/">RebarNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/MQTT/">MQTTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Lua/">LuaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Elixir/">ElixirNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/XMPP/">XMPPNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdNote/">EjabberdNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/Composer/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/SSL/LetSSL/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidStudio/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Nginx/NginxNote/">NginxNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mysql/MysqlTrigger/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidPushMQTT/">Android 推送之 MQTT</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/phpMyAdmin/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnSupportAnnotations/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRxJava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrolambda/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnOther/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnListView/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnGradle/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidFragment/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidDesign/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidContext/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroid/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/EventBus/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidStethoAppWithChrome/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidLog/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/Conversations.IM/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnOkHttp/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Http/HttpNote/">Http协议相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Others/MarkDownNote/">MarkDown 相关</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 张亚飞
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        <div class="visit">
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <span id="site-visit" >本站到访数: 
+                    <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </span>
+            <span id="busuanzi_container_page_pv" style='display:none'>
+                <span id="page-visit">, 本页阅读量: 
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </span>
+        </div>
+    </div>
+</footer>
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

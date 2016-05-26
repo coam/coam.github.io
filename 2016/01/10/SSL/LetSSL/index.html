@@ -6,30 +6,21 @@
   <title>Title | 商运物流</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="letsencrypt 证书签发机构官网GitHub - letsencrypt/letsencrypt
-letscrypt 证书签发及使用问题$ git clone https://github.com/letsencrypt/letsencrypt
-$ cd letsencrypt
-$ ./letsencrypt-auto --help
-首先停止服务器正在运行的nginx 服务器
-To obt">
+letscrypt 证书签发及使用问题123$ git clone https://github.com/letsencrypt/letsencrypt.git$ cd letsencrypt$ sudo ./letsencrypt-auto --help
+首先停止服务器正在运行的 nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Title">
 <meta property="og:url" content="https://coam.co/2016/01/10/SSL/LetSSL/index.html">
 <meta property="og:site_name" content="商运物流">
 <meta property="og:description" content="letsencrypt 证书签发机构官网GitHub - letsencrypt/letsencrypt
-letscrypt 证书签发及使用问题$ git clone https://github.com/letsencrypt/letsencrypt
-$ cd letsencrypt
-$ ./letsencrypt-auto --help
-首先停止服务器正在运行的nginx 服务器
-To obt">
-<meta property="og:updated_time" content="2016-01-20T08:58:00.016Z">
+letscrypt 证书签发及使用问题123$ git clone https://github.com/letsencrypt/letsencrypt.git$ cd letsencrypt$ sudo ./letsencrypt-auto --help
+首先停止服务器正在运行的 nginx">
+<meta property="og:updated_time" content="2016-05-22T10:05:36.071Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Title">
 <meta name="twitter:description" content="letsencrypt 证书签发机构官网GitHub - letsencrypt/letsencrypt
-letscrypt 证书签发及使用问题$ git clone https://github.com/letsencrypt/letsencrypt
-$ cd letsencrypt
-$ ./letsencrypt-auto --help
-首先停止服务器正在运行的nginx 服务器
-To obt">
+letscrypt 证书签发及使用问题123$ git clone https://github.com/letsencrypt/letsencrypt.git$ cd letsencrypt$ sudo ./letsencrypt-auto --help
+首先停止服务器正在运行的 nginx">
   
     <link rel="alternative" href="/atom.xml" title="商运物流" type="application/atom+xml">
   
@@ -261,169 +252,85 @@ To obt">
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="letsencrypt__u8BC1_u4E66_u7B7E_u53D1_u673A_u6784"><a href="#letsencrypt__u8BC1_u4E66_u7B7E_u53D1_u673A_u6784" class="headerlink" title="letsencrypt 证书签发机构"></a>letsencrypt 证书签发机构</h3><p><a href="https://letsencrypt.org/" target="_blank" rel="external">官网</a><br><a href="https://github.com/letsencrypt/letsencrypt" target="_blank" rel="external">GitHub - letsencrypt/letsencrypt</a></p>
-<h3 id="letscrypt__u8BC1_u4E66_u7B7E_u53D1_u53CA_u4F7F_u7528_u95EE_u9898"><a href="#letscrypt__u8BC1_u4E66_u7B7E_u53D1_u53CA_u4F7F_u7528_u95EE_u9898" class="headerlink" title="letscrypt 证书签发及使用问题"></a>letscrypt 证书签发及使用问题</h3><pre><code>$ git clone https://github.com/letsencrypt/letsencrypt
-$ cd letsencrypt
-$ ./letsencrypt-auto --help
-</code></pre><p>首先停止服务器正在运行的nginx 服务器</p>
-<p>To obtain a cert using a “standalone” webserver (you may need to temporarily stop your exising webserver) for example.com and www.example.com:</p>
-<h3 id="23_*-coopens-com_Certificate"><a href="#23_*-coopens-com_Certificate" class="headerlink" title="# *.coopens.com Certificate"></a><ip:42.96.194.60> # *.coopens.com Certificate</ip:42.96.194.60></h3><pre><code>./letsencrypt-auto certonly --standalone \
--d coopens.com \
--d www.coopens.com \
--d 56.coopens.com \
--d app.coopens.com \
--d dp.coopens.com \
--d cp.coopens.com \
--d lp.coopens.com \
--d pp.coopens.com \
--d mp.coopens.com \
--d im.coopens.com \
--d sns.coopens.com \
--d blog.coopens.com \
--d gps.coopens.com \
--d lw.coopens.com \
--d ma.coopens.com \
--d mirror.coopens.com \
--d nw.coopens.com \
--d open.coopens.com \
--d pay.coopens.com \
--d forum.coopens.com
-</code></pre><h3 id="23_*-nocs-com_Certificate"><a href="#23_*-nocs-com_Certificate" class="headerlink" title="# *.nocs.com Certificate"></a><ip:45.63.50.67> # *.nocs.com Certificate</ip:45.63.50.67></h3><pre><code>./letsencrypt-auto certonly --standalone \
--d nocs.cn \
--d www.nocs.cn \
--d 56.nocs.cn \
--d app.nocs.cn \
--d dp.nocs.cn \
--d cp.nocs.cn \
--d lp.nocs.cn \
--d pp.nocs.cn \
--d mp.nocs.cn \
--d im.nocs.cn \
--d sns.nocs.cn \
--d blog.nocs.cn \
--d gps.nocs.cn \
--d lw.nocs.cn \
--d ma.nocs.cn \
--d mirror.nocs.cn \
--d nw.nocs.cn \
--d open.nocs.cn \
--d pay.nocs.cn \
--d forum.nocs.cn
-</code></pre><h3 id="23_*-coam-com_Certificate"><a href="#23_*-coam-com_Certificate" class="headerlink" title="# *.coam.com Certificate"></a><ip:43.241.222.110> # *.coam.com Certificate</ip:43.241.222.110></h3><pre><code>./letsencrypt-auto certonly --standalone \
--d coam.co \
--d www.coam.co \
--d 56.coam.co \
--d app.coam.co \
--d dp.coam.co \
--d cp.coam.co \
--d lp.coam.co \
--d pp.coam.co \
--d mp.coam.co \
--d im.coam.co \
--d sns.coam.co \
--d blog.coam.co \
--d gps.coam.co \
--d lw.coam.co \
--d ma.coam.co \
--d mirror.coam.co \
--d nw.coam.co \
--d open.coam.co \
--d pay.coam.co \
--d forum.coam.co
-</code></pre><h3 id="23_*-syam-com_Certificate"><a href="#23_*-syam-com_Certificate" class="headerlink" title="# *.syam.com Certificate"></a><ip:43.241.222.110> # *.syam.com Certificate</ip:43.241.222.110></h3><pre><code>./letsencrypt-auto certonly --standalone \
--d syam.cc \
--d www.syam.cc \
--d 56.syam.cc \
--d app.syam.cc \
--d dp.syam.cc \
--d cp.syam.cc \
--d lp.syam.cc \
--d pp.syam.cc \
--d mp.syam.cc \
--d im.syam.cc \
--d sns.syam.cc \
--d blog.syam.cc \
--d gps.syam.cc \
--d lw.syam.cc \
--d ma.syam.cc \
--d mirror.syam.cc \
--d nw.syam.cc \
--d open.syam.cc \
--d pay.syam.cc \
--d forum.syam.cc
-</code></pre><h3 id="23_*-lonal-com_Certificate"><a href="#23_*-lonal-com_Certificate" class="headerlink" title="# *.lonal.com Certificate"></a><ip:43.241.222.110> # *.lonal.com Certificate</ip:43.241.222.110></h3><pre><code>./letsencrypt-auto certonly --standalone \
--d lonal.com \
--d www.lonal.com \
--d 56.lonal.com \
--d app.lonal.com \
--d dp.lonal.com \
--d cp.lonal.com \
--d lp.lonal.com \
--d pp.lonal.com \
--d mp.lonal.com \
--d im.lonal.com \
--d sns.lonal.com \
--d blog.lonal.com \
--d gps.lonal.com \
--d lw.lonal.com \
--d ma.lonal.com \
--d mirror.lonal.com \
--d nw.lonal.com \
--d open.lonal.com \
--d pay.lonal.com \
--d forum.lonal.com
-</code></pre><h3 id="23_*-iirii-com_Certificate"><a href="#23_*-iirii-com_Certificate" class="headerlink" title="# *.iirii.com Certificate"></a><ip:42.96.194.60> # *.iirii.com Certificate</ip:42.96.194.60></h3><pre><code>./letsencrypt-auto certonly --standalone \
--d iirii.com \
--d www.iirii.com \
--d wp.iirii.com \
--d ash.iirii.com \
--d ftp.iirii.com \
--d sarah.iirii.com
-</code></pre><h3 id="23_*-iirii-com_Certificate-1"><a href="#23_*-iirii-com_Certificate-1" class="headerlink" title="# *.iirii.com Certificate"></a><ip:43.241.222.110> # *.iirii.com Certificate</ip:43.241.222.110></h3><pre><code>./letsencrypt-auto certonly --standalone \
--d msh.iirii.com
-</code></pre><h3 id="23_*-iirii-com_Certificate-2"><a href="#23_*-iirii-com_Certificate-2" class="headerlink" title="# *.iirii.com Certificate"></a><ip:45.63.50.67> # *.iirii.com Certificate</ip:45.63.50.67></h3><pre><code>./letsencrypt-auto certonly --standalone \
--d vsh.iirii.com
-</code></pre><h3 id="23_*-apolloyl-com_Certificate"><a href="#23_*-apolloyl-com_Certificate" class="headerlink" title="# *.apolloyl.com Certificate"></a><ip:42.96.194.60> # *.apolloyl.com Certificate</ip:42.96.194.60></h3><pre><code>./letsencrypt-auto certonly --standalone \
--d apolloyl.com \
--d www.apolloyl.com \
--d mirror.apolloyl.com \
--d t.apolloyl.com
-</code></pre><h3 id="23_*-yntongji-com_Certificate"><a href="#23_*-yntongji-com_Certificate" class="headerlink" title="# *.yntongji.com Certificate"></a><ip:42.96.194.60> # *.yntongji.com Certificate</ip:42.96.194.60></h3><pre><code>./letsencrypt-auto certonly --standalone \
--d yntongji.com \
--d www.yntongji.com \
--d open.yntongji.com \
--d t.yntongji.com
-</code></pre><h3 id="23_*-hszhyy120-com_Certificate"><a href="#23_*-hszhyy120-com_Certificate" class="headerlink" title="# *.hszhyy120.com Certificate"></a><ip:42.96.194.60> # *.hszhyy120.com Certificate</ip:42.96.194.60></h3><pre><code>./letsencrypt-auto certonly --standalone \
--d hszhyy120.com \
--d www.hszhyy120.com \
--d open.hszhyy120.com \
--d t.hszhyy120.com
-</code></pre><p>To obtain a cert using the “webroot” plugin, which can work with the webroot directory of any webserver software:</p>
-<pre><code>./letsencrypt-auto certonly --webroot -w /var/www/example -d example.com -d www.example.com -w /var/www/thing -d thing.is -d m.thing.is
-</code></pre><p>最后提示如下成功信息</p>
-<pre><code>IMPORTANT NOTES:
- - Congratulations! Your certificate and chain have been saved at
-   /etc/letsencrypt/live/coopens.com/fullchain.pem. Your cert will
-   expire on 2016-03-22. To obtain a new version of the certificate in
-   the future, simply run Let&apos;s Encrypt again.
- - If you like Let&apos;s Encrypt, please consider supporting our work by:
-
-   Donating to ISRG / Let&apos;s Encrypt:   https://letsencrypt.org/donate
-   Donating to EFF:                    https://eff.org/donate-le
-</code></pre><p>按提示在 /etc/letsencrypt/live/coopens.com/fullchain.pem 四个文件</p>
-<pre><code>cert.pem 
-chain.pem
-fullchain.pem
-privkey.pem
-</code></pre><p>修改相应的 coopens.com 配置</p>
-<pre><code>#ssl_certificate /data/home/yzhang/GlobalSign/SYAM/syam.crt;
-#ssl_certificate_key /data/home/yzhang/GlobalSign/SYAM/syam.key;
-ssl_certificate /etc/letsencrypt/live/coopens.com/fullchain.pem;
-ssl_certificate_key /etc/letsencrypt/live/coopens.com/privkey.pem;
-</code></pre><p>重启 nginx 即可</p>
+        <h3 id="letsencrypt-证书签发机构"><a href="#letsencrypt-证书签发机构" class="headerlink" title="letsencrypt 证书签发机构"></a>letsencrypt 证书签发机构</h3><p><a href="https://letsencrypt.org/" target="_blank" rel="external">官网</a><br><a href="https://github.com/letsencrypt/letsencrypt" target="_blank" rel="external">GitHub - letsencrypt/letsencrypt</a></p>
+<h3 id="letscrypt-证书签发及使用问题"><a href="#letscrypt-证书签发及使用问题" class="headerlink" title="letscrypt 证书签发及使用问题"></a>letscrypt 证书签发及使用问题</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/letsencrypt/letsencrypt.git</span><br><span class="line">$ <span class="built_in">cd</span> letsencrypt</span><br><span class="line">$ sudo ./letsencrypt-auto --help</span><br></pre></td></tr></table></figure>
+<p>首先停止服务器正在运行的 nginx 服务器</p>
+<ul>
+<li>To obtain a cert using a “standalone” webserver (you may need to temporarily stop your exising webserver) for example.com and www.example.com:</li>
+</ul>
 <hr>
-<h5 id="u53C2_u8003_u5217_u8868"><a href="#u53C2_u8003_u5217_u8868" class="headerlink" title="参考列表"></a>参考列表</h5><p><a href="https://letsencrypt.org/howitworks/" target="_blank" rel="external">letsencrypt</a><br><a href="https://www.gehaowu.com/labs/2015/11/letsencrypt-https-certificate/" target="_blank" rel="external">使用 Let’s Encrypt 开源 SSL 证书</a><br><a href="https://mitnk.com/2015/11/lets_encrypt/" target="_blank" rel="external">为Nginx手动获取Let’S Encrypt的免费SSL证书</a><br><a href="https://linuxtoy.org/archives/lets-encrypt.html" target="_blank" rel="external">Let’s Encrypt 试用记</a></p>
-<p><a href="https://www.hatoko.net/nginx/nginx-ssl.html" target="_blank" rel="external">Nginx下SSL配置解释</a><br><a href="https://johnmaguire.me/2015/12/configuring-nginx-lets-encrypt-automatic-renewal/" target="_blank" rel="external">Configuring Let’s Encrypt for nginx with Automatic Renewal</a><br><a href="/"></a></p>
+<h3 id="以下商运相关"><a href="#以下商运相关" class="headerlink" title="以下商运相关"></a>以下商运相关</h3><ul>
+<li><ip:42.96.194.60> # <em>.coopens.com Certificate # </em>sy.include.d/server_ssl_coopens_com.conf*</ip:42.96.194.60></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone --email admin@coopens.com \</span><br><span class="line"><span class="operator">-d</span> coopens.com \</span><br><span class="line"><span class="operator">-d</span> www.coopens.com \</span><br><span class="line"><span class="operator">-d</span> <span class="number">56</span>.coopens.com \</span><br><span class="line"><span class="operator">-d</span> app.coopens.com \</span><br><span class="line"><span class="operator">-d</span> gp.coopens.com \</span><br><span class="line"><span class="operator">-d</span> dp.coopens.com \</span><br><span class="line"><span class="operator">-d</span> cp.coopens.com \</span><br><span class="line"><span class="operator">-d</span> lp.coopens.com \</span><br><span class="line"><span class="operator">-d</span> pp.coopens.com \</span><br><span class="line"><span class="operator">-d</span> mp.coopens.com \</span><br><span class="line"><span class="operator">-d</span> im.coopens.com \</span><br><span class="line"><span class="operator">-d</span> sns.coopens.com \</span><br><span class="line"><span class="operator">-d</span> blog.coopens.com \</span><br><span class="line"><span class="operator">-d</span> lw.coopens.com \</span><br><span class="line"><span class="operator">-d</span> ma.coopens.com \</span><br><span class="line"><span class="operator">-d</span> mirror.coopens.com \</span><br><span class="line"><span class="operator">-d</span> open.coopens.com \</span><br><span class="line"><span class="operator">-d</span> pay.coopens.com \</span><br><span class="line"><span class="operator">-d</span> forum.coopens.com \</span><br><span class="line"><span class="operator">-d</span> mas.coopens.com \</span><br><span class="line"><span class="operator">-d</span> was.coopens.com \</span><br><span class="line"><span class="operator">-d</span> gps.coopens.com</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ip:45.63.50.67> # <em>.nocs.com Certificate # </em>sy.include.d/server_ssl_nocs_cn.conf*</ip:45.63.50.67></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone --email admin@nocs.cn \</span><br><span class="line"><span class="operator">-d</span> nocs.cn \</span><br><span class="line"><span class="operator">-d</span> www.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> <span class="number">56</span>.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> app.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> gp.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> dp.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> cp.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> lp.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> pp.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> mp.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> im.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> sns.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> blog.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> lw.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> ma.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> mirror.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> open.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> pay.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> forum.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> mas.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> was.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> gps.nocs.cn</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ip:43.241.222.110> # <em>.coam.com Certificate # </em>sy.include.d/server_ssl_coam_co.conf*</ip:43.241.222.110></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone --email admin@coam.co \</span><br><span class="line"><span class="operator">-d</span> coam.co \</span><br><span class="line"><span class="operator">-d</span> www.coam.co \</span><br><span class="line"><span class="operator">-d</span> <span class="number">56</span>.coam.co \</span><br><span class="line"><span class="operator">-d</span> app.coam.co \</span><br><span class="line"><span class="operator">-d</span> gp.coam.co \</span><br><span class="line"><span class="operator">-d</span> dp.coam.co \</span><br><span class="line"><span class="operator">-d</span> cp.coam.co \</span><br><span class="line"><span class="operator">-d</span> lp.coam.co \</span><br><span class="line"><span class="operator">-d</span> pp.coam.co \</span><br><span class="line"><span class="operator">-d</span> mp.coam.co \</span><br><span class="line"><span class="operator">-d</span> im.coam.co \</span><br><span class="line"><span class="operator">-d</span> sns.coam.co \</span><br><span class="line"><span class="operator">-d</span> blog.coam.co \</span><br><span class="line"><span class="operator">-d</span> lw.coam.co \</span><br><span class="line"><span class="operator">-d</span> ma.coam.co \</span><br><span class="line"><span class="operator">-d</span> mirror.coam.co \</span><br><span class="line"><span class="operator">-d</span> open.coam.co \</span><br><span class="line"><span class="operator">-d</span> pay.coam.co \</span><br><span class="line"><span class="operator">-d</span> forum.coam.co \</span><br><span class="line"><span class="operator">-d</span> mas.coam.co \</span><br><span class="line"><span class="operator">-d</span> was.coam.co \</span><br><span class="line"><span class="operator">-d</span> gps.coam.co</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ip:43.241.222.110> # <em>.syam.com Certificate # </em>sy.include.d/server_ssl_syam_cc.conf*</ip:43.241.222.110></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone --email admin@syam.cc \</span><br><span class="line"><span class="operator">-d</span> syam.cc \</span><br><span class="line"><span class="operator">-d</span> www.syam.cc \</span><br><span class="line"><span class="operator">-d</span> <span class="number">56</span>.syam.cc \</span><br><span class="line"><span class="operator">-d</span> app.syam.cc \</span><br><span class="line"><span class="operator">-d</span> gp.syam.cc \</span><br><span class="line"><span class="operator">-d</span> dp.syam.cc \</span><br><span class="line"><span class="operator">-d</span> cp.syam.cc \</span><br><span class="line"><span class="operator">-d</span> lp.syam.cc \</span><br><span class="line"><span class="operator">-d</span> pp.syam.cc \</span><br><span class="line"><span class="operator">-d</span> mp.syam.cc \</span><br><span class="line"><span class="operator">-d</span> im.syam.cc \</span><br><span class="line"><span class="operator">-d</span> sns.syam.cc \</span><br><span class="line"><span class="operator">-d</span> blog.syam.cc \</span><br><span class="line"><span class="operator">-d</span> lw.syam.cc \</span><br><span class="line"><span class="operator">-d</span> ma.syam.cc \</span><br><span class="line"><span class="operator">-d</span> mirror.syam.cc \</span><br><span class="line"><span class="operator">-d</span> open.syam.cc \</span><br><span class="line"><span class="operator">-d</span> pay.syam.cc \</span><br><span class="line"><span class="operator">-d</span> forum.syam.cc \</span><br><span class="line"><span class="operator">-d</span> mas.syam.cc \</span><br><span class="line"><span class="operator">-d</span> was.syam.cc \</span><br><span class="line"><span class="operator">-d</span> gps.syam.cc</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ip:43.241.222.110> # <em>.lonal.com Certificate # </em>sy.include.d/server_ssl_lonal_com.conf*</ip:43.241.222.110></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone --email admin@lonal.com \</span><br><span class="line"><span class="operator">-d</span> lonal.com \</span><br><span class="line"><span class="operator">-d</span> www.lonal.com \</span><br><span class="line"><span class="operator">-d</span> <span class="number">56</span>.lonal.com \</span><br><span class="line"><span class="operator">-d</span> app.lonal.com \</span><br><span class="line"><span class="operator">-d</span> gp.lonal.com \</span><br><span class="line"><span class="operator">-d</span> dp.lonal.com \</span><br><span class="line"><span class="operator">-d</span> cp.lonal.com \</span><br><span class="line"><span class="operator">-d</span> lp.lonal.com \</span><br><span class="line"><span class="operator">-d</span> pp.lonal.com \</span><br><span class="line"><span class="operator">-d</span> mp.lonal.com \</span><br><span class="line"><span class="operator">-d</span> im.lonal.com \</span><br><span class="line"><span class="operator">-d</span> sns.lonal.com \</span><br><span class="line"><span class="operator">-d</span> blog.lonal.com \</span><br><span class="line"><span class="operator">-d</span> lw.lonal.com \</span><br><span class="line"><span class="operator">-d</span> ma.lonal.com \</span><br><span class="line"><span class="operator">-d</span> mirror.lonal.com \</span><br><span class="line"><span class="operator">-d</span> open.lonal.com \</span><br><span class="line"><span class="operator">-d</span> pay.lonal.com \</span><br><span class="line"><span class="operator">-d</span> forum.lonal.com \</span><br><span class="line"><span class="operator">-d</span> mas.lonal.com \</span><br><span class="line"><span class="operator">-d</span> was.lonal.com \</span><br><span class="line"><span class="operator">-d</span> gps.lonal.com</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ip:42.96.194.60> # <em>.iirii.com Certificate # </em>sy.include.d/server_ssl_iirii_com.conf*</ip:42.96.194.60></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone --email admin@iirii.com \</span><br><span class="line"><span class="operator">-d</span> iirii.com \</span><br><span class="line"><span class="operator">-d</span> www.iirii.com \</span><br><span class="line"><span class="operator">-d</span> wp.iirii.com \</span><br><span class="line"><span class="operator">-d</span> ftp.iirii.com \</span><br><span class="line"><span class="operator">-d</span> sarah.iirii.com</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ip:42.96.194.60> # <em>.iirii.com Certificate # </em>sy.include.d/server_ssl_coopens_com_ali.conf*</ip:42.96.194.60></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone \</span><br><span class="line"><span class="operator">-d</span> acw.iirii.com \</span><br><span class="line"><span class="operator">-d</span> acs.iirii.com \</span><br><span class="line"><span class="operator">-d</span> acr.iirii.com \</span><br><span class="line"><span class="operator">-d</span> axp.iirii.com</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ip:43.241.222.110> # <em>.iirii.com Certificate # </em>sy.include.d/server_ssl_iirii_com_mos.conf*</ip:43.241.222.110></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone \</span><br><span class="line"><span class="operator">-d</span> mcw.iirii.com \</span><br><span class="line"><span class="operator">-d</span> mcs.iirii.com \</span><br><span class="line"><span class="operator">-d</span> mcr.iirii.com \</span><br><span class="line"><span class="operator">-d</span> mxp.iirii.com</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ip:45.63.50.67> # <em>.iirii.com Certificate # </em>sy.include.d/server_ssl_iirii_com_vultr.conf*</ip:45.63.50.67></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone \</span><br><span class="line"><span class="operator">-d</span> vcw.iirii.com \</span><br><span class="line"><span class="operator">-d</span> vcs.iirii.com \</span><br><span class="line"><span class="operator">-d</span> vcr.iirii.com \</span><br><span class="line"><span class="operator">-d</span> vxp.iirii.com</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="以下医院相关"><a href="#以下医院相关" class="headerlink" title="以下医院相关"></a>以下医院相关</h3><ul>
+<li><ip:42.96.194.60> # <em>.apolloyl.com Certificate # </em>sy.include.d/server_ssl_apolloyl_com.conf*</ip:42.96.194.60></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone \</span><br><span class="line"><span class="operator">-d</span> apolloyl.com \</span><br><span class="line"><span class="operator">-d</span> www.apolloyl.com \</span><br><span class="line"><span class="operator">-d</span> mirror.apolloyl.com \</span><br><span class="line"><span class="operator">-d</span> t.apolloyl.com</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ip:42.96.194.60> # <em>.yntongji.com Certificate # </em>sy.include.d/server_ssl_yntongji_com.conf*</ip:42.96.194.60></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone \</span><br><span class="line"><span class="operator">-d</span> yntongji.com \</span><br><span class="line"><span class="operator">-d</span> www.yntongji.com \</span><br><span class="line"><span class="operator">-d</span> open.yntongji.com \</span><br><span class="line"><span class="operator">-d</span> t.yntongji.com</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ip:42.96.194.60> # <em>.hszhyy120.com Certificate # </em>sy.include.d/server_ssl_hszhyy120_com.conf*</ip:42.96.194.60></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone \</span><br><span class="line"><span class="operator">-d</span> hszhyy120.com \</span><br><span class="line"><span class="operator">-d</span> www.hszhyy120.com \</span><br><span class="line"><span class="operator">-d</span> open.hszhyy120.com \</span><br><span class="line"><span class="operator">-d</span> t.hszhyy120.com</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="To-obtain-a-cert-using-the-“webroot”-plugin-which-can-work-with-the-webroot-directory-of-any-webserver-software"><a href="#To-obtain-a-cert-using-the-“webroot”-plugin-which-can-work-with-the-webroot-directory-of-any-webserver-software" class="headerlink" title="To obtain a cert using the “webroot” plugin, which can work with the webroot directory of any webserver software:"></a>To obtain a cert using the “webroot” plugin, which can work with the webroot directory of any webserver software:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --webroot -w /var/www/example <span class="operator">-d</span> example.com <span class="operator">-d</span> www.example.com -w /var/www/thing <span class="operator">-d</span> thing.is <span class="operator">-d</span> m.thing.is</span><br></pre></td></tr></table></figure>
+<ul>
+<li>完成以上命令 最后提示如下成功信息</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">IMPORTANT NOTES:</span><br><span class="line"> - Congratulations! Your certificate and chain have been saved at</span><br><span class="line">   /etc/letsencrypt/live/coopens.com/fullchain.pem. Your cert will</span><br><span class="line">   expire on <span class="number">2016</span>-<span class="number">03</span>-<span class="number">22</span>. To obtain a new version of the certificate <span class="keyword">in</span></span><br><span class="line">   the future, simply run Let<span class="string">'s Encrypt again.</span><br><span class="line"> - If you like Let'</span>s Encrypt, please consider supporting our work by:</span><br><span class="line"></span><br><span class="line">   Donating to ISRG / Let<span class="string">'s Encrypt:   https://letsencrypt.org/donate</span><br><span class="line">   Donating to EFF:                    https://eff.org/donate-le</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>按提示在 <em>/etc/letsencrypt/live/coopens.com/fullchain.pem</em> 四个文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cert.pem </span><br><span class="line">chain.pem</span><br><span class="line">fullchain.pem</span><br><span class="line">privkey.pem</span><br></pre></td></tr></table></figure>
+<p>修改相应的 coopens.com 配置ssl证书指向</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ssl_certificate /data/home/yzhang/GlobalSign/SYAM/syam.crt;</span></span><br><span class="line"><span class="comment">#ssl_certificate_key /data/home/yzhang/GlobalSign/SYAM/syam.key;</span></span><br><span class="line">ssl_certificate /etc/letsencrypt/live/coopens.com/fullchain.pem;</span><br><span class="line">ssl_certificate_key /etc/letsencrypt/live/coopens.com/privkey.pem;</span><br></pre></td></tr></table></figure>
+<p>最后重启 nginx 即可</p>
+<ul>
+<li>配置 ocsp 根证书</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat fullchain.pem /data/home/yzhang/CoamRunning/Documents/Server/ServiceConfig/Nginx/Certify/dst_root.pem &gt; rootchain.pem</span><br></pre></td></tr></table></figure>
+<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>在运行 sudo ./letsencrypt-auto certonly –standalone –email admin@iirii.com -d iirii.com 时频繁出现以下网络连接的错误:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Fri Feb <span class="number">19</span> <span class="number">22</span>:<span class="number">37</span>:<span class="number">18</span> yzhang@coam:~/RunProject/letsencrypt$ sudo ./letsencrypt-auto certonly --standalone --email admin@iirii.com \</span><br><span class="line">&gt;     <span class="operator">-d</span> iirii.com \</span><br><span class="line">&gt;     <span class="operator">-d</span> www.iirii.com \</span><br><span class="line">&gt;     <span class="operator">-d</span> wp.iirii.com \</span><br><span class="line">&gt;     <span class="operator">-d</span> ftp.iirii.com \</span><br><span class="line">&gt;     <span class="operator">-d</span> sarah.iirii.com \</span><br><span class="line">&gt;     <span class="operator">-d</span> acs.iirii.com \</span><br><span class="line">&gt;     <span class="operator">-d</span> acr.iirii.com</span><br><span class="line">Checking <span class="keyword">for</span> new version...</span><br><span class="line">Upgrading letsencrypt-auto <span class="number">0.5</span>.<span class="number">0</span>.dev0 to <span class="number">0.4</span>.<span class="number">0</span>...</span><br><span class="line">Couldn<span class="string">'t download https://raw.githubusercontent.com/letsencrypt/letsencrypt/v0.4.0/letsencrypt-auto-source/letsencrypt-auto. &lt;urlopen error [Errno -2] Name or service not known&gt;</span></span><br></pre></td></tr></table></figure>
+<p>需要配合 ShadowSocks 代理翻墙,详细配置参见 <em>Linux/ShadowSocks.md</em></p>
+<hr>
+<h5 id="参考列表"><a href="#参考列表" class="headerlink" title="参考列表"></a>参考列表</h5><p><a href="https://letsencrypt.org/howitworks/" target="_blank" rel="external">letsencrypt</a><br><a href="https://www.gehaowu.com/labs/2015/11/letsencrypt-https-certificate/" target="_blank" rel="external">使用 Let’s Encrypt 开源 SSL 证书</a><br><a href="https://mitnk.com/2015/11/lets_encrypt/" target="_blank" rel="external">为Nginx手动获取Let’S Encrypt的免费SSL证书</a><br><a href="https://linuxtoy.org/archives/lets-encrypt.html" target="_blank" rel="external">Let’s Encrypt 试用记</a></p>
+<p><a href="https://www.hatoko.net/nginx/nginx-ssl.html" target="_blank" rel="external">Nginx下SSL配置解释</a><br><a href="https://johnmaguire.me/2015/12/configuring-nginx-lets-encrypt-automatic-renewal/" target="_blank" rel="external">Configuring Let’s Encrypt for nginx with Automatic Renewal</a><br><a href=""></a></p>
 
       
     </div>
@@ -435,7 +342,7 @@ ssl_certificate_key /etc/letsencrypt/live/coopens.com/privkey.pem;
         <p><span>本文标题:</span><a href="/2016/01/10/SSL/LetSSL/">Title</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 张亚飞 的个人博客">张亚飞</a></p>
         <p><span>发布时间:</span>2016年01月10日 - 19时41分</p>
-        <p><span>最后更新:</span>2016年01月20日 - 16时58分</p>
+        <p><span>最后更新:</span>2016年05月22日 - 18时05分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/01/10/SSL/LetSSL/" title="Title">https://coam.co/2016/01/10/SSL/LetSSL/</a>
             <span class="copy-path" data-clipboard-text="原文: https://coam.co/2016/01/10/SSL/LetSSL/　　作者: 张亚飞" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -452,15 +359,15 @@ ssl_certificate_key /etc/letsencrypt/live/coopens.com/privkey.pem;
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/01/10/Erlang/Elixir/">
-                    ElixirNote
+                <a href="/2016/01/10/PHP/Composer/">
+                    Title
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/01/10/Erlang/Rebar/">
-                    RebarNote
+                <a href="/2016/01/10/Android/AndroidStudio/">
+                    Title
                 </a>
             </div>
         
@@ -471,7 +378,7 @@ ssl_certificate_key /etc/letsencrypt/live/coopens.com/privkey.pem;
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#letsencrypt__u8BC1_u4E66_u7B7E_u53D1_u673A_u6784"><span class="toc-number">1.</span> <span class="toc-text">letsencrypt 证书签发机构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#letscrypt__u8BC1_u4E66_u7B7E_u53D1_u53CA_u4F7F_u7528_u95EE_u9898"><span class="toc-number">2.</span> <span class="toc-text">letscrypt 证书签发及使用问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23_*-coopens-com_Certificate"><span class="toc-number">3.</span> <span class="toc-text"> # *.coopens.com Certificate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23_*-nocs-com_Certificate"><span class="toc-number">4.</span> <span class="toc-text"> # *.nocs.com Certificate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23_*-coam-com_Certificate"><span class="toc-number">5.</span> <span class="toc-text"> # *.coam.com Certificate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23_*-syam-com_Certificate"><span class="toc-number">6.</span> <span class="toc-text"> # *.syam.com Certificate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23_*-lonal-com_Certificate"><span class="toc-number">7.</span> <span class="toc-text"> # *.lonal.com Certificate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23_*-iirii-com_Certificate"><span class="toc-number">8.</span> <span class="toc-text"> # *.iirii.com Certificate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23_*-iirii-com_Certificate-1"><span class="toc-number">9.</span> <span class="toc-text"> # *.iirii.com Certificate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23_*-iirii-com_Certificate-2"><span class="toc-number">10.</span> <span class="toc-text"> # *.iirii.com Certificate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23_*-apolloyl-com_Certificate"><span class="toc-number">11.</span> <span class="toc-text"> # *.apolloyl.com Certificate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23_*-yntongji-com_Certificate"><span class="toc-number">12.</span> <span class="toc-text"> # *.yntongji.com Certificate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23_*-hszhyy120-com_Certificate"><span class="toc-number">13.</span> <span class="toc-text"> # *.hszhyy120.com Certificate</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#u53C2_u8003_u5217_u8868"><span class="toc-number">13.0.1.</span> <span class="toc-text">参考列表</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#letsencrypt-证书签发机构"><span class="toc-number">1.</span> <span class="toc-text">letsencrypt 证书签发机构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#letscrypt-证书签发及使用问题"><span class="toc-number">2.</span> <span class="toc-text">letscrypt 证书签发及使用问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#以下商运相关"><span class="toc-number">3.</span> <span class="toc-text">以下商运相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#以下医院相关"><span class="toc-number">4.</span> <span class="toc-text">以下医院相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#To-obtain-a-cert-using-the-“webroot”-plugin-which-can-work-with-the-webroot-directory-of-any-webserver-software"><span class="toc-number">5.</span> <span class="toc-text">To obtain a cert using the “webroot” plugin, which can work with the webroot directory of any webserver software:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题分析"><span class="toc-number">6.</span> <span class="toc-text">问题分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#参考列表"><span class="toc-number">6.0.1.</span> <span class="toc-text">参考列表</span></a></li></ol></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -524,7 +431,7 @@ ssl_certificate_key /etc/letsencrypt/live/coopens.com/privkey.pem;
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/01/10/Erlang/Elixir/" title="上一篇: ElixirNote">
+            <a href="/2016/01/10/PHP/Composer/" title="上一篇: Title">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -532,13 +439,13 @@ ssl_certificate_key /etc/letsencrypt/live/coopens.com/privkey.pem;
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/01/10/Erlang/Rebar/" title="下一篇: RebarNote">
+            <a href="/2016/01/10/Android/AndroidStudio/" title="下一篇: Title">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/Server/NodeJs/">Server/NodeJs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/CheerioNote/">CheerioNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/MochaNote/">MochaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/WebpackNote/">WebPack 自动打包工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/GulpNote/">NodeJs/GulpNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/Info/hospital/">hospital</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/19/Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd/">Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Java/JavaNote/">JavaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/Python/PythonNote/">PythonNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Server/Ejabberd/">Ejabberd Install</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/PhpNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnAsyncTask/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnGoogleGuava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaArray/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaHashMap/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnLombok/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnOkHttp/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrofit/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrolambda/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRxJava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnSupportAnnotations/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/MongoNotes/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mysql/MysqlTrigger/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Nginx/NginxNote/">NginxNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Elixir/">ElixirNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/SSL/LetSSL/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Rebar/">RebarNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/GPS/GPSNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Lua/">LuaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/phpMyAdmin/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Git/git/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/Composer/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/NodeJs/NodeJsNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/MQTT/">MQTTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Http/HttpNote/">Http协议相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Others/MarkDownNote/">MarkDown 相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Server/ServerDisasterBackup/">Server/Config/Server/ServerDisasterBackup</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Nginx/Other/waf/README/">Server/Config/Nginx/Other/waf/README</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Nginx/">Server/Nginx</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/PHP/">Server/PHP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/MongoDB/">Server/MongoDB</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/ServerContingencyPlans/">Server/ServerContingencyPlans</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Server/ServerDisasterRestart/">Server/Config/Server/ServerDisasterRestart</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Server/ServerDisasterRecovery/">Server/Config/Server/ServerDisasterRecovery</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/PPA/">Server/PPA</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd_old/">Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd_old</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/07/Server/Config/MongoDB/Mos_etc_mongod.cnf/">Server/Config/MongoDB/Mos_etc_mongod.cnf</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Server/Ubuntu/">Server/Ubuntu</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Plan/FreeShareInfoIdea/">Plan/FreeShareInfoIdea</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Info/EnshrineBlogs/">Info/EnshrineBlogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/05/Phalcon/PhalconNote/">Phalcon/PhalconNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/28/Server/Config/Ejabberd/slava_ejabberd/">Server/Config/Ejabberd/slava_ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/ports/">Server/Config/Ejabberd/jabber/ports</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/modules/">Server/Config/Ejabberd/jabber/modules</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/ejabberd/">Server/Config/Ejabberd/jabber/ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/acl/">Server/Config/Ejabberd/jabber/acl</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/access/">Server/Config/Ejabberd/jabber/access</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/27/Server/Config/Ejabberd/jabber/README/">Server/Config/Ejabberd/jabber/README</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/24/Server/Config/Ejabberd/test_ejabberd/">Server/Config/Ejabberd/test_ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/MongoDB/Ali_etc_mongod.cnf/">Server/Config/MongoDB/Ali_etc_mongod.cnf</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/MongoDB/Vultr_etc_mongod.cnf/">Server/Config/MongoDB/Vultr_etc_mongod.cnf</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/Ejabberd/default.ejabberd/">Server/Config/Ejabberd/default.ejabberd</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/12/21/Server/Config/Ejabberd/old.ejabberd/">Server/Config/Ejabberd/old.ejabberd</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Erlang/InstallOTP/">InstallOTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Redis/RedisSyncNote/">RedisSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/Ubuntu/">Linux/Ubuntu</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/SystemInstall/">Linux/SystemInstall</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Others/YL/">Others/YL</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/Linux/LinuxCommand/">LinuxCommand</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlSyncNote/">MysqlSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlToRedis/">MysqlToRedis</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlNote/">MysqlNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlSql/">MysqlSql</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Redis/RedisNote/">RedisNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Mongo/MongoNotes/">MongoNotes</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/Linux/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/25/Android/AndroidNDK/">AndroidNDK</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/Design/PhotoShop/">PhotoShop 设计笔记摘要</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/15/Others/Enshrine/">Enshrine收藏</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/03/Others/Imagine/">【脑洞大开】你看过这样的动态图吗?——太牛了！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/26/Linux/Linux.bashrc/">Linux.bashrc</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/24/WinScripts/WinNote/">WinNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/21/Android/ProGuard/">ProGuard</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Linux/ShadowSocks/">ShadowSocks</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Web/WebDesign/">WebDesign</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Plan/FreeShareInfoIdea/">Plan/FreeShareInfoIdea</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Phalcon/PhalconNote/">Phalcon/PhalconNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Info/EnshrineBlogs/">Info/EnshrineBlogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/CLang/cMake/">cMake</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/13/Android/CoamApp/">CoamApp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/30/CLang/GccNote/">GCCNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/QT/QTNote/">QTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/DevIDENote/">DevIDENote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/CNote/">CNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/QT/Cygwin/">Cygwin</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/Electron/ElectronNote/">ElectronNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/CheerioNote/">CheerioNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/MochaNote/">MochaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/WebpackNote/">WebPack 自动打包工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/GulpNote/">NodeJs/GulpNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/Info/hospital/">hospital</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/18/Angular/TypeScriptNote/">TypeScriptNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/17/Angular/AngularNote/">Angular 开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Java/JavaNote/">JavaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/Python/PythonNote/">PythonNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdModule/">EjabberdModule</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdConfigure/">EjabberdConfigure</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrofit/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/PhpNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnLombok/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaHashMap/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaArray/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnGoogleGuava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnAsyncTask/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/NodeJs/NodeJsNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/MongoNotes/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/GPS/GPSNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Rebar/">RebarNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/MQTT/">MQTTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Lua/">LuaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Elixir/">ElixirNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/XMPP/">XMPPNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdNote/">EjabberdNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/Composer/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/SSL/LetSSL/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidStudio/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Nginx/NginxNote/">NginxNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mysql/MysqlTrigger/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidPushMQTT/">Android 推送之 MQTT</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/phpMyAdmin/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnSupportAnnotations/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRxJava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrolambda/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnOther/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnListView/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnGradle/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidFragment/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidDesign/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidContext/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroid/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/EventBus/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidStethoAppWithChrome/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidLog/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/Conversations.IM/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnOkHttp/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Http/HttpNote/">Http协议相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Others/MarkDownNote/">MarkDown 相关</a></li></ul>
     <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");

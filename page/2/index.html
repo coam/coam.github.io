@@ -216,11 +216,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-PHP/PhpNote" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Redis/RedisNote" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/10/PHP/PhpNote/" class="article-date">
-      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+      <a href="/2016/05/10/Redis/RedisNote/" class="article-date">
+      <time datetime="2016-05-10T13:16:31.000Z" itemprop="datePublished">2016-05-10</time>
 </a>
     </div>
   
@@ -233,7 +233,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/PHP/PhpNote/">Title</a>
+      <a class="article-title" href="/2016/05/10/Redis/RedisNote/">RedisNote</a>
     </h1>
   
 
@@ -243,13 +243,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="Php__u5F00_u53D1_u7B14_u8BB0_u76F8_u5173"><a href="#Php__u5F00_u53D1_u7B14_u8BB0_u76F8_u5173" class="headerlink" title="Php 开发笔记相关"></a>Php 开发笔记相关</h3><hr>
-<p><a href="http://get.jobdeer.com/1134.get" target="_blank" rel="external">参考 PHP高效率写法（详解原因）</a></p>
-<p>PHP读取软件接ln 的相对父路径问题</p>
-<p>PHP读取软连接下的PHP程序使用 <strong>DIR</strong> 获取的相对路径,获取的父级目录是源文件的父级目录,若想获取软连接的父级目录,应使用 $_SERVER[“SCRIPT_FILENAME”]来获取当前脚本文件绝句路径再拼接</p>
-<p><a href="http://www.kaijia.me/2012/10/__file__-issue-with-symlink-in-php-solved/" target="_blank" rel="external">详见 PHP魔术常量<strong>FILE</strong>无法识别符号链接问题解决</a></p>
-<hr>
-<h3 id="u5173_u4E8E_CGI_2C_FastCGI_2C_PHP-FPM_2C_SPAWN-FCGI_2C_Nginx__u5B83_u4EEC_u4E4B_u95F4_u7684_u5173_u7CFB"><a href="#u5173_u4E8E_CGI_2C_FastCGI_2C_PHP-FPM_2C_SPAWN-FCGI_2C_Nginx__u5B83_u4EEC_u4E4B_u95F4_u7684_u5173_u7CFB" class="headerlink" title="关于 CGI, FastCGI, PHP-FPM, SPAWN-FCGI, Nginx 它们之间的关系"></a>关于 CGI, FastCGI, PHP-FPM, SPAWN-FCGI, Nginx 它们之间的关系</h3><p><a href="http://bigxing.github.io/2015/02/03/cgi-fastcgi-phpfpm-spawnfcgi/" target="_blank" rel="external">CGI, FastCGI, PHP-FPM, SPAWN-FCGI, Nginx 它们之间的关系</a><br><a href="https://segmentfault.com/q/1010000002434806" target="_blank" rel="external">php fpm和fast-CGI有啥关系？而且还有一个疑问,就是PHP以CGI方式运行,请问以CGI方式运行到底是啥意思？？</a></p>
+        <a id="more"></a>
+<p><a href="http://ifeve.com/redis-replication/" target="_blank" rel="external">《Redis官方文档》主从复制</a><br><a href="http://gsandow.com/redis-replication/" target="_blank" rel="external">redis 主从同步原理及参数</a><br><a href="https://www.zhihu.com/question/21419897" target="_blank" rel="external">Redis集群方案应该怎么做?</a></p>
 
       
     </div>
@@ -275,11 +270,11 @@
 
 
   
-    <article id="post-Erlang/Mnesia" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Mongo/MongoNotes" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/10/Erlang/Mnesia/" class="article-date">
-      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+      <a href="/2016/05/10/Mongo/MongoNotes/" class="article-date">
+      <time datetime="2016-05-10T13:13:31.000Z" itemprop="datePublished">2016-05-10</time>
 </a>
     </div>
   
@@ -292,7 +287,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/Erlang/Mnesia/">MnesiaNote</a>
+      <a class="article-title" href="/2016/05/10/Mongo/MongoNotes/">MongoNotes</a>
     </h1>
   
 
@@ -302,113 +297,251 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="Erlang_Mnesia_Database"><a href="#Erlang_Mnesia_Database" class="headerlink" title="Erlang Mnesia Database"></a>Erlang Mnesia Database</h3><p><a href="http://www.erlang.org/doc/man/mnesia.html" target="_blank" rel="external">Erlang Mnesia Doc</a></p>
-<p>最近学习erlang,在erlang中天然集成了一个分布式数据库名字叫mnesia,因为数据库天然就和erlang的元组,记录无缝结合,并且具有良好的分布式特性,能够自动地在几个erlang节点上实现数据复制,效果有点像zookeeper的节点集群,<br>而且mnesia还支持数据库事务特性,所以mnesia在erlang应用中使用得非常频繁.</p>
-<p>要在本地创建一个mnesia数据库,并且要实现插入,查询功能需要实现以下这几步:<br>1.启动erlang节点:</p>
-<pre><code>#erl -mnesia dir &apos;&quot;d://tmp//mnesia&quot;&apos; -sname mynode
-erl -mnesia dir &apos;&quot;C:\Users\yafei\DevWork\Erlang\dev\mnesia\data&quot;&apos; -name win@27.16.194.65 -setcookie 456789
-sudo erl -mnesia dir &apos;&quot;/data/home/data/mnesia/&quot;&apos; -name ali@42.96.194.60 -setcookie 456789
-</code></pre><p>注意路径双引号<br> 以上这个 “/data/home/data/mnesia/“ 目录是存放mnesia数据库的schema数据的,当然这个目录也可以不指定,那么mnesia数据库启动之后将把数据库的schema中的数据放在内存中,如果下次节点重启之后,之前数据库中创建的表结构数据就消失了.<br>2.接下来就是在erl shell中本地初始化一个空的 mnesia 数据库</p>
-<pre><code>mnesia:create_schema([node()]).
-</code></pre><p>  从参数上是一个节点列表,所以其实需要的话,可以在参数列表上设置多个erlang节点,就能在多个erlang节点上同时创建mnesia数据库并构成 Mnesia 集群.<br>3.启动mnesia数据库<br>  初始化完成了mnesia数据库schema之后,接下来就可以启动mneisa数据库了.</p>
-<pre><code>mnesia:start().
-</code></pre><p>至此,一个空的mneisa已经创建启动成功了,我们可以调用mnesia:info(). 查看当前mnesia数据库的一些状态,结果如下:</p>
-<pre><code>(ali@localhost)2&gt; mnesia:info().
-===&gt; System info in version &quot;4.13.2&quot;, debug level = none &lt;===
-opt_disc. Directory &quot;/data/home/data/mnesia&quot; is used.
-use fallback at restart = true
-running db nodes   = []
-stopped db nodes   = [ali@localhost]
-ok
-(ali@localhost)3&gt; mnesia:start().
-ok
-(ali@localhost)4&gt; mnesia:info().
----&gt; Processes holding locks &lt;---
----&gt; Processes waiting for locks &lt;---
----&gt; Participant transactions &lt;---
----&gt; Coordinator transactions &lt;---
----&gt; Uncertain transactions &lt;---
----&gt; Active tables &lt;---
-schema         : with 1        records occupying 408      words of mem
-===&gt; System info in version &quot;4.13.2&quot;, debug level = none &lt;===
-opt_disc. Directory &quot;/data/home/data/mnesia&quot; is used.
-use fallback at restart = false
-running db nodes   = [ali@localhost]
-stopped db nodes   = []
-master node tables = []
-remote             = []
-ram_copies         = []
-disc_copies        = [schema]
-disc_only_copies   = []
-[{ali@localhost,disc_copies}] = [schema]
-2 transactions committed, 0 aborted, 0 restarted, 0 logged to disc
-0 held locks, 0 in queue; 0 local transactions, 0 remote
-0 transactions waits for other nodes: []
-ok
-</code></pre><p>从 [{ali@localhost,disc_copies}] = [schema] 这行上来看当前数据库中只有一个数据库的schema表.</p>
+        <a id="more"></a>
+<p><a href="https://jockchou.gitbooks.io/getting-started-with-mongodb/content/index.html" target="_blank" rel="external">《MongoDB入门指南》</a></p>
+<h3 id="mongodb-基本命令"><a href="#mongodb-基本命令" class="headerlink" title="mongodb 基本命令"></a>mongodb 基本命令</h3><p>进入 mongo: mongo<br>启动服务:net start MongoDB</p>
+<ol>
+<li>查看数据库:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show dbs</span><br></pre></td></tr></table></figure>
+<ol>
+<li>查看所有集合:</li>
+</ol>
+<pre><code class="bash">show collections;
+</code></pre>
+<ol>
+<li>查看数据库服务器的状态:</li>
+</ol>
+<pre><code class="bash">db.serverStatus();
+</code></pre>
+<ol>
+<li>查询指定数据库统计信息:</li>
+</ol>
+<pre><code class="bash">use user;
+db.stats();
+</code></pre>
+<ol>
+<li>查询指定数据库包含的集合名称列表</li>
+</ol>
+<pre><code class="bash">db.getCollectionNames();
+</code></pre>
+<ol>
+<li>删除数据库</li>
+</ol>
+<pre><code class="bash">db.dropDatabse();
+</code></pre>
+<ol>
+<li>创建集合</li>
+</ol>
+<pre><code class="bash">db.createCollection(name, {size:..., capped:..., max:...})
+</code></pre>
+<p>MongoDB 支持 Capped Collection,一种固定大小的集合,当集合的大小达到指定大小时,新数据会覆盖老数据.</p>
+<ol>
+<li>删除集合:</li>
+</ol>
+<pre><code class="bash">db.collections.drop();
+</code></pre>
+<ol>
+<li>插入更新记录,save方法:</li>
+</ol>
+<pre><code class="bash">db.user.save({‘name’:<span class="string">'xiaoming’,'</span>age’:25});
+</code></pre>
+<ol>
+<li>查询一条记录:<br>参数为查询条件,可选,系统会随机查询获取到满足条件的一条记录(如果存在查询结果数量大于等于1)</li>
+</ol>
+<pre><code class="bash">db.user.findOne({‘name’:<span class="string">'xiaoming’})</span>
+</code></pre>
+<ol>
+<li>查询多条记录:不指定条件则查询全部记录</li>
+</ol>
+<pre><code class="bash">db.user.find();
+</code></pre>
+<ol>
+<li>删除记录:</li>
+</ol>
+<pre><code class="bash">db.user.remove({‘name’:<span class="string">'xiaomng’});</span>
+</code></pre>
+<ol>
+<li>创建索引:</li>
+</ol>
+<pre><code class="bash">&gt;use user
+&gt;db.page.ensureIndex({}’name’:1, ‘age’:-1})
+&gt;db.system.index.find()
+</code></pre>
+<p>ensureIndex 方法参数中,数字1表示升序,-1表示降序.<br>db.system.indexes.find() 可以查询全部索引</p>
+<ol>
+<li>查询索引:</li>
+</ol>
+<pre><code class="bash">db.page.getIndexes();
+</code></pre>
+<ol>
+<li>删除索引:</li>
+</ol>
+<pre><code class="bash">db.user.dropIndex(name)
+db.user.dropIndexes();//删除全部索引
+</code></pre>
+<ol>
+<li>索引重建:</li>
+</ol>
+<pre><code class="bash">db.page.reIndex()
+</code></pre>
+<ol>
+<li>统计集合记录数</li>
+</ol>
+<pre><code class="bash">user user;
+db.baseSe.count();
+</code></pre>
+<ol>
+<li>查询并统计结果记录数:</li>
+</ol>
+<pre><code class="bash">use user
+db.baseSe.find({‘name’:<span class="string">'xiaoming’}).count()</span>
+</code></pre>
+<p>先根据条件查询结果,然后再统计结果中的记录数,查询条件也可为空.</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Linux/iptables" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/09/Linux/iptables/" class="article-date">
+      <time datetime="2016-05-09T13:53:31.000Z" itemprop="datePublished">2016-05-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/09/Linux/iptables/">iptables</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h3 id="iptables入门教程"><a href="#iptables入门教程" class="headerlink" title="iptables入门教程"></a>iptables入门教程</h3>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a  href="/2016/05/09/Linux/iptables/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Android/AndroidNDK" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/25/Android/AndroidNDK/" class="article-date">
+      <time datetime="2016-04-25T02:08:31.000Z" itemprop="datePublished">2016-04-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/25/Android/AndroidNDK/">AndroidNDK</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <a id="more"></a>
 <hr>
-<h4 id="Mnesia__u96C6_u7FA4"><a href="#Mnesia__u96C6_u7FA4" class="headerlink" title="Mnesia 集群"></a>Mnesia 集群</h4><p>分别在 阿里云 ali 和 本机 win 启动两个节点</p>
-<pre><code>sudo -mnesia dir &apos;&quot;/data/home/data/mnesia/&quot;&apos; -name ali@42.96.194.60 -setcookie 456789
-erl -mnesia dir &apos;&quot;C:\Users\yafei\DevWork\Erlang\dev\mnesia\data&quot;&apos; -name win@27.16.194.65 -setcookie 456789
-</code></pre><p>保证两个节点都启动,并且 mnesia 没有启用</p>
-<pre><code>mnesia:delete_schema([&apos;win@27.16.194.65&apos;, &apos;ali@42.96.194.60&apos;]).
-mnesia:create_schema([&apos;win@27.16.194.65&apos;, &apos;ali@42.96.194.60&apos;]).
-</code></pre><p>然后启动两个节点的 mnesia,查看运行详情</p>
-<pre><code>(win@27.16.194.65)9&gt; mnesia:start().
-(win@27.16.194.65)9&gt; mnesia:info().
----&gt; Processes holding locks &lt;---
----&gt; Processes waiting for locks &lt;---
----&gt; Participant transactions &lt;---
----&gt; Coordinator transactions &lt;---
----&gt; Uncertain transactions &lt;---
----&gt; Active tables &lt;---
-schema         : with 1        records occupying 414      words of mem
-===&gt; System info in version &quot;4.13.2&quot;, debug level = none &lt;===
-opt_disc. Directory [99,58,47,85,115,101,114,115,47,121,97,102,101,105,47,68,
-101,118,87,111,114,107,47,69,114,108,97,110,103,47,100,
-101,118,47,109,110,101,115,105,97,47,85,115,101,114,115,
-121,97,102,101,105,68,101,118,87,111,114,107,69,114,108,
-97,110,103,127,101,118,109,110,101,115,105,97,127,97,116,
-97] is used.
-use fallback at restart = false
-running db nodes   = [&apos;ali@42.96.194.60&apos;,&apos;win@27.16.194.65&apos;]
-stopped db nodes   = []
-master node tables = []
-remote             = []
-ram_copies         = []
-disc_copies        = [schema]
-disc_only_copies   = []
-[{&apos;ali@42.96.194.60&apos;,disc_copies},{&apos;win@27.16.194.65&apos;,disc_copies}] = [schema]
-3 transactions committed, 0 aborted, 1 restarted, 2 logged to disc
-0 held locks, 0 in queue; 0 local transactions, 0 remote
-0 transactions waits for other nodes: []
-ok
-</code></pre><p>根据 running db nodes   = [‘ali@42.96.194.60’,’win@27.16.194.65’] 可以看出两个节点已成功组成 节点</p>
-<p>在任何一个节点添加数据表</p>
 <hr>
-<h4 id="erlang_mnesia__u6570_u636E_u5E93_u5B9E_u73B0SQL_u67E5_u8BE2"><a href="#erlang_mnesia__u6570_u636E_u5E93_u5B9E_u73B0SQL_u67E5_u8BE2" class="headerlink" title="erlang mnesia 数据库实现SQL查询"></a>erlang mnesia 数据库实现SQL查询</h4><blockquote>
-<p>Mnesia是一个分布式数据库管理系统,适合于电信和其它需要持续运行和具备软实时特性的Erlang应用,越来越受关注和使用,但是目前Mnesia资料却不多,很多都只有官方的用户指南.<br>下面的内容将着重说明  Mnesia 数据库如何实现SQL查询,实现select / insert / update / where / order by / join / limit / delete等SQL操作.</p>
-</blockquote>
-<p>参见示例 sql.erl</p>
+<p>### </p>
+<p><a href="https://github.com/googlesamples/android-ndk" target="_blank" rel="external">NDK官网示例 googlesamples/android-ndk</a></p>
+<hr>
+<h3 id="CrystaX-NDK"><a href="#CrystaX-NDK" class="headerlink" title="CrystaX NDK"></a>CrystaX NDK</h3><p><a href="https://www.crystax.net/cn/blog/2" target="_blank" rel="external">Boost + Android? CrystaX NDK!</a><br><a href="https://www.crystax.net/cn/blog/3" target="_blank" rel="external">使用Android Studio构建基于NDK和Boost C++库的应用程序</a></p>
+<hr>
+<h3 id="不错的-ndk-文章"><a href="#不错的-ndk-文章" class="headerlink" title="不错的 ndk 文章"></a>不错的 ndk 文章</h3><p><a href="http://www.jianshu.com/p/4ee5b5237b55" target="_blank" rel="external">Android ndk入门学习</a><br><a href="http://blog.whyun.com/posts/jni-ndk/" target="_blank" rel="external">JNI系列教程三 —— NDK入门</a><br><a href="http://www.race604.com/android-studio-with-ndk/" target="_blank" rel="external">MENU Android Studio中NDK开发</a><br><a href="http://ph0b.com/android-studio-gradle-and-ndk-integration/" target="_blank" rel="external">Android Studio, gradle and NDK integration</a><br><a href="http://yanbober.github.io/2015/02/14/android_studio_jni_1/" target="_blank" rel="external">NDK-JNI实战教程(一) 在Android Studio运行第一个NDK程序</a><br><a href="http://yanbober.github.io/2015/02/16/android_studio_jni_2/" target="_blank" rel="external">NDK-JNI实战教程(二) JNI官方中文资料</a><br><a href="http://www.jianshu.com/p/d8cde65cb4f7" target="_blank" rel="external">Android Studio ndk-Jni开发详细入门,Aes加密demo</a><br><a href="http://ph0b.com/new-android-studio-ndk-support/" target="_blank" rel="external">国外不错的文章-The new NDK support in Android Studio</a></p>
+<hr>
+<h3 id="出现错误"><a href="#出现错误" class="headerlink" title="出现错误"></a>出现错误</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> /home/user5432/workspace/bitmapproj/obj/<span class="built_in">local</span>/armeabi/objs-debug/mybitmap.o : In <span class="keyword">function</span> Java_com_example_plasma_PlasmaView_renderPlasma</span><br><span class="line"><span class="string">"undefined reference to AndroidBitmap_getInfo"</span></span><br><span class="line"><span class="string">"undefined reference to AndroidBitmap_lockPixels"</span></span><br><span class="line"><span class="string">"undefined reference to AndroidBitmap_unlockPixels"</span></span><br></pre></td></tr></table></figure>
+<p>gradle ndk 添加如下依赖</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ndk &#123;</span><br><span class="line">    ldLibs <span class="string">"log"</span>,<span class="string">"android"</span>, <span class="string">"jnigraphics"</span> // 引用依赖的 ndk 库 ldLibs = [<span class="string">"android"</span>, <span class="string">"jnigraphics"</span>, &lt;other ndk libraries you might need&gt;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>或 Android.mk 添加如下依赖</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`LOCAL_LDFLAGS += -ljnigraphics`</span><br></pre></td></tr></table></figure>
+<p>参考<br><a href="http://stackoverflow.com/questions/4939266/android-bitmap-native-code-linking-problem" target="_blank" rel="external">Android bitmap native code - linking problem</a></p>
+<hr>
+<h3 id="出现-NEON-错误"><a href="#出现-NEON-错误" class="headerlink" title="出现 NEON 错误"></a>出现 NEON 错误</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error:(<span class="number">31</span>, <span class="number">2</span>) error: <span class="comment">#error You must enable NEON instructions (e.g. -mfloat-abi=softfp -mfpu=neon) to use arm_neon.h</span></span><br></pre></td></tr></table></figure>
+<p><a href="http://luofl1992.is-programmer.com/posts/38686.html" target="_blank" rel="external">Android NDK(ARM开发)使用NEON优化</a><br><a href="http://blog.csdn.net/luofl1992/article/details/8759145" target="_blank" rel="external">Android NDK使用NEON优化,SIMD优化</a><br><a href="http://dbro.pro/blog/2014/01/04/gradle-ndk.html" target="_blank" rel="external">Gradle - neon</a><br><a href="http://stackoverflow.com/questions/34958125/how-do-i-enable-arm-neon-builds-using-gradle" target="_blank" rel="external">How do I enable ARM NEON builds using Gradle?</a><br><a href="http://stackoverflow.com/questions/36277243/how-to-build-and-debug-native-code-c-with-neon-enabled-in-android-studio" target="_blank" rel="external">How to build and debug native code (c) with neon enabled in android studio?</a><br><a href="http://developer.android.com/intl/es/ndk/guides/cpu-arm-neon.html#rd" target="_blank" rel="external">Android-NDK _NEON Support</a></p>
+<hr>
+<h3 id="error-Unknown-or-unsupported-ARM-architecture"><a href="#error-Unknown-or-unsupported-ARM-architecture" class="headerlink" title="error Unknown or unsupported ARM architecture"></a>error Unknown or unsupported ARM architecture</h3><p><a href="https://github.com/kivy/python-for-android/issues/455" target="_blank" rel="external">[revamp] Android NDK API 21 issue #455</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">It would appear that at least as of Kitkat <span class="number">4.4</span> (API <span class="number">19</span>), ARM devices are required to be at least ARMv7a:</span><br><span class="line"></span><br><span class="line">MUST report, via android.os.Build.CPU_ABI, only one of the ABIs listed below</span><br><span class="line">* armeabi-v7a</span><br><span class="line">* x86</span><br><span class="line">* mips</span><br><span class="line">It<span class="string">'s not altogether surprising that the API to follow 19 (Lollipop API 21) would drop support for ARMv5 completely. From what I'</span>ve <span class="built_in">read</span>, official builds of <span class="number">4.4</span>+ are always ARMv7a, but there are some custom builds <span class="keyword">for</span> certain devices <span class="built_in">which</span> run ARMv6.</span><br><span class="line"></span><br><span class="line">So the fix is to target a lower API or target the armeabi-v7a architecture. Switching to v7a fixed this problem <span class="keyword">for</span> me.</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>注:使用qlc模块查询,需要在文件顶部声明”-include_lib(“stdlib/include/qlc.hrl”).”,否则编译时会产生”Warning: qlc:q/1 called, but “qlc.hrl” not included”的警告.</p>
+<p>我的错误信息大概是 android-23/…/cpu-feature.h 中的错误,可能是最新的 ndk 暂不支持 cpu-feature.h 的 armeabi 平台编译库吧, 去掉 abiFilters 中的 armeabi 编译选项即可</p>
 </blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">abiFilters <span class="string">"armeabi-v7a"</span> , <span class="string">"x86"</span>, <span class="string">"mips"</span> //<span class="string">"armeabi"</span>, <span class="string">"armeabi-v7a"</span> , <span class="string">"x86"</span></span><br></pre></td></tr></table></figure>
 <hr>
-<h4 id="u4F7F_u7528_u5355_u72EC_u7684_u811A_u672C_u8FDE_u63A5_ejabberd_mnesia__u6570_u636E_u5E93"><a href="#u4F7F_u7528_u5355_u72EC_u7684_u811A_u672C_u8FDE_u63A5_ejabberd_mnesia__u6570_u636E_u5E93" class="headerlink" title="使用单独的脚本连接 ejabberd mnesia 数据库"></a>使用单独的脚本连接 ejabberd mnesia 数据库</h4><pre><code>Cookie = &apos;YOUR_EJABBERD_COOKIE&apos;. % mine was found in /var/lib/ejabberd/.erlang.cookie
-EjabberdNode = &apos;ejabberd@127.0.0.1&apos;. % or whatever you set as EJABBERD_NODE
-erlang:set_cookie(EjabberdNode, Cookie).
-net_adm:ping(EjabberdNode).
-rpc:call(EjabberdNode, mnesia, system_info, [tables]).
-</code></pre><p>参考 <a href="http://stackoverflow.com/questions/9232510/how-can-i-connect-to-ejabberds-mnesia-database-with-a-separate-script" target="_blank" rel="external">How can I connect to ejabberd’s Mnesia database with a separate script?</a></p>
+<h3 id="错误-Error-208-9-error-‘for’-loop-initial-declarations-are-only-allowed-in-C99-or-C11-mode"><a href="#错误-Error-208-9-error-‘for’-loop-initial-declarations-are-only-allowed-in-C99-or-C11-mode" class="headerlink" title="错误 Error:(208, 9) error: ‘for’ loop initial declarations are only allowed in C99 or C11 mode"></a>错误 Error:(208, 9) error: ‘for’ loop initial declarations are only allowed in C99 or C11 mode</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\yafei\AppDeveloperWorkspace\CoamAndroid\app\src\main\jni\audio.c</span><br><span class="line">Error:(<span class="number">208</span>, <span class="number">9</span>) error: <span class="string">'for'</span> loop initial declarations are only allowed <span class="keyword">in</span> C99 or C11 mode</span><br><span class="line">Information:(<span class="number">208</span>, <span class="number">9</span>) use option -std=c99, -std=gnu99, -std=c11 or -std=gnu11 to compile your code</span><br><span class="line">C:\Users\yafei\AppDeveloperWorkspace\CoamAndroid\app\src\main\jni\audio.c: In <span class="keyword">function</span> <span class="string">'Java_com_coam_ui_telegram_controller_TelegramMediaController_getWaveform2'</span>:</span><br><span class="line">C:\Users\yafei\AppDeveloperWorkspace\CoamAndroid\app\src\main\jni\audio.c:<span class="number">692</span>:<span class="number">5</span>: error: <span class="string">'for'</span> loop initial declarations are only allowed <span class="keyword">in</span> C99 or C11 mode</span><br></pre></td></tr></table></figure>
+<p><a href="http://stackoverflow.com/questions/34698592/building-android-app-with-c" target="_blank" rel="external">Building android app with C++</a><br><a href="http://stackoverflow.com/questions/24279249/gradle-building-issue" target="_blank" rel="external">Gradle building issue</a></p>
 <hr>
-<h4 id="mnesia_u8868_u6570_u636EId_u81EA_u589E_u957F"><a href="#mnesia_u8868_u6570_u636EId_u81EA_u589E_u957F" class="headerlink" title="mnesia表数据Id自增长"></a>mnesia表数据Id自增长</h4><p>1.使用函数:</p>
-<pre><code>mnesia:dirty_update_counter(unique_id, mine_result, 1).
-</code></pre><p>2.该函数参数示意,<br>   unique_id 表名, mine_result 表名,每次自增N.<br>3.<br>   1.创建如下结构的mnesia数据库表 -record(unique_id, {item, uid}),该表是为了存储 mine_result 表的最大的Id值;<br>   2.每为 mine_result 表加入一条新记录时,需要得到新的id值: </p>
-<pre><code>mnesia:dirty_update_counter(unique_id,  mine_result , 1),
-</code></pre><p>从unique_id表中取出最大的Id值加1,更新unique_id表的数据,返回最大Id值加1,<br>注意:请在建立unique_id表的时候,往里面插入数据;表名,初始值,{ mine_result  ,0},<br>我做了一个实验如果unique_id表中没有数据的时候,并发向mine_result库中插入100条数据时,不稳定.<br>但是unique_id表中加入一个数据后,并发数提高到30000,还是很稳定.</p>
+<h3 id="Telegram-相关"><a href="#Telegram-相关" class="headerlink" title="Telegram 相关"></a>Telegram 相关</h3><hr>
+<h3 id="ogg-没有-config-types-h-错误"><a href="#ogg-没有-config-types-h-错误" class="headerlink" title="ogg 没有 config_types.h 错误"></a>ogg 没有 config_types.h 错误</h3><p><a href="https://github.com/xiph/ogg" target="_blank" rel="external">xiph/ogg</a><br>添加文件 <a href="https://github.com/GunioRobot/rtn56u/blob/a6824f903dd56c0325a19be342aeb4e7485239db/user/flac-1.2.1/source/include/ogg/config_types.h" target="_blank" rel="external">rtn56u/user/flac-1.2.1/source/include/ogg/config_types.h</a></p>
 <hr>
-<p>参考<br><a href="http://wudaijun.com/2015/04/erlang-mnesia/" target="_blank" rel="external">wudaijun’s blog - Erlang mnesia</a><br><a href="http://www.tqcto.com/article/db/11625.html" target="_blank" rel="external">创设Mnesia数据库</a><br><a href="http://www.infoq.com/cn/news/2007/08/mnesia" target="_blank" rel="external">Erlang的Mnesia——为高伸缩性应用准备的数据库管理系统</a><br><a href="http://www.cnblogs.com/liangjingyang/archive/2012/09/27/2705451.html" target="_blank" rel="external">[Erlang-0008][OTP] 高效指南 – 表和数据库(ets mnesia)</a><br><a href="http://www.dlive.me/2014/12/10/erlangmnesia/" target="_blank" rel="external">Erlang基础Mnesia 之应用场景</a><br><a href="http://blog.maxkit.com.tw/2014/04/erlang-mnesia.html" target="_blank" rel="external">erlang Mnesia - 尚待研究</a></p>
-<p><a href="http://4096.info/2013/10/28/mnesia%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C/" target="_blank" rel="external">mnesia数据库使用体验</a><br><a href="http://4096.info/2014/11/07/no-title-2/" target="_blank" rel="external">mnesia数据库优化</a></p>
+<h3 id="cpu-feature-问题"><a href="#cpu-feature-问题" class="headerlink" title="cpu-feature 问题"></a>cpu-feature 问题</h3><p><a href="http://developer.android.com/intl/es/ndk/guides/cpu-features.html" target="_blank" rel="external">The cpufeatures Library</a></p>
+<hr>
 
       
     </div>
@@ -434,11 +567,11 @@ rpc:call(EjabberdNode, mnesia, system_info, [tables]).
 
 
   
-    <article id="post-Java/LearnAsyncTask" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Design/PhotoShop" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/10/Java/LearnAsyncTask/" class="article-date">
-      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+      <a href="/2016/04/21/Design/PhotoShop/" class="article-date">
+      <time datetime="2016-04-21T02:31:31.000Z" itemprop="datePublished">2016-04-21</time>
 </a>
     </div>
   
@@ -451,7 +584,7 @@ rpc:call(EjabberdNode, mnesia, system_info, [tables]).
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/Java/LearnAsyncTask/">Title</a>
+      <a class="article-title" href="/2016/04/21/Design/PhotoShop/">PhotoShop 设计笔记摘要</a>
     </h1>
   
 
@@ -461,7 +594,65 @@ rpc:call(EjabberdNode, mnesia, system_info, [tables]).
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h4 id="Android__u5F00_u53D1_u4E4B_AsyncTask__u5F02_u6B65_u4EFB_u52A1"><a href="#Android__u5F00_u53D1_u4E4B_AsyncTask__u5F02_u6B65_u4EFB_u52A1" class="headerlink" title="Android 开发之 AsyncTask 异步任务"></a>Android 开发之 AsyncTask 异步任务</h4><p><a href="http://code.oneapm.com/android/2015/06/02/android1/" target="_blank" rel="external">Android开发者:你真的会用AsyncTask吗？</a><br><a href="http://stackvoid.com/understanding-AsyncTask-in-Android/" target="_blank" rel="external">深入理解AsyncTask</a></p>
+              <p> PhotoShop 设计笔记摘要</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a  href="/2016/04/21/Design/PhotoShop/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Others/Enshrine" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/15/Others/Enshrine/" class="article-date">
+      <time datetime="2016-04-15T01:49:31.000Z" itemprop="datePublished">2016-04-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/15/Others/Enshrine/">Enshrine收藏</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <a id="more"></a>
+<p><a href="http://news.gmw.cn/2016-04/14/content_19704438.htm" target="_blank" rel="external">男人液体进入女人体内后发生的”化学反应”</a></p>
 
       
     </div>
@@ -487,11 +678,11 @@ rpc:call(EjabberdNode, mnesia, system_info, [tables]).
 
 
   
-    <article id="post-Java/LearnGoogleGuava" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Others/Imagine" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/10/Java/LearnGoogleGuava/" class="article-date">
-      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+      <a href="/2016/04/03/Others/Imagine/" class="article-date">
+      <time datetime="2016-04-03T12:59:31.000Z" itemprop="datePublished">2016-04-03</time>
 </a>
     </div>
   
@@ -504,7 +695,7 @@ rpc:call(EjabberdNode, mnesia, system_info, [tables]).
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/Java/LearnGoogleGuava/">Title</a>
+      <a class="article-title" href="/2016/04/03/Others/Imagine/">【脑洞大开】你看过这样的动态图吗?——太牛了！</a>
     </h1>
   
 
@@ -514,7 +705,88 @@ rpc:call(EjabberdNode, mnesia, system_info, [tables]).
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="Google_Guava__u5F00_u53D1_u6458_u8981"><a href="#Google_Guava__u5F00_u53D1_u6458_u8981" class="headerlink" title="Google Guava 开发摘要"></a>Google Guava 开发摘要</h3><p><a href="https://github.com/google/guava" target="_blank" rel="external">google/guava GitHub</a><br><a href="http://ifeve.com/google-guava/" target="_blank" rel="external">Google Guava官方教程(中文版)</a></p>
+              【脑洞大开】你看过这样的动态图吗?——太牛了！
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a  href="/2016/04/03/Others/Imagine/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Linux/Linux.bashrc" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/26/Linux/Linux.bashrc/" class="article-date">
+      <time datetime="2016-02-26T03:52:31.000Z" itemprop="datePublished">2016-02-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/26/Linux/Linux.bashrc/">Linux.bashrc</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <a id="more"></a>
+<h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Erlang</span></span><br><span class="line"><span class="comment"># export PATH=/opt/otp/bin:$PATH</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Ubuntu-终端颜色显示-PS1-bash-输出文本颜色配置"><a href="#Ubuntu-终端颜色显示-PS1-bash-输出文本颜色配置" class="headerlink" title="Ubuntu 终端颜色显示 PS1 bash 输出文本颜色配置"></a>Ubuntu 终端颜色显示 PS1 bash 输出文本颜色配置</h3><ul>
+<li><p>突然发现终端文件不高亮显示,可以修改 .bashrc 文件来调节</p>
+</li>
+<li><p>将以下加入到 .bashrc 的最后</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PS1=<span class="string">'\[\e[1;36m\]\d \[\e[1;32m\]\t \[\e[1;33m\]\u@\[\e[1;35m\]\h:\w\$\[\e[0;31m\] '</span></span><br></pre></td></tr></table></figure>
+<h1 id="退出终端重新登陆或执行以下命令可看到效果"><a href="#退出终端重新登陆或执行以下命令可看到效果" class="headerlink" title="退出终端重新登陆或执行以下命令可看到效果"></a>退出终端重新登陆或执行以下命令可看到效果</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> .bashrc</span><br></pre></td></tr></table></figure>
+<p>其它的一些参考的色彩设置:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ PS1=<span class="string">'\[\e[1;34m\][\d \t \u@\h \w]\$\[\e[m\] '</span></span><br><span class="line">$ PS1=<span class="string">'\[\e[1;36m\]\d \[\e[1;32m\]\t \[\e[1;33m\]\u@\[\e[1;35m\]\h:\w\$\[\e[0;31m\] '</span></span><br><span class="line">$ PS1=<span class="string">'\[\e[1;33m\]\u@\h \w -&gt;\n\[\e[1;36m\] \@ \d\$\[\e[m\] '</span></span><br><span class="line">$ PS1=<span class="string">"[\[\e[0;32m\]\u@\h, load: `cat /proc/loadavg | awk '&#123; print <span class="variable">$1</span>; &#125;'`\[\e[00m\]] (\[\e[00;35m\]\d - \t\[\e[00m\])\n\w \$ "</span></span><br><span class="line">$ PS1=<span class="string">"[\u@\h, load: `cat /proc/loadavg | awk '&#123; print <span class="variable">$1</span>; &#125;'`] (\d - \t)\n\w \$ "</span></span><br><span class="line">$ PS1=<span class="string">"<span class="variable">$HC</span><span class="variable">$FYEL</span>[ <span class="variable">$FBLE</span><span class="variable">$&#123;debian_chroot:+($debian_chroot)&#125;</span>\u<span class="variable">$FYEL</span>: <span class="variable">$FBLE</span>\w <span class="variable">$FYEL</span>]\\$ <span class="variable">$RS</span>"</span></span><br><span class="line">$ PS2=<span class="string">"<span class="variable">$HC</span><span class="variable">$FYEL</span>&amp;gt; <span class="variable">$RS</span>"</span></span><br></pre></td></tr></table></figure>
+<h3 id="当前服务器配置"><a href="#当前服务器配置" class="headerlink" title="当前服务器配置"></a>当前服务器配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Terminate HighLight</span></span><br><span class="line"><span class="comment">#PS1='$&#123;debian_chroot:+($debian_chroot)&#125;\[\033[01;35;40m\]\u\[\033[00;00;40m\]@\[\033[01;35;40m\]\h\[\033[00;31;40m\]:\[\033[00;00;40m\]\w \[\033[01;32;40m\]\$ \[\033[01;36;40m\]'</span></span><br><span class="line"><span class="comment">#PS1="$HC$FYEL[ $FBLE$&#123;debian_chroot:+($debian_chroot)&#125;\u$FYEL: $FBLE\w $FYEL]\\$ $RS"</span></span><br><span class="line"><span class="comment">#PS2="$HC$FYEL&amp;gt; $RS"</span></span><br><span class="line"><span class="comment">#PS1='\[\e[1;33m\]\u@\h \w -&gt;\n\[\e[1;36m\] \@ \d\$\[\e[m\] '</span></span><br><span class="line">PS1=<span class="string">'\[\e[1;36m\]\d \[\e[1;32m\]\t \[\e[1;33m\]\u@\[\e[1;35m\]\h:\w\$\[\e[0;37m\] '</span></span><br></pre></td></tr></table></figure>
+<h3 id="其中配置项"><a href="#其中配置项" class="headerlink" title="其中配置项"></a>其中配置项</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PS1=<span class="string">'\[\e[1;36m\]\d \[\e[1;32m\]\t \[\e[1;33m\]\u@\[\e[1;35m\]\h:\w\$\[\e[0;37m\] '</span></span><br></pre></td></tr></table></figure>
+<h3 id="显示效果为"><a href="#显示效果为" class="headerlink" title="显示效果为"></a>显示效果为</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Fri Feb <span class="number">26</span> <span class="number">11</span>:<span class="number">55</span>:<span class="number">20</span> yzhang@coam:~$</span><br></pre></td></tr></table></figure>
+<h4 id="Linux-PS1-配置对应表"><a href="#Linux-PS1-配置对应表" class="headerlink" title="Linux PS1 配置对应表"></a>Linux PS1 配置对应表</h4><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ANSI color codes</span></span><br><span class="line"><span class="setting">RS=<span class="value"><span class="string">"\[\033[0m\]"</span>    # reset</span></span></span><br><span class="line"><span class="setting">HC=<span class="value"><span class="string">"\[\033[1m\]"</span>    # hicolor</span></span></span><br><span class="line"><span class="setting">UL=<span class="value"><span class="string">"\[\033[4m\]"</span>    # underline</span></span></span><br><span class="line"><span class="setting">INV=<span class="value"><span class="string">"\[\033[7m\]"</span>   # inverse background and foreground</span></span></span><br><span class="line"><span class="setting">FBLK=<span class="value"><span class="string">"\[\033[30m\]"</span> # foreground black</span></span></span><br><span class="line"><span class="setting">FRED=<span class="value"><span class="string">"\[\033[31m\]"</span> # foreground red</span></span></span><br><span class="line"><span class="setting">FGRN=<span class="value"><span class="string">"\[\033[32m\]"</span> # foreground green</span></span></span><br><span class="line"><span class="setting">FYEL=<span class="value"><span class="string">"\[\033[33m\]"</span> # foreground yellow</span></span></span><br><span class="line"><span class="setting">FBLE=<span class="value"><span class="string">"\[\033[34m\]"</span> # foreground blue</span></span></span><br><span class="line"><span class="setting">FMAG=<span class="value"><span class="string">"\[\033[35m\]"</span> # foreground magenta</span></span></span><br><span class="line"><span class="setting">FCYN=<span class="value"><span class="string">"\[\033[36m\]"</span> # foreground cyan</span></span></span><br><span class="line"><span class="setting">FWHT=<span class="value"><span class="string">"\[\033[37m\]"</span> # foreground white</span></span></span><br><span class="line"><span class="setting">BBLK=<span class="value"><span class="string">"\[\033[40m\]"</span> # background black</span></span></span><br><span class="line"><span class="setting">BRED=<span class="value"><span class="string">"\[\033[41m\]"</span> # background red</span></span></span><br><span class="line"><span class="setting">BGRN=<span class="value"><span class="string">"\[\033[42m\]"</span> # background green</span></span></span><br><span class="line"><span class="setting">BYEL=<span class="value"><span class="string">"\[\033[43m\]"</span> # background yellow</span></span></span><br><span class="line"><span class="setting">BBLE=<span class="value"><span class="string">"\[\033[44m\]"</span> # background blue</span></span></span><br><span class="line"><span class="setting">BMAG=<span class="value"><span class="string">"\[\033[45m\]"</span> # background magenta</span></span></span><br><span class="line"><span class="setting">BCYN=<span class="value"><span class="string">"\[\033[46m\]"</span> # background cyan</span></span></span><br><span class="line"><span class="setting">BWHT=<span class="value"><span class="string">"\[\033[47m\]"</span> # background white</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>注:每种颜色都有两种,分别以 3<em> 和 4</em> 开头的数字配置,3<em> 表示文字颜色,4</em> 表示背景颜色</li>
+</ul>
+<p><a href="https://help.ubuntu.com/community/CustomizingBashPrompt" target="_blank" rel="external">CustomizingBashPrompt</a><br><a href="http://bashrcgenerator.com/#minidoc" target="_blank" rel="external">http://bashrcgenerator.com/#minidoc</a></p>
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-customize-your-bash-prompt-on-a-linux-vps" target="_blank" rel="external">How to Customize your Bash Prompt on a Linux VPS</a><br><a href="https://www.linux.com/learn/tutorials/772396-how-to-make-a-fancy-and-useful-bash-prompt-in-linux-" target="_blank" rel="external">How to Make a Fancy and Useful Bash Prompt in Linux</a></p>
+<hr>
+<h3 id="使用-Putty-客户端登陆后显示对应的服务器ip名称"><a href="#使用-Putty-客户端登陆后显示对应的服务器ip名称" class="headerlink" title="使用 Putty 客户端登陆后显示对应的服务器ip名称"></a>使用 Putty 客户端登陆后显示对应的服务器ip名称</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Auto add env parameter $PROMPT_COMMAND when use non-Linux tty login by ssh.</span></span><br><span class="line"><span class="comment"># 让 putty 登陆的标题栏显示对应服务器 IP</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$SSH_CONNECTION</span>"</span> != <span class="string">''</span> <span class="operator">-a</span> <span class="string">"<span class="variable">$TERM</span>"</span> != <span class="string">'linux'</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">declare</span> <span class="operator">-a</span> HOSTIP</span><br><span class="line">    HOSTIP=`<span class="built_in">echo</span> <span class="variable">$SSH_CONNECTION</span> |awk <span class="string">'&#123;print $3&#125;'</span>`</span><br><span class="line">    <span class="built_in">export</span> PROMPT_COMMAND=<span class="string">'echo -ne "\033]0;$&#123;USER&#125;@$HOSTIP:[$&#123;HOSTNAME%%.*&#125;]:$&#123;PWD/#$HOME/~&#125; \007"'</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<hr>
 
       
     </div>
@@ -540,11 +812,11 @@ rpc:call(EjabberdNode, mnesia, system_info, [tables]).
 
 
   
-    <article id="post-Java/LearnJavaArray" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-WinScripts/WinNote" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/10/Java/LearnJavaArray/" class="article-date">
-      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+      <a href="/2016/02/24/WinScripts/WinNote/" class="article-date">
+      <time datetime="2016-02-24T04:36:31.000Z" itemprop="datePublished">2016-02-24</time>
 </a>
     </div>
   
@@ -557,7 +829,7 @@ rpc:call(EjabberdNode, mnesia, system_info, [tables]).
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/Java/LearnJavaArray/">Title</a>
+      <a class="article-title" href="/2016/02/24/WinScripts/WinNote/">WinNote</a>
     </h1>
   
 
@@ -567,118 +839,20 @@ rpc:call(EjabberdNode, mnesia, system_info, [tables]).
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h4 id="Java_u6570_u7EC4"><a href="#Java_u6570_u7EC4" class="headerlink" title="Java数组"></a>Java数组</h4><h4 id="u58F0_u660E_u4E00_u4E2A_u6570_u7EC4_28Declare_an_array_29"><a href="#u58F0_u660E_u4E00_u4E2A_u6570_u7EC4_28Declare_an_array_29" class="headerlink" title="声明一个数组(Declare an array)"></a>声明一个数组(Declare an array)</h4><pre><code>String[] aArray = new String[5];
-String[] bArray = {&quot;a&quot;,&quot;b&quot;,&quot;c&quot;, &quot;d&quot;, &quot;e&quot;};
-String[] cArray = new String[]{&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,&quot;d&quot;,&quot;e&quot;};
-</code></pre><h4 id="u5728Java_u4E2D_u8F93_u51FA_u4E00_u4E2A_u6570_u7EC4_28Print_an_array_in_Java_29"><a href="#u5728Java_u4E2D_u8F93_u51FA_u4E00_u4E2A_u6570_u7EC4_28Print_an_array_in_Java_29" class="headerlink" title="在Java中输出一个数组(Print an array in Java)"></a>在Java中输出一个数组(Print an array in Java)</h4><pre><code>int[] intArray = { 1, 2, 3, 4, 5 };
-String intArrayString = Arrays.toString(intArray);
-
-// print directly will print reference value
-System.out.println(intArray);
-// [I@7150bd4d
-
-System.out.println(intArrayString);
-// [1, 2, 3, 4, 5]
-</code></pre><h4 id="u4ECE_u6570_u7EC4_u4E2D_u521B_u5EFA_u6570_u7EC4_u5217_u8868_28Create_an_ArrayList_from_an_array_29"><a href="#u4ECE_u6570_u7EC4_u4E2D_u521B_u5EFA_u6570_u7EC4_u5217_u8868_28Create_an_ArrayList_from_an_array_29" class="headerlink" title="从数组中创建数组列表(Create an ArrayList from an array)"></a>从数组中创建数组列表(Create an ArrayList from an array)</h4><pre><code>String[] stringArray = { &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot; };
-ArrayList&lt;String&gt; arrayList = new ArrayList&lt;String&gt;(Arrays.asList(stringArray));
-System.out.println(arrayList);
-// [a, b, c, d, e]
-</code></pre><h4 id="u68C0_u67E5_u6570_u7EC4_u4E2D_u662F_u5426_u5305_u542B_u7279_u5B9A_u503C_28Check_if_an_array_contains_a_certain_value_29"><a href="#u68C0_u67E5_u6570_u7EC4_u4E2D_u662F_u5426_u5305_u542B_u7279_u5B9A_u503C_28Check_if_an_array_contains_a_certain_value_29" class="headerlink" title="检查数组中是否包含特定值(Check if an array contains a certain value)"></a>检查数组中是否包含特定值(Check if an array contains a certain value)</h4><pre><code>String[] stringArray = { &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot; };
-boolean b = Arrays.asList(stringArray).contains(&quot;a&quot;);
-System.out.println(b);
-// true
-</code></pre><h4 id="u8FDE_u63A5_u4E24_u4E2A_u6570_u7EC4_28_Concatenate_two_arrays_29"><a href="#u8FDE_u63A5_u4E24_u4E2A_u6570_u7EC4_28_Concatenate_two_arrays_29" class="headerlink" title="连接两个数组( Concatenate two arrays)"></a>连接两个数组( Concatenate two arrays)</h4><pre><code>int[] intArray = { 1, 2, 3, 4, 5 };
-int[] intArray2 = { 6, 7, 8, 9, 10 };
-// Apache Commons Lang library
-int[] combinedIntArray = ArrayUtils.addAll(intArray, intArray2);
-</code></pre><h4 id="u58F0_u660E_u4E00_u4E2A_u6570_u7EC4_u5185_u94FE_28Declare_an_array_inline__29"><a href="#u58F0_u660E_u4E00_u4E2A_u6570_u7EC4_u5185_u94FE_28Declare_an_array_inline__29" class="headerlink" title="声明一个数组内链(Declare an array inline )"></a>声明一个数组内链(Declare an array inline )</h4><pre><code>method(new String[]{&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;});
-</code></pre><h4 id="u5C06_u6570_u7EC4_u5143_u7D20_u52A0_u5165_u5230_u4E00_u4E2A_u72EC_u7ACB_u7684_u5B57_u7B26_u4E32_u4E2D_28Joins_the_elements_of_the_provided_array_into_a_single_String_29"><a href="#u5C06_u6570_u7EC4_u5143_u7D20_u52A0_u5165_u5230_u4E00_u4E2A_u72EC_u7ACB_u7684_u5B57_u7B26_u4E32_u4E2D_28Joins_the_elements_of_the_provided_array_into_a_single_String_29" class="headerlink" title="将数组元素加入到一个独立的字符串中(Joins the elements of the provided array into a single String)"></a>将数组元素加入到一个独立的字符串中(Joins the elements of the provided array into a single String)</h4><pre><code>// containing the provided list of elements
-// Apache common lang
-String j = StringUtils.join(new String[] { &quot;a&quot;, &quot;b&quot;, &quot;c&quot; }, &quot;, &quot;);
-System.out.println(j);
-// a, b, c
-</code></pre><h4 id="u5C06_u6570_u7EC4_u5217_u8868_u8F6C_u6362_u6210_u4E00_u4E2A_u6570_u7EC4__28Covnert_an_ArrayList_to_an_array_29"><a href="#u5C06_u6570_u7EC4_u5217_u8868_u8F6C_u6362_u6210_u4E00_u4E2A_u6570_u7EC4__28Covnert_an_ArrayList_to_an_array_29" class="headerlink" title="将数组列表转换成一个数组 (Covnert an ArrayList to an array)"></a>将数组列表转换成一个数组 (Covnert an ArrayList to an array)</h4><pre><code>String[] stringArray = { &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot; };
-ArrayList&lt;String&gt; arrayList = new ArrayList&lt;String&gt;(Arrays.asList(stringArray));
-String[] stringArr = new String[arrayList.size()];
-arrayList.toArray(stringArr);
-for (String s : stringArr)
-    System.out.println(s);
-</code></pre><h4 id="u5C06_u6570_u7EC4_u8F6C_u6362_u6210_u4E00_u4E2A_u96C6_u5408_28Convert_an_array_to_a_set_29"><a href="#u5C06_u6570_u7EC4_u8F6C_u6362_u6210_u4E00_u4E2A_u96C6_u5408_28Convert_an_array_to_a_set_29" class="headerlink" title="将数组转换成一个集合(Convert an array to a set)"></a>将数组转换成一个集合(Convert an array to a set)</h4><pre><code>Set&lt;String&gt; set = new HashSet&lt;String&gt;(Arrays.asList(stringArray));
-System.out.println(set);
-//[d, e, b, c, a]
-</code></pre><h4 id="u53CD_u5411_u6570_u7EC4_28Reverse_an_array_29"><a href="#u53CD_u5411_u6570_u7EC4_28Reverse_an_array_29" class="headerlink" title="反向数组(Reverse an array)"></a>反向数组(Reverse an array)</h4><pre><code>int[] intArray = { 1, 2, 3, 4, 5 };
-ArrayUtils.reverse(intArray);
-System.out.println(Arrays.toString(intArray));
-//[5, 4, 3, 2, 1]
-</code></pre><h4 id="u5220_u9664_u6570_u7EC4_u5143_u7D20_28Remove_element_of_an_array_29"><a href="#u5220_u9664_u6570_u7EC4_u5143_u7D20_28Remove_element_of_an_array_29" class="headerlink" title="删除数组元素(Remove element of an array)"></a>删除数组元素(Remove element of an array)</h4><pre><code>int[] intArray = { 1, 2, 3, 4, 5 };
-int[] removed = ArrayUtils.removeElement(intArray, 3);//create a new array
-System.out.println(Arrays.toString(removed));
-One more – convert int to byte array 
-byte[] bytes = ByteBuffer.allocate(4).putInt(8).array();
-
-for (byte t : bytes) {
-   System.out.format(&quot;0x%x &quot;, t);
-}
-</code></pre><hr>
-<h4 id="Five__285_29_ways_to_Iterate_Through_Loop_in_Java"><a href="#Five__285_29_ways_to_Iterate_Through_Loop_in_Java" class="headerlink" title="Five (5) ways to Iterate Through Loop in Java"></a>Five (5) ways to Iterate Through Loop in Java</h4><pre><code>package crunchify.com.tutorial;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-/**
- * @author Crunchify.com
- */
-
-public class CrunchifyIterateThroughList {
-
-    public static void main(String[] argv) {
-
-        // create list
-        List&lt;String&gt; CrunchifyList = new ArrayList&lt;String&gt;();
-
-        // add 4 different values to list
-        CrunchifyList.add(&quot;eBay&quot;);
-        CrunchifyList.add(&quot;Paypal&quot;);
-        CrunchifyList.add(&quot;Google&quot;);
-        CrunchifyList.add(&quot;Yahoo&quot;);
-
-        // iterate via &quot;for loop&quot;
-        System.out.println(&quot;==&gt; For Loop Example.&quot;);
-        for (int i = 0; i &lt; CrunchifyList.size(); i++) {
-            System.out.println(CrunchifyList.get(i));
-        }
-
-        // iterate via &quot;New way to loop&quot;
-        System.out.println(&quot;\n==&gt; Advance For Loop Example..&quot;);
-        for (String temp : CrunchifyList) {
-            System.out.println(temp);
-        }
-
-        // iterate via &quot;iterator loop&quot;
-        System.out.println(&quot;\n==&gt; Iterator Example...&quot;);
-        Iterator&lt;String&gt; CrunchifyIterator = CrunchifyList.iterator();
-        while (CrunchifyIterator.hasNext()) {
-            System.out.println(CrunchifyIterator.next());
-        }
-
-        // iterate via &quot;while loop&quot;
-        System.out.println(&quot;\n==&gt; While Loop Example....&quot;);
-        int i = 0;
-        while (i &lt; CrunchifyList.size()) {
-            System.out.println(CrunchifyList.get(i));
-            i++;
-        }
-
-        // collection stream() util: Returns a sequential Stream with this collection as its source
-        System.out.println(&quot;\n==&gt; collection stream() util....&quot;);
-        CrunchifyList.forEach((temp) -&gt; {
-            System.out.println(temp);
-        });
-    }
-}
-</code></pre><hr>
-<h4 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h4><p><a href="http://crunchify.com/how-to-iterate-through-java-list-4-way-to-iterate-through-loop/" target="_blank" rel="external">Java List For 循环 How to iterate through Java List? Five (5) ways to Iterate Through Loop in Java</a><br><a href="http://www.programcreek.com/2014/01/java%E7%A8%8B%E5%BA%8F%E5%91%98%E5%B8%B8%E7%8A%AF%E7%9A%8410%E4%B8%AA%E9%94%99%E8%AF%AF/" target="_blank" rel="external">Java程序员常犯的10个错误</a></p>
+        <a id="more"></a>
+<h3 id="关于WINDOWS下-文件名过长-无法删除的解决办法"><a href="#关于WINDOWS下-文件名过长-无法删除的解决办法" class="headerlink" title="关于WINDOWS下,文件名过长,无法删除的解决办法"></a>关于WINDOWS下,文件名过长,无法删除的解决办法</h3><p><a href="http://icodeisky.lofter.com/post/3a5e8_2c8516" target="_blank" rel="external">关于WINDOWS下,文件名过长,无法删除的解决办法</a></p>
+<p>dir /x 这时候就会出现里面所有文件的列表,并且显示每个文件的缩短名(显示在文件大小和文件名之间)<br>然后输入del加上你要删除文件的短文件名.即可删除.<br>如果是删除文件夹,请使用RMDIR /S 文件夹名</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">dir /x </span><br><span class="line"></span><br><span class="line">F:\BaiDuCloud\YS&gt;dir /x</span><br><span class="line"> Volume <span class="keyword">in</span> drive F has no label.</span><br><span class="line"> Volume Serial Number is <span class="number">0000</span>-<span class="number">4823</span></span><br><span class="line"></span><br><span class="line"> Directory of F:\BaiDuCloud\YS</span><br><span class="line"></span><br><span class="line"><span class="number">02</span>/<span class="number">24</span>/<span class="number">2016</span>  <span class="number">12</span>:<span class="number">10</span> PM    &lt;DIR&gt;                       .</span><br><span class="line"><span class="number">02</span>/<span class="number">24</span>/<span class="number">2016</span>  <span class="number">12</span>:<span class="number">10</span> PM    &lt;DIR&gt;                       ..</span><br><span class="line"><span class="number">02</span>/<span class="number">24</span>/<span class="number">2016</span>  <span class="number">12</span>:<span class="number">31</span> PM    &lt;DIR&gt;          COAMRU~<span class="number">1</span>     CoamRunning</span><br><span class="line"><span class="number">02</span>/<span class="number">24</span>/<span class="number">2016</span>  <span class="number">12</span>:<span class="number">08</span> PM       <span class="number">600</span>,<span class="number">910</span>,<span class="number">847</span> COAMRU~<span class="number">1</span>.ZIP CoamRunning.zip</span><br><span class="line">               <span class="number">1</span> File(s)    <span class="number">600</span>,<span class="number">910</span>,<span class="number">847</span> bytes</span><br><span class="line">               <span class="number">3</span> Dir(s)  <span class="number">14</span>,<span class="number">681</span>,<span class="number">616</span>,<span class="number">384</span> bytes free</span><br><span class="line"></span><br><span class="line">del COAMRU~<span class="number">1</span>.ZIP</span><br><span class="line">RMDIR /S COAMRU~<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Window-下-默认使用微软账号登陆"><a href="#Window-下-默认使用微软账号登陆" class="headerlink" title="Window 下 默认使用微软账号登陆"></a>Window 下 默认使用微软账号登陆</h3><ul>
+<li>Win+R 打开运行命令,输入 <em>control userpasswords2</em> 打开”用户账户”管理界面</li>
+<li>取消【要使用本计算机,用户必须输入用户名和密码】的复选框,点击应用</li>
+<li>点击应用后出现【自动登录】窗口,默认用户名为当前电脑激活的用户账户名称</li>
+<li>此时在自动登录界面手动输入Microsoft账户及对应Microsoft账户的密码,点击确定即可</li>
+</ul>
+<p>如此便可以实现微软账户自动登陆了</p>
+<p><a href="http://support1.lenovo.com.cn/lenovo/wsi/Modules/htmls/detail_20150803141441030.html" target="_blank" rel="external">Windows 10如何设置Microsoft账户开机自动登录桌面</a></p>
+<hr>
 
       
     </div>
@@ -704,11 +878,11 @@ public class CrunchifyIterateThroughList {
 
 
   
-    <article id="post-Java/LearnJavaHashMap" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Android/ProGuard" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/10/Java/LearnJavaHashMap/" class="article-date">
-      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+      <a href="/2016/02/21/Android/ProGuard/" class="article-date">
+      <time datetime="2016-02-21T03:40:31.000Z" itemprop="datePublished">2016-02-21</time>
 </a>
     </div>
   
@@ -721,7 +895,7 @@ public class CrunchifyIterateThroughList {
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/Java/LearnJavaHashMap/">Title</a>
+      <a class="article-title" href="/2016/02/21/Android/ProGuard/">ProGuard</a>
     </h1>
   
 
@@ -731,63 +905,9 @@ public class CrunchifyIterateThroughList {
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="SparseArray__u548C_HashMap__u7684_u5B9E_u73B0_u4E0E_u4F18_u5316"><a href="#SparseArray__u548C_HashMap__u7684_u5B9E_u73B0_u4E0E_u4F18_u5316" class="headerlink" title="SparseArray 和 HashMap 的实现与优化"></a>SparseArray 和 HashMap 的实现与优化</h3><p><a href="http://www.jianshu.com/p/e54047b2b563" target="_blank" rel="external">HashMap的实现与优化</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Java/LearnLombok" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/10/Java/LearnLombok/" class="article-date">
-      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/Java/LearnLombok/">Title</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+              <p><a href="http://yuluoding.com/2016/01/14/Gradle-for-Android%E7%B3%BB%E5%88%97/">关于Android Studio的Gradle 系列文章</a></p>
+<p><a href="https://github.com/shwenzhang/AndResGuard/blob/master/README.zh-cn.md">shwenzhang/AndResGuard</a><br><a href="http://www.salton123.com/2016/01/28/android%E6%B7%B7%E6%B7%86%E6%89%93%E5%8C%85%E6%94%BB%E7%95%A5%EF%BC%8C%E5%90%8C%E5%BE%AE%E4%BF%A1%E7%BA%A7%E5%88%AB%E6%93%8D%E4%BD%9C/">Android混淆打包攻略,同微信级别操作</a></p>
           
-        <h4 id="Lombok__u6CE8_u89E3_u652F_u6301"><a href="#Lombok__u6CE8_u89E3_u652F_u6301" class="headerlink" title="Lombok 注解支持"></a>Lombok 注解支持</h4><p><a href="https://projectlombok.org/index.html" target="_blank" rel="external">Lombok官网</a><br><a href="http://it.deepinmind.com/java/2014/04/08/lombok-for-java-development.html" target="_blank" rel="external">Lombok: Java开发的利器</a><br><a href="https://github.com/rzwitserloot/lombok" target="_blank" rel="external">Lombok GitHub</a></p>
-<p><a href="http://codepub.cn/2015/07/30/Lombok-development-guidelines/" target="_blank" rel="external">Lombok开发指南</a></p>
-<h4 id="Android_Studio_Lombok__u63D2_u4EF6"><a href="#Android_Studio_Lombok__u63D2_u4EF6" class="headerlink" title="Android Studio Lombok 插件"></a>Android Studio Lombok 插件</h4><p><a href="https://github.com/mplushnikov/lombok-intellij-plugin" target="_blank" rel="external">lombok-intellij-plugin</a></p>
-
       
     </div>
     
@@ -797,608 +917,9 @@ public class CrunchifyIterateThroughList {
 
       
       
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Java/LearnOkHttp" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/10/Java/LearnOkHttp/" class="article-date">
-      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/Java/LearnOkHttp/">Title</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="Square_OkHttp__u5F00_u53D1_u6307_u5357"><a href="#Square_OkHttp__u5F00_u53D1_u6307_u5357" class="headerlink" title="Square OkHttp 开发指南"></a>Square OkHttp 开发指南</h3><p><a href="http://square.github.io/okhttp/javadoc/index.html" target="_blank" rel="external">OkHttp文档</a></p>
-<h4 id="u540C_u6B65get"><a href="#u540C_u6B65get" class="headerlink" title="同步get"></a>同步get</h4><blockquote>
-<p>下载一个文件,打印他的响应头,以string形式打印响应体.<br>响应体的 string() 方法对于小文档来说十分方便、高效.但是如果响应体太大(超过1MB),应避免适应 string()方法 ,因为他会将把整个文档加载到内存中.<br>对于超过1MB的响应body,应使用流的方式来处理body.</p>
-</blockquote>
-<pre><code>private final OkHttpClient client = new OkHttpClient();
-public void run() throws Exception {
-    Request request = new Request.Builder()
-        .url(&quot;http://publicobject.com/helloworld.txt&quot;)
-        .build();
-
-    Response response = client.newCall(request).execute();
-    if (!response.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response);
-
-    Headers responseHeaders = response.headers();
-    for (int i = 0; i &lt; responseHeaders.size(); i++) {
-        System.out.println(responseHeaders.name(i) + &quot;: &quot; + responseHeaders.value(i));
-    }
-
-    System.out.println(response.body().string());
-}
-</code></pre><h4 id="u5F02_u6B65get"><a href="#u5F02_u6B65get" class="headerlink" title="异步get"></a>异步get</h4><blockquote>
-<p>在一个工作线程中下载文件,当响应可读时回调Callback接口.读取响应时会阻塞当前线程.OkHttp现阶段不提供异步api来接收响应体.</p>
-</blockquote>
-<pre><code>private final OkHttpClient client = new OkHttpClient();
-public void run() throws Exception {
-    Request request = new Request.Builder()
-        .url(&quot;http://publicobject.com/helloworld.txt&quot;)
-        .build();
-
-    client.newCall(request).enqueue(new Callback() {
-      @Override public void onFailure(Request request, Throwable throwable) {
-        throwable.printStackTrace();
-      }
-
-      @Override public void onResponse(Response response) throws IOException {
-        if (!response.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response);
-
-        Headers responseHeaders = response.headers();
-        for (int i = 0; i &lt; responseHeaders.size(); i++) {
-          System.out.println(responseHeaders.name(i) + &quot;: &quot; + responseHeaders.value(i));
-        }
-
-        System.out.println(response.body().string());
-      }
-    });
-}
-</code></pre><h4 id="u63D0_u53D6_u54CD_u5E94_u5934"><a href="#u63D0_u53D6_u54CD_u5E94_u5934" class="headerlink" title="提取响应头"></a>提取响应头</h4><blockquote>
-<p>典型的HTTP头 像是一个 Map<string, string=""> :每个字段都有一个或没有值.但是一些头允许多个值,像Guava的Multimap.例如:HTTP响应里面提供的Vary响应头,就是多值的.OkHttp的api试图让这些情况都适用.<br>当写请求头的时候,使用header(name, value)可以设置唯一的name、value.如果已经有值,旧的将被移除,然后添加新的.使用addHeader(name, value)可以添加多值(添加,不移除已有的).<br>当读取响应头时,使用header(name)返回最 后出现的name、value.通常情况这也是唯一的name、value.如果没有值,那么header(name)将返回null.如果想读取字段对应的所有值,使用headers(name)会返回一个list.<br>为了获取所有的Header,Headers类支持按index访问.</string,></p>
-</blockquote>
-<pre><code>private final OkHttpClient client = new OkHttpClient();
-public void run() throws Exception {
-    Request request = new Request.Builder()
-        .url(&quot;https://api.github.com/repos/square/okhttp/issues&quot;)
-        .header(&quot;User-Agent&quot;, &quot;OkHttp Headers.java&quot;)
-        .addHeader(&quot;Accept&quot;, &quot;application/json; q=0.5&quot;)
-        .addHeader(&quot;Accept&quot;, &quot;application/vnd.github.v3+json&quot;)
-        .build();
-
-    Response response = client.newCall(request).execute();
-    if (!response.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response);
-
-    System.out.println(&quot;Server: &quot; + response.header(&quot;Server&quot;));
-    System.out.println(&quot;Date: &quot; + response.header(&quot;Date&quot;));
-    System.out.println(&quot;Vary: &quot; + response.headers(&quot;Vary&quot;));
-}
-</code></pre><h4 id="Post_u65B9_u5F0F_u63D0_u4EA4String"><a href="#Post_u65B9_u5F0F_u63D0_u4EA4String" class="headerlink" title="Post方式提交String"></a>Post方式提交String</h4><blockquote>
-<p>使用HTTP POST提交请求到服务.这个例子提交了一个markdown文档到web服务,以HTML方式渲染markdown.因为整个请求体都在内存中,因此避免使用此api提交大文档(大于1MB).</p>
-</blockquote>
-<pre><code>public static final MediaType MEDIA_TYPE_MARKDOWN = MediaType.parse(&quot;text/x-markdown; charset=utf-8&quot;);
-private final OkHttpClient client = new OkHttpClient();
-public void run() throws Exception {
-    String postBody = &quot;&quot;
-        + &quot;Releases\n&quot;
-        + &quot;--------\n&quot;
-        + &quot;\n&quot;
-        + &quot; * _1.0_ May 6, 2013\n&quot;
-        + &quot; * _1.1_ June 15, 2013\n&quot;
-        + &quot; * _1.2_ August 11, 2013\n&quot;;
-
-    Request request = new Request.Builder()
-        .url(&quot;https://api.github.com/markdown/raw&quot;)
-        .post(RequestBody.create(MEDIA_TYPE_MARKDOWN, postBody))
-        .build();
-
-    Response response = client.newCall(request).execute();
-    if (!response.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response);
-
-    System.out.println(response.body().string());
-}
-</code></pre><h4 id="Post_u65B9_u5F0F_u63D0_u4EA4_u6D41"><a href="#Post_u65B9_u5F0F_u63D0_u4EA4_u6D41" class="headerlink" title="Post方式提交流"></a>Post方式提交流</h4><blockquote>
-<p>以流的方式POST提交请求体.请求体的内容由流写入产生.这个例子是流直接写入Okio的BufferedSink.你的程序可能会使用OutputStream,你可以使用BufferedSink.outputStream()来获取.</p>
-</blockquote>
-<pre><code>public static final MediaType MEDIA_TYPE_MARKDOWN
-      = MediaType.parse(&quot;text/x-markdown; charset=utf-8&quot;);
-
-private final OkHttpClient client = new OkHttpClient();
-
-public void run() throws Exception {
-    RequestBody requestBody = new RequestBody() {
-      @Override public MediaType contentType() {
-        return MEDIA_TYPE_MARKDOWN;
-      }
-
-      @Override public void writeTo(BufferedSink sink) throws IOException {
-        sink.writeUtf8(&quot;Numbers\n&quot;);
-        sink.writeUtf8(&quot;-------\n&quot;);
-        for (int i = 2; i &lt;= 997; i++) {
-          sink.writeUtf8(String.format(&quot; * %s = %s\n&quot;, i, factor(i)));
-        }
-      }
-
-      private String factor(int n) {
-        for (int i = 2; i &lt; n; i++) {
-          int x = n / i;
-          if (x * i == n) return factor(x) + &quot; × &quot; + i;
-        }
-        return Integer.toString(n);
-      }
-    };
-
-    Request request = new Request.Builder()
-        .url(&quot;https://api.github.com/markdown/raw&quot;)
-        .post(requestBody)
-        .build();
-
-    Response response = client.newCall(request).execute();
-    if (!response.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response);
-
-    System.out.println(response.body().string());
-}
-</code></pre><h4 id="Post_u65B9_u5F0F_u63D0_u4EA4_u6587_u4EF6"><a href="#Post_u65B9_u5F0F_u63D0_u4EA4_u6587_u4EF6" class="headerlink" title="Post方式提交文件"></a>Post方式提交文件</h4><blockquote>
-<p>以文件作为请求体是十分简单的.</p>
-</blockquote>
-<pre><code>public static final MediaType MEDIA_TYPE_MARKDOWN
-  = MediaType.parse(&quot;text/x-markdown; charset=utf-8&quot;);
-
-private final OkHttpClient client = new OkHttpClient();
-
-public void run() throws Exception {
-    File file = new File(&quot;README.md&quot;);
-
-    Request request = new Request.Builder()
-        .url(&quot;https://api.github.com/markdown/raw&quot;)
-        .post(RequestBody.create(MEDIA_TYPE_MARKDOWN, file))
-        .build();
-
-    Response response = client.newCall(request).execute();
-    if (!response.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response);
-
-    System.out.println(response.body().string());
-}
-</code></pre><h4 id="Post_u65B9_u5F0F_u63D0_u4EA4_u8868_u5355"><a href="#Post_u65B9_u5F0F_u63D0_u4EA4_u8868_u5355" class="headerlink" title="Post方式提交表单"></a>Post方式提交表单</h4><blockquote>
-<p>使用FormEncodingBuilder来构建和HTML<form>标签相同效果的请求体.键值对将使用一种HTML兼容形式的URL编码来进行编码.</form></p>
-</blockquote>
-<pre><code>private final OkHttpClient client = new OkHttpClient();
-
-public void run() throws Exception {
-    RequestBody formBody = new FormEncodingBuilder()
-        .add(&quot;search&quot;, &quot;Jurassic Park&quot;)
-        .build();
-    Request request = new Request.Builder()
-        .url(&quot;https://en.wikipedia.org/w/index.php&quot;)
-        .post(formBody)
-        .build();
-
-    Response response = client.newCall(request).execute();
-    if (!response.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response);
-
-    System.out.println(response.body().string());
-}
-</code></pre><h4 id="Post_u65B9_u5F0F_u63D0_u4EA4_u5206_u5757_u8BF7_u6C42"><a href="#Post_u65B9_u5F0F_u63D0_u4EA4_u5206_u5757_u8BF7_u6C42" class="headerlink" title="Post方式提交分块请求"></a>Post方式提交分块请求</h4><blockquote>
-<p>MultipartBuilder可以构建复杂的请求体,与HTML文件上传形式兼容.多块请求体中每块请求都是一个请求体,可以定义自己的请求头.这些请求头可以用来描述这块请求,例如他的Content-Disposition.如果Content-Length和Content-Type可用的话,他们会被自动添加到请求头中.</p>
-</blockquote>
-<pre><code>private static final String IMGUR_CLIENT_ID = &quot;...&quot;;
-private static final MediaType MEDIA_TYPE_PNG = MediaType.parse(&quot;image/png&quot;);
-
-private final OkHttpClient client = new OkHttpClient();
-
-public void run() throws Exception {
-    // Use the imgur image upload API as documented at https://api.imgur.com/endpoints/image
-    RequestBody requestBody = new MultipartBuilder()
-        .type(MultipartBuilder.FORM)
-        .addPart(
-            Headers.of(&quot;Content-Disposition&quot;, &quot;form-data; name=\&quot;title\&quot;&quot;),
-            RequestBody.create(null, &quot;Square Logo&quot;))
-        .addPart(
-            Headers.of(&quot;Content-Disposition&quot;, &quot;form-data; name=\&quot;image\&quot;&quot;),
-            RequestBody.create(MEDIA_TYPE_PNG, new File(&quot;website/static/logo-square.png&quot;)))
-        .build();
-
-    Request request = new Request.Builder()
-        .header(&quot;Authorization&quot;, &quot;Client-ID &quot; + IMGUR_CLIENT_ID)
-        .url(&quot;https://api.imgur.com/3/image&quot;)
-        .post(requestBody)
-        .build();
-
-    Response response = client.newCall(request).execute();
-    if (!response.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response);
-
-    System.out.println(response.body().string());
-}
-</code></pre><h4 id="u4F7F_u7528Gson_u6765_u89E3_u6790JSON_u54CD_u5E94"><a href="#u4F7F_u7528Gson_u6765_u89E3_u6790JSON_u54CD_u5E94" class="headerlink" title="使用Gson来解析JSON响应"></a>使用Gson来解析JSON响应</h4><blockquote>
-<p>Gson是一个在JSON和Java对象之间转换非常方便的api.这里我们用Gson来解析Github API的JSON响应.<br>注意:ResponseBody.charStream()使用响应头Content-Type指定的字符集来解析响应体.默认是UTF-8.</p>
-</blockquote>
-<pre><code>private final OkHttpClient client = new OkHttpClient();
-private final Gson gson = new Gson();
-
-public void run() throws Exception {
-    Request request = new Request.Builder()
-        .url(&quot;https://api.github.com/gists/c2a7c39532239ff261be&quot;)
-        .build();
-    Response response = client.newCall(request).execute();
-    if (!response.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response);
-
-    Gist gist = gson.fromJson(response.body().charStream(), Gist.class);
-    for (Map.Entry&lt;String, GistFile&gt; entry : gist.files.entrySet()) {
-      System.out.println(entry.getKey());
-      System.out.println(entry.getValue().content);
-    }
-}
-
-static class Gist {
-    Map&lt;String, GistFile&gt; files;
-}
-
-static class GistFile {
-    String content;
-}
-</code></pre><h4 id="u54CD_u5E94_u7F13_u5B58"><a href="#u54CD_u5E94_u7F13_u5B58" class="headerlink" title="响应缓存"></a>响应缓存</h4><blockquote>
-<p>为了缓存响应,你需要一个你可以读写的缓存目录,和缓存大小的限制.这个缓存目录应该是私有的,不信任的程序应不能读取缓存内容.<br>一个缓存目录同时拥有多个缓存访问是错误的.大多数程序只需要调用一次new OkHttp(),在第一次调用时配置好缓存,然后其他地方只需要调用这个实例就可以了.否则两个缓存示例互相干扰,破坏响应缓存,而且有可能会导致程序崩溃.<br>响应缓存使用HTTP头作为配置.你可以在请求头中添加Cache-Control: max-stale=3600 ,OkHttp缓存会支持.你的服务通过响应头确定响应缓存多长时间,例如使用Cache-Control: max-age=9600.</p>
-</blockquote>
-<pre><code>private final OkHttpClient client;
-public CacheResponse(File cacheDirectory) throws Exception {
-    int cacheSize = 10 * 1024 * 1024; // 10 MiB
-    Cache cache = new Cache(cacheDirectory, cacheSize);
-
-    client = new OkHttpClient();
-    client.setCache(cache);
-}
-
-public void run() throws Exception {
-    Request request = new Request.Builder()
-        .url(&quot;http://publicobject.com/helloworld.txt&quot;)
-        .build();
-
-    Response response1 = client.newCall(request).execute();
-    if (!response1.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response1);
-
-    String response1Body = response1.body().string();
-    System.out.println(&quot;Response 1 response:          &quot; + response1);
-    System.out.println(&quot;Response 1 cache response:    &quot; + response1.cacheResponse());
-    System.out.println(&quot;Response 1 network response:  &quot; + response1.networkResponse());
-
-    Response response2 = client.newCall(request).execute();
-    if (!response2.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response2);
-
-    String response2Body = response2.body().string();
-    System.out.println(&quot;Response 2 response:          &quot; + response2);
-    System.out.println(&quot;Response 2 cache response:    &quot; + response2.cacheResponse());
-    System.out.println(&quot;Response 2 network response:  &quot; + response2.networkResponse());
-
-    System.out.println(&quot;Response 2 equals Response 1? &quot; + response1Body.equals(response2Body));
-}
-</code></pre><hr>
-<h3 id="u6269_u5C55"><a href="#u6269_u5C55" class="headerlink" title="扩展"></a>扩展</h3><p>在这一节还提到了下面一句:<br>There are cache headers to force a cached response, force a network response, or force the network response to be validated with a conditional GET.</p>
-<p>我不是很懂cache,平时用到的也不多,所以把Google在Android Developers一段相关的解析放到这里吧.</p>
-<p>Force a Network Response<br>In some situations, such as after a user clicks a ‘refresh’ button, it may be necessary to skip the cache, and fetch data directly from the server. To force a full refresh, add the no-cache directive:<br>connection.addRequestProperty(“Cache-Control”, “no-cache”);<br>If it is only necessary to force a cached response to be validated by the server, use the more efficient max-age=0 instead:</p>
-<p>connection.addRequestProperty(“Cache-Control”, “max-age=0”);<br>Force a Cache Response</p>
-<p>Sometimes you’ll want to show resources if they are available immediately, but not otherwise. This can be used so your application can show something while waiting for the latest data to be downloaded. To restrict a request to locally-cached resources, add the only-if-cached directive:</p>
-<pre><code>try {
-     connection.addRequestProperty(&quot;Cache-Control&quot;, &quot;only-if-cached&quot;);
-     InputStream cached = connection.getInputStream();
-     // the resource was cached! show it
-  catch (FileNotFoundException e) {
-     // the resource was not cached
-  }
-}
-This technique works even better in situations where a stale response is better than no response. To permit stale cached responses, use the max-stale directive with the maximum staleness in seconds:
-
-int maxStale = 60 * 60 * 24 * 28; // tolerate 4-weeks stale
-connection.addRequestProperty(&quot;Cache-Control&quot;, &quot;max-stale=&quot; + maxStale);
-</code></pre><p>以上信息来自:HttpResponseCache - Android SDK | Android Developers</p>
-<h4 id="u53D6_u6D88_u4E00_u4E2ACall"><a href="#u53D6_u6D88_u4E00_u4E2ACall" class="headerlink" title="取消一个Call"></a>取消一个Call</h4><blockquote>
-<p>使用Call.cancel()可以立即停止掉一个正在执行的call.如果一个线程正在写请求或者读响应,将会引发IOException.当call没有必要的时候,使用这个api可以节约网络资源.例如当用户离开一个应用时.不管同步还是异步的call都可以取消.<br>你可以通过tags来同时取消多个请求.当你构建一请求时,使用RequestBuilder.tag(tag)来分配一个标签.之后你就可以用OkHttpClient.cancel(tag)来取消所有带有这个tag的call.</p>
-</blockquote>
-<pre><code>private final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-private final OkHttpClient client = new OkHttpClient();
-
-public void run() throws Exception {
-    Request request = new Request.Builder()
-        .url(&quot;http://httpbin.org/delay/2&quot;) // This URL is served with a 2 second delay.
-        .build();
-
-    final long startNanos = System.nanoTime();
-    final Call call = client.newCall(request);
-
-    // Schedule a job to cancel the call in 1 second.
-    executor.schedule(new Runnable() {
-      @Override public void run() {
-        System.out.printf(&quot;%.2f Canceling call.%n&quot;, (System.nanoTime() - startNanos) / 1e9f);
-        call.cancel();
-        System.out.printf(&quot;%.2f Canceled call.%n&quot;, (System.nanoTime() - startNanos) / 1e9f);
-      }
-    }, 1, TimeUnit.SECONDS);
-
-    try {
-      System.out.printf(&quot;%.2f Executing call.%n&quot;, (System.nanoTime() - startNanos) / 1e9f);
-      Response response = call.execute();
-      System.out.printf(&quot;%.2f Call was expected to fail, but completed: %s%n&quot;,
-          (System.nanoTime() - startNanos) / 1e9f, response);
-    } catch (IOException e) {
-      System.out.printf(&quot;%.2f Call failed as expected: %s%n&quot;,
-          (System.nanoTime() - startNanos) / 1e9f, e);
-    }
-}
-</code></pre><h4 id="u8D85_u65F6"><a href="#u8D85_u65F6" class="headerlink" title="超时"></a>超时</h4><blockquote>
-<p>没有响应时使用超时结束call.没有响应的原因可能是客户点链接问题、服务器可用性问题或者这之间的其他东西.OkHttp支持连接,读取和写入超时.</p>
-</blockquote>
-<pre><code>private final OkHttpClient client;
-
-public ConfigureTimeouts() throws Exception {
-    client = new OkHttpClient();
-    client.setConnectTimeout(10, TimeUnit.SECONDS);
-    client.setWriteTimeout(10, TimeUnit.SECONDS);
-    client.setReadTimeout(30, TimeUnit.SECONDS);
-}
-
-public void run() throws Exception {
-    Request request = new Request.Builder()
-        .url(&quot;http://httpbin.org/delay/2&quot;) // This URL is served with a 2 second delay.
-        .build();
-
-    Response response = client.newCall(request).execute();
-    System.out.println(&quot;Response completed: &quot; + response);
-}
-</code></pre><h4 id="u6BCF_u4E2Acall_u7684_u914D_u7F6E"><a href="#u6BCF_u4E2Acall_u7684_u914D_u7F6E" class="headerlink" title="每个call的配置"></a>每个call的配置</h4><blockquote>
-<p>使用OkHttpClient,所有的HTTP Client配置包括代理设置、超时设置、缓存设置.当你需要为单个call改变配置的时候,clone 一个 OkHttpClient.这个api将会返回一个浅拷贝(shallow copy),你可以用来单独自定义.下面的例子中,我们让一个请求是500ms的超时、另一个是3000ms的超时.</p>
-</blockquote>
-<pre><code>private final OkHttpClient client = new OkHttpClient();
-public void run() throws Exception {
-    Request request = new Request.Builder()
-        .url(&quot;http://httpbin.org/delay/1&quot;) // This URL is served with a 1 second delay.
-        .build();
-
-    try {
-      Response response = client.clone() // Clone to make a customized OkHttp for this request.
-          .setReadTimeout(500, TimeUnit.MILLISECONDS)
-          .newCall(request)
-          .execute();
-      System.out.println(&quot;Response 1 succeeded: &quot; + response);
-    } catch (IOException e) {
-      System.out.println(&quot;Response 1 failed: &quot; + e);
-    }
-
-    try {
-      Response response = client.clone() // Clone to make a customized OkHttp for this request.
-          .setReadTimeout(3000, TimeUnit.MILLISECONDS)
-          .newCall(request)
-          .execute();
-      System.out.println(&quot;Response 2 succeeded: &quot; + response);
-    } catch (IOException e) {
-      System.out.println(&quot;Response 2 failed: &quot; + e);
-    }
-}
-</code></pre><h4 id="u5904_u7406_u9A8C_u8BC1"><a href="#u5904_u7406_u9A8C_u8BC1" class="headerlink" title="处理验证"></a>处理验证</h4><blockquote>
-<p>这部分和HTTP AUTH有关.<br>相关资料:HTTP AUTH 那些事 - 王绍全的博客 - 博客频道 - CSDN.NET<br>OkHttp会自动重试未验证的请求.当响应是401 Not Authorized时,Authenticator会被要求提供证书.Authenticator的实现中需要建立一个新的包含证书的请求.如果没有证书可用,返回null来跳过尝试.</p>
-</blockquote>
-<pre><code>public List&lt;Challenge&gt; challenges()
-Returns the authorization challenges appropriate for this response&apos;s code. If the response code is 401 unauthorized, this returns the &quot;WWW-Authenticate&quot; challenges. If the response code is 407 proxy unauthorized, this returns the &quot;Proxy-Authenticate&quot; challenges. Otherwise this returns an empty list of challenges.
-当需要实现一个Basic challenge, 使用Credentials.basic(username, password)来编码请求头.
-
-private final OkHttpClient client = new OkHttpClient();
-
-public void run() throws Exception {
-    client.setAuthenticator(new Authenticator() {
-      @Override public Request authenticate(Proxy proxy, Response response) {
-        System.out.println(&quot;Authenticating for response: &quot; + response);
-        System.out.println(&quot;Challenges: &quot; + response.challenges());
-        String credential = Credentials.basic(&quot;jesse&quot;, &quot;password1&quot;);
-        return response.request().newBuilder()
-            .header(&quot;Authorization&quot;, credential)
-            .build();
-      }
-
-      @Override public Request authenticateProxy(Proxy proxy, Response response) {
-        return null; // Null indicates no attempt to authenticate.
-      }
-    });
-
-    Request request = new Request.Builder()
-        .url(&quot;http://publicobject.com/secrets/hellosecret.txt&quot;)
-        .build();
-
-    Response response = client.newCall(request).execute();
-    if (!response.isSuccessful()) throw new IOException(&quot;Unexpected code &quot; + response);
-
-    System.out.println(response.body().string());
-}
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Java/LearnRetrofit" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/10/Java/LearnRetrofit/" class="article-date">
-      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/Java/LearnRetrofit/">Title</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="Retrofit__u76F8_u5173"><a href="#Retrofit__u76F8_u5173" class="headerlink" title="Retrofit 相关"></a>Retrofit 相关</h3><p><a href="https://www.gitbook.com/book/asce1885/android-rd-senior-advanced/details" target="_blank" rel="external">更上一层楼－Android研发工程师高级进阶</a><br><a href="http://www.jianshu.com/p/87c36d8dabce" target="_blank" rel="external">Retrofit 解析 JSON 数据</a><br><a href="http://inthecheesefactory.com/blog/retrofit-2.0/en" target="_blank" rel="external">Retrofit 2.0: The biggest update yet on the best HTTP Client Library for Android</a><br><a href="https://futurestud.io/blog/retrofit-2-upgrade-guide-from-1-9/" target="_blank" rel="external">Retrofit 2 — Upgrade Guide from 1.9</a><br><a href="https://bng86.gitbooks.io/android-third-party-/content/retrofit.html" target="_blank" rel="external">Retrofit 开发示例</a></p>
-<h4 id="u4F7F_u7528_Retrofit_Post_u53D1_u9001_u4E00_u4E2A_u5BF9_u8C61"><a href="#u4F7F_u7528_Retrofit_Post_u53D1_u9001_u4E00_u4E2A_u5BF9_u8C61" class="headerlink" title="使用 Retrofit Post发送一个对象"></a>使用 Retrofit Post发送一个对象</h4><p><a href="https://futurestud.io/blog/retrofit-send-objects-in-request-body/" target="_blank" rel="external">Retrofit — Send Objects in Request Body</a><br><a href="https://github.com/square/retrofit/issues/854" target="_blank" rel="external">method POST must have a request body</a><br><a href="https://objectpartners.com/2015/08/04/retrofit-api-integration-made-easy/" target="_blank" rel="external">Retrofit: API Integration Made Easy</a><br>问题分析总结</p>
-<p>出现错误</p>
-<pre><code>java.lang.IllegalArgumentException: Unable to create call adapter for rx.Observable&lt;java.util.List&lt;com.coam.model.test.GithubUser&gt;&gt;
-</code></pre><p>需要将rxjava结合到retrofit,在构建请求客户端的地方加上 .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) 如下:</p>
-<pre><code>Retrofit retrofit = new Retrofit.Builder().baseUrl(ENDPOINT)
-        .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-        .build();
-
-//mService = retrofit.create(GithubAPIInterface.class);
-return new GithubService(retrofit.create(GithubAPIInterface.class));
-</code></pre><p>并在dependencies中引入</p>
-<pre><code>compile &apos;com.squareup.retrofit:adapter-rxjava:2.0.0-beta2&apos;
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Java/LearnRetrolambda" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/10/Java/LearnRetrolambda/" class="article-date">
-      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/Java/LearnRetrolambda/">Title</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h4 id="android_u4E0A_u7684JAVA8_3A_u4F7F_u7528retrolambda_-__28_u4E00_u4E2A_u8BA9android_u652F_u6301lambda_u8BED_u6CD5_u7684_u6269_u5C55_u6846_u67B6_29"><a href="#android_u4E0A_u7684JAVA8_3A_u4F7F_u7528retrolambda_-__28_u4E00_u4E2A_u8BA9android_u652F_u6301lambda_u8BED_u6CD5_u7684_u6269_u5C55_u6846_u67B6_29" class="headerlink" title="android上的JAVA8:使用retrolambda - (一个让android支持lambda语法的扩展框架)"></a>android上的JAVA8:使用retrolambda - (一个让android支持lambda语法的扩展框架)</h4><p><a href="https://github.com/orfjackal/retrolambda#gradle-plugin" target="_blank" rel="external">retrolambda GitHub</a><br><a href="https://github.com/evant/gradle-retrolambda" target="_blank" rel="external">gradle-retrolambda plugin</a><br><a href="http://juude.net/lambdajava/" target="_blank" rel="external">android上的JAVA8:使用retrolambda</a><br><a href="http://www.jianshu.com/p/5fc2b3362702" target="_blank" rel="external">jdk1.8新特性之lambda表达式及在Android Studio中的使用</a></p>
-<p><a href="http://www.importnew.com/16436.html" target="_blank" rel="external">Java8 lambda表达式10个示例</a><br><a href="http://www.importnew.com/10360.html" target="_blank" rel="external">Java 8简明教程</a></p>
-<p>Java8引入了 lambda 表达式,让许多开发者激动不已,本文介绍如何在Android上使用lambda.</p>
-<p>首先下载 java8 sdk,并且配置完成<br>在 build.gradle 中加入编译的依赖,这会使用 retrolambda 来编译Java代码</p>
-<pre><code>buildscript {
-    //开始加入
-    dependencies {
-        classpath &apos;me.tatarka:gradle-retrolambda:3.1.0&apos;
-    }
-    //结束插入
-}
-</code></pre><p>同时要加入plugin声明</p>
-<pre><code>apply plugin: &apos;me.tatarka.retrolambda&apos;
-</code></pre><p>3 . 加入compileOptions,这会让IDE使用用JAVA8语法解析</p>
-<pre><code>compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
-}
-</code></pre><p>4 . 指定将源码编译的级别,,使用下列代码,会将代码编译到兼容1.6的字节码格式</p>
-<pre><code>retrolambda {
-    javaVersion JavaVersion.VERSION_1_6
-}
-</code></pre><p>5 . 添加测试代码, 对于只有一个方法的接口,java8中可以使用lambda表达式代替,所以我们熟悉的设定View点击事件的代码,只要这样写就可以了</p>
-<pre><code>v.setOnClickListener(v1 -&gt; Toast.makeText(getActivity(), &quot;clicked&quot;, Toast.LENGTH_LONG).show());
-</code></pre><p>对比一下之前的代码量,是不是爽爆了？！！</p>
-<pre><code>v.setOnClickListener(new View.OnClickListener(View v) {
-@Override
-    public void onClick(View v) {
-        Toast.makeText(getActivity(), &quot;clicked&quot;, Toast.LENGTH_LONG).show()
-    }
-});
-</code></pre><p>所有代码可以在这里找到:</p>
-<p><a href="https://github.com/Juude/droidViews/blob/master/app/build.gradle" target="_blank" rel="external">http://tinyurl.com/qdbae7d</a></p>
-<p><a href="https://github.com/evant/gradle-retrolambda/issues/74" target="_blank" rel="external">retrolambda配置参考</a><br><a href="http://www.jianshu.com/p/5fc2b3362702" target="_blank" rel="external">jdk1.8新特性之lambda表达式及在Android Studio中的使用</a><br><a href="http://www.importnew.com/10360.html" target="_blank" rel="external">Java 8简明教程</a></p>
-<h4 id="u95EE_u9898_u5206_u6790"><a href="#u95EE_u9898_u5206_u6790" class="headerlink" title="问题分析"></a>问题分析</h4><h4 id="Lint_fails_on_java_files_that_have_lambdas"><a href="#Lint_fails_on_java_files_that_have_lambdas" class="headerlink" title="Lint fails on java files that have lambdas."></a>Lint fails on java files that have lambdas.</h4><p>由于Android’s lint doesn’t understand java 8 syntax and will fail silently or loudly.<br><a href="https://github.com/evant/android-retrolambda-lombok" target="_blank" rel="external">evant/android-retrolambda-lombok</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
+        <p class="article-more-link">
+          <a  href="/2016/02/21/Android/ProGuard/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -1417,7 +938,7 @@ return new GithubService(retrofit.create(GithubAPIInterface.class));
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 </div>

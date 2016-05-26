@@ -216,11 +216,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-Server/Config/Ejabberd/jabber/access" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Mongo/mongo-slave" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/12/27/Server/Config/Ejabberd/jabber/access/" class="article-date">
-      <time datetime="2015-12-27T06:17:19.948Z" itemprop="datePublished">2015-12-27</time>
+      <a href="/2016/01/10/Mongo/mongo-slave/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
 </a>
     </div>
   
@@ -229,10 +229,161 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Mongo/mongo-slave/">Title</a>
+    </h1>
+  
+
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        {"access":{"admin":{"blocked":"deny","admin":"allow"},"c2s_shaper":{"admin":"none","all":"normal"},"configure":{"blocked":"deny","admin":"allow"},"everybody":{"blocked":"deny","all":"allow"},"fsinf_at":{"blocked":"deny","fsinf_at":"allow"},"jabber_at":{"blocked":"deny","jabber_at":"allow"},"jabber_fsinf_at":{"blocked":"deny","jabber_fsinf_at":"allow"},"local":{"blocked":"deny","anon_jabber_at":"deny","local":"allow"},"authenticated":{"blocked":"deny","anon_jabber_at":"deny","all":"allow"},"webchat":{"blocked":"deny","local":"allow","anon_jabber_at":"allow"},"xmlrpc":{"xmlrpc":"allow"},"max_user_offline_messages":{"admin":2000,"anon_jabber_at":0,"all":100},"max_user_mam_messages":{"admin":0,"anon_jabber_at":0,"all":100000},"max_user_sessions":{"admin":"infinity","anon_jabber_at":1,"all":3},"muc_admin":{"blocked":"deny","admin":"allow","muc_admin":"allow"},"proxy_shaper":{"admin":"none","local":"proxy"},"s2s_shaper":{"all":"fast"},"register":{"all":"deny"}}}
+        <h2 id="MongoDB-主动复制"><a href="#MongoDB-主动复制" class="headerlink" title="MongoDB 主动复制"></a>MongoDB 主动复制</h2><p>参考 <a href="http://www.lanceyan.com/tech/mongodb/mongodb_cluster_1.html" target="_blank" rel="external">http://www.lanceyan.com/tech/mongodb/mongodb_cluster_1.html</a><br>参考 <a href="http://segmentfault.com/a/1190000002924522" target="_blank" rel="external">MongoDB学习札记第六篇之主从复制</a><br>参考 <a href="http://www.jianshu.com/p/2825a66d6aed" target="_blank" rel="external">高可用的MongoDB集群</a></p>
+<blockquote>
+<p>在大数据的时代,传统的关系型数据库要能更高的服务必须要解决高并发读写. 海量数据高效存储. 高可扩展性和高可用性这些难题.不过就是因为这些问题Nosql诞生了.</p>
+</blockquote>
+<p>NOSQL有这些优势:</p>
+<p>大数据量,可以通过廉价服务器存储大量的数据,轻松摆脱传统mysql单表存储量级限制.</p>
+<p>高扩展性,Nosql去掉了关系数据库的关系型特性,很容易横向扩展,摆脱了以往老是纵向扩展的诟病.</p>
+<p>高性能,Nosql通过简单的key-value方式获取数据,非常快速.还有NoSQL的Cache是记录级的,是一种细粒度的Cache,所以NoSQL在这个层面上来说就要性能高很多.</p>
+<p>灵活的数据模型,NoSQL无需事先为要存储的数据建立字段,随时可以存储自定义的数据格式.而在关系数据库里,增删字段是一件非常麻烦的事情.如果是非常大数据量的表,增加字段简直就是一个噩梦.</p>
+<p>高可用,NoSQL在不太影响性能的情况,就可以方便的实现高可用的架构.比如mongodb通过mongos. mongo分片就可以快速配置出高可用配置.</p>
+<p>在nosql数据库里,大部分的查询都是键值对(key. value)的方式.MongoDB是一个介于关系数据库和非关系数据库之间的产品,是非关系数据库当中最像关系数据库的.支持类似于面向对象的查询语言,几乎可以实现类似关系数据库单表查询的绝大部分功能,而且还支持对数据建立索引.所以这个非常方便,我们可以用sql操作MongoDB,从关系型数据库迁移过来,开发人员学习成本会大大减少.如果再对底层的sql API做一层封装,开发基本可以感觉不到mongodb和关系型数据库的区别.同样MongoDB也是号称自己能够快速搭建一个高可用可扩展的的分布式集群,网上有很多搭建的文章,在我们搭建的时候还需要查找修改很多东西,所以把自己实战的步骤记录下来以备忘.我们看看如何一步一步搭建这个东东.</p>
+<p>一. mongodb单实例.这种配置只适合简易开发时使用,生产使用不行,因为单节点挂掉整个数据业务全挂,如下图.<br>虽然不能生产使用,但这个模式可以快速搭建启动,并且能够用mongodb的命令操作数据库.下面列出在linux下安装单节点mongodb的步骤</p>
+<p>二. 主从模式.使用mysql数据库时大家广泛用到,采用双机备份后主节点挂掉了后从节点可以接替主机继续服务.所以这种模式比单节点的高可用性要好很多.<br>下面看一下怎么一步步搭建一个mongodb的主从复制节点:</p>
+<ol>
+<li>准备两台机器 43.241.222.110 和 42.96.194.60. 43.241.222.110 当作主节点, 42.96.194.60作为从节点.</li>
+<li><p>分别下载 mongodb 安装程序包.在 43.241.222.110 上建立文件夹 /home/data/mongodb,42.96.194.60 建立文件夹 /home/data/mongodb<br>两台MongoDB服务器的配置文件均为 /etc/mongod.cnf</p>
+<p> storage:</p>
+<pre><code>dbPath: &quot;/data/home/data/mongodb&quot;
+engine: wiredTiger
+wiredTiger:
+    engineConfig:
+        cacheSizeGB: 20
+    collectionConfig:
+        blockCompressor: snappy
+</code></pre><p> systemLog:</p>
+<pre><code>destination: file
+path: &quot;/var/log/mongodb/mongod.log&quot;
+logAppend: true
+</code></pre><p> processManagement:</p>
+<pre><code>fork: true
+</code></pre><p> net:</p>
+<pre><code>#bindIp: 127.0.0.1,43.241.222.110,42.96.194.60  不能绑定外网访问ip,局域网的貌似可以,只能在iptable设定允许指定ip访问27017
+#bindIp: 0.0.0.0
+port: 27017
+# Enable the HTTP interface (Defaults to port 28017).
+http:
+    enabled: false
+</code></pre></li>
+<li><p>在43.241.222.110启动mongodb主节点程序.注意后面的这个 “-master”参数,标示主节点.启动主节点 </p>
+<p> sudo mongod -f /etc/mongod.cnf -master</p>
+</li>
+<li><p>在42.96.194.60启动 mongodb 从节点程序.关键配置,指定主节点ip地址和端口 -source 43.241.222.110:27017 和 标示从节点 -slave 参数.</p>
+<p> sudo mongod -f /etc/mongod.cnf -slave -source 43.241.222.110:27017</p>
+</li>
+</ol>
+<p>输出日志如下,成功！</p>
+<p>#日志显示从节点 从主节点同步复制数据</p>
+<pre><code>[replslave] repl: from host:43.241.222.110:27017
+</code></pre><p>配置完Mongo主从复制后开始测试主从复制.</p>
+<p>在主节点上连接到终端:</p>
+<pre><code>mongo 127.0.0.1
+</code></pre><p>#建立test 数据库.</p>
+<pre><code>use test;
+</code></pre><p>往testdb表插入数据.</p>
+<pre><code>&gt; db.testdb.insert({&quot;test1&quot;:&quot;testval1&quot;})
+</code></pre><p>查询testdb数据看看是否成功.</p>
+<pre><code>&gt; db.testdb.find();
+{ &quot;_id&quot; : ObjectId(&quot;5284e5cb1f4eb215b2ecc463&quot;), &quot;test1&quot; : &quot;testval1&quot; }
+</code></pre><p>检查从主机的数据.</p>
+<pre><code>mongo 127.0.0.1
+</code></pre><p>查看当前数据库.</p>
+<pre><code>&gt; show dbs;
+  local   0.203125GB
+  test    0.203125GB
+
+use test;
+db.testdb.find();
+{ &quot;_id&quot; : ObjectId(&quot;5284e5cb1f4eb215b2ecc463&quot;), &quot;test1&quot; : &quot;testval1&quot; }
+</code></pre><p>查询后数据已经同步过来了.再看看日志,发现从主机确实从主机同步了数据.</p>
+<p>查看服务状态</p>
+<pre><code>&gt; db.printReplicationInfo();
+this is a slave, printing slave replication info.
+source:   43.241.222.110:27017
+  syncedTo: Sun Nov 17 2013 16:04:02 GMT+0800 (CST) = -54 secs ago (-0.01hrs)
+</code></pre><p>到此主从结构的mongodb搭建好了.</p>
+<p>参考 <a href="http://segmentfault.com/a/1190000002924522" target="_blank" rel="external">MongoDB学习札记第六篇之主从复制</a></p>
+<p><a href="http://dev.guanghe.tv/2015/05/mongdb3-upgrade-bug.html" target="_blank" rel="external">MongoDB 3.0 复制集升级操作以及坑</a></p>
+<hr>
+<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>进入MongoShell执行以下命令</p>
+<pre><code>&gt;show dbs
+</code></pre><p>提示以下错误</p>
+<pre><code>E QUERY Error: listDatabases failed: 
+        { &quot;note&quot; : &quot;from execCommand&quot;, &quot;ok&quot; : 0, &quot;errmsg&quot; : &quot;not master&quot; }
+at Error (&lt;anonymous&gt;)
+</code></pre><p>查看mongo状态</p>
+<pre><code>&gt; rs.status()
+{ &quot;ok&quot; : 0, &quot;errmsg&quot; : &quot;not running with --replSet&quot;, &quot;code&quot; : 76 }
+</code></pre><p>每次登陆mongoShell后都需要执行以下命令</p>
+<pre><code>&gt; rs.slaveOK()
+2015-09-24T17:03:16.528+0800 E QUERY    TypeError: Object function () { return &quot;try rs.help()&quot;; } has no method &apos;slaveOK&apos;    at (shell):1:4
+</code></pre><p>参考 MongoDB 3.0 复制集升级操作以及坑 <a href="http://dev.guanghe.tv/2015/05/mongdb3-upgrade-bug.html" target="_blank" rel="external">http://dev.guanghe.tv/2015/05/mongdb3-upgrade-bug.html</a></p>
+<p>//查看状态</p>
+<pre><code>&gt; rs.status()
+{ &quot;ok&quot; : 0, &quot;errmsg&quot; : &quot;not running with --replSet&quot;, &quot;code&quot; : 76 }
+</code></pre><p>查看运行时配置</p>
+<pre><code>&gt; use admin
+switched to db admin
+&gt; db.runCommand(&quot;getCmdLineOpts&quot;)
+{
+    &quot;argv&quot; : [
+        &quot;mongod&quot;,
+        &quot;-f&quot;,
+        &quot;/etc/mongod.cnf&quot;,
+        &quot;-slave&quot;,
+        &quot;-source&quot;,
+        &quot;43.241.222.110:27017&quot;
+    ],
+    &quot;parsed&quot; : {
+        &quot;config&quot; : &quot;/etc/mongod.cnf&quot;,
+        &quot;net&quot; : {
+            &quot;http&quot; : {
+                &quot;enabled&quot; : false
+            },
+            &quot;port&quot; : 27017
+        },
+        &quot;processManagement&quot; : {
+            &quot;fork&quot; : true
+        },
+        &quot;slave&quot; : true,
+        &quot;source&quot; : &quot;43.241.222.110:27017&quot;,
+        &quot;storage&quot; : {
+            &quot;dbPath&quot; : &quot;/data/home/data/mongodb&quot;,
+            &quot;engine&quot; : &quot;wiredTiger&quot;,
+            &quot;wiredTiger&quot; : {
+                &quot;collectionConfig&quot; : {
+                    &quot;blockCompressor&quot; : &quot;snappy&quot;
+                },
+                &quot;engineConfig&quot; : {
+                    &quot;cacheSizeGB&quot; : 20
+                }
+            }
+        },
+        &quot;systemLog&quot; : {
+            &quot;destination&quot; : &quot;file&quot;,
+            &quot;logAppend&quot; : true,
+            &quot;path&quot; : &quot;/var/log/mongodb/mongod.log&quot;
+        }
+    },
+    &quot;ok&quot; : 1
+}
+</code></pre>
       
     </div>
     
@@ -257,11 +408,11 @@
 
 
   
-    <article id="post-Server/Config/Ejabberd/jabber/README" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Erlang/Erlang" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/12/27/Server/Config/Ejabberd/jabber/README/" class="article-date">
-      <time datetime="2015-12-27T06:17:19.947Z" itemprop="datePublished">2015-12-27</time>
+      <a href="/2016/01/10/Erlang/Erlang/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
 </a>
     </div>
   
@@ -270,16 +421,1068 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a>
+    </h1>
+  
+
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>These are the configuration files used for our ejabberd installation that hosts<br><strong>jabber.at</strong>, <strong>jabber.wien</strong> and <strong>jabber.zone</strong>. We use the Debian package<br>for ejabberd available at apt.jabber.at, please see<br><a href="https://jabber.at/en/apt-repository" target="_blank" rel="external">https://jabber.at/en/apt-repository</a> for more information.</p>
-<p>There are two files that are not included in the repository:</p>
+        <h3 id="Erlang-研究相关"><a href="#Erlang-研究相关" class="headerlink" title="Erlang 研究相关"></a>Erlang 研究相关</h3><blockquote>
+<p>比较好的 Erlang 开发者博客及文档</p>
+</blockquote>
+<p><a href="http://allran.github.io/2015/05/13/erlang-use/" target="_blank" rel="external">木头人 - erlang use</a><br><a href="http://www.erlang-cn.com/118.html" target="_blank" rel="external">Erlang 中文教程Erlang中文教程,欢迎广大Erlang爱好者加入</a><br><a href="http://www.cnblogs.com/liangjingyang/archive/2012/07/15/2592691.html" target="_blank" rel="external">Simple - liangjingyang 博客</a><br><a href="http://wiki.jikexueyuan.com/project/erlang/#6f142dcd2b9ce7c7dd576f3a36fe2e9e" target="_blank" rel="external">Erlang 教程中文版</a><br><a href="http://svn.liancheng.info/cpie-cn/trunk/.build/html/part-i/index.html" target="_blank" rel="external">Erlang并发编程</a><br><a href="http://cpie-cn.readthedocs.org/en/latest/index.html" target="_blank" rel="external">Erlang并发编程-新版</a><br><a href="http://youthyblog.com/2015/07/22/erl%E5%91%BD%E4%BB%A4%E5%92%8C%E5%8F%82%E6%95%B0/" target="_blank" rel="external">erl命令和参数</a><br><a href="http://developerworks.github.io/" target="_blank" rel="external">元气糯米团子的Coding Blog</a><br><a href="http://wudaijun.com/categories/erlang/" target="_blank" rel="external">wudaijun’s blog</a></p>
+<p><a href="http://blog.suexcxine.cc/2015/12/29/erlang_scope/" target="_blank" rel="external">关于erlang作用域</a></p>
+<p><a href="http://www.dlive.me/category/distributed/" target="_blank" rel="external">Erlang 相关</a></p>
+<hr>
+<h5 id="系统预定义的宏"><a href="#系统预定义的宏" class="headerlink" title="系统预定义的宏:"></a>系统预定义的宏:</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">?MODULE 表示当前模块名</span><br><span class="line">?MODULE_STRING 同上,但是以字符串形式</span><br><span class="line">?FILE 当前模块的文件名</span><br><span class="line">?LINE 调用的当前代码行数</span><br><span class="line">?MACHINE 机器名</span><br></pre></td></tr></table></figure>
+<p><a href="https://bitbucket.org/gamexg/erlang/wiki/Home" target="_blank" rel="external">Erlang 语言学习笔记 / Home</a></p>
+<h5 id="要知道一个节点ping通么"><a href="#要知道一个节点ping通么" class="headerlink" title="要知道一个节点ping通么:"></a>要知道一个节点ping通么:</h5><pre><code>net_adm:ping(Nodes).-&gt; pong |pang
+node() 返回本节点名
+nodes() 返回所有其它节点名.
+</code></pre><p>[pong:成功 |pang: 失败]</p>
+<hr>
+<p>收藏<br><a href="http://dhq.me/the-interaction-experiment-between-erlang-and-websocket" target="_blank" rel="external">Erlang 与 WebSocket 之间的通讯交互</a><br><a href="http://dhq.me/parse-xml-in-erlang" target="_blank" rel="external">erlang 解析 xml 格式数据</a><br><a href="http://dhq.me/erlang-dict-intro" target="_blank" rel="external">Erlang 的 dict 模块函数方法介绍</a><br><a href="http://dhq.me/build-compile-eunit-release-erlang-application-with-rebar" target="_blank" rel="external">用 rebar 来构建. 编译. 测试. 发布 Erlang 应用程序</a></p>
+<p><a href="http://no001.blog.51cto.com/1142339/1320855" target="_blank" rel="external">Erlang不能错过的盛宴</a></p>
+<p><a href="http://pzjay.blogspot.com/2012/11/test.html" target="_blank" rel="external">40+行erlang代码实现一个简易分布式计算框架</a></p>
+<hr>
+<h3 id="dict-弃用"><a href="#dict-弃用" class="headerlink" title="dict() 弃用"></a>dict() 弃用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/data/home/yzhang/CoamRunning/Erlang/ejabberd/deps/emysql/src/emysql_conn_mgr.erl:<span class="number">43</span>: <span class="built_in">type</span> dict() undefined</span><br></pre></td></tr></table></figure>
+<p>使用 Use <em>dict:dict()</em> instead of <em>dict()</em> #2</p>
+<p><a href="https://github.com/Feuerlabs/netlink/pull/2" target="_blank" rel="external">Use dict:dict() instead of dict() #2</a></p>
+<hr>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Erlang/Elixir" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Erlang/Elixir/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Erlang/Elixir/">ElixirNote</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="Erlang-动态编程语言-Elixir-相关"><a href="#Erlang-动态编程语言-Elixir-相关" class="headerlink" title="Erlang 动态编程语言 Elixir 相关"></a>Erlang 动态编程语言 Elixir 相关</h3><p><a href="http://elixir-lang.org/getting-started/introduction.html" target="_blank" rel="external">Elixir 官网</a></p>
+<p><a href="https://github.com/elixir-lang-china/elixir_guide_cn/blob/master/getting_started/Chapter2.md" target="_blank" rel="external">GitHub - elixir-lang-china/elixir_guide_cn</a><br><a href="https://github.com/straightdave/programming_elixir" target="_blank" rel="external">GitHub - straightdave/programming_elixir</a><br><a href=""></a></p>
+<hr>
+<p>参考列表</p>
+<p><a href=""></a><br><a href=""></a><br><a href=""></a><br><a href=""></a><br><a href=""></a><br><a href=""></a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Mongo/mongo-replicaSet" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Mongo/mongo-replicaSet/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Mongo/mongo-replicaSet/">Title</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="MongoDB-复制集"><a href="#MongoDB-复制集" class="headerlink" title="MongoDB 复制集"></a>MongoDB 复制集</h3><p>参考 <a href="http://www.codefrom.com/paper/MongoDB%E5%AD%A6%E4%B9%A0%E6%9C%AD%E8%AE%B0%E7%AC%AC%E5%85%AB%E7%AF%87%E4%B9%8BReplica%20Set%20%E5%AE%9E%E6%88%98" target="_blank" rel="external">MongoDB学习札记第八篇之Replica Set 实战</a><br>参考 <a href="http://www.putaor.com/?p=577" target="_blank" rel="external">MongoDB 3.0 复制集集群搭建及安全认证实践</a><br>参考 <a href="http://www.mongoing.com/config_3_0" target="_blank" rel="external">MongoDB 3.0 WT引擎参考配置文件</a><br>参考 <a href="http://www.cnblogs.com/zhoujinyi/p/3554010.html" target="_blank" rel="external">MongoDB 副本集的原理. 搭建. 应用</a></p>
+<p>准备三台mongo服务器 分别为 43.241.222.110 42.96.194.60 和 45.63.50.67 搭建复制集</p>
+<p>如果对于怎么安装Mongodb还不清楚的同学可以查看我之前的学习札记</p>
+<p>三台MongoDB服务器的配置文件均为 /etc/mongod.cnf</p>
+<pre><code>storage:
+    dbPath: &quot;/data/home/data/RSMongoDB&quot;
+    engine: wiredTiger
+    wiredTiger:
+        engineConfig:
+            cacheSizeGB: 20
+        collectionConfig:
+            blockCompressor: snappy
+
+systemLog:
+   destination: file
+   path: &quot;/var/log/mongodb/mongod.log&quot;
+   logAppend: true
+
+processManagement:
+    fork: true
+
+net:
+    #bindIp: 127.0.0.1,43.241.222.110,42.96.194.60  不能绑定外网访问ip,局域网的貌似可以,只能在iptable设定允许指定ip访问27017
+    #bindIp: 0.0.0.0
+    port: 27017
+    # Enable the HTTP interface (Defaults to port 28017).
+    http:
+        enabled: false
+</code></pre><p>第一步:</p>
+<p>在三台机器上分别运行(都要运行)</p>
+<pre><code>root@ubuntu:/usr/local/mongodb#mongod -f /etc/mongod.cnf --replSet CoamReSet
+</code></pre><p>注意这里的 —replSet 参数指定了副本集的名称,每一个副本集都有一个唯一的名称.</p>
+<p>等到三台机器都启动完了之后.使用mongo客户端登录其中一台mongod服务器.这里我登录到 43.241.222.110 这台机器</p>
+<pre><code>root@ubuntu:~# mongo
+</code></pre><p>登录之后要切换到admin数据库,这样我们可以进行副本集的配置,具体怎么配置,代码如下:</p>
+<pre><code>&gt; use admin
+switched to db admin
+</code></pre><p>定义副本集配置变量,这里的 _id:”repset” 和上面命令参数 “ –replSet repset” 要保持一样.</p>
+<pre><code>&gt; config = {_id:&quot;CoamReSet&quot;,members:[
+         {_id:0,host:&quot;43.241.222.110:27017&quot;,&quot;priority&quot;:1},
+         {_id:1,host:&quot;42.96.194.60:27017&quot;,&quot;priority&quot;:1},
+         {_id:2,host:&quot;45.63.50.67:27017&quot;,&quot;priority&quot;:0}]}
+</code></pre><h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><pre><code>{
+    &quot;_id&quot; : &quot;CoamReSet&quot;,
+    &quot;members&quot; : [
+        {
+            &quot;_id&quot; : 0,
+            &quot;host&quot; : &quot;43.241.222.110:27017&quot;
+        },
+        {
+            &quot;_id&quot; : 1,
+            &quot;host&quot; : &quot;42.96.194.60:27017&quot;
+        },
+        {
+            &quot;_id&quot; : 2,
+            &quot;host&quot; : &quot;45.63.50.67:27017&quot;
+        }
+    ]
+}
+</code></pre><h4 id="初始化副本集配置"><a href="#初始化副本集配置" class="headerlink" title="初始化副本集配置"></a>初始化副本集配置</h4><pre><code>&gt; rs.initiate(config);
+</code></pre><h4 id="输出成功"><a href="#输出成功" class="headerlink" title="输出成功"></a>输出成功</h4><pre><code>{ &quot;ok&quot; : 1 }
+</code></pre><h4 id="注意-新创建副本集必须要数据库没有数据-否则初始化会提示以下错误"><a href="#注意-新创建副本集必须要数据库没有数据-否则初始化会提示以下错误" class="headerlink" title="注意:新创建副本集必须要数据库没有数据,否则初始化会提示以下错误:"></a>注意:新创建副本集必须要数据库没有数据,否则初始化会提示以下错误:</h4><pre><code>{
+    &quot;ok&quot; : 0,
+    &quot;errmsg&quot; : &quot;&apos;42.96.194.60:27017&apos; has data already, cannot initiate set.&quot;,
+    &quot;code&quot; : 110
+}
+</code></pre><p>先定义 config 的配置信息, 然后通过 rs.initiate(config) 方法,将配置信息初始化.这两个步骤完成之后就表示我们的副本集配置信息初始化完成了,在这个CoamReSet的副本集中我们定义了三台主机(注意在定义配置信息的时候指定的 _id 必须和我们启动mongod的时候指定的参数 —replSet 这个参数的值是一样的.)</p>
+<p>过一会,mongodb就会帮我们选举出Primary节点和Secondary节点了.那在mongo客户端,我们可以通过 rs.status() 来查看副本集的状态信息</p>
+<pre><code>CoamReSet:SECONDARY&gt; rs.status()
+{
+    &quot;set&quot; : &quot;CoamReSet&quot;,
+    &quot;date&quot; : ISODate(&quot;2015-10-01T09:45:34.924Z&quot;),
+    &quot;myState&quot; : 1,
+    &quot;members&quot; : [
+        {
+            &quot;_id&quot; : 0,
+            &quot;name&quot; : &quot;43.241.222.110:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 1,
+            &quot;stateStr&quot; : &quot;PRIMARY&quot;,
+            &quot;uptime&quot; : 167,
+            &quot;optime&quot; : Timestamp(1443692712, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T09:45:12Z&quot;),
+            &quot;electionTime&quot; : Timestamp(1443692715, 1),
+            &quot;electionDate&quot; : ISODate(&quot;2015-10-01T09:45:15Z&quot;),
+            &quot;configVersion&quot; : 1,
+            &quot;self&quot; : true
+        },
+        {
+            &quot;_id&quot; : 1,
+            &quot;name&quot; : &quot;42.96.194.60:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 2,
+            &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+            &quot;uptime&quot; : 21,
+            &quot;optime&quot; : Timestamp(1443692712, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T09:45:12Z&quot;),
+            &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-01T09:45:33.166Z&quot;),
+            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-01T09:45:33.564Z&quot;),
+            &quot;pingMs&quot; : 16,
+            &quot;configVersion&quot; : 1
+        },
+        {
+            &quot;_id&quot; : 2,
+            &quot;name&quot; : &quot;45.63.50.67:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 2,
+            &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+            &quot;uptime&quot; : 21,
+            &quot;optime&quot; : Timestamp(1443692712, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T09:45:12Z&quot;),
+            &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-01T09:45:32.949Z&quot;),
+            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-01T09:45:33.973Z&quot;),
+            &quot;pingMs&quot; : 183,
+            &quot;configVersion&quot; : 1
+        }
+    ],
+    &quot;ok&quot; : 1
+}
+</code></pre><p>其中name表示我么你的主机, health表示主机是否健康(0/1) , state(主节点(1)还是从节点(2),或者是不可达节点)</p>
+<p>如果上面信息正常显示出来说明整个副本集群已经建立起来了.这时候我们来验证一下是否是真的能够自动备份数据,是否能够自动从失败中恢复,自动选举新的Primary节点.<br>这个实验我们这样来做:</p>
+<h4 id="先往-Primary-节点-43-241-222-110-插入数据-在-42-96-194-60-和-45-63-50-67-两台-Secondary-节点中查询数据-验证是否能够正常的同步机器"><a href="#先往-Primary-节点-43-241-222-110-插入数据-在-42-96-194-60-和-45-63-50-67-两台-Secondary-节点中查询数据-验证是否能够正常的同步机器" class="headerlink" title="先往 Primary 节点(43.241.222.110)插入数据,在 42.96.194.60 和 45.63.50.67 两台 Secondary 节点中查询数据,验证是否能够正常的同步机器."></a>先往 Primary 节点(43.241.222.110)插入数据,在 42.96.194.60 和 45.63.50.67 两台 Secondary 节点中查询数据,验证是否能够正常的同步机器.</h4><blockquote>
+<p>先往 Primary 节点(43.241.222.110)插入数据</p>
+</blockquote>
+<pre><code>CoamReSet:PRIMARY&gt; use test
+switched to db test
+CoamReSet:PRIMARY&gt; show collections
+CoamReSet:PRIMARY&gt; db.guids.insert({&quot;name&quot;:&quot;replica set&quot;,&quot;author&quot;:&quot;webinglin&quot;})
+WriteResult({ &quot;nInserted&quot; : 1 })
+CoamReSet:PRIMARY&gt; exit
+bye
+</code></pre><blockquote>
+<p>在 45.63.50.67 Secondary 节点中查询数据,验证是否能够正常的同步机器.</p>
+</blockquote>
+<pre><code>root@ubuntu:~# mongo --host 45.63.50.67
+MongoDB shell version: 3.0.3
+connecting to: 45.63.50.67:27017/test
+Server has startup warnings:
+2015-06-09T17:03:27.744-0700 I CONTROL  [initandlisten] ** WARNING: You are running this process as the root user, which is not re                                      commended.
+2015-06-09T17:03:27.744-0700 I CONTROL  [initandlisten]
+2015-06-09T17:03:27.745-0700 I CONTROL  [initandlisten]
+2015-06-09T17:03:27.745-0700 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is &apos;always&apos;.
+2015-06-09T17:03:27.745-0700 I CONTROL  [initandlisten] **        We suggest setting it to &apos;never&apos;
+2015-06-09T17:03:27.745-0700 I CONTROL  [initandlisten]
+CoamReSet:SECONDARY&gt; show dbs
+2015-06-09T17:13:49.138-0700 E QUERY    Error: listDatabases failed:{ &quot;note&quot; : &quot;from execCommand&quot;, &quot;ok&quot; : 0, &quot;errmsg&quot; : &quot;not master&quot; }
+    at Error (&lt;anonymous&gt;)
+    at Mongo.getDBs (src/mongo/shell/mongo.js:47:15)
+    at shellHelper.show (src/mongo/shell/utils.js:630:33)
+    at shellHelper (src/mongo/shell/utils.js:524:36)
+    at (shellhelp2):1:1 at src/mongo/shell/mongo.js:47
+CoamReSet:SECONDARY&gt; use test
+switched to db test
+CoamReSet:SECONDARY&gt; db.guids.find()
+Error: error: { &quot;$err&quot; : &quot;not master and slaveOk=false&quot;, &quot;code&quot; : 13435 }
+CoamReSet:SECONDARY&gt; rs.slaveOk()
+CoamReSet:SECONDARY&gt; rs.slaveOk()
+CoamReSet:SECONDARY&gt; db.guids.find()
+{ &quot;_id&quot; : ObjectId(&quot;557780ebd147e9391020860d&quot;), &quot;name&quot; : &quot;replica set&quot;, &quot;author&quot; : &quot;webinglin&quot; }
+CoamReSet:SECONDARY&gt; show collections()
+2015-06-09T17:14:24.219-0700 E QUERY    Error: don&apos;t know how to show [collections()]
+    at Error (&lt;anonymous&gt;)
+    at shellHelper.show (src/mongo/shell/utils.js:733:11)
+    at shellHelper (src/mongo/shell/utils.js:524:36)
+    at (shellhelp2):1:1 at src/mongo/shell/utils.js:733
+CoamReSet:SECONDARY&gt; show collections
+guids
+system.indexes
+CoamReSet:SECONDARY&gt; exit
+bye
+</code></pre><blockquote>
+<p>在 42.96.194.60 Secondary 节点中查询数据,验证是否能够正常的同步机器.</p>
+</blockquote>
+<pre><code>root@ubuntu:~# mongo --host 42.96.194.60
+MongoDB shell version: 3.0.3
+connecting to: 42.96.194.60:27017/test
+Server has startup warnings:
+2015-06-09T17:03:11.647-0700 I CONTROL  [initandlisten] ** WARNING: You are running this process as the root user, which is not re                                      commended.
+2015-06-09T17:03:11.647-0700 I CONTROL  [initandlisten]
+2015-06-09T17:03:11.647-0700 I CONTROL  [initandlisten]
+2015-06-09T17:03:11.648-0700 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is &apos;always&apos;.
+2015-06-09T17:03:11.648-0700 I CONTROL  [initandlisten] **        We suggest setting it to &apos;never&apos;
+2015-06-09T17:03:11.648-0700 I CONTROL  [initandlisten]
+CoamReSet:SECONDARY&gt; rs.slaveOk()
+CoamReSet:SECONDARY&gt; show dbs
+local  1.078GB
+test   0.078GB
+CoamReSet:SECONDARY&gt; use test
+switched to db test
+CoamReSet:SECONDARY&gt; show collections
+guids
+system.indexes
+CoamReSet:SECONDARY&gt; db.guids.find()
+{ &quot;_id&quot; : ObjectId(&quot;557780ebd147e9391020860d&quot;), &quot;name&quot; : &quot;replica set&quot;, &quot;author&quot; : &quot;webinglin&quot; }
+CoamReSet:SECONDARY&gt; exit
+bye
+</code></pre><p>至此,整个验证过程说明了我们集群部署是成功的.数据能够正常同步了.<br>那么接下来我们还要验证另一种情况,Primary异常终止之后(43.241.222.110),另外两个Secondary节点会不会自动选举出新的Primary节点呢?<br>这个实验我们这样处理: 将 43.241.222.110 机器的mongod服务停止掉,然后再来连接 42.96.194.60 或者 45.63.50.67 任意一台机器,通过 rs.status() 查看集群状态.</p>
+<blockquote>
+<p>在Primary节点(43.241.222.110)通过 ps -e | grep mongod 查看mongod服务是否开启,然后通过 killall mongod 或者 kill -15 &lt;进程号&gt; 来杀死mongod进程</p>
+</blockquote>
+<pre><code>root@ubuntu:~# ps -e | grep mongod
+ 3279 pts/0    00:00:19 mongod
+root@ubuntu:~# killall mongod
+</code></pre><blockquote>
+<p>登陆从节点 42.96.194.60 ,查看mongo服务器状态</p>
+</blockquote>
+<pre><code>root@ubuntu:~# mongo --host 42.96.194.60
+MongoDB shell version: 3.0.3
+connecting to: 42.96.194.60:27017/test
+Server has startup warnings:
+2015-06-09T17:03:11.647-0700 I CONTROL  [initandlisten] ** WARNING: You are running this process as the root user, which is not recommended.
+2015-06-09T17:03:11.647-0700 I CONTROL  [initandlisten]
+2015-06-09T17:03:11.647-0700 I CONTROL  [initandlisten]
+2015-06-09T17:03:11.648-0700 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is &apos;always&apos;.
+2015-06-09T17:03:11.648-0700 I CONTROL  [initandlisten] **        We suggest setting it to &apos;never&apos;
+2015-06-09T17:03:11.648-0700 I CONTROL  [initandlisten]
+CoamReSet:SECONDARY&gt; rs.status()
+{
+    &quot;set&quot; : &quot;CoamReSet&quot;,
+    &quot;date&quot; : ISODate(&quot;2015-10-01T10:09:57.981Z&quot;),
+    &quot;myState&quot; : 1,
+    &quot;members&quot; : [
+        {
+            &quot;_id&quot; : 0,
+            &quot;name&quot; : &quot;43.241.222.110:27017&quot;,
+            &quot;health&quot; : 0,
+            &quot;state&quot; : 8,
+            &quot;stateStr&quot; : &quot;(not reachable/healthy)&quot;,
+            &quot;uptime&quot; : 0,
+            &quot;optime&quot; : Timestamp(0, 0),
+            &quot;optimeDate&quot; : ISODate(&quot;1970-01-01T00:00:00Z&quot;),
+            &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-01T10:09:56.226Z&quot;),
+            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-01T10:07:54.850Z&quot;),
+            &quot;pingMs&quot; : 18,
+            &quot;lastHeartbeatMessage&quot; : &quot;Failed attempt to connect to 43.241.222.110:27017; couldn&apos;t connect to server 43.241.222.110:27017 (43.241.222.110), connection attempt failed&quot;,            &quot;configVersion&quot; : -1
+        },
+        {
+            &quot;_id&quot; : 1,
+            &quot;name&quot; : &quot;42.96.194.60:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 1,
+            &quot;stateStr&quot; : &quot;PRIMARY&quot;,
+            &quot;uptime&quot; : 1577,
+            &quot;optime&quot; : Timestamp(1443693679, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T10:01:19Z&quot;),
+            &quot;electionTime&quot; : Timestamp(1443694079, 1),
+            &quot;electionDate&quot; : ISODate(&quot;2015-10-01T10:07:59Z&quot;),
+            &quot;configVersion&quot; : 1,
+            &quot;self&quot; : true
+        },
+        {
+            &quot;_id&quot; : 2,
+            &quot;name&quot; : &quot;45.63.50.67:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 2,
+            &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+            &quot;uptime&quot; : 1481,
+            &quot;optime&quot; : Timestamp(1443693679, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T10:01:19Z&quot;),
+            &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-01T10:09:56.891Z&quot;),
+            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-01T10:09:57.259Z&quot;),
+            &quot;pingMs&quot; : 440,
+            &quot;configVersion&quot; : 1
+        }
+    ],
+    &quot;ok&quot; : 1
+}
+CoamReSet:SECONDARY&gt; exit
+bye
+</code></pre><p>通过上面这段代码的观察,我们发现,当把原来的Primary节点停止掉后(43.241.222.110停止), 那么整个mongodb的副本集群会重新选举出新的Primary节点( 42.96.194.60 机器)</p>
+<p>为了验证一下新选举的Primary是否正常,我们再次验证一把数据的同步情况,先连接到 42.96.194.60 主节点,将原来的数据删掉,再到 45.63.50.67 SECONDARY 进行验证,数据是否也被删除</p>
+<blockquote>
+<p>连接到 42.96.194.60 主节点,将原来的数据删掉</p>
+</blockquote>
+<pre><code>root@ubuntu:~# mongo --host 42.96.194.60
+CoamReSet:PRIMARY&gt; use test
+switched to db test
+CoamReSet:PRIMARY&gt; show collections
+guids
+CoamReSet:PRIMARY&gt; db.guids.find()
+{ &quot;_id&quot; : ObjectId(&quot;560d03099548a3e5bb8b03bf&quot;), &quot;name&quot; : &quot;replica set&quot;, &quot;author&quot; : &quot;webinglin&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;560d046f9548a3e5bb8b03c0&quot;), &quot;name&quot; : &quot;zhang&quot;, &quot;author&quot; : &quot;yafei...&quot; }
+CoamReSet:PRIMARY&gt; db.guids.remove({name:&quot;zhang&quot;})
+WriteResult({ &quot;nRemoved&quot; : 1 })
+CoamReSet:PRIMARY&gt; db.guids.find()
+{ &quot;_id&quot; : ObjectId(&quot;560d03099548a3e5bb8b03bf&quot;), &quot;name&quot; : &quot;replica set&quot;, &quot;author&quot; : &quot;webinglin&quot; }
+CoamReSet:PRIMARY&gt; exit
+bye
+</code></pre><blockquote>
+<p>再到 45.63.50.67 SECONDARY 进行验证,数据是否也被删除</p>
+</blockquote>
+<pre><code>root@ubuntu:~# mongo --host 45.63.50.67
+CoamReSet:SECONDARY&gt; rs.slaveOk()
+CoamReSet:SECONDARY&gt; db.guids.find()
+{ &quot;_id&quot; : ObjectId(&quot;557780ebd147e9391020860d&quot;), &quot;name&quot; : &quot;replica set&quot;, &quot;author&quot; : &quot;webinglin&quot; }
+CoamReSet:SECONDARY&gt; exit
+bye
+</code></pre><p>实践后发现,先选举的Primary节点也正常工作.我们的整个Mongodb副本集群测试完成.</p>
+<h3 id="动态添加节点-删除节点"><a href="#动态添加节点-删除节点" class="headerlink" title="动态添加节点,删除节点."></a>动态添加节点,删除节点.</h3><p>在开始这个实验之前,先把 43.241.222.110 的机器重新启动,然后用mongo客户端连到 43.241.222.110 进行验证数据是否也同步了.<br>登录 43.241.222.110 之后,我们发现数据也同步了,然后43.241.222.110节点变成了 Secondary 节点了.</p>
+<pre><code>root@ubuntu:~# mongo
+CoamReSet:SECONDARY&gt; rs.slaveOk()
+CoamReSet:SECONDARY&gt; show dbs
+local   0.000GB
+syData  0.000GB
+test    0.000GB
+CoamReSet:SECONDARY&gt; use test
+switched to db test
+CoamReSet:SECONDARY&gt; show collections
+guids
+CoamReSet:SECONDARY&gt; db.guids.find()
+{ &quot;_id&quot; : ObjectId(&quot;560d03099548a3e5bb8b03bf&quot;), &quot;name&quot; : &quot;replica set&quot;, &quot;author&quot; : &quot;webinglin&quot; }
+CoamReSet:SECONDARY&gt; rs.status()
+{
+    &quot;set&quot; : &quot;CoamReSet&quot;,
+    &quot;date&quot; : ISODate(&quot;2015-10-01T10:21:53.366Z&quot;),
+    &quot;myState&quot; : 2,
+    &quot;syncingTo&quot; : &quot;42.96.194.60:27017&quot;,
+    &quot;members&quot; : [
+        {
+            &quot;_id&quot; : 0,
+            &quot;name&quot; : &quot;43.241.222.110:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 2,
+            &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+            &quot;uptime&quot; : 68,
+            &quot;optime&quot; : Timestamp(1443694583, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T10:16:23Z&quot;),
+            &quot;syncingTo&quot; : &quot;42.96.194.60:27017&quot;,
+            &quot;configVersion&quot; : 1,
+            &quot;self&quot; : true
+        },
+        {
+            &quot;_id&quot; : 1,
+            &quot;name&quot; : &quot;42.96.194.60:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 1,
+            &quot;stateStr&quot; : &quot;PRIMARY&quot;,
+            &quot;uptime&quot; : 66,
+            &quot;optime&quot; : Timestamp(1443694583, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T10:16:23Z&quot;),
+            &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-01T10:21:53.026Z&quot;),
+            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-01T10:21:52.588Z&quot;),
+            &quot;pingMs&quot; : 16,
+            &quot;electionTime&quot; : Timestamp(1443694079, 1),
+            &quot;electionDate&quot; : ISODate(&quot;2015-10-01T10:07:59Z&quot;),
+            &quot;configVersion&quot; : 1
+        },
+        {
+            &quot;_id&quot; : 2,
+            &quot;name&quot; : &quot;45.63.50.67:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 2,
+            &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+            &quot;uptime&quot; : 66,
+            &quot;optime&quot; : Timestamp(1443694583, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T10:16:23Z&quot;),
+            &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-01T10:21:51.818Z&quot;),
+            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-01T10:21:53.006Z&quot;),
+            &quot;pingMs&quot; : 311,
+            &quot;syncingTo&quot; : &quot;42.96.194.60:27017&quot;,
+            &quot;configVersion&quot; : 1
+        }
+    ],
+    &quot;ok&quot; : 1
+}
+CoamReSet:SECONDARY&gt; exit
+bye
+</code></pre><p>登录到 42.96.194.60 Primary 节点,通过 rs.remove() 方法来删除副本集中的某一个节点,这里我们还是将 43.241.222.110 删除.删除之后我们还往 42.96.194.60 主节点中加入数据.</p>
+<pre><code>CoamReSet:PRIMARY&gt; rs.remove(&quot;43.241.222.110:27017&quot;)
+{ &quot;ok&quot; : 1 }
+CoamReSet:PRIMARY&gt; rs.status()
+{
+    &quot;set&quot; : &quot;CoamReSet&quot;,
+    &quot;date&quot; : ISODate(&quot;2015-10-01T10:24:35.061Z&quot;),
+    &quot;myState&quot; : 1,
+    &quot;members&quot; : [
+        {
+            &quot;_id&quot; : 1,
+            &quot;name&quot; : &quot;42.96.194.60:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 1,
+            &quot;stateStr&quot; : &quot;PRIMARY&quot;,
+            &quot;uptime&quot; : 2455,
+            &quot;optime&quot; : Timestamp(1443695065, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T10:24:25Z&quot;),
+            &quot;electionTime&quot; : Timestamp(1443694079, 1),
+            &quot;electionDate&quot; : ISODate(&quot;2015-10-01T10:07:59Z&quot;),
+            &quot;configVersion&quot; : 2,
+            &quot;self&quot; : true
+        },
+        {
+            &quot;_id&quot; : 2,
+            &quot;name&quot; : &quot;45.63.50.67:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 2,
+            &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+            &quot;uptime&quot; : 2358,
+            &quot;optime&quot; : Timestamp(1443695065, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T10:24:25Z&quot;),
+            &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-01T10:24:33.256Z&quot;),
+            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-01T10:24:34.102Z&quot;),
+            &quot;pingMs&quot; : 334,
+            &quot;configVersion&quot; : 2
+        }
+    ],
+    &quot;ok&quot; : 1
+}
+CoamReSet:PRIMARY&gt; db.guids.find()
+{ &quot;_id&quot; : ObjectId(&quot;560d03099548a3e5bb8b03bf&quot;), &quot;name&quot; : &quot;replica set&quot;, &quot;author&quot; : &quot;webinglin&quot; }
+CoamReSet:PRIMARY&gt; db.guids.insert({&quot;name&quot;:&quot;remove one node dync&quot;})
+WriteResult({ &quot;nInserted&quot; : 1 })
+CoamReSet:PRIMARY&gt; db.guids.find()
+{ &quot;_id&quot; : ObjectId(&quot;560d03099548a3e5bb8b03bf&quot;), &quot;name&quot; : &quot;replica set&quot;, &quot;author&quot; : &quot;webinglin&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;560d0a1d7d9deef6a0890b1f&quot;), &quot;name&quot; : &quot;remove one node dync&quot; }
+CoamReSet:PRIMARY&gt; exit
+bye
+</code></pre><p>删除 43.241.222.110 节点后,我们往 Primary 节点中加入了新的数据,然后先不要将 43.241.222.110 的 mongod 服务停掉,我们通过mongo连接到 43.241.222.110 的mongod服务来查看数据</p>
+<pre><code>root@ubuntu:~# mongo --host 43.241.222.110
+&gt; db.guids.find()
+{ &quot;_id&quot; : ObjectId(&quot;560d03099548a3e5bb8b03bf&quot;), &quot;name&quot; : &quot;replica set&quot;, &quot;author&quot; : &quot;webinglin&quot; }
+&gt; exit
+bye
+</code></pre><p>实验结果可以知道,我们在 45.63.50.67 新加入的数据 {name:”remove one node dync”} 并没有同步到43.241.222.110(已从副本集中删除).</p>
+<p>为了让实验结果更加确切,我们查看 43.241.222.110 是否有同步了数据:</p>
+<p>root@ubuntu:~# mongo –host 45.63.50.67<br>CoamReSet:SECONDARY&gt; db.guids.find()<br>{ “_id” : ObjectId(“557780ebd147e9391020860d”), “name” : “replica set”, “author” : “webinglin” }<br>{ “_id” : ObjectId(“557785bcbb56172c8e069341”), “name” : “remove one node dync” }<br>CoamReSet:SECONDARY&gt; exit<br>bye</p>
+<p>实验数据可以看到, 45.63.50.67 同步了在 42.96.194.60 主节点中新增的文档 {“name”:”remove one node dync”},这样就证明了动态删除副本集中的某一个节点的实验成功了.那怎么动态添加节点到副本集中呢?</p>
+<p>原理是一样的,但是调用的方法变成了 rs.add(“43.241.222.110:27017”)</p>
+<pre><code>CoamReSet:PRIMARY&gt; rs.add(&quot;43.241.222.110:27017&quot;);
+{ &quot;ok&quot; : 1 }
+CoamReSet:PRIMARY&gt; rs.status()
+{
+    &quot;set&quot; : &quot;CoamReSet&quot;,
+    &quot;date&quot; : ISODate(&quot;2015-10-01T10:32:45.284Z&quot;),
+    &quot;myState&quot; : 1,
+    &quot;members&quot; : [
+        {
+            &quot;_id&quot; : 1,
+            &quot;name&quot; : &quot;42.96.194.60:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 1,
+            &quot;stateStr&quot; : &quot;PRIMARY&quot;,
+            &quot;uptime&quot; : 2945,
+            &quot;optime&quot; : Timestamp(1443695560, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T10:32:40Z&quot;),
+            &quot;electionTime&quot; : Timestamp(1443694079, 1),
+            &quot;electionDate&quot; : ISODate(&quot;2015-10-01T10:07:59Z&quot;),
+            &quot;configVersion&quot; : 3,
+            &quot;self&quot; : true
+        },
+        {
+            &quot;_id&quot; : 2,
+            &quot;name&quot; : &quot;45.63.50.67:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 2,
+            &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+            &quot;uptime&quot; : 2849,
+            &quot;optime&quot; : Timestamp(1443695560, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T10:32:40Z&quot;),
+            &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-01T10:32:43.660Z&quot;),
+            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-01T10:32:44.079Z&quot;),
+            &quot;pingMs&quot; : 452,
+            &quot;syncingTo&quot; : &quot;42.96.194.60:27017&quot;,
+            &quot;configVersion&quot; : 2
+        },
+        {
+            &quot;_id&quot; : 3,
+            &quot;name&quot; : &quot;43.241.222.110:27017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 2,
+            &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+            &quot;uptime&quot; : 2,
+            &quot;optime&quot; : Timestamp(1443695560, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2015-10-01T10:32:40Z&quot;),
+            &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-01T10:32:44.739Z&quot;),
+            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-01T10:32:43.300Z&quot;),
+            &quot;pingMs&quot; : 16,
+            &quot;syncingTo&quot; : &quot;42.96.194.60:27017&quot;,
+            &quot;configVersion&quot; : 3
+        }
+    ],
+    &quot;ok&quot; : 1
+}
+CoamReSet:PRIMARY&gt; exit
+bye
+</code></pre><p>在rs.status()返回的结果中可以看到,43.241.222.110 节点已经成功加入副本集中了.加入之后,理论上应该会把在 43.241.222.110 主节点加入的数据同步过来,刚才删除之后是不会同步的.那这时候重新加入副本集,应该是要同步的.下面是实验结果:</p>
+<pre><code>root@ubuntu:~# mongo
+CoamReSet:SECONDARY&gt; db.guids.find()
+{ &quot;_id&quot; : ObjectId(&quot;560d03099548a3e5bb8b03bf&quot;), &quot;name&quot; : &quot;replica set&quot;, &quot;author&quot; : &quot;webinglin&quot; }
+{ &quot;_id&quot; : ObjectId(&quot;560d0a1d7d9deef6a0890b1f&quot;), &quot;name&quot; : &quot;remove one node dync&quot; }
+CoamReSet:SECONDARY&gt; exit
+bye
+</code></pre><p>实验结果显示,动态添加操作也正常.动态的将 43.241.222.110 节点加入到副本集中能够保证数据同步成功.</p>
+<hr>
+<p>注意</p>
+<p>在调用 rs.add(“host:ip”) 或者 rs.remove(“host:ip”) 的时候,必须要在 Primary 节点中进行.</p>
+<p>add方法可以加入一个document对象,这样就可以在指定具体的Secondary节点的更多的设置项了,比如指定为priority: 0 或 priority: 0,hidden: true 或 priority:0,hidden:true,arbiterOnly:true</p>
+<pre><code>{
+  _id: &lt;int&gt;,
+  host: &lt;string&gt;,
+  arbiterOnly: &lt;boolean&gt;,
+  buildIndexes: &lt;boolean&gt;,
+  hidden: &lt;boolean&gt;,
+  priority: &lt;number&gt;,
+  tags: &lt;document&gt;,
+  slaveDelay: &lt;int&gt;,
+  votes: &lt;number&gt;
+}
+</code></pre><p>怎么对副本集进行权限验证,参考主从复制的安全部分,也是通过openssl来生成keyfile,然后再启动mongod的时候指定keyFile来设置安全的</p>
+<hr>
+<blockquote>
+<p>也可以在三个主机的复制集添加以下配置</p>
+</blockquote>
+<pre><code>replication:
+##oplog大小
+ oplogSizeMB: 20
+##复制集名称
+ replSetName: CoamReSet
+</code></pre><hr>
+<h3 id="复制集优先级问题"><a href="#复制集优先级问题" class="headerlink" title="复制集优先级问题"></a>复制集优先级问题</h3><blockquote>
+<p>默认设定节点 43.241.222.110 为Primary主节点,由于初始配置中没有设定,于是在主节点服务器重启后 43.241.222.110 自动切换成 从节点,而 42.96.194.60 切换成了主节点导致应用程序连接错误<br>于是在当前主节点 43.241.222.110 通过命令行手动切换主节点到 43.241.222.110</p>
+</blockquote>
+<pre><code>CoamReSet:PRIMARY&gt; rs.status()
+{
+        &quot;set&quot; : &quot;CoamReSet&quot;,
+        &quot;date&quot; : ISODate(&quot;2015-10-09T11:28:28.585Z&quot;),
+        &quot;myState&quot; : 1,
+        &quot;members&quot; : [
+                {
+                        &quot;_id&quot; : 1,
+                        &quot;name&quot; : &quot;42.96.194.60:27017&quot;,
+                        &quot;health&quot; : 1,
+                        &quot;state&quot; : 1,
+                        &quot;stateStr&quot; : &quot;PRIMARY&quot;,
+                        &quot;uptime&quot; : 614570,
+                        &quot;optime&quot; : Timestamp(1444378212, 1),
+                        &quot;optimeDate&quot; : ISODate(&quot;2015-10-09T08:10:12Z&quot;),
+                        &quot;electionTime&quot; : Timestamp(1444378334, 1),
+                        &quot;electionDate&quot; : ISODate(&quot;2015-10-09T08:12:14Z&quot;),
+                        &quot;configVersion&quot; : 3,
+                        &quot;self&quot; : true
+                },
+                {
+                        &quot;_id&quot; : 2,
+                        &quot;name&quot; : &quot;45.63.50.67:27017&quot;,
+                        &quot;health&quot; : 0,
+                        &quot;state&quot; : 8,
+                        &quot;stateStr&quot; : &quot;(not reachable/healthy)&quot;,
+                        &quot;uptime&quot; : 0,
+                        &quot;optime&quot; : Timestamp(0, 0),
+                        &quot;optimeDate&quot; : ISODate(&quot;1970-01-01T00:00:00Z&quot;),
+                        &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-09T11:28:27.754Z&quot;),
+                        &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-06T08:52:51.239Z&quot;),
+                        &quot;pingMs&quot; : 406,
+                        &quot;lastHeartbeatMessage&quot; : &quot;Failed attempt to connect to 45.63.50.67:27017; couldn&apos;t connect to server 45.63.50.67:27017 (45.63.50.67), connection attempt failed&quot;,
+                        &quot;configVersion&quot; : -1
+                },
+                {
+                        &quot;_id&quot; : 3,
+                        &quot;name&quot; : &quot;43.241.222.110:27017&quot;,
+                        &quot;health&quot; : 1,
+                        &quot;state&quot; : 2,
+                        &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+                        &quot;uptime&quot; : 90994,
+                        &quot;optime&quot; : Timestamp(1444378212, 1),
+                        &quot;optimeDate&quot; : ISODate(&quot;2015-10-09T08:10:12Z&quot;),
+                        &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-09T11:28:27.532Z&quot;),
+                        &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-09T11:28:27.299Z&quot;),
+                        &quot;pingMs&quot; : 15,
+                        &quot;configVersion&quot; : 3
+                }
+        ],
+        &quot;ok&quot; : 1
+}
+
+CoamReSet:PRIMARY&gt; config = rs.conf()
+{
+        &quot;_id&quot; : &quot;CoamReSet&quot;,
+        &quot;version&quot; : 3,
+        &quot;members&quot; : [
+                {
+                        &quot;_id&quot; : 1,
+                        &quot;host&quot; : &quot;42.96.194.60:27017&quot;,
+                        &quot;arbiterOnly&quot; : false,
+                        &quot;buildIndexes&quot; : true,
+                        &quot;hidden&quot; : false,
+                        &quot;priority&quot; : 1,
+                        &quot;tags&quot; : {
+
+                        },
+                        &quot;slaveDelay&quot; : 0,
+                        &quot;votes&quot; : 1
+                },
+                {
+                        &quot;_id&quot; : 2,
+                        &quot;host&quot; : &quot;45.63.50.67:27017&quot;,
+                        &quot;arbiterOnly&quot; : false,
+                        &quot;buildIndexes&quot; : true,
+                        &quot;hidden&quot; : false,
+                        &quot;priority&quot; : 1,
+                        &quot;tags&quot; : {
+
+                        },
+                        &quot;slaveDelay&quot; : 0,
+                        &quot;votes&quot; : 1
+                },
+                {
+                        &quot;_id&quot; : 3,
+                        &quot;host&quot; : &quot;43.241.222.110:27017&quot;,
+                        &quot;arbiterOnly&quot; : false,
+                        &quot;buildIndexes&quot; : true,
+                        &quot;hidden&quot; : false,
+                        &quot;priority&quot; : 1,
+                        &quot;tags&quot; : {
+
+                        },
+                        &quot;slaveDelay&quot; : 0,
+                        &quot;votes&quot; : 1
+                }
+        ],
+        &quot;settings&quot; : {
+                &quot;chainingAllowed&quot; : true,
+                &quot;heartbeatTimeoutSecs&quot; : 10,
+                &quot;getLastErrorModes&quot; : {
+
+                },
+                &quot;getLastErrorDefaults&quot; : {
+                        &quot;w&quot; : 1,
+                        &quot;wtimeout&quot; : 0
+                }
+        }
+}
+</code></pre><blockquote>
+<p>设置第一个节点 42.96.194.60 优先级为1,第二个节点 45.63.50.67 优先级为0,第三个节点 43.241.222.110 优先级为2;</p>
+</blockquote>
+<pre><code>CoamReSet:PRIMARY&gt; config.members[0].priority = 1
+1
+CoamReSet:PRIMARY&gt; config.members[1].priority = 0
+0
+CoamReSet:PRIMARY&gt; config.members[2].priority = 2
+2
+CoamReSet:PRIMARY&gt; rs.reconfig(config)
+{ &quot;ok&quot; : 1 }
+CoamReSet:PRIMARY&gt; rs.status()
+{
+        &quot;set&quot; : &quot;CoamReSet&quot;,
+        &quot;date&quot; : ISODate(&quot;2015-10-09T12:03:37.679Z&quot;),
+        &quot;myState&quot; : 2,
+        &quot;syncingTo&quot; : &quot;43.241.222.110:27017&quot;,
+        &quot;members&quot; : [
+                {
+                        &quot;_id&quot; : 1,
+                        &quot;name&quot; : &quot;42.96.194.60:27017&quot;,
+                        &quot;health&quot; : 1,
+                        &quot;state&quot; : 2,
+                        &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+                        &quot;uptime&quot; : 616679,
+                        &quot;optime&quot; : Timestamp(1444392119, 1),
+                        &quot;optimeDate&quot; : ISODate(&quot;2015-10-09T12:01:59Z&quot;),
+                        &quot;syncingTo&quot; : &quot;43.241.222.110:27017&quot;,
+                        &quot;configVersion&quot; : 5,
+                        &quot;self&quot; : true
+                },
+                {
+                        &quot;_id&quot; : 2,
+                        &quot;name&quot; : &quot;45.63.50.67:27017&quot;,
+                        &quot;health&quot; : 0,
+                        &quot;state&quot; : 8,
+                        &quot;stateStr&quot; : &quot;(not reachable/healthy)&quot;,
+                        &quot;uptime&quot; : 0,
+                        &quot;optime&quot; : Timestamp(0, 0),
+                        &quot;optimeDate&quot; : ISODate(&quot;1970-01-01T00:00:00Z&quot;),
+                        &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-09T12:03:35.875Z&quot;),
+                        &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-06T08:52:51.239Z&quot;),
+                        &quot;pingMs&quot; : 406,
+                        &quot;lastHeartbeatMessage&quot; : &quot;Failed attempt to connect to 45.63.50.67:27017; couldn&apos;t connect to server 45.63.50.67:27017 (45.63.50.67), connection attempt failed&quot;,
+                        &quot;configVersion&quot; : -1
+                },
+                {
+                        &quot;_id&quot; : 3,
+                        &quot;name&quot; : &quot;43.241.222.110:27017&quot;,
+                        &quot;health&quot; : 1,
+                        &quot;state&quot; : 1,
+                        &quot;stateStr&quot; : &quot;PRIMARY&quot;,
+                        &quot;uptime&quot; : 93103,
+                        &quot;optime&quot; : Timestamp(1444392119, 1),
+                        &quot;optimeDate&quot; : ISODate(&quot;2015-10-09T12:01:59Z&quot;),
+                        &quot;lastHeartbeat&quot; : ISODate(&quot;2015-10-09T12:03:35.817Z&quot;),
+                        &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2015-10-09T12:03:36.764Z&quot;),
+                        &quot;pingMs&quot; : 17,
+                        &quot;electionTime&quot; : Timestamp(1444390463, 1),
+                        &quot;electionDate&quot; : ISODate(&quot;2015-10-09T11:34:23Z&quot;),
+                        &quot;configVersion&quot; : 5
+                }
+        ],
+        &quot;ok&quot; : 1
+}
+</code></pre><p>可以看到 43.241.222.110 已经成功切换成主节点了<br>关闭主节点 43.241.222.110 后,发现两个从节点没有自动切换成主节点,相当于关闭了 MongoDB 复制集功能<br><a href="http://debugo.com/mongo-rs-prio/" target="_blank" rel="external">MongoDB RS优先级设置</a><br><a href="http://docs.mongodb.org/manual/tutorial/force-member-to-be-primary/" target="_blank" rel="external">http://docs.mongodb.org/manual/tutorial/force-member-to-be-primary/</a></p>
+<hr>
+<h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><blockquote>
+<p>主节点 43.241.222.110 服务意外停止后,在从节点 42.96.194.60 修改优先级出现如下错误</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">CoamReSet:RECOVERING&gt; config = rs.conf();</span><br><span class="line">CoamReSet:RECOVERING&gt;  config.members[<span class="number">2</span>].priority = <span class="number">0</span>;</span><br><span class="line">CoamReSet:RECOVERING&gt; rs.reconfig(config);</span><br><span class="line">&#123;</span><br><span class="line">        <span class="string">"ok"</span> : <span class="number">0</span>,</span><br><span class="line">        <span class="string">"errmsg"</span> : <span class="string">"replSetReconfig should only be run on PRIMARY, but my state is RECOVERING; use the \"force\" argument to override"</span>,</span><br><span class="line">        <span class="string">"code"</span> : <span class="number">10107</span></span><br><span class="line">&#125;</span><br><span class="line">CoamReSet:RECOVERING&gt; rs.reconfig(config,&#123;force: <span class="literal">true</span>&#125;);</span><br><span class="line">&#123; <span class="string">"ok"</span> : <span class="number">1</span> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="参考列表"><a href="#参考列表" class="headerlink" title="参考列表"></a>参考列表</h3><p><a href="http://www.jianshu.com/p/2825a66d6aed" target="_blank" rel="external">高可用的MongoDB集群</a><br><a href="http://www.jianshu.com/p/c9609ce8a558" target="_blank" rel="external">MongoDB Replica Set 详细安装文档</a><br><a href="https://docs.mongodb.com/manual/reference/method/rs.reconfig/" target="_blank" rel="external">rs.reconfig()</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Ejabberd/XMPP" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Ejabberd/XMPP/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Ejabberd/XMPP/">XMPPNote</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h1 id="关于-XMPP-协议"><a href="#关于-XMPP-协议" class="headerlink" title="关于 XMPP 协议"></a>关于 XMPP 协议</h1><p>Jabber 是著名的即时通讯服务服务器,它是一个自由开源软件,能让用户自己架即时通讯服务器,可以在Internet上应用,也可以在局域网中应用.<br>XMPP(可扩展消息处理现场协议)是基于可扩展标记语言(XML)的协议,它用于即时消息(IM)以及在线现场探测.它在促进服务器之间的准即时操作.<br>这个协议可能最终允许因特网用户向因特网上的其他任何人发送即时消息,即使其操作系统和浏览器不同.XMPP的技术来自于Jabber,其实它是 Jabber的核心协定,所以XMPP有时被误称为Jabber协议.<br>Jabber是一个基于XMPP协议的IM应用,除Jabber之外,XMPP还支持很多应用.</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a  href="/2016/01/10/Ejabberd/XMPP/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Ejabberd/EjabberdNote" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Ejabberd/EjabberdNote/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Ejabberd/EjabberdNote/">EjabberdNote</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Ejabberd-Note"><a href="#Ejabberd-Note" class="headerlink" title="Ejabberd Note"></a>Ejabberd Note</h1><h3 id="Ejabberd-Xamp-服务器搭建"><a href="#Ejabberd-Xamp-服务器搭建" class="headerlink" title="Ejabberd Xamp 服务器搭建"></a>Ejabberd Xamp 服务器搭建</h3><p>[ejabberd官方文档] (<a href="http://docs.ejabberd.im/" target="_blank" rel="external">http://docs.ejabberd.im/</a>)<br><a href="https://github.com/processone/ejabberd" target="_blank" rel="external">ejabberd github</a><br><a href="http://wiki.jabbercn.org/Ejabberd2:%E5%AE%89%E8%A3%85%E5%92%8C%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97" target="_blank" rel="external">Ejabberd2 中文翻译文档</a></p>
+<p><a href="http://docs.ejabberd.im/admin/guide/configuration/#modroster" target="_blank" rel="external">Ejabberd - configuration 配置文件文档</a><br><a href="https://www.process-one.net/en/ejabberd/protocols/" target="_blank" rel="external">Ejabberd XEP-* 支持列表</a></p>
+<h3 id="优秀-Ejabberd-开发者博客"><a href="#优秀-Ejabberd-开发者博客" class="headerlink" title="优秀 Ejabberd 开发者博客"></a>优秀 Ejabberd 开发者博客</h3><p><a href="http://allran.github.io/2015/04/16/ejabberd-Modules-development/" target="_blank" rel="external">木头人 ejabberd Modules development</a><br><a href="http://developerworks.github.io/" target="_blank" rel="external">元气糯米团子的Coding Blog</a><br><a href="http://www.just4coding.com/blog/2014/12/09/ejabberd-config/" target="_blank" rel="external">Ejabberd配置模块分析</a><br><a href="http://blog.zlxstar.me/blog/2013/07/20/ejabberd-starting-process/" target="_blank" rel="external">zlx_star - Ejabberd 启动过程</a></p>
+<h3 id="收藏博客文章"><a href="#收藏博客文章" class="headerlink" title="收藏博客文章"></a>收藏博客文章</h3><p><a href="http://segmentfault.com/a/1190000000665676" target="_blank" rel="external">Worktile中的实时消息推送服务实现</a></p>
+<hr>
+<h2 id="常见的-Ejabberd-服务器管理命令"><a href="#常见的-Ejabberd-服务器管理命令" class="headerlink" title="常见的 Ejabberd 服务器管理命令"></a>常见的 Ejabberd 服务器管理命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo ejabberdctl live    <span class="comment"># 调试 ejabberd 配置文件并打印日志信息</span></span><br><span class="line">sudo ejabberdctl start   <span class="comment"># 启动 ejabberd 服务器</span></span><br><span class="line">sudo ejabberdctl restart <span class="comment"># 重启 ejabberd 服务器</span></span><br><span class="line"><span class="comment">#sudo ejabberdctl status  # 查看 ejabberd 服务器运行状态</span></span><br><span class="line">sudo ejabberdctl debug  <span class="comment"># 查看 ejabberd 服务器运行状态</span></span><br><span class="line">ejabberdctl register zyfmix coam.co ****** <span class="comment"># 添加注册新用户</span></span><br><span class="line"></span><br><span class="line">ejabberdctl modules_update_specs <span class="comment"># 更新所有模块</span></span><br><span class="line">ejabberdctl modules_available    <span class="comment"># 查看可用安装模块</span></span><br><span class="line">ejabberdctl module_install mod_mam <span class="comment"># 安装模块 mod_mam</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="http://allran.github.io/2015/04/15/ejabberd-install/" target="_blank" rel="external">木头人 - ejabberd install</a><br><a href="http://developerworks.github.io/2014/09/25/ejabberd-compile-issues/" target="_blank" rel="external">编译Ejabberd遇到的问题</a></p>
+<hr>
+<h2 id="XMPP协议的命名空间"><a href="#XMPP协议的命名空间" class="headerlink" title="XMPP协议的命名空间:"></a>XMPP协议的命名空间:</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">jabber:</span><span class="string">iq:</span><span class="keyword">private</span>   -- 私有数据存储,用于本地用户私人设置信息,比如用户备注等.</span><br><span class="line"><span class="string">jabber:</span><span class="string">iq:</span>conference  -- 一般会议,用于多个用户之间的信息共享</span><br><span class="line"><span class="string">jabber:</span><span class="string">x:</span>encrypted -- 加密的消息,用于发送加密消息</span><br><span class="line"><span class="string">jabber:</span><span class="string">x:</span>expire  -- 消息终止</span><br><span class="line"><span class="string">jabber:</span><span class="string">iq:</span>time  -- 客户端时间</span><br><span class="line"><span class="string">jabber:</span><span class="string">iq:</span>auth  -- 简单用户认证,一般用于服务器之间或者服务器和客户端之间的认证</span><br><span class="line"><span class="string">jabber:</span><span class="string">x:</span>roster  -- 内部花名册</span><br><span class="line"><span class="string">jabber:</span><span class="string">x:</span>signed  -- 标记的在线状态</span><br><span class="line"><span class="string">jabber:</span><span class="string">iq:</span>search -- 用户数据库查询,用于向服务器发送查询请求</span><br><span class="line"><span class="string">jabber:</span><span class="string">iq:</span>register -- 注册请求,用于用户注册相关信息</span><br><span class="line"><span class="string">jabber:</span><span class="string">x:</span><span class="string">iq:</span>roster -- 花名册管理</span><br><span class="line"><span class="string">jabber:</span><span class="string">x:</span>conference -- 会议邀请,用于向参加会议用户发送开会通知</span><br><span class="line"><span class="string">jabber:</span><span class="string">x:</span>event  -- 消息事件</span><br><span class="line">vcard-temp  -- 临时的vCard,用于设置用户的头像以及昵称等</span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<h3 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h3><p>只装在你想要的模块.<br>在你自己的自定义模块扩展ejabberd.<br>安全性<br>支持c2s和s2s连接的SASL和STARTTLS.<br>支持s2s连接的STARTTLS和Dialback.<br>可通过HTTPS安全访问的Web管理.<br>数据库<br>快速布署的内部数据库(Mnesia).<br>原生的MySQL支持.<br>原生的PostgreSQL支持.<br>支持ODBC数据存储.<br>支持Microsoft SQL Server.<br>验证<br>内部验证.<br>PAM, LDAP 和 ODBC.<br>外部验证脚本.<br>其他<br>支持虚拟主机.<br>XML流压缩 (XEP-0138).<br>统计 (XEP-0039).<br>支持IPv6的c2s和s2s连接.<br>支持集群和HTML日志的多用户聊天模块.<br>基于用户vCards的用户目录.<br>支持基于PubSub的个人事件的发行-订阅组件.<br>支持web客户端: HTTP轮询和HTTP绑定(BOSH)服务.<br>IRC网关.<br>组件支持: 安装特定网关之后和外部网络的接口,如 AIM, ICQ 和 MSN.</p>
+<h3 id="模块一览"><a href="#模块一览" class="headerlink" title="模块一览"></a>模块一览</h3><p>下表列出ejabberd里的所有模块.</p>
+<p>模块 功能 依赖<br>mod_adhoc 特定命令 (XEP-0050)</p>
+<p>mod_announce 管理公告<br>推荐 mod_adhoc<br>mod_caps 实体能力 (XEP-0115)</p>
+<p>mod_configure 使用特定命令配置服务器<br>mod_adhoc<br>mod_disco 服务发现 (XEP-0030)</p>
+<p>mod_echo XMPP节回音</p>
+<p>mod_irc IRC网关<br>mod_last 最后活动 (XEP-0012)</p>
+<p>mod_last_odbc 最后活动 (XEP-0012)<br>支持的数据库 (*)<br>mod_muc 多用户聊天 (XEP-0045)</p>
+<p>mod_muc_log 多用户聊天室记录<br>mod_muc<br>mod_offline 离线消息存储 (XEP-0160)</p>
+<p>mod_offline_odbc 离线消息存储 (XEP-0160)<br>支持的数据库 (*)<br>mod_ping XMPP Ping 和定期保持连接 (XEP-0199)</p>
+<p>mod_privacy 禁止通讯 (XMPP IM)</p>
+<p>mod_privacy_odbc 禁止通讯 ((XMPP IM)<br>支持的数据库 (*)<br>mod_private 私有XML存储 (XEP-0049)</p>
+<p>mod_private_odbc 私有XML存储 (XEP-0049)<br>支持的数据库 (*)<br>mod_proxy65 SOCKS5字节流 (XEP-0065)</p>
+<p>mod_pubsub 发行-订阅 (XEP-0060), PEP (XEP-0163)<br>mod_caps<br>mod_pubsub_odbc 发行-订阅 (XEP-0060), PEP (XEP-0163)<br>支持的数据库 (*) 和 mod_caps<br>mod_register I带内注册 (XEP-0077)</p>
+<p>mod_roster 名册管理 (XMPP IM)</p>
+<p>mod_roster_odbc 名册管理 (XMPP IM)<br>支持的数据库 (*)<br>mod_service_log 拷贝用户消息到日志服务</p>
+<p>mod_shared_roster 共享名册管理<br>mod_roster 或 mod_roster_odbc<br>mod_sic Server IP检查 (XEP-0279)</p>
+<p>mod_stats 统计信息收集 (XEP-0039)</p>
+<p>mod_time 实体时间 (XEP-0202)</p>
+<p>mod_vcard 电子名片 (XEP-0054)</p>
+<p>mod_vcard_ldap 电子名片 (XEP-0054)<br>LDAP服务器<br>mod_vcard_odbc 电子名片 (XEP-0054)<br>支持的数据库 (*)<br>mod_vcard_xupdate 基于vCard的头像 (XEP-0153)<br>mod_vcard 或 mod_vcard_odbc<br>mod_version 软件版本 (XEP-0092)</p>
+<hr>
+<h3 id="Ejabberd-修改列表"><a href="#Ejabberd-修改列表" class="headerlink" title="Ejabberd 修改列表"></a>Ejabberd 修改列表</h3><p>~/src/ejabberd_oauth.erl // 修改 301 问题 参见 <a href="https://github.com/barabansheg/ejabberd/blob/master/src/ejabberd_oauth.erl" target="_blank" rel="external">https://github.com/barabansheg/ejabberd/blob/master/src/ejabberd_oauth.erl</a></p>
+<p>~/src/mod_sunshine.erl // 增加,测试 参见 <a href="http://developerworks.github.io/2014/09/18/ejabberd-modules-presence-storms/" target="_blank" rel="external">http://developerworks.github.io/2014/09/18/ejabberd-modules-presence-storms/</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-PHP/Composer" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/PHP/Composer/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/PHP/Composer/">Title</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="Composer"><a href="#Composer" class="headerlink" title="Composer"></a>Composer</h2><p><a href="http://www.phpcomposer.com/" target="_blank" rel="external">Composer 中文网</a><br><a href="http://rivsen.github.io/post/how-to-publish-package-to-packagist-using-github-and-composer-step-by-step/" target="_blank" rel="external">使用GitHub. Composer. Packagist管理公开的PHP包(Step By Step)</a></p>
+<h3 id="Ubuntu-安装-Composer"><a href="#Ubuntu-安装-Composer" class="headerlink" title="Ubuntu 安装 Composer"></a>Ubuntu 安装 Composer</h3><p><a href="http://docs.phpcomposer.com/00-intro.html#Installation-*nix" target="_blank" rel="external">Composer</a></p>
 <ul>
-<li>secrets.cfg contains passwords. See secrets.cfg.example for the syntax.</li>
-<li>blocked.cfg contains blocked users. We maintain our own private list.</li>
+<li>全局安装</li>
 </ul>
-<p>Feel free to contact us at <code>chat@conference.jabber.at</code> for questions.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl <span class="operator">-s</span>S https://getcomposer.org/installer | php</span><br><span class="line">sudo mv composer.phar /usr/<span class="built_in">local</span>/bin/composer</span><br></pre></td></tr></table></figure>
+<h3 id="Packagist-Composer-中国全量镜像"><a href="#Packagist-Composer-中国全量镜像" class="headerlink" title="Packagist / Composer 中国全量镜像"></a>Packagist / Composer 中国全量镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config -g repositories.packagist composer http://packagist.phpcomposer.com</span><br></pre></td></tr></table></figure>
+<p>##</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo composer clearcache  <span class="comment"># 清除缓存</span></span><br><span class="line">sudo rm -r ~/.composer/cache <span class="comment"># 清除缓存</span></span><br></pre></td></tr></table></figure>
+<h3 id="不编辑-composer-json-的情况下安装库"><a href="#不编辑-composer-json-的情况下安装库" class="headerlink" title="不编辑 composer.json 的情况下安装库"></a>不编辑 composer.json 的情况下安装库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer require <span class="string">"foo/bar:1.0.0"</span></span><br></pre></td></tr></table></figure>
+<h3 id="强制从-github-克隆源代码"><a href="#强制从-github-克隆源代码" class="headerlink" title="强制从 github 克隆源代码"></a>强制从 github 克隆源代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer update symfony/yaml --prefer-source</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="安装-Github-phpMyAdmin-执行安装命令"><a href="#安装-Github-phpMyAdmin-执行安装命令" class="headerlink" title="安装 Github phpMyAdmin 执行安装命令"></a>安装 Github phpMyAdmin 执行安装命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> phpMyAdmin</span><br><span class="line">sudo composer install</span><br></pre></td></tr></table></figure>
+<p>出现如下错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Composer\Downloader\TransportException] Your configuration does not allow connection to http://packagist.com. See https://getcomposer.org/doc/<span class="number">06</span>-config.md<span class="comment">#secure-http for details</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.composer/config.json</span><br><span class="line"></span><br><span class="line"><span class="string">"config"</span>: &#123;</span><br><span class="line"><span class="string">"secure-http"</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/huliuqing/phpnotes/issues/38" target="_blank" rel="external">使用Composer安装Laravel项目</a></p>
 
       
     </div>
@@ -305,11 +1508,11 @@
 
 
   
-    <article id="post-Server/Config/Ejabberd/test_ejabberd" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-SSL/LetSSL" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/12/24/Server/Config/Ejabberd/test_ejabberd/" class="article-date">
-      <time datetime="2015-12-24T02:28:38.700Z" itemprop="datePublished">2015-12-24</time>
+      <a href="/2016/01/10/SSL/LetSSL/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
 </a>
     </div>
   
@@ -318,10 +1521,100 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/SSL/LetSSL/">Title</a>
+    </h1>
+  
+
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        {"loglevel":4,"log_rotate_size":0,"log_rotate_date":"","log_rate_limit":100,"hosts":["coopens.com"],"listen":[{"port":5222,"ip":"::","module":"ejabberd_c2s","certfile":"/etc/ejabberd/ejabberd.pem","starttls":true,"protocol_options":["no_sslv3"],"max_stanza_size":65536,"shaper":"c2s_shaper","access":"c2s"},{"port":5269,"ip":"::","module":"ejabberd_s2s_in"},{"port":5280,"ip":"::","module":"ejabberd_http","web_admin":true,"http_poll":true,"http_bind":true,"captcha":true}],"s2s_use_starttls":"optional","s2s_certfile":"/etc/ejabberd/ejabberd.pem","s2s_protocol_options":["no_sslv3"],"auth_method":"internal","shaper":{"normal":1000,"fast":50000},"max_fsm_queue":1000,"acl":{"admin":{"user":[{"":"localhost"}]},"local":{"user_regexp":""},"loopback":{"ip":["127.0.0.0/8"]}},"access":{"max_user_sessions":{"all":10},"max_user_offline_messages":{"admin":5000,"all":100},"local":{"local":"allow"},"c2s":{"blocked":"deny","all":"allow"},"c2s_shaper":{"admin":"none","all":"normal"},"s2s_shaper":{"all":"fast"},"announce":{"admin":"allow"},"configure":{"admin":"allow"},"muc_admin":{"admin":"allow"},"muc_create":{"local":"allow"},"muc":{"all":"allow"},"pubsub_createnode":{"local":"allow"},"register":{"all":"allow"},"trusted_network":{"loopback":"allow"}},"language":"en","modules":{"mod_adhoc":{},"mod_announce":{"access":"announce"},"mod_blocking":{},"mod_caps":{},"mod_carboncopy":{},"mod_configure":{},"mod_disco":{},"mod_irc":{},"mod_http_bind":{},"mod_last":{},"mod_muc":{"access":"muc","access_create":"muc_create","access_persistent":"muc_create","access_admin":"muc_admin"},"mod_offline":{"access_max_user_messages":"max_user_offline_messages"},"mod_ping":{},"mod_privacy":{},"mod_private":{},"mod_pubsub":{"access_createnode":"pubsub_createnode","ignore_pep_from_offline":true,"last_item_cache":false,"plugins":["flat","hometree","pep"]},"mod_register":{"welcome_message":{"subject":"Welcome!","body":"Hi.\nWelcome to this XMPP server."},"ip_access":"trusted_network","access":"register"},"mod_roster":{"versioning":true},"mod_shared_roster":{},"mod_stats":{},"mod_time":{},"mod_vcard":{},"mod_version":{},"mod_mam":{},"mod_client_state":{"drop_chat_states":true,"queue_presence":false}}}
+        <h3 id="letsencrypt-证书签发机构"><a href="#letsencrypt-证书签发机构" class="headerlink" title="letsencrypt 证书签发机构"></a>letsencrypt 证书签发机构</h3><p><a href="https://letsencrypt.org/" target="_blank" rel="external">官网</a><br><a href="https://github.com/letsencrypt/letsencrypt" target="_blank" rel="external">GitHub - letsencrypt/letsencrypt</a></p>
+<h3 id="letscrypt-证书签发及使用问题"><a href="#letscrypt-证书签发及使用问题" class="headerlink" title="letscrypt 证书签发及使用问题"></a>letscrypt 证书签发及使用问题</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/letsencrypt/letsencrypt.git</span><br><span class="line">$ <span class="built_in">cd</span> letsencrypt</span><br><span class="line">$ sudo ./letsencrypt-auto --help</span><br></pre></td></tr></table></figure>
+<p>首先停止服务器正在运行的 nginx 服务器</p>
+<ul>
+<li>To obtain a cert using a “standalone” webserver (you may need to temporarily stop your exising webserver) for example.com and www.example.com:</li>
+</ul>
+<hr>
+<h3 id="以下商运相关"><a href="#以下商运相关" class="headerlink" title="以下商运相关"></a>以下商运相关</h3><ul>
+<li><ip:42.96.194.60> # <em>.coopens.com Certificate # </em>sy.include.d/server_ssl_coopens_com.conf*</ip:42.96.194.60></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone --email admin@coopens.com \</span><br><span class="line"><span class="operator">-d</span> coopens.com \</span><br><span class="line"><span class="operator">-d</span> www.coopens.com \</span><br><span class="line"><span class="operator">-d</span> <span class="number">56</span>.coopens.com \</span><br><span class="line"><span class="operator">-d</span> app.coopens.com \</span><br><span class="line"><span class="operator">-d</span> gp.coopens.com \</span><br><span class="line"><span class="operator">-d</span> dp.coopens.com \</span><br><span class="line"><span class="operator">-d</span> cp.coopens.com \</span><br><span class="line"><span class="operator">-d</span> lp.coopens.com \</span><br><span class="line"><span class="operator">-d</span> pp.coopens.com \</span><br><span class="line"><span class="operator">-d</span> mp.coopens.com \</span><br><span class="line"><span class="operator">-d</span> im.coopens.com \</span><br><span class="line"><span class="operator">-d</span> sns.coopens.com \</span><br><span class="line"><span class="operator">-d</span> blog.coopens.com \</span><br><span class="line"><span class="operator">-d</span> lw.coopens.com \</span><br><span class="line"><span class="operator">-d</span> ma.coopens.com \</span><br><span class="line"><span class="operator">-d</span> mirror.coopens.com \</span><br><span class="line"><span class="operator">-d</span> open.coopens.com \</span><br><span class="line"><span class="operator">-d</span> pay.coopens.com \</span><br><span class="line"><span class="operator">-d</span> forum.coopens.com \</span><br><span class="line"><span class="operator">-d</span> mas.coopens.com \</span><br><span class="line"><span class="operator">-d</span> was.coopens.com \</span><br><span class="line"><span class="operator">-d</span> gps.coopens.com</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ip:45.63.50.67> # <em>.nocs.com Certificate # </em>sy.include.d/server_ssl_nocs_cn.conf*</ip:45.63.50.67></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone --email admin@nocs.cn \</span><br><span class="line"><span class="operator">-d</span> nocs.cn \</span><br><span class="line"><span class="operator">-d</span> www.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> <span class="number">56</span>.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> app.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> gp.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> dp.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> cp.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> lp.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> pp.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> mp.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> im.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> sns.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> blog.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> lw.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> ma.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> mirror.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> open.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> pay.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> forum.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> mas.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> was.nocs.cn \</span><br><span class="line"><span class="operator">-d</span> gps.nocs.cn</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ip:43.241.222.110> # <em>.coam.com Certificate # </em>sy.include.d/server_ssl_coam_co.conf*</ip:43.241.222.110></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone --email admin@coam.co \</span><br><span class="line"><span class="operator">-d</span> coam.co \</span><br><span class="line"><span class="operator">-d</span> www.coam.co \</span><br><span class="line"><span class="operator">-d</span> <span class="number">56</span>.coam.co \</span><br><span class="line"><span class="operator">-d</span> app.coam.co \</span><br><span class="line"><span class="operator">-d</span> gp.coam.co \</span><br><span class="line"><span class="operator">-d</span> dp.coam.co \</span><br><span class="line"><span class="operator">-d</span> cp.coam.co \</span><br><span class="line"><span class="operator">-d</span> lp.coam.co \</span><br><span class="line"><span class="operator">-d</span> pp.coam.co \</span><br><span class="line"><span class="operator">-d</span> mp.coam.co \</span><br><span class="line"><span class="operator">-d</span> im.coam.co \</span><br><span class="line"><span class="operator">-d</span> sns.coam.co \</span><br><span class="line"><span class="operator">-d</span> blog.coam.co \</span><br><span class="line"><span class="operator">-d</span> lw.coam.co \</span><br><span class="line"><span class="operator">-d</span> ma.coam.co \</span><br><span class="line"><span class="operator">-d</span> mirror.coam.co \</span><br><span class="line"><span class="operator">-d</span> open.coam.co \</span><br><span class="line"><span class="operator">-d</span> pay.coam.co \</span><br><span class="line"><span class="operator">-d</span> forum.coam.co \</span><br><span class="line"><span class="operator">-d</span> mas.coam.co \</span><br><span class="line"><span class="operator">-d</span> was.coam.co \</span><br><span class="line"><span class="operator">-d</span> gps.coam.co</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ip:43.241.222.110> # <em>.syam.com Certificate # </em>sy.include.d/server_ssl_syam_cc.conf*</ip:43.241.222.110></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone --email admin@syam.cc \</span><br><span class="line"><span class="operator">-d</span> syam.cc \</span><br><span class="line"><span class="operator">-d</span> www.syam.cc \</span><br><span class="line"><span class="operator">-d</span> <span class="number">56</span>.syam.cc \</span><br><span class="line"><span class="operator">-d</span> app.syam.cc \</span><br><span class="line"><span class="operator">-d</span> gp.syam.cc \</span><br><span class="line"><span class="operator">-d</span> dp.syam.cc \</span><br><span class="line"><span class="operator">-d</span> cp.syam.cc \</span><br><span class="line"><span class="operator">-d</span> lp.syam.cc \</span><br><span class="line"><span class="operator">-d</span> pp.syam.cc \</span><br><span class="line"><span class="operator">-d</span> mp.syam.cc \</span><br><span class="line"><span class="operator">-d</span> im.syam.cc \</span><br><span class="line"><span class="operator">-d</span> sns.syam.cc \</span><br><span class="line"><span class="operator">-d</span> blog.syam.cc \</span><br><span class="line"><span class="operator">-d</span> lw.syam.cc \</span><br><span class="line"><span class="operator">-d</span> ma.syam.cc \</span><br><span class="line"><span class="operator">-d</span> mirror.syam.cc \</span><br><span class="line"><span class="operator">-d</span> open.syam.cc \</span><br><span class="line"><span class="operator">-d</span> pay.syam.cc \</span><br><span class="line"><span class="operator">-d</span> forum.syam.cc \</span><br><span class="line"><span class="operator">-d</span> mas.syam.cc \</span><br><span class="line"><span class="operator">-d</span> was.syam.cc \</span><br><span class="line"><span class="operator">-d</span> gps.syam.cc</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ip:43.241.222.110> # <em>.lonal.com Certificate # </em>sy.include.d/server_ssl_lonal_com.conf*</ip:43.241.222.110></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone --email admin@lonal.com \</span><br><span class="line"><span class="operator">-d</span> lonal.com \</span><br><span class="line"><span class="operator">-d</span> www.lonal.com \</span><br><span class="line"><span class="operator">-d</span> <span class="number">56</span>.lonal.com \</span><br><span class="line"><span class="operator">-d</span> app.lonal.com \</span><br><span class="line"><span class="operator">-d</span> gp.lonal.com \</span><br><span class="line"><span class="operator">-d</span> dp.lonal.com \</span><br><span class="line"><span class="operator">-d</span> cp.lonal.com \</span><br><span class="line"><span class="operator">-d</span> lp.lonal.com \</span><br><span class="line"><span class="operator">-d</span> pp.lonal.com \</span><br><span class="line"><span class="operator">-d</span> mp.lonal.com \</span><br><span class="line"><span class="operator">-d</span> im.lonal.com \</span><br><span class="line"><span class="operator">-d</span> sns.lonal.com \</span><br><span class="line"><span class="operator">-d</span> blog.lonal.com \</span><br><span class="line"><span class="operator">-d</span> lw.lonal.com \</span><br><span class="line"><span class="operator">-d</span> ma.lonal.com \</span><br><span class="line"><span class="operator">-d</span> mirror.lonal.com \</span><br><span class="line"><span class="operator">-d</span> open.lonal.com \</span><br><span class="line"><span class="operator">-d</span> pay.lonal.com \</span><br><span class="line"><span class="operator">-d</span> forum.lonal.com \</span><br><span class="line"><span class="operator">-d</span> mas.lonal.com \</span><br><span class="line"><span class="operator">-d</span> was.lonal.com \</span><br><span class="line"><span class="operator">-d</span> gps.lonal.com</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ip:42.96.194.60> # <em>.iirii.com Certificate # </em>sy.include.d/server_ssl_iirii_com.conf*</ip:42.96.194.60></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone --email admin@iirii.com \</span><br><span class="line"><span class="operator">-d</span> iirii.com \</span><br><span class="line"><span class="operator">-d</span> www.iirii.com \</span><br><span class="line"><span class="operator">-d</span> wp.iirii.com \</span><br><span class="line"><span class="operator">-d</span> ftp.iirii.com \</span><br><span class="line"><span class="operator">-d</span> sarah.iirii.com</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ip:42.96.194.60> # <em>.iirii.com Certificate # </em>sy.include.d/server_ssl_coopens_com_ali.conf*</ip:42.96.194.60></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone \</span><br><span class="line"><span class="operator">-d</span> acw.iirii.com \</span><br><span class="line"><span class="operator">-d</span> acs.iirii.com \</span><br><span class="line"><span class="operator">-d</span> acr.iirii.com \</span><br><span class="line"><span class="operator">-d</span> axp.iirii.com</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ip:43.241.222.110> # <em>.iirii.com Certificate # </em>sy.include.d/server_ssl_iirii_com_mos.conf*</ip:43.241.222.110></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone \</span><br><span class="line"><span class="operator">-d</span> mcw.iirii.com \</span><br><span class="line"><span class="operator">-d</span> mcs.iirii.com \</span><br><span class="line"><span class="operator">-d</span> mcr.iirii.com \</span><br><span class="line"><span class="operator">-d</span> mxp.iirii.com</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ip:45.63.50.67> # <em>.iirii.com Certificate # </em>sy.include.d/server_ssl_iirii_com_vultr.conf*</ip:45.63.50.67></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone \</span><br><span class="line"><span class="operator">-d</span> vcw.iirii.com \</span><br><span class="line"><span class="operator">-d</span> vcs.iirii.com \</span><br><span class="line"><span class="operator">-d</span> vcr.iirii.com \</span><br><span class="line"><span class="operator">-d</span> vxp.iirii.com</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="以下医院相关"><a href="#以下医院相关" class="headerlink" title="以下医院相关"></a>以下医院相关</h3><ul>
+<li><ip:42.96.194.60> # <em>.apolloyl.com Certificate # </em>sy.include.d/server_ssl_apolloyl_com.conf*</ip:42.96.194.60></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone \</span><br><span class="line"><span class="operator">-d</span> apolloyl.com \</span><br><span class="line"><span class="operator">-d</span> www.apolloyl.com \</span><br><span class="line"><span class="operator">-d</span> mirror.apolloyl.com \</span><br><span class="line"><span class="operator">-d</span> t.apolloyl.com</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ip:42.96.194.60> # <em>.yntongji.com Certificate # </em>sy.include.d/server_ssl_yntongji_com.conf*</ip:42.96.194.60></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone \</span><br><span class="line"><span class="operator">-d</span> yntongji.com \</span><br><span class="line"><span class="operator">-d</span> www.yntongji.com \</span><br><span class="line"><span class="operator">-d</span> open.yntongji.com \</span><br><span class="line"><span class="operator">-d</span> t.yntongji.com</span><br></pre></td></tr></table></figure>
+<ul>
+<li><ip:42.96.194.60> # <em>.hszhyy120.com Certificate # </em>sy.include.d/server_ssl_hszhyy120_com.conf*</ip:42.96.194.60></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --standalone \</span><br><span class="line"><span class="operator">-d</span> hszhyy120.com \</span><br><span class="line"><span class="operator">-d</span> www.hszhyy120.com \</span><br><span class="line"><span class="operator">-d</span> open.hszhyy120.com \</span><br><span class="line"><span class="operator">-d</span> t.hszhyy120.com</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="To-obtain-a-cert-using-the-“webroot”-plugin-which-can-work-with-the-webroot-directory-of-any-webserver-software"><a href="#To-obtain-a-cert-using-the-“webroot”-plugin-which-can-work-with-the-webroot-directory-of-any-webserver-software" class="headerlink" title="To obtain a cert using the “webroot” plugin, which can work with the webroot directory of any webserver software:"></a>To obtain a cert using the “webroot” plugin, which can work with the webroot directory of any webserver software:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto certonly --webroot -w /var/www/example <span class="operator">-d</span> example.com <span class="operator">-d</span> www.example.com -w /var/www/thing <span class="operator">-d</span> thing.is <span class="operator">-d</span> m.thing.is</span><br></pre></td></tr></table></figure>
+<ul>
+<li>完成以上命令 最后提示如下成功信息</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">IMPORTANT NOTES:</span><br><span class="line"> - Congratulations! Your certificate and chain have been saved at</span><br><span class="line">   /etc/letsencrypt/live/coopens.com/fullchain.pem. Your cert will</span><br><span class="line">   expire on <span class="number">2016</span>-<span class="number">03</span>-<span class="number">22</span>. To obtain a new version of the certificate <span class="keyword">in</span></span><br><span class="line">   the future, simply run Let<span class="string">'s Encrypt again.</span><br><span class="line"> - If you like Let'</span>s Encrypt, please consider supporting our work by:</span><br><span class="line"></span><br><span class="line">   Donating to ISRG / Let<span class="string">'s Encrypt:   https://letsencrypt.org/donate</span><br><span class="line">   Donating to EFF:                    https://eff.org/donate-le</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>按提示在 <em>/etc/letsencrypt/live/coopens.com/fullchain.pem</em> 四个文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cert.pem </span><br><span class="line">chain.pem</span><br><span class="line">fullchain.pem</span><br><span class="line">privkey.pem</span><br></pre></td></tr></table></figure>
+<p>修改相应的 coopens.com 配置ssl证书指向</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#ssl_certificate /data/home/yzhang/GlobalSign/SYAM/syam.crt;</span></span><br><span class="line"><span class="comment">#ssl_certificate_key /data/home/yzhang/GlobalSign/SYAM/syam.key;</span></span><br><span class="line">ssl_certificate /etc/letsencrypt/live/coopens.com/fullchain.pem;</span><br><span class="line">ssl_certificate_key /etc/letsencrypt/live/coopens.com/privkey.pem;</span><br></pre></td></tr></table></figure>
+<p>最后重启 nginx 即可</p>
+<ul>
+<li>配置 ocsp 根证书</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat fullchain.pem /data/home/yzhang/CoamRunning/Documents/Server/ServiceConfig/Nginx/Certify/dst_root.pem &gt; rootchain.pem</span><br></pre></td></tr></table></figure>
+<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>在运行 sudo ./letsencrypt-auto certonly –standalone –email admin@iirii.com -d iirii.com 时频繁出现以下网络连接的错误:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Fri Feb <span class="number">19</span> <span class="number">22</span>:<span class="number">37</span>:<span class="number">18</span> yzhang@coam:~/RunProject/letsencrypt$ sudo ./letsencrypt-auto certonly --standalone --email admin@iirii.com \</span><br><span class="line">&gt;     <span class="operator">-d</span> iirii.com \</span><br><span class="line">&gt;     <span class="operator">-d</span> www.iirii.com \</span><br><span class="line">&gt;     <span class="operator">-d</span> wp.iirii.com \</span><br><span class="line">&gt;     <span class="operator">-d</span> ftp.iirii.com \</span><br><span class="line">&gt;     <span class="operator">-d</span> sarah.iirii.com \</span><br><span class="line">&gt;     <span class="operator">-d</span> acs.iirii.com \</span><br><span class="line">&gt;     <span class="operator">-d</span> acr.iirii.com</span><br><span class="line">Checking <span class="keyword">for</span> new version...</span><br><span class="line">Upgrading letsencrypt-auto <span class="number">0.5</span>.<span class="number">0</span>.dev0 to <span class="number">0.4</span>.<span class="number">0</span>...</span><br><span class="line">Couldn<span class="string">'t download https://raw.githubusercontent.com/letsencrypt/letsencrypt/v0.4.0/letsencrypt-auto-source/letsencrypt-auto. &lt;urlopen error [Errno -2] Name or service not known&gt;</span></span><br></pre></td></tr></table></figure>
+<p>需要配合 ShadowSocks 代理翻墙,详细配置参见 <em>Linux/ShadowSocks.md</em></p>
+<hr>
+<h5 id="参考列表"><a href="#参考列表" class="headerlink" title="参考列表"></a>参考列表</h5><p><a href="https://letsencrypt.org/howitworks/" target="_blank" rel="external">letsencrypt</a><br><a href="https://www.gehaowu.com/labs/2015/11/letsencrypt-https-certificate/" target="_blank" rel="external">使用 Let’s Encrypt 开源 SSL 证书</a><br><a href="https://mitnk.com/2015/11/lets_encrypt/" target="_blank" rel="external">为Nginx手动获取Let’S Encrypt的免费SSL证书</a><br><a href="https://linuxtoy.org/archives/lets-encrypt.html" target="_blank" rel="external">Let’s Encrypt 试用记</a></p>
+<p><a href="https://www.hatoko.net/nginx/nginx-ssl.html" target="_blank" rel="external">Nginx下SSL配置解释</a><br><a href="https://johnmaguire.me/2015/12/configuring-nginx-lets-encrypt-automatic-renewal/" target="_blank" rel="external">Configuring Let’s Encrypt for nginx with Automatic Renewal</a><br><a href=""></a></p>
+
       
     </div>
     
@@ -346,11 +1639,11 @@
 
 
   
-    <article id="post-Server/Config/MongoDB/Ali_etc_mongod.cnf" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Android/AndroidStudio" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/12/21/Server/Config/MongoDB/Ali_etc_mongod.cnf/" class="article-date">
-      <time datetime="2015-12-21T14:16:27.735Z" itemprop="datePublished">2015-12-21</time>
+      <a href="/2016/01/10/Android/AndroidStudio/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
 </a>
     </div>
   
@@ -359,10 +1652,147 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Android/AndroidStudio/">Title</a>
+    </h1>
+  
+
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        {"storage":{"dbPath":"/data/home/data/RSMongoDB","engine":"wiredTiger","wiredTiger":{"engineConfig":{"cacheSizeGB":20},"collectionConfig":{"blockCompressor":"snappy"}}},"systemLog":{"destination":"file","path":"/var/log/mongodb/mongod.log","logAppend":true},"processManagement":{"fork":true},"net":{"port":27017,"http":{"enabled":false}},"replication":{"oplogSizeMB":20,"replSetName":"CoamReSet"}}
+        <p><a href="http://alphayang.community/2015/11/28/android-studio-20/" target="_blank" rel="external">Android Studio 2.0-安装</a></p>
+<hr>
+<h3 id="Android-Studio-更新-gradle"><a href="#Android-Studio-更新-gradle" class="headerlink" title="Android Studio 更新 gradle"></a>Android Studio 更新 gradle</h3><p><a href="https://developer.android.com/tools/revisions/gradle-plugin.html" target="_blank" rel="external">https://developer.android.com/tools/revisions/gradle-plugin.html</a><br><a href="http://www.gradle.org/" target="_blank" rel="external">http://www.gradle.org/</a><br><a href="http://ginsmile.github.io/blog/2015/05/23/how-to-import-opensource-project-and-solve-errors/#.VoNMMfl96Uk" target="_blank" rel="external">如何用 Android Studio 导入开源项目以及常见错误的解决办法</a></p>
+<p><a href="http://tikitoo.me/2015/09/27/android-studio-the-very-useful-plugins/" target="_blank" rel="external">Android Studio有哪些非常好用的插件?</a></p>
+<hr>
+<h3 id="Android-Studio-build-gradle-插件依赖更新自动检查"><a href="#Android-Studio-build-gradle-插件依赖更新自动检查" class="headerlink" title="Android Studio build.gradle 插件依赖更新自动检查"></a>Android Studio build.gradle 插件依赖更新自动检查</h3><ul>
+<li>添加以下部分到项目依赖</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">'com.github.ben-manes.versions'</span></span><br><span class="line"></span><br><span class="line">buildscript &#123;</span><br><span class="line">  repositories &#123;</span><br><span class="line">    jcenter()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  dependencies &#123;</span><br><span class="line">    classpath <span class="string">'com.github.ben-manes:gradle-versions-plugin:0.12.0'</span></span><br><span class="line">    <span class="comment">// classpath 'org.codehaus.groovy:groovy-backports-compat23:2.3.5' // uncomment if you're using Gradle 1.x</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>执行检查</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradlew dependencyUpdates -Drevision=release</span><br></pre></td></tr></table></figure>
+<p><a href="http://stackoverflow.com/questions/28683327/how-to-check-if-gradle-dependency-has-new-version" target="_blank" rel="external">How to check if gradle dependency has new version</a><br><a href="https://github.com/ben-manes/gradle-versions-plugin" target="_blank" rel="external">ben-manes/gradle-versions-plugin</a></p>
+<hr>
+<hr>
+<h3 id="Android-Studio-Live-Template"><a href="#Android-Studio-Live-Template" class="headerlink" title="Android Studio Live Template"></a>Android Studio Live Template</h3><blockquote>
+<p>在Android Studio 中,我们会发现有时候我们有一些打出一些拼写就会出来一些东西.比如:psvm</p>
+</blockquote>
+<p><a href="http://tikitoo.me/2015/09/13/android-studio-live-templates-md/" target="_blank" rel="external">Android Studio live templates 的使用</a></p>
+<hr>
+<h3 id="Android-Studio-无线调试"><a href="#Android-Studio-无线调试" class="headerlink" title="Android Studio 无线调试"></a>Android Studio 无线调试</h3><p><a href="https://github.com/pedrovgs/AndroidWiFiADB" target="_blank" rel="external">pedrovgs/AndroidWiFiADB</a><br><a href="http://www.jianshu.com/p/21d1b65d92a4" target="_blank" rel="external">Android wifi无线调试App新玩法ADB WIFI</a></p>
+<hr>
+<h3 id="Android-Studio-加速"><a href="#Android-Studio-加速" class="headerlink" title="Android Studio 加速"></a>Android Studio 加速</h3><p><a href="http://blog.isming.me/2015/03/18/android-build-speed-up/" target="_blank" rel="external">加速Android Studio/Gradle构建</a><br><a href="http://yuluoding.com/2015/10/08/Android-Studio%E7%9A%84Gradle%E7%9A%84%E5%8A%A0%E9%80%9F/" target="_blank" rel="external">Android Studio的Gradle的加速</a></p>
+<hr>
+<h3 id="Android-Studio插件"><a href="#Android-Studio插件" class="headerlink" title="Android Studio插件"></a>Android Studio插件</h3><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Markdown</span><br><span class="line"></span></span><br><span class="line"><span class="label">.ignore</span></span><br><span class="line"><span class="label">Genymotion</span></span><br><span class="line"><span class="label">Lombok</span></span><br><span class="line"><span class="keyword">Android </span><span class="keyword">ButterKnife </span>Zelezny //  </span><br><span class="line"><span class="label">ADB</span> WIFI</span><br><span class="line"><span class="keyword">Android </span>Parcelable <span class="preprocessor">code</span> generator // https://github.com/mcharmas/<span class="keyword">android-parcelable-intellij-plugin</span><br><span class="line"></span><span class="label">ideavim</span></span><br><span class="line"><span class="label">GsonFormat</span> //五颗星推荐,把json数据往粘贴板一贴,自动生成<span class="keyword">Bean有没有,显著提高生成力.</span><br><span class="line"></span><span class="keyword">Android </span>Methods Count // http://www.methodscount.com/plugins</span><br><span class="line"><span class="keyword">android-material-design-icon-generator-plugin </span>// https://github.com/konifar/<span class="keyword">android-material-design-icon-generator-plugin</span><br><span class="line"></span><span class="label">...</span></span><br><span class="line"></span><br><span class="line"><span class="label">Gsonformat</span></span><br><span class="line"><span class="keyword">Android </span>Postfix Completion</span><br><span class="line"><span class="keyword">AndroidAccessors</span><br><span class="line"></span><span class="label">Lifecycle</span> Sorter</span><br><span class="line"><span class="label">JsonOnlineViewer</span></span><br><span class="line"><span class="label">CodeGlance</span></span><br><span class="line"><span class="label">findBugs</span>-IDEA</span><br></pre></td></tr></table></figure>
+<p><a href="http://yuluoding.com/2016/01/20/Android-Studio%E6%8F%92%E4%BB%B6/" target="_blank" rel="external">Android Studio插件</a><br><a href="http://www.hollischuang.com/archives/966" target="_blank" rel="external">Java开发必装的IntelliJ IDEA插件</a></p>
+<hr>
+<h3 id="Android自动清理无用资源工具"><a href="#Android自动清理无用资源工具" class="headerlink" title="Android自动清理无用资源工具"></a>Android自动清理无用资源工具</h3><p><a href="https://github.com/marcoRS/lint-cleaner-plugin" target="_blank" rel="external">lint-cleaner-plugin</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">  repositories &#123;</span><br><span class="line">    mavenCentral()</span><br><span class="line">  &#125;</span><br><span class="line">  dependencies &#123;</span><br><span class="line">    classpath <span class="string">'com.android.tools.build:gradle:0.12.+'</span></span><br><span class="line">    classpath <span class="string">'com.droidtitan:lint-cleaner-plugin:0.3.0'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">apply plugin: <span class="string">'android'</span></span><br><span class="line">apply plugin: <span class="string">'com.droidtitan.lintcleaner'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>执行命令清理</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradle lintClean</span><br></pre></td></tr></table></figure>
+<ul>
+<li>搜索 UnusedResources 手动删除未使用的资源文件</li>
+</ul>
+<p><a href="http://www.salton123.com/2016/01/26/android-studio-%E7%98%A6%E8%BA%AB%E6%94%BB%E7%95%A5%E6%B8%85%E7%90%86%E6%97%A0%E7%94%A8%E7%9A%84%E8%B5%84%E6%BA%90image%E3%80%81layout%E3%80%81strings%E3%80%81color/" target="_blank" rel="external">Android Studio 瘦身攻略清理无用的资源(Image. Layout. Strings. Color)</a><br><a href="http://blog.csdn.net/honjane/article/details/41351183" target="_blank" rel="external">Android自动清理无用资源工具</a><br><a href="http://www.androidchina.net/2767.html" target="_blank" rel="external">清除Android工程中没用到的资源</a></p>
+<hr>
+<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><p>编译项目时,提示错误</p>
+<pre><code>Execution failed for task &apos;:assetManager:processDebugResources&apos;.
+ &gt; com.android.ide.common.process.ProcessException: org.gradle.process.internal.ExecException: Process &apos;command &apos;G:\Program Files\Android\sdk\build-tools\22.0.1\aapt.exe&apos;&apos; finished with non-zero exit value 1
+</code></pre><p>执行 输出编译详情</p>
+<pre><code>./gradlew assembleDebug --info
+</code></pre><p>在Win8下,若需要在命令行下使用gradlw命令,添加到系统环境变量 PATH 下 G:\Program Files\Android\Android Studio\gradle\gradle-2.4\bin</p>
+<p>使用命令行编译打包android-gradle项目</p>
+<pre><code>1. 执行 ./gradlew -v 来查看下项目所用的Gradle版本
+2. 接着执行 ./gradlew clean
+3. 最后执行 ./gradlew build
+</code></pre><p>紧接着在 9GAG/app/build/outputs/apk 目录下会看到类似于app-debug-unaligned.apk, app-release-unsigned.apk等,看名字应该能理解意思,unaligned代表没有进行zip优化的,unsigned代表没有签名的.然后就可以直接安装apk查看运行效果了.</p>
+<hr>
+<blockquote>
+<p>编译项目时,提示错误</p>
+</blockquote>
+<pre><code>Error:Execution failed for task &apos;:assetManager:dexDebug&apos;.
+&gt; com.android.ide.common.process.ProcessException: org.gradle.process.internal.ExecException: Process &apos;command &apos;G:\Program Files\Java\jdk8\bin\java.exe&apos;&apos; finished with non-zero exit value 2
+</code></pre><p>肯定是哪里依赖有冲突重复的包了,将依赖注释掉即可</p>
+<h4 id="经验总结"><a href="#经验总结" class="headerlink" title="经验总结"></a>经验总结</h4><p>清除不必要的/libs/.jar包,即使没用引入<br>尽量不要引入本地包,使用 compile ‘io.reactivex:rxjava:1.0.14’ 的形式引入包<br>把不需要的jar包给删除了就可以了,亲测有效,重点排查android.support:appcompat-v7和com.android.support:support-v4包这个得用compile方法导入<br>//有相同包了,注意finished这句话,删除包,就可以了<br>compile 包引入重复的其它关联包,(版本不同也会重复引入,比如 android 注解库),使用 exclude 去掉关联引用:</p>
+<pre><code>compile(&apos;io.reactivex:rxandroid:1.0.1&apos;) {
+    exclude module: &apos;rxjava&apos;, group: &apos;io.reactivex&apos;
+}
+</code></pre><p>参考 <a href="http://blog.csdn.net/zhufuing/article/details/46829109" target="_blank" rel="external">Error:Execution failed for task ‘:app:dexDebug’. &gt; com.android.ide.common.process.ProcessException</a></p>
+<hr>
+<p>Android API 22 以上已经弃用了 httpclient 支持,需要额外引入:</p>
+<pre><code>compile group: &apos;org.apache.httpcomponents&apos; , name: &apos;httpclient-android&apos; , version: &apos;4.3.5.1&apos;
+</code></pre><blockquote>
+<p>使用</p>
+</blockquote>
+<pre><code>useLibrary  &apos;org.apache.http.legacy&apos;
+</code></pre><p>引入旧版支持,无代码提示<br>但是使用手动导包到 libs下引用,像下面这样,就会提示上面的错误</p>
+<pre><code>compile files(&apos;libs/org.apache.http.legacy.jar&apos;)
+</code></pre><p>所有还是通过下面这种方式导包</p>
+<pre><code>android {
+    ...
+    useLibrary  &apos;org.apache.http.legacy&apos;
+}
+</code></pre><p>并且两种情况都不需要引入下面这两个依赖包</p>
+<pre><code>///compile &quot;org.apache.httpcomponents:httpclient:4.+&quot;
+///compile &quot;org.apache.httpcomponents:httpcore:4.+&quot; //需要引入,否则会出现错误 Error:(250, 17) 错误: 找不到符号 符号: 类 NameValuePair
+</code></pre><hr>
+<blockquote>
+<p>编译项目时,提示错误</p>
+</blockquote>
+<pre><code>Error:Execution failed for task &apos;:assetManager:dexDebug&apos;.
+&gt; com.android.ide.common.process.ProcessException: org.gradle.process.internal.ExecException: Process &apos;command &apos;G:\Program Files\Java\jdk8\bin\java.exe&apos;&apos; finished with non-zero exit value 1
+</code></pre><blockquote>
+<p>将 java 1.8 改成 java 1.7 即可</p>
+</blockquote>
+<pre><code>compileOptions {
+    encoding &quot;UTF-8&quot; //手动添加的
+    sourceCompatibility JavaVersion.VERSION_1_7
+    targetCompatibility JavaVersion.VERSION_1_7
+}
+</code></pre><hr>
+<p>将 targetCompatibility JavaVersion.VERSION_1_7 改成 targetCompatibility JavaVersion.VERSION_1_8 后提示 lint <em>*</em> 错误,后参考项目 rxjava-webservice 的配置添加 retrolambda 解决</p>
+<hr>
+<p>build.gradle 引入 compile ‘com.daimajia.easing:library:1.0.0@aar’ 后,出现以下错误</p>
+<pre><code>:app:processDebugManifest
+F:\BaiDuCloud\StudioProjects\ShangYun\app\src\debug\AndroidManifest.xml:68:9-38 Error:
+    Attribute application@icon value=(@drawable/logo) from AndroidManifest.xml:68:9-38
+    is also present at [com.daimajia.easing:library:1.0.0] AndroidManifest.xml:13:9-45 value=(@drawable/ic_launcher)
+    Suggestion: add &apos;tools:replace=&quot;android:icon&quot;&apos; to &lt;application&gt; element at AndroidManifest.xml:65:5-580:19 to override
+Error:Execution failed for task &apos;:app:processDebugManifest&apos;.
+&gt; Manifest merger failed : Attribute application@icon value=(@drawable/logo) from AndroidManifest.xml:68:9-38
+    is also present at [com.daimajia.easing:library:1.0.0] AndroidManifest.xml:13:9-45 value=(@drawable/ic_launcher)
+    Suggestion: add &apos;tools:replace=&quot;android:icon&quot;&apos; to &lt;application&gt; element at AndroidManifest.xml:65:5-580:19 to override
+</code></pre><p>因为引入的库与当前主项目的logo有冲突,于是按以下修改:</p>
+<blockquote>
+<p>在Manifest.xml的application标签下添加tools:replace=”android:icon, android:theme”(多个属性用,隔开,并且记住在manifest根标签上加入xmlns:tools=”<a href="http://schemas.android.com/tools&quot;,否则会找不到namespace哦" target="_blank" rel="external">http://schemas.android.com/tools&quot;,否则会找不到namespace哦</a>)<br>参考 <a href="http://blog.csdn.net/codezjx/article/details/38669939" target="_blank" rel="external">http://blog.csdn.net/codezjx/article/details/38669939</a></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>软件包引入依赖过多文件之后,起用 renderscriptTargetApi 19 和 renderscriptSupportModeEnabled true 后出现以下错误:</p>
+</blockquote>
+<pre><code>com.android.dex.DexIndexOverflowException: Cannot merge new index 65536 into a non-jumbo instruction!
+</code></pre><p>添加如下配置后解决问题</p>
+<pre><code>android {
+    ...
+    dexOptions {
+        jumboMode true
+    }
+}
+</code></pre><p>但是在一些旧的Android机上可能不能安装, 还是要想办法控制包数量的大小,不用的包去掉 其中 lombok 占用 1323kb,注释掉后没有出现问题,参考:<br><a href="http://stackoverflow.com/questions/30515209/dexindexoverflowexception-cannot-merge-new-index-65772-into-a-non-jumbo-instruc" target="_blank" rel="external">DexIndexOverflowException: Cannot merge new index 65772 into a non-jumbo instruction!: Jumbo Mode? and/or Multi-Dex? What is behind the scene?</a><br><a href="http://stackoverflow.com/questions/26093664/android-studio-only-dexexception-cannot-merge-new-index-65536-into-a-non-jumbo" target="_blank" rel="external">Android Studio ONLY! DexException: Cannot merge new index 65536 into a non-jumbo instruction</a><br><a href="http://www.cnblogs.com/frydsh/archive/2013/02/20/2918969.html" target="_blank" rel="external">解决”Cannot merge new index 67208 into a non-jumbo instruction”的问题</a></p>
+<hr>
+<p>参考 </p>
+<p><a href="http://stackoverflow.com/questions/28640314/android-studio-fails-to-debug-with-error-org-gradle-process-internal-execexcepti" target="_blank" rel="external">http://stackoverflow.com/questions/28640314/android-studio-fails-to-debug-with-error-org-gradle-process-internal-execexcepti</a></p>
+
       
     </div>
     
@@ -387,11 +1817,11 @@
 
 
   
-    <article id="post-Server/Config/MongoDB/Vultr_etc_mongod.cnf" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Nginx/NginxNote" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/12/21/Server/Config/MongoDB/Vultr_etc_mongod.cnf/" class="article-date">
-      <time datetime="2015-12-21T14:16:26.636Z" itemprop="datePublished">2015-12-21</time>
+      <a href="/2016/01/10/Nginx/NginxNote/" class="article-date">
+      <time datetime="2016-01-10T11:41:31.000Z" itemprop="datePublished">2016-01-10</time>
 </a>
     </div>
   
@@ -400,10 +1830,23 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/Nginx/NginxNote/">NginxNote</a>
+    </h1>
+  
+
+      </header>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        {"storage":{"dbPath":"/data/home/data/RSMongoDB","engine":"wiredTiger","wiredTiger":{"engineConfig":{"cacheSizeGB":20},"collectionConfig":{"blockCompressor":"snappy"}}},"systemLog":{"destination":"file","path":"/var/log/mongodb/mongod.log","logAppend":true},"processManagement":{"fork":true},"net":{"port":27017,"http":{"enabled":false}},"replication":{"oplogSizeMB":20,"replSetName":"CoamReSet"}}
+              <h1 id="Nginx-笔记"><a href="#Nginx-笔记" class="headerlink" title="Nginx 笔记"></a>Nginx 笔记</h1><p><a href="http://www.nginx.org">Nginx 官网</a></p>
+<h2 id="不错的Nginx开发者博客"><a href="#不错的Nginx开发者博客" class="headerlink" title="不错的Nginx开发者博客"></a>不错的Nginx开发者博客</h2><p><a href="http://www.just4coding.com/blog/categories/nginx/">Just For Coding</a></p>
+          
       
     </div>
     
@@ -413,87 +1856,9 @@
 
       
       
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Server/Config/Ejabberd/default.ejabberd" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/21/Server/Config/Ejabberd/default.ejabberd/" class="article-date">
-      <time datetime="2015-12-21T14:16:26.228Z" itemprop="datePublished">2015-12-21</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        {"loglevel":4,"log_rotate_size":10485760,"log_rotate_date":"","log_rotate_count":1,"log_rate_limit":100,"hosts":["localhost"],"listen":[{"port":5222,"module":"ejabberd_c2s","max_stanza_size":65536,"shaper":"c2s_shaper","access":"c2s"},{"port":5269,"module":"ejabberd_s2s_in"},{"port":5280,"module":"ejabberd_http","request_handlers":{"/websocket":"ejabberd_http_ws"},"web_admin":true,"http_bind":true,"captcha":true}],"auth_method":"internal","shaper":{"normal":1000,"fast":50000},"max_fsm_queue":1000,"acl":{"local":{"user_regexp":""},"loopback":{"ip":["127.0.0.0/8"]}},"access":{"max_user_sessions":{"all":10},"max_user_offline_messages":{"admin":5000,"all":100},"local":{"local":"allow"},"c2s":{"blocked":"deny","all":"allow"},"c2s_shaper":{"admin":"none","all":"normal"},"s2s_shaper":{"all":"fast"},"announce":{"admin":"allow"},"configure":{"admin":"allow"},"muc_admin":{"admin":"allow"},"muc_create":{"local":"allow"},"muc":{"all":"allow"},"pubsub_createnode":{"local":"allow"},"register":{"all":"allow"},"trusted_network":{"loopback":"allow"}},"language":"en","modules":{"mod_adhoc":{},"mod_announce":{"access":"announce"},"mod_blocking":{},"mod_caps":{},"mod_carboncopy":{},"mod_client_state":{},"mod_configure":{},"mod_disco":{},"mod_irc":{},"mod_http_bind":{},"mod_last":{},"mod_muc":{"access":"muc","access_create":"muc_create","access_persistent":"muc_create","access_admin":"muc_admin"},"mod_offline":{"access_max_user_messages":"max_user_offline_messages"},"mod_ping":{},"mod_privacy":{},"mod_private":{},"mod_pubsub":{"access_createnode":"pubsub_createnode","ignore_pep_from_offline":true,"last_item_cache":false,"plugins":["flat","hometree","pep"]},"mod_register":{"welcome_message":{"subject":"Welcome!","body":"Hi.\nWelcome to this XMPP server."},"ip_access":"trusted_network","access":"register"},"mod_roster":{},"mod_shared_roster":{},"mod_stats":{},"mod_time":{},"mod_vcard":{"search":false},"mod_version":{}},"allow_contrib_modules":true}
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Server/Config/Ejabberd/old.ejabberd" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/21/Server/Config/Ejabberd/old.ejabberd/" class="article-date">
-      <time datetime="2015-12-21T14:16:26.022Z" itemprop="datePublished">2015-12-21</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        {"loglevel":4,"log_rotate_size":10485760,"log_rotate_date":"","log_rotate_count":1,"log_rate_limit":100,"hosts":["localhost","coam.co","syam.cc"],"listen":[{"port":5222,"module":"ejabberd_c2s","max_stanza_size":65536,"shaper":"c2s_shaper","access":"c2s"},{"port":5269,"module":"ejabberd_s2s_in"},{"port":5280,"module":"ejabberd_http","request_handlers":{"/websocket":"ejabberd_http_ws"},"web_admin":true,"http_bind":true,"captcha":true}],"auth_method":"odbc","odbc_type":"odbc","odbc_server":"localhost","odbc_database":"IM_Ejabberd","odbc_username":"zyf","odbc_password":"312","odbc_port":3306,"odbc_start_interval":20,"odbc_keepalive_interval":30,"shaper":{"normal":1000,"fast":50000},"max_fsm_queue":1000,"acl":{"local":{"user_regexp":""},"loopback":{"ip":["127.0.0.0/8"]}},"access":{"max_user_sessions":{"all":10},"max_user_offline_messages":{"admin":5000,"all":100},"local":{"local":"allow"},"c2s":{"blocked":"deny","all":"allow"},"c2s_shaper":{"admin":"none","all":"normal"},"s2s_shaper":{"all":"fast"},"announce":{"admin":"allow"},"configure":{"admin":"allow"},"muc_admin":{"admin":"allow"},"muc_create":{"local":"allow"},"muc":{"all":"allow"},"pubsub_createnode":{"local":"allow"},"register":{"all":"allow"},"trusted_network":{"loopback":"allow"}},"language":"en","modules":{"mod_adhoc":{},"mod_announce":{"access":"announce"},"mod_blocking":{},"mod_caps":{},"mod_carboncopy":{},"mod_client_state":{"drop_chat_states":true,"queue_presence":false},"mod_configure":{},"mod_disco":{},"mod_irc":{},"mod_http_bind":{},"mod_last":{},"mod_muc":{"access":"muc","access_create":"muc_create","access_persistent":"muc_create","access_admin":"muc_admin"},"mod_offline":{"access_max_user_messages":"max_user_offline_messages"},"mod_ping":{},"mod_privacy":{},"mod_private":{},"mod_pubsub":{"access_createnode":"pubsub_createnode","ignore_pep_from_offline":true,"last_item_cache":false,"plugins":["flat","hometree","pep"]},"mod_register":{"welcome_message":{"subject":"Welcome!","body":"Hi.\nWelcome to this ShangYun XMPP server."},"ip_access":"trusted_network","access":"register"},"mod_roster":{},"mod_shared_roster":{},"mod_stats":{},"mod_time":{},"mod_vcard":{},"mod_version":{}},"allow_contrib_modules":true}
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
+        <p class="article-more-link">
+          <a  href="/2016/01/10/Nginx/NginxNote/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -512,7 +1877,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
+      <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
     </nav>
   
 </div>

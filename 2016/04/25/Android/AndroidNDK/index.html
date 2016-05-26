@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>AndroidNDK | 商运物流</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="### 
+NDK官网示例 googlesamples/android-ndk
+
+CrystaX NDKBoost + Android? CrystaX NDK!使用Android Studio构建基于NDK和Boost C++库的应用程序
+
+不错的 ndk 文章Android ndk入门学习JNI系列教程三 —— NDK入门MENU Android Studio中NDK开发Android Stud">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AndroidNDK">
+<meta property="og:url" content="https://coam.co/2016/04/25/Android/AndroidNDK/index.html">
+<meta property="og:site_name" content="商运物流">
+<meta property="og:description" content="### 
+NDK官网示例 googlesamples/android-ndk
+
+CrystaX NDKBoost + Android? CrystaX NDK!使用Android Studio构建基于NDK和Boost C++库的应用程序
+
+不错的 ndk 文章Android ndk入门学习JNI系列教程三 —— NDK入门MENU Android Studio中NDK开发Android Stud">
+<meta property="og:updated_time" content="2016-05-19T11:11:36.187Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AndroidNDK">
+<meta name="twitter:description" content="### 
+NDK官网示例 googlesamples/android-ndk
+
+CrystaX NDKBoost + Android? CrystaX NDK!使用Android Studio构建基于NDK和Boost C++库的应用程序
+
+不错的 ndk 文章Android ndk入门学习JNI系列教程三 —— NDK入门MENU Android Studio中NDK开发Android Stud">
+  
+    <link rel="alternative" href="/atom.xml" title="商运物流" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/author.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">张亚飞</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/markdown-gfw-hexo-jekyll/" style="font-size: 10px;">markdown gfw hexo jekyll</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://coam.co">商运物流</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/zyfmix/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://wp.iirii.com/">商运技术博客</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于物流设计</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">张亚飞</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img lazy-src="/img/author.jpg" class="js-avatar">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">张亚飞</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Android/AndroidNDK" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/25/Android/AndroidNDK/" class="article-date">
+      <time datetime="2016-04-25T02:08:31.000Z" itemprop="datePublished">2016-04-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      AndroidNDK
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <a id="more"></a>
+<hr>
+<hr>
+<p>### </p>
+<p><a href="https://github.com/googlesamples/android-ndk" target="_blank" rel="external">NDK官网示例 googlesamples/android-ndk</a></p>
+<hr>
+<h3 id="CrystaX-NDK"><a href="#CrystaX-NDK" class="headerlink" title="CrystaX NDK"></a>CrystaX NDK</h3><p><a href="https://www.crystax.net/cn/blog/2" target="_blank" rel="external">Boost + Android? CrystaX NDK!</a><br><a href="https://www.crystax.net/cn/blog/3" target="_blank" rel="external">使用Android Studio构建基于NDK和Boost C++库的应用程序</a></p>
+<hr>
+<h3 id="不错的-ndk-文章"><a href="#不错的-ndk-文章" class="headerlink" title="不错的 ndk 文章"></a>不错的 ndk 文章</h3><p><a href="http://www.jianshu.com/p/4ee5b5237b55" target="_blank" rel="external">Android ndk入门学习</a><br><a href="http://blog.whyun.com/posts/jni-ndk/" target="_blank" rel="external">JNI系列教程三 —— NDK入门</a><br><a href="http://www.race604.com/android-studio-with-ndk/" target="_blank" rel="external">MENU Android Studio中NDK开发</a><br><a href="http://ph0b.com/android-studio-gradle-and-ndk-integration/" target="_blank" rel="external">Android Studio, gradle and NDK integration</a><br><a href="http://yanbober.github.io/2015/02/14/android_studio_jni_1/" target="_blank" rel="external">NDK-JNI实战教程(一) 在Android Studio运行第一个NDK程序</a><br><a href="http://yanbober.github.io/2015/02/16/android_studio_jni_2/" target="_blank" rel="external">NDK-JNI实战教程(二) JNI官方中文资料</a><br><a href="http://www.jianshu.com/p/d8cde65cb4f7" target="_blank" rel="external">Android Studio ndk-Jni开发详细入门,Aes加密demo</a><br><a href="http://ph0b.com/new-android-studio-ndk-support/" target="_blank" rel="external">国外不错的文章-The new NDK support in Android Studio</a></p>
+<hr>
+<h3 id="出现错误"><a href="#出现错误" class="headerlink" title="出现错误"></a>出现错误</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> /home/user5432/workspace/bitmapproj/obj/<span class="built_in">local</span>/armeabi/objs-debug/mybitmap.o : In <span class="keyword">function</span> Java_com_example_plasma_PlasmaView_renderPlasma</span><br><span class="line"><span class="string">"undefined reference to AndroidBitmap_getInfo"</span></span><br><span class="line"><span class="string">"undefined reference to AndroidBitmap_lockPixels"</span></span><br><span class="line"><span class="string">"undefined reference to AndroidBitmap_unlockPixels"</span></span><br></pre></td></tr></table></figure>
+<p>gradle ndk 添加如下依赖</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ndk &#123;</span><br><span class="line">    ldLibs <span class="string">"log"</span>,<span class="string">"android"</span>, <span class="string">"jnigraphics"</span> // 引用依赖的 ndk 库 ldLibs = [<span class="string">"android"</span>, <span class="string">"jnigraphics"</span>, &lt;other ndk libraries you might need&gt;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>或 Android.mk 添加如下依赖</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`LOCAL_LDFLAGS += -ljnigraphics`</span><br></pre></td></tr></table></figure>
+<p>参考<br><a href="http://stackoverflow.com/questions/4939266/android-bitmap-native-code-linking-problem" target="_blank" rel="external">Android bitmap native code - linking problem</a></p>
+<hr>
+<h3 id="出现-NEON-错误"><a href="#出现-NEON-错误" class="headerlink" title="出现 NEON 错误"></a>出现 NEON 错误</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error:(<span class="number">31</span>, <span class="number">2</span>) error: <span class="comment">#error You must enable NEON instructions (e.g. -mfloat-abi=softfp -mfpu=neon) to use arm_neon.h</span></span><br></pre></td></tr></table></figure>
+<p><a href="http://luofl1992.is-programmer.com/posts/38686.html" target="_blank" rel="external">Android NDK(ARM开发)使用NEON优化</a><br><a href="http://blog.csdn.net/luofl1992/article/details/8759145" target="_blank" rel="external">Android NDK使用NEON优化,SIMD优化</a><br><a href="http://dbro.pro/blog/2014/01/04/gradle-ndk.html" target="_blank" rel="external">Gradle - neon</a><br><a href="http://stackoverflow.com/questions/34958125/how-do-i-enable-arm-neon-builds-using-gradle" target="_blank" rel="external">How do I enable ARM NEON builds using Gradle?</a><br><a href="http://stackoverflow.com/questions/36277243/how-to-build-and-debug-native-code-c-with-neon-enabled-in-android-studio" target="_blank" rel="external">How to build and debug native code (c) with neon enabled in android studio?</a><br><a href="http://developer.android.com/intl/es/ndk/guides/cpu-arm-neon.html#rd" target="_blank" rel="external">Android-NDK _NEON Support</a></p>
+<hr>
+<h3 id="error-Unknown-or-unsupported-ARM-architecture"><a href="#error-Unknown-or-unsupported-ARM-architecture" class="headerlink" title="error Unknown or unsupported ARM architecture"></a>error Unknown or unsupported ARM architecture</h3><p><a href="https://github.com/kivy/python-for-android/issues/455" target="_blank" rel="external">[revamp] Android NDK API 21 issue #455</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">It would appear that at least as of Kitkat <span class="number">4.4</span> (API <span class="number">19</span>), ARM devices are required to be at least ARMv7a:</span><br><span class="line"></span><br><span class="line">MUST report, via android.os.Build.CPU_ABI, only one of the ABIs listed below</span><br><span class="line">* armeabi-v7a</span><br><span class="line">* x86</span><br><span class="line">* mips</span><br><span class="line">It<span class="string">'s not altogether surprising that the API to follow 19 (Lollipop API 21) would drop support for ARMv5 completely. From what I'</span>ve <span class="built_in">read</span>, official builds of <span class="number">4.4</span>+ are always ARMv7a, but there are some custom builds <span class="keyword">for</span> certain devices <span class="built_in">which</span> run ARMv6.</span><br><span class="line"></span><br><span class="line">So the fix is to target a lower API or target the armeabi-v7a architecture. Switching to v7a fixed this problem <span class="keyword">for</span> me.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>我的错误信息大概是 android-23/…/cpu-feature.h 中的错误,可能是最新的 ndk 暂不支持 cpu-feature.h 的 armeabi 平台编译库吧, 去掉 abiFilters 中的 armeabi 编译选项即可</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">abiFilters <span class="string">"armeabi-v7a"</span> , <span class="string">"x86"</span>, <span class="string">"mips"</span> //<span class="string">"armeabi"</span>, <span class="string">"armeabi-v7a"</span> , <span class="string">"x86"</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="错误-Error-208-9-error-‘for’-loop-initial-declarations-are-only-allowed-in-C99-or-C11-mode"><a href="#错误-Error-208-9-error-‘for’-loop-initial-declarations-are-only-allowed-in-C99-or-C11-mode" class="headerlink" title="错误 Error:(208, 9) error: ‘for’ loop initial declarations are only allowed in C99 or C11 mode"></a>错误 Error:(208, 9) error: ‘for’ loop initial declarations are only allowed in C99 or C11 mode</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\yafei\AppDeveloperWorkspace\CoamAndroid\app\src\main\jni\audio.c</span><br><span class="line">Error:(<span class="number">208</span>, <span class="number">9</span>) error: <span class="string">'for'</span> loop initial declarations are only allowed <span class="keyword">in</span> C99 or C11 mode</span><br><span class="line">Information:(<span class="number">208</span>, <span class="number">9</span>) use option -std=c99, -std=gnu99, -std=c11 or -std=gnu11 to compile your code</span><br><span class="line">C:\Users\yafei\AppDeveloperWorkspace\CoamAndroid\app\src\main\jni\audio.c: In <span class="keyword">function</span> <span class="string">'Java_com_coam_ui_telegram_controller_TelegramMediaController_getWaveform2'</span>:</span><br><span class="line">C:\Users\yafei\AppDeveloperWorkspace\CoamAndroid\app\src\main\jni\audio.c:<span class="number">692</span>:<span class="number">5</span>: error: <span class="string">'for'</span> loop initial declarations are only allowed <span class="keyword">in</span> C99 or C11 mode</span><br></pre></td></tr></table></figure>
+<p><a href="http://stackoverflow.com/questions/34698592/building-android-app-with-c" target="_blank" rel="external">Building android app with C++</a><br><a href="http://stackoverflow.com/questions/24279249/gradle-building-issue" target="_blank" rel="external">Gradle building issue</a></p>
+<hr>
+<h3 id="Telegram-相关"><a href="#Telegram-相关" class="headerlink" title="Telegram 相关"></a>Telegram 相关</h3><hr>
+<h3 id="ogg-没有-config-types-h-错误"><a href="#ogg-没有-config-types-h-错误" class="headerlink" title="ogg 没有 config_types.h 错误"></a>ogg 没有 config_types.h 错误</h3><p><a href="https://github.com/xiph/ogg" target="_blank" rel="external">xiph/ogg</a><br>添加文件 <a href="https://github.com/GunioRobot/rtn56u/blob/a6824f903dd56c0325a19be342aeb4e7485239db/user/flac-1.2.1/source/include/ogg/config_types.h" target="_blank" rel="external">rtn56u/user/flac-1.2.1/source/include/ogg/config_types.h</a></p>
+<hr>
+<h3 id="cpu-feature-问题"><a href="#cpu-feature-问题" class="headerlink" title="cpu-feature 问题"></a>cpu-feature 问题</h3><p><a href="http://developer.android.com/intl/es/ndk/guides/cpu-features.html" target="_blank" rel="external">The cpufeatures Library</a></p>
+<hr>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/04/25/Android/AndroidNDK/">AndroidNDK</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 张亚飞 的个人博客">张亚飞</a></p>
+        <p><span>发布时间:</span>2016年04月25日 - 10时08分</p>
+        <p><span>最后更新:</span>2016年05月19日 - 19时11分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/04/25/Android/AndroidNDK/" title="AndroidNDK">https://coam.co/2016/04/25/Android/AndroidNDK/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://coam.co/2016/04/25/Android/AndroidNDK/　　作者: 张亚飞" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/05/09/Linux/iptables/">
+                    iptables
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/04/21/Design/PhotoShop/">
+                    PhotoShop 设计笔记摘要
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#CrystaX-NDK"><span class="toc-number">1.</span> <span class="toc-text">CrystaX NDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不错的-ndk-文章"><span class="toc-number">2.</span> <span class="toc-text">不错的 ndk 文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#出现错误"><span class="toc-number">3.</span> <span class="toc-text">出现错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#出现-NEON-错误"><span class="toc-number">4.</span> <span class="toc-text">出现 NEON 错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#error-Unknown-or-unsupported-ARM-architecture"><span class="toc-number">5.</span> <span class="toc-text">error Unknown or unsupported ARM architecture</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#错误-Error-208-9-error-‘for’-loop-initial-declarations-are-only-allowed-in-C99-or-C11-mode"><span class="toc-number">6.</span> <span class="toc-text">错误 Error:(208, 9) error: ‘for’ loop initial declarations are only allowed in C99 or C11 mode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Telegram-相关"><span class="toc-number">7.</span> <span class="toc-text">Telegram 相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ogg-没有-config-types-h-错误"><span class="toc-number">8.</span> <span class="toc-text">ogg 没有 config_types.h 错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cpu-feature-问题"><span class="toc-number">9.</span> <span class="toc-text">cpu-feature 问题</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/05/09/Linux/iptables/" title="上一篇: iptables">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/04/21/Design/PhotoShop/" title="下一篇: PhotoShop 设计笔记摘要">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Erlang/InstallOTP/">InstallOTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Redis/RedisSyncNote/">RedisSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/Ubuntu/">Linux/Ubuntu</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/SystemInstall/">Linux/SystemInstall</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Others/YL/">Others/YL</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/Linux/LinuxCommand/">LinuxCommand</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlSyncNote/">MysqlSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlToRedis/">MysqlToRedis</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlNote/">MysqlNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlSql/">MysqlSql</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Redis/RedisNote/">RedisNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Mongo/MongoNotes/">MongoNotes</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/Linux/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/25/Android/AndroidNDK/">AndroidNDK</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/Design/PhotoShop/">PhotoShop 设计笔记摘要</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/15/Others/Enshrine/">Enshrine收藏</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/03/Others/Imagine/">【脑洞大开】你看过这样的动态图吗?——太牛了！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/26/Linux/Linux.bashrc/">Linux.bashrc</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/24/WinScripts/WinNote/">WinNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/21/Android/ProGuard/">ProGuard</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Linux/ShadowSocks/">ShadowSocks</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Web/WebDesign/">WebDesign</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Plan/FreeShareInfoIdea/">Plan/FreeShareInfoIdea</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Phalcon/PhalconNote/">Phalcon/PhalconNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Info/EnshrineBlogs/">Info/EnshrineBlogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/CLang/cMake/">cMake</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/13/Android/CoamApp/">CoamApp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/30/CLang/GccNote/">GCCNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/QT/QTNote/">QTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/DevIDENote/">DevIDENote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/CNote/">CNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/QT/Cygwin/">Cygwin</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/Electron/ElectronNote/">ElectronNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/CheerioNote/">CheerioNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/MochaNote/">MochaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/WebpackNote/">WebPack 自动打包工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/GulpNote/">NodeJs/GulpNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/Info/hospital/">hospital</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/18/Angular/TypeScriptNote/">TypeScriptNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/17/Angular/AngularNote/">Angular 开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Java/JavaNote/">JavaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/Python/PythonNote/">PythonNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdModule/">EjabberdModule</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdConfigure/">EjabberdConfigure</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrofit/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/PhpNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnLombok/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaHashMap/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaArray/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnGoogleGuava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnAsyncTask/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/NodeJs/NodeJsNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/MongoNotes/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/GPS/GPSNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Rebar/">RebarNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/MQTT/">MQTTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Lua/">LuaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Elixir/">ElixirNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/XMPP/">XMPPNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdNote/">EjabberdNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/Composer/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/SSL/LetSSL/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidStudio/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Nginx/NginxNote/">NginxNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mysql/MysqlTrigger/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidPushMQTT/">Android 推送之 MQTT</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/phpMyAdmin/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnSupportAnnotations/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRxJava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrolambda/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnOther/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnListView/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnGradle/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidFragment/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidDesign/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidContext/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroid/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/EventBus/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidStethoAppWithChrome/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidLog/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/Conversations.IM/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnOkHttp/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Http/HttpNote/">Http协议相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Others/MarkDownNote/">MarkDown 相关</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 张亚飞
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        <div class="visit">
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <span id="site-visit" >本站到访数: 
+                    <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </span>
+            <span id="busuanzi_container_page_pv" style='display:none'>
+                <span id="page-visit">, 本页阅读量: 
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </span>
+        </div>
+    </div>
+</footer>
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

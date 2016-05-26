@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>商运物流</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ubuntu 12.10安装后需要做的那些事安装Ubuntu 15.10后要做的事
+Ubuntu更改 Ubuntu 默认用户主目录//默认用户 yzhang 主目录为 /home/yzhang ,需要统一更改为 /data/home/yzhang .按以下方法操作即可
+http://askubuntu.com/questions/250862/properly-modify-home-dir
+12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="商运物流">
+<meta property="og:url" content="https://coam.co/2016/05/16/Linux/SystemInstall/index.html">
+<meta property="og:site_name" content="商运物流">
+<meta property="og:description" content="ubuntu 12.10安装后需要做的那些事安装Ubuntu 15.10后要做的事
+Ubuntu更改 Ubuntu 默认用户主目录//默认用户 yzhang 主目录为 /home/yzhang ,需要统一更改为 /data/home/yzhang .按以下方法操作即可
+http://askubuntu.com/questions/250862/properly-modify-home-dir
+12">
+<meta property="og:updated_time" content="2016-05-16T14:12:46.558Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="商运物流">
+<meta name="twitter:description" content="ubuntu 12.10安装后需要做的那些事安装Ubuntu 15.10后要做的事
+Ubuntu更改 Ubuntu 默认用户主目录//默认用户 yzhang 主目录为 /home/yzhang ,需要统一更改为 /data/home/yzhang .按以下方法操作即可
+http://askubuntu.com/questions/250862/properly-modify-home-dir
+12">
+  
+    <link rel="alternative" href="/atom.xml" title="商运物流" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/author.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">张亚飞</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/markdown-gfw-hexo-jekyll/" style="font-size: 10px;">markdown gfw hexo jekyll</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://coam.co">商运物流</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/zyfmix/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://wp.iirii.com/">商运技术博客</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于物流设计</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">张亚飞</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img lazy-src="/img/author.jpg" class="js-avatar">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">张亚飞</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Linux/SystemInstall" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/16/Linux/SystemInstall/" class="article-date">
+      <time datetime="2016-05-16T14:12:46.559Z" itemprop="datePublished">2016-05-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><a href="http://www.cnblogs.com/bizhu/archive/2013/01/07/2849771.html" target="_blank" rel="external">ubuntu 12.10安装后需要做的那些事</a><br><a href="http://blog.csdn.net/skykingf/article/details/45267517" target="_blank" rel="external">安装Ubuntu 15.10后要做的事</a></p>
+<h3 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h3><h3 id="更改-Ubuntu-默认用户主目录"><a href="#更改-Ubuntu-默认用户主目录" class="headerlink" title="更改 Ubuntu 默认用户主目录"></a>更改 Ubuntu 默认用户主目录</h3><p>//默认用户 yzhang 主目录为 /home/yzhang ,需要统一更改为 /data/home/yzhang .按以下方法操作即可</p>
+<p><a href="http://askubuntu.com/questions/250862/properly-modify-home-dir" target="_blank" rel="external">http://askubuntu.com/questions/250862/properly-modify-home-dir</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /data/home;</span><br><span class="line">sudo mkdir yzhang</span><br><span class="line">sudo chown yzhang:yzhang yzhang</span><br><span class="line">//sudo usermod <span class="operator">-d</span> /data/home/yzhang -m yzhang</span><br></pre></td></tr></table></figure>
+<p>直接修改 ss /etc/passwd 用户主目录为  /data/home/yzhang</p>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+<h3 id="安装-Vim-git"><a href="#安装-Vim-git" class="headerlink" title="安装 Vim git"></a>安装 Vim git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vim</span><br><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
+<h3 id="Ubuntu-所有操作免输密码"><a href="#Ubuntu-所有操作免输密码" class="headerlink" title="Ubuntu 所有操作免输密码"></a>Ubuntu 所有操作免输密码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo visudo</span><br></pre></td></tr></table></figure>
+<p>末尾添加一行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yzhang ALL=(ALL)NOPASSWD:ALL</span><br></pre></td></tr></table></figure>
+<p>参考 <a href="http://www.360doc.com/content/14/0114/10/474846_345158171.shtml" target="_blank" rel="external">Ubuntu sudo 免输入密码</a></p>
+<h3 id="lnav工具是在终端界面看日志的神器-装上之后在终端里就可以用lnav彩色显示日志了"><a href="#lnav工具是在终端界面看日志的神器-装上之后在终端里就可以用lnav彩色显示日志了" class="headerlink" title="lnav工具是在终端界面看日志的神器,装上之后在终端里就可以用lnav彩色显示日志了."></a>lnav工具是在终端界面看日志的神器,装上之后在终端里就可以用lnav彩色显示日志了.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install lnav</span><br></pre></td></tr></table></figure>
+<p>或者 Github 下载 <a href="https://github.com/tstack/lnav" target="_blank" rel="external">tstack/lnav</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ./configure</span><br><span class="line">$ make</span><br><span class="line">$ sudo make install</span><br></pre></td></tr></table></figure>
+<p>Run ./autogen.sh before running any of the above commands when compiling from a cloned repository.</p>
+<p>可以运行如下命令查看日志</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ lnav /var/<span class="built_in">log</span>/messages*</span><br></pre></td></tr></table></figure>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+<h3 id="安装搜狗输入法"><a href="#安装搜狗输入法" class="headerlink" title="安装搜狗输入法"></a>安装搜狗输入法</h3><p>1:卸载fcitx</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get --purge remove fcitx*</span><br></pre></td></tr></table></figure>
+<p>2:清理系统内的无用的软件包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get --purge autoremove</span><br></pre></td></tr></table></figure>
+<p>3:到搜狗官网下载搜狗拼音输入法,选择你系统对应的软件包,我系统是64位的,所以我选择了amd64的</p>
+<p><a href="http://pinyin.sogou.com/linux/?r=pinyin" target="_blank" rel="external">http://pinyin.sogou.com/linux/?r=pinyin</a></p>
+<p>4:用gdebi这个软件安装,它能够安装所有依赖关系,如果你没有安装gdebi,请先安装该软件；我用的是<br>这种方法,其它的方法我没试过,所以不知道行不行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gdebi sogou_pinyin_linux_1.<span class="number">0.0</span>.<span class="number">0014</span>_amd64.deb</span><br></pre></td></tr></table></figure>
+<p>5:注销下系统就可以了</p>
+<p>参考 <a href="http://tieba.baidu.com/p/3020246301" target="_blank" rel="external">ubuntu 14.04 x64 下完美安装搜狗拼音输入法</a></p>
+<p>在 Ubuntu 下按教程安装好 sogou 输入法后却无法调出来,参考 <a href="http://jingyan.baidu.com/article/adc815134f4b92f722bf7350.html" target="_blank" rel="external">在ubuntu下,把安装的中文输入法切换出来</a></p>
+<p>×× 以下参考</p>
+<p>先添加以下源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:fcitx-team/nightly</span><br></pre></td></tr></table></figure>
+<p>更新一下系统</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<p>开始安装fcitx</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install fcitx</span><br></pre></td></tr></table></figure>
+<p>安装fcitx的配置工具</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install fcitx-config-gtk</span><br></pre></td></tr></table></figure>
+<p>安装fcitx的table-all软件包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install fcitx-table-all</span><br></pre></td></tr></table></figure>
+<p>最后安装im-switch切换工具</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install im-switch</span><br></pre></td></tr></table></figure>
+<p>一条快捷命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install fcitx fcitx-config-gtk fcitx-table-all im-switch</span><br></pre></td></tr></table></figure>
+<p>其实fcitx只是一个输入法工具,本身不带资源包的,可以搜索 Fcitx-Configuraton<br>打开查看输入法配置,默认还是没有 搜狗输入法</p>
+<p>我们还需要下载 souguo deb 资源包 <a href="http://pinyin.sogou.com/linux/" target="_blank" rel="external">http://pinyin.sogou.com/linux/</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i sogoupinyin_2.<span class="number">0.0</span>.<span class="number">0068</span>_amd64.deb</span><br></pre></td></tr></table></figure>
+<p>如果提示缺少依赖,可以按系统提示先执行以下命令再安装:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install <span class="operator">-f</span></span><br></pre></td></tr></table></figure>
+<p>注意:以上步骤安装完后需要注销一下</p>
+<p>参考 <a href="http://jingyan.baidu.com/article/7f41ececec6c47593d095cf4.html" target="_blank" rel="external">Ubuntu下安装搜狗输入法</a></p>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+<h2 id="开发环境搭建"><a href="#开发环境搭建" class="headerlink" title="开发环境搭建"></a>开发环境搭建</h2><h3 id="安装基础C-C-编译库"><a href="#安装基础C-C-编译库" class="headerlink" title="安装基础C/C++编译库"></a>安装基础C/C++编译库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vim automake make perl gcc g++</span><br><span class="line">sudo apt-get install bison g++-multilib git flex lzop gperf libxml2-utils zlib1g-dev</span><br></pre></td></tr></table></figure>
+<h3 id="安装CMake和Qt-Creator"><a href="#安装CMake和Qt-Creator" class="headerlink" title="安装CMake和Qt Creator"></a>安装CMake和Qt Creator</h3><p>CMake和Qt Creator是Linux下开发C++程序的神器,Ubuntu 15.04已经集成了最新版的Qt Creator (3.1.1)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install cmake qtcreator</span><br></pre></td></tr></table></figure>
+<p>参考 <a href="http://blog.csdn.net/skykingf/article/details/45370223" target="_blank" rel="external">Ubuntu 15.10 搭建Android系统编译环境</a></p>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+<h3 id="安装-Oracle-Java"><a href="#安装-Oracle-Java" class="headerlink" title="安装 Oracle Java"></a>安装 Oracle Java</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:webupd8team/java</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install oracle-java8-installer</span><br></pre></td></tr></table></figure>
+<p>注意:由于系统自带的是OpenJDK,卸载OpenJDK之后会带有残留,导致运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+<p>时第一行不是java的版本号,会是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Picked up JAVA_TOOL_OPTIONS: -javaagent:/usr/share/java/jayatanaag.jar</span><br></pre></td></tr></table></figure>
+<p>这个提示,导致很多检测java版本号的脚本会运行出错,因此需要手动清除残留.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm /usr/share/upstart/sessions/jayatana.conf</span><br></pre></td></tr></table></figure>
+<p>删除 <em>/usr/share/upstart/sessions/jayatana.conf</em> 文件,重启之后再运行 <em>java -version</em> 就不会再有 <em>Picked up JAVA_TOOL_OPTIONS: -javaagent:/usr/share/java/jayatanaag.jar</em> 提示了.</p>
+<p>参考<br><a href="http://blog.csdn.net/skykingf/article/details/45267517" target="_blank" rel="external">安装Ubuntu 15.10后要做的事</a><br><a href="https://launchpad.net/~webupd8team/+archive/ubuntu/java" target="_blank" rel="external">Oracle Java (JDK) 7 / 8 / 9 Installer PPA</a></p>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+<h3 id="安装Sublime-Text-3"><a href="#安装Sublime-Text-3" class="headerlink" title="安装Sublime Text 3"></a>安装Sublime Text 3</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:webupd8team/sublime-text-<span class="number">3</span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install sublime-text</span><br></pre></td></tr></table></figure>
+<blockquote>
+<blockquote>
+<p>&gt;</p>
+</blockquote>
+</blockquote>
+<p>登入官网:<a href="http://www.sublimetext.com/3" target="_blank" rel="external">http://www.sublimetext.com/3</a></p>
+<p>下载Ubuntu 64 bit 版本的,双击完成安装<br>注意:终端打开Sublime Text 3的方法是 在终端输入subl即可</p>
+<p>注册码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">—– BEGIN LICENSE —–</span><br><span class="line">Andrew Weber</span><br><span class="line">Single User License</span><br><span class="line">EA7E-<span class="number">855605</span></span><br><span class="line"><span class="number">813</span>A03DD <span class="number">5</span>E4AD9E6 <span class="number">6</span>C0EEB94 BC99798F</span><br><span class="line"><span class="number">942194</span>A6 <span class="number">02396</span>E98 E62C9979 <span class="number">4</span>BB979FE</span><br><span class="line"><span class="number">91424</span>C9D A45400BF F6747D88 <span class="number">2</span>FB88078</span><br><span class="line"><span class="number">90</span>F5CC94 <span class="number">1</span>CDC92DC <span class="number">8457107</span>A F151657B</span><br><span class="line"><span class="number">1</span>D22E383 A997F016 <span class="number">42397640</span> <span class="number">33</span>F41CFC</span><br><span class="line">E1D0AE85 A0BBD039 <span class="number">0</span>E9C8D55 E1B89D5D</span><br><span class="line"><span class="number">5</span>CDB7036 E56DE1C0 EFCC0840 <span class="number">650</span>CD3A6</span><br><span class="line">B98FC99C <span class="number">8</span>FAC73EE D2B95564 DF450523</span><br><span class="line">—— END LICENSE ——</span><br></pre></td></tr></table></figure>
+<p>安装 Package Control</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.config/sublime-text-<span class="number">3</span>/Packages/</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/wbond/package_control_channel.git Package\ Control</span><br></pre></td></tr></table></figure>
+<p>参考<br><a href="http://blog.csdn.net/cywosp/article/details/32721011" target="_blank" rel="external">点滴记录——Ubuntu 14.04中安装Sublime Text 3并使用SublimeClang插件</a><br><a href="http://www.jianshu.com/p/1f3a3e4f4e92" target="_blank" rel="external">Ubuntu 14.04 LTS 64位 安装激活Sublime Text 3及解决无法输入中文问题的解决方法</a></p>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+<h3 id="安装-Phpstrom"><a href="#安装-Phpstrom" class="headerlink" title="安装 Phpstrom"></a>安装 Phpstrom</h3><p><a href="http://idea.lanyus.com/" target="_blank" rel="external">http://idea.lanyus.com/</a></p>
+<h3 id="建立项目软连接"><a href="#建立项目软连接" class="headerlink" title="建立项目软连接"></a>建立项目软连接</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ln <span class="operator">-s</span> /media/yzhang/<span class="number">0000678400004823</span>/DeveloperWorkspace/CoamServer/ ~/CoamServer</span><br><span class="line">sudo ln <span class="operator">-s</span> /media/yzhang/<span class="number">0000678400004823</span>/DeveloperWorkspace/ ~/DeveloperWorkspace</span><br></pre></td></tr></table></figure>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+<h3 id="Ubuntu-安装-ShadowSocks-客户端代理翻墙"><a href="#Ubuntu-安装-ShadowSocks-客户端代理翻墙" class="headerlink" title="Ubuntu 安装 ShadowSocks 客户端代理翻墙"></a>Ubuntu 安装 ShadowSocks 客户端代理翻墙</h3><p>安装linux客户端</p>
+<p>从 <em>shadowsocks-gui</em> 得知,linux客户端是 <em>shadowsocks-qt5</em> ,居然还提供中文版本的安装指南 .赞一个！</p>
+<p>按照安装指南,执行安装:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:hzwhuang/ss-qt5</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install shadowsocks-qt5</span><br></pre></td></tr></table></figure>
+<p>安装完成后,执行命令启动:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss-qt5</span><br></pre></td></tr></table></figure>
+<p>图形界面上可以找到shadowsocks-qt5的图标,或者gnome do之类的工具也可以.</p>
+<p>启动后配置和windows版本类似,区别于 Window 客户端,代理模式改 http 模式为 sock 模式</p>
+<p>Chrome 上安装的代理翻墙插件 <a href="https://github.com/FelisCatus/SwitchyOmega/releases" target="_blank" rel="external">FelisCatus/SwitchyOmega</a></p>
+<p>参考<br><a href="http://skyao.github.io/2015/07/14/computer-fanqiang/" target="_blank" rel="external">使用shadowsocks实现科学上网 </a><br><a href="https://github.com/shadowsocks/shadowsocks-qt5/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97" target="_blank" rel="external">ShadowSocks安装指南</a><br><a href="http://segmentfault.com/a/1190000002511795" target="_blank" rel="external">使用Digital Ocean和shadowsocks来科学上网</a></p>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+<h3 id="KSnapshot-截屏工具"><a href="#KSnapshot-截屏工具" class="headerlink" title="KSnapshot 截屏工具"></a>KSnapshot 截屏工具</h3><p>系统默认 Alt + Print Screen 快捷键默认只允许截取整张屏幕</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install ksnapshot</span><br></pre></td></tr></table></figure>
+<h3 id="创建-root-用户登陆密码"><a href="#创建-root-用户登陆密码" class="headerlink" title="创建 root 用户登陆密码"></a>创建 root 用户登陆密码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd root</span><br></pre></td></tr></table></figure>
+<p>默认 root 用户新建后,不能通过桌面登陆 root 账户,还需要修改以下地方</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /usr/share/lightdm/lightdm.conf.d/<span class="number">50</span>-ubuntu.conf</span><br><span class="line"></span><br><span class="line">[Seat:*]</span><br><span class="line">user-session=ubuntu</span><br><span class="line">greeter-show-manual-login=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>重新登陆即可</p>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+<h3 id="删除Amazon的链接"><a href="#删除Amazon的链接" class="headerlink" title="删除Amazon的链接"></a>删除Amazon的链接</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove unity-webapps-common</span><br></pre></td></tr></table></figure>
+<p>删掉基本不用的自带软件(用的时候再装也来得及)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove thunderbird totem rhythmbox empathy brasero simple-scan gnome-mahjongg aisleriot \</span><br><span class="line"> gnome-mines cheese transmission-common gnome-orca webbrowser-app gnome-sudoku  landscape-client-ui-install</span><br><span class="line"></span><br><span class="line">sudo apt-get remove onboard deja-dup</span><br></pre></td></tr></table></figure>
+<p>这样系统就基本上干净了.</p>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+<h3 id="Ubuntu-14-04-标题栏实时显示上下行网速-CPU及内存"><a href="#Ubuntu-14-04-标题栏实时显示上下行网速-CPU及内存" class="headerlink" title="Ubuntu 14.04 标题栏实时显示上下行网速. CPU及内存"></a>Ubuntu 14.04 标题栏实时显示上下行网速. CPU及内存</h3><p>先当然是用wget下载 <a href="https://launchpad.net/indicator-sysmonitor" target="_blank" rel="external">indicator-sysmonitor</a></p>
+<p>wget <a href="https://launchpadlibrarian.net/139475561/indicator-sysmonitor_0.4.3_all.deb" target="_blank" rel="external">https://launchpadlibrarian.net/139475561/indicator-sysmonitor_0.4.3_all.deb</a></p>
+<p>下载好后,先不要急于安装,因为软件有些依赖关系还没解决.终端执行安装依赖:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python python-psutil python-appindicator </span><br><span class="line">sudo apt-get install python-gtk2</span><br></pre></td></tr></table></figure>
+<p>安装 <em>indicator-sysmonitor</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i indicator-sysmonitor_0.<span class="number">4.3</span>_all.deb</span><br></pre></td></tr></table></figure>
+<p>安装完成后便可以搜索 System Monitor 启动监控界面了,但默认只能显示内存和CPU使用情况,想要显示上下行网速的情况还要如下操作:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install dstat</span><br><span class="line">sudo apt-get install acpi</span><br></pre></td></tr></table></figure>
+<p>下载脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir -p ~/.scripts &amp;&amp; <span class="built_in">cd</span> ~/.scripts</span><br><span class="line">$ wget http://webupd8.googlecode.com/files/sysmon_0.<span class="number">2</span>.tar.gz &amp;&amp; tar -xvf sysmon_0.<span class="number">2</span>.tar.gz</span><br></pre></td></tr></table></figure>
+<p>可在scripts目录下得到sysmon脚本,设置System Monitor,让它使用脚本里的配置.<br>下面 Alt+F2 或终端中 运行indicator-sysmonitor.在工具栏点击Indicator-Sysmonitor 并选择 “首选项” ,<br>选择Advanced,然后新建一个senor,在command处输入$HOME/.scripts/sysmon,<br>在General中勾选”Run on startup” 后保存退出</p>
+<p>参考:<br><a href="https://wu.nerd.moe/?p=1377" target="_blank" rel="external">让Indicator-Sysmonitor在顶部面板显示上下行网速及CPU温度</a><br><a href="http://www.cnblogs.com/bizhu/archive/2013/01/07/2849771.html" target="_blank" rel="external">ubuntu 12.10安装后需要做的那些事</a></p>
+<h3 id="Glances-监控系统"><a href="#Glances-监控系统" class="headerlink" title="Glances 监控系统"></a>Glances 监控系统</h3><p><a href="https://pypi.python.org/pypi/Glances/" target="_blank" rel="external">Glances</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install glances</span><br><span class="line">$ glances</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.cnblogs.com/xred/p/3845205.html" target="_blank" rel="external">借助Glances Monitor,密切关注你的系统</a></p>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+<h3 id="failed-to-start-session"><a href="#failed-to-start-session" class="headerlink" title="failed to start session"></a>failed to start session</h3><p><a href="http://itsfoss.com/failed-to-start-session-ubuntu-14-04/" target="_blank" rel="external">Fix “Failed To Start Session” At Login In Ubuntu 14.04</a></p>
+<p>Ctrl + Alt + F1</p>
+<p>When you are at login, press Ctrl+Alt+F1. It will take you to command line interface from the GUI. In here, type your username and password. Now, you can try the following command to install Unity Desktop:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ubuntu-desktop</span><br></pre></td></tr></table></figure>
+<p>If it is already installed, try reinstalling:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install --reinstall ubuntu-desktop</span><br></pre></td></tr></table></figure>
+<p>Once it is installed or reinstalled. Use the following command to reboot the system:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/05/16/Linux/SystemInstall/"></a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 张亚飞 的个人博客">张亚飞</a></p>
+        <p><span>发布时间:</span>2016年05月16日 - 22时12分</p>
+        <p><span>最后更新:</span>2016年05月16日 - 22时12分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/16/Linux/SystemInstall/" title="">https://coam.co/2016/05/16/Linux/SystemInstall/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://coam.co/2016/05/16/Linux/SystemInstall/　　作者: 张亚飞" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/05/16/Linux/Ubuntu/">
+                    
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/05/16/Others/YL/">
+                    
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更改-Ubuntu-默认用户主目录"><span class="toc-number">2.</span> <span class="toc-text">更改 Ubuntu 默认用户主目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-Vim-git"><span class="toc-number">3.</span> <span class="toc-text">安装 Vim git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu-所有操作免输密码"><span class="toc-number">4.</span> <span class="toc-text">Ubuntu 所有操作免输密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lnav工具是在终端界面看日志的神器-装上之后在终端里就可以用lnav彩色显示日志了"><span class="toc-number">5.</span> <span class="toc-text">lnav工具是在终端界面看日志的神器,装上之后在终端里就可以用lnav彩色显示日志了.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装搜狗输入法"><span class="toc-number">6.</span> <span class="toc-text">安装搜狗输入法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开发环境搭建"><span class="toc-number"></span> <span class="toc-text">开发环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装基础C-C-编译库"><span class="toc-number">1.</span> <span class="toc-text">安装基础C/C++编译库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装CMake和Qt-Creator"><span class="toc-number">2.</span> <span class="toc-text">安装CMake和Qt Creator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-Oracle-Java"><span class="toc-number">3.</span> <span class="toc-text">安装 Oracle Java</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Sublime-Text-3"><span class="toc-number">4.</span> <span class="toc-text">安装Sublime Text 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-Phpstrom"><span class="toc-number">5.</span> <span class="toc-text">安装 Phpstrom</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#建立项目软连接"><span class="toc-number">6.</span> <span class="toc-text">建立项目软连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu-安装-ShadowSocks-客户端代理翻墙"><span class="toc-number">7.</span> <span class="toc-text">Ubuntu 安装 ShadowSocks 客户端代理翻墙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#KSnapshot-截屏工具"><span class="toc-number">8.</span> <span class="toc-text">KSnapshot 截屏工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建-root-用户登陆密码"><span class="toc-number">9.</span> <span class="toc-text">创建 root 用户登陆密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除Amazon的链接"><span class="toc-number">10.</span> <span class="toc-text">删除Amazon的链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu-14-04-标题栏实时显示上下行网速-CPU及内存"><span class="toc-number">11.</span> <span class="toc-text">Ubuntu 14.04 标题栏实时显示上下行网速. CPU及内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Glances-监控系统"><span class="toc-number">12.</span> <span class="toc-text">Glances 监控系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#failed-to-start-session"><span class="toc-number">13.</span> <span class="toc-text">failed to start session</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/05/16/Linux/Ubuntu/" title="上一篇: ">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/05/16/Others/YL/" title="下一篇: ">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Erlang/InstallOTP/">InstallOTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Redis/RedisSyncNote/">RedisSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/Ubuntu/">Linux/Ubuntu</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/SystemInstall/">Linux/SystemInstall</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Others/YL/">Others/YL</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/Linux/LinuxCommand/">LinuxCommand</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlSyncNote/">MysqlSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlToRedis/">MysqlToRedis</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlNote/">MysqlNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlSql/">MysqlSql</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Redis/RedisNote/">RedisNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Mongo/MongoNotes/">MongoNotes</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/Linux/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/25/Android/AndroidNDK/">AndroidNDK</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/Design/PhotoShop/">PhotoShop 设计笔记摘要</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/15/Others/Enshrine/">Enshrine收藏</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/03/Others/Imagine/">【脑洞大开】你看过这样的动态图吗?——太牛了！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/26/Linux/Linux.bashrc/">Linux.bashrc</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/24/WinScripts/WinNote/">WinNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/21/Android/ProGuard/">ProGuard</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Linux/ShadowSocks/">ShadowSocks</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Web/WebDesign/">WebDesign</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Plan/FreeShareInfoIdea/">Plan/FreeShareInfoIdea</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Phalcon/PhalconNote/">Phalcon/PhalconNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Info/EnshrineBlogs/">Info/EnshrineBlogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/CLang/cMake/">cMake</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/13/Android/CoamApp/">CoamApp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/30/CLang/GccNote/">GCCNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/QT/QTNote/">QTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/DevIDENote/">DevIDENote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/CNote/">CNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/QT/Cygwin/">Cygwin</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/Electron/ElectronNote/">ElectronNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/CheerioNote/">CheerioNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/MochaNote/">MochaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/WebpackNote/">WebPack 自动打包工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/GulpNote/">NodeJs/GulpNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/Info/hospital/">hospital</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/18/Angular/TypeScriptNote/">TypeScriptNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/17/Angular/AngularNote/">Angular 开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Java/JavaNote/">JavaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/Python/PythonNote/">PythonNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdModule/">EjabberdModule</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdConfigure/">EjabberdConfigure</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrofit/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/PhpNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnLombok/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaHashMap/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaArray/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnGoogleGuava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnAsyncTask/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/NodeJs/NodeJsNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/MongoNotes/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/GPS/GPSNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Rebar/">RebarNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/MQTT/">MQTTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Lua/">LuaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Elixir/">ElixirNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/XMPP/">XMPPNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdNote/">EjabberdNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/Composer/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/SSL/LetSSL/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidStudio/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Nginx/NginxNote/">NginxNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mysql/MysqlTrigger/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidPushMQTT/">Android 推送之 MQTT</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/phpMyAdmin/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnSupportAnnotations/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRxJava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrolambda/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnOther/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnListView/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnGradle/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidFragment/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidDesign/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidContext/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroid/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/EventBus/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidStethoAppWithChrome/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidLog/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/Conversations.IM/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnOkHttp/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Http/HttpNote/">Http协议相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Others/MarkDownNote/">MarkDown 相关</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 张亚飞
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        <div class="visit">
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <span id="site-visit" >本站到访数: 
+                    <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </span>
+            <span id="busuanzi_container_page_pv" style='display:none'>
+                <span id="page-visit">, 本页阅读量: 
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </span>
+        </div>
+    </div>
+</footer>
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

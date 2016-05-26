@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Linux.bashrc | 商运物流</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="环境变量12# Erlang# export PATH=/opt/otp/bin:$PATH
+
+Ubuntu 终端颜色显示 PS1 bash 输出文本颜色配置
+突然发现终端文件不高亮显示,可以修改 .bashrc 文件来调节
+
+将以下加入到 .bashrc 的最后
+
+
+1PS1=&apos;\[\e[1;36m\]\d \[\e[1;32m\]\t \[\e[1;33m\]\u@\[\e[1;35m\]\h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux.bashrc">
+<meta property="og:url" content="https://coam.co/2016/02/26/Linux/Linux.bashrc/index.html">
+<meta property="og:site_name" content="商运物流">
+<meta property="og:description" content="环境变量12# Erlang# export PATH=/opt/otp/bin:$PATH
+
+Ubuntu 终端颜色显示 PS1 bash 输出文本颜色配置
+突然发现终端文件不高亮显示,可以修改 .bashrc 文件来调节
+
+将以下加入到 .bashrc 的最后
+
+
+1PS1=&apos;\[\e[1;36m\]\d \[\e[1;32m\]\t \[\e[1;33m\]\u@\[\e[1;35m\]\h">
+<meta property="og:updated_time" content="2016-05-11T10:31:12.527Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux.bashrc">
+<meta name="twitter:description" content="环境变量12# Erlang# export PATH=/opt/otp/bin:$PATH
+
+Ubuntu 终端颜色显示 PS1 bash 输出文本颜色配置
+突然发现终端文件不高亮显示,可以修改 .bashrc 文件来调节
+
+将以下加入到 .bashrc 的最后
+
+
+1PS1=&apos;\[\e[1;36m\]\d \[\e[1;32m\]\t \[\e[1;33m\]\u@\[\e[1;35m\]\h">
+  
+    <link rel="alternative" href="/atom.xml" title="商运物流" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/author.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">张亚飞</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/markdown-gfw-hexo-jekyll/" style="font-size: 10px;">markdown gfw hexo jekyll</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://coam.co">商运物流</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/zyfmix/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://wp.iirii.com/">商运技术博客</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于物流设计</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">张亚飞</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img lazy-src="/img/author.jpg" class="js-avatar">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">张亚飞</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Linux/Linux.bashrc" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/26/Linux/Linux.bashrc/" class="article-date">
+      <time datetime="2016-02-26T03:52:31.000Z" itemprop="datePublished">2016-02-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux.bashrc
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <a id="more"></a>
+<h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Erlang</span></span><br><span class="line"><span class="comment"># export PATH=/opt/otp/bin:$PATH</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Ubuntu-终端颜色显示-PS1-bash-输出文本颜色配置"><a href="#Ubuntu-终端颜色显示-PS1-bash-输出文本颜色配置" class="headerlink" title="Ubuntu 终端颜色显示 PS1 bash 输出文本颜色配置"></a>Ubuntu 终端颜色显示 PS1 bash 输出文本颜色配置</h3><ul>
+<li><p>突然发现终端文件不高亮显示,可以修改 .bashrc 文件来调节</p>
+</li>
+<li><p>将以下加入到 .bashrc 的最后</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PS1=<span class="string">'\[\e[1;36m\]\d \[\e[1;32m\]\t \[\e[1;33m\]\u@\[\e[1;35m\]\h:\w\$\[\e[0;31m\] '</span></span><br></pre></td></tr></table></figure>
+<h1 id="退出终端重新登陆或执行以下命令可看到效果"><a href="#退出终端重新登陆或执行以下命令可看到效果" class="headerlink" title="退出终端重新登陆或执行以下命令可看到效果"></a>退出终端重新登陆或执行以下命令可看到效果</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> .bashrc</span><br></pre></td></tr></table></figure>
+<p>其它的一些参考的色彩设置:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ PS1=<span class="string">'\[\e[1;34m\][\d \t \u@\h \w]\$\[\e[m\] '</span></span><br><span class="line">$ PS1=<span class="string">'\[\e[1;36m\]\d \[\e[1;32m\]\t \[\e[1;33m\]\u@\[\e[1;35m\]\h:\w\$\[\e[0;31m\] '</span></span><br><span class="line">$ PS1=<span class="string">'\[\e[1;33m\]\u@\h \w -&gt;\n\[\e[1;36m\] \@ \d\$\[\e[m\] '</span></span><br><span class="line">$ PS1=<span class="string">"[\[\e[0;32m\]\u@\h, load: `cat /proc/loadavg | awk '&#123; print <span class="variable">$1</span>; &#125;'`\[\e[00m\]] (\[\e[00;35m\]\d - \t\[\e[00m\])\n\w \$ "</span></span><br><span class="line">$ PS1=<span class="string">"[\u@\h, load: `cat /proc/loadavg | awk '&#123; print <span class="variable">$1</span>; &#125;'`] (\d - \t)\n\w \$ "</span></span><br><span class="line">$ PS1=<span class="string">"<span class="variable">$HC</span><span class="variable">$FYEL</span>[ <span class="variable">$FBLE</span><span class="variable">$&#123;debian_chroot:+($debian_chroot)&#125;</span>\u<span class="variable">$FYEL</span>: <span class="variable">$FBLE</span>\w <span class="variable">$FYEL</span>]\\$ <span class="variable">$RS</span>"</span></span><br><span class="line">$ PS2=<span class="string">"<span class="variable">$HC</span><span class="variable">$FYEL</span>&amp;gt; <span class="variable">$RS</span>"</span></span><br></pre></td></tr></table></figure>
+<h3 id="当前服务器配置"><a href="#当前服务器配置" class="headerlink" title="当前服务器配置"></a>当前服务器配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Terminate HighLight</span></span><br><span class="line"><span class="comment">#PS1='$&#123;debian_chroot:+($debian_chroot)&#125;\[\033[01;35;40m\]\u\[\033[00;00;40m\]@\[\033[01;35;40m\]\h\[\033[00;31;40m\]:\[\033[00;00;40m\]\w \[\033[01;32;40m\]\$ \[\033[01;36;40m\]'</span></span><br><span class="line"><span class="comment">#PS1="$HC$FYEL[ $FBLE$&#123;debian_chroot:+($debian_chroot)&#125;\u$FYEL: $FBLE\w $FYEL]\\$ $RS"</span></span><br><span class="line"><span class="comment">#PS2="$HC$FYEL&amp;gt; $RS"</span></span><br><span class="line"><span class="comment">#PS1='\[\e[1;33m\]\u@\h \w -&gt;\n\[\e[1;36m\] \@ \d\$\[\e[m\] '</span></span><br><span class="line">PS1=<span class="string">'\[\e[1;36m\]\d \[\e[1;32m\]\t \[\e[1;33m\]\u@\[\e[1;35m\]\h:\w\$\[\e[0;37m\] '</span></span><br></pre></td></tr></table></figure>
+<h3 id="其中配置项"><a href="#其中配置项" class="headerlink" title="其中配置项"></a>其中配置项</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PS1=<span class="string">'\[\e[1;36m\]\d \[\e[1;32m\]\t \[\e[1;33m\]\u@\[\e[1;35m\]\h:\w\$\[\e[0;37m\] '</span></span><br></pre></td></tr></table></figure>
+<h3 id="显示效果为"><a href="#显示效果为" class="headerlink" title="显示效果为"></a>显示效果为</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Fri Feb <span class="number">26</span> <span class="number">11</span>:<span class="number">55</span>:<span class="number">20</span> yzhang@coam:~$</span><br></pre></td></tr></table></figure>
+<h4 id="Linux-PS1-配置对应表"><a href="#Linux-PS1-配置对应表" class="headerlink" title="Linux PS1 配置对应表"></a>Linux PS1 配置对应表</h4><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ANSI color codes</span></span><br><span class="line"><span class="setting">RS=<span class="value"><span class="string">"\[\033[0m\]"</span>    # reset</span></span></span><br><span class="line"><span class="setting">HC=<span class="value"><span class="string">"\[\033[1m\]"</span>    # hicolor</span></span></span><br><span class="line"><span class="setting">UL=<span class="value"><span class="string">"\[\033[4m\]"</span>    # underline</span></span></span><br><span class="line"><span class="setting">INV=<span class="value"><span class="string">"\[\033[7m\]"</span>   # inverse background and foreground</span></span></span><br><span class="line"><span class="setting">FBLK=<span class="value"><span class="string">"\[\033[30m\]"</span> # foreground black</span></span></span><br><span class="line"><span class="setting">FRED=<span class="value"><span class="string">"\[\033[31m\]"</span> # foreground red</span></span></span><br><span class="line"><span class="setting">FGRN=<span class="value"><span class="string">"\[\033[32m\]"</span> # foreground green</span></span></span><br><span class="line"><span class="setting">FYEL=<span class="value"><span class="string">"\[\033[33m\]"</span> # foreground yellow</span></span></span><br><span class="line"><span class="setting">FBLE=<span class="value"><span class="string">"\[\033[34m\]"</span> # foreground blue</span></span></span><br><span class="line"><span class="setting">FMAG=<span class="value"><span class="string">"\[\033[35m\]"</span> # foreground magenta</span></span></span><br><span class="line"><span class="setting">FCYN=<span class="value"><span class="string">"\[\033[36m\]"</span> # foreground cyan</span></span></span><br><span class="line"><span class="setting">FWHT=<span class="value"><span class="string">"\[\033[37m\]"</span> # foreground white</span></span></span><br><span class="line"><span class="setting">BBLK=<span class="value"><span class="string">"\[\033[40m\]"</span> # background black</span></span></span><br><span class="line"><span class="setting">BRED=<span class="value"><span class="string">"\[\033[41m\]"</span> # background red</span></span></span><br><span class="line"><span class="setting">BGRN=<span class="value"><span class="string">"\[\033[42m\]"</span> # background green</span></span></span><br><span class="line"><span class="setting">BYEL=<span class="value"><span class="string">"\[\033[43m\]"</span> # background yellow</span></span></span><br><span class="line"><span class="setting">BBLE=<span class="value"><span class="string">"\[\033[44m\]"</span> # background blue</span></span></span><br><span class="line"><span class="setting">BMAG=<span class="value"><span class="string">"\[\033[45m\]"</span> # background magenta</span></span></span><br><span class="line"><span class="setting">BCYN=<span class="value"><span class="string">"\[\033[46m\]"</span> # background cyan</span></span></span><br><span class="line"><span class="setting">BWHT=<span class="value"><span class="string">"\[\033[47m\]"</span> # background white</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>注:每种颜色都有两种,分别以 3<em> 和 4</em> 开头的数字配置,3<em> 表示文字颜色,4</em> 表示背景颜色</li>
+</ul>
+<p><a href="https://help.ubuntu.com/community/CustomizingBashPrompt" target="_blank" rel="external">CustomizingBashPrompt</a><br><a href="http://bashrcgenerator.com/#minidoc" target="_blank" rel="external">http://bashrcgenerator.com/#minidoc</a></p>
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-customize-your-bash-prompt-on-a-linux-vps" target="_blank" rel="external">How to Customize your Bash Prompt on a Linux VPS</a><br><a href="https://www.linux.com/learn/tutorials/772396-how-to-make-a-fancy-and-useful-bash-prompt-in-linux-" target="_blank" rel="external">How to Make a Fancy and Useful Bash Prompt in Linux</a></p>
+<hr>
+<h3 id="使用-Putty-客户端登陆后显示对应的服务器ip名称"><a href="#使用-Putty-客户端登陆后显示对应的服务器ip名称" class="headerlink" title="使用 Putty 客户端登陆后显示对应的服务器ip名称"></a>使用 Putty 客户端登陆后显示对应的服务器ip名称</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Auto add env parameter $PROMPT_COMMAND when use non-Linux tty login by ssh.</span></span><br><span class="line"><span class="comment"># 让 putty 登陆的标题栏显示对应服务器 IP</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$SSH_CONNECTION</span>"</span> != <span class="string">''</span> <span class="operator">-a</span> <span class="string">"<span class="variable">$TERM</span>"</span> != <span class="string">'linux'</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">declare</span> <span class="operator">-a</span> HOSTIP</span><br><span class="line">    HOSTIP=`<span class="built_in">echo</span> <span class="variable">$SSH_CONNECTION</span> |awk <span class="string">'&#123;print $3&#125;'</span>`</span><br><span class="line">    <span class="built_in">export</span> PROMPT_COMMAND=<span class="string">'echo -ne "\033]0;$&#123;USER&#125;@$HOSTIP:[$&#123;HOSTNAME%%.*&#125;]:$&#123;PWD/#$HOME/~&#125; \007"'</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<hr>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/02/26/Linux/Linux.bashrc/">Linux.bashrc</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 张亚飞 的个人博客">张亚飞</a></p>
+        <p><span>发布时间:</span>2016年02月26日 - 11时52分</p>
+        <p><span>最后更新:</span>2016年05月11日 - 18时31分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/02/26/Linux/Linux.bashrc/" title="Linux.bashrc">https://coam.co/2016/02/26/Linux/Linux.bashrc/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://coam.co/2016/02/26/Linux/Linux.bashrc/　　作者: 张亚飞" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/04/03/Others/Imagine/">
+                    【脑洞大开】你看过这样的动态图吗?——太牛了！
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/02/24/WinScripts/WinNote/">
+                    WinNote
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#环境变量"><span class="toc-number">1.</span> <span class="toc-text">环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu-终端颜色显示-PS1-bash-输出文本颜色配置"><span class="toc-number">2.</span> <span class="toc-text">Ubuntu 终端颜色显示 PS1 bash 输出文本颜色配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#退出终端重新登陆或执行以下命令可看到效果"><span class="toc-number"></span> <span class="toc-text">退出终端重新登陆或执行以下命令可看到效果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#当前服务器配置"><span class="toc-number">1.</span> <span class="toc-text">当前服务器配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其中配置项"><span class="toc-number">2.</span> <span class="toc-text">其中配置项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#显示效果为"><span class="toc-number">3.</span> <span class="toc-text">显示效果为</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Linux-PS1-配置对应表"><span class="toc-number">3.1.</span> <span class="toc-text">Linux PS1 配置对应表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-Putty-客户端登陆后显示对应的服务器ip名称"><span class="toc-number">4.</span> <span class="toc-text">使用 Putty 客户端登陆后显示对应的服务器ip名称</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/04/03/Others/Imagine/" title="上一篇: 【脑洞大开】你看过这样的动态图吗?——太牛了！">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/02/24/WinScripts/WinNote/" title="下一篇: WinNote">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Erlang/InstallOTP/">InstallOTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Redis/RedisSyncNote/">RedisSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/Ubuntu/">Linux/Ubuntu</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/SystemInstall/">Linux/SystemInstall</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Others/YL/">Others/YL</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/Linux/LinuxCommand/">LinuxCommand</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlSyncNote/">MysqlSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlToRedis/">MysqlToRedis</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlNote/">MysqlNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlSql/">MysqlSql</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Redis/RedisNote/">RedisNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Mongo/MongoNotes/">MongoNotes</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/Linux/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/25/Android/AndroidNDK/">AndroidNDK</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/Design/PhotoShop/">PhotoShop 设计笔记摘要</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/15/Others/Enshrine/">Enshrine收藏</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/03/Others/Imagine/">【脑洞大开】你看过这样的动态图吗?——太牛了！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/26/Linux/Linux.bashrc/">Linux.bashrc</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/24/WinScripts/WinNote/">WinNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/21/Android/ProGuard/">ProGuard</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Linux/ShadowSocks/">ShadowSocks</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Web/WebDesign/">WebDesign</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Plan/FreeShareInfoIdea/">Plan/FreeShareInfoIdea</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Phalcon/PhalconNote/">Phalcon/PhalconNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Info/EnshrineBlogs/">Info/EnshrineBlogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/CLang/cMake/">cMake</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/13/Android/CoamApp/">CoamApp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/30/CLang/GccNote/">GCCNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/QT/QTNote/">QTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/DevIDENote/">DevIDENote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/CNote/">CNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/QT/Cygwin/">Cygwin</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/Electron/ElectronNote/">ElectronNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/CheerioNote/">CheerioNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/MochaNote/">MochaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/WebpackNote/">WebPack 自动打包工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/GulpNote/">NodeJs/GulpNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/Info/hospital/">hospital</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/18/Angular/TypeScriptNote/">TypeScriptNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/17/Angular/AngularNote/">Angular 开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Java/JavaNote/">JavaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/Python/PythonNote/">PythonNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdModule/">EjabberdModule</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdConfigure/">EjabberdConfigure</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrofit/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/PhpNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnLombok/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaHashMap/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaArray/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnGoogleGuava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnAsyncTask/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/NodeJs/NodeJsNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/MongoNotes/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/GPS/GPSNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Rebar/">RebarNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/MQTT/">MQTTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Lua/">LuaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Elixir/">ElixirNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/XMPP/">XMPPNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdNote/">EjabberdNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/Composer/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/SSL/LetSSL/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidStudio/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Nginx/NginxNote/">NginxNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mysql/MysqlTrigger/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidPushMQTT/">Android 推送之 MQTT</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/phpMyAdmin/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnSupportAnnotations/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRxJava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrolambda/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnOther/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnListView/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnGradle/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidFragment/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidDesign/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidContext/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroid/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/EventBus/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidStethoAppWithChrome/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidLog/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/Conversations.IM/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnOkHttp/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Http/HttpNote/">Http协议相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Others/MarkDownNote/">MarkDown 相关</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 张亚飞
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        <div class="visit">
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <span id="site-visit" >本站到访数: 
+                    <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </span>
+            <span id="busuanzi_container_page_pv" style='display:none'>
+                <span id="page-visit">, 本页阅读量: 
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </span>
+        </div>
+    </div>
+</footer>
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>EjabberdModule | 商运物流</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Ejabberd 模块">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EjabberdModule">
+<meta property="og:url" content="https://coam.co/2016/01/10/Ejabberd/EjabberdModule/index.html">
+<meta property="og:site_name" content="商运物流">
+<meta property="og:description" content="Ejabberd 模块">
+<meta property="og:updated_time" content="2016-05-11T10:31:12.513Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="EjabberdModule">
+<meta name="twitter:description" content="Ejabberd 模块">
+  
+    <link rel="alternative" href="/atom.xml" title="商运物流" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/author.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">张亚飞</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/markdown-gfw-hexo-jekyll/" style="font-size: 10px;">markdown gfw hexo jekyll</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://coam.co">商运物流</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/zyfmix/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://wp.iirii.com/">商运技术博客</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于物流设计</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">张亚飞</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img lazy-src="/img/author.jpg" class="js-avatar">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">张亚飞</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Ejabberd/EjabberdModule" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/10/Ejabberd/EjabberdModule/" class="article-date">
+      <time datetime="2016-01-10T11:49:31.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      EjabberdModule
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Ejabberd-模块"><a href="#Ejabberd-模块" class="headerlink" title="Ejabberd 模块"></a>Ejabberd 模块</h1><a id="more"></a>
+<h3 id="ejabberd-模块-mod"><a href="#ejabberd-模块-mod" class="headerlink" title="ejabberd 模块 mod_*"></a>ejabberd 模块 mod_*</h3><p>ejabberd 官方运行实际提供的模块以文件名 mod_<em>.beam 的格式存储在 /lib/ejabberd/ebin/</em> 下</p>
+<p>需要在 /etc/ejabberd/ejabberd.yml 中配置是否启用以及相关参数<br>以下节选自默认配置</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">##</span></span><br><span class="line"><span class="preprocessor">## Modules enabled in all ejabberd virtual hosts.</span></span><br><span class="line"><span class="preprocessor">##</span></span><br><span class="line"><span class="label">modules:</span> </span><br><span class="line">  mod_adhoc: &#123;&#125;</span><br><span class="line">  <span class="preprocessor">## mod_admin_extra: &#123;&#125;</span></span><br><span class="line">  mod_announce: <span class="preprocessor"># recommends mod_adhoc</span></span><br><span class="line">    access: announce</span><br><span class="line">  mod_blocking: &#123;&#125; <span class="preprocessor"># requires mod_privacy</span></span><br><span class="line">  mod_caps: &#123;&#125;</span><br><span class="line">  mod_carboncopy: &#123;&#125;</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>主要有以下命令</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ejabberdctl modules_update_specs <span class="comment"># 更新所有模块</span></span><br><span class="line">ejabberdctl modules_available    <span class="comment"># 查看可用安装模块</span></span><br><span class="line">ejabberdctl module_install mod_mam <span class="comment"># 安装模块 mod_mam</span></span><br><span class="line">ejabberdctl module_uninstall mod_mam <span class="comment"># 安装模块 mod_mam</span></span><br></pre></td></tr></table></figure>
+<p>如下是示例:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">root@coam:/lib/ejabberd/ebin# ejabberdctl modules_available</span><br><span class="line">atom_pubsub     Provides access to all PEP nodes via an AtomPub interface</span><br><span class="line">ejabberd_auth_http      Authentication via HTTP request</span><br><span class="line">ejabberd_mod_mam        Message Archive Management (XEP-0313)</span><br><span class="line">ejabberd_trace  Easy tracing of connections made to ejabberd</span><br><span class="line">ircd    IRC server frontend to ejabberd</span><br><span class="line">mod_archive     Supports almost all the XEP-0136 version 0.6 except otr</span><br><span class="line">mod_cron        <span class="operator"><span class="keyword">Execute</span> scheduled commands</span><br><span class="line">mod_http_offline        POST <span class="keyword">offline</span> messages <span class="keyword">to</span> a web</span><br><span class="line">mod_http_upload <span class="keyword">HTTP</span> <span class="keyword">File</span> Upload</span><br><span class="line">mod_log_chat    <span class="keyword">Logging</span> chat messages <span class="keyword">in</span> <span class="built_in">text</span> files</span><br><span class="line">mod_logsession  <span class="keyword">Log</span> <span class="keyword">session</span> connections <span class="keyword">to</span> <span class="keyword">file</span></span><br><span class="line">mod_logxml      <span class="keyword">Log</span> XMPP packets <span class="keyword">to</span> <span class="keyword">XML</span> <span class="keyword">file</span></span><br><span class="line">mod_mam_mnesia  Message <span class="keyword">Archive</span> <span class="keyword">Management</span> (XEP-<span class="number">0313</span>)</span><br><span class="line">mod_message_log <span class="keyword">Log</span> one line per message transmission <span class="keyword">in</span> <span class="built_in">text</span> <span class="keyword">file</span></span><br><span class="line">mod_muc_log_http        Serve MUC <span class="keyword">logs</span> <span class="keyword">on</span> the web</span><br><span class="line">mod_openid      Transform the Jabber <span class="keyword">Server</span> <span class="keyword">in</span> an openid provider</span><br><span class="line">mod_post_log    <span class="keyword">Logs</span> messages <span class="keyword">to</span> an <span class="keyword">HTTP</span> API</span><br><span class="line">mod_profile     <span class="keyword">User</span> Profile (XEP-<span class="number">0154</span>) <span class="keyword">in</span> Mnesia <span class="keyword">table</span></span><br><span class="line">mod_rest        <span class="keyword">HTTP</span> <span class="keyword">interface</span> <span class="keyword">to</span> POST stanzas <span class="keyword">into</span> ejabberd</span><br><span class="line">mod_restful     RESTful API <span class="keyword">for</span> ejabberd</span><br><span class="line">mod_s2s_log     <span class="keyword">Log</span> all s2s connections <span class="keyword">in</span> a <span class="keyword">file</span></span><br><span class="line">mod_shcommands  <span class="keyword">Execute</span> shell commands</span><br><span class="line">mod_statsdx     Calculates <span class="keyword">and</span> gathers <span class="keyword">statistics</span> actively</span><br><span class="line">mod_webpresence Publish <span class="keyword">user</span> presence information <span class="keyword">in</span> the web</span></span><br></pre></td></tr></table></figure>
+<p>ejabberdctl modules_available 命令主要展示管理 <a href="https://github.com/processone/ejabberd-contrib" target="_blank" rel="external">ejabberd-contrib</a> 项目所提供的第三方模块</p>
+<h4 id="Ejabberd-增加聊天记录模块-mod-mam"><a href="#Ejabberd-增加聊天记录模块-mod-mam" class="headerlink" title="Ejabberd 增加聊天记录模块 mod_mam"></a>Ejabberd 增加聊天记录模块 mod_mam</h4><p>在 ejabberd.yml 中添加如下配置:</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">mod_mam</span>:</span><br><span class="line">  <span class="attribute">default</span>: always</span><br><span class="line">  <span class="attribute">db_type</span>: odbc</span><br></pre></td></tr></table></figure>
+<p>杨章,你让我神魂颠倒,简直让我太着迷了:吃饭的时候想到的是你,听歌的时候想到的是你,睡觉的时候想到的也是你,脑海中浮现你的微笑,从未有过这般开心的感觉.我觉得我太喜欢你了,我下定决心,今年一定要追到你,相信我</p>
+<p>于此,聊天消息便记录到了 Mysql 数据库表 archive 中</p>
+<p>参考</p>
+<p><a href="http://www.jianshu.com/p/c60f49f1ffe6/comments/767458" target="_blank" rel="external">Ejabberd 增加聊天记录模块</a><br><a href="http://developerworks.github.io/2015/05/10/ejabberd-mam-module-how-to-use/" target="_blank" rel="external">如何使用Ejabberd消息归档模块</a><br><a href="http://www.cnblogs.com/lovechengcheng/p/4083398.html" target="_blank" rel="external">基于ejabberd简单实现xmpp群聊离线消息</a></p>
+<hr>
+<hr>
+<h3 id="Ejabberd-配置-OAuth-Token-模块"><a href="#Ejabberd-配置-OAuth-Token-模块" class="headerlink" title="Ejabberd 配置 OAuth Token 模块"></a>Ejabberd 配置 OAuth Token 模块</h3><blockquote>
+<p>回调出现 302 Found 错误,将 ejabberd/src/ejabberd_oauth.erl 替换成 <a href="https://github.com/barabansheg/ejabberd/blob/master/src/ejabberd_oauth.erl" target="_blank" rel="external">https://github.com/barabansheg/ejabberd/blob/master/src/ejabberd_oauth.erl</a><br> <strong> 修改部分主要参见 <a href="https://github.com/barabansheg/ejabberd/commit/358fac13218a9a0e576efe4fa1f369a8ddc0907e" target="_blank" rel="external">https://github.com/barabansheg/ejabberd/commit/358fac13218a9a0e576efe4fa1f369a8ddc0907e</a> </strong><br> <strong> Token expire 问题可参考 <a href="https://github.com/barabansheg/ejabberd/commit/25793e8589ec895b739b79ca0a895999eccae0d7" target="_blank" rel="external">https://github.com/barabansheg/ejabberd/commit/25793e8589ec895b739b79ca0a895999eccae0d7</a> </strong></p>
+</blockquote>
+<p> <strong> 以上已被删除,修改部分详见 <a href="https://github.com/zyfmix/ejabberd/commit/6cd7ed46c32cffa711cbb0b7baf585c66f894ab9" target="_blank" rel="external">https://github.com/zyfmix/ejabberd/commit/6cd7ed46c32cffa711cbb0b7baf585c66f894ab9</a></strong></p>
+<p>scope 去掉官网提供的 user_get_roster ,可能不支持了</p>
+<p>访问 <a href="http://coopens.com:5280/oauth/authorization_token?response_type=token&amp;client_id=clientId&amp;redirect_uri=http://coopens.com&amp;scope=sasl_auth" target="_blank" rel="external">http://coopens.com:5280/oauth/authorization_token?response_type=token&amp;client_id=clientId&amp;redirect_uri=http://coopens.com&amp;scope=sasl_auth</a></p>
+<p>填写 具有 admin 权限的 {username: zyf | server: coopens.com | password: 123456} 可获取 回调带 Token 的 uri:<br>[<a href="https://coopens.com/?access_token=IxUhJmkY8Wm0EaifTS4l56i0S6bcxJa3&amp;token_type=bearer&amp;expires_in=1&amp;scope=sasl_auth&amp;state=" target="_blank" rel="external">https://coopens.com/?access_token=IxUhJmkY8Wm0EaifTS4l56i0S6bcxJa3&amp;token_type=bearer&amp;expires_in=1&amp;scope=sasl_auth&amp;state=</a>]</p>
+<p>参考<br><a href="https://plus.google.com/u/0/+VyacheslavKoslov/posts" target="_blank" rel="external">Google+ Russia Slava</a><br><a href="http://docs.ejabberd.im/admin/guide/oauth/#xml-rpc-examples" target="_blank" rel="external">Ejabberd OAuth</a></p>
+<hr>
+<hr>
+<hr>
+<h3 id="Ejabberd-配置-mod-http-bind-模块"><a href="#Ejabberd-配置-mod-http-bind-模块" class="headerlink" title="Ejabberd 配置 mod_http_bind 模块"></a>Ejabberd 配置 mod_http_bind 模块</h3><blockquote>
+<p>mod_http_bind 模块主要提供 web 端 的 http-bind 查询接口,Ejabberd 主要在以下两部分配置:</p>
+</blockquote>
+<ul>
+<li>ejabberd.yml</li>
+</ul>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">listen</span>:</span><br><span class="line">  ...</span><br><span class="line">  -</span><br><span class="line">    <span class="attribute">port</span>: <span class="number">5280</span></span><br><span class="line">    <span class="attribute">module</span>: ejabberd_http</span><br><span class="line">    <span class="attribute">request_handlers</span>:</span><br><span class="line">       <span class="string">"/http-bind"</span>: mod_http_bind</span><br><span class="line">    <span class="attribute">http_poll</span>: true</span><br><span class="line">    <span class="attribute">web_admin</span>: true</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
+<ul>
+<li>ejabberd.yml</li>
+</ul>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">modules</span>:</span><br><span class="line">  ...</span><br><span class="line">  <span class="attribute">mod_http_bind</span>:</span><br><span class="line">    <span class="attribute">max_inactivity</span>: <span class="number">50</span></span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
+<p>于是便可以在 converse.js 的 js 启动脚本中按如下配置连接 ejabberd 服务器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">converse.initialize(&#123;</span><br><span class="line">    <span class="comment">//bosh_service_url: 'https://conversejs.org/http-bind/', // Please use this connection manager only for testing purposes</span></span><br><span class="line">    bosh_service_url: <span class="string">'https://coopens.com:5280/http-bind/'</span>, <span class="comment">// Please use this connection manager only for testing purposes</span></span><br><span class="line">    keepalive: <span class="literal">true</span>,</span><br><span class="line">    message_carbons: <span class="literal">true</span>,</span><br><span class="line">    play_sounds: <span class="literal">true</span>,</span><br><span class="line">    roster_groups: <span class="literal">true</span>,</span><br><span class="line">    show_controlbox_by_default: <span class="literal">true</span>,</span><br><span class="line">    xhr_user_search: <span class="literal">false</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>参考<br><a href="http://docs.ejabberd.im/admin/guide/configuration/#mod_http_bind" target="_blank" rel="external">http://docs.ejabberd.im/admin/guide/configuration/#mod_http_bind</a><br><a href=""></a></p>
+<hr>
+<hr>
+<h3 id="xml-消息日志记录模块-mod-logxml"><a href="#xml-消息日志记录模块-mod-logxml" class="headerlink" title="xml 消息日志记录模块 mod_logxml"></a>xml 消息日志记录模块 mod_logxml</h3><p><a href="https://github.com/processone/ejabberd-contrib/tree/master/mod_logxml" target="_blank" rel="external">https://github.com/processone/ejabberd-contrib/tree/master/mod_logxml</a><br><a href="http://developerworks.github.io/2014/10/15/ejabberd-mod-logxml/" target="_blank" rel="external">http://developerworks.github.io/2014/10/15/ejabberd-mod-logxml/</a></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ejabberd-modules/mod_logxml/conf</span><br><span class="line">sudo vi  mod_logxml.yml</span><br><span class="line">modules:</span><br><span class="line">    mod_logxml:</span><br><span class="line">  #     stanza:</span><br><span class="line">  #       - iq</span><br><span class="line">  #       - other</span><br><span class="line">  #     direction:</span><br><span class="line">  #       - external</span><br><span class="line">  #     orientation:</span><br><span class="line">  #       - send</span><br><span class="line">  #       - recv</span><br><span class="line">       logdir: "/data/home/yzhang/CoamRunning/Erlang/dev/logs/"</span><br><span class="line">  #     timezone: universal</span><br><span class="line">  #     show_ip: false</span><br><span class="line">  #     rotate_days: 1</span><br><span class="line">       rotate_megs: 100000</span><br><span class="line">  #     rotate_kpackets: no</span><br><span class="line">  #     check_rotate_kpackets: 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Wed Feb <span class="number">24</span> <span class="number">17</span>:<span class="number">26</span>:<span class="number">45</span> yzhang@coam:~/.ejabberd-modules$ sudo ejabberdctl module_install mod_logxml</span><br><span class="line">src/mod_logxml.erl:<span class="number">263</span>: Warning: erlang:now/<span class="number">0</span>: Deprecated BIF. See the <span class="string">"Time and Time Correction in Erlang"</span> chapter of the ERTS User<span class="string">'s Guide for more information.</span><br><span class="line">src/mod_logxml.erl:264: Warning: erlang:now/0: Deprecated BIF. See the "Time and Time Correction in Erlang" chapter of the ERTS User'</span>s Guide <span class="keyword">for</span> more information.</span><br><span class="line">ok</span><br></pre></td></tr></table></figure>
+<p>注意,</p>
+<h4 id="mod-logxml-erl-需要-ejabberd16-01-141-已改动-jlib-timestamp-to-iso-1-方法-jlib-timestamp-to-legacy-1-详见-https-github-com-processone-ejabberd-pull-917"><a href="#mod-logxml-erl-需要-ejabberd16-01-141-已改动-jlib-timestamp-to-iso-1-方法-jlib-timestamp-to-legacy-1-详见-https-github-com-processone-ejabberd-pull-917" class="headerlink" title="mod_logxml.erl 需要 ejabberd16.01.141 已改动 jlib:timestamp_to_iso/1 方法 jlib:timestamp_to_legacy/1 详见 https://github.com/processone/ejabberd/pull/917"></a>mod_logxml.erl 需要 ejabberd16.01.141 已改动 jlib:timestamp_to_iso/1 方法 jlib:timestamp_to_legacy/1 详见 <a href="https://github.com/processone/ejabberd/pull/917" target="_blank" rel="external">https://github.com/processone/ejabberd/pull/917</a></h4><p>需要暂时修改 mod_logxml Line 267 部分如下,否则启动 ejabberdctl 会报错,并且不会记录数据包日志信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">get_now_iso(Timezone) -&gt;</span><br><span class="line">    TimeStamp = <span class="keyword">case</span> Timezone of</span><br><span class="line">                    <span class="built_in">local</span> -&gt; calendar:now_to_<span class="built_in">local</span>_time(now());</span><br><span class="line">                    universal -&gt; calendar:now_to_universal_time(now())</span><br><span class="line">                end,</span><br><span class="line">%%    binary_to_list(jlib:timestamp_to_iso(TimeStamp)).</span><br><span class="line">    binary_to_list(jlib:timestamp_to_legacy(TimeStamp)).</span><br></pre></td></tr></table></figure>
+<h4 id="mod-logxml-Line-202-像下面这样"><a href="#mod-logxml-Line-202-像下面这样" class="headerlink" title="mod_logxml Line#202 像下面这样:"></a><a href="https://github.com/processone/ejabberd-contrib/blob/master/mod_logxml/src/mod_logxml.erl#L202" target="_blank" rel="external">mod_logxml Line#202</a> 像下面这样:</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%% TimestampISO, binary_to_list(xml:element_to_binary(Packet))]).</span><br><span class="line">TimestampISO, binary_to_list(fxml:element_to_binary(Packet))]).</span><br></pre></td></tr></table></figure>
+<p>主要原因是 Ejabberd 官方统一将原来的 p1_xml 统一改为 fast_xml ,详见 <a href="https://github.com/processone/ejabberd/commit/dfc29ea03ca91e1eb5387d93612e2ac4b4b496da" target="_blank" rel="external">Switch to Fast XML module</a></p>
+<hr>
+<hr>
+<hr>
+<h3 id="Ejabberd-配置-mod-push-消息推送模块"><a href="#Ejabberd-配置-mod-push-消息推送模块" class="headerlink" title="Ejabberd 配置 mod_push 消息推送模块"></a>Ejabberd 配置 mod_push 消息推送模块</h3><p><a href="https://github.com/royneary/mod_push" target="_blank" rel="external">royneary/mod_push</a></p>
+<p>mod_push 为 ejabberd 实现了 XEP-0357 (Push) 消息推送协议</p>
+<h3 id="安装-mod-push-模块"><a href="#安装-mod-push-模块" class="headerlink" title="安装 mod_push 模块"></a>安装 mod_push 模块</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/royneary/mod_push.git</span><br><span class="line"><span class="comment"># copy the source code folder to the module sources folder of your ejabberd</span></span><br><span class="line"><span class="comment"># installation (may be different on your machine)</span></span><br><span class="line">sudo cp -R mod_push /var/spool/jabber/.ejabberd-modules/sources/</span><br><span class="line"><span class="comment"># if done right ejabberdctl will list mod_push as available module</span></span><br><span class="line">ejabberdctl modules_available</span><br><span class="line"><span class="comment"># automatically compile and install mod_push</span></span><br><span class="line">ejabberdctl module_install mod_push</span><br></pre></td></tr></table></figure>
+<hr>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/01/10/Ejabberd/EjabberdModule/">EjabberdModule</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 张亚飞 的个人博客">张亚飞</a></p>
+        <p><span>发布时间:</span>2016年01月10日 - 19时49分</p>
+        <p><span>最后更新:</span>2016年05月11日 - 18时31分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/01/10/Ejabberd/EjabberdModule/" title="EjabberdModule">https://coam.co/2016/01/10/Ejabberd/EjabberdModule/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://coam.co/2016/01/10/Ejabberd/EjabberdModule/　　作者: 张亚飞" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/01/13/Python/PythonNote/">
+                    PythonNote
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/01/10/Ejabberd/EjabberdConfigure/">
+                    EjabberdConfigure
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Ejabberd-模块"><span class="toc-number">1.</span> <span class="toc-text">Ejabberd 模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ejabberd-模块-mod"><span class="toc-number">1.0.1.</span> <span class="toc-text">ejabberd 模块 mod_*</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Ejabberd-增加聊天记录模块-mod-mam"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">Ejabberd 增加聊天记录模块 mod_mam</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ejabberd-配置-OAuth-Token-模块"><span class="toc-number">1.0.2.</span> <span class="toc-text">Ejabberd 配置 OAuth Token 模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ejabberd-配置-mod-http-bind-模块"><span class="toc-number">1.0.3.</span> <span class="toc-text">Ejabberd 配置 mod_http_bind 模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xml-消息日志记录模块-mod-logxml"><span class="toc-number">1.0.4.</span> <span class="toc-text">xml 消息日志记录模块 mod_logxml</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mod-logxml-erl-需要-ejabberd16-01-141-已改动-jlib-timestamp-to-iso-1-方法-jlib-timestamp-to-legacy-1-详见-https-github-com-processone-ejabberd-pull-917"><span class="toc-number">1.0.4.1.</span> <span class="toc-text">mod_logxml.erl 需要 ejabberd16.01.141 已改动 jlib:timestamp_to_iso/1 方法 jlib:timestamp_to_legacy/1 详见 https://github.com/processone/ejabberd/pull/917</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mod-logxml-Line-202-像下面这样"><span class="toc-number">1.0.4.2.</span> <span class="toc-text">mod_logxml Line#202 像下面这样:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ejabberd-配置-mod-push-消息推送模块"><span class="toc-number">1.0.5.</span> <span class="toc-text">Ejabberd 配置 mod_push 消息推送模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-mod-push-模块"><span class="toc-number">1.0.6.</span> <span class="toc-text">安装 mod_push 模块</span></a></li></ol></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/01/13/Python/PythonNote/" title="上一篇: PythonNote">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/01/10/Ejabberd/EjabberdConfigure/" title="下一篇: EjabberdConfigure">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Erlang/InstallOTP/">InstallOTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Redis/RedisSyncNote/">RedisSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/Ubuntu/">Linux/Ubuntu</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/SystemInstall/">Linux/SystemInstall</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Others/YL/">Others/YL</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/Linux/LinuxCommand/">LinuxCommand</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlSyncNote/">MysqlSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlToRedis/">MysqlToRedis</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlNote/">MysqlNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlSql/">MysqlSql</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Redis/RedisNote/">RedisNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Mongo/MongoNotes/">MongoNotes</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/Linux/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/25/Android/AndroidNDK/">AndroidNDK</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/Design/PhotoShop/">PhotoShop 设计笔记摘要</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/15/Others/Enshrine/">Enshrine收藏</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/03/Others/Imagine/">【脑洞大开】你看过这样的动态图吗?——太牛了！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/26/Linux/Linux.bashrc/">Linux.bashrc</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/24/WinScripts/WinNote/">WinNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/21/Android/ProGuard/">ProGuard</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Linux/ShadowSocks/">ShadowSocks</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Web/WebDesign/">WebDesign</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Plan/FreeShareInfoIdea/">Plan/FreeShareInfoIdea</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Phalcon/PhalconNote/">Phalcon/PhalconNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Info/EnshrineBlogs/">Info/EnshrineBlogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/CLang/cMake/">cMake</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/13/Android/CoamApp/">CoamApp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/30/CLang/GccNote/">GCCNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/QT/QTNote/">QTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/DevIDENote/">DevIDENote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/CNote/">CNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/QT/Cygwin/">Cygwin</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/Electron/ElectronNote/">ElectronNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/CheerioNote/">CheerioNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/MochaNote/">MochaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/WebpackNote/">WebPack 自动打包工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/GulpNote/">NodeJs/GulpNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/Info/hospital/">hospital</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/18/Angular/TypeScriptNote/">TypeScriptNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/17/Angular/AngularNote/">Angular 开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Java/JavaNote/">JavaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/Python/PythonNote/">PythonNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdModule/">EjabberdModule</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdConfigure/">EjabberdConfigure</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrofit/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/PhpNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnLombok/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaHashMap/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaArray/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnGoogleGuava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnAsyncTask/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/NodeJs/NodeJsNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/MongoNotes/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/GPS/GPSNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Rebar/">RebarNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/MQTT/">MQTTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Lua/">LuaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Elixir/">ElixirNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/XMPP/">XMPPNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdNote/">EjabberdNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/Composer/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/SSL/LetSSL/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidStudio/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Nginx/NginxNote/">NginxNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mysql/MysqlTrigger/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidPushMQTT/">Android 推送之 MQTT</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/phpMyAdmin/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnSupportAnnotations/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRxJava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrolambda/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnOther/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnListView/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnGradle/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidFragment/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidDesign/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidContext/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroid/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/EventBus/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidStethoAppWithChrome/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidLog/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/Conversations.IM/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnOkHttp/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Http/HttpNote/">Http协议相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Others/MarkDownNote/">MarkDown 相关</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 张亚飞
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        <div class="visit">
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <span id="site-visit" >本站到访数: 
+                    <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </span>
+            <span id="busuanzi_container_page_pv" style='display:none'>
+                <span id="page-visit">, 本页阅读量: 
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </span>
+        </div>
+    </div>
+</footer>
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

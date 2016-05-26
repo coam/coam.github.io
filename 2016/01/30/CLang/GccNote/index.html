@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>GCCNote | 商运物流</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="用GDB调试程序一般来说GDB主要调试的是C/C++的程序.要调试C/C++的程序,首先在编译时,我们必须要把调试信息加到可执行文件中.使用编译器(cc/gcc/g++)的 -g 参数可以做到这一点.如:
+12$gcc -g -Wall hello.c -o hello$g++ -g -Wall hello.cpp -o hello
+如果没有-g,你将看不见程序的函数名. 变量名,所代替的全是运行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GCCNote">
+<meta property="og:url" content="https://coam.co/2016/01/30/CLang/GccNote/index.html">
+<meta property="og:site_name" content="商运物流">
+<meta property="og:description" content="用GDB调试程序一般来说GDB主要调试的是C/C++的程序.要调试C/C++的程序,首先在编译时,我们必须要把调试信息加到可执行文件中.使用编译器(cc/gcc/g++)的 -g 参数可以做到这一点.如:
+12$gcc -g -Wall hello.c -o hello$g++ -g -Wall hello.cpp -o hello
+如果没有-g,你将看不见程序的函数名. 变量名,所代替的全是运行">
+<meta property="og:updated_time" content="2016-05-16T14:23:33.768Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GCCNote">
+<meta name="twitter:description" content="用GDB调试程序一般来说GDB主要调试的是C/C++的程序.要调试C/C++的程序,首先在编译时,我们必须要把调试信息加到可执行文件中.使用编译器(cc/gcc/g++)的 -g 参数可以做到这一点.如:
+12$gcc -g -Wall hello.c -o hello$g++ -g -Wall hello.cpp -o hello
+如果没有-g,你将看不见程序的函数名. 变量名,所代替的全是运行">
+  
+    <link rel="alternative" href="/atom.xml" title="商运物流" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/author.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">张亚飞</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/markdown-gfw-hexo-jekyll/" style="font-size: 10px;">markdown gfw hexo jekyll</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://coam.co">商运物流</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/zyfmix/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://wp.iirii.com/">商运技术博客</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于物流设计</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">张亚飞</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img lazy-src="/img/author.jpg" class="js-avatar">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">张亚飞</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-CLang/GccNote" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/30/CLang/GccNote/" class="article-date">
+      <time datetime="2016-01-30T14:05:31.000Z" itemprop="datePublished">2016-01-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      GCCNote
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <a id="more"></a>
+<h3 id="用GDB调试程序"><a href="#用GDB调试程序" class="headerlink" title="用GDB调试程序"></a>用GDB调试程序</h3><p>一般来说GDB主要调试的是C/C++的程序.要调试C/C++的程序,首先在编译时,我们必须要把调试信息加到可执行文件中.使用编译器(cc/gcc/g++)的 -g 参数可以做到这一点.如:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$gcc</span> -g -Wall hello.c -o hello</span><br><span class="line"><span class="variable">$g</span>++ -g -Wall hello.cpp -o hello</span><br></pre></td></tr></table></figure>
+<p>如果没有-g,你将看不见程序的函数名. 变量名,所代替的全是运行时的内存地址.当你用-g把调试信息加入之后,并成功编译目标代码以后,让我们来看看如何用gdb来调试他.</p>
+<p>参考 <a href="http://wiki.ubuntu.org.cn/index.php?title=%E7%94%A8GDB%E8%B0%83%E8%AF%95%E7%A8%8B%E5%BA%8F&amp;variant=zh-hans" target="_blank" rel="external">用GDB调试程序</a></p>
+<hr>
+<h3 id="浅谈编译器gcc-g-之异同"><a href="#浅谈编译器gcc-g-之异同" class="headerlink" title="浅谈编译器gcc. g++之异同"></a>浅谈编译器gcc. g++之异同</h3><blockquote>
+<p>编译阶段是相同的,链接阶段g++默认链接c++库,gcc没有.<br>所以一般情况下用gcc编译c文件,用g++编译cpp文件.<br>但是也可以用gcc编译cpp文件,但后面需要加一个选项 <strong>-lstdc++</strong> ,作用是链接c++库<br>还可以用g++编译c文件</p>
+<p>浅谈一下编译器g++和gcc之间的区别,和gcc经过几个阶段可以将源程序编译链接成可执行文件.</p>
+</blockquote>
+<p>一. 首先说明一点,g++和gcc都是GNU组织发布的编译器,两者存在不同,这里分成三中文件说明<br>一种扩展名为.c的文件,gcc会把他当成c程序来处理,而g++会把他当成c++程序处理；<br>二种文件扩展名为.c++,两者都会当成C++程序处理；<br>第三种文件扩展名为.cpp,在编译阶段,其实gcc和g++都是相同的,都使用的是gcc来进行处理,但是当进入链接阶段的时候,gcc无法自动链接C++的函数库,要想链接C++函数库,必须手动操作,命令为 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc hello.cpp -lstdc++ -o hello</span><br></pre></td></tr></table></figure>
+<p>而g++则会自动链接C++的函数库,为了方便起见,对于.cpp的文件就直接使用g++来进行编译和连接,省去了使用gcc进行编译的阶段,从而使得有些人感觉对于.cpp文件的处理么有gcc什么事儿,其实不然,编译阶段g++还是使用了gcc进行编译.<br>二. 再来解释一下gcc是经过几个阶段完成编译链接生成可执行文件的.<br>以简单的hello.c程序为例来解释该问题</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"hello\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>预处理阶段<br>一段程序中通常会包含宏定义和头文件包含,预处理阶段就是对这两者进行处理,同时包括了语法检查,该阶段的命令为</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -E hello.c -o hello.i</span><br></pre></td></tr></table></figure>
+<p>生成一个hello.i文件.文件hello.i文件特别大,是因为程序将头文件进行了替换,导致文件大的现象,所以在实际编程过程中,如果用不到的头文件就不需要包含在程序中,否则会造成时间和空间的浪费.</p>
+<ol>
+<li>生成汇编文件<br>对预处理文件进行汇编生成汇编文件,该命令为:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -S(大写) hello.i -o hello.s</span><br></pre></td></tr></table></figure>
+<ol>
+<li>由汇编文件生成目标文件(.o文件)<br>对汇编文件进一步进行处理,使每个源程序都会生成一个目标文件,扩展名为.o,该命令为</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -c hello.s -o hello.o</span><br></pre></td></tr></table></figure>
+<ol>
+<li>链接目标文件和库函数文件,生成可执行文件<br>在链接阶段,需要将目标文件和库函数文件相链接,这里包括静态库和动态库,生成最终的可执行文件.该命令为:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc hello.o -o hello</span><br></pre></td></tr></table></figure>
+<ol>
+<li>可以运行可执行文件hello<br>三. 如何使用g++编译动态库\静态库?如何使用g++连接非标准库和应用程序?<br>什么是库呢?简单的说库就是一组已经写好了的函数和变量. 是经过编译了的代码,为了提高开发的效率和运行的效率而设计的.<br>库可以分为静态库和动态库(共享库)两类,在linux系统中静态库的扩展名为.a,动态库的扩展名是.so<br>静态库是在每个程序进行链接的时候将库在目标程序中进行一次拷贝,当目标程序生成的时候,程序可以脱离库文件单独运行,换言之原来的文件即使删除程序还是会正常工作.<br>共享库可以被多个应用程序共享,实在程序运行的时候进行动态的加载,因此对于每个应用程序来说,即使不再使用某个共享库,也不应该将其删除,因为其他的引用程序可能需要这个库.</li>
+</ol>
+<hr>
+<h4 id="gcc-and-g-分别是gnu的c-amp-c-编译器-gcc-g-在执行编译工作的时候-总共需要4步"><a href="#gcc-and-g-分别是gnu的c-amp-c-编译器-gcc-g-在执行编译工作的时候-总共需要4步" class="headerlink" title="gcc and g++ 分别是gnu的c &amp; c++编译器 gcc/g++在执行编译工作的时候,总共需要4步"></a>gcc and g++ 分别是gnu的c &amp; c++编译器 gcc/g++在执行编译工作的时候,总共需要4步</h4><p>1.预处理,生成.i的文件[预处理器cpp]<br>2.将预处理后的文件转换成汇编语言,生成文件.s[编译器egcs]<br>3.由汇编变为目标代码(机器代码)生成.o的文件[汇编器as]<br>4.连接目标代码,生成可执行程序[链接器ld]</p>
+<p>[参数详解]</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-x language filename</span><br></pre></td></tr></table></figure>
+<p>设定文件所使用的语言,使后缀名无效,对以后的多个有效.也就是根据约定C语言的后缀名称是.c的,而C++的后缀名是.C或者.cpp,如果你很个性,决定你的C代码文件的后缀名是.pig 哈哈,那你就要用这个参数,这个参数对他后面的文件名都起作用,除非到了下一个参数的使用.<br>可以使用的参数吗有下面的这些</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`c<span class="string">', `objective-c'</span>, `c-heade<span class="string">r', `c++'</span>, `cpp-output<span class="string">', `assembler'</span>, <span class="keyword">and</span> `assembler-<span class="keyword">with</span>-cpp<span class="string">'.</span></span><br></pre></td></tr></table></figure>
+<p>例子用法:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -x c hello.pig</span><br></pre></td></tr></table></figure>
+<p>参数详解</p>
+<pre><code>-x none filename
+　　关掉上一个选项,也就是让gcc根据文件名后缀,自动识别文件类型
+　　例子用法:
+　　gcc -x c hello.pig -x none hello2.c
+　　
+-c
+　　只激活预处理,编译,和汇编,也就是他只把程序做成obj文件
+　　例子用法:
+　　gcc -c hello.c
+　　他将生成.o的obj文件
+-S
+　　只激活预处理和编译,就是指把文件编译成为汇编代码.
+　　例子用法
+　　gcc -S hello.c
+　　他将生成.s的汇编代码,你可以用文本编辑器察看
+-E
+　　只激活预处理,这个不生成文件,你需要把它重定向到一个输出文件里面.
+　　例子用法:
+　　gcc -E hello.c &gt; pianoapan.txt
+　　gcc -E hello.c | more
+　　慢慢看吧,一个hello word 也要与处理成800行的代码
+-o
+　　制定目标名称,缺省的时候,gcc 编译出来的文件是a.out,很难听,如果你和我有同感,改掉它,哈哈
+　　例子用法
+　　gcc -o hello.exe hello.c (哦,windows用习惯了)
+　　gcc -o hello.asm -S hello.c
+-pipe
+　　使用管道代替编译中临时文件,在使用非gnu汇编工具的时候,可能有些问题
+　　gcc -pipe -o hello.exe hello.c
+-ansi
+　　关闭gnu c中与ansi c不兼容的特性,激活ansi c的专有特性(包括禁止一些asm inline typeof关键字,以及UNIX,vax等预处理宏,
+-fno-asm
+　　此选项实现ansi选项的功能的一部分,它禁止将asm,inline和typeof用作关键字. 　　　　
+-fno-strict-prototype
+　　只对g++起作用,使用这个选项,g++将对不带参数的函数,都认为是没有显式的对参数的个数和类型说明,而不是没有参数.
+　　而gcc无论是否使用这个参数,都将对没有带参数的函数,认为城没有显式说明的类型
+　　
+-fthis-is-varialble
+　　就是向传统c++看齐,可以使用this当一般变量使用.
+　　
+-fcond-mismatch
+　　允许条件表达式的第二和第三参数类型不匹配,表达式的值将为void类型
+　　
+-funsigned-char
+-fno-signed-char
+-fsigned-char
+-fno-unsigned-char
+　　这四个参数是对char类型进行设置,决定将char类型设置成unsigned char(前两个参数)或者 signed char(后两个参数)
+　　
+-include file
+　　包含某个代码,简单来说,就是便以某个文件,需要另一个文件的时候,就可以用它设定,功能就相当于在代码中使用#include&lt;filename&gt;
+　　例子用法:
+　　gcc hello.c -include /root/pianopan.h
+　　
+-imacros file
+　　将file文件的宏,扩展到gcc/g++的输入文件,宏定义本身并不出现在输入文件中
+　　
+-Dmacro
+　　相当于C语言中的#define macro
+　　
+-Dmacro=defn
+　　相当于C语言中的#define macro=defn
+　　
+-Umacro
+　　相当于C语言中的#undef macro
+-undef
+　　取消对任何非标准宏的定义
+　　
+-Idir
+　　在你是用#include&quot;file&quot;的时候,gcc/g++会先在当前目录查找你所制定的头文件,如果没有找到,他回到缺省的头文件目录找,如果使用-I制定了目录,他
+　　回先在你所制定的目录查找,然后再按常规的顺序去找.
+　　对于#include&lt;file&gt;,gcc/g++会到-I制定的目录查找,查找不到,然后将到系统的缺省的头文件目录查找
+　　
+-I-
+　　就是取消前一个参数的功能,所以一般在-Idir之后使用
+　　
+-idirafter dir
+　　在-I的目录里面查找失败,讲到这个目录里面查找.
+　　
+-iprefix prefix
+-iwithprefix dir
+　　一般一起使用,当-I的目录查找失败,会到prefix+dir下查找
+　　
+-nostdinc
+　　使编译器不再系统缺省的头文件目录里面找头文件,一般和-I联合使用,明确限定头文件的位置
+　　
+-nostdin C++
+　　规定不在g++指定的标准路经中搜索,但仍在其他路径中搜索,.此选项在创libg++库使用
+　　
+-C
+　　在预处理的时候,不删除注释信息,一般和-E使用,有时候分析程序,用这个很方便的
+　　
+-M
+　　生成文件关联的信息.包含目标文件所依赖的所有源代码你可以用gcc -M hello.c来测试一下,很简单.
+　　
+-MM
+　　和上面的那个一样,但是它将忽略由#include&lt;file&gt;造成的依赖关系.
+　　
+-MD
+　　和-M相同,但是输出将导入到.d的文件里面
+　　
+-MMD
+　　和-MM相同,但是输出将导入到.d的文件里面
+　　
+-Wa,option
+　　此选项传递option给汇编程序;如果option中间有逗号,就将option分成多个选项,然后传递给会汇编程序
+　　
+-Wl.option
+　　此选项传递option给连接程序;如果option中间有逗号,就将option分成多个选项,然后传递给会连接程序.
+　　
+-llibrary
+　　制定编译的时候使用的库
+　　例子用法
+　　gcc -lcurses hello.c
+　　使用ncurses库编译程序
+　　
+-Ldir
+　　制定编译的时候,搜索库的路径.比如你自己的库,可以用它制定目录,不然
+　　编译器将只在标准库的目录找.这个dir就是目录的名称.
+　　
+　　编译器的优化选项的4个级别,-O0表示没有优化,-O1为缺省值,-O3优化级别最高　　 　　
+-g
+　　只是编译器,在编译的时候,产生调试信息.
+　　
+-gstabs
+　　此选项以stabs格式声称调试信息,但是不包括gdb调试信息.
+　　
+-gstabs+
+　　此选项以stabs格式声称调试信息,并且包含仅供gdb使用的额外调试信息.
+　　
+-ggdb
+　　此选项将尽可能的生成gdb的可以使用的调试信息.
+-static
+　　此选项将禁止使用动态库,所以,编译出来的东西,一般都很大,也不需要什么
+动态连接库,就可以运行.
+-share
+　　此选项将尽量使用动态库,所以生成文件比较小,但是需要系统由动态库.
+-traditional
+　　试图让编译器支持传统的C语言特性
+</code></pre><hr>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/01/30/CLang/GccNote/">GCCNote</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 张亚飞 的个人博客">张亚飞</a></p>
+        <p><span>发布时间:</span>2016年01月30日 - 22时05分</p>
+        <p><span>最后更新:</span>2016年05月16日 - 22时23分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/01/30/CLang/GccNote/" title="GCCNote">https://coam.co/2016/01/30/CLang/GccNote/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://coam.co/2016/01/30/CLang/GccNote/　　作者: 张亚飞" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/02/13/Android/CoamApp/">
+                    CoamApp
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/01/24/QT/QTNote/">
+                    QTNote
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#用GDB调试程序"><span class="toc-number">1.</span> <span class="toc-text">用GDB调试程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#浅谈编译器gcc-g-之异同"><span class="toc-number">2.</span> <span class="toc-text">浅谈编译器gcc. g++之异同</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#gcc-and-g-分别是gnu的c-amp-c-编译器-gcc-g-在执行编译工作的时候-总共需要4步"><span class="toc-number">2.1.</span> <span class="toc-text">gcc and g++ 分别是gnu的c & c++编译器 gcc/g++在执行编译工作的时候,总共需要4步</span></a></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/02/13/Android/CoamApp/" title="上一篇: CoamApp">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/01/24/QT/QTNote/" title="下一篇: QTNote">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Erlang/InstallOTP/">InstallOTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Redis/RedisSyncNote/">RedisSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/Ubuntu/">Linux/Ubuntu</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/SystemInstall/">Linux/SystemInstall</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Others/YL/">Others/YL</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/Linux/LinuxCommand/">LinuxCommand</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlSyncNote/">MysqlSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlToRedis/">MysqlToRedis</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlNote/">MysqlNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlSql/">MysqlSql</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Redis/RedisNote/">RedisNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Mongo/MongoNotes/">MongoNotes</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/Linux/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/25/Android/AndroidNDK/">AndroidNDK</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/Design/PhotoShop/">PhotoShop 设计笔记摘要</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/15/Others/Enshrine/">Enshrine收藏</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/03/Others/Imagine/">【脑洞大开】你看过这样的动态图吗?——太牛了！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/26/Linux/Linux.bashrc/">Linux.bashrc</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/24/WinScripts/WinNote/">WinNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/21/Android/ProGuard/">ProGuard</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Linux/ShadowSocks/">ShadowSocks</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Web/WebDesign/">WebDesign</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Plan/FreeShareInfoIdea/">Plan/FreeShareInfoIdea</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Phalcon/PhalconNote/">Phalcon/PhalconNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Info/EnshrineBlogs/">Info/EnshrineBlogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/CLang/cMake/">cMake</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/13/Android/CoamApp/">CoamApp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/30/CLang/GccNote/">GCCNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/QT/QTNote/">QTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/DevIDENote/">DevIDENote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/CNote/">CNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/QT/Cygwin/">Cygwin</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/Electron/ElectronNote/">ElectronNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/CheerioNote/">CheerioNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/MochaNote/">MochaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/WebpackNote/">WebPack 自动打包工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/GulpNote/">NodeJs/GulpNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/Info/hospital/">hospital</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/18/Angular/TypeScriptNote/">TypeScriptNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/17/Angular/AngularNote/">Angular 开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Java/JavaNote/">JavaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/Python/PythonNote/">PythonNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdModule/">EjabberdModule</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdConfigure/">EjabberdConfigure</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrofit/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/PhpNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnLombok/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaHashMap/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaArray/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnGoogleGuava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnAsyncTask/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/NodeJs/NodeJsNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/MongoNotes/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/GPS/GPSNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Rebar/">RebarNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/MQTT/">MQTTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Lua/">LuaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Elixir/">ElixirNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/XMPP/">XMPPNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdNote/">EjabberdNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/Composer/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/SSL/LetSSL/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidStudio/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Nginx/NginxNote/">NginxNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mysql/MysqlTrigger/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidPushMQTT/">Android 推送之 MQTT</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/phpMyAdmin/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnSupportAnnotations/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRxJava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrolambda/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnOther/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnListView/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnGradle/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidFragment/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidDesign/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidContext/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroid/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/EventBus/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidStethoAppWithChrome/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidLog/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/Conversations.IM/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnOkHttp/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Http/HttpNote/">Http协议相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Others/MarkDownNote/">MarkDown 相关</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 张亚飞
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        <div class="visit">
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <span id="site-visit" >本站到访数: 
+                    <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </span>
+            <span id="busuanzi_container_page_pv" style='display:none'>
+                <span id="page-visit">, 本页阅读量: 
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </span>
+        </div>
+    </div>
+</footer>
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

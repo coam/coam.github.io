@@ -216,215 +216,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-Server/NodeJs" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Erlang/InstallOTP" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/22/Server/NodeJs/" class="article-date">
-      <time datetime="2016-01-22T04:03:49.038Z" itemprop="datePublished">2016-01-22</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="Node-js__u7BA1_u7406_u76F8_u5173"><a href="#Node-js__u7BA1_u7406_u76F8_u5173" class="headerlink" title="Node.js 管理相关"></a>Node.js 管理相关</h2><h3 id="u5728Ubuntu__u5B89_u88C5_Node-js"><a href="#u5728Ubuntu__u5B89_u88C5_Node-js" class="headerlink" title="在Ubuntu 安装 Node.js"></a>在Ubuntu 安装 Node.js</h3><h2 id="u5B89_u88DD_Node-js"><a href="#u5B89_u88DD_Node-js" class="headerlink" title="安裝 Node.js"></a>安裝 Node.js</h2><p>起始这个步骤很重要,而且如果参考大部分教学就会踩到雷.主要原因是如果用上面那篇的方法,不会自动帮你做好软连接,后续很容易出現莫名其妙的问题.</p>
-<pre><code>sudo apt-get update
-sudo apt-get install nodejs-legacy
-</code></pre><p>直接用 nodejs-legacy 即可.這個会自动建立软连接,可以避免不少比较旧的库的问题.</p>
-<p>在 安装node的时候,安装位置为 /usr/local/bin/node ,但这个位置是需要root权限的,而截图上提示的错误就是你的权限不 够,node没有安装成功.如果你用源码编译安装,记得最后安装时加sudo执行.而且你在执行nodejs的时候,截图也提示你了,你的nodejs没 有安装,但你可以使用 sudo apt-get install nodejs 这个命令来安装,这是因为你之前添加了ppa才可以这样安装.</p>
-<p>另 外,我想补充的是,你所用的ppa的方法,已经是很旧的了,即使安装成功也是很老版本的,这个ppa已经很久不更新了,现在ubuntu软件仓库就已经有 node了,所以你可以先用</p>
-<pre><code>sudo apt-add-repository -r ppa:chris-lea/node.js-devel
-</code></pre><p>删除这个ppa,然后安装仓库里的node:</p>
-<pre><code>sudo apt-get install nodejs
-</code></pre><p>如果你发现仓库里的nodejs版本不够高,可以更新一下仓库和软件版本:</p>
-<pre><code>sudo apt-get update
-sudo apt-get upgrade
-</code></pre><p>你也可以用源代码编译安装node,也很简单,下载node的源代码包,解压,进入目录执行:</p>
-<pre><code>./configure &amp;&amp; make &amp;&amp; sudo make install
-</code></pre><p>补充:</p>
-<h4 id="u4E3A_u4EC0_u4E48_u6267_u884C_node_-v__u6CA1_u6709_u8F93_u51FA_uFF1F"><a href="#u4E3A_u4EC0_u4E48_u6267_u884C_node_-v__u6CA1_u6709_u8F93_u51FA_uFF1F" class="headerlink" title="为什么执行 node -v 没有输出？"></a>为什么执行 node -v 没有输出？</h4><blockquote>
-<p>Ubuntu 的仓库里面,已经存在一个叫node的软件包了,可以执行aptitude search node`查看,这是一个先于nodejs存在的软件名,已经被用了,所以ubuntu只能把用于js开发的这个node改名叫nodejs,如果系统已 经安装此软件,执行node -v并非nodejs的node,它跟nodejs一点关系也没有,它的-v参数是不显示任何东西的.<br>node 还是 nodejs ?</p>
-</blockquote>
-<p>用 apt-get install nodejs 方法安装的,或是ppa方法安装的,命令都应该叫 nodejs,应该使用nodejs -v来测试.不过如果使用源代码的方式编译安装的（默认安装到 /usr/local/bin ,除非指定prefix参数）,也叫node,这个node是 真正的nodejs的node,所以为了避免与ubuntu仓库中的node引起混淆,建议安装后,把node改名为nodejs</p>
-<p>windows下是 node -v;ubuntu下是 nodejs -v</p>
-<hr>
-<h3 id="nvm"><a href="#nvm" class="headerlink" title="nvm"></a>nvm</h3><p>参考 <a href="http://eyas.leanote.com/post/use-nvm-install-nodejs" target="_blank" rel="external">使用 nvm 安装 nodejs</a></p>
-<p><a href="https://github.com/creationix/nvm" target="_blank" rel="external">建议使用版本管理工具nvm，来安装Node，因为可以自由切换版本</a></p>
-<h4 id="Window__u4E0B_u5B89_u88C5_nvm"><a href="#Window__u4E0B_u5B89_u88C5_nvm" class="headerlink" title="Window 下安装 nvm"></a>Window 下安装 nvm</h4><p><a href="https://github.com/coreybutler/nvm-windows" target="_blank" rel="external">nvm-windows</a><br>下载安装文件 <a href="https://github.com/coreybutler/nvm-windows/releases/download/1.1.0/nvm-setup.zip" target="_blank" rel="external">nvm-setup.zip</a></p>
-<p>nvm 将 nodejs 安装到目录 <strong>C:\Users\yafei\AppData\Roaming\nvm\v5.5.0</strong><br>使用 npm install -g <em> 将包安装到目录 <em>*C:\Users\yafei\AppData\Roaming\nvm\v5.5.0\node_modules</em></em></p>
-<p>window 下 nvm 常用命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nvm list</span><br><span class="line">nvm install latest</span><br><span class="line">nvm on: Enable node.js version management.</span><br><span class="line">nvm off: Disable node.js version management (does not uninstall anything).</span><br><span class="line">nvm proxy [url]: Set a proxy to use <span class="keyword">for</span> downloads. Leave [url] blank to see the current proxy. Set [url] to <span class="string">"none"</span> to remove the proxy.</span><br><span class="line">nvm uninstall &lt;version&gt;: Uninstall a specific version.</span><br><span class="line">nvm use &lt;version&gt; [arch]:</span><br></pre></td></tr></table></figure>
-<h4 id="Ubuntu__u4E0B_u5B89_u88C5_nvm"><a href="#Ubuntu__u4E0B_u5B89_u88C5_nvm" class="headerlink" title="Ubuntu 下安装 nvm"></a>Ubuntu 下安装 nvm</h4><p><a href="https://github.com/creationix/nvm" target="_blank" rel="external">nvm</a><br>使用 安装脚本安装 nvm</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.<span class="number">30.2</span>/install.sh | bash</span><br><span class="line">. ~/.nvm/nvm.sh</span><br></pre></td></tr></table></figure>
-<p>Ubuntu 下 nvm 常用命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nvm ls-remote  // 列出所有可用版本</span><br><span class="line">nvm install latest</span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="u5B89_u88C5_npm"><a href="#u5B89_u88C5_npm" class="headerlink" title="安装 npm"></a>安装 npm</h3><pre><code>sudo apt-get install npm
-</code></pre><h4 id="npm_u5E38_u7528_u547D_u4EE4"><a href="#npm_u5E38_u7528_u547D_u4EE4" class="headerlink" title="npm常用命令"></a>npm常用命令</h4><pre><code>npm install &lt;name&gt;安装nodejs的依赖包
-</code></pre><p>例如 npm install express 就会默认安装express的最新版本,也可以通过在后面加版本号的方式安装指定版本,如npm install express@3.0.6</p>
-<pre><code>npm install &lt;name&gt; -g  将包安装到全局环境中
-</code></pre><p>但是代码中,直接通过require()的方式是没有办法调用全局安装的包的.全局的安装是供命令行使用的,就好像全局安装了vmarket后,就可以在命令行中直接运行vm命令</p>
-<pre><code>npm install &lt;name&gt; --save  安装的同时,将信息写入package.json中
-</code></pre><p>项目路径中如果有package.json文件时,直接使用npm install方法就可以根据dependencies配置安装所有的依赖包</p>
-<p>这样代码提交到github时,就不用提交 node_modules 这个文件夹了.</p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> init   会引导你创建一个package.json文件,包括名称、版本、作者这些信息等</span><br><span class="line"><span class="built_in">npm</span> remove &lt;name&gt;移除</span><br><span class="line"><span class="built_in">npm</span> update &lt;name&gt;更新</span><br><span class="line"><span class="built_in">npm</span> ls 列出当前安装的了所有包</span><br><span class="line"><span class="built_in">npm</span> root  查看当前包的安装路径</span><br><span class="line"><span class="built_in">npm</span> root -g  查看全局的包的安装路径</span><br><span class="line"><span class="built_in">npm</span> help  帮助,如果要单独查看install命令的帮助,可以使用的<span class="built_in">npm</span> help install</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>升级npm到最新版本,使用以下命令</p>
-</blockquote>
-<pre><code>npm install npm@latest -g
-</code></pre><blockquote>
-<p>国内npm安装nodejs modules失败的几个解决方案</p>
-</blockquote>
-<pre><code>npm config set proxy=&quot;http://127.0.0.1:8087&quot;//设置代理地址 http://www.xxxx.com:port格式
-npm config set registry=&quot;http://registry.npmjs.org&quot;//设置npm源地址
-</code></pre><p><a href="http://www.tuicool.com/articles/VNZ7Vb" target="_blank" rel="external">nodejs国内npm安装nodejs modules失败的几个解决方案 </a></p>
-<p>参考列表</p>
-<p><a href="http://codeblog.niwyclin.org/posts/210397-ubuntu-installed-nodejs-and-npm" target="_blank" rel="external">Ubuntu 正确安装 Node.js 和 Npm</a><br><a href="http://segmentfault.com/q/1010000003753704" target="_blank" rel="external">Ubuntu下装nodejs的问题</a></p>
-<h3 id="u9519_u8BEF_u53CA_u5E38_u7528_u547D_u4EE4"><a href="#u9519_u8BEF_u53CA_u5E38_u7528_u547D_u4EE4" class="headerlink" title="错误及常用命令"></a>错误及常用命令</h3><blockquote>
-<p>清除缓存重新安装<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rm -rf node_modules</span><br><span class="line"><span class="built_in">npm</span> cache clean</span><br><span class="line"><span class="built_in">npm</span> install</span><br></pre></td></tr></table></figure></p>
-<p>在 Ubuntu 下安装 converse.js 频繁出现以下错误</p>
-</blockquote>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Please <span class="keyword">report</span> this full <span class="keyword">log</span> at https:<span class="comment">//github.com/Medium/phantomjs</span></span><br><span class="line">npm WARN This failure might be due to the <span class="keyword">use</span> of legacy binary <span class="string">"node"</span></span><br><span class="line">npm WARN <span class="keyword">For</span> further explanations, please <span class="keyword">read</span></span><br><span class="line">/usr/share/doc/nodejs/README.Debian</span><br><span class="line"></span><br><span class="line">npm <span class="keyword">ERR</span>! weird <span class="keyword">error</span> 1</span><br><span class="line">npm <span class="keyword">ERR</span>! not ok code 0</span><br><span class="line">make: *** [stamp-npm] <span class="keyword">Error</span> 1</span><br></pre></td></tr></table></figure>
-<p>网友提示需要安装 nodejs<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nodejs-legacy</span><br></pre></td></tr></table></figure></p>
-<p>但是执行此命令提示我已安装</p>
-<ul>
-<li>Setup with Ubuntu</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl <span class="operator">-s</span>L https://deb.nodesource.com/setup_5.x | sudo -E bash -</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Then install with Ubuntu:</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install --yes nodejs</span><br></pre></td></tr></table></figure>
-<ul>
-<li>If you get node: command not found chances are likely you need to link your binary:</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln <span class="operator">-s</span> /usr/bin/nodejs /usr/bin/node</span><br></pre></td></tr></table></figure>
-<p>参考 <a href="https://github.com/nodejs/node-v0.x-archive/wiki/Installing-Node.js-via-package-manager" target="_blank" rel="external">Installing Node.js via package manager</a></p>
-<p>重新执行命令安装出现如下错误<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Failed at the phantomjs@<span class="number">1.9</span>.<span class="number">19</span> install script '<span class="keyword">node</span><span class="identifier"> </span><span class="title">install</span>.js'.</span><br></pre></td></tr></table></figure></p>
-<p>执行命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> strict-ssl <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-<p><a href="https://github.com/Medium/phantomjs/issues/430" target="_blank" rel="external">Failed at the phantomjs@1.9.19 install script ‘node install.js’.</a></p>
-<hr>
-<h3 id="u5B89_u88C5_nrm__u2013__u5FEB_u901F_u5207_u6362_NPM__u6E90__uFF08_u9644_u5E26_u6D4B_u901F_u529F_u80FD_uFF09"><a href="#u5B89_u88C5_nrm__u2013__u5FEB_u901F_u5207_u6362_NPM__u6E90__uFF08_u9644_u5E26_u6D4B_u901F_u529F_u80FD_uFF09" class="headerlink" title="安装 nrm – 快速切换 NPM 源 （附带测速功能）"></a>安装 nrm – 快速切换 NPM 源 （附带测速功能）</h3><pre><code>npm install -g nrm
-</code></pre><h4 id="u5E38_u7528_u547D_u4EE4"><a href="#u5E38_u7528_u547D_u4EE4" class="headerlink" title="常用命令"></a>常用命令</h4><p>列出可选的源</p>
-<pre><code>$ nrm ls
-* npm ---- https://registry.npmjs.org/
-  cnpm --- http://r.cnpmjs.org/
-  taobao - http://registry.npm.taobao.org/
-  eu ----- http://registry.npmjs.eu/
-  au ----- http://registry.npmjs.org.au/
-  sl ----- http://npm.strongloop.com/
-  nj ----- https://registry.nodejitsu.com/
-</code></pre><p>切换源到 taobao</p>
-<pre><code>$ nrm use taobao
-Registry has been set to: http://registry.npm.taobao.org/
-</code></pre><p>增加源<br>你可以增加定制的源,特别适用于添加企业内部的私有源.私有源可以使用cnpmjs架设.</p>
-<pre><code>nrm add  &lt;registry&gt; &lt;url&gt; [home]
-</code></pre><p>删除源</p>
-<pre><code>nrm del &lt;registry&gt;
-</code></pre><p>测试速度<br>你还可以通过 nrm test 测试相应源的响应时间.</p>
-<p>例如,测试官方源的响应时间:</p>
-<pre><code>$ nrm test npm
-npm ---- 1328ms
-</code></pre><p>测试所有源的响应时间:</p>
-<pre><code>$ nrm test
-  npm ---- 891ms
-  cnpm --- 1213ms
-* taobao - 460ms
-  eu ----- 3859ms
-  au ----- 1073ms
-  sl ----- 4150ms
-  nj ----- 8008ms
-</code></pre><p>注意,为了取得较准确的结果,可以考虑多次测试取平均值.</p>
-<hr>
-<h3 id="u5B89_u88C5_Bower__u5305_u7BA1_u7406_u5DE5_u5177"><a href="#u5B89_u88C5_Bower__u5305_u7BA1_u7406_u5DE5_u5177" class="headerlink" title="安装 Bower 包管理工具"></a>安装 Bower 包管理工具</h3><pre><code>sudo npm install bower -g
-</code></pre><blockquote>
-<p>bower 常用命令</p>
-</blockquote>
-<pre><code>bower install
-bower update
-</code></pre><p><a href="http://stackoverflow.com/questions/21491996/installing-bower-on-ubuntu" target="_blank" rel="external">Installing Bower on Ubuntu</a></p>
-<h3 id="u5B89_u88C5_mongo-express"><a href="#u5B89_u88C5_mongo-express" class="headerlink" title="安装 mongo-express"></a>安装 mongo-express</h3><p>在安装 mongo-express 的时候,需要服务器有 nodejs 环境</p>
-<blockquote>
-<p>mongo-express 是一个基于 Node.js 和 express 的开源的MongoDB Web管理界面.</p>
-<p>主要功能:</p>
-</blockquote>
-<pre><code>连接多个数据库
-分别连接和认证独立的数据库
-认证为管理员查看所有数据库
-数据库 黑名单/白名单
-集合(collections)的增删查改
-文档(documents)的增删查改
-在文档中使用BSON数据类型
-</code></pre><blockquote>
-<p>限制</p>
-</blockquote>
-<pre><code>被编辑的文档必须有document._id属性
-无GridFS的支持（有可能成为计划功能）
-二进制BSON数据类型没有经过测试
-JSON文档是通过JavaScript虚拟机解析,所以可以在服务器上的Web界面执行恶意JavaScript代码.
-</code></pre><blockquote>
-<p>安装:</p>
-</blockquote>
-<pre><code>npm install mongo-express
-</code></pre><blockquote>
-<p>或者全局安装:</p>
-</blockquote>
-<pre><code>npm install -g mongo-express
-</code></pre><p>或者从Github上直接拿下来解压后运行 npm install 即可</p>
-<p>下载 <a href="https://github.com/andzdroid/mongo-express" target="_blank" rel="external">Mongo-express</a></p>
-<p>配置:</p>
-<p>复制或者把 config.default.js 改名为 config.js 的新文件.</p>
-<p>在配置文件中填写 MongoDB 的连接等你想更改的信息.</p>
-<p>启动运行:</p>
-<pre><code>nodejs app
-</code></pre><p>查看 <a href="http://localhost:8081" target="_blank" rel="external">http://localhost:8081</a> 或者你在配置中写的 URL/port .</p>
-<p>在Ubuntu下执行启动命令会提示如下错误</p>
-<pre><code>yzhang@coamn:~/Home/Tools/MongoDB$ node app
- The program &apos;node&apos; can be found in the following packages:
-  * node
-  * nodejs-legacy
-Ask your administrator to install one of them
-</code></pre><p>提示没有安装node程序,需要先检查是否已安装nodejs运行环境</p>
-<pre><code>Thu Sep 24 12:58:16 yzhang@coam:~/Home/Tools/MongoDB$ nodejs -v
-v0.10.25
-</code></pre><p>然后执行命令</p>
-<pre><code>nodejs app
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-NodeJs/CheerioNote" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/21/NodeJs/CheerioNote/" class="article-date">
-      <time datetime="2016-01-21T08:34:31.000Z" itemprop="datePublished">2016-01-21</time>
+      <a href="/2016/05/19/Erlang/InstallOTP/" class="article-date">
+      <time datetime="2016-05-19T08:31:31.000Z" itemprop="datePublished">2016-05-19</time>
 </a>
     </div>
   
@@ -437,7 +233,7 @@ v0.10.25
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/21/NodeJs/CheerioNote/">CheerioNote</a>
+      <a class="article-title" href="/2016/05/19/Erlang/InstallOTP/">InstallOTP</a>
     </h1>
   
 
@@ -448,6 +244,55 @@ v0.10.25
       
           
         <a id="more"></a>
+<h3 id="Erlang-之-OTP-安装管理及环境配置"><a href="#Erlang-之-OTP-安装管理及环境配置" class="headerlink" title="Erlang 之 OTP 安装管理及环境配置"></a>Erlang 之 OTP 安装管理及环境配置</h3><p><a href="http://www.erlang.org/download.html" target="_blank" rel="external">OTP 官网</a></p>
+<h3 id="Ubuntu-下安装-otp"><a href="#Ubuntu-下安装-otp" class="headerlink" title="Ubuntu 下安装 otp"></a>Ubuntu 下安装 otp</h3><p>安装依赖</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install g++ gcc make libncurses5-dev libssl-dev</span><br></pre></td></tr></table></figure>
+<p>因为我们项目并没用Java作为NIF,所以不需要安装Java,有需要的就先安装Java；同时因为服务器只有命令行,不需要wx这个图形库.</p>
+<p>编译安装,执行失败可分步执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> RunSoft</span><br><span class="line">wget http://erlang.org/download/otp_src_18.<span class="number">3</span>.tar.gz</span><br><span class="line">tar otp_src_18.<span class="number">3</span>.tar.gz</span><br><span class="line"> ./configure </span><br><span class="line"> make -j4 </span><br><span class="line"> sudo make install</span><br></pre></td></tr></table></figure>
+<p>这样 Erlang 就安装好了.可以输入命令 erl 测试是否安装好</p>
+<hr>
+<p>注 实际安装不添加 <em>./configure –prefix=/opt/otp/</em> ,将 otp 安装到默认系统位置,否则运行 rebar 或安装 Ejabberd 会出现莫名奇妙的错误,以下记录忽略</p>
+<p>指定 prefix ,是为了删除方便.同时在 ~/.bashrc 将 /opt/otp/bin 添加到 PATH.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=/opt/otp/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+<p>使用一下命令重载配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h3><p>升级重新下载最新版即可 <em>otp_src_xxx.tar.gz</em> 以上步骤重新执行一遍</p>
+<hr>
+<h3 id="Window-下安装及环境配置"><a href="#Window-下安装及环境配置" class="headerlink" title="Window 下安装及环境配置"></a>Window 下安装及环境配置</h3><p>下载 <a href="http://www.erlang.org/download/otp_win64_18.2.1.exe" target="_blank" rel="external">http://www.erlang.org/download/otp_win64_18.2.1.exe</a></p>
+<p>安装到一个目录 <em>G:\Program Files\erl7.2.1\</em></p>
+<p>添加 <em>G:\Program Files\erl7.2.1\bin</em> 到环境变量 PATH</p>
+<p>重新打开终端 输入 erl 测试</p>
+<hr>
+<p>###Erlang 开发工具</p>
+<p><a href="https://www.jetbrains.com/idea/features/" target="_blank" rel="external">IntelliJ IDEA</a></p>
+<p>安装插件 intellij-erlang ,Plugins 搜索 erlang</p>
+<hr>
+<h4 id="参考列表"><a href="#参考列表" class="headerlink" title="参考列表"></a>参考列表</h4><p><a href="http://ju.outofmemory.cn/entry/131329" target="_blank" rel="external">http://ju.outofmemory.cn/entry/131329</a></p>
+<hr>
+<hr>
+<h4 id="错误分析"><a href="#错误分析" class="headerlink" title="错误分析"></a>错误分析</h4><ul>
+<li>运行 rebar 出现如下错误</li>
+</ul>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">Sun Dec </span><span class="number">20</span> <span class="number">21</span><span class="symbol">:</span><span class="number">15</span><span class="symbol">:</span><span class="number">31</span> yzhang<span class="variable">@coam</span><span class="symbol">:~/RunProject/ejabberd</span><span class="variable">$ </span>sudo ./rebar get-deps</span><br><span class="line">/usr/bin/<span class="symbol">env:</span> <span class="symbol">escript:</span> <span class="constant">No </span>such file <span class="keyword">or</span> directory</span><br><span class="line"></span><br><span class="line"><span class="constant">Sun Dec </span><span class="number">20</span> <span class="number">21</span><span class="symbol">:</span><span class="number">22</span><span class="symbol">:</span><span class="number">50</span> yzhang<span class="variable">@coam</span><span class="symbol">:~/RunProject</span><span class="variable">$ </span>whereis escript</span><br><span class="line"><span class="symbol">escript:</span> /opt/otp/bin/escript</span><br></pre></td></tr></table></figure>
+<p>原因是我安装 otp 时 使用命令 ./configure –prefix=/opt/otp/ 指定安装 otp 到 /opt/otp/ 下</p>
+<p>于是重新安装 otp ,并取消 ~/.bashrc 中配置的 erlang 环境变量</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Erlang</span></span><br><span class="line"><span class="comment">#export PATH=/opt/otp/bin:$PATH</span></span><br></pre></td></tr></table></figure>
+<p>重启 ubuntu 后敲 erl 命令提示未找到,注释成功,重新使用默认参数安装otp</p>
+<ul>
+<li>ejabberd 源码编译安装,执行命令 ejabberd ./configure 后出现如下错误</li>
+</ul>
+<figure class="highlight java"><figcaption><span>错误分析</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Sun Dec <span class="number">20</span> <span class="number">21</span>:<span class="number">21</span>:<span class="number">26</span> yzhang<span class="annotation">@coam</span>:~/RunProject/ejabberd$ sudo ./configure</span><br><span class="line">checking whether make sets $(MAKE)... yes</span><br><span class="line">checking <span class="keyword">for</span> a BSD-compatible install... /usr/bin/install -c</span><br><span class="line">checking <span class="keyword">for</span> a sed that does not truncate output... /bin/sed</span><br><span class="line">checking <span class="keyword">for</span> erl... no</span><br><span class="line">checking <span class="keyword">for</span> erlc... no</span><br><span class="line">checking <span class="keyword">for</span> erl... no</span><br><span class="line">configure: error: Erlang/<span class="function">OTP <span class="title">interpreter</span> <span class="params">(erl)</span> not found but required</span></span><br></pre></td></tr></table></figure>
+<p>解决方案,重新安装 otp 到系统默认路径</p>
+<p>参考</p>
+<p><a href="http://stackoverflow.com/questions/12327809/why-cannot-escript-run" target="_blank" rel="external">Why cannot escript run?</a></p>
+<hr>
+<hr>
+<h3 id="Erlang-OTP18-API更新"><a href="#Erlang-OTP18-API更新" class="headerlink" title="Erlang OTP18 API更新"></a>Erlang OTP18 API更新</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/data/home/yzhang/CoamRunning/Erlang/ejabberd/deps/emysql/src/emysql_conn.erl:<span class="number">337</span>: Warning: erlang:now/<span class="number">0</span>: Deprecated BIF. See the <span class="string">"Time and Time Correction in Erlang"</span> chapter of the ERTS User<span class="string">'s Guide for more information.</span></span><br></pre></td></tr></table></figure>
+<p>使用 <em>erlang:timestamp()</em> 代替 <em>erlang:now()</em></p>
+<p><a href="http://stackoverflow.com/questions/34023193/erlangnow-deprecated-in-v18-whats-the-best-transition/34028175" target="_blank" rel="external">erlang:now() deprecated in v18, what’s the best transition</a></p>
+
       
     </div>
     
@@ -472,11 +317,11 @@ v0.10.25
 
 
   
-    <article id="post-NodeJs/MochaNote" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Redis/RedisSyncNote" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/21/NodeJs/MochaNote/" class="article-date">
-      <time datetime="2016-01-21T04:07:31.000Z" itemprop="datePublished">2016-01-21</time>
+      <a href="/2016/05/19/Redis/RedisSyncNote/" class="article-date">
+      <time datetime="2016-05-19T08:21:31.000Z" itemprop="datePublished">2016-05-19</time>
 </a>
     </div>
   
@@ -489,7 +334,418 @@ v0.10.25
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/21/NodeJs/MochaNote/">MochaNote</a>
+      <a class="article-title" href="/2016/05/19/Redis/RedisSyncNote/">RedisSyncNote</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h4 id="Redis-主从同步配置"><a href="#Redis-主从同步配置" class="headerlink" title="Redis 主从同步配置"></a>Redis 主从同步配置</h4>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a  href="/2016/05/19/Redis/RedisSyncNote/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Linux/Ubuntu" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/16/Linux/Ubuntu/" class="article-date">
+      <time datetime="2016-05-16T14:23:33.845Z" itemprop="datePublished">2016-05-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="Ubuntu-Linux-服务器相关"><a href="#Ubuntu-Linux-服务器相关" class="headerlink" title="Ubuntu Linux 服务器相关"></a>Ubuntu Linux 服务器相关</h2><h3 id="Ubuntu-桌面安装"><a href="#Ubuntu-桌面安装" class="headerlink" title="Ubuntu 桌面安装"></a>Ubuntu 桌面安装</h3><p>将 Ubuntu 安装到移动硬盘,可随时挂载使用</p>
+<p>下载最新版 Ubuntu Desktop 版 <a href="http://www.ubuntu.com/download/desktop" target="_blank" rel="external">Ubuntu.com</a><br>下载 Easybcd 系统引导 <a href="http://cdn1.mydown.yesky.com/56ab0a50/43fbe043e21f5326cc4bea86d61695fb/soft/201510/EasyBCD2.3.exe" target="_blank" rel="external">Easybcd</a></p>
+<p>打开 Easybcd 选择 “NeoGrub”<br><img src="images/NeoGrub.jpg" alt="NeoGrub.jpg"><br>根据图示操作,以下是我的配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># NeoSmart NeoGrub Bootloader Configuration File</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># This is the NeoGrub configuration file, and should be located at C:\NST\menu.lst</span></span><br><span class="line"><span class="comment"># Please see the EasyBCD Documentation for information on how to create/modify entries:</span></span><br><span class="line"><span class="comment"># http://neosmart.net/wiki/display/EBCD/</span></span><br><span class="line"></span><br><span class="line">title Install Ubuntu</span><br><span class="line">root (hd0,<span class="number">0</span>)</span><br><span class="line">kernel (hd0,<span class="number">0</span>)/vmlinuz.efi boot=casper iso-scan/filename=/ubuntu-<span class="number">15.10</span>-desktop-amd64.iso locale=zh_CN.UTF-<span class="number">8</span></span><br><span class="line">initrd (hd0,<span class="number">0</span>)/initrd.lz</span><br><span class="line">title reboot</span><br><span class="line">reboot</span><br><span class="line">title halt</span><br><span class="line">halt</span><br></pre></td></tr></table></figure>
+<p>使用压缩工具打开Ubuntu镜像文件,将”.disk”文件夹和casper文件夹内的”initrd.lz”和”vmlinuz.efi”文件复制到C盘根目录,再将Ubuntu系统镜像文件复制到C盘根目录<br><img src="images/ubuntu-iso.jpg" alt="NeoGrub.jpg"></p>
+<p>成功进入Ubuntu试用界面后,桌面上有两个文件.<br>按Ctrl+Alt+T打开终端,输入”sudo umount –l /isodevice”,取消光盘驱动器挂载,否则在后面安装过程中可能会无限卡进度:</p>
+<p>在”安装类型”界面会有多个安装选项</p>
+<p>我们要将Ubuntu安装在”空闲”分区内.选择”空闲”分区,再点击左下方红线处的加号,进行分区.<br>关于Linux的分区挂载,很多带有定势思维的Windows用户还在理解的道路上艰难爬行,分区不是本文重点,此事应当阅读关于Linux分区的专业文章.<br>根目录”/“是必须存在的,可以分8G给”/“.<br>交换分区swap不是必须存在的,可以不给其分配空间,这同样意味着,你可以将所有空间分给”/“.<br>“/boot”不是必须存在的,如果你的硬盘是Ubuntu单系统,推荐为其分配空间,一般小于200M,并且将它设置为第一分区；如果你的硬盘不是单系统,而是像本文所述的双系统,不必分配空间.<br>“/home”用于保存用户的文件,如果你要向其中保存大量数据,需要分配较多空间.<br>“/usr” 主要用于保存应用程序文件,如果你要安装很多程序,需要分配较多空间.可以考虑为其分配最大空间.<br>分区时需要选择文件系统类型,选择”Ext4”即可.<br>注意:如果你的内存较小,交换分区大小应该超过物理内存大小,但要小于物理内存大小乘以2；如果你的内存足够大,交换分区分配1G到2G即可,甚至可以不分配.但如果你要安装一些强制需要交换分区的软件,则必须进行分配,如果你不确定以后安装的某款软件是否强制需要交换分区,最好进行分配,一般1G即可.</p>
+<p>** 我提前在移动硬盘 sdb 划了两个分区,一个 200G 这里设定挂载 “/“ ,另一个 16G 这里设定 swap 分区</p>
+<p>参考<br><a href="http://blog.csdn.net/risingwonderland/article/details/37902777" target="_blank" rel="external">Windows8.1硬盘安装Ubuntu14.04双系统参考教程及多硬盘注意事项</a><br><a href="https://www.zhihu.com/question/20883120" target="_blank" rel="external">如何把ubuntu装到移动硬盘上的同时,可以达到:1. 个人电脑系统启动菜单中同时有电脑硬盘中的Windows7 和移动硬盘的ubuntu；2. 我把移动硬盘拿到其他电脑上可以加载我的移动硬盘的ubuntu系统?</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Linux/SystemInstall" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/16/Linux/SystemInstall/" class="article-date">
+      <time datetime="2016-05-16T14:12:46.559Z" itemprop="datePublished">2016-05-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><a href="http://www.cnblogs.com/bizhu/archive/2013/01/07/2849771.html" target="_blank" rel="external">ubuntu 12.10安装后需要做的那些事</a><br><a href="http://blog.csdn.net/skykingf/article/details/45267517" target="_blank" rel="external">安装Ubuntu 15.10后要做的事</a></p>
+<h3 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h3><h3 id="更改-Ubuntu-默认用户主目录"><a href="#更改-Ubuntu-默认用户主目录" class="headerlink" title="更改 Ubuntu 默认用户主目录"></a>更改 Ubuntu 默认用户主目录</h3><p>//默认用户 yzhang 主目录为 /home/yzhang ,需要统一更改为 /data/home/yzhang .按以下方法操作即可</p>
+<p><a href="http://askubuntu.com/questions/250862/properly-modify-home-dir" target="_blank" rel="external">http://askubuntu.com/questions/250862/properly-modify-home-dir</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /data/home;</span><br><span class="line">sudo mkdir yzhang</span><br><span class="line">sudo chown yzhang:yzhang yzhang</span><br><span class="line">//sudo usermod <span class="operator">-d</span> /data/home/yzhang -m yzhang</span><br></pre></td></tr></table></figure>
+<p>直接修改 ss /etc/passwd 用户主目录为  /data/home/yzhang</p>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+<h3 id="安装-Vim-git"><a href="#安装-Vim-git" class="headerlink" title="安装 Vim git"></a>安装 Vim git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vim</span><br><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
+<h3 id="Ubuntu-所有操作免输密码"><a href="#Ubuntu-所有操作免输密码" class="headerlink" title="Ubuntu 所有操作免输密码"></a>Ubuntu 所有操作免输密码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo visudo</span><br></pre></td></tr></table></figure>
+<p>末尾添加一行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yzhang ALL=(ALL)NOPASSWD:ALL</span><br></pre></td></tr></table></figure>
+<p>参考 <a href="http://www.360doc.com/content/14/0114/10/474846_345158171.shtml" target="_blank" rel="external">Ubuntu sudo 免输入密码</a></p>
+<h3 id="lnav工具是在终端界面看日志的神器-装上之后在终端里就可以用lnav彩色显示日志了"><a href="#lnav工具是在终端界面看日志的神器-装上之后在终端里就可以用lnav彩色显示日志了" class="headerlink" title="lnav工具是在终端界面看日志的神器,装上之后在终端里就可以用lnav彩色显示日志了."></a>lnav工具是在终端界面看日志的神器,装上之后在终端里就可以用lnav彩色显示日志了.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install lnav</span><br></pre></td></tr></table></figure>
+<p>或者 Github 下载 <a href="https://github.com/tstack/lnav" target="_blank" rel="external">tstack/lnav</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ./configure</span><br><span class="line">$ make</span><br><span class="line">$ sudo make install</span><br></pre></td></tr></table></figure>
+<p>Run ./autogen.sh before running any of the above commands when compiling from a cloned repository.</p>
+<p>可以运行如下命令查看日志</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ lnav /var/<span class="built_in">log</span>/messages*</span><br></pre></td></tr></table></figure>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+<h3 id="安装搜狗输入法"><a href="#安装搜狗输入法" class="headerlink" title="安装搜狗输入法"></a>安装搜狗输入法</h3><p>1:卸载fcitx</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get --purge remove fcitx*</span><br></pre></td></tr></table></figure>
+<p>2:清理系统内的无用的软件包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get --purge autoremove</span><br></pre></td></tr></table></figure>
+<p>3:到搜狗官网下载搜狗拼音输入法,选择你系统对应的软件包,我系统是64位的,所以我选择了amd64的</p>
+<p><a href="http://pinyin.sogou.com/linux/?r=pinyin" target="_blank" rel="external">http://pinyin.sogou.com/linux/?r=pinyin</a></p>
+<p>4:用gdebi这个软件安装,它能够安装所有依赖关系,如果你没有安装gdebi,请先安装该软件；我用的是<br>这种方法,其它的方法我没试过,所以不知道行不行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gdebi sogou_pinyin_linux_1.<span class="number">0.0</span>.<span class="number">0014</span>_amd64.deb</span><br></pre></td></tr></table></figure>
+<p>5:注销下系统就可以了</p>
+<p>参考 <a href="http://tieba.baidu.com/p/3020246301" target="_blank" rel="external">ubuntu 14.04 x64 下完美安装搜狗拼音输入法</a></p>
+<p>在 Ubuntu 下按教程安装好 sogou 输入法后却无法调出来,参考 <a href="http://jingyan.baidu.com/article/adc815134f4b92f722bf7350.html" target="_blank" rel="external">在ubuntu下,把安装的中文输入法切换出来</a></p>
+<p>×× 以下参考</p>
+<p>先添加以下源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:fcitx-team/nightly</span><br></pre></td></tr></table></figure>
+<p>更新一下系统</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<p>开始安装fcitx</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install fcitx</span><br></pre></td></tr></table></figure>
+<p>安装fcitx的配置工具</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install fcitx-config-gtk</span><br></pre></td></tr></table></figure>
+<p>安装fcitx的table-all软件包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install fcitx-table-all</span><br></pre></td></tr></table></figure>
+<p>最后安装im-switch切换工具</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install im-switch</span><br></pre></td></tr></table></figure>
+<p>一条快捷命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install fcitx fcitx-config-gtk fcitx-table-all im-switch</span><br></pre></td></tr></table></figure>
+<p>其实fcitx只是一个输入法工具,本身不带资源包的,可以搜索 Fcitx-Configuraton<br>打开查看输入法配置,默认还是没有 搜狗输入法</p>
+<p>我们还需要下载 souguo deb 资源包 <a href="http://pinyin.sogou.com/linux/" target="_blank" rel="external">http://pinyin.sogou.com/linux/</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i sogoupinyin_2.<span class="number">0.0</span>.<span class="number">0068</span>_amd64.deb</span><br></pre></td></tr></table></figure>
+<p>如果提示缺少依赖,可以按系统提示先执行以下命令再安装:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install <span class="operator">-f</span></span><br></pre></td></tr></table></figure>
+<p>注意:以上步骤安装完后需要注销一下</p>
+<p>参考 <a href="http://jingyan.baidu.com/article/7f41ececec6c47593d095cf4.html" target="_blank" rel="external">Ubuntu下安装搜狗输入法</a></p>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+<h2 id="开发环境搭建"><a href="#开发环境搭建" class="headerlink" title="开发环境搭建"></a>开发环境搭建</h2><h3 id="安装基础C-C-编译库"><a href="#安装基础C-C-编译库" class="headerlink" title="安装基础C/C++编译库"></a>安装基础C/C++编译库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vim automake make perl gcc g++</span><br><span class="line">sudo apt-get install bison g++-multilib git flex lzop gperf libxml2-utils zlib1g-dev</span><br></pre></td></tr></table></figure>
+<h3 id="安装CMake和Qt-Creator"><a href="#安装CMake和Qt-Creator" class="headerlink" title="安装CMake和Qt Creator"></a>安装CMake和Qt Creator</h3><p>CMake和Qt Creator是Linux下开发C++程序的神器,Ubuntu 15.04已经集成了最新版的Qt Creator (3.1.1)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install cmake qtcreator</span><br></pre></td></tr></table></figure>
+<p>参考 <a href="http://blog.csdn.net/skykingf/article/details/45370223" target="_blank" rel="external">Ubuntu 15.10 搭建Android系统编译环境</a></p>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+<h3 id="安装-Oracle-Java"><a href="#安装-Oracle-Java" class="headerlink" title="安装 Oracle Java"></a>安装 Oracle Java</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:webupd8team/java</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install oracle-java8-installer</span><br></pre></td></tr></table></figure>
+<p>注意:由于系统自带的是OpenJDK,卸载OpenJDK之后会带有残留,导致运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+<p>时第一行不是java的版本号,会是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Picked up JAVA_TOOL_OPTIONS: -javaagent:/usr/share/java/jayatanaag.jar</span><br></pre></td></tr></table></figure>
+<p>这个提示,导致很多检测java版本号的脚本会运行出错,因此需要手动清除残留.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm /usr/share/upstart/sessions/jayatana.conf</span><br></pre></td></tr></table></figure>
+<p>删除 <em>/usr/share/upstart/sessions/jayatana.conf</em> 文件,重启之后再运行 <em>java -version</em> 就不会再有 <em>Picked up JAVA_TOOL_OPTIONS: -javaagent:/usr/share/java/jayatanaag.jar</em> 提示了.</p>
+<p>参考<br><a href="http://blog.csdn.net/skykingf/article/details/45267517" target="_blank" rel="external">安装Ubuntu 15.10后要做的事</a><br><a href="https://launchpad.net/~webupd8team/+archive/ubuntu/java" target="_blank" rel="external">Oracle Java (JDK) 7 / 8 / 9 Installer PPA</a></p>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+<h3 id="安装Sublime-Text-3"><a href="#安装Sublime-Text-3" class="headerlink" title="安装Sublime Text 3"></a>安装Sublime Text 3</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:webupd8team/sublime-text-<span class="number">3</span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install sublime-text</span><br></pre></td></tr></table></figure>
+<blockquote>
+<blockquote>
+<p>&gt;</p>
+</blockquote>
+</blockquote>
+<p>登入官网:<a href="http://www.sublimetext.com/3" target="_blank" rel="external">http://www.sublimetext.com/3</a></p>
+<p>下载Ubuntu 64 bit 版本的,双击完成安装<br>注意:终端打开Sublime Text 3的方法是 在终端输入subl即可</p>
+<p>注册码:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">—– BEGIN LICENSE —–</span><br><span class="line">Andrew Weber</span><br><span class="line">Single User License</span><br><span class="line">EA7E-<span class="number">855605</span></span><br><span class="line"><span class="number">813</span>A03DD <span class="number">5</span>E4AD9E6 <span class="number">6</span>C0EEB94 BC99798F</span><br><span class="line"><span class="number">942194</span>A6 <span class="number">02396</span>E98 E62C9979 <span class="number">4</span>BB979FE</span><br><span class="line"><span class="number">91424</span>C9D A45400BF F6747D88 <span class="number">2</span>FB88078</span><br><span class="line"><span class="number">90</span>F5CC94 <span class="number">1</span>CDC92DC <span class="number">8457107</span>A F151657B</span><br><span class="line"><span class="number">1</span>D22E383 A997F016 <span class="number">42397640</span> <span class="number">33</span>F41CFC</span><br><span class="line">E1D0AE85 A0BBD039 <span class="number">0</span>E9C8D55 E1B89D5D</span><br><span class="line"><span class="number">5</span>CDB7036 E56DE1C0 EFCC0840 <span class="number">650</span>CD3A6</span><br><span class="line">B98FC99C <span class="number">8</span>FAC73EE D2B95564 DF450523</span><br><span class="line">—— END LICENSE ——</span><br></pre></td></tr></table></figure>
+<p>安装 Package Control</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.config/sublime-text-<span class="number">3</span>/Packages/</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/wbond/package_control_channel.git Package\ Control</span><br></pre></td></tr></table></figure>
+<p>参考<br><a href="http://blog.csdn.net/cywosp/article/details/32721011" target="_blank" rel="external">点滴记录——Ubuntu 14.04中安装Sublime Text 3并使用SublimeClang插件</a><br><a href="http://www.jianshu.com/p/1f3a3e4f4e92" target="_blank" rel="external">Ubuntu 14.04 LTS 64位 安装激活Sublime Text 3及解决无法输入中文问题的解决方法</a></p>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+<h3 id="安装-Phpstrom"><a href="#安装-Phpstrom" class="headerlink" title="安装 Phpstrom"></a>安装 Phpstrom</h3><p><a href="http://idea.lanyus.com/" target="_blank" rel="external">http://idea.lanyus.com/</a></p>
+<h3 id="建立项目软连接"><a href="#建立项目软连接" class="headerlink" title="建立项目软连接"></a>建立项目软连接</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ln <span class="operator">-s</span> /media/yzhang/<span class="number">0000678400004823</span>/DeveloperWorkspace/CoamServer/ ~/CoamServer</span><br><span class="line">sudo ln <span class="operator">-s</span> /media/yzhang/<span class="number">0000678400004823</span>/DeveloperWorkspace/ ~/DeveloperWorkspace</span><br></pre></td></tr></table></figure>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+<h3 id="Ubuntu-安装-ShadowSocks-客户端代理翻墙"><a href="#Ubuntu-安装-ShadowSocks-客户端代理翻墙" class="headerlink" title="Ubuntu 安装 ShadowSocks 客户端代理翻墙"></a>Ubuntu 安装 ShadowSocks 客户端代理翻墙</h3><p>安装linux客户端</p>
+<p>从 <em>shadowsocks-gui</em> 得知,linux客户端是 <em>shadowsocks-qt5</em> ,居然还提供中文版本的安装指南 .赞一个！</p>
+<p>按照安装指南,执行安装:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:hzwhuang/ss-qt5</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install shadowsocks-qt5</span><br></pre></td></tr></table></figure>
+<p>安装完成后,执行命令启动:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss-qt5</span><br></pre></td></tr></table></figure>
+<p>图形界面上可以找到shadowsocks-qt5的图标,或者gnome do之类的工具也可以.</p>
+<p>启动后配置和windows版本类似,区别于 Window 客户端,代理模式改 http 模式为 sock 模式</p>
+<p>Chrome 上安装的代理翻墙插件 <a href="https://github.com/FelisCatus/SwitchyOmega/releases" target="_blank" rel="external">FelisCatus/SwitchyOmega</a></p>
+<p>参考<br><a href="http://skyao.github.io/2015/07/14/computer-fanqiang/" target="_blank" rel="external">使用shadowsocks实现科学上网 </a><br><a href="https://github.com/shadowsocks/shadowsocks-qt5/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97" target="_blank" rel="external">ShadowSocks安装指南</a><br><a href="http://segmentfault.com/a/1190000002511795" target="_blank" rel="external">使用Digital Ocean和shadowsocks来科学上网</a></p>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+<h3 id="KSnapshot-截屏工具"><a href="#KSnapshot-截屏工具" class="headerlink" title="KSnapshot 截屏工具"></a>KSnapshot 截屏工具</h3><p>系统默认 Alt + Print Screen 快捷键默认只允许截取整张屏幕</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install ksnapshot</span><br></pre></td></tr></table></figure>
+<h3 id="创建-root-用户登陆密码"><a href="#创建-root-用户登陆密码" class="headerlink" title="创建 root 用户登陆密码"></a>创建 root 用户登陆密码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd root</span><br></pre></td></tr></table></figure>
+<p>默认 root 用户新建后,不能通过桌面登陆 root 账户,还需要修改以下地方</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /usr/share/lightdm/lightdm.conf.d/<span class="number">50</span>-ubuntu.conf</span><br><span class="line"></span><br><span class="line">[Seat:*]</span><br><span class="line">user-session=ubuntu</span><br><span class="line">greeter-show-manual-login=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>重新登陆即可</p>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+<h3 id="删除Amazon的链接"><a href="#删除Amazon的链接" class="headerlink" title="删除Amazon的链接"></a>删除Amazon的链接</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove unity-webapps-common</span><br></pre></td></tr></table></figure>
+<p>删掉基本不用的自带软件(用的时候再装也来得及)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove thunderbird totem rhythmbox empathy brasero simple-scan gnome-mahjongg aisleriot \</span><br><span class="line"> gnome-mines cheese transmission-common gnome-orca webbrowser-app gnome-sudoku  landscape-client-ui-install</span><br><span class="line"></span><br><span class="line">sudo apt-get remove onboard deja-dup</span><br></pre></td></tr></table></figure>
+<p>这样系统就基本上干净了.</p>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+<h3 id="Ubuntu-14-04-标题栏实时显示上下行网速-CPU及内存"><a href="#Ubuntu-14-04-标题栏实时显示上下行网速-CPU及内存" class="headerlink" title="Ubuntu 14.04 标题栏实时显示上下行网速. CPU及内存"></a>Ubuntu 14.04 标题栏实时显示上下行网速. CPU及内存</h3><p>先当然是用wget下载 <a href="https://launchpad.net/indicator-sysmonitor" target="_blank" rel="external">indicator-sysmonitor</a></p>
+<p>wget <a href="https://launchpadlibrarian.net/139475561/indicator-sysmonitor_0.4.3_all.deb" target="_blank" rel="external">https://launchpadlibrarian.net/139475561/indicator-sysmonitor_0.4.3_all.deb</a></p>
+<p>下载好后,先不要急于安装,因为软件有些依赖关系还没解决.终端执行安装依赖:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python python-psutil python-appindicator </span><br><span class="line">sudo apt-get install python-gtk2</span><br></pre></td></tr></table></figure>
+<p>安装 <em>indicator-sysmonitor</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i indicator-sysmonitor_0.<span class="number">4.3</span>_all.deb</span><br></pre></td></tr></table></figure>
+<p>安装完成后便可以搜索 System Monitor 启动监控界面了,但默认只能显示内存和CPU使用情况,想要显示上下行网速的情况还要如下操作:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install dstat</span><br><span class="line">sudo apt-get install acpi</span><br></pre></td></tr></table></figure>
+<p>下载脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir -p ~/.scripts &amp;&amp; <span class="built_in">cd</span> ~/.scripts</span><br><span class="line">$ wget http://webupd8.googlecode.com/files/sysmon_0.<span class="number">2</span>.tar.gz &amp;&amp; tar -xvf sysmon_0.<span class="number">2</span>.tar.gz</span><br></pre></td></tr></table></figure>
+<p>可在scripts目录下得到sysmon脚本,设置System Monitor,让它使用脚本里的配置.<br>下面 Alt+F2 或终端中 运行indicator-sysmonitor.在工具栏点击Indicator-Sysmonitor 并选择 “首选项” ,<br>选择Advanced,然后新建一个senor,在command处输入$HOME/.scripts/sysmon,<br>在General中勾选”Run on startup” 后保存退出</p>
+<p>参考:<br><a href="https://wu.nerd.moe/?p=1377" target="_blank" rel="external">让Indicator-Sysmonitor在顶部面板显示上下行网速及CPU温度</a><br><a href="http://www.cnblogs.com/bizhu/archive/2013/01/07/2849771.html" target="_blank" rel="external">ubuntu 12.10安装后需要做的那些事</a></p>
+<h3 id="Glances-监控系统"><a href="#Glances-监控系统" class="headerlink" title="Glances 监控系统"></a>Glances 监控系统</h3><p><a href="https://pypi.python.org/pypi/Glances/" target="_blank" rel="external">Glances</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install glances</span><br><span class="line">$ glances</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.cnblogs.com/xred/p/3845205.html" target="_blank" rel="external">借助Glances Monitor,密切关注你的系统</a></p>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+<h3 id="failed-to-start-session"><a href="#failed-to-start-session" class="headerlink" title="failed to start session"></a>failed to start session</h3><p><a href="http://itsfoss.com/failed-to-start-session-ubuntu-14-04/" target="_blank" rel="external">Fix “Failed To Start Session” At Login In Ubuntu 14.04</a></p>
+<p>Ctrl + Alt + F1</p>
+<p>When you are at login, press Ctrl+Alt+F1. It will take you to command line interface from the GUI. In here, type your username and password. Now, you can try the following command to install Unity Desktop:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ubuntu-desktop</span><br></pre></td></tr></table></figure>
+<p>If it is already installed, try reinstalling:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install --reinstall ubuntu-desktop</span><br></pre></td></tr></table></figure>
+<p>Once it is installed or reinstalled. Use the following command to reboot the system:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+<p>××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Others/YL" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/16/Others/YL/" class="article-date">
+      <time datetime="2016-05-16T14:12:46.354Z" itemprop="datePublished">2016-05-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="海南省医疗旅游联盟合作策划书"><a href="#海南省医疗旅游联盟合作策划书" class="headerlink" title="海南省医疗旅游联盟合作策划书"></a>海南省医疗旅游联盟合作策划书</h2><h3 id="一-医疗旅游的现状"><a href="#一-医疗旅游的现状" class="headerlink" title="一. 医疗旅游的现状"></a>一. 医疗旅游的现状</h3><p>推广医疗旅游大多数是医疗发达国家,他们都各自享誉世界的品牌,比如瑞士的羊胎素注射. 德国的干细胞应用究. 日本的癌症早期筛查. 韩国的整形美容等.且每年中国有50多万人出国治疗肿瘤.<br>在中国,推广这个项目的医疗机构大多是台湾,相比之下,大陆的医疗旅游市场发展并不理想.事实上,上海. 海南. 云南. 甘肃. 北京等地都有加大医疗旅游发展力度的想法.<br>上海和北京均在郊县建设高端医疗园区,但始终不见成效.有评论认为,旅游都有共性,差别在于医疗.中国有限的优质医疗资源过于集中在公立医院,高端医疗资源供给不足限制了医疗旅游产业发展.</p>
+<h3 id="引起现状的原因-问题"><a href="#引起现状的原因-问题" class="headerlink" title="引起现状的原因,问题"></a>引起现状的原因,问题</h3><ul>
+<li>1.价格偏高,上万元的医疗旅游产品只能针对小群体推广.建发国际旅行社表示:目前各大旅行社对医疗旅游都是采用高端定制的方式.</li>
+<li>2.专业程度高.春秋国际旅行社表示,体检对于旅游行业的员工来说缺乏健康专业知识,对旅客少了专业的引导.</li>
+<li>3.医疗旅游线路研发成本高,对于中低端客户不容易接受, 中高端客户对于国内的医疗品质的不信任,一般都会选择出国体检.业者缺乏足够的信心.以上原因导致很多旅行社推广体检旅游的动力不足.</li>
+</ul>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>现在主要缺乏这种模式和领导者,我希望我们体检中心是海南的先行推动者. 先行者,将休闲旅游和健康服务完美结合运用,将我们优质的医疗资源和旅游服务整合起来推荐给国人.<br>首先需要得到政府的认可和支持:省政府领导听取本计划方案后高度肯定,发展海南得天独厚的旅游优势,让旅行社. 海南政府人民共同获利.这个项目就像左右手,谁也离不开谁.<br>我们可以利用我们的优势,做海南的先行者.依靠我们医院的强大实力. 专家. 和对肿瘤的专业性抢占这块市场,让中国人在自己的国家享受体检和治疗.</p>
+<h3 id="二．医疗旅游的前景与优势"><a href="#二．医疗旅游的前景与优势" class="headerlink" title="二．医疗旅游的前景与优势"></a>二．医疗旅游的前景与优势</h3><blockquote>
+<p>前景<br>    2015年12月25日国家旅游局发布旅游业占全球GDP10%,占就业总量9.5%.中国国内旅游. 出境旅游人数和国内旅游消费. 境外旅游消费均列世界第一.博鳌亚洲论坛2011年年会发布报告称,亚洲已经成为全球最富潜力的医疗旅游服务市场.随着人民生活水平的进一步提高,对于健康养生的相关需求也在快速增长.最近显示,有62%的受访者表示出了对健康旅游的兴趣.医疗旅游针对的市场是部分有较高经济能力的中高端客人,这一部分人在健康方面有较高投入,并且有较强的保健意识,针对这些,医疗旅游市场还是非常有潜力的.数据显示,内陆客人医疗旅游的概念比较模糊,医疗旅游意识也相对淡薄.目前而言上海是主要客源地.相关业内人士,预计未来十年上海市场的医疗旅游市场规模将逐步扩张,但是因为全球范围内顶级医疗资源的有限性,因此预估增长不会太快.业内人士表示,虽然医疗旅游市场尚不成熟,信息不透明. 代理机构鱼龙混杂,但是从长远来看,”医疗旅游”市场前景巨大,潜力无限.<br>优势<br>    竟能享受愉快的旅游时光,让自己的心灵享受最放松的状况,又能让自己的身体做一次愉快的旅行.给自己的身体放个假,在检查的过程中不紧张,不忧虑.了解自己身体的状态.让自己在未来的一年甚至下半辈子得到实实在在的全身心的放松..”不仅能欣赏美景. 放松身心,还能为身体做个检查,一举多得.</p>
+</blockquote>
+<h3 id="三-合作的目的"><a href="#三-合作的目的" class="headerlink" title="三. 合作的目的"></a>三. 合作的目的</h3><ol>
+<li>共同发展合作医疗和旅游行业,为海南的经济腾飞插上腾飞的翅膀.</li>
+<li>把海南的医疗旅游行业在最短的时间内,带到全中国,然后感染全世界,让海南成为中国唯一的医疗旅游目的地.</li>
+<li>让来到海南岛的人不仅享受旅游,还能收获健康,让中国人不出国就能享受最好的医疗服务和最好的医疗资源.</li>
+<li>根据市场研究表明,美国的肿瘤筛查分析,因为易感基因检测,癌症发病率下降了70%,所以为全国人民带来健康,我们已早期癌症筛查为目的,使全国人民的癌症等发病率降低到最低点,使全国人民正确的防癌,抗癌,使全国乃至全世界的人民的健康在旅游的带领下达到最高峰.</li>
+</ol>
+<h3 id="四-发展方向目标"><a href="#四-发展方向目标" class="headerlink" title="四. 发展方向目标"></a>四. 发展方向目标</h3><ul>
+<li><ol>
+<li>目标为中国国人,和二线国家的人群. 比如俄罗斯. 东南亚市场.</li>
+</ol>
+</li>
+<li><ol>
+<li>重心可放在中年人身上,这部分的人年龄分别在35岁至55岁,事业高峰期,都处于公司中高管,家庭条件比较优越,同样也属于亚健康高发年龄段.根据有关体检医疗分析,这类人注重追求医疗质量. 技术,以及高质量的服务,这部分人子女大部分不在身边,大部分在外求学或以刚结婚,处于空巢期和失落期,会去旅游满足自己心理的需求,也对自身的身体状况也比较重视.体检游套餐价格可以定制中高端.这个年龄的阶段都在工作,此宣传可以放在国庆长假,年假等节假日.</li>
+</ol>
+</li>
+<li><ol>
+<li>随着人口老龄化的严重性,也是给我们一个很好的机会,老年身上大大小小的都有些小毛病,不像年轻人,也很怕生病,我们可以在冬季大力和旅行社合作推广这个活动,价格定在中端为宜,老年人消费能力弱,可好在冬季我们海南岛拥有独特的优势,也成了很多人尽孝的好时机,让父母在寒冷的冬季过来度个假,检查一下身体,为父母解忧,天时地利人和.这个可以放在第二个重心.</li>
+</ol>
+</li>
+<li>4.其次,放在年轻人,大部分消费能力有限,体检游价格定在中低端,可以开发一些婚前体检,白领套餐等….</li>
+</ul>
+<h3 id="五-合作模式"><a href="#五-合作模式" class="headerlink" title="五. 合作模式"></a>五. 合作模式</h3><ul>
+<li><ol>
+<li>旅行社和我院体检中心合作</li>
+</ol>
+</li>
+<li><ol>
+<li>旅行社和医疗部门</li>
+</ol>
+</li>
+<li><ol>
+<li>旅行社和我院的医生</li>
+</ol>
+</li>
+<li><ol>
+<li>旅行社与我院签署战略框架协议</li>
+</ol>
+</li>
+</ul>
+<h3 id="六-合作具体措施"><a href="#六-合作具体措施" class="headerlink" title="六. 合作具体措施"></a>六. 合作具体措施</h3><h4 id="一-旅行社和海南省肿瘤医院体检中心合作"><a href="#一-旅行社和海南省肿瘤医院体检中心合作" class="headerlink" title="(一)旅行社和海南省肿瘤医院体检中心合作"></a>(一)旅行社和海南省肿瘤医院体检中心合作</h4><h5 id="1-我院提供体-检前-检中-检后的VIP服务模式"><a href="#1-我院提供体-检前-检中-检后的VIP服务模式" class="headerlink" title="1. 我院提供体 检前  检中  检后的VIP服务模式."></a>1. 我院提供体 检前  检中  检后的VIP服务模式.</h5><p>(1)检前预约. 咨询等服务<br>(2)检中VIP一条龙特殊通道等服务<br>(3)检后 健康跟踪等服务.</p>
+<h5 id="2-以健康检查为主要方向"><a href="#2-以健康检查为主要方向" class="headerlink" title="2. 以健康检查为主要方向"></a>2. 以健康检查为主要方向</h5><p>(1)从健康肿瘤筛查为重点推广对象,可分为周期性肿瘤筛查,基因检测,循环肿瘤检测. 早期肿瘤筛查,心血管疾病,宫颈癌,乳腺癌. 肺癌等肿瘤筛查体检项目.<br>(2)针对不同人群,年龄. 行业. 为旅游者来制定不同的体检项目.</p>
+<h5 id="3-住院体检的实施-入院进行体检-全天候VIP服务模式-让体检者在最舒适的状态下完成体检"><a href="#3-住院体检的实施-入院进行体检-全天候VIP服务模式-让体检者在最舒适的状态下完成体检" class="headerlink" title="3. 住院体检的实施:入院进行体检,全天候VIP服务模式,让体检者在最舒适的状态下完成体检."></a>3. 住院体检的实施:入院进行体检,全天候VIP服务模式,让体检者在最舒适的状态下完成体检.</h5><h5 id="4-终身健康顾问-和档案管理-肿瘤观察管理等服务方式-让每一个人的档案具有完整跟踪性-我们中心健康评估的重点要不在于检测-而在于与体验医师的交流-包括营养服务和压力管理咨询等-体检结束后-也要让游客感觉到不须此行"><a href="#4-终身健康顾问-和档案管理-肿瘤观察管理等服务方式-让每一个人的档案具有完整跟踪性-我们中心健康评估的重点要不在于检测-而在于与体验医师的交流-包括营养服务和压力管理咨询等-体检结束后-也要让游客感觉到不须此行" class="headerlink" title="4. 终身健康顾问,和档案管理,肿瘤观察管理等服务方式,让每一个人的档案具有完整跟踪性.我们中心健康评估的重点要不在于检测,而在于与体验医师的交流.包括营养服务和压力管理咨询等.体检结束后,也要让游客感觉到不须此行."></a>4. 终身健康顾问,和档案管理,肿瘤观察管理等服务方式,让每一个人的档案具有完整跟踪性.我们中心健康评估的重点要不在于检测,而在于与体验医师的交流.包括营养服务和压力管理咨询等.体检结束后,也要让游客感觉到不须此行.</h5><h4 id="二-旅行社和海南省肿瘤医院医疗部门合作"><a href="#二-旅行社和海南省肿瘤医院医疗部门合作" class="headerlink" title="(二)旅行社和海南省肿瘤医院医疗部门合作"></a>(二)旅行社和海南省肿瘤医院医疗部门合作</h4><blockquote>
+<p>借据海南省天时地利人和的优势,让省外人边享受大自然赐给我们最天然的环境,已最放松的状态去接受疾病的治疗,用乐观的心态去看病,使疾病达到最佳治疗状态.(三)旅行社和海南省肿瘤医院专家资源合作</p>
+<ul>
+<li><ol>
+<li>开展肿瘤筛查宣传日,让全国所有的癌症患者来到海南省,在我院专家的帮助下,共同对抗癌症,和享受大自然的环境.</li>
+</ol>
+</li>
+<li><ol>
+<li>专家开展课程,帮助全世界的人民一起防癌,抗癌.</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<h4 id="四-旅行社与海南省肿瘤医院签署战略框架协议；"><a href="#四-旅行社与海南省肿瘤医院签署战略框架协议；" class="headerlink" title="(四)旅行社与海南省肿瘤医院签署战略框架协议；"></a>(四)旅行社与海南省肿瘤医院签署战略框架协议；</h4><p>经双方沟通协商后,达成一致合作,旅行社与海南省肿瘤医院签署战略框架协议,为后期双方更好的合作. 宣传. 发展奠定基础.</p>
+<h3 id="七-实施计划及方案"><a href="#七-实施计划及方案" class="headerlink" title="七. 实施计划及方案"></a>七. 实施计划及方案</h3><p>海南省肿瘤医院拟共享本院有特色的医疗服务资源,与各大旅行社开展医疗服务项目的推广和合作,细分市场,开创创新性的医疗服务新模式.<br>各有意向合作的旅行社依据各自的客户群体. 地区政策及医疗推广等优势进行考察. 研究. 策划,然后出具具有创新性(独创)方案及可行性的合作模式.<br>本院对各大旅游集团方案进行可行性研究,筛选出优秀的合作方案并进行初期市场验证,形成行之有效并且与之单独的长期合作的可持续发展模式,然后在根据各行业的市场策划和区域等优势,确定合作的深度和广度,在进行细分化,从而规划市场的统一性,从而保证保证市场的的规则性和公平性,<br>也为了更好的规范海南医疗旅游市场.</p>
+<h3 id="八-效果预估"><a href="#八-效果预估" class="headerlink" title="八. 效果预估"></a>八. 效果预估</h3><p>…</p>
+<h3 id="九-目前的问题"><a href="#九-目前的问题" class="headerlink" title="九. 目前的问题"></a>九. 目前的问题</h3><ul>
+<li>1.医疗保险体制问题</li>
+<li>2.国际认证问题</li>
+<li>3.医疗旅游工作管理策划团队问题</li>
+<li>4.行业的保护性问题</li>
+<li>5.行业区分,和返点的问题.</li>
+<li>6.税务问题</li>
+</ul>
+<h3 id="计划及谈判内容"><a href="#计划及谈判内容" class="headerlink" title="计划及谈判内容:"></a>计划及谈判内容:</h3><p>海南省肿瘤医院被列入海南省”十二五”重点医疗规划和省市共建重点项目. 2015年省委省政府为民办实事十大重点项目,是非营利性的民营医院, 特殊医疗服务有肿瘤防治,国际医疗转诊.不管是医院设计,规模,专家,检验医疗设备等等,都是最独特先进优秀的,填补了海南省的空缺,我们以专科医院在筛查,治疗和肿瘤防治上是目前是海南省最专业的专科医院.<br>可以利用医院的环境,专家等强大背景做宣传.主打一个主角做我们的专长特色,利用我们的肿瘤专业,可以用早期癌症筛查和宣教一系列套餐做招牌,这块主要精力放在中老年,以这个为主,其它的为辅.旅客可根据自身的需求选择体检套餐,比如老年人,年轻人,糖尿病,冠心病…….,价格分几百到几万不等,根据自己的身体需求和经济条件进行选择.<br>冬天:以老人的常见疾病为主题进行宣传引导.</p>
+<ul>
+<li><p>1．旅行社负责客源和宣传,我们负责体检,车,食,住宿.合作期间我们任何时间和地点都可以负责服务和医疗技术支持:关于医疗上的问题,员工的健康问题,导游的业务上的培训,等等问题.旅游线路,和整体套餐价格由旅行社制定,我们体检价格原价给旅行社.以分成的形式结算.<br>2017年可把全海南省旅行社的任务量定在100万,下发每一家合作旅行社任务量,一年如完成20万及以下的指标给2成利润,20万以上3成利润.<br>福利:如完成合同量,免费定期停供员工的体检,培训,也可共同制作体检游的策划营销方案.</p>
+</li>
+<li><p>2.我们的vip体检客户办卡赠送旅游套餐.充值Vip卡比如满1万送3天一夜旅游…..<br>找外省的大型公司,国企,政府部门推广体检送旅游的活动,对象也可扩展到员工的家属,家人,情侣,等.车,机票,住宿,我们负责然后跟当地的旅游公司详细制定旅游线路并给予旅游公司一定的服务报酬.</p>
+</li>
+<li><p>3.跟海南各航天公司合作,让他们制定广告,如机票广告,机场条幅,官网,等进行体检游的广告宣传.谈判内容:他们一年中赠送我们免费机票,我们提供他们员工体检.互惠互利.谈判成功,制定合同.<br>采用健检游路线和采用治疗旅游:以旅游观光. 健康检查. 为主要内容.能享受和参观到全海南最专业的医院体检和治疗服务.</p>
+</li>
+</ul>
+<p>对旅行社的好处:可采用员工积分制:带团人数,或者金额超过多少,可提高员工工作的积极性,可免费提供员工定期体检,也可让员工的家人免费体检,体检游不仅让旅行社获利.更让员工身体健康也兼顾家庭,通过宣传更可提高旅行社的知名度和业绩等等…..</p>
+<h3 id="市场分布"><a href="#市场分布" class="headerlink" title="市场分布"></a>市场分布</h3><blockquote>
+<p>海南省有将近1000家左右的旅行社,可逐一推荐,分别是(如下图所示)</p>
+</blockquote>
+<p>有旅游景点的<br>1.三亚2.五指山3.乐东4.保亭5.陵水6.三沙<br>7.文昌 8.定安 9 琼海  10万宁 11 炖昌 12 琼中 13 杨浦<br>14临高  15昌江  16儋州 17 澄迈 18东方19 昌江20 海口市区<br>以上地区均有旅游优美的旅游景点</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Linux/LinuxCommand" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/15/Linux/LinuxCommand/" class="article-date">
+      <time datetime="2016-05-15T09:15:31.000Z" itemprop="datePublished">2016-05-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/15/Linux/LinuxCommand/">LinuxCommand</a>
     </h1>
   
 
@@ -500,7 +756,48 @@ v0.10.25
       
           
         <a id="more"></a>
-<p><a href="http://www.hubwiz.com/course/562085141bc20c980538e25a/" target="_blank" rel="external">测试利器Mocha</a></p>
+<h3 id="Linux最常用的几个命令"><a href="#Linux最常用的几个命令" class="headerlink" title="Linux最常用的几个命令"></a>Linux最常用的几个命令</h3><ul>
+<li>chmod命令 #后就是这个命令的说明</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /home/auto.sh <span class="comment"># 赋予 auto.sh 可执行权限</span></span><br><span class="line">chmod -R <span class="number">777</span> /home/wwwroot <span class="comment"># 赋予 /home/wwwroot 写入权限(部分网站程序安装时需要用到)</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>rm命令 删除文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm test.tar.gz <span class="comment"># 删除test.tar.gz,会有提示你确认 y即可</span></span><br><span class="line">rm -rf /home/wwwroot/<span class="built_in">test</span> <span class="comment"># 无提示直接删除test目录,勿乱用,切记.</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>tar命令 C打包和X解压文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar zcvf test.tar.gz /home/wwwroot <span class="comment">#把/home/wwwroot打包</span></span><br><span class="line">tar zxvf tet.tar.gz <span class="comment"># 在当前目录解压test.tar.gz</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>zip 打包命令 unzip解压文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zip -r tester.zip /home/wwwroot <span class="comment">#把/home/wwwroot打包</span></span><br><span class="line">unzip teter.zip <span class="comment"># 在当前目录解压test.tar.gz</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Linux SSH远程传输命令 scp</li>
+</ul>
+<h3 id="一-scp-的用处"><a href="#一-scp-的用处" class="headerlink" title="一. scp 的用处"></a>一. scp 的用处</h3><p>如果你有几台云主机,而阿里是支持内网传输的,并且不限制带宽,正常传输文件的速度能达到35m~50m/s,这个时候我们就可以使用内网,在几台云主机之间传输命令,只要把域名处,换成内网IP即可.使用的命令是scp,这个命令linux内置,本机和目标机,只要支持ssh,无须安装设置任何软件.</p>
+<ol>
+<li>获取远程服务器上的文件</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P <span class="number">2222</span> root@www.legcloud.com:/root/test.tar.gz /home/test.tar.gz</span><br></pre></td></tr></table></figure>
+<p>上端口大写P 为参数,2222 表示更改SSH端口后的端口,如果没有更改SSH端口可以不用添加该参数. root@www.legcloud.com 表示使用root用户登录远程服务器www.legcloud.com,:/root/test.tar.gz 表示远程服务器上的文件,最后面的/home/test.tar.gz表示保存在本地上的路径和文件名.</p>
+<ol>
+<li>获取远程服务器上的目录</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P <span class="number">2222</span> -r root@www.legcloud.com:/root/dirname/ /home/dirname/</span><br></pre></td></tr></table></figure>
+<ol>
+<li>将本地文件上传到服务器上</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P <span class="number">2222</span> /home/test.tar.gz root@www.legcloud.com:/root/test.tar.gz</span><br></pre></td></tr></table></figure>
+<ol>
+<li>将本地目录上传到服务器上</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P <span class="number">2222</span> -r /home/dirname/ root@www.legcloud.com:/root/dirname/</span><br></pre></td></tr></table></figure>
+<p><a href="https://wiki.vpsmm.com/scp/" target="_blank" rel="external">Linux SSH远程传输命令 scp</a></p>
+<ul>
+<li>使用 iftop 查看实时使用带宽</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果你是 centos 系统,执行:</span></span><br><span class="line"></span><br><span class="line">yum install iftop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果你是 debian/ubuntu 系统,执行:</span></span><br><span class="line"></span><br><span class="line">apt-get install iftop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 ifconfig ,查看所有网络配置,使用 -i 参数选择相关网络.</span></span><br><span class="line"></span><br><span class="line">ifconfig</span><br><span class="line"></span><br><span class="line"><span class="comment"># 阿里云默认的 iftop ,执行查看的是第一个,即内网的IP,以下二个命令效果相同</span></span><br><span class="line"></span><br><span class="line">iftop</span><br><span class="line">iftop -i eth0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果查看外网带宽,则需要选择外网配置的eth,默认命令</span></span><br><span class="line"></span><br><span class="line">iftop -i eth1</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -526,11 +823,11 @@ v0.10.25
 
 
   
-    <article id="post-NodeJs/WebpackNote" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Mysql/MysqlSyncNote" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/20/NodeJs/WebpackNote/" class="article-date">
-      <time datetime="2016-01-20T13:26:31.000Z" itemprop="datePublished">2016-01-20</time>
+      <a href="/2016/05/14/Mysql/MysqlSyncNote/" class="article-date">
+      <time datetime="2016-05-14T09:03:31.000Z" itemprop="datePublished">2016-05-14</time>
 </a>
     </div>
   
@@ -543,7 +840,7 @@ v0.10.25
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/20/NodeJs/WebpackNote/">WebPack 自动打包工具</a>
+      <a class="article-title" href="/2016/05/14/Mysql/MysqlSyncNote/">MysqlSyncNote</a>
     </h1>
   
 
@@ -553,7 +850,99 @@ v0.10.25
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p><a href="http://www.hubwiz.com/course/5670d0a77e7d40946afc5e65/">webpack入门</a></p>
+              <h3 id="Mysql双机热备份"><a href="#Mysql双机热备份" class="headerlink" title="Mysql双机热备份"></a>Mysql双机热备份</h3><h4 id="Mysql-主从同步配置"><a href="#Mysql-主从同步配置" class="headerlink" title="Mysql 主从同步配置"></a>Mysql 主从同步配置</h4><p>概述 首先主服务器把数据变化记录到主日志,然后从服务器通过I/O线程读取主服务器上的主日志,并且把它写入到从服务器的中继日志中,接着SQL线程读取中继日志,并且在从服务器上重放,从而实现MySQL复制.具体如下图所示:</p>
+<p>replication</p>
+<p>整个过程反映到从服务器上,对应三套日志信息,可在从服务器上用如下命令查看:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW SLAVE STATUS;</span><br></pre></td></tr></table></figure>
+<pre><code>Master_Log_File &amp; Read_Master_Log_Pos:下一个传输的主日志信息.
+Relay_Master_Log_File &amp; Exec_Master_Log_Pos:下一个执行的主日志信息.
+Relay_Log_File &amp; Relay_Log_Pos:下一个执行的中继日志信息.
+</code></pre><p>理解这些日志信息的含义对于解决故障至关重要</p>
+<p>两台服务器搭建Mysql双机热备份 mysql 版本最好一致</p>
+<hr>
+<h4 id="一-A主B从"><a href="#一-A主B从" class="headerlink" title="一. A主B从"></a>一. A主B从</h4><ul>
+<li>主服务器 A: 43.241.222.110</li>
+<li>从服务器 B: 42.96.194.60</li>
+</ul>
+<p>在主A服务器(master)下创建给从B服务器 (slave)登录用的用户名密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRANT REPLICATION SLAVE ON *.* TO <span class="string">'syBackup'</span>@<span class="string">'42.96.194.60'</span> IDENTIFIED BY <span class="string">'******'</span>;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>设置主服务器 A 需要复制的数据库<br>打开主服务器 A 的Mysql配置文件 <em>/etc/mysql/my.cnf</em></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#################################################</span></span><br><span class="line">server-id=<span class="number">1</span> <span class="comment">#主机id,整数</span></span><br><span class="line"><span class="comment">#开启二进制日志,并且名称为 /var/lib/mysql/mysql-bin.***</span></span><br><span class="line"><span class="comment"># 如果是个路径则,保存到该路径下(log-bin=/var/log/mysql-bin.log -&gt; /var/log/mysql-bin.***)</span></span><br><span class="line"><span class="built_in">log</span>-bin=mysql-bin</span><br><span class="line"></span><br><span class="line"><span class="comment">### as master ###</span></span><br><span class="line"><span class="built_in">read</span>-only=<span class="number">0</span> <span class="comment">#主机读写权限,读写都可以</span></span><br><span class="line"></span><br><span class="line">binlog-do-db=CoamDatabase <span class="comment">#记录日志的数据库:需要的备份数据,多个写多行</span></span><br><span class="line">binlog-do-db=CoamInfo</span><br><span class="line">binlog-do-db=CoamSNS</span><br><span class="line">binlog-do-db=form</span><br><span class="line">binlog-do-db=CommonData</span><br><span class="line">binlog-do-db=Wordpress</span><br><span class="line">binlog-do-db=IM_Ejabberd</span><br><span class="line"></span><br><span class="line">binlog-ignore-db=mysql <span class="comment">#不记录日志的数据库:不需要备份的数据库,多个写多行</span></span><br><span class="line">binlog-ignore-db=<span class="built_in">test</span></span><br><span class="line">binlog-ignore-db=information_schema</span><br><span class="line">binlog-ignore-db=performance_schema</span><br><span class="line"></span><br><span class="line"><span class="comment"># 自增字段奇数递增,防止冲突(1, 11, 21, ...,)</span></span><br><span class="line">auto-increment-increment = <span class="number">10</span> <span class="comment"># 每次递增的步长</span></span><br><span class="line">auto-increment-offset = <span class="number">1</span> <span class="comment"># 初始值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">### as slave ###</span></span><br><span class="line"><span class="comment">###</span></span><br><span class="line"><span class="comment">###############################################################</span></span><br></pre></td></tr></table></figure>
+<p>重启 Mysql 是配置生效,可以看到主(43.241.222.110) Mysql  增加了两个文件 mysql-bin.000001 和 mysql-bin.index </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Tue May <span class="number">17</span> <span class="number">10</span>:<span class="number">31</span>:<span class="number">52</span> yzhang@coam:/data/home/data/mysql$ ls</span><br><span class="line">auto.cnf         client-key.pem  coam.pid    ib_buffer_pool  ibtmp1           performance_schema  server-key.pem</span><br><span class="line">ca-key.pem       CoamDatabase    CoamSNS     ibdata1         IM_Ejabberd      private_key.pem     sys</span><br><span class="line">ca.pem           coam.err        CommonData  ib_logfile0     mysql            public_key.pem      <span class="built_in">test</span></span><br><span class="line">client-cert.pem  CoamInfo        forum       ib_logfile1     mysqld_safe.pid  server-cert.pem     Wordpress</span><br><span class="line">Tue May <span class="number">17</span> <span class="number">10</span>:<span class="number">31</span>:<span class="number">52</span> yzhang@coam:/data/home/data/mysql$ sudo service mysql restart       ======&gt; 重启 Mysql 数据库服务</span><br><span class="line">Tue May <span class="number">17</span> <span class="number">10</span>:<span class="number">31</span>:<span class="number">52</span> yzhang@coam:/data/home/data/mysql$ ls</span><br><span class="line">auto.cnf         CoamDatabase  CommonData      ib_logfile1       mysql-bin.<span class="number">000002</span>  performance_schema  sys</span><br><span class="line">ca-key.pem       coam.err      forum           ibtmp1            mysql-bin.<span class="number">000003</span>  private_key.pem     <span class="built_in">test</span></span><br><span class="line">ca.pem           CoamInfo      ib_buffer_pool  IM_Ejabberd       mysql-bin.<span class="number">000004</span>  public_key.pem      Wordpress</span><br><span class="line">client-cert.pem  coam.pid      ibdata1         mysql             mysql-bin.index   server-cert.pem</span><br><span class="line">client-key.pem   CoamSNS       ib_logfile0     mysql-bin.<span class="number">000001</span>  mysqld_safe.pid   server-key.pem</span><br></pre></td></tr></table></figure>
+<p>– 注意,这里因为配置有问题重启过几次 mysql 导致生成 [mysql-bin.000001 mysql-bin.000002 mysql-bin.000003 mysql-bin.000004] 等几个文件,不过不影响后续步骤执行</p>
+<p>先锁定 (hello) 数据库 - 不要退出 mysql shell</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; FLUSH TABLES WITH READ LOCK;</span><br></pre></td></tr></table></figure>
+<p>然后新开一个终端,导出数据库,我这里只需要导出 hello 数据库, 如果你有多个数据库作为初态的话, 需要导出所有这些数据库:( 这里为了便于测试,我先不导出 forum 数据库,后续测试单独补加同步数据库)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysqldump --master-data -uroot -p hello &gt; hello.sql</span><br><span class="line">mysqldump -u username -p password --databases CoamDatabase CoamInfo CoamSNS CommonData Wordpress IM_Ejabberd &gt;backup.sql</span><br></pre></td></tr></table></figure>
+<p>查看主服务器的状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show master status\G;</span><br><span class="line">*************************** <span class="number">1</span>. row ***************************</span><br><span class="line">             File: mysql-bin.<span class="number">000005</span></span><br><span class="line">         Position: <span class="number">154</span></span><br><span class="line">     Binlog_Do_DB: CoamDatabase,CoamInfo,CoamSNS,forum,CommonData,Wordpress,IM_Ejabberd</span><br><span class="line"> Binlog_Ignore_DB: mysql,<span class="built_in">test</span>,information_schema,performance_schema</span><br><span class="line">Executed_Gtid_Set:</span><br><span class="line"><span class="number">1</span> row <span class="keyword">in</span> <span class="built_in">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line">ERROR:</span><br><span class="line">No query specified</span><br></pre></td></tr></table></figure>
+<p>然后查看A服务器的 binary 日志位置,记下 Position 和 File 的值.</p>
+<p>主服务器已经做完了, 可以解除锁定了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UNLOCK TABLES;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>设置从服务器 B 需要复制的数据库<br>打开从服务器 B 的 Mysql 配置文件 <em>/etc/mysql/my.cnf</em></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line"></span><br><span class="line"><span class="comment">####################################################################</span></span><br><span class="line">server-id=<span class="number">2</span></span><br><span class="line"><span class="built_in">log</span>-bin=mysql-bin</span><br><span class="line"></span><br><span class="line"><span class="comment">### as master ###</span></span><br><span class="line"><span class="comment">### as slave ###</span></span><br><span class="line">replicate-do-db=CoamDatabase <span class="comment">#只复制某个库,多个写多行</span></span><br><span class="line">replicate-do-db=CoamInfo</span><br><span class="line">replicate-do-db=CoamSNS</span><br><span class="line">replicate-do-db=form</span><br><span class="line">replicate-do-db=CommonData</span><br><span class="line">replicate-do-db=Wordpress</span><br><span class="line">replicate-do-db=IM_Ejabberd</span><br><span class="line"></span><br><span class="line">replicate-ignore-db=mysql <span class="comment">#不复制某个库</span></span><br><span class="line">replicate-ignore-db=<span class="built_in">test</span></span><br><span class="line">replicate-ignore-db=information_schema</span><br><span class="line">replicate-ignore-db=performance_schema</span><br><span class="line"></span><br><span class="line">relay-log=mysqld-relay-bin <span class="comment"># 开启日志中继</span></span><br><span class="line"><span class="built_in">log</span>-slave-updates <span class="comment"># slave 将复制事件写进自己的二进制日志</span></span><br><span class="line"><span class="comment">#5.5</span></span><br><span class="line"><span class="comment">#log-slave-updates = ON</span></span><br><span class="line"><span class="comment">#5.1</span></span><br><span class="line"><span class="comment">#log-slave-updates = 1</span></span><br><span class="line"><span class="comment">###############################################################</span></span><br></pre></td></tr></table></figure>
+<p>重启 Mysql 是配置生效,可以看到从(42.96.194.60) Mysql  也相应的增加了两个文件 mysql-bin.000001 和 mysql-bin.index </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Tue May <span class="number">17</span> <span class="number">11</span>:<span class="number">07</span>:<span class="number">14</span> yzhang@coam:/data/home/data/mysql$ ls</span><br><span class="line">auto.cnf    client-cert.pem  coam.pid        ib_logfile0  mysql               private_key.pem  server-key.pem</span><br><span class="line">ca-key.pem  client-key.pem   ib_buffer_pool  ib_logfile1  mysqld_safe.pid     public_key.pem   sys</span><br><span class="line">ca.pem      coam.err         ibdata1         ibtmp1       performance_schema  server-cert.pem</span><br><span class="line">Tue May <span class="number">17</span> <span class="number">10</span>:<span class="number">31</span>:<span class="number">52</span> yzhang@coam:/data/home/data/mysql$ sudo service mysql restart       ======&gt; 重启 Mysql 数据库服务</span><br><span class="line">Tue May <span class="number">17</span> <span class="number">11</span>:<span class="number">08</span>:<span class="number">40</span> yzhang@coam:/data/home/data/mysql$ ls</span><br><span class="line">auto.cnf    client-cert.pem  coam.pid        ib_logfile0  mysql             mysqld_safe.pid     public_key.pem   sys</span><br><span class="line">ca-key.pem  client-key.pem   ib_buffer_pool  ib_logfile1  mysql-bin.<span class="number">000001</span>  performance_schema  server-cert.pem</span><br><span class="line">ca.pem      coam.err         ibdata1         ibtmp1       mysql-bin.index   private_key.pem     server-key.pem</span><br></pre></td></tr></table></figure>
+<p>导入从主服务器导出的数据库 hello,然后</p>
+<p>导入 master 导出的数据库:</p>
+<p>分别创建需要导入的数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE DATABASE CoamDatabase DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;</span><br><span class="line">mysql&gt; CREATE DATABASE CoamInfo DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;</span><br><span class="line">mysql&gt; CREATE DATABASE CoamSNS DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;</span><br><span class="line">mysql&gt; CREATE DATABASE CommonData DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;</span><br><span class="line">mysql&gt; CREATE DATABASE Wordpress DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;</span><br><span class="line">mysql&gt; CREATE DATABASE IM_Ejabberd DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;</span><br><span class="line"></span><br><span class="line">mysql&gt; <span class="built_in">source</span> backup.sql;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以下方式分别导入数据库</span></span><br><span class="line">mysql -uroot -p CoamDatabase &lt; backup.sql</span><br><span class="line">mysql -uroot -p CoamInfo &lt; backup.sql</span><br><span class="line">mysql -uroot -p CoamSNS &lt; backup.sql</span><br><span class="line">mysql -uroot -p CommonData &lt; backup.sql</span><br><span class="line">mysql -uroot -p Wordpress &lt; backup.sql</span><br><span class="line">mysql -uroot -p IM_Ejabberd &lt; backup.sql</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在从 slave 服务器配置连接 master 信息:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; slave stop;</span><br><span class="line">mysql&gt; CHANGE MASTER TO</span><br><span class="line">-&gt; MASTER_HOST=<span class="string">'43.241.222.110'</span>, //主服务器的IP地址</span><br><span class="line">-&gt; MASTER_USER=<span class="string">'syBackup'</span>, //同步数据库的用户</span><br><span class="line">-&gt; MASTER_PASSWORD=<span class="string">'******'</span>, //同步数据库的密码</span><br><span class="line">-&gt; MASTER_CONNECT_RETRY=<span class="number">60</span>,  // 如果从服务器发现主服务器断掉,重新连接的时间差(秒)</span><br><span class="line">-&gt; MASTER_LOG_FILE=<span class="string">'mysql-bin.000001'</span>, //主服务器二进制日志的文件名(前面要求记住的 File 参数)</span><br><span class="line">-&gt; MASTER_LOG_POS=<span class="number">98</span>; //日志文件的开始位置(前面要求记住的 Position 参数)</span><br><span class="line">mysql&gt; CHANGE MASTER TO MASTER_HOST=<span class="string">'43.241.222.110'</span>, MASTER_USER=<span class="string">'syBackup'</span>, MASTER_PASSWORD=<span class="string">'******'</span>, MASTER_CONNECT_RETRY=<span class="number">60</span>, MASTER_LOG_FILE=<span class="string">'mysql-bin.000005'</span>, MASTER_LOG_POS=<span class="number">154</span>;</span><br><span class="line">mysql &gt; slave start;</span><br></pre></td></tr></table></figure>
+<p>重启 master, slave:  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysqld restart</span><br></pre></td></tr></table></figure>
+<p>查看 slave 状态:</p>
+<p>进入从服务器 slave mysql:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show slave status\G;</span><br><span class="line">*************************** <span class="number">1</span>. row ***************************</span><br><span class="line">            Slave_IO_State: Connecting to master</span><br><span class="line">                Master_Host: <span class="number">43.241</span>.<span class="number">222.110</span></span><br><span class="line">                Master_User: syBackup</span><br><span class="line">                Master_Port: <span class="number">3306</span></span><br><span class="line">            Connect_Retry: <span class="number">60</span></span><br><span class="line">            Master_Log_File: mysql-bin.<span class="number">000001</span></span><br><span class="line">        Read_Master_Log_Pos: <span class="number">98</span></span><br><span class="line">            Relay_Log_File: mysqld-relay-bin.<span class="number">000001</span></span><br><span class="line">            Relay_Log_Pos: <span class="number">98</span></span><br><span class="line">    Relay_Master_Log_File: mysql-bin.<span class="number">000001</span></span><br><span class="line">        Slave_IO_Running: Yes</span><br><span class="line">        Slave_SQL_Running: Yes</span><br><span class="line">            Replicate_Do_DB: CoamDatabase,CoamInfo,CoamSNS,form,CommonData,Wordpress,IM_Ejabberd</span><br><span class="line"> Replicate_Ignore_DB: mysql,<span class="built_in">test</span>,information_schema,performance_schema,collie,ding,inotseeyou_com,pi</span><br><span class="line">wik,trac,wzjp_net</span><br><span class="line">        Exec_Master_Log_Pos: <span class="number">98</span></span><br><span class="line">            Relay_Log_Space: <span class="number">98</span></span><br><span class="line">            Until_Log_Pos: <span class="number">0</span></span><br><span class="line">    Seconds_Behind_Master: NULL</span><br><span class="line"><span class="number">1</span> row <span class="keyword">in</span> <span class="built_in">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+<p>注意一定要有下面两项(IO线程和SQL线程),没有的话查看错误日志(less /var/log/mysqld.log):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Slave_IO_Running: Yes</span><br><span class="line">Slave_SQL_Running: Yes</span><br></pre></td></tr></table></figure>
+<p>如果显示这个状态 则稍等一会儿</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Slave_IO_State: Waiting <span class="keyword">for</span> master to send event</span><br></pre></td></tr></table></figure>
+<p>测试 master 服务器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use hello;</span><br><span class="line">Database changed</span><br><span class="line">mysql&gt; create table <span class="built_in">test</span>(id int);</span><br><span class="line">mysql&gt; insert int <span class="built_in">test</span> <span class="built_in">set</span> id=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">mysql&gt; show master status\G;</span><br><span class="line">*************************** <span class="number">1</span>. row ***************************</span><br><span class="line">            File: mysql-bin.<span class="number">000002</span>  <span class="comment"># 注意这里</span></span><br><span class="line">        Position: <span class="number">276</span>    <span class="comment"># 注意这里</span></span><br><span class="line">    Binlog_Do_DB:</span><br><span class="line">CoamDatabase,CoamInfo,CoamSNS,form,CommonData,Wordpress,IM_Ejabberd</span><br><span class="line">Binlog_Ignore_DB: mysql,<span class="built_in">test</span>,information_schema,performance_schema,collie,ding,inotseeyou_com,pi</span><br><span class="line">wik,trac,wzjp_net</span><br><span class="line"></span><br><span class="line"><span class="number">1</span> row <span class="keyword">in</span> <span class="built_in">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+<p>测试 slave 服务器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use hello;</span><br><span class="line">mysql&gt; show tables;</span><br><span class="line">+-----------------+</span><br><span class="line">| Tables_<span class="keyword">in</span>_hello |</span><br><span class="line">+-----------------+</span><br><span class="line">| <span class="built_in">test</span>            | </span><br><span class="line">+-----------------+</span><br><span class="line"><span class="number">1</span> row <span class="keyword">in</span> <span class="built_in">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from <span class="built_in">test</span>;</span><br><span class="line">+------+</span><br><span class="line">| id   |</span><br><span class="line">+------+</span><br><span class="line">|    <span class="number">1</span> | </span><br><span class="line">+------+</span><br><span class="line"><span class="number">1</span> row <span class="keyword">in</span> <span class="built_in">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; show slave status\G;</span><br><span class="line">*************************** <span class="number">1</span>. row ***************************</span><br><span class="line">            Slave_IO_State: Waiting <span class="keyword">for</span> master to send event</span><br><span class="line">                Master_Host: <span class="number">43.241</span>.<span class="number">222.110</span></span><br><span class="line">                Master_User: syBackup</span><br><span class="line">                Master_Port: <span class="number">3306</span></span><br><span class="line">            Connect_Retry: <span class="number">60</span></span><br><span class="line">            Master_Log_File: mysql-bin.<span class="number">000002</span>  <span class="comment"># 跟 master 一样</span></span><br><span class="line">        Read_Master_Log_Pos: <span class="number">276</span>  <span class="comment"># 跟 master 一样</span></span><br><span class="line">            Relay_Log_File: mysqld-relay-bin.<span class="number">000003</span></span><br><span class="line">            Relay_Log_Pos: <span class="number">413</span></span><br><span class="line">    Relay_Master_Log_File: mysql-bin.<span class="number">000002</span></span><br><span class="line">        Slave_IO_Running: Yes</span><br><span class="line">        Slave_SQL_Running: Yes</span><br><span class="line">            Replicate_Do_DB: CoamDatabase,CoamInfo,CoamSNS,form,CommonData,Wordpress,IM_Ejabberd</span><br><span class="line"> Replicate_Ignore_DB: mysql,<span class="built_in">test</span>,information_schema,performance_schema,collie,ding,inotseeyou_com,pi</span><br><span class="line">wik,trac,wzjp_net</span><br><span class="line">                Last_Errno: <span class="number">0</span></span><br><span class="line">                Last_Error: </span><br><span class="line">            Skip_Counter: <span class="number">0</span></span><br><span class="line">        Exec_Master_Log_Pos: <span class="number">276</span></span><br><span class="line">            Relay_Log_Space: <span class="number">413</span></span><br><span class="line">    Seconds_Behind_Master: <span class="number">0</span></span><br><span class="line"><span class="number">1</span> row <span class="keyword">in</span> <span class="built_in">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+<p>主A服务器从B服务器配置就已经顺利完成了 –A从B主</p>
+<hr>
+<h4 id="二-下面开始配置从A服务器主B服务器"><a href="#二-下面开始配置从A服务器主B服务器" class="headerlink" title="二. 下面开始配置从A服务器主B服务器"></a>二. 下面开始配置从A服务器主B服务器</h4><ul>
+<li>从服务器 A: 43.241.222.110</li>
+<li>主服务器 B: 42.96.194.60</li>
+</ul>
+<p>一、设置主服务器 A 需要复制的数据库<br>打开主服务器 B 的 Mysql 配置文件 <em>/etc/mysql/my.cnf</em> 并添加以下配置项</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">###############################################################</span></span><br><span class="line"><span class="setting">server-id=<span class="value"><span class="number">2</span></span></span></span><br><span class="line"><span class="setting">log-bin=<span class="value">mysql-bin</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">### as master ###</span></span><br><span class="line"><span class="setting">read-only=<span class="value"><span class="number">0</span> #主机读写权限,读写都可</span></span></span><br><span class="line"></span><br><span class="line"><span class="setting">binlog-do-db=<span class="value">CoamDatabase #记录日志的数据库:需要的备份数据,多个写多行</span></span></span><br><span class="line"><span class="setting">binlog-do-db=<span class="value">CoamInfo</span></span></span><br><span class="line"><span class="setting">binlog-do-db=<span class="value">CoamSNS</span></span></span><br><span class="line"><span class="setting">binlog-do-db=<span class="value">form</span></span></span><br><span class="line"><span class="setting">binlog-do-db=<span class="value">CommonData</span></span></span><br><span class="line"><span class="setting">binlog-do-db=<span class="value">Wordpress</span></span></span><br><span class="line"><span class="setting">binlog-do-db=<span class="value">IM_Ejabberd</span></span></span><br><span class="line"></span><br><span class="line"><span class="setting">binlog-ignore-db=<span class="value">mysql #不记录日志的数据库:不需要备份的数据库,多个写多行</span></span></span><br><span class="line"><span class="setting">binlog-ignore-db=<span class="value">test</span></span></span><br><span class="line"><span class="setting">binlog-ignore-db=<span class="value">information_schema</span></span></span><br><span class="line"><span class="setting">binlog-ignore-db=<span class="value">performance_schema</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 自增字段奇数递增,防止冲突(1, 3, 5, ...,)</span></span><br><span class="line"><span class="setting">auto-increment-increment = <span class="value"><span class="number">10</span> # 每次递增的步长</span></span></span><br><span class="line"><span class="setting">auto-increment-offset = <span class="value"><span class="number">2</span> # 初始值</span></span></span><br><span class="line"><span class="comment">### as slave ###</span></span><br><span class="line"><span class="comment"># 之前配置过,这里保持不变</span></span><br><span class="line"><span class="comment">#######################################################################</span></span><br></pre></td></tr></table></figure>
+<p>重启 mysql: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">serivce mysqld restart</span><br></pre></td></tr></table></figure>
+<p>在主 B 服务器(master)下创建给从A服务器 (slave)登录用的用户名密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; GRANT REPLICATION SLAVE ON *.* TO <span class="string">'syBackup'</span>@<span class="string">'43.241.222.110'</span> IDENTIFIED BY <span class="string">'******'</span>;</span><br><span class="line">mysql&gt; FLUSH TABLES WITH READ LOCK;</span><br><span class="line">mysql&gt; show master status\G;</span><br><span class="line">*************************** <span class="number">1</span>. row ***************************</span><br><span class="line">         File: mysql-bin.<span class="number">000003</span></span><br><span class="line">         Position: <span class="number">468</span></span><br><span class="line">     Binlog_Do_DB: CoamDatabase,CoamInfo,CoamSNS,forum,CommonData,Wordpress,IM_Ejabberd</span><br><span class="line"> Binlog_Ignore_DB: mysql,<span class="built_in">test</span>,information_schema,performance_schema</span><br><span class="line">Executed_Gtid_Set:</span><br><span class="line"><span class="number">1</span> row <span class="keyword">in</span> <span class="built_in">set</span> (<span class="number">0.01</span> sec)</span><br><span class="line">mysql&gt; UNLOCK TABLES;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>在从服务器 A 的服务器配置登陆主服务器 B 中创建的复制用户登陆</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; slave stop;</span><br><span class="line">mysql&gt;  CHANGE MASTER TO MASTER_HOST=<span class="string">'42.96.194.60'</span>, MASTER_USER=<span class="string">'syBackup'</span>, MASTER_PASSWORD=<span class="string">'yafei312'</span>, MASTER_CONNECT_RETRY=<span class="number">60</span>, MASTER_LOG_FILE=<span class="string">'mysql-bin.000004, MASTER_LOG_POS=46702'</span>;</span><br><span class="line">mysql&gt; slave start;</span><br></pre></td></tr></table></figure>
+<p>修改从服务器A的 Mysql 配置文件 <em>/etc/mysql/my.cnf</em> 从配置信息</p>
+<p>打开从服务器 A 的 Mysql 配置文件 <em>/etc/mysql/my.cnf</em> 并添加以下配置项</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">### as master ###</span><br><span class="line"></span><br><span class="line">### as slave ###</span><br><span class="line">replicate-do-db=CoamDatabase #只复制某个库,多个写多行</span><br><span class="line">replicate-do-db=CoamInfo</span><br><span class="line">replicate-do-db=CoamSNS</span><br><span class="line">replicate-do-db=form</span><br><span class="line">replicate-do-db=CommonData</span><br><span class="line">replicate-do-db=Wordpress</span><br><span class="line">replicate-do-db=IM_Ejabberd</span><br><span class="line"></span><br><span class="line">replicate-ignore-db=mysql #不复制某个库</span><br><span class="line">replicate-ignore-db=test</span><br><span class="line">replicate-ignore-db=information_schema</span><br><span class="line">replicate-ignore-db=performance_schema</span><br><span class="line"></span><br><span class="line">relay-log=mysqld-relay-bin # 开启日志中继</span><br><span class="line">log-slave-updates # slave将复制事件写进自己的二进制日志</span><br><span class="line">######################################################################</span><br></pre></td></tr></table></figure>
+<p>重启主服务器A、B并测试插入测试更新数据</p>
+<p>从 A 服务器 43.241.222.110</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show slave status\G;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>最后的 A 服务器 配置文件 <em>/etc/mysql/my.cnf</em></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#######################################################</span><br><span class="line">server-id=1 #主机id,整数</span><br><span class="line">#开启二进制日志,并且名称为 /var/lib/mysql/mysql-bin.***</span><br><span class="line"># 如果是个路径则,保存到该路径下(log-bin=/var/log/mysql-bin.log -&gt; /var/log/mysql-bin.***)</span><br><span class="line">log-bin=mysql-bin</span><br><span class="line"></span><br><span class="line">### as master ###</span><br><span class="line">read-only=0 #主机读写权限,读写都可以</span><br><span class="line"></span><br><span class="line">binlog-do-db=CoamDatabase #记录日志的数据库:需要的备份数据,多个写多行</span><br><span class="line">binlog-do-db=CoamInfo</span><br><span class="line">binlog-do-db=CoamSNS</span><br><span class="line">binlog-do-db=form</span><br><span class="line">binlog-do-db=CommonData</span><br><span class="line">binlog-do-db=Wordpress</span><br><span class="line">binlog-do-db=IM_Ejabberd</span><br><span class="line"></span><br><span class="line">binlog-ignore-db=mysql #不记录日志的数据库:不需要备份的数据库,多个写多行</span><br><span class="line">binlog-ignore-db=test</span><br><span class="line">binlog-ignore-db=information_schema</span><br><span class="line">binlog-ignore-db=performance_schema</span><br><span class="line"></span><br><span class="line"># 自增字段奇数递增,防止冲突(1, 11, 21, ...,)</span><br><span class="line">auto-increment-increment = 10 # 每次递增的步长</span><br><span class="line">auto-increment-offset = 1 # 初始值</span><br><span class="line"></span><br><span class="line">### as slave ###</span><br><span class="line">replicate-do-db=CoamDatabase #只复制某个库,多个写多行</span><br><span class="line">replicate-do-db=CoamInfo</span><br><span class="line">replicate-do-db=CoamSNS</span><br><span class="line">replicate-do-db=form</span><br><span class="line">replicate-do-db=CommonData</span><br><span class="line">replicate-do-db=Wordpress</span><br><span class="line">replicate-do-db=IM_Ejabberd</span><br><span class="line"></span><br><span class="line">replicate-ignore-db=mysql #不复制某个库</span><br><span class="line">replicate-ignore-db=test</span><br><span class="line">replicate-ignore-db=information_schema</span><br><span class="line">replicate-ignore-db=performance_schema</span><br><span class="line"></span><br><span class="line">relay-log=mysqld-relay-bin # 开启日志中继</span><br><span class="line">log-slave-updates # slave将复制事件写进自己的二进制日志</span><br><span class="line">#5.5</span><br><span class="line">#log-slave-updates = ON</span><br><span class="line">#5.1</span><br><span class="line">#log-slave-updates = 1</span><br><span class="line">#######################################################</span><br></pre></td></tr></table></figure>
+<p>最后的 B 服务器配置文件 <em>/etc/mysql/my.cnf</em></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">###############################################################</span><br><span class="line">server-id=2</span><br><span class="line">log-bin=mysql-bin</span><br><span class="line"></span><br><span class="line">### as master ###</span><br><span class="line">read-only=0 #主机读写权限,读写都可以</span><br><span class="line"></span><br><span class="line">binlog-do-db=CoamDatabase #记录日志的数据库:需要的备份数据,多个写多行</span><br><span class="line">binlog-do-db=CoamInfo</span><br><span class="line">binlog-do-db=CoamSNS</span><br><span class="line">binlog-do-db=form</span><br><span class="line">binlog-do-db=CommonData</span><br><span class="line">binlog-do-db=Wordpress</span><br><span class="line">binlog-do-db=IM_Ejabberd</span><br><span class="line"></span><br><span class="line">binlog-ignore-db=mysql #不记录日志的数据库:不需要备份的数据库,多个写多行</span><br><span class="line">binlog-ignore-db=test</span><br><span class="line">binlog-ignore-db=information_schema</span><br><span class="line">binlog-ignore-db=performance_schema</span><br><span class="line"></span><br><span class="line"># 自增字段奇数递增,防止冲突(2, 12, 22, ...,)</span><br><span class="line">auto-increment-increment = 10 # 每次递增的步长</span><br><span class="line">auto-increment-offset = 2 # 初始值</span><br><span class="line">### as slave ###</span><br><span class="line">replicate-do-db=CoamDatabase #只复制某个库,多个写多行</span><br><span class="line">replicate-do-db=CoamInfo</span><br><span class="line">replicate-do-db=CoamSNS</span><br><span class="line">replicate-do-db=form</span><br><span class="line">replicate-do-db=CommonData</span><br><span class="line">replicate-do-db=Wordpress</span><br><span class="line">replicate-do-db=IM_Ejabberd</span><br><span class="line"></span><br><span class="line">replicate-ignore-db=mysql #不复制某个库</span><br><span class="line">replicate-ignore-db=test</span><br><span class="line">replicate-ignore-db=information_schema</span><br><span class="line">replicate-ignore-db=performance_schema</span><br><span class="line"></span><br><span class="line">relay-log=mysqld-relay-bin # 开启日志中继</span><br><span class="line">log-slave-updates # slave将复制事件写进自己的二进制日志</span><br><span class="line">#5.5</span><br><span class="line">#log-slave-updates = ON</span><br><span class="line">#5.1</span><br><span class="line">#log-slave-updates = 1</span><br><span class="line">###############################################################</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><ol>
+<li>安装MySQL.首先要在两台服务器上安装MySQL,完成之后应该确认能否两台服务器能否互相访问. 这是因为缺省的 my.cnf 设置有 bind-address = 127.0.0.1,这条语句应该被注释掉.</li>
+<li>创建账号.数据库中缺省的帐户的host值是localhost,所以应该创建一个可以远端访问的帐号.比如:</li>
+</ol>
+<p>root@’%’ or root@10.x.x.x</p>
+<hr>
+<h3 id="Mysql双机热备份日常维护及问题分析"><a href="#Mysql双机热备份日常维护及问题分析" class="headerlink" title="Mysql双机热备份日常维护及问题分析"></a>Mysql双机热备份日常维护及问题分析</h3>
           
       
     </div>
@@ -565,7 +954,7 @@ v0.10.25
       
       
         <p class="article-more-link">
-          <a  href="/2016/01/20/NodeJs/WebpackNote/#more">more >></a>
+          <a  href="/2016/05/14/Mysql/MysqlSyncNote/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -583,57 +972,11 @@ v0.10.25
 
 
   
-    <article id="post-NodeJs/GulpNote" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Mysql/MysqlToRedis" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/01/20/NodeJs/GulpNote/" class="article-date">
-      <time datetime="2016-01-20T13:26:31.000Z" itemprop="datePublished">2016-01-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><a href="http://www.hubwiz.com/course/562089cb1bc20c980538e25b/">自动化工具Gulp</a></p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a  href="/2016/01/20/NodeJs/GulpNote/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Info/hospital" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/20/Info/hospital/" class="article-date">
-      <time datetime="2016-01-20T07:20:31.000Z" itemprop="datePublished">2016-01-20</time>
+      <a href="/2016/05/14/Mysql/MysqlToRedis/" class="article-date">
+      <time datetime="2016-05-14T08:48:31.000Z" itemprop="datePublished">2016-05-14</time>
 </a>
     </div>
   
@@ -646,7 +989,64 @@ v0.10.25
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/20/Info/hospital/">hospital</a>
+      <a class="article-title" href="/2016/05/14/Mysql/MysqlToRedis/">MysqlToRedis</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h3 id="Ubuntu-安装-Mysql2redis-及错误日记"><a href="#Ubuntu-安装-Mysql2redis-及错误日记" class="headerlink" title="Ubuntu 安装 Mysql2redis 及错误日记"></a>Ubuntu 安装 Mysql2redis 及错误日记</h3>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a  href="/2016/05/14/Mysql/MysqlToRedis/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Mysql/MysqlNote" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/13/Mysql/MysqlNote/" class="article-date">
+      <time datetime="2016-05-13T01:13:31.000Z" itemprop="datePublished">2016-05-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/13/Mysql/MysqlNote/">MysqlNote</a>
     </h1>
   
 
@@ -657,303 +1057,161 @@ v0.10.25
       
           
         <a id="more"></a>
-<p>胸痛是以胸部疼痛为痛苦的一种自觉症状，为内科心、肺、肝系疾病的常见症状。<br>其基本病机是病邪壅阻心胸血脉，气血不通而疼痛，一般为实证，病邪有寒、热、痰、瘀，但也有本虚标实证。<br>临床时应分析疼痛的性质、牵连部位及伴随的症状等:<br>胸痛憋闷，有压榨感，多为气滞、痰阻;<br>胸痛如刺，夜间为甚，多为血瘀阻滞;<br>胸痛连脘腹，手不可触者，寒热结胸;<br>胸痛连胁，病在肝胆;<br>胸痛痛连左手尺侧者，为胸痹心痛;<br><em>胸痛痛引肩背，发热呕恶者，为肝胆湿热;
-</em>胸痛痛连肩背，脉沉紧者，为寒凝心胸。<br>胸痛伴发热咳嗽，咳则痛甚，为肺热络伤;<br>胸痛伴咳吐脓血痰，为肺痈;<br>*胸部隐痛，咳嗽无力，多为肺气虚弱，余邪未尽的肺热病后期，也可见于肺痨;<br>胸痛伴心悸，病在心;<br>心胸卒然大痛，持续不解，面青肢冷，脉微细者，为心脉闭阻不通，特称“真心痛”以示危证。</p>
-<p>在各种胸痛中需重视并快速做出判断的疾病有：急性冠脉综合症、主动脉夹层、肺栓塞、自发性气胸。<br>急性冠脉综合症：患者既往胸痛发作持续20分钟以上，心肌坏死标记物有动态演变，心电图有特异性变化。<br>主动脉夹层：经CT扫描可确诊。<br>肺栓塞：严重呼吸困难，呼吸增快，胸痛，面部紫绀，甚至出现晕厥。<br>自发性气胸：经X线片可鉴别诊断。</p>
-<p>胸痛的常见原因及症状</p>
-<pre><code>胸痛的原因有外伤、炎症、机械性压迫、组织缺血缺氧等。它不仅见于呼吸系统疾病，亦可发生于心血管系统、消化系统、神经系统疾病以及胸壁组织疾病。不同器官和不同疾病引起的胸痛，在部位、性质和发生时间上不尽相同。
-</code></pre><p>通过详细询问病史和体格检查，辅以X线或心电图等特殊检查，可以得出正确诊断。</p>
-<h2 id="u80F8_u58C1_u75C5_u53D8"><a href="#u80F8_u58C1_u75C5_u53D8" class="headerlink" title="胸壁病变"></a>胸壁病变</h2><blockquote>
-<p>胸壁软组织损伤及炎症，有局限性疼痛和压痛。肋间神经炎痛沿肋间神经分布，在脊柱旁、腋部和胸骨旁常有压痛点。带状疱疹引起的胸痛可以相当剧烈，但与咳嗽和深呼吸无关。肋骨骨折，除压痛外还有骨裂声，挤压胸部时疼痛加剧。肋骨骨髓炎有局限性疼痛、周围肌肉痉挛和发热，晚期有骨坏死和脓窦。癌肿转移到肋骨，则出现剧烈难忍的胸痛和局部压痛。</p>
-</blockquote>
-<h2 id="u80F8_u819C_u53CA_u80BA_u90E8_u75C5_u53D8_*"><a href="#u80F8_u819C_u53CA_u80BA_u90E8_u75C5_u53D8_*" class="headerlink" title="胸膜及肺部病变 *"></a>胸膜及肺部病变 *</h2><blockquote>
-<p>干性胸膜炎患者胸膜表面有纤维素渗出及附着，呼吸时两层胸膜互相摩擦发生疼痛。其性质多为刺痛，以胸廓扩张幅度较大的部位如肋部最显著，随呼吸和咳嗽而加剧。自发性气胸及胸膜腔出血均刺激胸膜引起疼痛，每伴有气急。胸膜恶性肿瘤的胸痛持续而剧烈，常合并大量血性胸水。肺部疾病，当病变影响壁层胸膜时可引起疼痛，多位于病变邻近部位，随咳嗽和深呼吸加重。</p>
-</blockquote>
-<h2 id="u5FC3_u8840_u7BA1_u75BE_u75C5_*"><a href="#u5FC3_u8840_u7BA1_u75BE_u75C5_*" class="headerlink" title="心血管疾病 *"></a>心血管疾病 *</h2><blockquote>
-<p>常见于冠心病、心包炎、胸主动脉瘤等。冠心病的心绞痛多位于心前区或胸骨后，可向左肩及臂部放射，常因体力活动、饱食和情绪激动而诱发，休息或用硝基甘油可迅速缓解。</p>
-</blockquote>
-<h2 id="u7EB5_u9694_u75C5_u53D8"><a href="#u7EB5_u9694_u75C5_u53D8" class="headerlink" title="纵隔病变"></a>纵隔病变</h2><blockquote>
-<p>纵隔气肿时胸骨下有强烈的疼痛，可因吞咽而加剧。急性食管炎为胸骨下灼痛，亦随吞咽而加重。</p>
-</blockquote>
-<h2 id="u8188_u808C_u53CA_u8188_u4E0B_u75C5_u53D8"><a href="#u8188_u808C_u53CA_u8188_u4E0B_u75C5_u53D8" class="headerlink" title="膈肌及膈下病变"></a>膈肌及膈下病变</h2><blockquote>
-<p>如膈疝、隔胸膜炎、膈下脓肿、肝脏疾患等。疼痛一般位于胸骨及胸廓下部，可放射至肩背部。</p>
-</blockquote>
-<p>胸痛治疗首要的是治疗引起胸痛的疾病。疼痛剧烈者可选用镇痛药。若疼痛与呼吸运动有关，则可在胸廓贴以胶布固定，以减少胸廓活动，缓解疼痛。</p>
-<p>胸膜及肺部病变|心血管疾病</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/19/Server/Config/Ejabberd/Ali_etc_ejabberd_ejabberd/" class="article-date">
-      <time datetime="2016-01-19T10:01:08.576Z" itemprop="datePublished">2016-01-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        {"loglevel":5,"log_rotate_size":10485760,"log_rotate_date":"","log_rotate_count":1,"log_rate_limit":100,"hosts":["coopens.com"],"define_macro":{"COOPENS_SSL_EJABBERD_CERT":"/etc/ejabberd/ejabberd.pem","COAM_SSL_EJABBERD_CERT":"/etc/ejabberd/ejabberd.pem","DHPARAM_LOCATION":"/data/home/yzhang/Home/Documents/Server/Config/Nginx/Certify/dhparam.pem","LOCAL_EJABBERD_SERVER_IP":"127.0.0.1","TEST_EJABBERD_SERVER_IP":"42.96.194.60","COOPENS_EJABBERD_SERVER_IP":"42.96.194.60","COAM_EJABBERD_SERVER_IP":"43.241.222.110","TLS_OPTIONS":["no_sslv2","no_sslv3"],"TLS_CIPHERS":"ECDH:DH:!CAMELLIA128:!3DES:!MD5:!RC4:!aNULL:!NULL:!EXPORT:!LOW:!MEDIUM","TRANSPORTS":["aim.coopens.com","icq.coopens.com"]},"commands_admin_access":"xmlrpc_access","listen":[{"port":4560,"ip":"TEST_EJABBERD_SERVER_IP","module":"ejabberd_xmlrpc","maxsessions":10,"timeout":5000,"access_commands":{"xmlrpc_access":{"all":{}}}},{"port":5222,"module":"ejabberd_c2s","certfile":"COOPENS_SSL_EJABBERD_CERT","starttls":true,"starttls_required":true,"protocol_options":"TLS_OPTIONS","ciphers":"TLS_CIPHERS","dhfile":"DHPARAM_LOCATION","resend_on_timeout":true,"zlib":true,"max_stanza_size":65536,"max_ack_queue":32767,"resume_timeout":1200,"shaper":"c2s_shaper","access":"c2s"},{"port":5269,"module":"ejabberd_s2s_in","shaper":"s2s_shaper","max_stanza_size":65536,"transport":"tcp","tls_compression":true},{"port":5280,"module":"ejabberd_http","tls":true,"certfile":"COOPENS_SSL_EJABBERD_CERT","dhfile":"DHPARAM_LOCATION","request_handlers":{"/websocket":"ejabberd_http_ws","/pub/archive":"mod_http_fileserver","/log":"mod_log_http","/http-bind":"mod_http_bind","/oauth":"ejabberd_oauth","/api":"mod_http_api","users":"mod_available_user","online":"mod_online_users","/custom":"mod_custom"},"web_admin":true,"http_poll":true,"http_bind":true,"register":true,"captcha":true},{"ip":"::","port":5349,"module":"ejabberd_stun","tls":true,"certfile":"COOPENS_SSL_EJABBERD_CERT","use_turn":true,"turn_ip":"TEST_EJABBERD_SERVER_IP","turn_min_port":49152,"turn_max_port":50000,"access":"local"},{"ip":"LOCAL_EJABBERD_SERVER_IP","port":5401,"module":"ejabberd_service","hosts":{"icq.coopens.com":{"password":"123456"}},"access":"local"},{"ip":"LOCAL_EJABBERD_SERVER_IP","port":5403,"module":"ejabberd_service","hosts":{"aim.coopens.com":{"password":"123456"}},"access":"locald"},{"port":5443,"module":"ejabberd_http","tls":true,"certfile":"COOPENS_SSL_EJABBERD_CERT","dhfile":"DHPARAM_LOCATION","request_handlers":{"upload":"mod_http_upload"}}],"s2s_use_starttls":"optional","s2s_certfile":"COOPENS_SSL_EJABBERD_CERT","s2s_protocol_options":"TLS_OPTIONS","s2s_ciphers":"TLS_CIPHERS","s2s_dhfile":"DHPARAM_LOCATION","s2s_access":"authenticated","outgoing_s2s_families":["ipv4","ipv6"],"outgoing_s2s_port":5269,"outgoing_s2s_timeout":10000,"auth_method":"odbc","redis_server":"COOPENS_EJABBERD_SERVER_IP","redis_db":0,"odbc_type":"mysql","odbc_server":"localhost","odbc_database":"IM_Ejabberd","odbc_username":"zhangyanxi","odbc_password":"yanxi312","odbc_port":3306,"odbc_start_interval":20,"odbc_keepalive_interval":30,"shaper":{"normal":1000,"fast":50000},"max_fsm_queue":1000,"acl":{"admin":{"user":[{"zyf":"coopens.com"}]},"loopback":{"ip":["127.0.0.0/8"]},"local":{"user_regexp":""},"trusted_servers":{"server":["coopens.com"]},"muc_admin":{"user":[{"zyf":"coopens.com"}]},"xmlrpc_users":{"user":[{"zyf":"coopens.com"}]}},"access":{"admin":{"blocked":"deny","admin":"allow"},"everybody":{"blocked":"deny","all":"allow"},"max_user_sessions":{"admin":"infinity","anon_jabber_at":1,"all":3},"max_user_offline_messages":{"admin":2000,"anon_jabber_at":0,"all":100},"local":{"blocked":"deny","anon_jabber_at":"deny","local":"allow"},"authenticated":{"blocked":"deny","anon_jabber_at":"deny","all":"allow"},"webchat":{"blocked":"deny","local":"allow","anon_jabber_at":"allow"},"max_user_mam_messages":{"admin":0,"anon_jabber_at":0,"all":100000},"c2s":{"blocked":"deny","all":"allow"},"c2s_shaper":{"admin":"none","all":"normal"},"s2s_shaper":{"all":"fast"},"proxy_shaper":{"admin":"none","local":"proxy"},"announce":{"admin":"allow"},"configure":{"blocked":"deny","admin":"allow"},"muc_admin":{"admin":"allow"},"muc_create":{"local":"allow"},"muc":{"all":"allow"},"pubsub_createnode":{"local":"allow"},"register":{"all":"deny"},"trusted_network":{"loopback":"allow"},"xmlrpc_access":{"xmlrpc_users":"allow"}},"language":"en","host_config":{"coopens.com":{"language":"zh"}},"default_db":"odbc","modules":{"mod_adhoc":{},"mod_announce":{"access":"admin","db_type":"odbc"},"mod_blocking":{},"mod_caps":{"db_type":"odbc"},"mod_carboncopy":{},"mod_client_state":{"drop_chat_states":true,"queue_presence":true},"mod_configure":{},"mod_disco":{},"mod_echo":{},"mod_irc":{"access":"authenticated","default_encoding":"utf-8"},"mod_fail2ban":{"c2s_max_auth_failures":5},"mod_http_bind":{"max_inactivity":400},"mod_last":{"db_type":"odbc"},"mod_muc":{"access":"muc","access_create":"muc_create","access_persistent":"muc_create","access_admin":"muc_admin","db_type":"odbc","history_size":20,"max_users":200},"mod_muc_log":{"access_log":"muc","cssfile":"http://coopens.com/my.css","dirtype":"plain","dirname":"room_jid","outdir":"/data/home/yzhang/Home/www/public/muclogs","timezone":"universal","spam_prevention":true,"top_link":{"http://www.jabber.ru/":"Jabber.ru"}},"mod_muc_admin":{},"mod_admin_extra":{},"mod_offline":{"access_max_user_messages":"max_user_offline_messages","db_type":"odbc"},"mod_ping":{"send_pings":true,"ping_interval":300,"timeout_action":"kill"},"mod_pres_counter":{"count":5,"interval":60},"mod_privacy":{"db_type":"odbc"},"mod_private":{"db_type":"odbc"},"mod_proxy65":{"ip":"::","name":"File Transfer Proxy.","host":"proxy.coopens.com","hostname":"TEST_EJABBERD_SERVER_IP","port":7777,"access":"all","auth_type":"anonymous","max_connections":10,"shaper":"proxy_shaper"},"mod_http_fileserver":{"docroot":"/data/home/yzhang/Home/www/public/ejabberd/www","accesslog":"/var/log/ejabberd/access.log","directory_indices":["index.html","main.htm"],"custom_headers":{"X-Powered-By":"Erlang/OTP","X-Fry":"It's a widely-believed fact!"},"content_types":{".ogg":"audio/ogg",".png":"image/png"},"default_content_type":"text/html"},"mod_http_upload":{"docroot":"/data/home/yzhang/Home/www/public/ejabberd/upload","put_url":"https://@HOST@:5443/upload","thumbnail":true,"rm_on_unregister":false},"mod_http_upload_quota":{"max_days":100},"mod_mam":{"default":"always","db_type":"odbc"},"mod_pubsub":{"db_type":"odbc","access_createnode":"pubsub_createnode","ignore_pep_from_offline":true,"last_item_cache":false,"max_items_node":1000,"pep_mapping":{"http://jabber.org/protocol/tune":"tune"},"plugins":["flat","hometree","pep"]},"mod_register":{"welcome_message":{"subject":"Welcome!","body":"Hi.\nWelcome to this XMPP server."},"ip_access":"trusted_network","access_from":"register"},"mod_roster":{"versioning":true,"db_type":"odbc","store_current_id":true},"mod_shared_roster":{"db_type":"odbc"},"mod_stats":{},"mod_time":{},"mod_vcard":{"search":true,"db_type":"odbc"},"mod_vcard_xupdate":{"db_type":"odbc"},"mod_version":{"show_os":true,"iqdisc":"parallel"}},"sm_db_type":"odbc","allow_contrib_modules":true}
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Java/JavaNote" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/14/Java/JavaNote/" class="article-date">
-      <time datetime="2016-01-14T10:02:31.000Z" itemprop="datePublished">2016-01-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/14/Java/JavaNote/">JavaNote</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="Java__u76F8_u5173_u7B14_u8BB0"><a href="#Java__u76F8_u5173_u7B14_u8BB0" class="headerlink" title="Java 相关笔记"></a>Java 相关笔记</h1>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a  href="/2016/01/14/Java/JavaNote/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Python/PythonNote" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/13/Python/PythonNote/" class="article-date">
-      <time datetime="2016-01-13T09:11:31.000Z" itemprop="datePublished">2016-01-13</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/13/Python/PythonNote/">PythonNote</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="Python__u7B14_u8BB0"><a href="#Python__u7B14_u8BB0" class="headerlink" title="Python 笔记"></a>Python 笔记</h1><p><a href="https://pycoders-weekly-chinese.readthedocs.org/en/latest/">PyCoder’s Weekly 中文翻译</a><br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a  href="/2016/01/13/Python/PythonNote/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Server/Ejabberd" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/10/Server/Ejabberd/" class="article-date">
-      <time datetime="2016-01-10T11:45:31.000Z" itemprop="datePublished">2016-01-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/Server/Ejabberd/">Ejabberd Install</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h3 id="u4E00_u3001_u7F16_u8BD1_u5B89_u88C5"><a href="#u4E00_u3001_u7F16_u8BD1_u5B89_u88C5" class="headerlink" title="一、编译安装"></a>一、编译安装</h3><h5 id="1-__u9996_u5148_u5B89_u88C5_u76F8_u5173_u4F9D_u8D56"><a href="#1-__u9996_u5148_u5B89_u88C5_u76F8_u5173_u4F9D_u8D56" class="headerlink" title="1. 首先安装相关依赖"></a>1. 首先安装相关依赖</h5><p>ejabberd 需要安装 Erlang 运行环境,否则编译会出错 </p>
-<p>下载 ejabberd 源码,编译安装:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/processone/ejabberd.git</span><br><span class="line">./autogen.sh</span><br><span class="line">./configure --enable-odbc --enable-mysql --enable-json</span><br><span class="line"><span class="comment"># ./configure --prefix=/Users/allran/SDK/chart/my-ejabberd --enable-mysql        //附加mysql</span></span><br><span class="line"><span class="comment"># ./configure --prefix=/Users/allran/SDK/chart/my-ejabberd --enable-all     //附加所有</span></span><br><span class="line">./rebar get-deps</span><br><span class="line">./rebar compile</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
-<p>将会分别安装到以下相关目录:</p>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">配置文件 /etc/ejabberd/</span><br><span class="line"><span class="constant">Install</span> ejabberd binary, header and runtime files in /<span class="class"><span class="keyword">lib</span>/<span class="title">ejabberd</span>/</span></span><br><span class="line"><span class="constant">Install</span> the administration <span class="symbol">script:</span> /sbin/ejabberdctl</span><br><span class="line">ejabberd 帮助文档 /share/doc/ejabberd/</span><br><span class="line"><span class="constant">Create</span> a spool <span class="symbol">directory:</span> /var/<span class="class"><span class="keyword">lib</span>/<span class="title">ejabberd</span>/</span></span><br><span class="line">日志文件: <span class="regexp">/var/log</span><span class="regexp">/ejabberd/</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>刚安装完 php5-fpm mysql 使用 phpMyAdmin 登陆提示如下错误</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#2002 - Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2) — The server is not responding (or the local server's socket is not correctly configured).</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>因为使用源码编译安装的 mysql 5.7 的默认配置文件 <em>/etc/mysql/my.cnf</em> 没有 [client] 这一段配置.而默认的 mysql sock 位置为 <em>/var/run/mysqld/mysqld.sock</em></li>
+</ul>
+<ol>
+<li>首先找到所有的 socket 文件:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yzhang@coam:~$ sudo find / -type s</span><br><span class="line">/tmp/mongodb-<span class="number">27017</span>.sock</span><br><span class="line">/tmp/mysql/mysql.sock</span><br><span class="line">/run/fail2ban/fail2ban.sock</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>所以手动 <em>/etc/mysql/my.cnf</em> 添加这一行:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">socket=/tmp/mysql/mysql.sock &lt;= this path should be also same as is[mysqld]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>重启 mysql</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mysql restart</span><br></pre></td></tr></table></figure>
+<ul>
+<li>最简单的方法是建立软连接 <em>/tmp/mysql/mysql.sock =&gt; /var/run/mysqld/mysqld.sock</em></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln <span class="operator">-s</span> /tmp/mysql/mysql.sock /var/run/mysqld/mysqld.sock</span><br></pre></td></tr></table></figure>
+<ul>
+<li>据说以下也可以解决此问题的一个途径,记录一下</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/mysql -u root -p -S /home/mysql/mysql.sock</span><br></pre></td></tr></table></figure>
+<h3 id="参考列表"><a href="#参考列表" class="headerlink" title="参考列表"></a>参考列表</h3><ul>
+<li>使用 phpMyAdmin 登陆 Mysql,用户名密码都没错,但是一直提示如下错误 <em>error: ‘Can’t connect to local MySQL server through socket ‘/var/run/mysqld/mysqld.sock’(2)’</em></li>
+</ul>
+<p><a href="http://stackoverflow.com/questions/11990708/error-cant-connect-to-local-mysql-server-through-socket-var-run-mysqld-mysq" target="_blank" rel="external">error: ‘Can’t connect to local MySQL server through socket ‘/var/run/mysqld/mysqld.sock’ (2)’</a><br><a href="http://serverfault.com/questions/735581/cannot-connect-to-mysql-server-error-2002-hy000-cant-connect-to-local-mysql" target="_blank" rel="external">Cannot connect to mysql server ERROR 2002 (HY000): Can’t connect to local MySQL server through socket ‘/var/lib/mysql/mysql.sock’ (2)</a><br><a href="http://stackoverflow.com/questions/5376427/cant-connect-to-local-mysql-server-through-socket-var-mysql-mysql-sock-38" target="_blank" rel="external">Can’t connect to local MySQL server through socket ‘/var/mysql/mysql.sock’ (38)</a></p>
+<ul>
+<li><p>最根本的原因是 <em>/etc/php5/fpm/php.ini</em> 中的三个配置段 {[Pdo_mysql]pdo_mysql.default_socket = |[MySQL]mysql.default_socket = |[MySQLi]mysqli.default_socket = |} 默认留空,也就是为默认的 <em>/var/run/mysqld/mysqld.sock</em></p>
+</li>
+<li><p>使用 vi 搜索 <em>.default_socket</em> 将其改为 {[Pdo_mysql]pdo_mysql.default_socket = /tmp/mysql/mysql.sock|[MySQL]mysql.default_socket = /tmp/mysql/mysql.sock|[MySQLi]mysqli.default_socket = /tmp/mysql/mysql.sock|}</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/php5/fpm/php.ini</span><br><span class="line"></span><br><span class="line">[P<span class="keyword">do</span>_mysql]</span><br><span class="line">...</span><br><span class="line">pdo_mysql.default_socket = /tmp/mysql/mysql.sock</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">[MySQL]</span><br><span class="line">...</span><br><span class="line">mysql.default_socket = /tmp/mysql/mysql.sock</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">[MySQLi]</span><br><span class="line">...</span><br><span class="line">mysqli.default_socket = /tmp/mysql/mysql.sock</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<ul>
+<li>重启 php5-fpm 生效</li>
+</ul>
 <blockquote>
-<p>注:如果安装失败,清除掉痕迹: make distclean</p>
-<p>编译安装中出现的错误:</p>
+<p>注 没有修改 <em>/etc/php5/cli/php.ini</em></p>
 </blockquote>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">configure: error: libyaml <span class="tag">header</span> file yaml<span class="class">.h</span> was not found</span><br><span class="line">ERROR: Command [<span class="string">'get-deps'</span>] failed!</span><br></pre></td></tr></table></figure>
-<p>需要安装 yaml 依赖</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget http:<span class="comment">//pyyaml.org/download/libyaml/yaml-0.1.6.tar.gz</span></span><br><span class="line">tar -xzvf yaml-<span class="number">0.1</span><span class="number">.6</span>.tar.gz</span><br><span class="line">cd yaml-<span class="number">0.1</span><span class="number">.6</span></span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-<p>// 或者也可以简单方法 ,但是没试过<br>// 参考 <a href="http://stackoverflow.com/questions/25425068/ejabberd-configure-error-libyaml-library-was-not-found" target="_blank" rel="external">http://stackoverflow.com/questions/25425068/ejabberd-configure-error-libyaml-library-was-not-found</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libyaml-dev</span><br></pre></td></tr></table></figure>
-<p><a href="https://github.com/processone/ejabberd" target="_blank" rel="external">ejabberd GitHub 官方说明</a><br><a href="https://www.ejabberd.im/node/22230" target="_blank" rel="external">ERROR: Command [‘get-deps’] failed!</a></p>
 <hr>
-<h2 id="Ejabberd__u6DFB_u52A0_u4F9D_u8D56"><a href="#Ejabberd__u6DFB_u52A0_u4F9D_u8D56" class="headerlink" title="Ejabberd 添加依赖"></a>Ejabberd 添加依赖</h2><h3 id="emysql"><a href="#emysql" class="headerlink" title="emysql"></a>emysql</h3><blockquote>
-<p>配置 rebar.config</p>
-</blockquote>
-<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">Deps</span> = [</span><br><span class="line">    ...</span><br><span class="line">    <span class="tuple">&#123;emysql, <span class="string">".*"</span>, <span class="tuple">&#123;git, <span class="string">"git://github.com/Eonblast/Emysql.git"</span>&#125;</span>&#125;</span></span><br><span class="line">],</span><br></pre></td></tr></table></figure>
-<p>加入 emaysql 编译出现错误</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Compiled src/emysql_worker.erl</span><br><span class="line">/data/home/yzhang/Home/Erlang/ejabberd/deps/emysql/include/emysql.hrl:<span class="number">38</span>: <span class="built_in">type</span> gb_tree() undefined</span><br><span class="line">/data/home/yzhang/Home/Erlang/ejabberd/deps/emysql/include/emysql.hrl:<span class="number">39</span>: <span class="built_in">type</span> queue() undefined</span><br><span class="line">ERROR: compile failed <span class="keyword">while</span> processing /data/home/yzhang/Home/Erlang/ejabberd/deps/emysql: rebar_abort</span><br><span class="line">make: *** [deps/.built] Error <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>原因是 emysql 暂时没有更新到 otp18 的支持<br>fork emysql 修改部分参见 <a href="https://github.com/deadtrickster/Emysql/commit/52b802098322aad372198b9f5fa9ae9a4c758ad1" target="_blank" rel="external">https://github.com/deadtrickster/Emysql/commit/52b802098322aad372198b9f5fa9ae9a4c758ad1</a> 修改 Deps 并重新编译 ejabberd</p>
-<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tuple">&#123;emysql, <span class="string">".*"</span>, <span class="tuple">&#123;git, <span class="string">"https://github.com/zyfmix/Emysql.git"</span>&#125;</span>&#125;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Mysql/MysqlSql" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/13/Mysql/MysqlSql/" class="article-date">
+      <time datetime="2016-05-13T01:03:31.000Z" itemprop="datePublished">2016-05-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/13/Mysql/MysqlSql/">MysqlSql</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <a id="more"></a>
+<h3 id="数据库操作相关"><a href="#数据库操作相关" class="headerlink" title="数据库操作相关"></a>数据库操作相关</h3><ul>
+<li>创建数据库</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE DATABASE CoamDatabase DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删除数据库</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; DROP DATABASE CoamDatabase;</span><br></pre></td></tr></table></figure>
+<p><a href="https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html" target="_blank" rel="external">11.1.6 Configuring the Character Set and Collation for Applications</a></p>
 <hr>
-<hr>
-<h3 id="u4E09_u3001_u542F_u7528mysql_u652F_u6301"><a href="#u4E09_u3001_u542F_u7528mysql_u652F_u6301" class="headerlink" title="三、启用mysql支持"></a>三、启用mysql支持</h3><p>编译时使用扩展参数</p>
-<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">.</span><span class="comment">/configure</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">enable</span><span class="literal">-</span><span class="comment">odbc</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">enable</span><span class="literal">-</span><span class="comment">mysql</span></span><br></pre></td></tr></table></figure>
-<p>如果提示以下错误:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">failed to start application <span class="string">'p1_mysql'</span>: &#123;error,</span><br><span class="line">                                         &#123;<span class="string">"no such file or directory"</span>,</span><br><span class="line">                                          <span class="string">"p1_mysql.app"</span>&#125;&#125;</span><br></pre></td></tr></table></figure>
-<p>表示mysql依赖驱动未加载,修改 rebar.config.script 第88行,添加 p1_mysql 的依赖(注意 “1”为数字1,不是字母l):</p>
-<p>照做会出现其他问题,后来只修改了 第 88 行,然后再执行以下命令引入依赖,没有报错.</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rebar <span class="keyword">get</span>-deps</span><br></pre></td></tr></table></figure>
-<p>新建数据库 IM_Ejabberd 按官方的源码,导入 /sql/mysql.sql </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">$HOME</span>/RunProject/ejabberd/sql/</span><br><span class="line">mysql -u zhangyanxi -p</span><br><span class="line">...</span><br><span class="line">mysql:&gt; use IM_Ejabberd  </span><br><span class="line">mysql:&gt;<span class="built_in">source</span> mysql.sql;</span><br></pre></td></tr></table></figure>
-<p>配置文件 /etc/ejabberd/ejabberd.yml 的修改,主要包括:</p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#auth_method: internal.</span></span><br><span class="line"><span class="label">auth_method:</span> odbc.</span><br></pre></td></tr></table></figure>
-<p>取消注释并设置数据库名称和密码: </p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">odbc_type</span>: <span class="string">mysql</span></span><br><span class="line"><span class="attribute">odbc_server</span>: <span class="string">"localhost"</span></span><br><span class="line"><span class="attribute">odbc_database</span>: <span class="string">"IM_Ejabberd"</span></span><br><span class="line"><span class="attribute">odbc_username</span>: <span class="string">"zhangyanxi"</span></span><br><span class="line"><span class="attribute">odbc_password</span>: <span class="string">"yanxi312"</span></span><br></pre></td></tr></table></figure>
-<p>重启 </p>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ejabberdctl live </span><br><span class="line">...</span><br><span class="line"><span class="number">19</span>:<span class="number">17</span>:<span class="number">55.853</span> [<span class="number">inf</span>o] Application p1_mysql <span class="literal">started</span> on <span class="keyword">node</span><span class="identifier"> </span><span class="title">'ejabberd</span>@coopens.com'</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>没有报错,在启动日志看到上面那条 p1_mysql 记录,表示 ejabberd 服务器使用了新的数据库,这个时候数据库里边的数据全部为 0 条,使用命令</p>
-<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ejabberdctl register zyfmix coopens.com <span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span><span class="keyword">*</span></span><br></pre></td></tr></table></figure>
-<p>注册用户后,发现数据库表 users 已经有了新添加的用户记录:</p>
-<p>根据网上介绍的配置经验:</p>
-<p>新版的下面的模块配置项不用修改(添加_odbc),否则会报错</p>
-<p><a href="http://allran.github.io/2015/04/15/ejabberd-install/" target="_blank" rel="external">木头人 - ejabberd install</a><br><a href="http://developerworks.github.io/2015/03/17/ejabberd-easy-installer-and-structure-for-ejabberd-contributed-modules/" target="_blank" rel="external">Ejabberd模块安装工具</a></p>
-<hr>
-<h4 id="Ejabberd_mnesia__u8FDC_u7A0B_u8FDE_u63A5"><a href="#Ejabberd_mnesia__u8FDC_u7A0B_u8FDE_u63A5" class="headerlink" title="Ejabberd mnesia 远程连接"></a>Ejabberd mnesia 远程连接</h4><blockquote>
-<p>使用 observer 远程连接 mnesia 数据库</p>
-<p>ejabberd mnesia 服务器</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ erl -name <span class="string">'ejabberd@coopens.com'</span> -mnesia dir <span class="string">'"/var/lib/ejabberd"'</span> (ip为本机的ip,必须,否则不能ping通)</span><br><span class="line">(ejabberd@coopens.com)<span class="number">1</span>&gt; auth:get_cookie(). (获取cookie,或者 erlang:get_cookie(). )</span><br><span class="line">(ejabberd@coopens.com)<span class="number">2</span>&gt; <span class="string">'JCNBOQTVXCDZNLCRJQUI'</span></span><br></pre></td></tr></table></figure>
+<h3 id="mysqldump"><a href="#mysqldump" class="headerlink" title="mysqldump"></a>mysqldump</h3><ul>
+<li>导出数据库:</li>
+</ul>
 <blockquote>
-<p>复制cookie,然后在本机上操作:</p>
+<p>mysqldump -u 用户名 -p 数据库名 &gt; 导出的文件名</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ erl -name yafei@<span class="number">192.168</span>.<span class="number">1.102</span> -setcookie JCNBOQTVXCDZNLCRJQUI</span><br><span class="line">(yafei@<span class="number">192.168</span>.<span class="number">1.102</span>)<span class="number">1</span>&gt; net_adm:ping(<span class="string">'ejabberd@coopens.com'</span>).</span><br><span class="line">(yafei@<span class="number">192.168</span>.<span class="number">1.102</span>)<span class="number">2</span>&gt; pong</span><br><span class="line">(yafei@<span class="number">192.168</span>.<span class="number">1.102</span>)<span class="number">3</span>&gt; observer:start().</span><br></pre></td></tr></table></figure>
-<p>参考列表</p>
-<p><a href="http://www.cnblogs.com/lovechengcheng/p/5052403.html" target="_blank" rel="external">远程连接ejabberd的mnesia数据库</a><br><a href="http://blog.csdn.net/mycwq/article/details/24738599" target="_blank" rel="external">erlang在windows下和虚拟机节点通信</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u root -p CoamDatabase &gt; CoamDatabase.sql   (输入后会让你输入进入MySQL的密码)</span><br></pre></td></tr></table></figure>
+<p>(如果导出单张表的话在数据库名后面输入表名即可)</p>
+<ul>
+<li>同时备份多个数据库</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -h hostname -u username -p password --databases db_name1 db_name2 db_namen &gt;backup.sql</span><br></pre></td></tr></table></figure>
+<ul>
+<li>只备份数据库的结构,不备份数据</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -h hostname -u username -p password --no-data --databases db_name1 db_name2 db_namen &gt;backup.sql</span><br></pre></td></tr></table></figure>
+<ul>
+<li>备份所有的数据库</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -h hostname -u username -p password --all-databases &gt;backup.sql</span><br></pre></td></tr></table></figure>
+<p>// 其它</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump —opt —skip-comments —extended-insert=<span class="literal">false</span> -uroot -p1234 inotseeyou_com &gt; inotseeyou_com.sql</span><br></pre></td></tr></table></figure>
+<ul>
+<li>导入数据库</li>
+</ul>
+<p>首先创建相应的 Database</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE CoamDatabase DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;</span><br><span class="line">use CoamDatabase;</span><br><span class="line"><span class="built_in">source</span> CoamDatabase.sql;</span><br></pre></td></tr></table></figure>
+<p><a href="http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html" target="_blank" rel="external">mysqldump.html</a> </p>
 <hr>
-<hr>
-<h2 id="Ejabberd__u670D_u52A1_u5668_u8FD0_u8425_u5E38_u89C1_u95EE_u9898_u89E3_u51B3"><a href="#Ejabberd__u670D_u52A1_u5668_u8FD0_u8425_u5E38_u89C1_u95EE_u9898_u89E3_u51B3" class="headerlink" title="Ejabberd 服务器运营常见问题解决"></a>Ejabberd 服务器运营常见问题解决</h2><h4 id="u4F7F_u7528_u547D_u4EE4_sudo_ejabberdctl_status__u67E5_u770B_ejabberd__u8FD0_u884C_u72B6_u6001_u6216_u662F_u8FD0_u884C_u5176_u5B83_u547D_u4EE4__5Bsudo_ejabberdctl_modules_available_5D_2C_u53D1_u73B0_u8001_u662F_u63D0_u793A_u9519_u8BEF_3A"><a href="#u4F7F_u7528_u547D_u4EE4_sudo_ejabberdctl_status__u67E5_u770B_ejabberd__u8FD0_u884C_u72B6_u6001_u6216_u662F_u8FD0_u884C_u5176_u5B83_u547D_u4EE4__5Bsudo_ejabberdctl_modules_available_5D_2C_u53D1_u73B0_u8001_u662F_u63D0_u793A_u9519_u8BEF_3A" class="headerlink" title="使用命令 sudo ejabberdctl status 查看 ejabberd 运行状态或是运行其它命令 [sudo ejabberdctl modules_available],发现老是提示错误:"></a>使用命令 sudo ejabberdctl status 查看 ejabberd 运行状态或是运行其它命令 [sudo ejabberdctl modules_available],发现老是提示错误:</h4><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Failed RPC connection to the <span class="keyword">node</span><span class="identifier"> </span><span class="title">'ejabberd</span>@coopens.com': nodedown</span><br></pre></td></tr></table></figure>
-<p>一般是 ejabberd 服务未运行,启动 ejabberd 服务即可.</p>
-<p>也有一种情况是 ejabberdctl.cfg 配置 不正确(不是 *@coopens.com ).或者 /etc/ejabberd/ejabberdctl.cfg 已经是配置的 coopens.com ,并且当前 ejabberd 服务器节点正在运行,估计未销毁之前的 ejabberd 关联 epmd 进程,检查并关闭如下端口的进程:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo netstat -antup | grep epmd</span><br><span class="line">sudo <span class="built_in">kill</span> pid</span><br><span class="line">sudo netstat -antup | grep beam.smp</span><br><span class="line">sudo <span class="built_in">kill</span> pid</span><br></pre></td></tr></table></figure>
-<p>其中 epmd 是 Erlang Port Mapper Daemon 的缩写,全称足够明确表达它的功能了(相比之下,OTP就是一个难以从字面理解的名字);epmd 完成 Erlang 节点和IP,端口的映射关系,比如在我的测试机上</p>
-<p>再使用命令 sudo ejabberdctl restart 重启即可重新打开 ejabberd 进程服务即可</p>
+<h3 id="用户相关"><a href="#用户相关" class="headerlink" title="用户相关"></a>用户相关</h3><ul>
+<li>查看所有用户</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SELECT User, Host, Password FROM mysql.user;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>添加新用户 - 以下方式适用于 5.7 以前的版本</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; INSERT INTO mysql.user (User,Host,Password) VALUES(<span class="string">'demouser'</span>,<span class="string">'localhost'</span>,PASSWORD(<span class="string">'demopassword'</span>));</span><br></pre></td></tr></table></figure>
+<ul>
+<li>添加新用户 - 以下方式适用于 5.7 以后的版本</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; GRANT USAGE ON *.* TO <span class="string">'zhangyanxi'</span>@<span class="string">'localhost'</span> IDENTIFIED BY <span class="string">'yanxi312'</span> WITH GRANT OPTION;</span><br><span class="line">mysql&gt; GRANT ALL ON *.* TO <span class="string">'zhangyanxi'</span>@<span class="string">'localhost'</span>;        ======&gt; 给用户授权</span><br><span class="line">mysql&gt; flush privileges;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>给用户授权相关</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; GRANT ALL PRIVILEGES ON demodb.* to demouser@localhost;</span><br><span class="line">GRANT SELECT, INSERT ON *.* TO <span class="string">'zhangyanxi'</span>@<span class="string">'localhost'</span>;</span><br><span class="line">GRANT ALL ON *.* TO <span class="string">'zhangyanxi'</span>@<span class="string">'%'</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>检查用户授权</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SHOW GRANTS FOR <span class="string">'demouser'</span>@<span class="string">'localhost'</span>;</span><br></pre></td></tr></table></figure>
 <hr>
 
       
@@ -982,7 +1240,7 @@ v0.10.25
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>

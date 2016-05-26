@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>MysqlToRedis | 商运物流</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Ubuntu 安装 Mysql2redis 及错误日记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MysqlToRedis">
+<meta property="og:url" content="https://coam.co/2016/05/14/Mysql/MysqlToRedis/index.html">
+<meta property="og:site_name" content="商运物流">
+<meta property="og:description" content="Ubuntu 安装 Mysql2redis 及错误日记">
+<meta property="og:updated_time" content="2016-05-19T08:26:14.815Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MysqlToRedis">
+<meta name="twitter:description" content="Ubuntu 安装 Mysql2redis 及错误日记">
+  
+    <link rel="alternative" href="/atom.xml" title="商运物流" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/author.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/">张亚飞</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/markdown-gfw-hexo-jekyll/" style="font-size: 10px;">markdown gfw hexo jekyll</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://coam.co">商运物流</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/zyfmix/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://wp.iirii.com/">商运技术博客</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于物流设计</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">张亚飞</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img lazy-src="/img/author.jpg" class="js-avatar">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">张亚飞</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:zyf@lonal.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/zyfmix" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-Mysql/MysqlToRedis" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/14/Mysql/MysqlToRedis/" class="article-date">
+      <time datetime="2016-05-14T08:48:31.000Z" itemprop="datePublished">2016-05-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MysqlToRedis
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="Ubuntu-安装-Mysql2redis-及错误日记"><a href="#Ubuntu-安装-Mysql2redis-及错误日记" class="headerlink" title="Ubuntu 安装 Mysql2redis 及错误日记"></a>Ubuntu 安装 Mysql2redis 及错误日记</h3><a id="more"></a>
+<p><em>mysql2redis</em> 是 Mysql 的一个 <em>UDF(user-defined function)</em> 函数,它提供了 <em>mysql</em> 与 <em>redis</em> 之间的数据交互.当 <em>mysql</em> 的数据进行了更新,它就会调用相应 的 <em>trigger</em> 调用 <em>mysql2redis</em> 里面的函数对 <em>redis</em> 的数据进行更新.</p>
+<p>安装前提</p>
+<p>安装 <em>mysql2redis</em> 前,先在系统里安装 mysql, redis 并安装相关依赖:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jemalloc</span><br><span class="line">apr 和 apr-util</span><br><span class="line">hiredis</span><br><span class="line">lib_mysqludf_json</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="安装过程–Ubuntu"><a href="#安装过程–Ubuntu" class="headerlink" title="安装过程–Ubuntu"></a>安装过程–Ubuntu</h3><h4 id="安装jemalloc-安装命令如下"><a href="#安装jemalloc-安装命令如下" class="headerlink" title="安装jemalloc 安装命令如下:"></a>安装jemalloc 安装命令如下:</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libjemalloc1 libjemalloc-dev -y</span><br></pre></td></tr></table></figure>
+<h3 id="安装-apr-和-apr-util"><a href="#安装-apr-和-apr-util" class="headerlink" title="安装 apr 和 apr-util"></a>安装 apr 和 apr-util</h3><blockquote>
+<p><em>apr</em> 和 <em>apr-util</em> 是两个依赖包,它们最新版本的下载地址请点击,下载 好的以后,它的安装过程如下(配制,编译,安装):</p>
+</blockquote>
+<ul>
+<li>首先安装 apr</li>
+</ul>
+<p>apr-1.4.6(<a href="http://apr.apache.org/download.cgi" target="_blank" rel="external">http://apr.apache.org/download.cgi</a>)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo wget http://apache.claz.org/apr/apr-<span class="number">1.5</span>.<span class="number">2</span>.tar.gz</span><br><span class="line">sudo tar zxvf apr-<span class="number">1.5</span>.<span class="number">2</span>.tar.gz</span><br><span class="line"><span class="built_in">cd</span> apr-<span class="number">1.5</span>.<span class="number">2</span></span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make <span class="built_in">test</span></span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<p>完成编译后将会创建 <em>/usr/local/apr</em> 目录下</p>
+<ul>
+<li>再次安装 apr-util</li>
+</ul>
+<p>apr-util-1.5.2(<a href="http://apr.apache.org/download.cgi" target="_blank" rel="external">http://apr.apache.org/download.cgi</a>)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo wget http://ftp.wayne.edu/apache//apr/apr-util-<span class="number">1.5</span>.<span class="number">4</span>.tar.gz</span><br><span class="line">sudo tar zxvf apr-util-<span class="number">1.5</span>.<span class="number">4</span>.tar.gz</span><br><span class="line"><span class="built_in">cd</span> apr-util-<span class="number">1.5</span>.<span class="number">4</span></span><br><span class="line">./configure --with-apr=/usr/<span class="built_in">local</span>/apr</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<p>完成编译后将会将 apr-util 添加至 <em>/usr/local/apr/lib</em> 目录下</p>
+<ul>
+<li>安装 lib_mysqludf_json</li>
+</ul>
+<p>lib_mysqludf_json(<a href="https://github.com/mysqludf/lib_mysqludf_json" target="_blank" rel="external">https://github.com/mysqludf/lib_mysqludf_json</a>)</p>
+<blockquote>
+<p><em>lib_mysqludf_json</em> 是一个支持json数据格式的UDF函数,它提供给 mysql 与 redis 进行数据交互.它的下载安装过程如下:</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo git <span class="built_in">clone</span> https://github.com/mysqludf/lib_mysqludf_json.git</span><br><span class="line">cp lib_mysqludf_json.so /usr/lib/mysql/plugin</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装 hiredis</li>
+</ul>
+<p>hiredis(<a href="https://github.com/redis/hiredis" target="_blank" rel="external">https://github.com/redis/hiredis</a>)</p>
+<blockquote>
+<p><em>hiredis</em> 是redis的一个调用接口,它提供了一些简单的redis的操作,它 的安装和下载过程如下:</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo git <span class="built_in">clone</span> https://github.com/redis/hiredis.git</span><br><span class="line"><span class="built_in">cd</span> hiredis</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<p>完成编译后将会创建 <em>/usr/local/include/hiredis/</em> 和 <em>/usr/local/lib/libhiredis.so</em> 文件</p>
+<p>将生成的 <em>/usr/local/lib/libhiredis.so.0.13</em> 文件拷备到 <em>/lib/libhiredis.so.0.13</em> 下</p>
+<p>//貌似不用将生成的 <em>libhiredis.so</em> 拷贝到 <em>/usr/lib/mysql/plugins</em> 下,</p>
+<ul>
+<li>最后安装 mysql2redis</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo git <span class="built_in">clone</span> https://github.com/dawnbreaks/mysql2redis.git</span><br><span class="line"><span class="built_in">cd</span> mysql2redis</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<p>最后 make install 会将当前目录下生成的 <em>lib_mysqludf_redis_v2.so</em> 文件复制到 <em>mysqlplugin_dir</em> 下</p>
+<p>注:另有一个类似库 <a href="https://github.com/aborn/mysql2redis.git" target="_blank" rel="external">https://github.com/aborn/mysql2redis.git</a></p>
+<h4 id="下载完-mysql2redis-后-记住修改以下几步"><a href="#下载完-mysql2redis-后-记住修改以下几步" class="headerlink" title="下载完 mysql2redis 后,记住修改以下几步:"></a>下载完 <em>mysql2redis</em> 后,记住修改以下几步:</h4><ul>
+<li><p>修改 Makefile 将默认 <em>/usr/lib64/mysql/plugin</em> 修改为当前系统的 <em>/usr/lib/mysql/plugin</em> (修改PLUGINDIR参数  添加mysql的include 如-I/usr/include/mysql)并重新编译安装</p>
+</li>
+<li><p>编译 make 的时候提示错误,貌似没有找到 <em>my_global.h</em> 文件</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/bin/sh: <span class="number">1</span>: /usr/bin/mysql_config: not found</span><br><span class="line">In file included from lib_mysqludf_redis.c:<span class="number">5</span>:<span class="number">0</span>:</span><br><span class="line">lib_mysqludf_redis.h:<span class="number">21</span>:<span class="number">23</span>: fatal error: my_global.h: No such file or directory</span><br><span class="line"><span class="comment">#include &lt;my_global.h&gt;</span></span><br></pre></td></tr></table></figure>
+<p>发现没有Makefile里指定的 <em>/usr/include/mysql</em> 文件,查看之前的服务器,发现存在并且里边包含有 <em>my_global.h</em> 文件,于是猜是这里出了问题,一番搜索之后,提示需要安装mysql开发包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libmysqlclient-dev</span><br></pre></td></tr></table></figure>
+<p>发现已创建此目录,重新编译没有提示上面的错误</p>
+<ul>
+<li>错误 <em>lib_mysqludf_redis.c:271:13: error: format not a string literaland no format arguments</em> </li>
+</ul>
+<p>将 lib_mysqludf_redis.c [Line:271]行的 fprintf(pFile, buf) 改为 fputs(buf, pFile),或注释掉 [Line:46]  /<em>debug_print(buf);</em>/</p>
+<h3 id="MYSQL-的配制"><a href="#MYSQL-的配制" class="headerlink" title="MYSQL 的配制"></a>MYSQL 的配制</h3><ul>
+<li>对于 lib_mysqludf_json 在 mysql 中执行以下sql命令:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">DROP FUNCTION IF EXISTS json_members;</span><br><span class="line">DROP FUNCTION IF EXISTS json_array;</span><br><span class="line">DROP FUNCTION IF EXISTS json_object;</span><br><span class="line">DROP FUNCTION IF EXISTS json_values;</span><br><span class="line">CREATE FUNCTION json_members RETURNS STRING SONAME <span class="string">'lib_mysqludf_json.so'</span>;</span><br><span class="line">CREATE FUNCTION json_array RETURNS STRING SONAME <span class="string">'lib_mysqludf_json.so'</span>;</span><br><span class="line">CREATE FUNCTION json_object RETURNS STRING SONAME <span class="string">'lib_mysqludf_json.so'</span>;</span><br><span class="line">CREATE FUNCTION json_values RETURNS STRING SONAME <span class="string">'lib_mysqludf_json.so'</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>json_array json_object</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE FUNCTION json_array RETURNS STRING SONAME <span class="string">'lib_mysqludf_json.so'</span>;</span><br><span class="line">ERROR <span class="number">1585</span> (HY000): This <span class="keyword">function</span> <span class="string">'json_array'</span> has the same name as a native <span class="keyword">function</span></span><br></pre></td></tr></table></figure>
+<p>注:自Mysql5.7开始已有内建 json_array json_object 方法,虽然用法不一样,但是可以稍作调整替换这里的同名方法–所以 <em>lib_mysqludf_json</em> 该库可以不用了</p>
+<ul>
+<li>对于 mysql2redis 在 mysql 中执行以下 sql 命令:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DROP FUNCTION IF EXISTS redis_servers_<span class="built_in">set</span>_v2;</span><br><span class="line">DROP FUNCTION IF EXISTS redis_<span class="built_in">command</span>_v2;</span><br><span class="line">DROP FUNCTION IF EXISTS free_resources;</span><br><span class="line">CREATE FUNCTION redis_servers_<span class="built_in">set</span>_v2 RETURNS int SONAME <span class="string">"lib_mysqludf_redis_v2.so"</span>;</span><br><span class="line">CREATE FUNCTION redis_<span class="built_in">command</span>_v2 RETURNS int SONAME <span class="string">"lib_mysqludf_redis_v2.so"</span>;</span><br><span class="line">CREATE FUNCTION free_resources RETURNS int SONAME <span class="string">"lib_mysqludf_redis_v2.so"</span>;</span><br></pre></td></tr></table></figure>
+<p>在安装过程中遇到的问题,请参照 <em>mysql2redis.md</em></p>
+<ul>
+<li>创建 <em>redis_servers_set_v2</em> FUNCTION 出现如下错误 <em>‘lib_mysqludf_redis_v2.so’ (errno: 2 libapr-1.so.0: cannot open shared object file</em></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE FUNCTION redis_servers_<span class="built_in">set</span>_v2 RETURNS int SONAME <span class="string">"lib_mysqludf_redis_v2.so"</span>;</span><br><span class="line">ERROR <span class="number">1126</span> (HY000): Can<span class="string">'t open shared library '</span>lib_mysqludf_redis_v2.so<span class="string">' (errno: 2 libapr-1.so.0: cannot open shared object file: No such file or directory)</span><br><span class="line">mysql&gt; CREATE FUNCTION redis_servers_set_v2 RETURNS int SONAME "lib_mysqludf_redis_v2.so";</span><br><span class="line">ERROR 1126 (HY000): Can'</span>t open shared library <span class="string">'lib_mysqludf_redis_v2.so'</span> (errno: <span class="number">11</span> libaprutil-<span class="number">1</span>.so.<span class="number">0</span>: cannot open shared object file: No such file or directory)</span><br></pre></td></tr></table></figure>
+<p>查看 <em>libapr-1.so.0</em> 和 <em>libaprutil-1.so.0</em> 均在 <em>/usr/local/apr/lib/</em> 下</p>
+<p>查看已安装好的 Ali 服务器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Thu May <span class="number">19</span> <span class="number">10</span>:<span class="number">54</span>:<span class="number">21</span> yzhang@coam:/usr/lib/x86_64-linux-gnu$ sudo find / -name libapr-<span class="number">1</span>.so.<span class="number">0</span></span><br><span class="line">/usr/<span class="built_in">local</span>/apr/lib/libapr-<span class="number">1</span>.so.<span class="number">0</span></span><br><span class="line">/usr/lib/x86_64-linux-gnu/libapr-<span class="number">1</span>.so.<span class="number">0</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>可以看到 <em>libapr-1.so.0</em> 和 <em>libaprutil-1.so.0</em> 都已复制到系统的 <em>/usr/lib/x86_64-linux-gnu/</em> 路径下,可能是当前服务器 <em>Vultr</em> 系统安装有差异,于是手动复制这两个文件,问题解决</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/<span class="built_in">local</span>/apr/lib/libapr-<span class="number">1</span>.so.<span class="number">0</span> /usr/lib/x86_64-linux-gnu/libapr-<span class="number">1</span>.so.<span class="number">0</span></span><br><span class="line">cp /usr/<span class="built_in">local</span>/apr/lib/libaprutil-<span class="number">1</span>.so.<span class="number">0</span> /usr/lib/x86_64-linux-gnu/libaprutil-<span class="number">1</span>.so.<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>最后登陆 Mysql 命令行测试 redis udf</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设定连接 Redis 数据库</span></span><br><span class="line">select redis_servers_<span class="built_in">set</span>_v2(<span class="string">"127.0.0.1"</span>, <span class="number">6379</span>);</span><br><span class="line">select redis_<span class="built_in">command</span>_v2(<span class="string">"HSET"</span>,<span class="string">"AccountInfoList"</span>,<span class="string">"C-1"</span>,json_object(<span class="string">"C-1"</span>, <span class="string">"C-1"</span>)); // 测试连接</span><br><span class="line"></span><br><span class="line">select redis_<span class="built_in">command</span>_v2(<span class="string">"hset"</span>,<span class="string">"hkey"</span>,<span class="string">"hfield"</span>,json_object(json_members(<span class="string">"op"</span>,<span class="string">"insert"</span>,<span class="string">"value"</span>,<span class="string">"valuettt"</span>))); // 测试 json_object 方法</span><br><span class="line">select free_resources();</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="错误记录"><a href="#错误记录" class="headerlink" title="错误记录"></a>错误记录</h3><ul>
+<li>错误 <em>lib_mysqludf_json.so: wrong ELF class: ELFCLASS32)</em> 产生原因是: lib_mysqludf_json.so 是32位的文件-解决方法:重新编译</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /RunSoft/lib_mysqludf_json</span><br><span class="line">sudo gcc -Wall -m64 -I/usr/include/mysql -I. -shared lib_mysqludf_json.c -o ./lib_mysqludf_json.so <span class="operator">-f</span>PIC</span><br></pre></td></tr></table></figure>
+<p>注意:-I 为 mysql 的 include 目录</p>
+<ul>
+<li>错误 <em>libhiredis.so.0.10: cannot open shared object file</em> 执行以下命令:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /usr/<span class="built_in">local</span>/lib/libhiredis.so.<span class="number">0.10</span> /lib</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Mysql SQL 创建 json_members 方法的时候,提示如下错误:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE FUNCTION json_members RETURNS STRING SONAME <span class="string">'lib_mysqludf_json.so'</span>;</span><br><span class="line">ERROR <span class="number">1126</span> (HY000): Can<span class="string">'t open shared library '</span>lib_mysqludf_json.so<span class="string">' (errno: 2 /usr/local/mysql/usr/lib/mysql/plugin/lib_mysqludf_json.so: cannot open shared object file: No such file or directory)</span></span><br></pre></td></tr></table></figure>
+<p>检查发现 <em>/usr/lib/mysql/plugin/lib_mysqludf_json.so</em> 文件存在,可能是安装 Mysql 配置的 plugin-dir 有问题 <em>/usr/local/mysql/</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Sat May <span class="number">14</span> <span class="number">18</span>:<span class="number">02</span>:<span class="number">00</span> yzhang@coam:~/RunSoft/mysql2redis$ sudo ps -ef | grep mysql</span><br><span class="line">root       <span class="number">958</span>     <span class="number">1</span>  <span class="number">0</span> May13 ?        <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> /bin/sh /usr/<span class="built_in">local</span>/mysql/bin/mysqld_safe --datadir=/data/home/data/mysq  --pid-file=/data/home/data/mysql/coam.pid</span><br><span class="line">mysql     <span class="number">1204</span>   <span class="number">958</span>  <span class="number">0</span> May13 ?        <span class="number">00</span>:<span class="number">00</span>:<span class="number">19</span> /usr/<span class="built_in">local</span>/mysql/bin/mysqld --basedir=/usr/<span class="built_in">local</span>/mysql --datadir=/data/home/data/mysql --plugin-dir=/usr/<span class="built_in">local</span>/mysql//usr/lib/mysql/plugin --user=mysql --log-error=/var/<span class="built_in">log</span>/mysql/error.log --pid-file=/data/home/data/mysql/coam.pid --socket=/tmp/mysql/mysql.sock --port=<span class="number">3306</span></span><br><span class="line">yzhang    <span class="number">8559</span> <span class="number">24523</span>  <span class="number">0</span> <span class="number">18</span>:<span class="number">05</span> pts/<span class="number">0</span>    <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> mysql -u zhangyanxi -p</span><br><span class="line">yzhang   <span class="number">12036</span> <span class="number">29119</span>  <span class="number">0</span> <span class="number">18</span>:<span class="number">12</span> pts/<span class="number">4</span>    <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> grep --color=auto mysql</span><br></pre></td></tr></table></figure>
+<p>可以看见 <em>–plugin-dir=/usr/local/mysql//usr/lib/mysql/plugin</em> 这里配置有问题</p>
+<ul>
+<li>我是 Mysql 源码编译安装,并且在 cmake 中设定参数 <em>-DINSTALL_PLUGINDIR=/usr/lib/mysql/plugin \</em> 也没有问题.修改 /etc/mysql/my.cnf 添加以下内容</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">plugin_dir=/usr/lib/mysql/plugin</span><br></pre></td></tr></table></figure>
+<p>重启 mysql 发现问题已修正</p>
+<h3 id="参考列表"><a href="#参考列表" class="headerlink" title="参考列表"></a>参考列表</h3><p><a href="http://blog.popkit.org/2014/02/21/how-to-install-mysql2redis/" target="_blank" rel="external">怎样安装 mysql2redis</a><br><a href="https://github.com/aborn/popkit/blob/master/doc/mysql2redis.md" target="_blank" rel="external">疑难杂症</a><br><a href="https://github.com/dawnbreaks/mysql2redis" target="_blank" rel="external">https://github.com/dawnbreaks/mysql2redis</a><br><a href="https://github.com/jackeylu/mysql2redis" target="_blank" rel="external">https://github.com/jackeylu/mysql2redis</a><br><a href="http://www.mysqludf.org/" target="_blank" rel="external">http://www.mysqludf.org/</a><br><a href="http://avnpc.com/pages/mysql-replication-to-redis-by-gearman" target="_blank" rel="external">通过Gearman实现MySQL到Redis的数据复制</a><br><a href="http://www.longlong.asia/2015/09/19/mysql-queue-trigger.html" target="_blank" rel="external">使用MySQL触发器同步数据到Memcached</a></p>
+<hr>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/05/14/Mysql/MysqlToRedis/">MysqlToRedis</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 张亚飞 的个人博客">张亚飞</a></p>
+        <p><span>发布时间:</span>2016年05月14日 - 16时48分</p>
+        <p><span>最后更新:</span>2016年05月19日 - 16时26分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/14/Mysql/MysqlToRedis/" title="MysqlToRedis">https://coam.co/2016/05/14/Mysql/MysqlToRedis/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://coam.co/2016/05/14/Mysql/MysqlToRedis/　　作者: 张亚飞" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/05/14/Mysql/MysqlSyncNote/">
+                    MysqlSyncNote
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/05/13/Mysql/MysqlNote/">
+                    MysqlNote
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu-安装-Mysql2redis-及错误日记"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu 安装 Mysql2redis 及错误日记</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装过程–Ubuntu"><span class="toc-number">2.</span> <span class="toc-text">安装过程–Ubuntu</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装jemalloc-安装命令如下"><span class="toc-number">2.1.</span> <span class="toc-text">安装jemalloc 安装命令如下:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装-apr-和-apr-util"><span class="toc-number">3.</span> <span class="toc-text">安装 apr 和 apr-util</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#下载完-mysql2redis-后-记住修改以下几步"><span class="toc-number">3.1.</span> <span class="toc-text">下载完 mysql2redis 后,记住修改以下几步:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MYSQL-的配制"><span class="toc-number">4.</span> <span class="toc-text">MYSQL 的配制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#错误记录"><span class="toc-number">5.</span> <span class="toc-text">错误记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考列表"><span class="toc-number">6.</span> <span class="toc-text">参考列表</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/05/14/Mysql/MysqlSyncNote/" title="上一篇: MysqlSyncNote">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/05/13/Mysql/MysqlNote/" title="下一篇: MysqlNote">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Erlang/InstallOTP/">InstallOTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/Redis/RedisSyncNote/">RedisSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/Ubuntu/">Linux/Ubuntu</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Linux/SystemInstall/">Linux/SystemInstall</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/16/Others/YL/">Others/YL</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/15/Linux/LinuxCommand/">LinuxCommand</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlSyncNote/">MysqlSyncNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/Mysql/MysqlToRedis/">MysqlToRedis</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlNote/">MysqlNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/Mysql/MysqlSql/">MysqlSql</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Redis/RedisNote/">RedisNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/10/Mongo/MongoNotes/">MongoNotes</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/09/Linux/iptables/">iptables</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/25/Android/AndroidNDK/">AndroidNDK</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/21/Design/PhotoShop/">PhotoShop 设计笔记摘要</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/15/Others/Enshrine/">Enshrine收藏</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/03/Others/Imagine/">【脑洞大开】你看过这样的动态图吗?——太牛了！</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/26/Linux/Linux.bashrc/">Linux.bashrc</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/24/WinScripts/WinNote/">WinNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/21/Android/ProGuard/">ProGuard</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Linux/ShadowSocks/">ShadowSocks</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/19/Web/WebDesign/">WebDesign</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Plan/FreeShareInfoIdea/">Plan/FreeShareInfoIdea</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Phalcon/PhalconNote/">Phalcon/PhalconNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/Info/EnshrineBlogs/">Info/EnshrineBlogs</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/18/CLang/cMake/">cMake</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/13/Android/CoamApp/">CoamApp</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/30/CLang/GccNote/">GCCNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/QT/QTNote/">QTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/DevIDENote/">DevIDENote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/24/CLang/CNote/">CNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/QT/Cygwin/">Cygwin</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/22/Electron/ElectronNote/">ElectronNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/CheerioNote/">CheerioNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/21/NodeJs/MochaNote/">MochaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/WebpackNote/">WebPack 自动打包工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/NodeJs/GulpNote/">NodeJs/GulpNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/20/Info/hospital/">hospital</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/18/Angular/TypeScriptNote/">TypeScriptNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/17/Angular/AngularNote/">Angular 开发笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/14/Java/JavaNote/">JavaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/13/Python/PythonNote/">PythonNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdModule/">EjabberdModule</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdConfigure/">EjabberdConfigure</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrofit/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/PhpNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnLombok/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaHashMap/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnJavaArray/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnGoogleGuava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnAsyncTask/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/NodeJs/NodeJsNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/MongoDB/MongoNotes/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/GPS/GPSNote/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Rebar/">RebarNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Mnesia/">MnesiaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/MQTT/">MQTTNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Lua/">LuaNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-slave/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Erlang/">ErlangNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Erlang/Elixir/">ElixirNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mongo/mongo-replicaSet/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/XMPP/">XMPPNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Ejabberd/EjabberdNote/">EjabberdNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/Composer/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/SSL/LetSSL/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidStudio/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Nginx/NginxNote/">NginxNote</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Mysql/MysqlTrigger/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/AndroidPushMQTT/">Android 推送之 MQTT</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/PHP/phpMyAdmin/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnSupportAnnotations/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRxJava/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnRetrolambda/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnOther/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnListView/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnGradle/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidFragment/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidDesign/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroidContext/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/LearnAndroid/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/EventBus/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidStethoAppWithChrome/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/DebugAndroidLog/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Android/Conversations.IM/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/10/Java/LearnOkHttp/">Title</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Http/HttpNote/">Http协议相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/08/Others/MarkDownNote/">MarkDown 相关</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 张亚飞
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        <div class="visit">
+            <span id="busuanzi_container_site_pv" style='display:none'>
+                <span id="site-visit" >本站到访数: 
+                    <span id="busuanzi_value_site_uv"></span>
+                </span>
+            </span>
+            <span id="busuanzi_container_page_pv" style='display:none'>
+                <span id="page-visit">, 本页阅读量: 
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+            </span>
+        </div>
+    </div>
+</footer>
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
